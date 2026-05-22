@@ -1,16 +1,23 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "JIBLM",
+    "title": "Journal of Inquiry-Based Learning in Mathematics",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "Overview\nInquiry-based learning (IBL) refers to any pedagogy that utilizes presentations or student-centered activities to develop in students the confidence and ability to do mathematics on their own. Instructors typically supply students with carefully crafted activities or course notes consisting of a sequence of definitions, problems or theorems. Instructors then serve as mentors, listening to the students, reviewing their work, and giving them the minimal information they need to understand the defined concepts, solve the problems, or prove the theorems.\nThe Journal of Inquiry-Based Learning in Mathematics (JIBLM) publishes three types of freely downloadable, professionally refereed materials.\n\nCourse Notes are classroom-tested, university-level notes for full courses.\nUser Reviews are scholarly reviews of Course Notes by those who have taught from them.\nModules are classroom-tested, university-level, brief notes or activities addressing individual topics. Instructors are encouraged to contact authors of Course Notes and Modules for guidance.\n\nAuthors submitting materials retain copyright and cede to JIBLM the right to display published materials in perpetuity. Anyone reproducing or displaying JIBLM publications should clearly display the journal name, title, issue and number. Reproduced materials may be distributed provided that no charge is levied to the users beyond the cost of reproduction.\nJIBLM was previously funded by MathNerds and the Educational Advancement Foundation, and is currently funded through private donations."
+  },
+  {
+    "objectID": "Course_Notes/250460.html",
+    "href": "Course_Notes/250460.html",
+    "title": "A First Course in College Calculus",
+    "section": "",
+    "text": "Title:\nPoint-Set Topology\n\n\nSubject:\ntopology\n\n\nPages:\n21\n\n\nIssue:\nNo. 61 (2025)\n\n\nAuthor:\nM Padraig McLoughlin &lt;&lt; Michel Smith &lt;&lt; W.S. Mahavier &lt;&lt; R.L. Moore\n\n\nUniversity:\nKutztown University\n\n\nContact:\nmcloughl@kutztown.edu\n\n\nAbstract:\nThese notes offer a general introduction to Point-Set Theory. The notes offer the student the opportunity to investigate limit points, closed or open sets, compactness, countability, sequences, continuity, connectedness, sseparability, local compactness, and total connectedness.\n\n\n\nInstructor Version Download\nStudent Version Download"
+  },
+  {
+    "objectID": "Course_Notes/251161.html",
+    "href": "Course_Notes/251161.html",
+    "title": "Point-Set Topology",
+    "section": "",
+    "text": "Title:\nPoint-Set Topology\n\n\nSubject:\ntopology\n\n\nPages:\n21\n\n\nIssue:\nNo. 61 (2025)\n\n\nAuthor:\nM Padraig McLoughlin &lt;&lt; Michel Smith &lt;&lt; W.S. Mahavier &lt;&lt; R.L. Moore\n\n\nUniversity:\nKutztown University\n\n\nContact:\nmcloughl@kutztown.edu\n\n\nAbstract:\nThese notes offer a general introduction to Point-Set Theory. The notes offer the student the opportunity to investigate limit points, closed or open sets, compactness, countability, sequences, continuity, connectedness, sseparability, local compactness, and total connectedness.\n\n\n\nInstructor Version\nStudent Version"
   }
 ]

@@ -1,0 +1,31 @@
+---
+title: "Course Materials"
+---
+
+
+```{r}
+#| include: false
+
+library(tidyverse)
+library(DT)
+```
+
+
+```{r}
+#| include: false
+materials <- read_csv("contents.csv")
+materials <- materials |>
+  mutate( Title = paste0("<a href=\"/Course_Notes/", link, "\">", Title, "</a>" )) |>
+  select(!link)
+
+options(DT.options = list(order = list(4, 'desc')))
+```
+
+```{r}
+#| echo: false
+
+datatable(materials, rownames = FALSE, style = 'bootstrap', class = "table-condensed table-striped", escape = FALSE)
+```
+
+
+

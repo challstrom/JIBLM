@@ -1,0 +1,22 @@
+---
+title: "Point-Set Topology"
+subtitle: No. 61 (2025)
+---
+
+
+|     |     |
+|-----|-----|
+| Title:      | Point-Set Topology    |
+| Subject:    | topology              |
+| Pages:      | 21                    |
+| Issue:      | No. 61 (2025)         |
+| Author:     | M Padraig McLoughlin << Michel Smith << W.S. Mahavier << R.L. Moore     |
+| University: | Kutztown University    |
+| Contact:    | mcloughl@kutztown.edu    |
+| Abstract:   | These notes offer a general introduction to Point-Set Theory. The notes offer the student the opportunity to investigate limit points, closed or open sets, compactness, countability, sequences, continuity, connectedness, sseparability, local compactness, and total connectedness.    |
+
+
+
+[Instructor Version](./materials/V251161I.pdf)
+
+[Student Version](./materials/V251161S.pdf)

@@ -7,8 +7,9 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
-
+      - href: notes.qmd
+        text: "Course Notes"
+        
 format:
   html:
     theme:

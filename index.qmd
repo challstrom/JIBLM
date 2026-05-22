@@ -1,11 +1,18 @@
 ---
-title: "JIBLM"
+title: "Journal of Inquiry-Based Learning in Mathematics"
 ---
 
-This is a Quarto website.
+# Overview
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Inquiry-based learning (IBL) refers to any pedagogy that utilizes presentations or student-centered activities to develop in students the confidence and ability to do mathematics on their own. Instructors typically supply students with carefully crafted activities or course notes consisting of a sequence of definitions, problems or theorems. Instructors then serve as mentors, listening to the students, reviewing their work, and giving them the minimal information they need to understand the defined concepts, solve the problems, or prove the theorems.
 
-```{r}
-1 + 1
-```
+The Journal of Inquiry-Based Learning in Mathematics (JIBLM) publishes three types of freely downloadable, professionally refereed materials.
+
+  1. [Course Notes](notes.qmd) are classroom-tested, university-level notes for full courses.
+  2. User Reviews are scholarly reviews of Course Notes by those who have taught from them.
+  3. Modules are classroom-tested, university-level, brief notes or activities addressing individual topics.
+Instructors are encouraged to contact authors of Course Notes and Modules for guidance.
+
+Authors submitting materials retain copyright and cede to JIBLM the right to display published materials in perpetuity. Anyone reproducing or displaying JIBLM publications should clearly display the journal name, title, issue and number. Reproduced materials may be distributed provided that no charge is levied to the users beyond the cost of reproduction.
+
+JIBLM was previously funded by MathNerds and the Educational Advancement Foundation, and is currently funded through private donations.
