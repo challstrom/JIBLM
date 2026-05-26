@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: docs
 
 website:
   title: "JIBLM"
@@ -14,8 +15,10 @@ format:
   html:
     theme:
       - cosmo
-    css: styles.css
+    css: styles.scss
     toc: true
+    backgroundcolor: "#FBF5DE"
+    page-layout: full
 
 editor: visual
 
