@@ -1,0 +1,23 @@
+---
+title: "Discrete Math (Introduction to Proof)"
+subtitle: No. 59 (Apr. 2025)
+---
+
+
+|     |     |
+|-|-----|
+| Title:      | Discrete Math (Introduction to Proof)    |
+| Subject:    | discrete math              |
+| Pages:      | 89                   |
+| Issue:      | No. 59 (Apr. 2025)         |
+| Author:     | Rachel Schwell     |
+| University: | Central Connecticut State University    |
+| Contact:    | schwellrac@ccsu.edu   |
+| Abstract:   | This text covers a collection of standard topics in an introduction-to-proof course: logic, techniques of proof including induction, set theory, functions, and introductory number theory. Sets and functions (including injectivity and surjectivity) are given special attention, in preparation for upper-level courses such as abstract algebra. The text is intended to be standalone in an IBL setting with no supplementary lecture or notes required and is scaffolded accordingly. It is meant to be user-friendly, while still encouraging readers to stretch their thinking and develop mathematical habits of mind.    |
+
+
+
+
+[Instructor Version Download](./V250459I.pdf)
+
+[Student Version Download](./V250459S.pdf)

@@ -1,0 +1,23 @@
+---
+title: "Finite Mathematics"
+subtitle: No. 57 (April 2023)
+---
+
+
+|     |     |
+|-|-----|
+| Title:      | Finite Mathematics    |
+| Subject:    | finite math              |
+| Pages:      | 92                   |
+| Issue:      | No. 57 (April 2023)         |
+| Author:     | Mindy Capaldi     |
+| University: | Valparaiso University    |
+| Contact:    | mindy.capaldi@valpo.edu   |
+| Abstract:   | These notes are for a four-credit, 100-level finite mathematics course. Topics include matrix algebra, linear programming, probability, counting methods, Markov chains, and game theory. In practice, studuents work through the notes during class, complete problems in groups, and present their work at the board. Two modules using board games are also included as appendices. The notes can be easily adapted by taking out explanatory passages or examples, based on the mathematical background of the students.    |
+
+
+
+
+[Instructor Version Download](./V230357I.pdf)
+
+[Student Version Download](./V230357S.pdf)

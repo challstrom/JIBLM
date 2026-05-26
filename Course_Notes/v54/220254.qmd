@@ -1,0 +1,23 @@
+---
+title: "Complex Variables and Functions"
+subtitle: No. 54 (May 2022)
+---
+
+
+|     |     |
+|-|-----|
+| Title:      | Complex Variables and Functions    |
+| Subject:    | complex analysis              |
+| Pages:      | 97                   |
+| Issue:      | No. 54 (May 2022)         |
+| Author:     | Bowman, Joshua P.     |
+| University: | Pepperdine University    |
+| Contact:    | joshua.bowman@pepperdine.edu   |
+| Abstract:   | The material covered in these notes is standard for an undergraduate course on complex variables. The vast majority of exercises (“tasks”) are original, however. A few tasks are borrowed or adapted from exercises or exposition.   |
+
+
+
+
+[Instructor Version Download](./V220254I.pdf)
+
+[Student Version Download](./V220254S.pdf)

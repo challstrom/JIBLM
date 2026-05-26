@@ -1,0 +1,34 @@
+/*-- scss:defaults --*/
+@import 'https://fonts.googleapis.com/css2?family=Prata&display=swap';
+
+$font-family: "Prato";
+
+
+
+
+/* scss: rules */
+
+
+// Tables
+.table {
+  font-family: $font-family-serif;
+}
+
+a{
+  color: $link-color;
+  text-decoration: none;
+  
+  &:hover{
+    color: $hover-color;
+    border-bottom: 1px solid $hover-color;
+  }
+  
+}
+
+.center {
+  text-align: center;
+}
+
+.table {
+  font-size: 1.0em;
+}

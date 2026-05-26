@@ -1,0 +1,23 @@
+---
+title: "An Inquiry-Based Learning Approach to Mathematical Modeling"
+subtitle: No. 51 (July 2020)
+---
+
+
+|     |     |
+|-|-----|
+| Title:      | An Inquiry-Based Learning Approach to Mathematical Modeling    |
+| Subject:    | modeling              |
+| Pages:      | 62                   |
+| Issue:      | No. 51 (July 2020)         |
+| Author:     | Young, Andrea    |
+| University: | Ripon College    |
+| Contact:    | younga@ripon.edu  |
+| Abstract:   | This is a set of notes for a one semester course in Mathematical Modeling. The topics covered are difference equations, Markov chains, Monte Carlo simulations, and linear programming. The notes emphasize scientific computing and include both problems and projects. These notes are written to be used with Sage, but they could be modified to incorporate another language.   |
+
+
+
+
+[Instructor Version Download](./V200151I.pdf)
+
+[Student Version Download](./V200151S.pdf)

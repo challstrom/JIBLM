@@ -1,0 +1,23 @@
+---
+title: "Precalculus: An Inquiry-Based Approach"
+subtitle: No. 56 (March 2023)
+---
+
+
+|     |     |
+|-|-----|
+| Title:      | Precalculus: An Inquiry-Based Approach    |
+| Subject:    | precalculus              |
+| Pages:      | 140                   |
+| Issue:      | No. 56 (March 2023)         |
+| Author:     | Howard, Paul K. < Mahavier, W. Ted     |
+| University: | Oklahoma Christian University and Self-Employed    |
+| Contact:    | paul.howard@oc.edu, ted.mahavier@gmail.com   |
+| Abstract:   | A standard precalculus course covering polynomials, rationals, exponentials, logarmithmics, trigonometry, polar coordinates, rate of change, and conic sections. This course may also serve as either College Agebra or Trigonometry simply by choosing the appropriate chapters.   |
+
+
+
+
+[Instructor Version Download](./V230256I.pdf)
+
+[Student Version Download](./V230256S.pdf)

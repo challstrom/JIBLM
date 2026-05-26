@@ -1,0 +1,23 @@
+---
+title: "The Story of Statistics: Inquiry based notes for introductory statistics"
+subtitle: No. 58 (Nov. 2024)
+---
+
+
+|     |     |
+|-|-----|
+| Title:      | The Story of Statistics: Inquiry based notes for introductory statistics    |
+| Subject:    | statistics              |
+| Pages:      | 184                   |
+| Issue:      | No. 58 (Nov. 2024)         |
+| Author:     | Lindsey Bell, Nicholas Pritchard, and Douglas Weathers     |
+| University: | Coastal Carolina University    |
+| Contact:    | lbell2@coastal.edu, npritcha@coastal.edu, wweathers@coastal.edu   |
+| Abstract:   | Notes for an introductory statistics course emphasizing the process of statistical thinking. Topics include data collection, graphical and numerical summaries, introduction to probability, random variables, sampling distributions, confidence intervals, hypothesis testing, and simple linear regression. A common investigation is woven throughout the notes to provide continuity and hands on activites are used to introduce new conepts.    |
+
+
+
+
+[Instructor Version Download](./V241158I.pdf)
+
+[Student Version Download](./V241158S.pdf)

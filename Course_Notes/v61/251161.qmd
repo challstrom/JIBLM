@@ -1,15 +1,15 @@
 ---
 title: "Point-Set Topology"
-subtitle: No. 61 (2025)
+subtitle: No. 61 (Nov. 2025)
 ---
 
 
 |     |     |
-|-----|-----|
+|-|-----|
 | Title:      | Point-Set Topology    |
 | Subject:    | topology              |
 | Pages:      | 21                    |
-| Issue:      | No. 61 (2025)         |
+| Issue:      | No. 61 (Nov. 2025)         |
 | Author:     | M Padraig McLoughlin << Michel Smith << W.S. Mahavier << R.L. Moore     |
 | University: | Kutztown University    |
 | Contact:    | mcloughl@kutztown.edu    |
@@ -17,6 +17,6 @@ subtitle: No. 61 (2025)
 
 
 
-[Instructor Version](./materials/V251161I.pdf)
+[Instructor Version](./V251161I.pdf)
 
-[Student Version](./materials/V251161S.pdf)
+[Student Version](./V251161S.pdf)

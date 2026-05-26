@@ -1,0 +1,23 @@
+---
+title: "A First Course in College Calculus"
+subtitle: No. 60 (Apr. 2025)
+---
+
+
+|     |     |
+|-|-----|
+| Title:      | A First Course in College Calculus    |
+| Subject:    | calculus              |
+| Pages:      | 18                    |
+| Issue:      | No. 60 (Apr. 2025)         |
+| Author:     | Tulsi Srinivasan     |
+| University: | Azim Premji University, Bengaluru    |
+| Contact:    | tulsi.srinivasan@apu.edu.in   |
+| Abstract:   | These notes are for a first course in college calculus/introductory real analysis. The first part of the course motivates the study of sequences and their convergence through problems involving calculating the area under a graph and the slope of the tangent at a point on a graph. The second part draws on observations from the first about structural differences between the reals and the rationals, and starts with some axioms for the reals. These axioms are then used to study continuity and properties of continuous functions on the reals.    |
+
+
+
+
+[Instructor Version Download](./V250460I.pdf)
+
+[Student Version Download](./V250460S.pdf)

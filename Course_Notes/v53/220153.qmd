@@ -1,0 +1,23 @@
+---
+title: "Linear Algebra: Notes and Problems"
+subtitle: No. 53 (Jan. 2022)
+---
+
+
+|     |     |
+|-|-----|
+| Title:      | Linear Algebra: Notes and Problems    |
+| Subject:    | linear algebra              |
+| Pages:      | 78                   |
+| Issue:      | No. 53 (Jan. 2022)         |
+| Author:     | Long, Nicholas     |
+| University: | Stephen F. Austin State University    |
+| Contact:    | longne@sfasu.edu   |
+| Abstract:   | This set of notes and problems covers a junior-level linear algebra course (following an introduction to proof course) with broad chapter topics of 1) efficiently solving systems of linear equations, 2) vector spaces, 3) connecting ideas (dimension, invertibility, and eignvalues), and 4) innner product spaces. The approach of these notes isa blend of computational and sense-making problems, as well as an increasing usage of conjecture and proof throughout the course.   |
+
+
+
+
+[Instructor Version Download](./V220153I.pdf)
+
+[Student Version Download](./V220153S.pdf)

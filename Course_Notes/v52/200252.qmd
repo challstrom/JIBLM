@@ -1,0 +1,23 @@
+---
+title: "Introduction to Combinatorial Games"
+subtitle: No. 52 (Oct 2020)
+---
+
+
+|     |     |
+|-|-----|
+| Title:      | Introduction to Combinatorial Games    |
+| Subject:    | game theory              |
+| Pages:      | 52                   |
+| Issue:      | No. 52 (Oct. 2020)         |
+| Author:     | Gantner, Ryan    |
+| University: | St. John Fisher College    |
+| Contact:    | rgantner@sjfc.edu   |
+| Abstract:   | Through this course, students will build a robust theory of combinatorial games from scratch, including theories of partisan games, impartial games, nimbers versus numbers, the "\mex" function, and basic Sprague-Grundy theory. Several games will be introduced, such as Nim, Hackenbush, Kayles, and Chomp. These notes are aimed at students who are not math majors and who have not taken college math courses previously. With only slight modification, however, this could become a course for math majors.   |
+
+
+
+
+[Instructor Version Download](./V200252I.pdf)
+
+[Student Version Download](./V200252S.pdf)

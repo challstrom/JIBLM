@@ -11,6 +11,12 @@ library(DT)
 ```
 
 
+These refereed course notes fulfill the guidelines listed under Information for Authors of Course Notes.
+
+Keeping JIBLM free is a top priority. If you use JIBLM materials, we want to know! Please consider emailing our Course Reviews Editor Nathaniel Miller listing which notes you use, your institution, your name, and anything else you wish to share.
+
+This table is sortable. Click on a column heading to sort by that column. Click on a title to access these notes.
+
 ```{r}
 #| include: false
 materials <- read_csv("contents.csv")

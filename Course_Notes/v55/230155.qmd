@@ -1,0 +1,23 @@
+---
+title: "Mathematical Logic for the Humanities"
+subtitle: No. 55 (Jan. 2023)
+---
+
+
+|     |     |
+|-|-----|
+| Title:      | Mathematical Logic for the Humanities   |
+| Subject:    | logic              |
+| Pages:      | 68                   |
+| Issue:      | No. 55 (Jan. 2023)         |
+| Author:     | Ryan P. Dunning     |
+| University: | St. Mary's University   |
+| Contact:    | rdunning1@stmarytx.edu  |
+| Abstract:   | A mathematics course designed for students in the humanities. A variety of concepts are covered. Topics will be drawn from the following areas: introductory treatments of sets, logic, number theory.   |
+
+
+
+
+[Instructor Version Download](./V230155I.pdf)
+
+[Student Version Download](./V230155S.pdf)

@@ -1,0 +1,23 @@
+---
+title: "Calculus I – Single Variable Calculus"
+subtitle: No. 50 (May 2019)
+---
+
+
+|     |     |
+|-|-----|
+| Title:      | Calculus I – Single Variable Calculus    |
+| Subject:    | calculus              |
+| Pages:      | 90                   |
+| Issue:      | No. 50 (May 2019)         |
+| Author:     | George, C. Yousuf; Lewis, Heather A.     |
+| University: | Nazareth College    |
+| Contact:    | cgeorge0@naz.edu   |
+| Abstract:   | This course introduces students to the fundamentals of calculus, its notation and its applications. Some of these concepts include: functions, rates of change, limits, derivatives, applications of derivatives, antiderivatives, integration, and the Fundamental Theorem of Calculus.   |
+
+
+
+
+[Instructor Version Download](./V190250I.pdf)
+
+[Student Version Download](./V190250S.pdf)
