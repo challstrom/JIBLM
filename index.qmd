@@ -15,4 +15,4 @@ Instructors are encouraged to contact authors of Course Notes and Modules for gu
 
 Authors submitting materials retain copyright and cede to JIBLM the right to display published materials in perpetuity. Anyone reproducing or displaying JIBLM publications should clearly display the journal name, title, issue and number. Reproduced materials may be distributed provided that no charge is levied to the users beyond the cost of reproduction.
 
-JIBLM was previously funded by MathNerds and the Educational Advancement Foundation, and is currently funded through private donations.
+JIBLM was previously funded by MathNerds and the Educational Advancement Foundation, and is currently funded through private donations. 
