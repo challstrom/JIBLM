@@ -96,5 +96,75 @@
     "title": "Course Materials",
     "section": "",
     "text": "These refereed course notes fulfill the guidelines listed under Information for Authors of Course Notes.\nKeeping JIBLM free is a top priority. If you use JIBLM materials, we want to know! Please consider emailing our Course Reviews Editor Nathaniel Miller listing which notes you use, your institution, your name, and anything else you wish to share.\nThis table is sortable. Click on a column heading to sort by that column. Click on a title to access these notes."
+  },
+  {
+    "objectID": "test_template.html",
+    "href": "test_template.html",
+    "title": "test_template",
+    "section": "",
+    "text": "# Define the content of the Quarto file\nqmd_content &lt;- '---\ntitle: \"My Quarto Report\"\nformat: html\n---\n\n## Introduction\nThis file was generated using R code.\n'\n\n# Write the content to a file named \"my_report.qmd\"\nwriteLines(qmd_content, \"new_file.qmd\")"
+  },
+  {
+    "objectID": "generate_templates/test_template.html",
+    "href": "generate_templates/test_template.html",
+    "title": "test_template",
+    "section": "",
+    "text": "this .qmd file generates additional .qmd files which when compiled will be the individual course note pages.\n\n\n# A tibble: 3 × 9\n  title            subject pages issue author institution contact abstract vol  \n  &lt;chr&gt;            &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;\n1 Discrete Mathem… discre…    99 No. … Clark… SUNY New P… Email:… This co… 49   \n2 Precalculus      precal…   132 No. … Howar… Oklahoma C… Email:… This co… 48   \n3 An Inquiry-Base… founda…    33 No. … Heffe… St Michael… Email:… An intr… 47   \n\n\n[1] \"v49.qmd\" \"v48.qmd\" \"v47.qmd\"\n\n\n\nThis code chunk takes a single row from metadata and transposes it so we can display a table with it’s entries. We also take the column names from metadata for the labels of that table. Ultimately, this is the R code that we want to write to multiple .qmd files\n\noutput &lt;- metadata |&gt;\n  filter(vol == \"47\") |&gt;\n  t()\n\n\ncn &lt;- metadata |&gt;\n  colnames()\n\ntibble(cn, output) |&gt;\n  gt() |&gt;\n  cols_align(align = \"left\") |&gt;\n  tab_style(\n    style= cell_text(v_align = \"top\"),\n    locations = cells_body()\n  ) |&gt;\n  tab_options( table.width = \"80%\", column_labels.hidden = TRUE)\n\n\n\n\n\n\n\ntitle\nAn Inquiry-Based Introduction to Proofs\n\n\nsubject\nfoundations\n\n\npages\n33\n\n\nissue\nNo. 47 (Sept. 2018)\n\n\nauthor\nHefferon, Jim\n\n\ninstitution\nSt Michael's College\n\n\ncontact\nEmail: jhefferon@smcvt.edu\n\n\nabstract\nAn introduction to mathematical proof. Covers elementary number theory including divisibility and primes, sets including DeMorgan's laws, functions including one-to-one and onto, and relations. There is a brief optional chapter on cardinality. The presentation is a sequence of statements of definitions and results, with a few remarks.\n\n\nvol\n47\n\n\n\n\n\n\n\n\n\nThis is the code chunk that writes the R code to new_file.qmd"
+  },
+  {
+    "objectID": "generate_templates/new_file.html",
+    "href": "generate_templates/new_file.html",
+    "title": "My Quarto Report",
+    "section": "",
+    "text": "This file was generated using R code.\n\n\n\n\n\n\n\n\ntitle\nAn Inquiry-Based Introduction to Proofs\n\n\nsubject\nfoundations\n\n\npages\n33\n\n\nissue\nNo. 47 (Sept. 2018)\n\n\nauthor\nHefferon, Jim\n\n\ninstitution\nSt Michael's College\n\n\ncontact\nEmail: jhefferon@smcvt.edu\n\n\nabstract\nAn introduction to mathematical proof. Covers elementary number theory including divisibility and primes, sets including DeMorgan's laws, functions including one-to-one and onto, and relations. There is a brief optional chapter on cardinality. The presentation is a sequence of statements of definitions and results, with a few remarks."
+  },
+  {
+    "objectID": "generate_templates/new_file.html#introduction",
+    "href": "generate_templates/new_file.html#introduction",
+    "title": "My Quarto Report",
+    "section": "",
+    "text": "This file was generated using R code.\n\n\n\n\n\n\n\n\ntitle\nAn Inquiry-Based Introduction to Proofs\n\n\nsubject\nfoundations\n\n\npages\n33\n\n\nissue\nNo. 47 (Sept. 2018)\n\n\nauthor\nHefferon, Jim\n\n\ninstitution\nSt Michael's College\n\n\ncontact\nEmail: jhefferon@smcvt.edu\n\n\nabstract\nAn introduction to mathematical proof. Covers elementary number theory including divisibility and primes, sets including DeMorgan's laws, functions including one-to-one and onto, and relations. There is a brief optional chapter on cardinality. The presentation is a sequence of statements of definitions and results, with a few remarks."
+  },
+  {
+    "objectID": "generate_templates/v47.html",
+    "href": "generate_templates/v47.html",
+    "title": "My Quarto Report",
+    "section": "",
+    "text": "This file was generated using R code.\n\n\n\n\n\n\n\n\ntitle\nAn Inquiry-Based Introduction to Proofs\n\n\nsubject\nfoundations\n\n\npages\n33\n\n\nissue\nNo. 47 (Sept. 2018)\n\n\nauthor\nHefferon, Jim\n\n\ninstitution\nSt Michael's College\n\n\ncontact\nEmail: jhefferon@smcvt.edu\n\n\nabstract\nAn introduction to mathematical proof. Covers elementary number theory including divisibility and primes, sets including DeMorgan's laws, functions including one-to-one and onto, and relations. There is a brief optional chapter on cardinality. The presentation is a sequence of statements of definitions and results, with a few remarks."
+  },
+  {
+    "objectID": "generate_templates/v47.html#introduction",
+    "href": "generate_templates/v47.html#introduction",
+    "title": "My Quarto Report",
+    "section": "",
+    "text": "This file was generated using R code.\n\n\n\n\n\n\n\n\ntitle\nAn Inquiry-Based Introduction to Proofs\n\n\nsubject\nfoundations\n\n\npages\n33\n\n\nissue\nNo. 47 (Sept. 2018)\n\n\nauthor\nHefferon, Jim\n\n\ninstitution\nSt Michael's College\n\n\ncontact\nEmail: jhefferon@smcvt.edu\n\n\nabstract\nAn introduction to mathematical proof. Covers elementary number theory including divisibility and primes, sets including DeMorgan's laws, functions including one-to-one and onto, and relations. There is a brief optional chapter on cardinality. The presentation is a sequence of statements of definitions and results, with a few remarks."
+  },
+  {
+    "objectID": "generate_templates/v48.html",
+    "href": "generate_templates/v48.html",
+    "title": "My Quarto Report",
+    "section": "",
+    "text": "This file was generated using R code.\n\n\n\n\n\n\n\n\ntitle\nPrecalculus\n\n\nsubject\nprecalculus\n\n\npages\n132\n\n\nissue\nNo. 48 (Dec. 2018)\n\n\nauthor\nHoward, Paul K. &lt; Mahavier, W. Ted\n\n\ninstitution\nOklahoma Christian University\n\n\ncontact\nEmail:paul.howard@oc.edu\n\n\nabstract\nThis course is designed to prepare students to begin a college level calculus series. Topics in this course include all aspects of trigonometry as well as conic sections, exponential functions, polynomial functions, rational functions and linear functions with an emphasis on rate of change. Strong emphasis is placed on strengthening understanding of algebraic concepts necessary to be successful in a college level calculus series."
+  },
+  {
+    "objectID": "generate_templates/v48.html#introduction",
+    "href": "generate_templates/v48.html#introduction",
+    "title": "My Quarto Report",
+    "section": "",
+    "text": "This file was generated using R code.\n\n\n\n\n\n\n\n\ntitle\nPrecalculus\n\n\nsubject\nprecalculus\n\n\npages\n132\n\n\nissue\nNo. 48 (Dec. 2018)\n\n\nauthor\nHoward, Paul K. &lt; Mahavier, W. Ted\n\n\ninstitution\nOklahoma Christian University\n\n\ncontact\nEmail:paul.howard@oc.edu\n\n\nabstract\nThis course is designed to prepare students to begin a college level calculus series. Topics in this course include all aspects of trigonometry as well as conic sections, exponential functions, polynomial functions, rational functions and linear functions with an emphasis on rate of change. Strong emphasis is placed on strengthening understanding of algebraic concepts necessary to be successful in a college level calculus series."
+  },
+  {
+    "objectID": "generate_templates/v49.html",
+    "href": "generate_templates/v49.html",
+    "title": "My Quarto Report",
+    "section": "",
+    "text": "This file was generated using R code.\n\n\n\n\n\n\n\n\ntitle\nDiscrete Mathematics\n\n\nsubject\ndiscrete math\n\n\npages\n99\n\n\nissue\nNo. 49 (Jan. 2019)\n\n\nauthor\nClark, David M.; Mahavier, W. Ted\n\n\ninstitution\nSUNY New Paltz & Lamar University\n\n\ncontact\nEmail:ted.mahavier@lamar.edu\n\n\nabstract\nThis course constitutes a mathematically rigorous introduction to sets, functions, counting, induction, equivalence relations, recursion, elementary graph theory finite state machines and languages."
+  },
+  {
+    "objectID": "generate_templates/v49.html#introduction",
+    "href": "generate_templates/v49.html#introduction",
+    "title": "My Quarto Report",
+    "section": "",
+    "text": "This file was generated using R code.\n\n\n\n\n\n\n\n\ntitle\nDiscrete Mathematics\n\n\nsubject\ndiscrete math\n\n\npages\n99\n\n\nissue\nNo. 49 (Jan. 2019)\n\n\nauthor\nClark, David M.; Mahavier, W. Ted\n\n\ninstitution\nSUNY New Paltz & Lamar University\n\n\ncontact\nEmail:ted.mahavier@lamar.edu\n\n\nabstract\nThis course constitutes a mathematically rigorous introduction to sets, functions, counting, induction, equivalence relations, recursion, elementary graph theory finite state machines and languages."
   }
 ]

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Course Materials – JIBLM</title>
+<title>test_template – JIBLM</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -66,17 +100,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
-<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="site_libs/datatables-binding-0.33/datatables.js"></script>
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<link href="site_libs/dt-core-bootstrap-1.13.6/css/dataTables.bootstrap.min.css" rel="stylesheet">
-<link href="site_libs/dt-core-bootstrap-1.13.6/css/dataTables.bootstrap.extra.css" rel="stylesheet">
-<script src="site_libs/dt-core-bootstrap-1.13.6/js/jquery.dataTables.min.js"></script>
-<script src="site_libs/dt-core-bootstrap-1.13.6/js/dataTables.bootstrap.min.js"></script>
-<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
-<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 
 
 <link rel="stylesheet" href="styles.scss">
@@ -104,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./notes.html" aria-current="page"> 
+    <a class="nav-link" href="./notes.html"> 
 <span class="menu-text">Course Notes</span></a>
   </li>  
 </ul>
@@ -126,7 +149,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Course Materials</h1>
+<h1 class="title">test_template</h1>
 </div>
 
 
@@ -143,14 +166,19 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>These refereed course notes fulfill the guidelines listed under Information for Authors of Course Notes.</p>
-<p>Keeping JIBLM free is a top priority. If you use JIBLM materials, we want to know! Please consider emailing our Course Reviews Editor Nathaniel Miller listing which notes you use, your institution, your name, and anything else you wish to share.</p>
-<p>This table is sortable. Click on a column heading to sort by that column. Click on a title to access these notes.</p>
 <div class="cell">
-<div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-7b50338f87ef32bd7599" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-7b50338f87ef32bd7599">{"x":{"style":"bootstrap","filter":"none","vertical":false,"data":[["<a href=\"/Course_Notes/v61/251161.html\">Point-Set Topology<\/a>","<a href=\"/Course_Notes/v60/250460.html\">A First Course in College Calculus<\/a>","<a href=\"/Course_Notes/v59/250459.html\">Discrete Math (Introduction to Proof)<\/a>","<a href=\"/Course_Notes/v58/241158.html\">The Story of Statistics: Inquiry based notes for introductory statistics<\/a>","<a href=\"/Course_Notes/v57/230357.html\">Finite Mathematics<\/a>","<a href=\"/Course_Notes/v56/230256.html\">Precalculus: An Inquiry-Based Approach<\/a>","<a href=\"/Course_Notes/v55/230155.html\">Mathematical Logic for the Humanities<\/a>","<a href=\"/Course_Notes/v54/220254.html\">Complex Variables and Functions<\/a>","<a href=\"/Course_Notes/v53/220153.html\">Linear Algebra: Notes and Problems<\/a>","<a href=\"/Course_Notes/v52/200252.html\">Introduction to Combinatorial Games<\/a>","<a href=\"/Course_Notes/v51/200151.html\">An Inquiry-Based Learning Approach to Mathematical Modeling<\/a>","<a href=\"/Course_Notes/v50/190250.html\">Calculus I – Single Variable Calculus<\/a>"],["M Padraig McLoughlin << Michel Smith << W.S. Mahavier << R.L. Moore","Tulsi Srinivasan","Rachel Schwell","Lindsey Bell, Nicholas Pritchard, and Douglas Weathers","Mindy Capaldi","Howard, Paul K. < Mahavier, W. Ted","Ryan P. Dunning","Bowman, Joshua P.","Long, Nicholas","Gantner, Ryan","Young, Andrea","George, C. Yousuf; Lewis, Heather A."],["topology","calculus","discrete math","statistics","finite math","precalculus","logic","analysis (complex)","linear algebra","game theory","modeling","calculus"],[21,18,89,184,92,140,68,97,78,52,62,90],["No. 61 (Nov. 2025)","No. 60 (Apr. 2025)","No. 59 (Apr. 2025)","No. 58 (Nov. 2024)","No. 57 (Apr. 2023)","No. 56 (Mar. 2023)","No. 55 (Jan. 2023)","No. 54 (May 2022)","No. 53 (Jan. 2022)","No. 52 (Oct. 2020)","No. 51 (July 2020)","No. 50 (May 2019)"],["Not yet","Not yet","Not yet","Not yet","Not yet","Not yet","Not yet","Not yet","Not yet","Not yet","Not yet","Not yet"]],"container":"<table class=\"table table-condensed table-striped\">\n  <thead>\n    <tr>\n      <th>Title<\/th>\n      <th>Author<\/th>\n      <th>Subject<\/th>\n      <th>Pages<\/th>\n      <th>Issue<\/th>\n      <th>Reviews<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"order":[4,"desc"],"columnDefs":[{"className":"dt-right","targets":3},{"name":"Title","targets":0},{"name":"Author","targets":1},{"name":"Subject","targets":2},{"name":"Pages","targets":3},{"name":"Issue","targets":4},{"name":"Reviews","targets":5}],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
-</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the content of the Quarto file</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>qmd_content <span class="ot">&lt;-</span> <span class="st">'---</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="st">title: "My Quarto Report"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="st">format: html</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">---</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">## Introduction</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">This file was generated using R code.</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Write the content to a file named "my_report.qmd"</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(qmd_content, <span class="st">"new_file.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

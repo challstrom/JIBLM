@@ -24,11 +24,12 @@ materials <- materials |>
   mutate( Title = paste0("<a href=\"/Course_Notes/", link, "\">", Title, "</a>" )) |>
   select(!link)
 
-options(DT.options = list(order = list(4, 'desc')))
 ```
 
 ```{r}
 #| echo: false
+
+options(DT.options = list(order = list(4, 'desc')))
 
 datatable(materials, rownames = FALSE, style = 'bootstrap', class = "table-condensed table-striped", escape = FALSE)
 ```
