@@ -1,0 +1,138 @@
+---
+title: "template for course note .qmd files"
+format: html
+toc: false
+---
+
+Rendering this file should generate the .qmd files for each course note page
+
+```{r}
+#| include: false
+
+library(tidyverse)
+library(DT)
+library(gt)
+```
+
+```{r}
+#| echo: false
+#| warning: false
+
+
+metadata <- read_csv("contents_raw.csv")
+
+metadata <- metadata |>
+  mutate(vol = str_sub(issue, 5, 6))
+
+metadata
+
+# create vector of filenames we will write to
+
+outfiles <- ""
+
+for (i in 1:nrow(metadata)) {
+  outfiles[[i]] <- str_glue("v{metadata$vol[[i]]}/v{metadata$vol[[i]]}.qmd")
+}
+
+outfiles
+
+```
+
+### This code chunk takes a single row from `metadata` and transposes it so we can display a table with it's entries. We also take the column names from metadata for the labels of that table. Ultimately, this is the R code that we want to write to multiple .qmd files
+
+```{r}
+#| echo: false
+
+
+output <- metadata |>
+  filter(vol == "47") |>
+  t()
+
+
+cn <- metadata |>
+  colnames()
+
+tibble(cn, output) |>
+  gt() |>
+  cols_align(align = "left") |>
+  tab_style(
+    style= cell_text(v_align = "top"),
+    locations = cells_body()
+  ) |>
+  tab_options( table.width = "80%", column_labels.hidden = TRUE)
+```
+
+
+
+```{r}
+#| include: false
+
+
+# Define the content of the Quarto file
+
+title_block <- '---
+title: "Journal Content"
+subtitle: "Course Notes"
+---
+'
+
+block1 <- '
+\`\`\`{r}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+library(gt)
+
+metadata <- read_csv("../contents_raw.csv")
+'
+
+
+
+block3 <- 'cn <- metadata |>
+  colnames()
+
+tibble(cn, head(output, n=-1)) |>
+  gt() |>
+  cols_align(align = \"left\") |>
+  tab_style(
+    style= cell_text(v_align = \"top\"),
+    locations = cells_body()
+  ) |>
+  tab_options( table.width = \"80%\", column_labels.hidden = TRUE)
+\`\`\`
+
+This refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author\'s email address at the time of submission is provided above.
+
+'
+
+
+
+block2 <- ""
+qmd_block <- ""
+
+for (i in 1:nrow(metadata)) {
+  qmd_block[[i]] <- str_c(title_block, 
+                          block1, 
+                          str_glue("output <- metadata |>
+  mutate(v = str_sub(issue, 5, 6)) |>
+  filter(v == {metadata$vol[[i]]}) |>
+  t()
+  
+  "), 
+  block3,
+  str_glue("[Instructor Version](./V{metadata$vol[[i]]}I.pdf)
+  
+[Student Version](./V{metadata$vol[[i]]}S.pdf)"))
+  
+dir.create(str_glue("v{metadata$vol[[i]]}"))
+}
+
+
+
+
+
+walk2(qmd_block, outfiles, 
+      \(content, path) writeLines(content, path))
+
+```

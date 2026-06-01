@@ -104,27 +104,6 @@ tibble(cn, output) |>
 writeLines(new_block, "new_file.qmd")
 ```
 
-# Experiment with str_glue
-
-```{r}
-
-x <- 42
-
-test_block <- str_glue('---
-title: "title #{x}"
-subtitle: "subtitle"
----
-
-\`\`\`{{r}}
-\`\`\`
-
-## Introduction
-This file was generated with the secret number {x}.
-
-')
-
-test_block
-```
 
 # Next step is to create multiple files for each volume.
 
