@@ -20,5 +20,5 @@ format:
     backgroundcolor: "#FBF5DE"
     page-layout: full
 
-editor: visual
+editor: source
 

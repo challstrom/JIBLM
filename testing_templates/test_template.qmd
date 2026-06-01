@@ -1,12 +1,10 @@
 ---
-title: "test_template"
+title: "template for .qmd files"
 format: html
 toc: false
 ---
 
-The goal is to create a single .qmd file to generate the additional .qmd files which when compiled will be the individual course note pages.
-
-
+The goal is to create a single .qmd file which will generate the additional .qmd files which when compiled for the individual course note pages.
 
 ```{r}
 #| include: false
@@ -16,15 +14,12 @@ library(DT)
 library(gt)
 ```
 
-
-
-
 ```{r}
 #| echo: false
 #| warning: false
 
 
-metadata <- read_csv("../contents_raw.csv")
+metadata <- read_csv("contents_raw.csv")
 
 metadata <- metadata |>
   mutate(vol = str_sub(issue, 5, 6))
@@ -36,15 +31,14 @@ metadata
 outfiles <- ""
 
 for (i in 1:nrow(metadata)) {
-  outfiles[[i]] <- str_glue("v{metadata$vol[[i]]}.qmd")
+  outfiles[[i]] <- str_glue("v{metadata$vol[[i]]}_test/v{metadata$vol[[i]]}.qmd")
 }
 
 outfiles
 
 ```
 
-
-### This code chunk takes a single row from `metadata` and transposes it so we can display a table with it's entries.  We also take the column names from metadata for the labels of that table.  Ultimately, this is the R code that we want to write to multiple .qmd files
+### This code chunk takes a single row from `metadata` and transposes it so we can display a table with it's entries. We also take the column names from metadata for the labels of that table. Ultimately, this is the R code that we want to write to multiple .qmd files
 
 ```{r}
 
@@ -110,8 +104,8 @@ tibble(cn, output) |>
 writeLines(new_block, "new_file.qmd")
 ```
 
-
 # Experiment with str_glue
+
 ```{r}
 
 x <- 42
@@ -132,9 +126,7 @@ This file was generated with the secret number {x}.
 test_block
 ```
 
-
 # Next step is to create multiple files for each volume.
-
 
 ```{r}
 #| include: false
@@ -142,23 +134,13 @@ test_block
 
 # Define the content of the Quarto file
 
-title_block <- ""
-
-for (i in 1:nrow(metadata)) {
-  title_block[[i]] <- str_glue("---
-  title: \"{metadata$title[[i]]}\"
-  subtitle: \"{metadata$issue[[i]]}\"
-  format: html
-  toc: false
-  ---
-  ")
-}
-
+title_block <- '---
+title: "Journal Content"
+subtitle: "subtitle"
+---
+'
 
 block1 <- '
-## Introduction
-This file was generated using R code.
-
 \`\`\`{r}
 #| echo: false
 #| warning: false
@@ -183,6 +165,8 @@ tibble(cn, head(output, n=-1)) |>
   ) |>
   tab_options( table.width = \"80%\", column_labels.hidden = TRUE)
 \`\`\`
+
+This refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author\'s email address at the time of submission is provided above.
 '
 
 
@@ -197,7 +181,8 @@ for (i in 1:nrow(metadata)) {
   t()
   
   ")
-  qmd_block[[i]] <- str_c(title_block[[i]], block1, block2[[i]], block3)
+  qmd_block[[i]] <- str_c(title_block, block1, block2[[i]], block3)
+  dir.create(str_glue("v{metadata$vol[[i]]}_test"))
 }
 
 
@@ -208,5 +193,3 @@ walk2(qmd_block, outfiles,
       \(content, path) writeLines(content, path))
 
 ```
-
-

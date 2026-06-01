@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>title – JIBLM</title>
+<title>template for .qmd files – JIBLM</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -107,27 +141,18 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">title</h1>
-<p class="subtitle lead">subtitle</p>
+<h1 class="title">template for .qmd files</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -139,28 +164,72 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>This file was generated using R code.</p>
+<p>The goal is to create a single .qmd file which will generate the additional .qmd files which when compiled for the individual course note pages.</p>
 <div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 15 × 9
+   title           subject pages issue author institution contact abstract vol  
+   &lt;chr&gt;           &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;
+ 1 Point-Set Topo… topolo…    21 No. … M Pad… Kutztown U… mcloug… "These … 61   
+ 2 A First Course… calcul…    18 No. … Tulsi… Azim Premj… tulsi.… "These … 60   
+ 3 Discrete Math … discre…    89 No. … Rache… Central Co… schwel… "This t… 59   
+ 4 The Story of S… statis…   184 No. … Linds… Coastal Ca… lbell2… "Notes … 58   
+ 5 Finite Mathema… finite…    92 No. … Mindy… Valparaiso… mindy.… "These … 57   
+ 6 Precalculus: A… precal…   140 No. … Howar… Oklahoma C… paul.h… "A stan… 56   
+ 7 Mathematical L… logic      68 No. … Ryan … St. Mary's… rdunni… "A math… 55   
+ 8 Complex Variab… analys…    97 No. … Bowma… Pepperdine… joshua… "The ma… 54   
+ 9 Linear Algebra… linear…    78 No. … Long,… Stephen F.… longne… "This s… 53   
+10 Introduction t… game t…    52 No. … Gantn… St. John F… rgantn… "Throug… 52   
+11 An Inquiry-Bas… modeli…    62 No. … Young… Ripon Coll… younga… "This i… 51   
+12 Calculus I – S… calcul…    90 No. … Georg… Nazareth C… cgeorg… "This c… 50   
+13 Discrete Mathe… discre…    99 No. … Clark… SUNY New P… ted.ma… "This c… 49   
+14 Precalculus     precal…   132 No. … Howar… Oklahoma C… paul.h… "This c… 48   
+15 An Inquiry-Bas… founda…    33 No. … Heffe… St Michael… jheffe… "An int… 47   </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "v61_test/v61.qmd" "v60_test/v60.qmd" "v59_test/v59.qmd" "v58_test/v58.qmd"
+ [5] "v57_test/v57.qmd" "v56_test/v56.qmd" "v55_test/v55.qmd" "v54_test/v54.qmd"
+ [9] "v53_test/v53.qmd" "v52_test/v52.qmd" "v51_test/v51.qmd" "v50_test/v50.qmd"
+[13] "v49_test/v49.qmd" "v48_test/v48.qmd" "v47_test/v47.qmd"</code></pre>
+</div>
+</div>
+<section id="this-code-chunk-takes-a-single-row-from-metadata-and-transposes-it-so-we-can-display-a-table-with-its-entries.-we-also-take-the-column-names-from-metadata-for-the-labels-of-that-table.-ultimately-this-is-the-r-code-that-we-want-to-write-to-multiple-.qmd-files" class="level3">
+<h3 class="anchored" data-anchor-id="this-code-chunk-takes-a-single-row-from-metadata-and-transposes-it-so-we-can-display-a-table-with-its-entries.-we-also-take-the-column-names-from-metadata-for-the-labels-of-that-table.-ultimately-this-is-the-r-code-that-we-want-to-write-to-multiple-.qmd-files">This code chunk takes a single row from <code>metadata</code> and transposes it so we can display a table with it’s entries. We also take the column names from metadata for the labels of that table. Ultimately, this is the R code that we want to write to multiple .qmd files</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> metadata <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(vol <span class="sc">==</span> <span class="st">"47"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t</span>()</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>cn <span class="ot">&lt;-</span> metadata <span class="sc">|&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>()</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(cn, output) <span class="sc">|&gt;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(<span class="at">align =</span> <span class="st">"left"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">style=</span> <span class="fu">cell_text</span>(<span class="at">v_align =</span> <span class="st">"top"</span>),</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>()</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_options</span>( <span class="at">table.width =</span> <span class="st">"80%"</span>, <span class="at">column_labels.hidden =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="vjygqxreia" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vjygqxreia table {
+<div id="eqmilmiuhk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#eqmilmiuhk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vjygqxreia thead, #vjygqxreia tbody, #vjygqxreia tfoot, #vjygqxreia tr, #vjygqxreia td, #vjygqxreia th {
+#eqmilmiuhk thead, #eqmilmiuhk tbody, #eqmilmiuhk tfoot, #eqmilmiuhk tr, #eqmilmiuhk td, #eqmilmiuhk th {
   border-style: none;
 }
 
-#vjygqxreia p {
+#eqmilmiuhk p {
   margin: 0;
   padding: 0;
 }
 
-#vjygqxreia .gt_table {
+#eqmilmiuhk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -186,12 +255,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#vjygqxreia .gt_caption {
+#eqmilmiuhk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vjygqxreia .gt_title {
+#eqmilmiuhk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -203,7 +272,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#vjygqxreia .gt_subtitle {
+#eqmilmiuhk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -215,7 +284,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#vjygqxreia .gt_heading {
+#eqmilmiuhk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -227,13 +296,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#vjygqxreia .gt_bottom_border {
+#eqmilmiuhk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vjygqxreia .gt_col_headings {
+#eqmilmiuhk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -248,7 +317,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#vjygqxreia .gt_col_heading {
+#eqmilmiuhk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -268,7 +337,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#vjygqxreia .gt_column_spanner_outer {
+#eqmilmiuhk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -280,15 +349,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#vjygqxreia .gt_column_spanner_outer:first-child {
+#eqmilmiuhk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vjygqxreia .gt_column_spanner_outer:last-child {
+#eqmilmiuhk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vjygqxreia .gt_column_spanner {
+#eqmilmiuhk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -300,11 +369,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#vjygqxreia .gt_spanner_row {
+#eqmilmiuhk .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vjygqxreia .gt_group_heading {
+#eqmilmiuhk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -330,7 +399,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#vjygqxreia .gt_empty_group_heading {
+#eqmilmiuhk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -345,15 +414,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#vjygqxreia .gt_from_md > :first-child {
+#eqmilmiuhk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vjygqxreia .gt_from_md > :last-child {
+#eqmilmiuhk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vjygqxreia .gt_row {
+#eqmilmiuhk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -372,7 +441,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#vjygqxreia .gt_stub {
+#eqmilmiuhk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -385,7 +454,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#vjygqxreia .gt_stub_row_group {
+#eqmilmiuhk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -399,15 +468,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#vjygqxreia .gt_row_group_first td {
+#eqmilmiuhk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vjygqxreia .gt_row_group_first th {
+#eqmilmiuhk .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vjygqxreia .gt_summary_row {
+#eqmilmiuhk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -417,16 +486,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#vjygqxreia .gt_first_summary_row {
+#eqmilmiuhk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vjygqxreia .gt_first_summary_row.thick {
+#eqmilmiuhk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vjygqxreia .gt_last_summary_row {
+#eqmilmiuhk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -436,7 +505,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#vjygqxreia .gt_grand_summary_row {
+#eqmilmiuhk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -446,7 +515,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#vjygqxreia .gt_first_grand_summary_row {
+#eqmilmiuhk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -456,7 +525,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#vjygqxreia .gt_last_grand_summary_row_top {
+#eqmilmiuhk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -466,11 +535,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#vjygqxreia .gt_striped {
+#eqmilmiuhk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vjygqxreia .gt_table_body {
+#eqmilmiuhk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -479,7 +548,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#vjygqxreia .gt_footnotes {
+#eqmilmiuhk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -493,7 +562,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#vjygqxreia .gt_footnote {
+#eqmilmiuhk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -502,7 +571,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#vjygqxreia .gt_sourcenotes {
+#eqmilmiuhk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -516,7 +585,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#vjygqxreia .gt_sourcenote {
+#eqmilmiuhk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -524,72 +593,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#vjygqxreia .gt_left {
+#eqmilmiuhk .gt_left {
   text-align: left;
 }
 
-#vjygqxreia .gt_center {
+#eqmilmiuhk .gt_center {
   text-align: center;
 }
 
-#vjygqxreia .gt_right {
+#eqmilmiuhk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vjygqxreia .gt_font_normal {
+#eqmilmiuhk .gt_font_normal {
   font-weight: normal;
 }
 
-#vjygqxreia .gt_font_bold {
+#eqmilmiuhk .gt_font_bold {
   font-weight: bold;
 }
 
-#vjygqxreia .gt_font_italic {
+#eqmilmiuhk .gt_font_italic {
   font-style: italic;
 }
 
-#vjygqxreia .gt_super {
+#eqmilmiuhk .gt_super {
   font-size: 65%;
 }
 
-#vjygqxreia .gt_footnote_marks {
+#eqmilmiuhk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vjygqxreia .gt_asterisk {
+#eqmilmiuhk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vjygqxreia .gt_indent_1 {
+#eqmilmiuhk .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vjygqxreia .gt_indent_2 {
+#eqmilmiuhk .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vjygqxreia .gt_indent_3 {
+#eqmilmiuhk .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vjygqxreia .gt_indent_4 {
+#eqmilmiuhk .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vjygqxreia .gt_indent_5 {
+#eqmilmiuhk .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vjygqxreia .katex-display {
+#eqmilmiuhk .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vjygqxreia div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#eqmilmiuhk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -622,7 +691,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="cn" style="vertical-align: top">contact</td>
-<td class="gt_row gt_left" headers="output" style="vertical-align: top">Email: jhefferon@smcvt.edu</td>
+<td class="gt_row gt_left" headers="output" style="vertical-align: top">jhefferon@smcvt.edu</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="cn" style="vertical-align: top">abstract</td>
@@ -638,6 +707,85 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+</section>
+<section id="first-we-make-sure-we-can-create-a-single-new-.qmd-file" class="level1">
+<h1>First, we make sure we can create a single new <code>.qmd</code> file</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>new_block <span class="ot">&lt;-</span> <span class="st">'---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="st">title: "title"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">subtitle: "subtitle"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">---</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">## Introduction</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">This file was generated using R code.</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="st">\`\`\`{r}</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="st">#| echo: false</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="st">#| warning: false</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="st">library(tidyverse)</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="st">library(gt)</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="st">metadata &lt;- read_csv("../contents_raw.csv")</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="st">metadata &lt;- metadata |&gt;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="st">  mutate(vol = str_sub(issue, 5, 6))</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="st">output &lt;- metadata |&gt;</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="st">  filter(vol == "47") |&gt;</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="st">  t()</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="st">cn &lt;- metadata |&gt;</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="st">  colnames()</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="st">tibble(cn, output) |&gt;</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="st">  gt() |&gt;</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="st">  cols_align(align = "left") |&gt;</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="st">  tab_style(</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="st">    style= cell_text(v_align = "top"),</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="st">    locations = cells_body()</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="st">  ) |&gt;</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="st">  tab_options( table.width = "80%", column_labels.hidden = TRUE)</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="st">\`\`\`</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(new_block, <span class="st">"new_file.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="experiment-with-str_glue" class="level1">
+<h1>Experiment with str_glue</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">42</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>test_block <span class="ot">&lt;-</span> <span class="fu">str_glue</span>(<span class="st">'---</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="st">title: "title #{x}"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="st">subtitle: "subtitle"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="st">---</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="st">\`\`\`{r}</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="st">\`\`\`</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="st">## Introduction</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="st">This file was generated with the secret number {x}.</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="st">'</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>test_block</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>---
+title: "title #42"
+subtitle: "subtitle"
+---
+
+```{r}
+```
+
+## Introduction
+This file was generated with the secret number 42.</code></pre>
+</div>
+</div>
+</section>
+<section id="next-step-is-to-create-multiple-files-for-each-volume." class="level1">
+<h1>Next step is to create multiple files for each volume.</h1>
 
 
 </section>
