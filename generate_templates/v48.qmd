@@ -1,10 +1,10 @@
 ---
-title: "My Quarto Report"
+title: "Precalculus"
+subtitle: "No. 48 (Dec. 2018)"
 format: html
+toc: false
 ---
-
 ## Introduction
-
 This file was generated using R code.
 
 ```{r}
@@ -31,3 +31,4 @@ tibble(cn, head(output, n=-1)) |>
   ) |>
   tab_options( table.width = "80%", column_labels.hidden = TRUE)
 ```
+

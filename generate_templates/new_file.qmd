@@ -1,10 +1,9 @@
 ---
-title: "My Quarto Report"
-format: html
+title: "title"
+subtitle: "subtitle"
 ---
 
 ## Introduction
-
 This file was generated using R code.
 
 ```{r}
@@ -15,14 +14,17 @@ library(tidyverse)
 library(gt)
 
 metadata <- read_csv("../contents_raw.csv")
+metadata <- metadata |>
+  mutate(vol = str_sub(issue, 5, 6))
+  
 output <- metadata |>
-mutate(v = str_sub(issue, 5, 6)) |>
-filter(v == 47) |>
-t()
+  filter(vol == "47") |>
+  t()
+
 cn <- metadata |>
   colnames()
 
-tibble(cn, head(output, n=-1)) |>
+tibble(cn, output) |>
   gt() |>
   cols_align(align = "left") |>
   tab_style(
@@ -31,3 +33,4 @@ tibble(cn, head(output, n=-1)) |>
   ) |>
   tab_options( table.width = "80%", column_labels.hidden = TRUE)
 ```
+

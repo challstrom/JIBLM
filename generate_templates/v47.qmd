@@ -1,6 +1,8 @@
 ---
-title: "My Quarto Report"
+title: "An Inquiry-Based Introduction to Proofs"
+subtitle: "No. 47 (Sept. 2018)"
 format: html
+toc: false
 ---
 
 ## Introduction

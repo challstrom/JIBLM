@@ -141,18 +141,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#this-code-chunk-takes-a-single-row-from-metadata-and-transposes-it-so-we-can-display-a-table-with-its-entries.-we-also-take-the-column-names-from-metadata-for-the-labels-of-that-table.-ultimately-this-is-the-r-code-that-we-want-to-write-to-multiple-.qmd-files" id="toc-this-code-chunk-takes-a-single-row-from-metadata-and-transposes-it-so-we-can-display-a-table-with-its-entries.-we-also-take-the-column-names-from-metadata-for-the-labels-of-that-table.-ultimately-this-is-the-r-code-that-we-want-to-write-to-multiple-.qmd-files" class="nav-link active" data-scroll-target="#this-code-chunk-takes-a-single-row-from-metadata-and-transposes-it-so-we-can-display-a-table-with-its-entries.-we-also-take-the-column-names-from-metadata-for-the-labels-of-that-table.-ultimately-this-is-the-r-code-that-we-want-to-write-to-multiple-.qmd-files">This code chunk takes a single row from <code>metadata</code> and transposes it so we can display a table with it’s entries. We also take the column names from metadata for the labels of that table. Ultimately, this is the R code that we want to write to multiple .qmd files</a></li>
-  <li><a href="#this-is-the-code-chunk-that-writes-the-r-code-to-new_file.qmd" id="toc-this-is-the-code-chunk-that-writes-the-r-code-to-new_file.qmd" class="nav-link" data-scroll-target="#this-is-the-code-chunk-that-writes-the-r-code-to-new_file.qmd">This is the code chunk that writes the R code to <code>new_file.qmd</code></a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -161,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -173,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>this .qmd file generates additional .qmd files which when compiled will be the individual course note pages.</p>
+<p>The goal is to create a single .qmd file to generate the additional .qmd files which when compiled will be the individual course note pages.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 9
@@ -207,23 +198,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_options</span>( <span class="at">table.width =</span> <span class="st">"80%"</span>, <span class="at">column_labels.hidden =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="yuuskqhkzl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#yuuskqhkzl table {
+<div id="obzlffbfbq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#obzlffbfbq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#yuuskqhkzl thead, #yuuskqhkzl tbody, #yuuskqhkzl tfoot, #yuuskqhkzl tr, #yuuskqhkzl td, #yuuskqhkzl th {
+#obzlffbfbq thead, #obzlffbfbq tbody, #obzlffbfbq tfoot, #obzlffbfbq tr, #obzlffbfbq td, #obzlffbfbq th {
   border-style: none;
 }
 
-#yuuskqhkzl p {
+#obzlffbfbq p {
   margin: 0;
   padding: 0;
 }
 
-#yuuskqhkzl .gt_table {
+#obzlffbfbq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -249,12 +240,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#yuuskqhkzl .gt_caption {
+#obzlffbfbq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#yuuskqhkzl .gt_title {
+#obzlffbfbq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -266,7 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#yuuskqhkzl .gt_subtitle {
+#obzlffbfbq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -278,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#yuuskqhkzl .gt_heading {
+#obzlffbfbq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -290,13 +281,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#yuuskqhkzl .gt_bottom_border {
+#obzlffbfbq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#yuuskqhkzl .gt_col_headings {
+#obzlffbfbq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -311,7 +302,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#yuuskqhkzl .gt_col_heading {
+#obzlffbfbq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -331,7 +322,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#yuuskqhkzl .gt_column_spanner_outer {
+#obzlffbfbq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -343,15 +334,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#yuuskqhkzl .gt_column_spanner_outer:first-child {
+#obzlffbfbq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yuuskqhkzl .gt_column_spanner_outer:last-child {
+#obzlffbfbq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yuuskqhkzl .gt_column_spanner {
+#obzlffbfbq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -363,11 +354,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#yuuskqhkzl .gt_spanner_row {
+#obzlffbfbq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#yuuskqhkzl .gt_group_heading {
+#obzlffbfbq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -393,7 +384,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#yuuskqhkzl .gt_empty_group_heading {
+#obzlffbfbq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -408,15 +399,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#yuuskqhkzl .gt_from_md > :first-child {
+#obzlffbfbq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yuuskqhkzl .gt_from_md > :last-child {
+#obzlffbfbq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yuuskqhkzl .gt_row {
+#obzlffbfbq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -435,7 +426,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#yuuskqhkzl .gt_stub {
+#obzlffbfbq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -448,7 +439,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#yuuskqhkzl .gt_stub_row_group {
+#obzlffbfbq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -462,15 +453,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#yuuskqhkzl .gt_row_group_first td {
+#obzlffbfbq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#yuuskqhkzl .gt_row_group_first th {
+#obzlffbfbq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#yuuskqhkzl .gt_summary_row {
+#obzlffbfbq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -480,16 +471,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#yuuskqhkzl .gt_first_summary_row {
+#obzlffbfbq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#yuuskqhkzl .gt_first_summary_row.thick {
+#obzlffbfbq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#yuuskqhkzl .gt_last_summary_row {
+#obzlffbfbq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -499,7 +490,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#yuuskqhkzl .gt_grand_summary_row {
+#obzlffbfbq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -509,7 +500,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#yuuskqhkzl .gt_first_grand_summary_row {
+#obzlffbfbq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -519,7 +510,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#yuuskqhkzl .gt_last_grand_summary_row_top {
+#obzlffbfbq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -529,11 +520,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#yuuskqhkzl .gt_striped {
+#obzlffbfbq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#yuuskqhkzl .gt_table_body {
+#obzlffbfbq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -542,7 +533,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#yuuskqhkzl .gt_footnotes {
+#obzlffbfbq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -556,7 +547,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#yuuskqhkzl .gt_footnote {
+#obzlffbfbq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -565,7 +556,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#yuuskqhkzl .gt_sourcenotes {
+#obzlffbfbq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -579,7 +570,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#yuuskqhkzl .gt_sourcenote {
+#obzlffbfbq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -587,72 +578,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#yuuskqhkzl .gt_left {
+#obzlffbfbq .gt_left {
   text-align: left;
 }
 
-#yuuskqhkzl .gt_center {
+#obzlffbfbq .gt_center {
   text-align: center;
 }
 
-#yuuskqhkzl .gt_right {
+#obzlffbfbq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yuuskqhkzl .gt_font_normal {
+#obzlffbfbq .gt_font_normal {
   font-weight: normal;
 }
 
-#yuuskqhkzl .gt_font_bold {
+#obzlffbfbq .gt_font_bold {
   font-weight: bold;
 }
 
-#yuuskqhkzl .gt_font_italic {
+#obzlffbfbq .gt_font_italic {
   font-style: italic;
 }
 
-#yuuskqhkzl .gt_super {
+#obzlffbfbq .gt_super {
   font-size: 65%;
 }
 
-#yuuskqhkzl .gt_footnote_marks {
+#obzlffbfbq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#yuuskqhkzl .gt_asterisk {
+#obzlffbfbq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#yuuskqhkzl .gt_indent_1 {
+#obzlffbfbq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#yuuskqhkzl .gt_indent_2 {
+#obzlffbfbq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#yuuskqhkzl .gt_indent_3 {
+#obzlffbfbq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#yuuskqhkzl .gt_indent_4 {
+#obzlffbfbq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#yuuskqhkzl .gt_indent_5 {
+#obzlffbfbq .gt_indent_5 {
   text-indent: 25px;
 }
 
-#yuuskqhkzl .katex-display {
+#obzlffbfbq .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#yuuskqhkzl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#obzlffbfbq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -702,8 +693,84 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="this-is-the-code-chunk-that-writes-the-r-code-to-new_file.qmd" class="level3">
-<h3 class="anchored" data-anchor-id="this-is-the-code-chunk-that-writes-the-r-code-to-new_file.qmd">This is the code chunk that writes the R code to <code>new_file.qmd</code></h3>
+<section id="first-we-make-sure-we-can-create-a-single-new-.qmd-file" class="level1">
+<h1>First, we make sure we can create a single new <code>.qmd</code> file</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>new_block <span class="ot">&lt;-</span> <span class="st">'---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="st">title: "title"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">subtitle: "subtitle"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">---</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">## Introduction</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">This file was generated using R code.</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="st">\`\`\`{r}</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="st">#| echo: false</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="st">#| warning: false</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="st">library(tidyverse)</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="st">library(gt)</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="st">metadata &lt;- read_csv("../contents_raw.csv")</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="st">metadata &lt;- metadata |&gt;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="st">  mutate(vol = str_sub(issue, 5, 6))</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="st">output &lt;- metadata |&gt;</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="st">  filter(vol == "47") |&gt;</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="st">  t()</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="st">cn &lt;- metadata |&gt;</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="st">  colnames()</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="st">tibble(cn, output) |&gt;</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="st">  gt() |&gt;</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="st">  cols_align(align = "left") |&gt;</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="st">  tab_style(</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="st">    style= cell_text(v_align = "top"),</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="st">    locations = cells_body()</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="st">  ) |&gt;</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="st">  tab_options( table.width = "80%", column_labels.hidden = TRUE)</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="st">\`\`\`</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(new_block, <span class="st">"new_file.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="experiment-with-str_glue" class="level1">
+<h1>Experiment with str_glue</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">42</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>test_block <span class="ot">&lt;-</span> <span class="fu">str_glue</span>(<span class="st">'---</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="st">title: "title #{x}"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="st">subtitle: "subtitle"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="st">---</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="st">\`\`\`{r}</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="st">\`\`\`</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="st">## Introduction</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="st">This file was generated with the secret number {x}.</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="st">'</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>test_block</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>---
+title: "title #42"
+subtitle: "subtitle"
+---
+
+```{r}
+```
+
+## Introduction
+This file was generated with the secret number 42.</code></pre>
+</div>
+</div>
+</section>
+<section id="next-step-is-to-create-multiple-files-for-each-volume." class="level1">
+<h1>Next step is to create multiple files for each volume.</h1>
 
 
 </section>

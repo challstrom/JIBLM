@@ -1,8 +1,10 @@
 ---
 title: "test_template"
+format: html
+toc: false
 ---
 
-this .qmd file generates additional .qmd files which when compiled will be the individual course note pages.
+The goal is to create a single .qmd file to generate the additional .qmd files which when compiled will be the individual course note pages.
 
 
 
@@ -64,20 +66,96 @@ tibble(cn, output) |>
   tab_options( table.width = "80%", column_labels.hidden = TRUE)
 ```
 
+# First, we make sure we can create a single new `.qmd` file
+
+```{r}
+
+new_block <- '---
+title: "title"
+subtitle: "subtitle"
+---
+
+## Introduction
+This file was generated using R code.
+
+\`\`\`{r}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+library(gt)
+
+metadata <- read_csv("../contents_raw.csv")
+metadata <- metadata |>
+  mutate(vol = str_sub(issue, 5, 6))
+  
+output <- metadata |>
+  filter(vol == "47") |>
+  t()
+
+cn <- metadata |>
+  colnames()
+
+tibble(cn, output) |>
+  gt() |>
+  cols_align(align = "left") |>
+  tab_style(
+    style= cell_text(v_align = "top"),
+    locations = cells_body()
+  ) |>
+  tab_options( table.width = "80%", column_labels.hidden = TRUE)
+\`\`\`
+'
+
+writeLines(new_block, "new_file.qmd")
+```
 
 
-### This is the code chunk that writes the R code to `new_file.qmd`
+# Experiment with str_glue
+```{r}
+
+x <- 42
+
+test_block <- str_glue('---
+title: "title #{x}"
+subtitle: "subtitle"
+---
+
+\`\`\`{{r}}
+\`\`\`
+
+## Introduction
+This file was generated with the secret number {x}.
+
+')
+
+test_block
+```
+
+
+# Next step is to create multiple files for each volume.
+
 
 ```{r}
 #| include: false
 
 
 # Define the content of the Quarto file
-block1 <- '---
-title: "My Quarto Report"
-format: html
----
 
+title_block <- ""
+
+for (i in 1:nrow(metadata)) {
+  title_block[[i]] <- str_glue("---
+  title: \"{metadata$title[[i]]}\"
+  subtitle: \"{metadata$issue[[i]]}\"
+  format: html
+  toc: false
+  ---
+  ")
+}
+
+
+block1 <- '
 ## Introduction
 This file was generated using R code.
 
@@ -119,13 +197,12 @@ for (i in 1:nrow(metadata)) {
   t()
   
   ")
-  qmd_block[[i]] <- str_c(block1, block2[[i]], block3)
+  qmd_block[[i]] <- str_c(title_block[[i]], block1, block2[[i]], block3)
 }
 
 
 
-# Write the content to a file named "new_flle.qmd"
-writeLines(qmd_block, "new_file.qmd")
+
 
 walk2(qmd_block, outfiles, 
       \(content, path) writeLines(content, path))
