@@ -19,10 +19,15 @@ This table is sortable. Click on a column heading to sort by that column. Click 
 
 ```{r}
 #| include: false
-materials <- read_csv("contents.csv")
+materials <- read_csv("contents.csv") |>
+  mutate(vol = str_sub(Issue, 5, 6))
+
+
 materials <- materials |>
-  mutate( Title = paste0("<a href=\"/Course_Notes/", link, "\">", Title, "</a>" )) |>
+  mutate( Title = paste0("<a href=\"/Course_Notes/v", vol, "/v", vol, ".html\" >", Title, "</a>" )) |>
   select(!link)
+
+
 
 ```
 
@@ -31,7 +36,9 @@ materials <- materials |>
 
 options(DT.options = list(order = list(4, 'desc')))
 
-datatable(materials, rownames = FALSE, style = 'bootstrap', class = "table-condensed table-striped", escape = FALSE)
+materials |>
+  select(!vol) |>
+  datatable(rownames = FALSE, style = 'bootstrap', class = "table-condensed table-striped", escape = FALSE)
 ```
 
 
