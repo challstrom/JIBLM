@@ -1,248 +1,10 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Journal of Inquiry-Based Learning in Mathematics",
-    "section": "",
-    "text": "JIBLM publishes freely downloadable, professionally refereed and classroom-tested course guides for full univerisity level inqury-based mathematical courses.\nInquiry-based learning (IBL) refers to any pedagogy that utilizes presentations or student-centered activities to develop in students the confidence and ability to do mathematics on their own. Instructors typically supply students with carefully crafted activities or course notes consisting of a sequence of definitions, problems or theorems. Instructors then serve as mentors, listening to the students, reviewing their work, and giving them the minimal information they need to understand the concepts and carry out these tasks.\nInstructors are encouraged to contact authors of Course Guides for assistance. Anyone reproducing or displaying JIBLM publications should clearly display the journal name, title, and issue. Reproduced materials may be distributed provided that no charge is levied to users beyond cost of reproduction.\nJIBLM was previously funded by MathNerds and the Educational Advancement Foundation, and is currently funded through private donations."
-  },
-  {
-    "objectID": "Course_Notes/course_note_template.html",
-    "href": "Course_Notes/course_note_template.html",
-    "title": "template for course note .qmd files",
-    "section": "",
-    "text": "Rendering this file should generate the .qmd files for each course notes page\n\n\n# A tibble: 15 × 9\n   title           subject pages issue author institution contact abstract vol  \n   &lt;chr&gt;           &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;\n 1 Point-Set Topo… topolo…    21 No. … M Pad… Kutztown U… mcloug… \"These … 61   \n 2 A First Course… calcul…    18 No. … Tulsi… Azim Premj… tulsi.… \"These … 60   \n 3 Discrete Math … discre…    89 No. … Rache… Central Co… schwel… \"This t… 59   \n 4 The Story of S… statis…   184 No. … Linds… Coastal Ca… lbell2… \"Notes … 58   \n 5 Finite Mathema… finite…    92 No. … Mindy… Valparaiso… mindy.… \"These … 57   \n 6 Precalculus: A… precal…   140 No. … Howar… Oklahoma C… paul.h… \"A stan… 56   \n 7 Mathematical L… logic      68 No. … Ryan … St. Mary's… rdunni… \"A math… 55   \n 8 Complex Variab… analys…    97 No. … Bowma… Pepperdine… joshua… \"The ma… 54   \n 9 Linear Algebra… linear…    78 No. … Long,… Stephen F.… longne… \"This s… 53   \n10 Introduction t… game t…    52 No. … Gantn… St. John F… rgantn… \"Throug… 52   \n11 An Inquiry-Bas… modeli…    62 No. … Young… Ripon Coll… younga… \"This i… 51   \n12 Calculus I – S… calcul…    90 No. … Georg… Nazareth C… cgeorg… \"This c… 50   \n13 Discrete Mathe… discre…    99 No. … Clark… SUNY New P… ted.ma… \"This c… 49   \n14 Precalculus     precal…   132 No. … Howar… Oklahoma C… paul.h… \"This c… 48   \n15 An Inquiry-Bas… founda…    33 No. … Heffe… St Michael… jheffe… \"An int… 47   \n\n\n [1] \"v61/v61.qmd\" \"v60/v60.qmd\" \"v59/v59.qmd\" \"v58/v58.qmd\" \"v57/v57.qmd\"\n [6] \"v56/v56.qmd\" \"v55/v55.qmd\" \"v54/v54.qmd\" \"v53/v53.qmd\" \"v52/v52.qmd\"\n[11] \"v51/v51.qmd\" \"v50/v50.qmd\" \"v49/v49.qmd\" \"v48/v48.qmd\" \"v47/v47.qmd\"\n\n\n\nThis code chunk takes a single row from metadata and transposes it so we can display a table with it’s entries. We also take the column names from metadata for the labels of that table. Ultimately, this is the R code that we want to write to multiple .qmd files\n\n\n\n\n\n\n\n\ntitle\nAn Inquiry-Based Introduction to Proofs\n\n\nsubject\nfoundations\n\n\npages\n33\n\n\nissue\nNo. 47 (Sept. 2018)\n\n\nauthor\nHefferon, Jim\n\n\ninstitution\nSt Michael's College\n\n\ncontact\njhefferon@smcvt.edu\n\n\nabstract\nAn introduction to mathematical proof. Covers elementary number theory including divisibility and primes, sets including DeMorgan's laws, functions including one-to-one and onto, and relations. There is a brief optional chapter on cardinality. The presentation is a sequence of statements of definitions and results, with a few remarks.\n\n\nvol\n47"
-  },
-  {
-    "objectID": "Course_Notes/v56/230256.html",
-    "href": "Course_Notes/v56/230256.html",
-    "title": "Precalculus: An Inquiry-Based Approach",
-    "section": "",
-    "text": "Title:\nPrecalculus: An Inquiry-Based Approach\n\n\nSubject:\nprecalculus\n\n\nPages:\n140\n\n\nIssue:\nNo. 56 (March 2023)\n\n\nAuthor:\nHoward, Paul K. &lt; Mahavier, W. Ted\n\n\nUniversity:\nOklahoma Christian University and Self-Employed\n\n\nContact:\npaul.howard@oc.edu, ted.mahavier@gmail.com\n\n\nAbstract:\nA standard precalculus course covering polynomials, rationals, exponentials, logarmithmics, trigonometry, polar coordinates, rate of change, and conic sections. This course may also serve as either College Agebra or Trigonometry simply by choosing the appropriate chapters.\n\n\n\nInstructor Version Download\nStudent Version Download"
-  },
-  {
-    "objectID": "Course_Notes/v51/v51.html",
-    "href": "Course_Notes/v51/v51.html",
-    "title": "Journal Content",
-    "section": "",
-    "text": "title\nAn Inquiry-Based Learning Approach to Mathematical Modeling\n\n\nsubject\nmodeling\n\n\npages\n62\n\n\nissue\nNo. 51 (July 2020)\n\n\nauthor\nYoung, Andrea\n\n\ninstitution\nRipon College\n\n\ncontact\nyounga@ripon.edu\n\n\nabstract\nThis is a set of notes for a one semester course in Mathematical Modeling. The topics covered are difference equations, Markov chains, Monte Carlo simulations, and linear programming. The notes emphasize scientific computing and include both problems and projects. These notes are written to be used with Sage, but they could be modified to incorporate another language.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
-  },
-  {
-    "objectID": "Course_Notes/v58/v58.html",
-    "href": "Course_Notes/v58/v58.html",
-    "title": "Journal Content",
-    "section": "",
-    "text": "title\nThe Story of Statistics: Inquiry based notes for introductory statistics\n\n\nsubject\nstatistics\n\n\npages\n184\n\n\nissue\nNo. 58 (Nov. 2024)\n\n\nauthor\nLindsey Bell, Nicholas Pritchard, and Douglas Weathers\n\n\ninstitution\nCoastal Carolina University\n\n\ncontact\nlbell2@coastal.edu, npritcha@coastal.edu, wweathers@coastal.edu\n\n\nabstract\nNotes for an introductory statistics course emphasizing the process of statistical thinking. Topics include data collection, graphical and numerical summaries, introduction to probability, random variables, sampling distributions, confidence intervals, hypothesis testing, and simple linear regression. A common investigation is woven throughout the notes to provide continuity and hands on activites are used to introduce new conepts.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
-  },
-  {
-    "objectID": "Course_Notes/v60/v60.html",
-    "href": "Course_Notes/v60/v60.html",
-    "title": "Journal Content",
-    "section": "",
-    "text": "title\nA First Course in College Calculus\n\n\nsubject\ncalculus\n\n\npages\n18\n\n\nissue\nNo. 60 (Apr. 2025)\n\n\nauthor\nTulsi Srinivasan\n\n\ninstitution\nAzim Premji University, Bengaluru\n\n\ncontact\ntulsi.srinivasan@apu.edu.in\n\n\nabstract\nThese notes are for a first course in college calculus/introductory real analysis. The first part of the course motivates the study of sequences and their convergence through problems involving calculating the area under a graph and the slope of the tangent at a point on a graph. The second part draws on observations from the first about structural differences between the reals and the rationals, and starts with some axioms for the reals. These axioms are then used to study continuity and properties of continuous functions on the reals.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
-  },
-  {
-    "objectID": "Course_Notes/v61/v61.html",
-    "href": "Course_Notes/v61/v61.html",
-    "title": "Journal Content",
-    "section": "",
-    "text": "title\nPoint-Set Topology\n\n\nsubject\ntopology\n\n\npages\n21\n\n\nissue\nNo. 61 (Nov. 2025)\n\n\nauthor\nM Padraig McLoughlin &lt;&lt; Michel Smith &lt;&lt; W.S. Mahavier &lt;&lt; R.L. Moore\n\n\ninstitution\nKutztown University\n\n\ncontact\nmcloughl@kutztown.edu\n\n\nabstract\nThese notes offer a general introduction to Point-Set Theory. The notes offer the student the opportunity to investigate limit points, closed or open sets, compactness, countability, sequences, continuity, connectedness, sseparability, local compactness, and total connectedness.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
-  },
-  {
-    "objectID": "Course_Notes/v59/v59.html",
-    "href": "Course_Notes/v59/v59.html",
-    "title": "Journal Content",
-    "section": "",
-    "text": "title\nDiscrete Math (Introduction to Proof)\n\n\nsubject\ndiscrete math\n\n\npages\n89\n\n\nissue\nNo. 59 (Apr. 2025)\n\n\nauthor\nRachel Schwell\n\n\ninstitution\nCentral Connecticut State University\n\n\ncontact\nschwellrac@ccsu.edu\n\n\nabstract\nThis text covers a collection of standard topics in an introduction-to-proof course: logic, techniques of proof including induction, set theory, functions, and introductory number theory. Sets and functions (including injectivity and surjectivity) are given special attention, in preparation for upper-level courses such as abstract algebra. The text is intended to be standalone in an IBL setting with no supplementary lecture or notes required and is scaffolded accordingly. It is meant to be user-friendly, while still encouraging readers to stretch their thinking and develop mathematical habits of mind.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
-  },
-  {
-    "objectID": "Course_Notes/v50/190250.html",
-    "href": "Course_Notes/v50/190250.html",
-    "title": "Calculus I – Single Variable Calculus",
-    "section": "",
-    "text": "Title:\nCalculus I – Single Variable Calculus\n\n\nSubject:\ncalculus\n\n\nPages:\n90\n\n\nIssue:\nNo. 50 (May 2019)\n\n\nAuthor:\nGeorge, C. Yousuf; Lewis, Heather A.\n\n\nUniversity:\nNazareth College\n\n\nContact:\ncgeorge0@naz.edu\n\n\nAbstract:\nThis course introduces students to the fundamentals of calculus, its notation and its applications. Some of these concepts include: functions, rates of change, limits, derivatives, applications of derivatives, antiderivatives, integration, and the Fundamental Theorem of Calculus.\n\n\n\nInstructor Version Download\nStudent Version Download"
-  },
-  {
-    "objectID": "Course_Notes/v57/230357.html",
-    "href": "Course_Notes/v57/230357.html",
-    "title": "Finite Mathematics",
-    "section": "",
-    "text": "Title:\nFinite Mathematics\n\n\nSubject:\nfinite math\n\n\nPages:\n92\n\n\nIssue:\nNo. 57 (April 2023)\n\n\nAuthor:\nMindy Capaldi\n\n\nUniversity:\nValparaiso University\n\n\nContact:\nmindy.capaldi@valpo.edu\n\n\nAbstract:\nThese notes are for a four-credit, 100-level finite mathematics course. Topics include matrix algebra, linear programming, probability, counting methods, Markov chains, and game theory. In practice, studuents work through the notes during class, complete problems in groups, and present their work at the board. Two modules using board games are also included as appendices. The notes can be easily adapted by taking out explanatory passages or examples, based on the mathematical background of the students.\n\n\n\nInstructor Version Download\nStudent Version Download"
-  },
-  {
-    "objectID": "Course_Notes/v52/200252.html",
-    "href": "Course_Notes/v52/200252.html",
-    "title": "Introduction to Combinatorial Games",
-    "section": "",
-    "text": "Title:\nIntroduction to Combinatorial Games\n\n\nSubject:\ngame theory\n\n\nPages:\n52\n\n\nIssue:\nNo. 52 (Oct. 2020)\n\n\nAuthor:\nGantner, Ryan\n\n\nUniversity:\nSt. John Fisher College\n\n\nContact:\nrgantner@sjfc.edu\n\n\nAbstract:\nThrough this course, students will build a robust theory of combinatorial games from scratch, including theories of partisan games, impartial games, nimbers versus numbers, the “” function, and basic Sprague-Grundy theory. Several games will be introduced, such as Nim, Hackenbush, Kayles, and Chomp. These notes are aimed at students who are not math majors and who have not taken college math courses previously. With only slight modification, however, this could become a course for math majors.\n\n\n\nInstructor Version Download\nStudent Version Download"
-  },
-  {
-    "objectID": "Course_Notes/v55/230155.html",
-    "href": "Course_Notes/v55/230155.html",
-    "title": "Mathematical Logic for the Humanities",
-    "section": "",
-    "text": "Title:\nMathematical Logic for the Humanities\n\n\nSubject:\nlogic\n\n\nPages:\n68\n\n\nIssue:\nNo. 55 (Jan. 2023)\n\n\nAuthor:\nRyan P. Dunning\n\n\nUniversity:\nSt. Mary’s University\n\n\nContact:\nrdunning1@stmarytx.edu\n\n\nAbstract:\nA mathematics course designed for students in the humanities. A variety of concepts are covered. Topics will be drawn from the following areas: introductory treatments of sets, logic, number theory.\n\n\n\nInstructor Version Download\nStudent Version Download"
-  },
-  {
-    "objectID": "Course_Notes/v54/v54.html",
-    "href": "Course_Notes/v54/v54.html",
-    "title": "Journal Content",
-    "section": "",
-    "text": "title\nComplex Variables and Functions\n\n\nsubject\nanalysis (complex)\n\n\npages\n97\n\n\nissue\nNo. 54 (May 2022)\n\n\nauthor\nBowman, Joshua P.\n\n\ninstitution\nPepperdine University\n\n\ncontact\njoshua.bowman@pepperdine.edu\n\n\nabstract\nThe material covered in these notes is standard for an undergraduate course on complex variables. The vast majority of exercises (“tasks”) are original, however. A few tasks are borrowed or adapted from exercises or exposition\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
-  },
-  {
-    "objectID": "Course_Notes/v53/220153.html",
-    "href": "Course_Notes/v53/220153.html",
-    "title": "Linear Algebra: Notes and Problems",
-    "section": "",
-    "text": "Title:\nLinear Algebra: Notes and Problems\n\n\nSubject:\nlinear algebra\n\n\nPages:\n78\n\n\nIssue:\nNo. 53 (Jan. 2022)\n\n\nAuthor:\nLong, Nicholas\n\n\nUniversity:\nStephen F. Austin State University\n\n\nContact:\nlongne@sfasu.edu\n\n\nAbstract:\nThis set of notes and problems covers a junior-level linear algebra course (following an introduction to proof course) with broad chapter topics of 1) efficiently solving systems of linear equations, 2) vector spaces, 3) connecting ideas (dimension, invertibility, and eignvalues), and 4) innner product spaces. The approach of these notes isa blend of computational and sense-making problems, as well as an increasing usage of conjecture and proof throughout the course.\n\n\n\nInstructor Version Download\nStudent Version Download"
-  },
-  {
-    "objectID": "Course_Notes/v47/v47.html",
-    "href": "Course_Notes/v47/v47.html",
-    "title": "Journal Content",
-    "section": "",
-    "text": "title\nAn Inquiry-Based Introduction to Proofs\n\n\nsubject\nfoundations\n\n\npages\n33\n\n\nissue\nNo. 47 (Sept. 2018)\n\n\nauthor\nHefferon, Jim\n\n\ninstitution\nSt Michael's College\n\n\ncontact\njhefferon@smcvt.edu\n\n\nabstract\nAn introduction to mathematical proof. Covers elementary number theory including divisibility and primes, sets including DeMorgan's laws, functions including one-to-one and onto, and relations. There is a brief optional chapter on cardinality. The presentation is a sequence of statements of definitions and results, with a few remarks.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
-  },
-  {
-    "objectID": "Course_Notes/v48/v48.html",
-    "href": "Course_Notes/v48/v48.html",
-    "title": "Journal Content",
-    "section": "",
-    "text": "title\nPrecalculus\n\n\nsubject\nprecalculus\n\n\npages\n132\n\n\nissue\nNo. 48 (Dec. 2018)\n\n\nauthor\nHoward, Paul K. &lt; Mahavier, W. Ted\n\n\ninstitution\nOklahoma Christian University\n\n\ncontact\npaul.howard@oc.edu\n\n\nabstract\nThis course is designed to prepare students to begin a college level calculus series. Topics in this course include all aspects of trigonometry as well as conic sections, exponential functions, polynomial functions, rational functions and linear functions with an emphasis on rate of change. Strong emphasis is placed on strengthening understanding of algebraic concepts necessary to be successful in a college level calculus series.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
-  },
-  {
-    "objectID": "Course_Notes/v49/v49.html",
-    "href": "Course_Notes/v49/v49.html",
-    "title": "Journal Content",
-    "section": "",
-    "text": "title\nDiscrete Mathematics\n\n\nsubject\ndiscrete math\n\n\npages\n99\n\n\nissue\nNo. 49 (Jan. 2019)\n\n\nauthor\nClark, David M.; Mahavier, W. Ted\n\n\ninstitution\nSUNY New Paltz & Lamar University\n\n\ncontact\nted.mahavier@lamar.edu\n\n\nabstract\nThis course constitutes a mathematically rigorous introduction to sets, functions, counting, induction, equivalence relations, recursion, elementary graph theory finite state machines and languages.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
-  },
-  {
-    "objectID": "Course_Notes/v53/v53.html",
-    "href": "Course_Notes/v53/v53.html",
-    "title": "Journal Content",
-    "section": "",
-    "text": "title\nLinear Algebra: Notes and Problems\n\n\nsubject\nlinear algebra\n\n\npages\n78\n\n\nissue\nNo. 53 (Jan. 2022)\n\n\nauthor\nLong, Nicholas\n\n\ninstitution\nStephen F. Austin State University\n\n\ncontact\nlongne@sfasu.edu\n\n\nabstract\nThis set of notes and problems covers a junior-level linear algebra course (following an introduction to proof course) with broad chapter topics of 1) e\u000eciently solving systems of linear equations, 2)vector spaces, 3) connecting ideas (dimension, invertibility, and eignvalues), and 4) innner product spaces. The approach of these notes isa blend of computational and sense-making problems, as well as an increasing usage of conjecture and proof throughout the course.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
-  },
-  {
-    "objectID": "Course_Notes/v54/220254.html",
-    "href": "Course_Notes/v54/220254.html",
-    "title": "Complex Variables and Functions",
-    "section": "",
-    "text": "Title:\nComplex Variables and Functions\n\n\nSubject:\ncomplex analysis\n\n\nPages:\n97\n\n\nIssue:\nNo. 54 (May 2022)\n\n\nAuthor:\nBowman, Joshua P.\n\n\nUniversity:\nPepperdine University\n\n\nContact:\njoshua.bowman@pepperdine.edu\n\n\nAbstract:\nThe material covered in these notes is standard for an undergraduate course on complex variables. The vast majority of exercises (“tasks”) are original, however. A few tasks are borrowed or adapted from exercises or exposition.\n\n\n\nInstructor Version Download\nStudent Version Download"
-  },
-  {
-    "objectID": "Course_Notes/v55/v55.html",
-    "href": "Course_Notes/v55/v55.html",
-    "title": "Journal Content",
-    "section": "",
-    "text": "title\nMathematical Logic for the Humanities\n\n\nsubject\nlogic\n\n\npages\n68\n\n\nissue\nNo. 55 (Jan. 2023)\n\n\nauthor\nRyan P. Dunning\n\n\ninstitution\nSt. Mary's University\n\n\ncontact\nrdunning1@stmarytx.edu\n\n\nabstract\nA mathematics course designed for students in the humanities. A variety of concepts are covered. Topics will be drawn from the following areas: introductory treatments of sets, logic, number theory.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
-  },
-  {
-    "objectID": "Course_Notes/v52/v52.html",
-    "href": "Course_Notes/v52/v52.html",
-    "title": "Journal Content",
-    "section": "",
-    "text": "title\nIntroduction to Combinatorial Games\n\n\nsubject\ngame theory\n\n\npages\n52\n\n\nissue\nNo. 52 (Oct. 2020)\n\n\nauthor\nGantner, Ryan\n\n\ninstitution\nSt. John Fisher College\n\n\ncontact\nrgantner@sjfc.edu\n\n\nabstract\nThrough this course, students will build a robust theory of combinatorial games from scratch, including theories of partisan games, impartial games, nimbers versus numbers, the \\mex\" function, and basic Sprague-Grundy theory. Several games will be introduced, such as Nim, Hackenbush, Kayles, and Chomp. These notes are aimed at students who are not math majors and who have not taken college math courses previously. With only slight modi\fcation, however, this could become a course for math majors.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
-  },
-  {
-    "objectID": "Course_Notes/v57/v57.html",
-    "href": "Course_Notes/v57/v57.html",
-    "title": "Journal Content",
-    "section": "",
-    "text": "title\nFinite Mathematics\n\n\nsubject\nfinite math\n\n\npages\n92\n\n\nissue\nNo. 57 (Apr. 2023)\n\n\nauthor\nMindy Capaldi\n\n\ninstitution\nValparaiso University\n\n\ncontact\nmindy.capaldi@valpo.edu\n\n\nabstract\nThese notes are for a four-credit, 100-level finite mathematics course. Topics include matrix algebra, linear programming, probability, counting methods, Markov chains, and game theory. In practice, studuents work through the notes during class, complete problems in groups, and present their work at the board. Two modules using board games are also included as appendices. The notes can be easily adapted by taking out explanatory passages or examples, based on the mathematical background of the students.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
-  },
-  {
-    "objectID": "Course_Notes/v50/v50.html",
-    "href": "Course_Notes/v50/v50.html",
-    "title": "Journal Content",
-    "section": "",
-    "text": "title\nCalculus I – Single Variable Calculus\n\n\nsubject\ncalculus\n\n\npages\n90\n\n\nissue\nNo. 50 (May 2019)\n\n\nauthor\nGeorge, C. Yousuf; Lewis, Heather A.\n\n\ninstitution\nNazareth College\n\n\ncontact\ncgeorge0@naz.edu\n\n\nabstract\nThis course introduces students to the fundamentals of calculus, its notation and its applications. Some of these concepts include: functions, rates of change, limits, derivatives, applications of derivatives, antiderivatives, integration, and the Fundamental Theorem of Calculus.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
-  },
-  {
-    "objectID": "Course_Notes/v59/250459.html",
-    "href": "Course_Notes/v59/250459.html",
-    "title": "Discrete Math (Introduction to Proof)",
-    "section": "",
-    "text": "Title:\nDiscrete Math (Introduction to Proof)\n\n\nSubject:\ndiscrete math\n\n\nPages:\n89\n\n\nIssue:\nNo. 59 (Apr. 2025)\n\n\nAuthor:\nRachel Schwell\n\n\nUniversity:\nCentral Connecticut State University\n\n\nContact:\nschwellrac@ccsu.edu\n\n\nAbstract:\nThis text covers a collection of standard topics in an introduction-to-proof course: logic, techniques of proof including induction, set theory, functions, and introductory number theory. Sets and functions (including injectivity and surjectivity) are given special attention, in preparation for upper-level courses such as abstract algebra. The text is intended to be standalone in an IBL setting with no supplementary lecture or notes required and is scaffolded accordingly. It is meant to be user-friendly, while still encouraging readers to stretch their thinking and develop mathematical habits of mind.\n\n\n\nInstructor Version Download\nStudent Version Download"
-  },
-  {
-    "objectID": "Course_Notes/v61/251161.html",
-    "href": "Course_Notes/v61/251161.html",
-    "title": "Point-Set Topology",
-    "section": "",
-    "text": "Title:\nPoint-Set Topology\n\n\nSubject:\ntopology\n\n\nPages:\n21\n\n\nIssue:\nNo. 61 (Nov. 2025)\n\n\nAuthor:\nM Padraig McLoughlin &lt;&lt; Michel Smith &lt;&lt; W.S. Mahavier &lt;&lt; R.L. Moore\n\n\nUniversity:\nKutztown University\n\n\nContact:\nmcloughl@kutztown.edu\n\n\nAbstract:\nThese notes offer a general introduction to Point-Set Theory. The notes offer the student the opportunity to investigate limit points, closed or open sets, compactness, countability, sequences, continuity, connectedness, sseparability, local compactness, and total connectedness.\n\n\n\nInstructor Version\nStudent Version"
-  },
-  {
-    "objectID": "Course_Notes/v60/250460.html",
-    "href": "Course_Notes/v60/250460.html",
-    "title": "A First Course in College Calculus",
-    "section": "",
-    "text": "Title:\nA First Course in College Calculus\n\n\nSubject:\ncalculus\n\n\nPages:\n18\n\n\nIssue:\nNo. 60 (Apr. 2025)\n\n\nAuthor:\nTulsi Srinivasan\n\n\nUniversity:\nAzim Premji University, Bengaluru\n\n\nContact:\ntulsi.srinivasan@apu.edu.in\n\n\nAbstract:\nThese notes are for a first course in college calculus/introductory real analysis. The first part of the course motivates the study of sequences and their convergence through problems involving calculating the area under a graph and the slope of the tangent at a point on a graph. The second part draws on observations from the first about structural differences between the reals and the rationals, and starts with some axioms for the reals. These axioms are then used to study continuity and properties of continuous functions on the reals.\n\n\n\nInstructor Version Download\nStudent Version Download"
-  },
-  {
-    "objectID": "Course_Notes/v58/241158.html",
-    "href": "Course_Notes/v58/241158.html",
-    "title": "The Story of Statistics: Inquiry based notes for introductory statistics",
-    "section": "",
-    "text": "Title:\nThe Story of Statistics: Inquiry based notes for introductory statistics\n\n\nSubject:\nstatistics\n\n\nPages:\n184\n\n\nIssue:\nNo. 58 (Nov. 2024)\n\n\nAuthor:\nLindsey Bell, Nicholas Pritchard, and Douglas Weathers\n\n\nUniversity:\nCoastal Carolina University\n\n\nContact:\nlbell2@coastal.edu, npritcha@coastal.edu, wweathers@coastal.edu\n\n\nAbstract:\nNotes for an introductory statistics course emphasizing the process of statistical thinking. Topics include data collection, graphical and numerical summaries, introduction to probability, random variables, sampling distributions, confidence intervals, hypothesis testing, and simple linear regression. A common investigation is woven throughout the notes to provide continuity and hands on activites are used to introduce new conepts.\n\n\n\nInstructor Version Download\nStudent Version Download"
-  },
-  {
-    "objectID": "Course_Notes/v51/200151.html",
-    "href": "Course_Notes/v51/200151.html",
-    "title": "An Inquiry-Based Learning Approach to Mathematical Modeling",
-    "section": "",
-    "text": "Title:\nAn Inquiry-Based Learning Approach to Mathematical Modeling\n\n\nSubject:\nmodeling\n\n\nPages:\n62\n\n\nIssue:\nNo. 51 (July 2020)\n\n\nAuthor:\nYoung, Andrea\n\n\nUniversity:\nRipon College\n\n\nContact:\nyounga@ripon.edu\n\n\nAbstract:\nThis is a set of notes for a one semester course in Mathematical Modeling. The topics covered are difference equations, Markov chains, Monte Carlo simulations, and linear programming. The notes emphasize scientific computing and include both problems and projects. These notes are written to be used with Sage, but they could be modified to incorporate another language.\n\n\n\nInstructor Version Download\nStudent Version Download"
-  },
-  {
-    "objectID": "Course_Notes/v56/v56.html",
-    "href": "Course_Notes/v56/v56.html",
-    "title": "Journal Content",
-    "section": "",
-    "text": "title\nPrecalculus: An Inquiry-Based Approach\n\n\nsubject\nprecalculus\n\n\npages\n140\n\n\nissue\nNo. 56 (Mar. 2023)\n\n\nauthor\nHoward, Paul K. &lt; Mahavier, W. Ted\n\n\ninstitution\nOklahoma Christian University and Self-Employed\n\n\ncontact\npaul.howard@oc.edu, ted.mahavier@gmail.com\n\n\nabstract\nA standard precalculus course covering polynomials, rationals, exponentials, logarmithmics, trigonometry, polar coordinates, rate of change, and conic sections. This course may also serve as either College Agebra or Trigonometry simply by choosing the appropriate chapters.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
-  },
-  {
-    "objectID": "notes.html",
-    "href": "notes.html",
-    "title": "Course Materials",
-    "section": "",
-    "text": "These refereed course notes fulfill the guidelines listed under Information for Authors of Course Notes.\nKeeping JIBLM free is a top priority. If you use JIBLM materials, we want to know! Please consider emailing our Course Reviews Editor Nathaniel Miller listing which notes you use, your institution, your name, and anything else you wish to share.\nThis table is sortable. Click on a column heading to sort by that column. Click on a title to access these notes."
-  },
-  {
     "objectID": "authorinfo.html",
     "href": "authorinfo.html",
     "title": "Information for Authors of Course Notes",
     "section": "",
     "text": "Course Notes are freely downloadable, professionally refereed, classroom-tested notes which constitute a full course or sequence of full courses. Course Notes are intended\n\nfor instructors to use as notes for their course\nfor instructors to modify to suit the needs of their students\nfor students to use to study a topic independently.\n\nInstructors are encouraged to contact authors for guidance in the use of Course Notes.\n\nPublication Requirements\n\nAbstract\nCourse Notes should include an abstract with sufficient detail to assist users who are viewing multiple sets of Course Notes in determining which set best meets their needs.\n\n\nClassroom Testing\nCourse Notes should be thoroughly class tested and provide a successful course in their present formulation. Course Notes that have not been thoroughly vetted through multiple cycles of classroom testing rarely pass the refereeing process.\n\n\nContent\nCourse Notes should be mathematically correct and well written, consisting primarily of a sequence of problems to solve or theorems to prove. Course Notes should provide material for a full course or sequence of courses. The student version, excluding supplementary materials and appendices, should span at most seventy pages per semester of material for the course.\n\n\nCopyrights\nAuthors submitting materials retain copyright and cede to JIBLM the right to display published materials in perpetuity. Anyone reproducing or displaying JIBLM publications should clearly display the journal name, title, issue and number. Reproduced materials may be distributed provided that no charge is levied to the users beyond the cost of reproduction.\n\n\nIntroduction\nCourse Notes should maximize the opportunity for a successful implementation by providing potential instructors with a clear understanding of your implementation of the course. The introduction should therefore include\n\na description of the course you taught,\nthe approximate class size,\nthe number of times the course has been taught,\nits level and role within the broader curriculum,\nyour expectations and grading of the students,\nthe exact portion of the notes covered in your course,\nany unusual characteristics of the course or classroom such as technology, multiple white boards, special seating, etc., and\nany other information that will be useful to a less experienced instructor.\n\n\n\nPedagogy\nCourse Notes should adhere to an IBL pedagogy that utilizes presentations or student-centered activities to develop in students the confidence and ability to do mathematics on their own. Instructors typically supply students with carefully crafted activities or course notes consisting of a sequence of definitions, problems or theorems. Instructors then serve as mentors, listening to the students, reviewing their work, and giving them the minimal information they need to understand the defined concepts, solve the problems, or prove the theorems.\n\n\nSource Availability\nAs copyrights are retained by the author, we do not provide the source for download. However, based on our anecdotal experience, authors contacted have been very willing to share their expertise, experience and source with instructors wishing to use the author’s notes. Because authors often revise and improve notes, contacting the author directly may well result in a more current, improved version.\n\n\nSubmissions\nCourse Notes should be sent via email to the Course Notes Editor David Clark along with a completed Submissions Form using the LaTeX templates provided. The form template.tex serves as:\n\na guide to typesetting your course notes, and\na template to be modified to produce your print ready submission.\n\n\n\nTo get started\n\ndownload the Submission Form, submission_cn.tex,\ndownload the LaTeX template, template_cn.tex,\ndownload the JIBLM Formatting Package, jiblm_cn.tex,\nplace jiblm_cn.tex and template_cn.tex in the same directory,\ncompile template_cn.tex and read the output, and\nplace your notes into a copy of the file template.tex.\n\nDo not modify jiblm_cn.tex. If you encounter any difficulties, please contact the Technical Editor Ted Mahavier for assistance.\n\n\n\nAdditional Information\n\nJoint Authorship\nSome Course Notes come with a pedigree, having been modified from another instructor’s notes. JIBLM encourages such adaptations. To handle these instances, JIBLM adheres to the following two conventions regarding authorship.\nFor cases where an author modifies another’s notes:\nIf each of X and Y is an author, then the relation X &lt; Y indicates that the Course Notes were originally authored by Y and subsequently modified by X, who takes full responsibility for the current version. While Y is credited with the genesis of the notes, s/he makes no claim to the accuracy of the current version which may or may not reflect her/his original vision.\nFor cases where an author reproduces another’s notes, for example, posthumously:\nIf each of X and Y is an author, then the relation X &lt;&lt; Y indicates that these notes were originally authored by Y and subsequently prepared for submission to JIBLM by X without significant modification and with appropriate permissions. While Y is credited with the genesis of the notes, X takes full responsibility for the current version.\n\n\nStudent and Instructor Versions\nAs an author, you may wish to create both a student and an instructor version of your course notes. The instructor version will consist of the student version along with additional advice, comments and guidance to the instructor that might unnecessarily clutter the student version. Upon publication, both versions will be available on-line from the journal. The downloadable template described below allows you to create one LaTeX document that will produce both versions by toggling one commented line in the beginning of the document.\n\n\nSubmission and Page Costs\nThere are no submission or page costs associated with publishing in JIBLM.\n\n\nUpdating Course Notes\nIn order to keep the highest quality notes available online, JIBLM encourages the revision of published notes. Should an author desire corrections or modifications, the author may submit a complete list of revisions along with a new submission to replace the original submission. The revised version will be refereed, and will replace the old version if it is accepted. Such submissions will be replaced in December and June to assure that faculty using course notes on-line will not be effected."
-  },
-  {
-    "objectID": "authorinfo.html#publication-requirements",
-    "href": "authorinfo.html#publication-requirements",
-    "title": "Information for Authors",
-    "section": "Publication Requirements",
-    "text": "Publication Requirements\n\nAbstract\nCourse Notes should include an abstract with sufficient detail to assist users who are viewing multiple sets of Course Notes in determining which set best meets their needs.\n\n\nClassroom Testing\nCourse Notes should be thoroughly class tested and provide a successful course in their present formulation. Course Notes that have not been thoroughly vetted through multiple cycles of classroom testing rarely pass the refereeing process.\n\n\nContent\nCourse Notes should be mathematically correct and well written, consisting primarily of a sequence of problems to solve or theorems to prove. Course Notes should provide material for a full course or sequence of courses. The student version, excluding supplementary materials and appendices, should span at most seventy pages per semester of material for the course.\n\n\nCopyrights\nAuthors submitting materials retain copyright and cede to JIBLM the right to display published materials in perpetuity. Anyone reproducing or displaying JIBLM publications should clearly display the journal name, title, issue and number. Reproduced materials may be distributed provided that no charge is levied to the users beyond the cost of reproduction.\n\n\nIntroduction\nCourse Notes should maximize the opportunity for a successful implementation by providing potential instructors with a clear understanding of your implementation of the course. The introduction should therefore include\n\na description of the course you taught,\nthe approximate class size,\nthe number of times the course has been taught,\nits level and role within the broader curriculum,\nyour expectations and grading of the students,\nthe exact portion of the notes covered in your course,\nany unusual characteristics of the course or classroom such as technology, multiple white boards, special seating, etc., and\nany other information that will be useful to a less experienced instructor.\n\n\n\nPedagogy\nCourse Notes should adhere to an IBL pedagogy that utilizes presentations or student-centered activities to develop in students the confidence and ability to do mathematics on their own. Instructors typically supply students with carefully crafted activities or course notes consisting of a sequence of definitions, problems or theorems. Instructors then serve as mentors, listening to the students, reviewing their work, and giving them the minimal information they need to understand the defined concepts, solve the problems, or prove the theorems.\n\n\nSource Availability\nAs copyrights are retained by the author, we do not provide the source for download. However, based on our anecdotal experience, authors contacted have been very willing to share their expertise, experience and source with instructors wishing to use the author’s notes. Because authors often revise and improve notes, contacting the author directly may well result in a more current, improved version.\n\n\nSubmissions\nCourse Notes should be sent via email to the Course Notes Editor David Clark along with a completed Submissions Form using the LaTeX templates provided. The form template.tex serves as:\n\na guide to typesetting your course notes, and\na template to be modified to produce your print ready submission.\n\n\n\nTo get started\n\ndownload the Submission Form, submission_cn.tex,\ndownload the LaTeX template, template_cn.tex,\ndownload the JIBLM Formatting Package, jiblm_cn.tex,\nplace jiblm_cn.tex and template_cn.tex in the same directory,\ncompile template_cn.tex and read the output, and\nplace your notes into a copy of the file template.tex.\n\nDo not modify jiblm_cn.tex. If you encounter any difficulties, please contact the Technical Editor Ted Mahavier for assistance."
-  },
-  {
-    "objectID": "authorinfo.html#additional-information",
-    "href": "authorinfo.html#additional-information",
-    "title": "Information for Authors",
-    "section": "Additional Information",
-    "text": "Additional Information\n\nJoint Authorship\nSome Course Notes come with a pedigree, having been modified from another instructor’s notes. JIBLM encourages such adaptations. To handle these instances, JIBLM adheres to the following two conventions regarding authorship.\nFor cases where an author modifies another’s notes:\nIf each of X and Y is an author, then the relation X &lt; Y indicates that the Course Notes were originally authored by Y and subsequently modified by X, who takes full responsibility for the current version. While Y is credited with the genesis of the notes, s/he makes no claim to the accuracy of the current version which may or may not reflect her/his original vision.\nFor cases where an author reproduces another’s notes, for example, posthumously:\nIf each of X and Y is an author, then the relation X &lt;&lt; Y indicates that these notes were originally authored by Y and subsequently prepared for submission to JIBLM by X without significant modification and with appropriate permissions. While Y is credited with the genesis of the notes, X takes full responsibility for the current version.\n\n\nStudent and Instructor Versions\nAs an author, you may wish to create both a student and an instructor version of your course notes. The instructor version will consist of the student version along with additional advice, comments and guidance to the instructor that might unnecessarily clutter the student version. Upon publication, both versions will be available on-line from the journal. The downloadable template described below allows you to create one LaTeX document that will produce both versions by toggling one commented line in the beginning of the document.\n\n\nSubmission and Page Costs\nThere are no submission or page costs associated with publishing in JIBLM.\n\n\nUpdating Course Notes\nIn order to keep the highest quality notes available online, JIBLM encourages the revision of published notes. Should an author desire corrections or modifications, the author may submit a complete list of revisions along with a new submission to replace the original submission. The revised version will be refereed, and will replace the old version if it is accepted. Such submissions will be replaced in December and June to assure that faculty using course notes on-line will not be effected."
-  },
-  {
-    "objectID": "author_coursenotes.html",
-    "href": "author_coursenotes.html",
-    "title": "Information for Authors of Course Notes",
-    "section": "",
-    "text": "Course Notes are freely downloadable, professionally refereed, classroom-tested notes which constitute a full course or sequence of full courses. Course Notes are intended\n\nfor instructors to use as notes for their course\nfor instructors to modify to suit the needs of their students\nfor students to use to study a topic independently.\n\nInstructors are encouraged to contact authors for guidance in the use of Course Notes.\n\nPublication Requirements\n\nAbstract\nCourse Notes should include an abstract with sufficient detail to assist users who are viewing multiple sets of Course Notes in determining which set best meets their needs.\n\n\nClassroom Testing\nCourse Notes should be thoroughly class tested and provide a successful course in their present formulation. Course Notes that have not been thoroughly vetted through multiple cycles of classroom testing rarely pass the refereeing process.\n\n\nContent\nCourse Notes should be mathematically correct and well written, consisting primarily of a sequence of problems to solve or theorems to prove. Course Notes should provide material for a full course or sequence of courses. The student version, excluding supplementary materials and appendices, should span at most seventy pages per semester of material for the course.\n\n\nCopyrights\nAuthors submitting materials retain copyright and cede to JIBLM the right to display published materials in perpetuity. Anyone reproducing or displaying JIBLM publications should clearly display the journal name, title, issue and number. Reproduced materials may be distributed provided that no charge is levied to the users beyond the cost of reproduction.\n\n\nIntroduction\nCourse Notes should maximize the opportunity for a successful implementation by providing potential instructors with a clear understanding of your implementation of the course. The introduction should therefore include\n\na description of the course you taught,\nthe approximate class size,\nthe number of times the course has been taught,\nits level and role within the broader curriculum,\nyour expectations and grading of the students,\nthe exact portion of the notes covered in your course,\nany unusual characteristics of the course or classroom such as technology, multiple white boards, special seating, etc., and\nany other information that will be useful to a less experienced instructor.\n\n\n\nPedagogy\nCourse Notes should adhere to an IBL pedagogy that utilizes presentations or student-centered activities to develop in students the confidence and ability to do mathematics on their own. Instructors typically supply students with carefully crafted activities or course notes consisting of a sequence of definitions, problems or theorems. Instructors then serve as mentors, listening to the students, reviewing their work, and giving them the minimal information they need to understand the defined concepts, solve the problems, or prove the theorems.\n\n\nSource Availability\nAs copyrights are retained by the author, we do not provide the source for download. However, based on our anecdotal experience, authors contacted have been very willing to share their expertise, experience and source with instructors wishing to use the author’s notes. Because authors often revise and improve notes, contacting the author directly may well result in a more current, improved version.\n\n\nSubmissions\nCourse Notes should be sent via email to the Course Notes Editor David Clark along with a completed Submissions Form using the LaTeX templates provided. The form template.tex serves as:\n\na guide to typesetting your course notes, and\na template to be modified to produce your print ready submission.\n\n\n\nTo get started\n\ndownload the Submission Form, submission_cn.tex,\ndownload the LaTeX template, template_cn.tex,\ndownload the JIBLM Formatting Package, jiblm_cn.tex,\nplace jiblm_cn.tex and template_cn.tex in the same directory,\ncompile template_cn.tex and read the output, and\nplace your notes into a copy of the file template.tex.\n\nDo not modify jiblm_cn.tex. If you encounter any difficulties, please contact the Technical Editor Ted Mahavier for assistance.\n\n\n\nAdditional Information\n\nJoint Authorship\nSome Course Notes come with a pedigree, having been modified from another instructor’s notes. JIBLM encourages such adaptations. To handle these instances, JIBLM adheres to the following two conventions regarding authorship.\nFor cases where an author modifies another’s notes:\nIf each of X and Y is an author, then the relation X &lt; Y indicates that the Course Notes were originally authored by Y and subsequently modified by X, who takes full responsibility for the current version. While Y is credited with the genesis of the notes, s/he makes no claim to the accuracy of the current version which may or may not reflect her/his original vision.\nFor cases where an author reproduces another’s notes, for example, posthumously:\nIf each of X and Y is an author, then the relation X &lt;&lt; Y indicates that these notes were originally authored by Y and subsequently prepared for submission to JIBLM by X without significant modification and with appropriate permissions. While Y is credited with the genesis of the notes, X takes full responsibility for the current version.\n\n\nStudent and Instructor Versions\nAs an author, you may wish to create both a student and an instructor version of your course notes. The instructor version will consist of the student version along with additional advice, comments and guidance to the instructor that might unnecessarily clutter the student version. Upon publication, both versions will be available on-line from the journal. The downloadable template described below allows you to create one LaTeX document that will produce both versions by toggling one commented line in the beginning of the document.\n\n\nSubmission and Page Costs\nThere are no submission or page costs associated with publishing in JIBLM.\n\n\nUpdating Course Notes\nIn order to keep the highest quality notes available online, JIBLM encourages the revision of published notes. Should an author desire corrections or modifications, the author may submit a complete list of revisions along with a new submission to replace the original submission. The revised version will be refereed, and will replace the old version if it is accepted. Such submissions will be replaced in December and June to assure that faculty using course notes on-line will not be effected."
-  },
-  {
-    "objectID": "contact.html",
-    "href": "contact.html",
-    "title": "Contact Information",
-    "section": "",
-    "text": "Course Notes Editor\nDavid Clark, SUNY at New Paltz, Emeritus\n\n\nAssociate Editors\nChris Hallstrom, University of Portland\nXiao Xiao, Utica University"
   },
   {
     "objectID": "students.html",
@@ -252,11 +14,11 @@
     "text": "Thank you for visiting! This site was built because of our love of teaching students like you!\nAll the material under Course Notes are full semester courses that you may work through to learn a subject on your own. There aren’t answer keys so you need to be excited about just digging in and learning something independently, but the notes are designed to be self-contained and walk you through the subject.\nIt’s possible that if you get stuck, then the author will provide guidance. However, we are not a tutoring service, so you can’t expect that level of support.\nOh, I almost forgot! Unrefereed notes are also full courses, but they have not been read by an editor and refereed by a third mathematician. Therefore, we can’t assure you that they are free from errors even though some of these are excellent notes. They also cover topics not covered by our published notes. Enjoy!"
   },
   {
-    "objectID": "other.html",
-    "href": "other.html",
-    "title": "Other Materials",
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact Information",
     "section": "",
-    "text": "This is a placeholder for other materials such as\n\nModules\nUnrefereed course notes"
+    "text": "Course Notes Editor\nDavid Clark, SUNY at New Paltz, Emeritus\n\n\nAssociate Editors\nChris Hallstrom, University of Portland\nXiao Xiao, Utica University"
   },
   {
     "objectID": "authorinfo_old.html",
@@ -264,5 +26,222 @@
     "title": "Information for Authors",
     "section": "",
     "text": "Information for authors of Course Notes\n\n\nInformation for authors of Modules\n\n\nInformation for authors of User Reviews"
+  },
+  {
+    "objectID": "Course_Notes/v56/v56.html",
+    "href": "Course_Notes/v56/v56.html",
+    "title": "Journal Content",
+    "section": "",
+    "text": "title\nPrecalculus: An Inquiry-Based Approach\n\n\nsubject\nprecalculus\n\n\npages\n140\n\n\nissue\nNo. 56 (Mar. 2023)\n\n\nauthor\nHoward, Paul K. &lt; Mahavier, W. Ted\n\n\ninstitution\nOklahoma Christian University and Self-Employed\n\n\ncontact\npaul.howard@oc.edu, ted.mahavier@gmail.com\n\n\nabstract\nA standard precalculus course covering polynomials, rationals, exponentials, logarmithmics, trigonometry, polar coordinates, rate of change, and conic sections. This course may also serve as either College Agebra or Trigonometry simply by choosing the appropriate chapters.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
+  },
+  {
+    "objectID": "Course_Notes/v51/200151.html",
+    "href": "Course_Notes/v51/200151.html",
+    "title": "An Inquiry-Based Learning Approach to Mathematical Modeling",
+    "section": "",
+    "text": "Title:\nAn Inquiry-Based Learning Approach to Mathematical Modeling\n\n\nSubject:\nmodeling\n\n\nPages:\n62\n\n\nIssue:\nNo. 51 (July 2020)\n\n\nAuthor:\nYoung, Andrea\n\n\nUniversity:\nRipon College\n\n\nContact:\nyounga@ripon.edu\n\n\nAbstract:\nThis is a set of notes for a one semester course in Mathematical Modeling. The topics covered are difference equations, Markov chains, Monte Carlo simulations, and linear programming. The notes emphasize scientific computing and include both problems and projects. These notes are written to be used with Sage, but they could be modified to incorporate another language.\n\n\n\nInstructor Version Download\nStudent Version Download"
+  },
+  {
+    "objectID": "Course_Notes/v58/241158.html",
+    "href": "Course_Notes/v58/241158.html",
+    "title": "The Story of Statistics: Inquiry based notes for introductory statistics",
+    "section": "",
+    "text": "Title:\nThe Story of Statistics: Inquiry based notes for introductory statistics\n\n\nSubject:\nstatistics\n\n\nPages:\n184\n\n\nIssue:\nNo. 58 (Nov. 2024)\n\n\nAuthor:\nLindsey Bell, Nicholas Pritchard, and Douglas Weathers\n\n\nUniversity:\nCoastal Carolina University\n\n\nContact:\nlbell2@coastal.edu, npritcha@coastal.edu, wweathers@coastal.edu\n\n\nAbstract:\nNotes for an introductory statistics course emphasizing the process of statistical thinking. Topics include data collection, graphical and numerical summaries, introduction to probability, random variables, sampling distributions, confidence intervals, hypothesis testing, and simple linear regression. A common investigation is woven throughout the notes to provide continuity and hands on activites are used to introduce new conepts.\n\n\n\nInstructor Version Download\nStudent Version Download"
+  },
+  {
+    "objectID": "Course_Notes/v60/250460.html",
+    "href": "Course_Notes/v60/250460.html",
+    "title": "A First Course in College Calculus",
+    "section": "",
+    "text": "Title:\nA First Course in College Calculus\n\n\nSubject:\ncalculus\n\n\nPages:\n18\n\n\nIssue:\nNo. 60 (Apr. 2025)\n\n\nAuthor:\nTulsi Srinivasan\n\n\nUniversity:\nAzim Premji University, Bengaluru\n\n\nContact:\ntulsi.srinivasan@apu.edu.in\n\n\nAbstract:\nThese notes are for a first course in college calculus/introductory real analysis. The first part of the course motivates the study of sequences and their convergence through problems involving calculating the area under a graph and the slope of the tangent at a point on a graph. The second part draws on observations from the first about structural differences between the reals and the rationals, and starts with some axioms for the reals. These axioms are then used to study continuity and properties of continuous functions on the reals.\n\n\n\nInstructor Version Download\nStudent Version Download"
+  },
+  {
+    "objectID": "Course_Notes/v61/251161.html",
+    "href": "Course_Notes/v61/251161.html",
+    "title": "Point-Set Topology",
+    "section": "",
+    "text": "Title:\nPoint-Set Topology\n\n\nSubject:\ntopology\n\n\nPages:\n21\n\n\nIssue:\nNo. 61 (Nov. 2025)\n\n\nAuthor:\nM Padraig McLoughlin &lt;&lt; Michel Smith &lt;&lt; W.S. Mahavier &lt;&lt; R.L. Moore\n\n\nUniversity:\nKutztown University\n\n\nContact:\nmcloughl@kutztown.edu\n\n\nAbstract:\nThese notes offer a general introduction to Point-Set Theory. The notes offer the student the opportunity to investigate limit points, closed or open sets, compactness, countability, sequences, continuity, connectedness, sseparability, local compactness, and total connectedness.\n\n\n\nInstructor Version\nStudent Version"
+  },
+  {
+    "objectID": "Course_Notes/v59/250459.html",
+    "href": "Course_Notes/v59/250459.html",
+    "title": "Discrete Math (Introduction to Proof)",
+    "section": "",
+    "text": "Title:\nDiscrete Math (Introduction to Proof)\n\n\nSubject:\ndiscrete math\n\n\nPages:\n89\n\n\nIssue:\nNo. 59 (Apr. 2025)\n\n\nAuthor:\nRachel Schwell\n\n\nUniversity:\nCentral Connecticut State University\n\n\nContact:\nschwellrac@ccsu.edu\n\n\nAbstract:\nThis text covers a collection of standard topics in an introduction-to-proof course: logic, techniques of proof including induction, set theory, functions, and introductory number theory. Sets and functions (including injectivity and surjectivity) are given special attention, in preparation for upper-level courses such as abstract algebra. The text is intended to be standalone in an IBL setting with no supplementary lecture or notes required and is scaffolded accordingly. It is meant to be user-friendly, while still encouraging readers to stretch their thinking and develop mathematical habits of mind.\n\n\n\nInstructor Version Download\nStudent Version Download"
+  },
+  {
+    "objectID": "Course_Notes/v50/v50.html",
+    "href": "Course_Notes/v50/v50.html",
+    "title": "Journal Content",
+    "section": "",
+    "text": "title\nCalculus I – Single Variable Calculus\n\n\nsubject\ncalculus\n\n\npages\n90\n\n\nissue\nNo. 50 (May 2019)\n\n\nauthor\nGeorge, C. Yousuf; Lewis, Heather A.\n\n\ninstitution\nNazareth College\n\n\ncontact\ncgeorge0@naz.edu\n\n\nabstract\nThis course introduces students to the fundamentals of calculus, its notation and its applications. Some of these concepts include: functions, rates of change, limits, derivatives, applications of derivatives, antiderivatives, integration, and the Fundamental Theorem of Calculus.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
+  },
+  {
+    "objectID": "Course_Notes/v57/v57.html",
+    "href": "Course_Notes/v57/v57.html",
+    "title": "Journal Content",
+    "section": "",
+    "text": "title\nFinite Mathematics\n\n\nsubject\nfinite math\n\n\npages\n92\n\n\nissue\nNo. 57 (Apr. 2023)\n\n\nauthor\nMindy Capaldi\n\n\ninstitution\nValparaiso University\n\n\ncontact\nmindy.capaldi@valpo.edu\n\n\nabstract\nThese notes are for a four-credit, 100-level finite mathematics course. Topics include matrix algebra, linear programming, probability, counting methods, Markov chains, and game theory. In practice, studuents work through the notes during class, complete problems in groups, and present their work at the board. Two modules using board games are also included as appendices. The notes can be easily adapted by taking out explanatory passages or examples, based on the mathematical background of the students.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
+  },
+  {
+    "objectID": "Course_Notes/v52/v52.html",
+    "href": "Course_Notes/v52/v52.html",
+    "title": "Journal Content",
+    "section": "",
+    "text": "title\nIntroduction to Combinatorial Games\n\n\nsubject\ngame theory\n\n\npages\n52\n\n\nissue\nNo. 52 (Oct. 2020)\n\n\nauthor\nGantner, Ryan\n\n\ninstitution\nSt. John Fisher College\n\n\ncontact\nrgantner@sjfc.edu\n\n\nabstract\nThrough this course, students will build a robust theory of combinatorial games from scratch, including theories of partisan games, impartial games, nimbers versus numbers, the \\mex\" function, and basic Sprague-Grundy theory. Several games will be introduced, such as Nim, Hackenbush, Kayles, and Chomp. These notes are aimed at students who are not math majors and who have not taken college math courses previously. With only slight modi\fcation, however, this could become a course for math majors.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
+  },
+  {
+    "objectID": "Course_Notes/v55/v55.html",
+    "href": "Course_Notes/v55/v55.html",
+    "title": "Journal Content",
+    "section": "",
+    "text": "title\nMathematical Logic for the Humanities\n\n\nsubject\nlogic\n\n\npages\n68\n\n\nissue\nNo. 55 (Jan. 2023)\n\n\nauthor\nRyan P. Dunning\n\n\ninstitution\nSt. Mary's University\n\n\ncontact\nrdunning1@stmarytx.edu\n\n\nabstract\nA mathematics course designed for students in the humanities. A variety of concepts are covered. Topics will be drawn from the following areas: introductory treatments of sets, logic, number theory.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
+  },
+  {
+    "objectID": "Course_Notes/v54/220254.html",
+    "href": "Course_Notes/v54/220254.html",
+    "title": "Complex Variables and Functions",
+    "section": "",
+    "text": "Title:\nComplex Variables and Functions\n\n\nSubject:\ncomplex analysis\n\n\nPages:\n97\n\n\nIssue:\nNo. 54 (May 2022)\n\n\nAuthor:\nBowman, Joshua P.\n\n\nUniversity:\nPepperdine University\n\n\nContact:\njoshua.bowman@pepperdine.edu\n\n\nAbstract:\nThe material covered in these notes is standard for an undergraduate course on complex variables. The vast majority of exercises (“tasks”) are original, however. A few tasks are borrowed or adapted from exercises or exposition.\n\n\n\nInstructor Version Download\nStudent Version Download"
+  },
+  {
+    "objectID": "Course_Notes/v53/v53.html",
+    "href": "Course_Notes/v53/v53.html",
+    "title": "Journal Content",
+    "section": "",
+    "text": "title\nLinear Algebra: Notes and Problems\n\n\nsubject\nlinear algebra\n\n\npages\n78\n\n\nissue\nNo. 53 (Jan. 2022)\n\n\nauthor\nLong, Nicholas\n\n\ninstitution\nStephen F. Austin State University\n\n\ncontact\nlongne@sfasu.edu\n\n\nabstract\nThis set of notes and problems covers a junior-level linear algebra course (following an introduction to proof course) with broad chapter topics of 1) e\u000eciently solving systems of linear equations, 2)vector spaces, 3) connecting ideas (dimension, invertibility, and eignvalues), and 4) innner product spaces. The approach of these notes isa blend of computational and sense-making problems, as well as an increasing usage of conjecture and proof throughout the course.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
+  },
+  {
+    "objectID": "Course_Notes/v49/v49.html",
+    "href": "Course_Notes/v49/v49.html",
+    "title": "Journal Content",
+    "section": "",
+    "text": "title\nDiscrete Mathematics\n\n\nsubject\ndiscrete math\n\n\npages\n99\n\n\nissue\nNo. 49 (Jan. 2019)\n\n\nauthor\nClark, David M.; Mahavier, W. Ted\n\n\ninstitution\nSUNY New Paltz & Lamar University\n\n\ncontact\nted.mahavier@lamar.edu\n\n\nabstract\nThis course constitutes a mathematically rigorous introduction to sets, functions, counting, induction, equivalence relations, recursion, elementary graph theory finite state machines and languages.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
+  },
+  {
+    "objectID": "Course_Notes/v48/v48.html",
+    "href": "Course_Notes/v48/v48.html",
+    "title": "Journal Content",
+    "section": "",
+    "text": "title\nPrecalculus\n\n\nsubject\nprecalculus\n\n\npages\n132\n\n\nissue\nNo. 48 (Dec. 2018)\n\n\nauthor\nHoward, Paul K. &lt; Mahavier, W. Ted\n\n\ninstitution\nOklahoma Christian University\n\n\ncontact\npaul.howard@oc.edu\n\n\nabstract\nThis course is designed to prepare students to begin a college level calculus series. Topics in this course include all aspects of trigonometry as well as conic sections, exponential functions, polynomial functions, rational functions and linear functions with an emphasis on rate of change. Strong emphasis is placed on strengthening understanding of algebraic concepts necessary to be successful in a college level calculus series.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
+  },
+  {
+    "objectID": "Course_Notes/v47/v47.html",
+    "href": "Course_Notes/v47/v47.html",
+    "title": "Journal Content",
+    "section": "",
+    "text": "title\nAn Inquiry-Based Introduction to Proofs\n\n\nsubject\nfoundations\n\n\npages\n33\n\n\nissue\nNo. 47 (Sept. 2018)\n\n\nauthor\nHefferon, Jim\n\n\ninstitution\nSt Michael's College\n\n\ncontact\njhefferon@smcvt.edu\n\n\nabstract\nAn introduction to mathematical proof. Covers elementary number theory including divisibility and primes, sets including DeMorgan's laws, functions including one-to-one and onto, and relations. There is a brief optional chapter on cardinality. The presentation is a sequence of statements of definitions and results, with a few remarks.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
+  },
+  {
+    "objectID": "Course_Notes/v53/220153.html",
+    "href": "Course_Notes/v53/220153.html",
+    "title": "Linear Algebra: Notes and Problems",
+    "section": "",
+    "text": "Title:\nLinear Algebra: Notes and Problems\n\n\nSubject:\nlinear algebra\n\n\nPages:\n78\n\n\nIssue:\nNo. 53 (Jan. 2022)\n\n\nAuthor:\nLong, Nicholas\n\n\nUniversity:\nStephen F. Austin State University\n\n\nContact:\nlongne@sfasu.edu\n\n\nAbstract:\nThis set of notes and problems covers a junior-level linear algebra course (following an introduction to proof course) with broad chapter topics of 1) efficiently solving systems of linear equations, 2) vector spaces, 3) connecting ideas (dimension, invertibility, and eignvalues), and 4) innner product spaces. The approach of these notes isa blend of computational and sense-making problems, as well as an increasing usage of conjecture and proof throughout the course.\n\n\n\nInstructor Version Download\nStudent Version Download"
+  },
+  {
+    "objectID": "Course_Notes/v54/v54.html",
+    "href": "Course_Notes/v54/v54.html",
+    "title": "Journal Content",
+    "section": "",
+    "text": "title\nComplex Variables and Functions\n\n\nsubject\nanalysis (complex)\n\n\npages\n97\n\n\nissue\nNo. 54 (May 2022)\n\n\nauthor\nBowman, Joshua P.\n\n\ninstitution\nPepperdine University\n\n\ncontact\njoshua.bowman@pepperdine.edu\n\n\nabstract\nThe material covered in these notes is standard for an undergraduate course on complex variables. The vast majority of exercises (“tasks”) are original, however. A few tasks are borrowed or adapted from exercises or exposition\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
+  },
+  {
+    "objectID": "Course_Notes/v55/230155.html",
+    "href": "Course_Notes/v55/230155.html",
+    "title": "Mathematical Logic for the Humanities",
+    "section": "",
+    "text": "Title:\nMathematical Logic for the Humanities\n\n\nSubject:\nlogic\n\n\nPages:\n68\n\n\nIssue:\nNo. 55 (Jan. 2023)\n\n\nAuthor:\nRyan P. Dunning\n\n\nUniversity:\nSt. Mary’s University\n\n\nContact:\nrdunning1@stmarytx.edu\n\n\nAbstract:\nA mathematics course designed for students in the humanities. A variety of concepts are covered. Topics will be drawn from the following areas: introductory treatments of sets, logic, number theory.\n\n\n\nInstructor Version Download\nStudent Version Download"
+  },
+  {
+    "objectID": "Course_Notes/v52/200252.html",
+    "href": "Course_Notes/v52/200252.html",
+    "title": "Introduction to Combinatorial Games",
+    "section": "",
+    "text": "Title:\nIntroduction to Combinatorial Games\n\n\nSubject:\ngame theory\n\n\nPages:\n52\n\n\nIssue:\nNo. 52 (Oct. 2020)\n\n\nAuthor:\nGantner, Ryan\n\n\nUniversity:\nSt. John Fisher College\n\n\nContact:\nrgantner@sjfc.edu\n\n\nAbstract:\nThrough this course, students will build a robust theory of combinatorial games from scratch, including theories of partisan games, impartial games, nimbers versus numbers, the “” function, and basic Sprague-Grundy theory. Several games will be introduced, such as Nim, Hackenbush, Kayles, and Chomp. These notes are aimed at students who are not math majors and who have not taken college math courses previously. With only slight modification, however, this could become a course for math majors.\n\n\n\nInstructor Version Download\nStudent Version Download"
+  },
+  {
+    "objectID": "Course_Notes/v57/230357.html",
+    "href": "Course_Notes/v57/230357.html",
+    "title": "Finite Mathematics",
+    "section": "",
+    "text": "Title:\nFinite Mathematics\n\n\nSubject:\nfinite math\n\n\nPages:\n92\n\n\nIssue:\nNo. 57 (April 2023)\n\n\nAuthor:\nMindy Capaldi\n\n\nUniversity:\nValparaiso University\n\n\nContact:\nmindy.capaldi@valpo.edu\n\n\nAbstract:\nThese notes are for a four-credit, 100-level finite mathematics course. Topics include matrix algebra, linear programming, probability, counting methods, Markov chains, and game theory. In practice, studuents work through the notes during class, complete problems in groups, and present their work at the board. Two modules using board games are also included as appendices. The notes can be easily adapted by taking out explanatory passages or examples, based on the mathematical background of the students.\n\n\n\nInstructor Version Download\nStudent Version Download"
+  },
+  {
+    "objectID": "Course_Notes/v50/190250.html",
+    "href": "Course_Notes/v50/190250.html",
+    "title": "Calculus I – Single Variable Calculus",
+    "section": "",
+    "text": "Title:\nCalculus I – Single Variable Calculus\n\n\nSubject:\ncalculus\n\n\nPages:\n90\n\n\nIssue:\nNo. 50 (May 2019)\n\n\nAuthor:\nGeorge, C. Yousuf; Lewis, Heather A.\n\n\nUniversity:\nNazareth College\n\n\nContact:\ncgeorge0@naz.edu\n\n\nAbstract:\nThis course introduces students to the fundamentals of calculus, its notation and its applications. Some of these concepts include: functions, rates of change, limits, derivatives, applications of derivatives, antiderivatives, integration, and the Fundamental Theorem of Calculus.\n\n\n\nInstructor Version Download\nStudent Version Download"
+  },
+  {
+    "objectID": "Course_Notes/v59/v59.html",
+    "href": "Course_Notes/v59/v59.html",
+    "title": "Journal Content",
+    "section": "",
+    "text": "title\nDiscrete Math (Introduction to Proof)\n\n\nsubject\ndiscrete math\n\n\npages\n89\n\n\nissue\nNo. 59 (Apr. 2025)\n\n\nauthor\nRachel Schwell\n\n\ninstitution\nCentral Connecticut State University\n\n\ncontact\nschwellrac@ccsu.edu\n\n\nabstract\nThis text covers a collection of standard topics in an introduction-to-proof course: logic, techniques of proof including induction, set theory, functions, and introductory number theory. Sets and functions (including injectivity and surjectivity) are given special attention, in preparation for upper-level courses such as abstract algebra. The text is intended to be standalone in an IBL setting with no supplementary lecture or notes required and is scaffolded accordingly. It is meant to be user-friendly, while still encouraging readers to stretch their thinking and develop mathematical habits of mind.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
+  },
+  {
+    "objectID": "Course_Notes/v61/v61.html",
+    "href": "Course_Notes/v61/v61.html",
+    "title": "Journal Content",
+    "section": "",
+    "text": "title\nPoint-Set Topology\n\n\nsubject\ntopology\n\n\npages\n21\n\n\nissue\nNo. 61 (Nov. 2025)\n\n\nauthor\nM Padraig McLoughlin &lt;&lt; Michel Smith &lt;&lt; W.S. Mahavier &lt;&lt; R.L. Moore\n\n\ninstitution\nKutztown University\n\n\ncontact\nmcloughl@kutztown.edu\n\n\nabstract\nThese notes offer a general introduction to Point-Set Theory. The notes offer the student the opportunity to investigate limit points, closed or open sets, compactness, countability, sequences, continuity, connectedness, sseparability, local compactness, and total connectedness.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
+  },
+  {
+    "objectID": "Course_Notes/v60/v60.html",
+    "href": "Course_Notes/v60/v60.html",
+    "title": "Journal Content",
+    "section": "",
+    "text": "title\nA First Course in College Calculus\n\n\nsubject\ncalculus\n\n\npages\n18\n\n\nissue\nNo. 60 (Apr. 2025)\n\n\nauthor\nTulsi Srinivasan\n\n\ninstitution\nAzim Premji University, Bengaluru\n\n\ncontact\ntulsi.srinivasan@apu.edu.in\n\n\nabstract\nThese notes are for a first course in college calculus/introductory real analysis. The first part of the course motivates the study of sequences and their convergence through problems involving calculating the area under a graph and the slope of the tangent at a point on a graph. The second part draws on observations from the first about structural differences between the reals and the rationals, and starts with some axioms for the reals. These axioms are then used to study continuity and properties of continuous functions on the reals.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
+  },
+  {
+    "objectID": "Course_Notes/v58/v58.html",
+    "href": "Course_Notes/v58/v58.html",
+    "title": "Journal Content",
+    "section": "",
+    "text": "title\nThe Story of Statistics: Inquiry based notes for introductory statistics\n\n\nsubject\nstatistics\n\n\npages\n184\n\n\nissue\nNo. 58 (Nov. 2024)\n\n\nauthor\nLindsey Bell, Nicholas Pritchard, and Douglas Weathers\n\n\ninstitution\nCoastal Carolina University\n\n\ncontact\nlbell2@coastal.edu, npritcha@coastal.edu, wweathers@coastal.edu\n\n\nabstract\nNotes for an introductory statistics course emphasizing the process of statistical thinking. Topics include data collection, graphical and numerical summaries, introduction to probability, random variables, sampling distributions, confidence intervals, hypothesis testing, and simple linear regression. A common investigation is woven throughout the notes to provide continuity and hands on activites are used to introduce new conepts.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
+  },
+  {
+    "objectID": "Course_Notes/v51/v51.html",
+    "href": "Course_Notes/v51/v51.html",
+    "title": "Journal Content",
+    "section": "",
+    "text": "title\nAn Inquiry-Based Learning Approach to Mathematical Modeling\n\n\nsubject\nmodeling\n\n\npages\n62\n\n\nissue\nNo. 51 (July 2020)\n\n\nauthor\nYoung, Andrea\n\n\ninstitution\nRipon College\n\n\ncontact\nyounga@ripon.edu\n\n\nabstract\nThis is a set of notes for a one semester course in Mathematical Modeling. The topics covered are difference equations, Markov chains, Monte Carlo simulations, and linear programming. The notes emphasize scientific computing and include both problems and projects. These notes are written to be used with Sage, but they could be modified to incorporate another language.\n\n\n\n\n\n\n\n\nInstructor Version\nStudent Version\n\nThis refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author’s email address at the time of submission is provided above."
+  },
+  {
+    "objectID": "Course_Notes/v56/230256.html",
+    "href": "Course_Notes/v56/230256.html",
+    "title": "Precalculus: An Inquiry-Based Approach",
+    "section": "",
+    "text": "Title:\nPrecalculus: An Inquiry-Based Approach\n\n\nSubject:\nprecalculus\n\n\nPages:\n140\n\n\nIssue:\nNo. 56 (March 2023)\n\n\nAuthor:\nHoward, Paul K. &lt; Mahavier, W. Ted\n\n\nUniversity:\nOklahoma Christian University and Self-Employed\n\n\nContact:\npaul.howard@oc.edu, ted.mahavier@gmail.com\n\n\nAbstract:\nA standard precalculus course covering polynomials, rationals, exponentials, logarmithmics, trigonometry, polar coordinates, rate of change, and conic sections. This course may also serve as either College Agebra or Trigonometry simply by choosing the appropriate chapters.\n\n\n\nInstructor Version Download\nStudent Version Download"
+  },
+  {
+    "objectID": "Course_Notes/course_note_template.html",
+    "href": "Course_Notes/course_note_template.html",
+    "title": "template for course note .qmd files",
+    "section": "",
+    "text": "Rendering this file should generate the .qmd files for each course notes page\n\n\n# A tibble: 15 × 9\n   title           subject pages issue author institution contact abstract vol  \n   &lt;chr&gt;           &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;\n 1 Point-Set Topo… topolo…    21 No. … M Pad… Kutztown U… mcloug… \"These … 61   \n 2 A First Course… calcul…    18 No. … Tulsi… Azim Premj… tulsi.… \"These … 60   \n 3 Discrete Math … discre…    89 No. … Rache… Central Co… schwel… \"This t… 59   \n 4 The Story of S… statis…   184 No. … Linds… Coastal Ca… lbell2… \"Notes … 58   \n 5 Finite Mathema… finite…    92 No. … Mindy… Valparaiso… mindy.… \"These … 57   \n 6 Precalculus: A… precal…   140 No. … Howar… Oklahoma C… paul.h… \"A stan… 56   \n 7 Mathematical L… logic      68 No. … Ryan … St. Mary's… rdunni… \"A math… 55   \n 8 Complex Variab… analys…    97 No. … Bowma… Pepperdine… joshua… \"The ma… 54   \n 9 Linear Algebra… linear…    78 No. … Long,… Stephen F.… longne… \"This s… 53   \n10 Introduction t… game t…    52 No. … Gantn… St. John F… rgantn… \"Throug… 52   \n11 An Inquiry-Bas… modeli…    62 No. … Young… Ripon Coll… younga… \"This i… 51   \n12 Calculus I – S… calcul…    90 No. … Georg… Nazareth C… cgeorg… \"This c… 50   \n13 Discrete Mathe… discre…    99 No. … Clark… SUNY New P… ted.ma… \"This c… 49   \n14 Precalculus     precal…   132 No. … Howar… Oklahoma C… paul.h… \"This c… 48   \n15 An Inquiry-Bas… founda…    33 No. … Heffe… St Michael… jheffe… \"An int… 47   \n\n\n [1] \"v61/v61.qmd\" \"v60/v60.qmd\" \"v59/v59.qmd\" \"v58/v58.qmd\" \"v57/v57.qmd\"\n [6] \"v56/v56.qmd\" \"v55/v55.qmd\" \"v54/v54.qmd\" \"v53/v53.qmd\" \"v52/v52.qmd\"\n[11] \"v51/v51.qmd\" \"v50/v50.qmd\" \"v49/v49.qmd\" \"v48/v48.qmd\" \"v47/v47.qmd\"\n\n\n\nThis code chunk takes a single row from metadata and transposes it so we can display a table with it’s entries. We also take the column names from metadata for the labels of that table. Ultimately, this is the R code that we want to write to multiple .qmd files\n\n\n\n\n\n\n\n\ntitle\nAn Inquiry-Based Introduction to Proofs\n\n\nsubject\nfoundations\n\n\npages\n33\n\n\nissue\nNo. 47 (Sept. 2018)\n\n\nauthor\nHefferon, Jim\n\n\ninstitution\nSt Michael's College\n\n\ncontact\njhefferon@smcvt.edu\n\n\nabstract\nAn introduction to mathematical proof. Covers elementary number theory including divisibility and primes, sets including DeMorgan's laws, functions including one-to-one and onto, and relations. There is a brief optional chapter on cardinality. The presentation is a sequence of statements of definitions and results, with a few remarks.\n\n\nvol\n47"
+  },
+  {
+    "objectID": "notes.html",
+    "href": "notes.html",
+    "title": "Course Materials",
+    "section": "",
+    "text": "These refereed course notes fulfill the guidelines listed under Information for Authors of Course Notes.\nKeeping JIBLM free is a top priority. If you use JIBLM materials, we want to know! Please consider emailing our Course Reviews Editor Nathaniel Miller listing which notes you use, your institution, your name, and anything else you wish to share.\nThis table is sortable. Click on a column heading to sort by that column. Click on a title to access these notes."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Journal of Inquiry-Based Learning in Mathematics",
+    "section": "",
+    "text": "JIBLM publishes freely downloadable, professionally refereed and classroom-tested course guides for full univerisity level inqury-based mathematical courses.\nInquiry-based learning (IBL) refers to any pedagogy that utilizes presentations or student-centered activities to develop in students the confidence and ability to do mathematics on their own. Instructors typically supply students with carefully crafted activities or course notes consisting of a sequence of definitions, problems or theorems. Instructors then serve as mentors, listening to the students, reviewing their work, and giving them the minimal information they need to understand the concepts and carry out these tasks.\nInstructors are encouraged to contact authors of Course Guides for assistance. Anyone reproducing or displaying JIBLM publications should clearly display the journal name, title, and issue. Reproduced materials may be distributed provided that no charge is levied to users beyond cost of reproduction.\nJIBLM was previously funded by MathNerds and the Educational Advancement Foundation, and is currently funded through private donations."
+  },
+  {
+    "objectID": "other.html",
+    "href": "other.html",
+    "title": "Other Materials",
+    "section": "",
+    "text": "This is a placeholder for other materials such as\n\nModules\nUnrefereed course notes"
   }
 ]
