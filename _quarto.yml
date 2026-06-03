@@ -5,19 +5,25 @@ project:
 website:
   title: "JIBLM"
   navbar:
+    background:  "#0D530E"
     left:
-      - href: index.qmd
-        text: Home
+      - href: contact.qmd
+        text: "Contact"
+      - href: authorinfo.qmd
+        text: "Authors"
       - href: notes.qmd
         text: "Course Notes"
+      - href: students.qmd
+        text: "Students"
+      - href: other.qmd
+        text: "Other Materials"
         
 format:
   html:
-    theme:
-      - cosmo
+    theme: cosmo
     css: styles.scss
     toc: true
-    backgroundcolor: "#FBF5DE"
+    backgroundcolor: "#FBF5DD"
     page-layout: full
 
 editor: source

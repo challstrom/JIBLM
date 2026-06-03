@@ -1,12 +1,14 @@
 /*-- scss:defaults --*/
-/* @import 'https://fonts.googleapis.com/css2?family=Prata&display=swap';
-$font-family: "Prato";
-*/
+@import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap';
 
+$font-family: "Atkinson Hyperlegible", sans-serif;
+$link-color: #5d6d74;
+$hover-color: lighten($link-color, 40%);
 
 
 
 /* scss: rules */
+$navbar-bg: #0D530E
 
 
 // Tables
@@ -31,4 +33,8 @@ a{
 
 .table {
   font-size: 1.0em;
+}
+
+h1, h2, h3 {
+  color: #306D29;
 }

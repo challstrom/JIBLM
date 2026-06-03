@@ -1,0 +1,9 @@
+---
+title: "Information for Authors"
+---
+
+### [Information for authors of Course Notes](author_coursenotes.qmd)
+
+### Information for authors of Modules
+
+### Information for authors of User Reviews

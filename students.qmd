@@ -1,0 +1,12 @@
+---
+title: "A Note to Students"
+---
+
+Thank you for visiting! This site was built because of our love of teaching students like you!
+
+All the material under [Course Notes](notes.qmd) are full semester courses that you may work through to learn a subject on your own. There aren't answer keys so you need to be excited about just digging in and learning something independently, but the notes are designed to be self-contained and walk you through the subject.
+
+It's possible that if you get stuck, then the author will provide guidance. However, we are not a tutoring service, so you can't expect that level of support.
+
+Oh, I almost forgot! Unrefereed notes are also full courses, but they have not been read by an editor and refereed by a third mathematician. Therefore, we can't assure you that they are free from errors even though some of these are excellent notes. They also cover topics not covered by our published notes. Enjoy!
+
