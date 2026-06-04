@@ -1,0 +1,39 @@
+---
+title: "Journal Content"
+subtitle: "Linear Point Set Theory, No. 14 (Apr. 2009)"
+---
+
+```{r}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+library(gt)
+
+metadata <- read_csv("../contents_raw.csv")
+
+output <- metadata |>
+  mutate(v = as.integer(str_sub(issue, 5, 6))) |>
+  filter(v == 14) |>
+  t()
+  
+cn <- metadata |>
+  colnames()
+
+tibble(cn, head(output, n=-1)) |>
+  gt() |>
+  cols_align(align = "left") |>
+  tab_style(
+    style= cell_text(v_align = "top"),
+    locations = cells_body()
+  ) |>
+  tab_options( table.width = "80%", column_labels.hidden = TRUE)
+```
+
+
+    
+- [Instructor Version](./v14I.pdf)
+
+- [Student Version](./v14S.pdf)
+                             
+This refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author's email address at the time of submission is provided above. 

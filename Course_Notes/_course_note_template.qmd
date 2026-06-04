@@ -4,7 +4,7 @@ format: html
 toc: false
 ---
 
-Rendering this file should generate the .qmd files for each course notes page
+## Rendering this file will generate the .qmd files for each course notes page. Note that this will overwrite the .qmd files!
 
 ```{r}
 #| include: false
@@ -22,9 +22,7 @@ library(gt)
 metadata <- read_csv("contents_raw.csv")
 
 metadata <- metadata |>
-  mutate(vol = str_sub(issue, 5, 6))
-
-metadata
+  mutate(vol = as.integer(str_sub(issue, 5, 6)))
 
 # create vector of filenames we will write to
 
@@ -87,7 +85,7 @@ library(gt)
 metadata <- read_csv(\"../contents_raw.csv\")
 
 output <- metadata |>
-  mutate(v = str_sub(issue, 5, 6)) |>
+  mutate(v = as.integer(str_sub(issue, 5, 6))) |>
   filter(v == {metadata$vol[[i]]}) |>
   t()
   

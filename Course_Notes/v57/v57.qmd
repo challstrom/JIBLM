@@ -13,7 +13,7 @@ library(gt)
 metadata <- read_csv("../contents_raw.csv")
 
 output <- metadata |>
-  mutate(v = str_sub(issue, 5, 6)) |>
+  mutate(v = as.integer(str_sub(issue, 5, 6))) |>
   filter(v == 57) |>
   t()
   
