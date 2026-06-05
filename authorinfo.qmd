@@ -51,19 +51,24 @@ As copyrights are retained by the author, we do not provide the source for downl
 
 ### Submissions
 
-Course Notes should be sent via email to the Course Notes Editor David Clark along with a completed Submissions Form using the LaTeX templates provided. The form template.tex serves as:
+Course Notes should be sent via email to the Course Notes Editor David Clark along with a completed Submissions Form using the LaTeX templates provided. The form `template.tex` serves as:
 
 -   a guide to typesetting your course notes, and
 -   a template to be modified to produce your print ready submission.
 
 ### To get started
 
--   download the Submission Form, submission_cn.tex,
--   download the LaTeX template, template_cn.tex,
--   download the JIBLM Formatting Package, jiblm_cn.tex,
--   place jiblm_cn.tex and template_cn.tex in the same directory,
--   compile template_cn.tex and read the output, and
--   place your notes into a copy of the file template.tex.
+-   download the Submission Form, <a href="./author_files/submission_cn.tex" download="submission_cn.tex"> `submission_cn.tex` </a>
+
+-   download the LaTeX template, <a href="./author_files/template_cn.tex" download="template_cn.tex">`template_cn.tex` </a>,
+
+-   download the JIBLM Formatting Package, <a href="./author_files/jiblm_cn.tex" download="jiblm_cn.tex">`jiblm_cn.tex`</a>,
+
+-   place `jiblm_cn.tex` and `template_cn.tex` in the same directory,
+
+-   compile `template_cn.tex` and read the output, and
+
+-   place your notes into a copy of the file `template.tex`.
 
 Do not modify `jiblm_cn.tex`. If you encounter any difficulties, please contact the Technical Editor Ted Mahavier for assistance.
 
