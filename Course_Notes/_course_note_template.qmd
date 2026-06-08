@@ -44,10 +44,12 @@ outfiles
 
 output <- metadata |>
   filter(vol == "47") |>
+  select(!file1 & !file2 & !review) |>
   t()
 
 
 cn <- metadata |>
+  select(!file1 & !file2 & !review) |>
   colnames()
 
 tibble(cn, output) |>
@@ -70,8 +72,9 @@ tibble(cn, output) |>
 qmd_block <- ""
 
 for (i in 1:nrow(metadata)) {
-  qmd_block[[i]] <- str_glue("---
-title: \"Journal Content\"
+
+  block1 <- str_glue("---
+title: \"Course Notes\"
 subtitle: \"{metadata$title[[i]]}, {metadata$issue[[i]]}\"
 ---
 
@@ -87,9 +90,11 @@ metadata <- read_csv(\"../contents_raw.csv\")
 output <- metadata |>
   mutate(v = as.integer(str_sub(issue, 5, 6))) |>
   filter(v == {metadata$vol[[i]]}) |>
+  select(!file1 & !file2 & !review) |>
   t()
   
 cn <- metadata |>
+  select(!file1 & !file2 & !review) |>
   colnames()
 
 tibble(cn, head(output, n=-1)) |>
@@ -102,14 +107,18 @@ tibble(cn, head(output, n=-1)) |>
   tab_options( table.width = \"80%\", column_labels.hidden = TRUE)
 \`\`\`
 
+")
 
-    
-- [Instructor Version](./v{metadata$vol[[i]]}I.pdf)
+block2 <- str_glue("    
+- [Download Instructor Version](./v{metadata$vol[[i]]}I.pdf)
 
-- [Student Version](./v{metadata$vol[[i]]}S.pdf)
-                             
+- [Download Student Version](./v{metadata$vol[[i]]}S.pdf)
+
+
 This refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author\'s email address at the time of submission is provided above. "
 )
+
+qmd_block[[i]] <- str_c(block1, block2)
   
 dir.create(str_glue("v{metadata$vol[[i]]}"))
 }

@@ -1,0 +1,46 @@
+---
+title: "Modules"
+format: html
+---
+
+
+```{r}
+#| include: false
+
+library(tidyverse)
+library(DT)
+```
+
+
+```{r}
+#| include: false
+
+
+modules <- read_csv("./modules/modules.csv") |>
+  mutate(vol = as.integer(str_sub(Issue, 5, 6)))
+
+
+modules <- modules |>
+  mutate( Title = paste0("<a href=\"./modules/M0", vol, "/M0", vol, ".html\" >", Title, "</a>" ))
+
+  
+#  separate_wider_regex(Issue, patterns = c("No. ", v = "[0-9]+", " [(]", date = "[A-Za-z]+ [0-9]+", " [)]"))
+
+```
+
+```{r}
+#| echo: false
+
+options(DT.options = list(order = list(4, 'desc')))
+
+#materials |>
+#  datatable(rownames = FALSE, style = 'bootstrap', class = "table-condensed table-striped", escape = FALSE)
+
+modules |>
+  separate_wider_regex(Issue, patterns = c("No.\\s", Volume = "[0-9]+", " [(]", date = "[A-Za-z]+\\.?\\s[0-9]+", "[)]")) |>
+  mutate(Date = format(my(date), "%Y %b")) |>
+  select(!date & !vol) |>
+  relocate(Date, .after = Volume) |>
+  rename( Issue = Volume ) |>
+  datatable(rownames = FALSE, style = 'bootstrap', class = "table-condensed table-striped", escape = FALSE)
+```

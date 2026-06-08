@@ -1,8 +1,10 @@
 ---
 title: "Contact Information"
+toc: false
 ---
 
-### Course Notes Editor
+
+### Submissions Editor
 
 [David Clark](mailto:clarkd@newpaltz.edu), SUNY at New Paltz, Emeritus
 

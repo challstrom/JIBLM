@@ -1,5 +1,5 @@
 ---
-title: "Journal Content"
+title: "Course Notes"
 subtitle: "Modern Geometry II, No. 19 (Jan. 2010)"
 ---
 
@@ -15,9 +15,11 @@ metadata <- read_csv("../contents_raw.csv")
 output <- metadata |>
   mutate(v = as.integer(str_sub(issue, 5, 6))) |>
   filter(v == 19) |>
+  select(!file1 & !file2 & !review) |>
   t()
   
 cn <- metadata |>
+  select(!file1 & !file2 & !review) |>
   colnames()
 
 tibble(cn, head(output, n=-1)) |>
@@ -30,10 +32,11 @@ tibble(cn, head(output, n=-1)) |>
   tab_options( table.width = "80%", column_labels.hidden = TRUE)
 ```
 
+-   [Download Instructor Version](./v19I.pdf)
 
-    
-- [Instructor Version](./v19I.pdf)
+-   [Download Student Version](./v19S.pdf)
 
-- [Student Version](./v19S.pdf)
-                             
-This refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author's email address at the time of submission is provided above. 
+-   [Download Review](./v19_review.pdf)
+
+
+This refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author's email address at the time of submission is provided above.
