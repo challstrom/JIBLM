@@ -35,5 +35,4 @@ tibble(cn, head(output, n=-1)) |>
 
 - [Download Student Version](./v32S.pdf)
 
-
 This refereed course guide is supplied to you free of charge. In exchange, we ask only that if you reproduce a course guide, you do not sell it for more than the cost of reproduction. At JIBLM, the author retains the copyright to his or her material and many are willing to share the .tex source of their notes. If you wish to have the source in addition to the .pdf available below, we ask that you contact the author directly. The author's email address at the time of submission is provided above. 
