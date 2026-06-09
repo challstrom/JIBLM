@@ -15,5 +15,6 @@ Modules are intended:
 
 Instructors are encouraged to contact authors for guidance in the use of Modules.
 
+{{< include modules.qmd >}}
 
 ## Unrefereed course notes
