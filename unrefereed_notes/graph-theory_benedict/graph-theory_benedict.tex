@@ -1,0 +1,1254 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+\newcounter{problemcount}
+\newenvironment{problem}
+{ \begin{description} \refstepcounter{problemcount} \item[Problem \arabic{problemcount}:] }
+{ \end{description} }
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{Introduction to Graph Theory: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Introduction to Graph Theory:\\A Discovery Course for Undergraduates}
+\author{James M. Benedict}
+\date{}
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\vspace{1in}
+
+\begin{center}
+$K_{(3,3,3)} = H_{1} \oplus H_{2}$ \quad Removing the edge $w_{1}v_{2}$ destroys the only $C_{4}$
+\vspace{0.5cm}
+
+\begin{tabular}{cc}
+{\large $H_1$:} & {\large $H_2$:} \\
+%TeXCAD Picture [h1.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(36,36)(0,0)
+%\emline(10.5,20.5)(12.5,10.75)
+\multiput(10.5,20.5)(.0333333,-.1625){60}{\line(0,-1){.1625}}
+%\end
+%\emline(27,24.25)(18,27)
+\multiput(27,24.25)(-.1097561,.0335366){82}{\line(-1,0){.1097561}}
+%\end
+%\emline(10.5,20.75)(18.25,27)
+\multiput(10.5,20.75)(.04166667,.03360215){186}{\line(1,0){.04166667}}
+%\end
+\put(18.25,27){\line(0,1){.25}}
+%\emline(28.5,14.5)(26.75,24.5)
+\multiput(28.5,14.5)(-.0336538,.1923077){52}{\line(0,1){.1923077}}
+%\end
+%\emline(28.25,14.5)(21,8)
+\multiput(28.25,14.5)(-.03756477,-.03367876){193}{\line(-1,0){.03756477}}
+%\end
+%\emline(21,8)(12.75,11)
+\multiput(21,8)(-.0926966,.0337079){89}{\line(-1,0){.0926966}}
+%\end
+\qbezier(10.5,21)(19.38,19.88)(26.75,24.25)
+%\dashline{1}(26.84,24.16)(24.71,21.51)
+\multiput(26.77,24.09)(-.032636,-.040795){13}{\line(0,-1){.040795}}
+\multiput(25.92,23.03)(-.032636,-.040795){13}{\line(0,-1){.040795}}
+\multiput(25.07,21.97)(-.032636,-.040795){13}{\line(0,-1){.040795}}
+%\end
+%\dashline{1}(24.71,21.51)(24.71,21.51)
+%\end
+%\dashline{1}(24.71,21.51)(22.95,18.5)
+\multiput(24.64,21.44)(-.03214,-.05464){11}{\line(0,-1){.05464}}
+\multiput(23.94,20.24)(-.03214,-.05464){11}{\line(0,-1){.05464}}
+\multiput(23.23,19.04)(-.03214,-.05464){11}{\line(0,-1){.05464}}
+%\end
+%\dashline{1}(22.95,18.5)(21.53,14.44)
+\multiput(22.88,18.43)(-.03367,-.09681){7}{\line(0,-1){.09681}}
+\multiput(22.41,17.08)(-.03367,-.09681){7}{\line(0,-1){.09681}}
+\multiput(21.93,15.72)(-.03367,-.09681){7}{\line(0,-1){.09681}}
+%\end
+%\dashline{1}(21.53,14.44)(21,11.79)
+\multiput(21.46,14.37)(-.02946,-.14731){6}{\line(0,-1){.14731}}
+\multiput(21.11,12.6)(-.02946,-.14731){6}{\line(0,-1){.14731}}
+%\end
+%\dashline{1}(21,11.26)(21,8.25)
+\put(20.93,11.19){\line(0,-1){.751}}
+\put(20.93,9.68){\line(0,-1){.751}}
+%\end
+%\emline(18.25,27)(17.75,30.25)
+\multiput(18.25,27)(-.033333,.216667){15}{\line(0,1){.216667}}
+%\end
+%\emline(12.5,11)(9.75,8.5)
+\multiput(12.5,11)(-.0366667,-.0333333){75}{\line(-1,0){.0366667}}
+%\end
+%\emline(28.5,14.75)(31.25,13.75)
+\multiput(28.5,14.75)(.091667,-.033333){30}{\line(1,0){.091667}}
+%\end
+\qbezier(17.75,30)(36,31.13)(31.25,13.75)
+\qbezier(31,13.75)(25.63,-3.75)(9.75,8.75)
+\qbezier(9.75,8.75)(-.13,24.13)(17.5,30)
+\put(17.71,29.96){\circle*{2.5}}
+\put(18.21,26.96){\circle*{2.5}}
+\put(26.71,24.46){\circle*{2.5}}
+\put(28.21,14.96){\circle*{2.5}}
+\put(20.71,7.71){\circle*{2.5}}
+\put(12.21,11.21){\circle*{2.5}}
+\put(10.71,20.71){\circle*{2.5}}
+\put(9.71,8.71){\circle*{2.5}}
+\put(31.46,13.96){\circle*{2.5}}
+\put(24.5,15.5){\makebox(0,0)[cc]{$u_1$}}
+\put(14,18.75){\makebox(0,0)[cc]{$u_2$}}
+\put(6.25,6.75){\makebox(0,0)[cc]{$u_3$}}
+\put(14.75,13.5){\makebox(0,0)[cc]{$v_1$}}
+\put(29.5,22.75){\makebox(0,0)[cc]{$v_2$}}
+\put(16,33.5){\makebox(0,0)[cc]{$v_3$}}
+\put(21.25,5.25){\makebox(0,0)[cc]{$w_1$}}
+\put(35,13){\makebox(0,0)[cc]{$w_2$}}
+\put(18.75,23.75){\makebox(0,0)[cc]{$w_3$}}
+\end{picture}
+\quad & \quad
+%TeXCAD Picture [h2.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(40.13,36)(0,0)
+%\emline(29.5,20.5)(27.5,10.75)
+\multiput(29.5,20.5)(-.0333333,-.1625){60}{\line(0,-1){.1625}}
+%\end
+%\emline(13,24.25)(22,27)
+\multiput(13,24.25)(.1097561,.0335366){82}{\line(1,0){.1097561}}
+%\end
+%\emline(29.5,20.75)(21.75,27)
+\multiput(29.5,20.75)(-.04166667,.03360215){186}{\line(-1,0){.04166667}}
+%\end
+\put(21.75,27){\line(0,1){.25}}
+%\emline(11.5,14.5)(13.25,24.5)
+\multiput(11.5,14.5)(.0336538,.1923077){52}{\line(0,1){.1923077}}
+%\end
+%\emline(11.75,14.5)(19,8)
+\multiput(11.75,14.5)(.03756477,-.03367876){193}{\line(1,0){.03756477}}
+%\end
+%\emline(19,8)(27.25,11)
+\multiput(19,8)(.0926966,.0337079){89}{\line(1,0){.0926966}}
+%\end
+\qbezier(29.5,21)(20.62,19.88)(13.25,24.25)
+%\dashline{1}(15.29,21.51)(15.29,21.51)
+\put(15.22,21.44){\line(0,1){0}}
+%\end
+%\emline(21.75,27)(22.25,30.25)
+\multiput(21.75,27)(.033333,.216667){15}{\line(0,1){.216667}}
+%\end
+%\emline(27.5,11)(30.25,8.5)
+\multiput(27.5,11)(.0366667,-.0333333){75}{\line(1,0){.0366667}}
+%\end
+%\emline(11.5,14.75)(8.75,13.75)
+\multiput(11.5,14.75)(-.091667,-.033333){30}{\line(-1,0){.091667}}
+%\end
+\qbezier(22.25,30)(4,31.13)(8.75,13.75)
+\qbezier(9,13.75)(14.37,-3.75)(30.25,8.75)
+\qbezier(30.25,8.75)(40.13,24.13)(22.5,30)
+\put(22.29,29.96){\circle*{2.5}}
+\put(21.79,26.96){\circle*{2.5}}
+\put(13.29,24.46){\circle*{2.5}}
+\put(11.79,14.96){\circle*{2.5}}
+\put(19.29,7.71){\circle*{2.5}}
+\put(27.79,11.21){\circle*{2.5}}
+\put(29.29,20.71){\circle*{2.5}}
+\put(30.29,8.71){\circle*{2.5}}
+\put(8.54,13.96){\circle*{2.5}}
+\put(24,33.5){\makebox(0,0)[cc]{$u_1$}}
+\put(26,18.75){\makebox(0,0)[]{$u_2$}}
+\put(15.5,15.5){\makebox(0,0)[cc]{$u_3$}}
+\put(33.75,6.75){\makebox(0,0)[cc]{$v_1$}}
+\put(18.75,5.25){\makebox(0,0)[cc]{$v_2$}}
+\put(21.25,23.75){\makebox(0,0)[cc]{$v_3$}}
+\put(10.5,22.75){\makebox(0,0)[cc]{$w_1$}}
+\put(25.25,13.5){\makebox(0,0)[cc]{$w_2$}}
+\put(5,13){\makebox(0,0)[cc]{$w_3$}}
+\end{picture}
+\end{tabular}
+\vspace{0.4cm}
+
+Place any edge of $H_{1}$ into $H_{2}$ or vice-versa, and a $C_{4}$ is created.
+\end{center}
+
+
+
+\newpage
+
+\section*{Preface}
+\addcontentsline{toc}{section}{\numberline{}Preface}
+\markboth{Preface}{Preface}
+
+\pagenumbering{roman}
+
+
+\subsection*{Remarks}
+\addcontentsline{toc}{subsection}{\numberline{}Remarks}
+
+By reading through this text, one can acquire a familiarity with the elementary topics of Graph Theory and the associated (hopefully standard) notation. The notation used here follows that used by Gary Chartrand at Western Michigan University in the last third of the 20th century. His usage of notation was influenced by that of Frank Harary at the University of Michigan beginning in the early 1950s. The text's author was Chartrand's student at WMU from 1973 to 1976.
+
+In order to actually \emph{learn} any graph theory from this text, one must \emph{work through} and solve the problems found within it. Some of the problems are very easy. Most of them are only a moderate challenge. Less than a half-dozen or so are really hard. Perhaps a consultation with a Professor of Graph Theory would be in order when they are encountered. As this is being written (and for the foreseeable future), you could communicate with such a professor electronically via jbenedic@aug.edu, given that a graph theory professor is not available to you in any other manner.
+
+
+\subsection*{Nature of the Text}
+\addcontentsline{toc}{subsection}{\numberline{}Nature of the Text}
+
+The discovery method, accredited to R. L. Moore, is the inspiration for the style of the presentation found within this text. The text is intended for undergraduates. It allows for a one-semester development of the most elementary yet universal concepts of Graph Theory. It has been used successfully in this manner since Fall 2002 at Augusta State University.
+
+
+\subsection*{Dedication}
+\addcontentsline{toc}{subsection}{\numberline{}Dedication}
+
+This text is respectfully dedicated to Helen Spotts, Bill Lakey, and Gary Chartrand, of Jonesville High School (Michigan) in the early 1960s, Central Michigan University in the late 1960s, and Western Michigan University in the early 1970s, respectively. Without them, I would have been dead years ago.
+
+\begin{flushright}
+James M. Benedict
+
+Augusta State University
+
+Augusta, Georgia
+
+March 2002
+
+Revised December 20, 2005
+\end{flushright}
+
+
+
+\newpage
+
+\pagenumbering{arabic}
+
+\section{Introductory Concepts}
+\markboth{1. Introductory Concepts}{1. Introductory Concepts}
+
+
+\subsection{Basic Ideas}
+
+A \emph{digraph}, denoted either by $D$ or $D = (V,R)$, is an ordered pair $(V,R)$, where:
+\begin{enumerate}[\hspace{1cm}i)]
+  \item $V$ is a non-empty and finite set, and
+  \item $R$ is a (possibly empty) relation on $V$.
+\end{enumerate}
+$V$ is called the \emph{vertex set} of $D$, and $R$ is called the \emph{arc set} (of $D$). A member of $V$ is called a \emph{vertex} (of $D$). Two or more members of $V$ are called \emph{vertices}.
+
+We are not going to study digraphs here. However, Graph Theory is a subfield of Digraph Theory. Graphs are formed when $R$ happens to be a symmetric and irreflexive relation on $V$. Here is how that happens. Graphs are not supposed to have loops. That is why $R$ must be irreflexive. Now, given that $R$ is symmetric, then whenever $(u,v) \in R$, it follows that $(v,u) \in R$. To form a graph, we ``shrink'' the symmetric pair to a single undirected entity called an \emph{edge}. We write $uv$ (or $vu$ if we feel like it) to mean $\{ (u,v),(v,u) \}$, or more succinctly, to mean $\{ u,v \}$. This leads to the following definition.
+
+A \emph{graph}, denoted either by $G$ or $G = (V,E)$, is an ordered pair $(V,E)$ where:
+\begin{enumerate}[\hspace{1cm}i)]
+  \item $V$ is a non-empty and finite set, and
+  \item $E$ is a (possibly empty) set containing $2$-element subsets of $V$.
+\end{enumerate}
+As hinted above, a member of $E$ is called an edge (of $G$). Two or more members of $E$ are called \emph{edges}. We call $E$ the \emph{edge set} of $G$. Sometimes the notation $V(G)$ is used for $V$. Sometimes the notation $E(G)$ is used for $E$. This will usually happen when there are two or more graphs in a particular discussion.
+
+Given $G = (V,E)$, the \emph{order} of $G$ is the integer $|V|$. It is denoted by $p$, or sometimes by $p(G)$. The \emph{size} of $G$ is the integer $|E|$. It is denoted by $q$ or $q(G)$. Such a $G$ can be called a \emph{$(p,q)$-graph}.
+
+\begin{problem}
+WICN: (Work In Class Now): Consider the graph $G = (V,E)$, and suppose that $V = \{a,b,c\}$. For every possible size, give an example of a possible edge set for $G$.
+\end{problem}
+
+\begin{problem}
+Suppose the graph $G$ is of order $p$. What is the smallest size possible for $G$? The largest?
+\end{problem}
+
+\begin{problem}
+How many non-identical graphs exist having vertex set $\{ a,b,c \}$? Prove, using brute force, that you are correct. (The term ``brute force'' is used when you are to show all possible cases. There is no ``elegant theory'' involved in such a proof.)
+\end{problem}
+
+A \emph{rendering} of a graph $G$ of order $p$ is accomplished by the following:
+\begin{enumerate}[\hspace{1cm}1.]
+  \item Pick $p$ distinct points in a plane (or other surface).
+  \item Label the points with the members of $V(G)$. That is, set up a $1-1$ onto function between $V(G)$ and the chosen points. These points are now thought of as the vertices of the graph.
+  \item Given $u \in V(G)$ and $v \in V(G)$, draw a Jordan arc (a not-too-wiggly continuous line) having $u$ and $v$ as endpoints if and only if $uv \in E$. These lines are now thought of as the edges of the graph. To have these edges intersect only at vertices is a goal, but not a requirement. However, never have an edge run through any vertex.
+\end{enumerate}
+
+We will usually treat the rendering of a graph as if it were actually the graph itself.
+
+\begin{problem}
+WICN: Create (the rendering of) a $(5,9)$-graph $G$ where the intersection of edges occurs only at vertices.
+\end{problem}
+
+\begin{problem}
+WICN: Give a $(4,6)$-graph $G_{1}$, having $V(G_{1}) = \{ a,b,c,d \}$, where all edges are straight line segments, and where there is exactly one instance of edges crossing at non-vertex points. (You are to give a rendering, even though we talk of making a graph. Remember, a graph is really a pair of special sets. We, however, are psychological people, so we treat the rendering as the graph itself.)
+\end{problem}
+
+\begin{problem}
+WICN: Give a $(4,6)$-graph $G_{2}$, having $V(G_{2}) = \{ w,x,y,z \}$, where all edges are straight line segments, and where edges intersect only at vertices.
+\end{problem}
+
+There is a moral to the above two problems. It is that a rendering of a graph can be psychologically misleading as to the ``true nature'' of the graph.
+
+\begin{problem}
+WICN: Consider the last two problems. Find a function
+\begin{equation*}
+f\ :\ V(G_{1}) \xrightarrow[onto]{1-1} V(G_{2})
+\end{equation*}
+such that
+\begin{equation*}
+uv \in E(G_{1}) \iff f(u)f(v) \in E(G_{2})
+\end{equation*}
+\end{problem}
+
+
+\subsection{Graph Theoretic Equality}
+
+Given graphs $G_{1}$ and $G_{2}$, and the function $f\ :\ V(G_{1}) \longrightarrow V(G_{2})$, we call $f$ an \emph{isomorphism from $G_{1}$ to $G_{2}$} if and only if
+\begin{enumerate}[\hspace{1cm}i)]
+  \item $f\ :\ V(G_{1}) \xrightarrow[onto]{1-1} V(G_{2})$ and
+  \item $uv \in E(G_{1}) \iff f(u)f(v) \in E(G_{2})$.
+\end{enumerate}
+When such an isomorphism function exists we say $G_{1}$ \emph{is isomorphic to} $G_{2}$.
+
+\begin{problem}
+Suppose for the graphs $G_{1}$ and $G_{2}$ we have that $G_{1}$ is isomorphic to $G_{2}$. Prove that $G_{2}$ is isomorphic to $G_{1}$.
+\end{problem}
+
+By the above problem, we are allowed to simply say that $G_{1}$ and $G_{2}$ are isomorphic (that is, each one is isomorphic to the other one) when there is an isomorphism from $G_{1}$ to $G_{2}$. One can also say that $G_{1}$ \emph{is isomorphic with} $G_{2}$. The order in which isomorphic graphs are mentioned is not important. The next problem shows that isomorphic graphs can be rendered in such a way as to have the same ``shape''.
+
+\begin{problem}
+Suppose that $G_{1}$ and $G_{2}$ are isomorphic graphs. Prove that there is a rendering of $G_{1}$ and a rendering of $G_{2}$, each of which uses exactly the same vertices (points) and edges (lines) in the surface used for the renderings.
+\end{problem}
+
+Recall that two sets are different if and only if the elements of one of the sets are not the exact same elements in the other set. Also, two ordered pairs are different if and only if the first component of one of the ordered pairs is not the first component of the other ordered pair, or the second component of one of the ordered pairs is not the second component of the other ordered pair (or both, of course).
+
+\begin{problem}
+Let $V = \{ v_{1},v_{2},\cdots,v_{p} \}$. Let:
+\begin{equation*}
+\mathbb{G = \{ } G\ |\ G \text{ is a graph with } V(G) = V \}
+\end{equation*}
+Define the relation $R$ on $\mathbb{G}$ by:
+\begin{equation*}
+(G_{1},G_{2}) \in R \text{ if and only if } G_{1} \text{ is isomorphic to } G_{2}
+\end{equation*}
+Prove that $R$ is an equivalence relation on $\mathbb{G}$. Now, suppose that $G_{1}$ and $G_{2}$ are in the same equivalence class of $R$.
+\end{problem}
+
+From the last two problems, we find that all graphs in some given equivalence class, even though no two are \emph{identical}, do possess the same inherent information, since (when rendered) they can possess the same ``shape''. For this reason, we write $G_{1} = G_{2}$ when $G_{1}$ is \emph{isomorphic} to $G_{2}$, even in the case that $G_{1}$ is not \emph{identical} with $G_{2}$. In other words, when we write $G_{1} = G_{2}$, we mean that $G_{1}$ and $G_{2}$ are equivalent but not necessarily identical.
+
+There are other conventions used by graph theorists. For example, the renderings of graphs are often thought of as the graph itself. Often, the vertices will not be labeled in the renderings. We will call the points the \emph{vertices}, and we will call the lines the \emph{edges} of the graph. When there are \emph{no extraneous crossings of edges}, we say that the graph is \emph{embedded in the surface}. 
+\label{embedded}
+
+We speak of ``drawing the graph'' rather than ``giving a rendering of the graph''. When the edge $e_{1}$ and the edge $e_{2}$ have exactly one vertex in common, we say $e_{1}$ is \emph{adjacent to} (or with) $e_{2}$. When the edge $e$ has end-vertices $u$ and $v$, we write $e = uv$, and say $u$ is \emph{adjacent to} (or with) $v$. We say $u$ (and similarly $v$) is \emph{incident to} (or with) $e$; we say $e$ is \emph{incident to} (or with) $u$ (or $v$).
+
+\begin{problem}
+Draw all possible (pair-wise non-isomorphic unlabeled) graphs having $5$ vertices. How many are there? How many would you have to draw if the vertices were labelled and we asked for all non-identical graphs?
+\end{problem}
+
+\begin{problem}
+Let $V = \{ v_{1},v_{2},\cdots,v_{p} \}$. How many non-identical graphs exist having the vertex set $V$ and having size $q$? Prove your answer is correct.
+\end{problem}
+
+\begin{problem}
+Let $V = \{ v_{1},v_{2},\cdots,v_{p} \}$. How many non-identical graphs exist having the vertex set $V$? (The question ``How many non-isomorphic graphs exist on $p$ vertices?'' is actually a bit too hard for an undergraduate class.)
+\end{problem}
+
+\begin{problem}
+The following statement is obviously true. Modify it by striking out exactly two of the numbered relators, thereby creating a conjecture. Create a theorem by proving that your conjecture is correct.
+
+The number of non-isomorphic $(p,q)$-graphs is
+\begin{enumerate}[\hspace{1cm}i)]
+  \item less than,
+  \item equal to, or
+  \item greater than
+\end{enumerate}
+the number of non-isomorphic $(p,\binom{p}{2}-q)$ graphs.
+\end{problem}
+
+
+\subsection{Degrees of Vertices}
+
+\begin{problem}
+WICN: Draw a single graph $G$ having all of the following properties: $G$ contains at least one vertex incident with exactly one edge, at least one vertex incident with exactly two edges, and at least one vertex incident with exactly three edges.
+\end{problem}
+
+Given the graph $G$ with $v \in V(G)$, and with $v$ incident with exactly $n$ edges of $G$, we say \emph{the degree of $v$ in $G$ is $n$}. This is written as $\deg_{G}(v) = n$. When it is clear which graph $G$ is being referenced, it is often more simply written as $\deg_{G}(v) = n$. The smallest integer that is a degree of the graph $G$ is denoted $\delta(G)$. It is called the \emph{min degree of $G$}. The largest integer that is a degree of the graph $G$ is denoted $\Delta(G)$. It is called the \emph{max degree of $G$}. A vertex of degree $0$ is called an \emph{isolated vertex}. A vertex of degree $1$ is called an \emph{end-vertex}.
+
+\begin{problem}
+Suppose $G$ is a $(p,q)$-graph with $V(G) = \{ v_{1},v_{2},\cdots,v_{p} \}$. Prove that
+\begin{equation*}
+\left( \sum_{j=1}^{p} \deg_{G}(v_{j}) \right) = 2q
+\end{equation*}
+\end{problem}
+
+For the graph $G$ containing the vertex $v$, we call $v$ an \emph{even vertex} in $G$ when $\deg_{G}(v)$ is an even integer. As you might expect, when $\deg_{G}(v)$ is an odd integer, we call $v$ an \emph{odd vertex} in $G$.
+
+\begin{problem}
+Prove that every graph has an even number of odd vertices.
+\end{problem}
+
+Suppose $G$ is a graph with $V(G) = \{ v_{1},v_{2},\cdots,v_{p} \}$. Take $\deg_{G}(v_{k}) = d_{k}$ for each $k$. The list $d_{1},d_{2},\cdots,d_{p}$ is called the \emph{degree sequence of $G$}.
+
+\begin{problem}
+WICN: Draw a graph $G$ whose degree sequence is $3$, $2$, $2$, $3$. Relabel the vertices so that the degree sequence is $2$, $2$, $3$, $3$.
+\end{problem}
+
+What we learn from the above problem is that the vertices of a graph can always be relabeled if necessary, so that the degree sequence is of the form
+\begin{equation*}
+\delta(G) = d_{1} \leq d_{2} \leq \cdots \leq d_{p} = \Delta(G)
+\end{equation*}
+The sequence of integers $d_{1},d_{2},\cdots,d_{p}$ is called \emph{graphical} when there exists a graph $G$ having vertices labelled $v_{1},v_{2},\cdots,v_{p}$, where $\deg_{G}(v_{k}) = d_{k}$ for each $k$.
+
+\begin{problem}
+Prove or disprove each of the following:
+\begin{enumerate}[\hspace{1cm}A.)]
+  \item There exist integers $n$ and $p$ such that the sequence $n,n+1,n+2,\cdots,n+p-1$ is graphical.
+  \item There exist integers $n$ and $p$, with $p \geq 2$, such that the sequence $n,n+1,n+2,\cdots,n+p-1$ is graphical.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Consider the sequence $d_{1} \leq d_{2} \leq \cdots \leq d_{p}$. Prove that the sequence is graphical only if:
+\begin{enumerate}[\hspace{1cm}i)]
+  \item each $d_{k}$ is a non-negative integer,
+  \item $\displaystyle \left( \sum_{k=1}^{p} d_{k} \right)$ is even, and
+  \item $d_{p}$ is less than $p$.
+\end{enumerate}
+Prove or disprove that the converse is true.
+\end{problem}
+
+\begin{problem}
+Suppose $p \geq 2$ and $d_{p} \geq 1$. Consider the sequence $S_{1}$ given by $d_{1},d_{2},\cdots,d_{p}$, where $d_{1} \leq d_{2} \leq \cdots \leq d_{p}$. Further, consider the sequence $S_{2}$ given by
+\begin{equation*}
+d_{1},d_{2},\cdots,d_{(p-d_{p}-1)},d_{(p-d_{p})}-1,d_{(p-d_{p}+1)}-1,\cdots,d_{(p-1)}-1
+\end{equation*}
+Prove that $S_{1}$ is graphical if and only if $S_{2}$ is graphical.
+\end{problem}
+
+\begin{problem}
+Which of the following are graphical sequences. Why or why not?
+\begin{enumerate}[\hspace{1cm}A.)]
+  \item $-3,-1,0,1,2,3$
+  \item $1,1,72$
+  \item $1,1,1,1,3$
+  \item $1,2,2,2,3$
+  \item $0,0,1,2,2,2,3$
+  \item $0,1,1,1,2,2,2,3,3,4,7$
+  \item $0,0,1,1,1,2,2,2,3,3,3,3,5$
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Prove or disprove the following conjecture.
+
+If $G_{1}$ and $G_{2}$ are graphs with the same degree sequence, then $G_{1} = G_{2}$.
+\end{problem}
+
+\begin{problem}
+Prove that the sequence $d_{1},d_{2},\cdots,d_{p}$ is graphical if and only if the sequence $p-d_{1}-1,p-d_{2}-1,\cdots,p-d_{p}-1$ is graphical.
+\end{problem}
+
+When $\delta(G) = \Delta(G)$, we call $G$ a \emph{regular graph}. We speak of $G$ as being \emph{$n$-regular}, where $n$ is the common degree of each vertex of the graph $G$. The \emph{complete graph on $p$ vertices} has all possible edges. It is denoted as $K_{p}$. It is a $(p-1)$-regular graph. When a graph is $3$-regular, it is called a \emph{cubic} graph. Of course, cubic graphs have an even number of vertices. Can you recall why that is?
+
+
+\subsection{Subgraphs}
+
+For the graphs $G$ and $H$, we say \emph{$G$ is a subgraph of $H$} (\emph{$H$ is a supergraph of $G$}), written as $G \subset H$ ($H \supset G$), when:
+\begin{enumerate}[\hspace{1cm}i)]
+  \item $V(G) \subseteq V(H)$ and
+  \item $E(G) \subseteq E(H)$
+\end{enumerate}
+both occur. Whenever $G \subset H$ and given $G_{1} = G$, we often say $G_{1} \subset H$, rather than saying $G_{1}$ is isomorphic to a subgraph of $H$. (Similar comments hold for the ``supergraph'' phraseology.) Given that the graph $G$ is of order $2$ or greater and contains the vertex $v$ and the edge $e$, the graphs $G-v$ and $G-e$ are defined as:
+\begin{align*}
+V(G-v) & = V(G) - \{v\}\\
+E(G-v) & = E(G) - \{ y\ |\ y \text{ is an edge incident with } v \} \\
+V(G-e) & = V(G) \\
+E(G-e) & = E(G) - \{e\}
+\end{align*}
+The graph $G-X$ is defined analogously for any $X \subseteq V(G)$, as well as for any $X \subseteq E(G)$.
+
+\begin{problem} $\ $
+\begin{enumerate}[\hspace{1cm}A.)]
+  \item Consider $K_{4} - \{ e_{1},e_{2} \}$, where $e_{1}$ and $e_{2}$ are non-adjacent edges. Suppose the vertices are labelled by $\{ a,b,c,d \}$. How many such non-identical graphs $K_{4} - \{ e_{1},e_{2} \}$ exist? Justify your answer. Prove or disprove that they are all pair-wise isomorphic.
+  \item Prove or disprove that $( K_{p} - \{ v_{1},v_{2},v_{3} \} ) = K_{(p-3)}$ where $p \geq 4$.
+\end{enumerate}
+\end{problem}
+
+Suppose that $u$ and $v$ are \emph{non-adjacent} vertices of the graph $G$. (This last sentence tells us that $uv \notin E(G)$.) Call this missing edge $e$. That is, $e = uv$. The graph $G+uv$, also written as $G+e$, is defined by:
+\begin{align*}
+V(G+e) & = V(G) \text{ and } \\
+E(G+e) & = E(G) \cup \{e\}
+\end{align*}
+Note that $G \subset G+e$, and yet $V(G) = V(G+e)$. One is a subgraph of the other, yet they have the \emph{same} vertex set (not just a proper subset). Likewise, letting $e$ be any edge of $G$, we have that $G-e \subset G$ and $V(G-e) = V(G)$. Whenever $G \subset H$ with $V(G) = V(H)$, we call $G$ \emph{a spanning subgraph of $H$}.
+
+\begin{problem}
+WICN: Draw all non-isomorphic spanning subgraphs of $K_{4}$.
+\end{problem}
+
+Consider the graph $G$ and the set $X$ where $X \neq \phi$ and $X \subseteq V(G)$. There exists a special subgraph of $G$ called \emph{the subgraph of $G$ induced by $X$}. It is denoted by $\langle X \rangle$. This graph is defined as follows:
+\begin{align*}
+V ( \langle X \rangle ) & = X \text{ and } \\
+E ( \langle X \rangle ) & = \{ e\ |\ e \in E(G) \text{ and } e \text{ is incident with two vertices in } X \}
+\end{align*}
+We call $\langle X \rangle$ a \emph{vertex-induced} subgraph of $G$; or more simply, an \emph{induced} subgraph of $G$.
+
+\begin{problem}
+Prove or disprove: $H$ is an induced subgraph of $G$ if and only if there exists a set $W$ such that $W \subseteq V(G)$ and $H = G-W$.
+\end{problem}
+
+We now move to the edge analogue of the above concept. Consider the graph $G$ and the set $X$ where $X \neq \phi$ and $X \subseteq E(G)$. There exists a special subgraph of $G$. It is (as above) called \emph{the subgraph of $G$ induced by $X$}. It is denoted (again, as above) by $\langle X \rangle$. This graph is defined as follows:
+\begin{align*}
+V ( \langle X \rangle ) & = \{ v\ |\ v \text{ is incident with one or more edges of } X \} \text{ and } \\
+E ( \langle X \rangle ) & = X
+\end{align*}
+We call $\langle X \rangle$ an \emph{edge-induced} subgraph of $G$. (There is no simplification of this terminology.)
+
+\begin{problem} $\ $
+\begin{enumerate}[\hspace{1cm}A.)]
+  \item Prove that $H$ is an edge-induced subgraph of $G$ if and only if there exists a set $W$ such that $W \subseteq E(G)$ and $H = G-W$.
+  \item Draw all edge-induced subgraphs of $K_{4}$.
+\end{enumerate}
+\end{problem}
+
+For the next two problems, note that if $X \cap Y \neq \phi$, then of course $X \neq \phi$ and $Y \neq \phi$.
+
+\begin{problem}
+Consider the graph $G$ having $X \subseteq V(G)$ and $Y \subseteq V(G)$, where $X \cap Y \neq \phi$.
+\begin{enumerate}[\hspace{1cm}A.)]
+  \item Prove that $E ( \langle X \rangle ) \cap E ( \langle Y \rangle ) \subseteq E ( \langle X \cap Y \rangle )$.
+  \item Prove that $E ( \langle X \rangle ) \cap E ( \langle Y \rangle ) \supseteq E ( \langle X \cap Y \rangle )$.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Consider the graph $G$ having $X \subseteq V(G)$ and $Y \subseteq V(G)$, where $X \neq \phi$ and $Y \neq \phi$.
+\begin{enumerate}[\hspace{1cm}A.)]
+  \item Prove that $E ( \langle X \rangle ) \cup E ( \langle Y \rangle ) \subseteq E ( \langle X \cup Y \rangle )$.
+  \item Prove, by giving an example, that $E ( \langle X \rangle ) \cup E ( \langle Y \rangle ) \supseteq E ( \langle X \cup Y \rangle )$ might not happen.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+WICN: Give an example of a spanning, $2$-regular subgraph of $K_{6}-e$.
+\end{problem}
+
+\begin{problem}
+WICN: Create a graph $G$. Find a regular supergraph of $G$. Find one that is spanned by $G$.
+\end{problem}
+
+\begin{problem}
+Prove or disprove: Every graph $G$ is a spanning subgraph of some graph $H$, where $H$ is regular of degree $\Delta(G)$.
+\end{problem}
+
+\begin{problem}
+Prove or disprove: Every graph $G$ is a vertex-induced subgraph of some graph $H$, where $H$ is regular of degree $\Delta(G)$.
+\end{problem}
+
+
+\subsection{The Complement of a Graph}
+
+Given the graph $G$, the \emph{complement of $G$} is denoted $\overline{G}$. This graph is defined by:
+\begin{align*}
+V \left( \overline{G} \right) & = V(G) \text{ and } \\
+E \left( \overline{G} \right) & = \{ uv\ |\ u \in V(G),\ v \in V(G), \text{ and } uv \notin E(G) \}
+\end{align*}
+One can think of $\overline{G}$ as being the graph formed by deleting from $K_{p}$ those edges that would induce a copy of $G$, where of course $p = |V(G)|$.
+
+\begin{problem}
+WICN: Given the $(p,q)$-graph $G$, find a formula for $\left\vert E\left(
+\overline{G}\right)  \right\vert $.
+
+Often one writes $\overline{q}$ to stand for $\left\vert E \left( \overline{G} \right) \right\vert$.
+\end{problem}
+
+\begin{problem}
+You already have drawn all graphs up through order five. Redo that work so that each graph is paired with its complement.
+\end{problem}
+
+When the graphs $G$ and $H$ have disjoint vertex sets, the graph $G\cup H$ is defined by:
+\begin{align*}
+V(G \cup H) & = V(G) \cup V(H) \text{ and } \\
+E(G \cup H) & = E(G) \cup E(H)
+\end{align*}
+The union notation is not used when $G$ and $H$ share one or more vertices. Note that $\overline{K_{p}}$ is an edgeless graph having $p$ isolated vertices. This seems to be $p$ copies of $K_{1}$, so we write
+\begin{equation*}
+\overline{K_{p}} = pK_{1} = K_{1} \cup K_{1} \cup \cdots \cup K_{1}
+\end{equation*}
+where there are $p$ copies of $K_{1}$ in the union process. By the very notation, we know we are choosing a separate and new vertex for each copy of the $K_{1}$. For the positive integers $p_{1},p_{2},\cdots,p_{n}$, the graph $K ( p_{1},p_{2},\cdots,p_{n} )$ is defined by being the complement of $K_{p_{1}} \cup K_{p_{2}} \cup \cdots \cup K_{p_{n}}$. The graph $K ( p_{1},p_{2},\cdots,p_{n} )$ is called a \emph{complete multi-partite} graph. When the value of $n$ is important, it is called a \emph{complete n-partite} graph. Subgraphs of $K ( p_{1},p_{2},\cdots,p_{n} )$ formed by removing edges are called \emph{multi-partite} or \emph{n-partite} graphs. (They are no longer ``complete''.) When $n = 2$, the graphs are called \emph{bipartite} or \emph{complete bipartite}, as the case may be. The complete bipartite graph $K(1,n)$ is called a \emph{star} graph. Given the multi-partite graph $G$, a \emph{partite set} is a maximal subset of $V(G)$ with respect to the property of inducing an edgeless subgraph. Bipartite graphs have two partite sets. Similarly, $n$-partite graphs have $n$ distinct partite sets.
+
+\begin{problem}
+WICN: Fill in the blanks. 
+
+The complete multi-partite graph $K ( p_{1},p_{2},\cdots,p_{n} )$ is in fact a complete graph if and only if \underline{ \ \ \ \ \ \ \ \ \ \ \ \ }.
+
+When $K ( p_{1},p_{2},\cdots,p_{n} )$ is in fact complete, then $K ( p_{1},p_{2},\cdots,p_{n} ) =$ \underline{ \ \ \ \ \ \ \ }.
+
+Be able to justify your answers.
+\end{problem}
+
+\begin{problem}
+What is the order of $K ( p_{1},p_{2},\cdots,p_{n} )$? What is the size of $K ( p_{1},p_{2},\cdots,p_{n} )$?
+\end{problem}
+
+\begin{problem}
+Find a supergraph $H$ of $K(1,3)$ of the smallest possible order such that $K(1,3)$ is an induced subgraph of $H$ and $H$ is $3$-regular. Justify your results. Generalize your ideas in order to find a supergraph $H$ of $K(1,n)$ of the smallest possible order such that $K(1,n)$ is an induced subgraph of $H$ and $H$ is $n$-regular. Justify your results.
+\end{problem}
+
+A graph $G$ is \emph{self-complementary} if and only if $G = \overline{G}$.
+
+\begin{problem}
+WICN: Find all self-complementary graphs up through order five.
+\end{problem}
+
+\begin{problem}
+Suppose that $G$ is a self-complementary graph of order $p$. Prove that either $4$ divides $p$, or $4$ divides $p-1$. (Hint: we know $q = \overline{q}$, and we know the value of $q + \overline{q}$.)
+\end{problem}
+
+\begin{problem}
+Suppose that $G$ is a self-complementary graph of order $p$, where $4$ divides $p$. Prove there exists a self-complementary graph of order $p+1$.
+\end{problem}
+
+\begin{problem}
+Find every cubic graph of order $p$ and size $2p-3$. Explain how you know that you have found them all. (Hint: think of the complement.)
+\end{problem}
+
+\begin{center}
+\vspace{1cm}
+{\Large End of Section One}
+\end{center}
+
+
+
+\newpage
+
+\section{Special Subgraphs}
+\markboth{2. Special Subgraphs}{2. Special Subgraphs}
+
+
+\subsection{Walks}
+
+Let $G$ be a graph containing the vertices $u$ and $v$. (These vertices need not be distinct.) A $u-v$ \emph{walk} in $G$ is an alternating sequence (or list) of vertices and edges of $G$, beginning with $u$ and ending with $v$, such that each edge of the sequence is directly preceded and followed by the vertices for that edge. For example, given the graph $G = (\{a,b,c,d\},\{ab,ac,ad,bc,cd\})$, the walk $c,ac,a,ab,b,ab,a,ad,d$ can be constructed. 
+
+The \emph{length} of a walk is the number of edges, including repeats, contained in the list. (When you walk 20 yards, turn around and come back for the glasses you forgot, then re-walk the 20 yards and 300 more yards to your office, then you have walked 360 yards total. Same with graphs.) The walk given from the above graph has a length of $4$. Length $0$ walks are possible; just pick a vertex and stay there. We might name any given walk, often by a capital letter. For example we could write ``Consider the walk $W\ :\ c,ac,a,ab,b,ab,a,ad,d$.'', and then refer to the whole walk by just referring to $W$. (Read ``given by'' for the colon following the $W$.)
+
+Note that in the above graph $G$, it is impossible to walk to vertex $d$ from vertex $b$ using a walk of length $1$. This is because the edge $bd$ is not in the graph. The vertices $c$ and $d$ are called \emph{end-vertices} of $W$. The vertex $c$ is the \emph{initial vertex} of $W$. The vertex $d$ is the \emph{terminal vertex} of $W$. If one walks from vertex $c$ directly (in one step) to vertex $a$, it is clear that the edge $ac$ must have been used. For this reason, it is redundant to list the edges. We know the walk by knowing the vertices. From now on, we will write only the vertices and the necessary commas when making the list that describes the walk. Doing this, the length of the walk is the number of commas used in the list. For example, consider the length $4$ walk of $G$ known as $W\ :\ c,a,b,a,d$. This is the same walk we considered before, just written more concisely.
+
+Observe that the edge $ab$ appears twice on the walk, as does the vertex $a$. When no edges are repeated in a walk, the walk is called a \emph{trail}. When no vertices are repeated in the walk, the walk is called a \emph{path}. The symbol $P_{n}$ is often used to denote a \emph{path of length $n$}. (Note: all paths are trails. Why?)
+
+When the initial vertex of a walk is the same as the terminal vertex for that walk, the walk is said to be a \emph{closed walk}. Each closed trail is called a \emph{circuit}. It is incorrect to speak of closed \emph{paths}. (Why?) However, consider a path, say $W_{1}\ :\ u = w_{1},w_{2},w_{3},\cdots,w_{n} = v$, where $n \geq 3$. Note that $W_{1}$ is a $u-v$ path of length $n-1$, and $u \neq w_{j}$ for each $j$ with $2 \leq j \leq n$. Now suppose the edge $uv$ is in the graph containing $W_{1}$. Note that $uv$ is not an edge of $W_{1}$. (Why is this true?) Now suppose $W_{1}$ is extended to the walk $u,w_{2},w_{3},\cdots,w_{n-1},v,u$ by adding the single edge $uv$ and the new terminal vertex $u$, thus closing the walk. There is now exactly one occurrence of a repetition of vertices; there are no occurrences of a repetition of edges; and by deleting any vertex, the path $P_{n-1}$ is formed. The closed walk just formed is called a \emph{cycle}, or sometimes an \emph{$n$-cycle}. An $n$-cycle has length $n$, and is often denoted by $C_{n}$. We might write
+\begin{equation*}
+C_{n}\ :\ u = w_{1},w_{2},w_{3},\cdots,w_{n} = v,u
+\end{equation*}
+to denote a cycle of length $n$. Note that
+\begin{align*}
+& w_{k},w_{k+1},\cdots,w_{n-1},v,u,w_{2},  w_{3},  \cdots,w_{k} \text{ and } \\
+& w_{k},w_{k-1},\cdots,w_{2},  u,v,w_{n-1},w_{n-2},\cdots,w_{k}
+\end{align*}
+are both correct depictions of the same cycle $C_{n}$. That is, any vertex can be used for the initial and terminal vertex of the cycle. Also, the cycle can be traversed in either of two directions.
+
+Given the structure $u,x_{1},x_{2,},\cdots,x_{m},v$ of vertices and edges of some graph $G$, we will refer to the structure as a walk, a trail, or a path, (depending of course on what happens to be repeated) when $u \neq v$. In the case that $u = v$, we will refer to the structure as a closed walk, a circuit, or a cycle (again depending upon what happens to be repeated). The edge-induced subgraph of some given graph $G$ induced by the edges of a trail, path, circuit, or cycle, will also be referred to as a trail, path, circuit, or cycle, respectively.
+
+\begin{problem}
+Prove that every $u-v$ walk $W$ contains a $u-v$ path.
+\end{problem}
+
+\begin{problem}
+Prove that every circuit contains a cycle.
+\end{problem}
+
+\begin{problem}
+Let $G$ be a graph containing a trail in which a vertex is repeated. Prove that the trail contains a cycle.
+\end{problem}
+
+We call $K_{1}$ the \emph{trivial graph}. All other graphs are called \emph{nontrivial}.
+
+\begin{problem}
+Let $G$ be a nontrivial graph. Prove that $G$ is bipartite if and only if $G$ contains no cycles of odd length.
+\end{problem}
+
+
+\subsection{Components}
+
+The graph $G$ is called \emph{connected} when there is a $u-v$ path in the graph for every pair of distinct vertices $u$ and $v$ in $G$. 
+
+\begin{problem}
+Let $G$ be a connected graph containing the vertices $u$ and $v$. Prove that there is a $u-v$ walk in $G$ which contains all of the vertices of $G$.
+\end{problem}
+
+\begin{problem}
+Let $G$ be a graph of order $p$ such that $\delta(G) \geq \frac{(p-1)}{2}$. Prove that
+$G$ is connected.
+\end{problem}
+
+\begin{problem}
+Let $G$ be a $(p,q)$-graph such that $q < (p-1)$. Prove that $G$ is \emph{disconnected}. (``Disconnected'' means ``not connected''.)
+\end{problem}
+
+\begin{problem}
+Does a graph $G$ exist such that $G$ and $\overline{G}$ are both disconnected?
+\end{problem}
+
+In a connected graph, the \emph{distance from vertex $u$ to vertex $v$} is denoted by $d(u,v)$, and is the length of any shortest possible $u-v$ path in the graph. Since $d(u,v) = d(v,u)$, we often refer to $d(u,v)$ as the \emph{distance between $u$ and $v$}.
+
+\begin{problem}
+Suppose $G$ is a disconnected graph. Find the theoretical maximum distance in $\overline{G}$ between vertices. Find graphs $G$ and $\overline{G}$ such that the theoretical maximum distance in $\overline{G}$ is actually attained.
+\end{problem}
+
+When a graph $G$ is disconnected, it has subgraphs that are maximal with respect to the property of being connected. Any such maximal connected subgraph is called a \emph{component} of $G$. The number of components of $G$ is denoted by $c(G)$. Obviously, $c(G) = 1$ if and only if $G$ is connected.
+
+\begin{problem}
+WICN: Give an example of a graph $G$ of order $7$ having $c(g) = 3$.
+\end{problem}
+
+\begin{problem}
+WICN: Suppose $G = K ( p_{1},p_{2},\cdots,p_{n} )$. Compute $c \left( \overline{G} \right)$.
+\end{problem}
+
+
+\subsection{Blocks of a Graph}
+
+A vertex $v$ of the graph $G$ is called a \emph{cut-vertex} of $G$ when $c(G-v) > c(G)$. Notice that isolated vertices are not cut-vertices. Moreover, $K_{p}$ has no cut-vertices. At the other extreme, every vertex (with two exceptions) of the nontrivial path $P_{n}$ is a cut-vertex. 
+Yes, this is the other extreme, as problem \ref{two non cut-vertices} shows.
+
+\begin{problem}
+Suppose $G$ is a graph containing the distinct vertices $u$ and $v$. Further, suppose $v$ is a cut-vertex of $G-u$. Can we conclude that $v$ is a cut-vertex of $G$? Justify your answer. Now suppose that $v$ is a cut-vertex of $G$. Can we conclude that $v$ is a cut-vertex of $G-u$? Justify your answer.
+\end{problem}
+
+\begin{problem}
+\label{two non cut-vertices}
+Prove that every nontrivial graph has at least two vertices that are not cut-vertices.
+\end{problem}
+
+\begin{problem}
+Prove that a vertex $v$ of a connected graph $G$ is a cut-vertex of $G$ if and only if there exist vertices $u$ and $w$, neither of which is $v$, such that $v$ is on every $u-w$ path of $G$.
+\end{problem}
+
+The removal of a cut-vertex $v$ from the graph $G$ must disconnect a component of $G$. (Why?) What about such an edge? We call the edge $e$ a \emph{bridge} (not a cut-edge) of the graph $G$ when $c(G-e) > c(G)$.
+
+\begin{problem}
+Let $e = uv$ be a bridge of the graph $G$. Prove that $c(G-e) = c(G)+1$. Further, prove that $u$ and $v$ are cut-vertices of $G$ if and only if $\deg_{G}(u) > 1$ and $\deg_{G}(v) > 1$.
+\end{problem}
+
+\begin{problem}
+Prove that an edge $e$ of a connected graph $G$ is a bridge of $G$ if and only if there exist vertices $u$ and $w$, such that $e$ is on every $u-w$ path of $G$.
+\end{problem}
+
+\begin{problem}
+Let $e$ be an edge of the graph $G$. Prove that $e$ is a bridge of $G$ if and only if $e$ is on no cycle of $G$.
+\end{problem}
+
+\begin{problem}
+Determine the maximum number of bridges possible in a nontrivial graph $G$ of order $p$.
+\end{problem}
+
+\begin{problem}
+Prove that every connected $(p,p-1)$-graph, $p \geq 3$, contains a cut-vertex.
+\end{problem}
+
+\begin{problem}
+Prove that every connected $(p,q)$-graph, $3 \leq p \leq q$, contains a cycle.
+\end{problem}
+
+A nontrivial connected graph that has no cut-vertices (when considering \emph{just the graph itself} -- no more and no less) is called a \emph{block}. For example, $C_{5}$ is a block, whereas $P_{5}$ is not a block. Note that the trivial graph is not a block, and that $K_{2}$ is a block. Be careful. Blocks can have vertices that become cut-vertices when the block is considered to be inside of a supergraph.
+
+Contemplate the following example: Connect a $C_{5}$ to a $K_{2}$ by gluing one of the vertices of the $K_{2}$ to one of the vertices of the $C_{5}$. Call the resultant graph $G$. (Do you see that $p(G) = 6$?) Denote by $v$ the vertex of $G$ that is in both the $C_{5}$ and the $K_{2}$. It is important that you see that the $C_{5}$ and the $K_{2}$, although they are now subgraphs of $G$, still retain the property of being blocks when considered as individual graphs. However, they both contain the vertex $v$, which is a cut-vertex of $G$. The ``of $G$'' portion of the last sentence is of extreme importance. One must consider the \emph{graph in question} when considering \emph{any} graphical parameter. Yes, $v$ is a cut-vertex of $G$; and yes, $v$ is not a cut-vertex of $C_{5}$; and finally, yes, $v$ is not a cut-vertex of $K_{2}$. Enough said.
+
+Now, given that $G$ is a connected nontrivial graph that is \emph{not} a block, then $G$ will have \emph{sub}graphs that are blocks. Suppose $G$ has $5$ vertices, $4$ of which induce the graph $K_{4}-e$, while the fifth vertex is adjacent with exactly one of the $4$ vertices of the $K_{4}-e$. We see that $K_{3}$ is a block and $K_{3}$ is a subgraph of $G$. However, we do not call the $K_{3}$ a \emph{block of $G$}. This is because there is a subgraph $H$ of $G$ that is a supergraph of the $K_{3}$ in $G$ that is itself a block. This is the subgraph $H = K_{4}-e$. Now, if we look at any supergraph of the $K_{4}-e$ in $G$, we note that the bigger graph containing the $K_{4}-e$ does not have the property of being a block. We have gone as far as we can go. For this reason, $K_{4}-e$ is called a block of $G$. Similarly, so is $K_{2}$. (Why?) For the formal definition, we call the graph $B$ a \emph{block of the graph $G$} when $B$ is a block in its own right \emph{as well as} being a subgraph of $G$, and even more, $B$ is \emph{maximal} with respect to the property of being a block and a subgraph of $G$.
+
+\begin{problem}
+Suppose $B_{1}$ and $B_{2}$ are blocks of the graph $G$.
+\begin{enumerate}[\hspace{1cm}A.)]
+  \item Prove that $\left\vert V(B_{1}) \cap V(B_{2}) \right\vert \leq 1$.
+  \item Suppose $V(B_{1}) \cap V(B_{2}) = \{v\}$ Prove that $v$ is a cut-vertex of $G$.
+  \item Prove that when a connected graph has exactly two blocks, then they necessarily share exactly one vertex, a cut-vertex.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Suppose that $G$ is a graph having at least one edge. Prove that the blocks of $G$ partition the edge set of $G$. (There is a difficulty here in that the word ``block'' is being used two ways. The \emph{blocks of a partition} are not graphs. The blocks that are subgraphs of $G$ are not blocks of any partition. However, after working this problem, you should be able to guess why the blocks of a graph were called ``blocks'' instead of something else.)
+\end{problem}
+
+\begin{problem}
+Prove that a graph $G$ of order $p \geq 3$ is a block if and only if every two vertices of $G$ lie on a common cycle of $G$.
+\end{problem}
+
+Two $u-v$ paths in a graph $G$ are called \emph{vertex-disjoint} if they have no vertices in common, except of course $u$ and $v$.
+
+\begin{problem} $\ $
+\begin{enumerate}[\hspace{1cm}A.)]
+  \item Prove that a graph $G$ of order $p \geq 3$ is a block if and only if every two vertices $u$ and $v$ of $G$ lie on two vertex-disjoint paths.
+  \item Suppose $G$ is block of order $p \geq 3$, containing the distinct vertices $u$ and $v$. Further, suppose $P$ is a $u-v$ path in $G$. Does there always exist a $u-v$ path $Q$ in $G$ such that $P$ and $Q$ are vertex-disjoint?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Suppose $G$ is a connected graph having at least one cut-vertex. Prove that $G$ has at least two blocks, each of which contains exactly one cut-vertex of $G$.
+\end{problem}
+
+Any block that has exactly one cut-vertex of some supergraph is called an \emph{end-block} of the supergraph.
+
+\begin{problem}
+Let $B$ be an end-block of the connected graph $G$, where $p(G) \geq 3$. Suppose $v$ is the cut-vertex of $G$ in $B$, and $X = V(B-v).$ Prove that $G-X$ and $\langle V(B) \rangle$ are connected graphs.
+\end{problem}
+
+\begin{problem}
+Suppose $G$ is a connected graph having at least one cut-vertex. Prove that $G$ has a cut-vertex $v$ for which, with at most one exception, all blocks of $G$ containing $v$ are end-blocks.
+\end{problem}
+
+\begin{problem}
+Let $G$ be a graph with $V(G) = \{ v_{1},v_{2},v_{3},v_{4},v_{5},v_{6},v_{7},v_{8} \}$. Say $G$ has four blocks, and that each $v_{k}$ lies in exactly one block, $1 \leq k \leq 6$, while each of $v_{7}$ and $v_{8}$ belong to exactly two blocks. Prove that $G$ is disconnected.
+\end{problem}
+
+Consider the block $B$. Perhaps a vertex of $B$ could be removed, say $u$, whereby $B-u$ is still a block. (Try this for $K_{4}-e$. You have two possible such vertices.) Repeat the procedure on the new graph. Keep it up until you have found a graph $B^{\ast}$, such that $B^{\ast}$ is a block, yet for each vertex $u$ of $B^{\ast}$ we have $B^{\ast}-u$ is not a block. Such a block is called a \emph{critical block}. That is, the graph $G$ is a critical block if and only if $G$ is a block, and $G-u$ is not a block for each vertex $u$ of $G$. ($K_{2}$ and $C_{n}$, $n \geq 4$, are examples of critical blocks.) Similarly, the graph $G$ is a \emph{minimal block} if and only if $G$ is a block and for each edge $e$ of $G$, the graph $G-e$ is not a block. (Again, $K_{2}$ and $C_{n}$, $n \geq 4$, are examples of minimal blocks.)
+
+\begin{problem}
+Find an example of a minimal block that is not a critical block. Find an example of a critical block that is not a minimal block.
+\end{problem}
+
+\begin{problem}
+Find graphs $G$, other than $K_{2}$ and other than $C_{n}$, $n \geq 4$, for which $G$ is both a critical and a minimal block.
+\end{problem}
+
+\begin{problem}
+Let $G$ be a block that is neither critical nor minimal. Of course, $G$ contains at least one subgraph that is a critical block. Is it unique, or can $G$ have two different (i.e. non-isomorphic) subgraphs for which each is a critical block? What about minimal?
+\end{problem}
+
+\begin{problem}
+Suppose $G$ is a critical or minimal block of order at least $3$. Prove $G$ contains a vertex of degree $2$.
+\end{problem}
+
+\begin{problem}
+WICN: Suppose that $G$ is a block with $\delta(G) \geq 3$. Prove that $G$ is neither critical nor minimal.
+\end{problem}
+
+\begin{center}
+\vspace{1cm}
+{\Large End of Section Two}
+\vspace{1cm}
+
+{\small Filling space with pretty graphs rendered via GSP 4.02}
+\vspace{1cm}
+
+\begin{tabular}{cc}
+
+{\large\ $K_5$:}  &  {\large\ $K_{3,3}$:} \\
+
+%TeXCAD Picture [k5.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(38,38)(0,0)
+%\emline(14.75,7.5)(34,19.75)
+\multiput(14.75,7.5)(.052884615,.033653846){364}{\line(1,0){.052884615}}
+%\end
+\put(34,19.75){\line(-1,0){23.5}}
+%\emline(10.5,19.75)(29.75,7.25)
+\multiput(10.5,19.75)(.051886792,-.033692722){371}{\line(1,0){.051886792}}
+%\end
+%\emline(29.75,7.25)(22.25,29.5)
+\multiput(29.75,7.25)(-.03363229,.09977578){223}{\line(0,1){.09977578}}
+%\end
+%\emline(22.25,29.5)(14.75,7.75)
+\multiput(22.25,29.5)(-.03363229,-.09753363){223}{\line(0,-1){.09753363}}
+%\end
+\put(22.25,29){\circle*{2.92}}
+\put(34,19.5){\circle*{2.92}}
+\put(29.75,7){\circle*{2.92}}
+\put(14.5,7){\circle*{2.92}}
+\put(10.5,19.5){\circle*{2.92}}
+\put(22,33){\makebox(0,0)[cc]{$v_1$}}
+\put(12.25,4.75){\makebox(0,0)[rc]{$v_2$}}
+\put(37.75,20.75){\makebox(0,0)[lc]{$v_3$}}
+\put(6.75,21.25){\makebox(0,0)[rc]{$v_4$}}
+\put(32.25,4.75){\makebox(0,0)[lc]{$v_5$}}
+%\emline(10.5,19.5)(22.25,29.5)
+\multiput(10.5,19.5)(.03956229,.033670034){297}{\line(1,0){.03956229}}
+%\end
+%\emline(22.25,29.5)(34,20)
+\multiput(22.25,29.5)(.041666667,-.033687943){282}{\line(1,0){.041666667}}
+%\end
+\put(34,20){\line(-1,-3){4.25}}
+\put(29.75,7.25){\line(-1,0){15.25}}
+%\emline(14.5,7.25)(10.25,19.5)
+\multiput(14.5,7.25)(-.03373016,.09722222){126}{\line(0,1){.09722222}}
+%\end
+\end{picture}
+&
+%TeXCAD Picture [k33.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(33.5,33.5)(0,0)
+\put(12.5,17.5){\line(1,0){18}}
+%\emline(30.5,17.5)(12.5,5)
+\multiput(30.5,17.5)(-.04851752,-.033692722){371}{\line(-1,0){.04851752}}
+%\end
+\put(12.5,5){\line(1,0){18}}
+%\emline(30.5,5)(12.5,17.5)
+\multiput(30.5,5)(-.04851752,.033692722){371}{\line(-1,0){.04851752}}
+%\end
+\put(12.5,17.5){\line(3,2){18}}
+\put(30.5,29.5){\line(-1,0){18}}
+\put(12.5,29.5){\line(3,-2){18}}
+%\emline(30.5,29.5)(12.5,5.25)
+\multiput(30.5,29.5)(-.033707865,-.045411985){534}{\line(0,-1){.045411985}}
+%\end
+%\emline(30.5,5.25)(12.5,29.5)
+\multiput(30.5,5.25)(-.033707865,.045411985){534}{\line(0,1){.045411985}}
+%\end
+\put(12.46,29.71){\circle*{2.92}}
+\put(30.46,29.71){\circle*{2.92}}
+\put(12.46,17.71){\circle*{2.92}}
+\put(30.46,17.71){\circle*{2.92}}
+\put(12.46,5.46){\circle*{2.92}}
+\put(30.46,5.46){\circle*{2.92}}
+\put(9.5,31.5){\makebox(0,0)[rc]{$v_1$}}
+\put(33.25,31.5){\makebox(0,0)[lc]{$v_2$}}
+\put(9.5,19.5){\makebox(0,0)[rc]{$v_3$}}
+\put(33.25,19.5){\makebox(0,0)[lc]{$v_4$}}
+\put(9.5,7.25){\makebox(0,0)[rc]{$v_5$}}
+\put(33.25,7.25){\makebox(0,0)[lc]{$v_6$}}
+\end{picture}
+
+\end{tabular}
+
+\end{center}
+
+
+
+\newpage
+
+\section{Three Famous Results and One Famous Graph}
+\markboth{3. 3 Famous Results and 1 Famous Graph}{3. 3 Famous Results and 1 Famous Graph}
+
+
+\subsection{The Four-Color Theorem}
+
+Consider a map, say of some geographical entity, from perhaps a social studies class. To be more definite, consider a map of Georgia on the wall of some classroom. Suppose the purpose of the map is to help students study the structure of the counties of Georgia. (These counties are geographical subdivisions of Georgia.) Typically, such maps are colored so that different colors are used to color counties that share common borders. Let's call such a coloring of a map a \emph{proper coloring}. Our hypothetical map is given a proper coloring so that people can be located at somewhat of a distance from the map and still be able to easily pick out the region of Georgia that belongs to any given county. After all, if counties that shared a common border were given the same color, people in the back of a classroom would not be able to see the tiny black line that designates the border. It would seem that there was one big county instead of two adjacent counties.
+
+For purpose of saving resources, it is natural to want to know the \emph{fewest} number of colors needed to produce a proper coloring of the regions of any given map. Believe it or not, the answer is that given merely \emph{four} colors, one can properly color each and every map, so long as that map is drawn on a surface equivalent to either a sphere or a plane. The fact that the desired ``map coloring number'' is four has been believed since the mid-1850s. 
+
+The first published ``proof'' was created by Alfred Bray Kempe (pronounced \emph{Kem}-pea), a London lawyer and former mathematics student. Seeking to provide the answer to the so-called ``four color problem'', a problem whose existence dates from around 1852, Kempe's work appeared in 1879. Unfortunately for Kempe, in 1890, Percy J. Heawood provided a counter-example to Kempe's attempted proof. Heawood had discovered a subtle flaw in the work of Kempe. It was so subtle that the mathematics community of the time overlooked the flaw for eleven years. 
+
+The result escaped finality until 1976, when Wolfgang Haken and Kenneth Appel announced that their work, performed chiefly on computers, resolved the matter. Pretty much, they had reduced all possible maps to around two thousand special cases. Then they used computers to provide colorings of each of the cases. The computer processing took two years. Only four colors were required. Mathematicians still seek a more typical proof for this problem.
+
+For more information on the four-color problem, there is an excellent article, written by Timothy Sipka, on page 21 of the November 2002 issue of \emph{Math Horizons}, published by the Mathematical Association of America. It features the work of both Kempe and Heawood. So as to be understood by a wider audience, the article is not written in a graph-theoretical style. Instead, wisely, Sipka chose to present the material in a format similar to that used by Kempe himself. Every graph theorist should read Sipka's article. 
+
+The ensuing material in this section consists of graph-theoretic notions for coloring. The ideas of Kempe and Heawood are then presented from the point of view of graph theory.
+
+Given a map (say, of the state of Georgia, with the counties as regions) on a surface equivalent to a sphere or a plane, we create a graph $G$ as follows:
+\begin{enumerate}[\hspace{1cm}i)]
+  \item the vertices of $G$ are the regions of the map;
+  \item two vertices are adjacent in $G$ if and only if the corresponding regions share a common border of some positive length.
+\end{enumerate}
+It should be clear that such a graph can be embedded (see page \pageref{embedded}) 
+in the surface with no extraneous crossing of edges. (That is, edges intersect only at vertices.) The vertices are actual points of the surface. The edges are Jordan arcs in the surface connecting the vertices. Now, any graph having the property of being able to be embedded in a surface equivalent to a plane or a sphere (remember, with no extraneous edge crossings), whether coming from a specific map or not, is called a \emph{planar graph}. A planar graph \emph{can} be embedded in the surface. However, nobody says it must actually be embedded. A \emph{plane graph} is a graph that actually \emph{is} embedded in a surface equivalent to a plane or a sphere.
+
+A \emph{coloring} of a graph is an assignment of colors to the vertices of the graph, one color per vertex, so that each edge has two different colors assigned to its end-vertices. Obviously, all graphs can be colored. It should be obvious that if a graph $G$ has $p$ vertices, then $G$ can be colored given that there are $p$ colors from which to choose. The problem is to find the \emph{fewest} number of colors needed to color a given graph. This number is called the \emph{chromatic number} for the graph. For the graph $G$, the chromatic number is denoted by $\chi(G)$.
+
+\begin{problem}
+WICN: Show that $\chi(K_{p}) = \text{ \underline{\ \ \ \ \ \ \ \ } }$.
+\end{problem}
+
+\begin{problem}
+WICN: Show that 
+$\chi(C_{n}) = 
+\begin{cases}
+\text{ \underline{\ \ \ \ \ \ \ \ }  if $n$ is even} \\
+\text{ \underline{\ \ \ \ \ \ \ \ }  if $n$ is odd}
+\end{cases}$.
+\end{problem}
+
+The next problem is something of an aside to the current material. It is included simply to help visualize the \emph{structure} of a graph that is revealed by the coloring of the vertices of the graph. What the problem is attempting to get at is that the concept of chromatic number is more than just some silly coloring game. For example, when we know that $\chi(G) = 2$, we also \emph{automatically} know that $G$ is bipartite. As another example, by a coloring of $C_{5}$ using $3$ colors, we know that $C_{5} \subset K(1,2,2)$. (Betcha hadn't thought of that before, huh? Exactly which edges belong to $K(1,2,2)$ that are not in $C_{5}$? Food for thought.)
+
+\begin{problem}
+Suppose $\chi(G) = n$ for the graph $G$. Suppose $G$ has been colored by the $n$ colors $c_{1},c_{2},\cdots,c_{n}$. Partition the vertices into color classes $V_{1},V_{2},\cdots,V_{n}$, so that the vertex $u \in V_{k}$ if and only if $u$ is colored with the color $c_{k}$. Prove that each graph $\langle V_{k} \rangle$ is edgeless. Now, suppose that $p_{k} = |V_{k}|$ for each $k$, where of course $1 \leq  k \leq n$. Demonstrate that $G \subset K ( p_{1},p_{2},\cdots,p_{n} )$.
+\end{problem}
+
+Now we return to the real deal. As far as graph theorists are concerned, we would love to be able to display a somewhat short, self-contained proof that $\chi(G) \leq 4$ whenever $G$ is a planar graph. Through the year 2005, that is a bit too much for which to hope. For now, we await further developments, and to get a flavor of what this work is like, settle for demonstrating, as Heawood did by following ideas of Kempe, that $\chi(G) \leq 5$ for any planar graph $G$. But first, an easy result shows that if we were professional plane graph colorers, $5$ is not too far away from the actual number of colors we would have to keep on hand.
+
+\begin{problem}
+WICN: Let $G$ be an arbitrary planar graph. Demonstrate that it might require all of $4$ colors to color $G$.
+\end{problem}
+
+We now start to work on establishing the five-color theorem. Some preliminary results are needed. Leonhard Euler was able to solve the following problem in 1752.
+
+\begin{problem}
+Suppose $G$ is a connected plane $(p,q)$-graph. Let $r$ be the number of regions in the embedding of $G$. Establish that $p-q+r = 2$.
+\end{problem}
+
+Since the formula $r = 2-p+q$ is well-defined for any $(p,q)$-graph, we define the number $r$ for any \emph{planar} graph by $r = 2-p+q$. We know that $r$ will be the number of regions produced if we ever get around to actually embedding the planar graph to create a plane graph version of the planar graph.
+
+\begin{problem}
+Suppose that $G$ is any planar $(p,q)$-graph with $p(G) \geq 3$. Prove that $q \leq 3p-6$. (Hint: Create the graph $G^{\ast}$ from $G$ by adding to $G$ all possible edges, yet still allowing for $G^{\ast}$ to be planar. Show that $G^{\ast}$ is connected, and in any embedding has only triangles for regions. Continue on from there.)
+\end{problem}
+
+\begin{problem}
+Let $G$ be any planar graph. Prove $\delta(G) \leq 5$. (If you want to really show off, you can prove that if the planar graph $G$ has at least four vertices, then $G$ has at least four vertices of degree at most $5$.)
+\end{problem}
+
+\begin{problem}
+(Heawood, 1890) Let $G$ be any planar graph. Prove $\chi(G) \leq 5$.
+\end{problem}
+
+Having accomplished the goal of this section, we now focus attention on knowing when a graph is planar.
+
+
+\subsection{Planar Graphs}
+
+The \emph{homeomorphic operation} applied to the graph $G$ (denoted $\mathcal{HO}(G)$) is the replacement of any edge, say $uv$, of $G$ with the path $u,w,v$ where $w$ was not originally a vertex of $G$. (One can think of producing a new graph, say $H$, from $G$ by plunking the new vertex $w$ right smack down into the middle of the edge $uv$.) 
+
+Any graph, again say $H$, produced by a series $\mathcal{HO} ( \mathcal{HO} \cdots (\mathcal{HO}(G)) \cdots )$ of $n \geq 0$ homeomorphic operations, is said to be \emph{homeomorphic from $G$}. This is denoted by writing $H \underleftarrow{\ hf\ } G$. (It is possible that $n = 0$ because it is desired that graphs be homeomorphic from themselves.) It should be clear that $H$ is planar if and only if $G$ is planar, given that $H \underleftarrow{\ hf\ } G$.
+
+\begin{problem}
+Suppose that $H \underleftarrow{\ hf\ } G$ and $p(H) = p(G)$. Prove $H = G$.
+\end{problem}
+
+We say the graph $H$ is \emph{homeomorphic with} the graph $G$ if and only if there exists some graph $F$ such that $H \underleftarrow{\ hf\ } F$ and $G \underleftarrow{\ hf\ } F$. This situation is denoted by $H \underleftrightarrow{\ hw\ } G$. Be careful when speaking and writing. There is a difference between saying ``homeomorphic \emph{from}'' and saying ``homeomorphic \emph{with}''. The next five problems help us to understand the nature of the homeomorphic operation.
+
+\begin{problem}
+WICN: Prove that graphs $H$ and $G$ exist such that $H \underleftrightarrow{\ hw\ } G$; while at the same time, it is not true that $G \underleftarrow{\ hf\ } H$, and it is also not true that $H \underleftarrow{\ hf\ } G$.
+\end{problem}
+
+\begin{problem}
+Let $G$ and $H$ be graphs such that $H \underleftarrow{\ hf\ } G$. Can it be true that $\chi(G) = \chi(H)$? What about $\chi(G) < \chi(H)$ and $\chi(G) > \chi(H)$? Give examples.
+\end{problem}
+
+\begin{problem}
+Let $F \underleftrightarrow{\ hw\ } H$, and let $H \underleftrightarrow{\ hw\ } G$. Prove that there is a graph $E$ such that $F \underleftarrow{\ hf\ } E$ and $G \underleftarrow{\ hf\ } E$.
+\end{problem}
+
+\begin{problem}
+Let $\mathcal{G}$ be any non-empty collection of graphs. Define the relation $\mathcal{R}$ on $\mathcal{G}$ by $(G,H) \in \mathcal{R} \iff G \underleftrightarrow{\ hw\ } H$. Prove that $\mathcal{R}$ is an equivalence relation on $\mathcal{G}$.
+\end{problem}
+
+\begin{problem}
+Let $\mathcal{G}$ and $\mathcal{R}$ be as in the prior problem. Let $G$ be any graph in $\mathcal{G}$. Let $[G]_{\mathcal{R}}$ be the equivalence class of $\mathcal{R}$ that contains $G$. Prove that there is a unique graph in $[G]_{\mathcal{R}}$, say $F$, for which given any graph $H \in [G]_{\mathcal{R}}$, it holds that $H \underleftrightarrow{\ hw\ } F \iff H \underleftarrow{\ hf\ } F$.
+\end{problem}
+
+Graphs like the graph $F$ in the prior problem are called \emph{homeomorphically irreducible}. That is, when the graph $F$ has the property that for any graph $G$ it holds that $G \underleftrightarrow{\ hw\ } F$ if and only if $G \underleftarrow{\ hf\ } F$, we call $F$ homeomorphically irreducible. There is another way to think of these special graphs.
+
+\begin{problem}
+Prove that the graph $G$ is homeomorphically irreducible if and only if every vertex of degree two in $G$ lies on a $K_{3}$ in $G$.
+\end{problem}
+
+Note that this last problem implies that graphs whose minimum degree exceed two are \emph{automatically} homeomorphically irreducible. In particular, the graphs $K_{5}$ and $K_{(3,3)}$ are in fact homeomorphically irreducible.
+
+Now that we better understand the concept of the homeomorphic operation, we now seek to know how to decide whether or not a given graph is planar. The following three problems relate directly to this issue.
+
+\begin{problem}
+Prove that $K_{5}$ is not planar. (Hint: consider Euler's formula: $p-q+r = 2$.)
+\end{problem}
+
+\begin{problem}
+Prove that $K_{(3,3)}$ is not planar. (Hint: consider Euler's formula and the fact that $K_{3}$ is not a subgraph of $K_{(3,3)}$.)
+\end{problem}
+
+\begin{problem}
+It is obvious that the graph $G$ is planar if and only if each component of $G$ is planar. Thus, consider the graph $G$ to be connected. Prove that $G$ is planar if and only if each block of $G$ is planar. (Hint: induct on the number of blocks of $G$.)
+\end{problem}
+
+Well, here it comes. The first published solution to our current main problem of interest was created by the Polish mathematician Kazimierz Kuratowski in 1930. It is because of his accomplishment that Frank Harary (the father of modern graph theory) chose (in the mid-1950s in Ann Arbor, Michigan) to use the letter `$K$' (for Kazimierz) in the denotation of complete graphs, and the letter `$K$' (for Kuratowski) in the denotation of complete multi-partite graphs. (At least that is what Frank Harary told the author of this text in 1975 in Kalamazoo, Michigan.) It is remarkable that the determination of planarity should be so simple. (Actually, Kuratowski, when starting his proof, thought that the only impediment to planarity was $K_{5}$. The discovery that $K_{(3,3)}$ also played a role came about as Kuratowski was creating his proof.)
+
+\begin{problem}
+The graph $G$ is planar if and only if $G$ contains no subgraph homeomorphic from either $K_{5}$ or $K_{(3,3)}$.
+\end{problem}
+
+In truth, when one encounters Kuratowski's Theorem in the literature of graph theory, the word ``with'' is usually used instead of the word ``from''. Since $K_{5}$ and $K_{(3,3)}$ are each homeomorphically irreducible, one wonders why that is the way it is done. In any case, our work in this section has been accomplished. We now move on to consider the most famous graph in all of graph theory.
+
+
+\newpage
+
+\subsection{The Petersen Graph}
+
+The \emph{Petersen Graph}, shown below, is arguably the most famous graph in all of graph theory.
+
+\begin{center}
+{\large The Petersen Graph}
+
+%TeXCAD Picture [petersen.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(52,52)(0,0)
+\put(14.75,7.25){\line(1,0){25.5}}
+%\emline(40.25,7.25)(48.25,29.25)
+\multiput(40.25,7.25)(.03361345,.09243697){238}{\line(0,1){.09243697}}
+%\end
+%\emline(48.25,29.25)(27.75,44.25)
+\multiput(48.25,29.25)(-.046067416,.033707865){445}{\line(-1,0){.046067416}}
+%\end
+%\emline(27.75,44.25)(8,29.5)
+\multiput(27.75,44.25)(-.045091324,-.033675799){438}{\line(-1,0){.045091324}}
+%\end
+%\emline(8,29.5)(15,7.25)
+\multiput(8,29.5)(.03365385,-.10697115){208}{\line(0,-1){.10697115}}
+%\end
+%\emline(40.25,7.5)(34.75,14.25)
+\multiput(40.25,7.5)(-.03353659,.04115854){164}{\line(0,1){.04115854}}
+%\end
+%\emline(48.25,29)(39.75,26.5)
+\multiput(48.25,29)(-.1133333,-.0333333){75}{\line(-1,0){.1133333}}
+%\end
+\put(27.75,44.25){\line(0,-1){8.25}}
+\put(15,7.25){\line(3,4){5.25}}
+%\emline(20.25,14.25)(39.5,26.5)
+\multiput(20.25,14.25)(.052884615,.033653846){364}{\line(1,0){.052884615}}
+%\end
+\put(39.5,26.5){\line(-1,0){23.5}}
+%\emline(16,26.5)(35.25,14)
+\multiput(16,26.5)(.051886792,-.033692722){371}{\line(1,0){.051886792}}
+%\end
+%\emline(35.25,14)(27.75,36.25)
+\multiput(35.25,14)(-.03363229,.09977578){223}{\line(0,1){.09977578}}
+%\end
+%\emline(27.75,36.25)(20.25,14.5)
+\multiput(27.75,36.25)(-.03363229,-.09753363){223}{\line(0,-1){.09753363}}
+%\end
+%\emline(8,29.75)(16,26.5)
+\multiput(8,29.75)(.08247423,-.03350515){97}{\line(1,0){.08247423}}
+%\end
+\put(27.75,35.75){\circle*{2.92}}
+\put(39.5,26.25){\circle*{2.92}}
+\put(35.25,13.75){\circle*{2.92}}
+\put(20,13.75){\circle*{2.92}}
+\put(16,26.25){\circle*{2.92}}
+\put(8,29.5){\circle*{2.92}}
+\put(27.75,44){\circle*{2.92}}
+\put(48.25,28.75){\circle*{2.92}}
+\put(40.5,7){\circle*{2.92}}
+\put(14.75,7){\circle*{2.92}}
+\put(25.75,37.25){\makebox(0,0)[rc]{$v_1$}}
+\put(20,11){\makebox(0,0)[lc]{$v_2$}}
+\put(40,23.75){\makebox(0,0)[lc]{$v_3$}}
+\put(15.5,22.75){\makebox(0,0)[cc]{$v_4$}}
+\put(36.75,16.75){\makebox(0,0)[lc]{$v_5$}}
+\put(27.75,48){\makebox(0,0)[cc]{$v_6$}}
+\put(4.25,31){\makebox(0,0)[cc]{$v_7$}}
+\put(11.75,4.75){\makebox(0,0)[cc]{$v_8$}}
+\put(43.25,4.75){\makebox(0,0)[cc]{$v_9$}}
+\put(52,30.25){\makebox(0,0)[cc]{$v_{10}$}}
+\end{picture}
+\end{center}
+
+This graph gets its name in honor of J. P. C. Petersen, who presented it as an example of a cubic bridgeless graph (with a certain other property) in an 1898 paper. It turns out that the Petersen Graph possesses many remarkable properties. The following problem presents an example. Just by looking, one would surely think that some subgraph of the Petersen Graph could be found that is homeomorphic from $K_{5}$. Good luck with \emph{that} idea.
+
+\begin{problem}
+Let $G$ be the Petersen Graph. Prove that $G$ is not planar. Also, prove that $G$ has no subgraph homeomorphic from $K_{5}$.
+\end{problem}
+
+The problem just above leads to another theory of planarity involving ``contractions''. A contraction involves ``shrinking'' an edge so that it disappears and its end-vertices become one big vertex incident with all edges originally adjacent with the ``shrunken'' edge. Yes, a series of contractions of the Petersen Graph will produce a $K_{5}$. There is a Theorem that states that any graph $G$ is planar if and only if $G$ contains no subgraph that can contract to either $K_{5}$ or $K_{(3,3)}$. Guess what? The Petersen Graph cannot contract to $K_{(3,3)}$. (Can you prove this?)
+
+
+\subsection{Traceable Graphs}
+
+We have saved the first for last. That is, we have reached our \emph{last} section. It discusses what is regarded to be the \emph{first} theorem of graph theory. Leonhard Euler, in 1736, published a result that solved a conundrum concerning the traversing of seven (real-world, not graph-theoretic) bridges connecting four land masses in the city of Königsberg (today called Kaliningrad) in Eastern Prussia. In his mind, Euler converted the land masses to vertices and the bridges to edges, and then he solved the problem. His published solution is the first known usage of graph-theoretical thinking. Euler was regarded as a non-pompous and kind man. There is no way he would name anything after himself. What follows is the modern terminology for what Euler described.
+
+In today's language, an \emph{eulerian trail} of a connected graph $G$ is a (necessarily open) trail that contains all of the edges of $G$. Similarly, an \emph{eulerian circuit} of $G$ is a circuit that contains all the edges of $G$. A graph $G$ can be \emph{traced} if and only if $G$ contains either an eulerian trail or an eulerian circuit. The idea is that by following the walk given by the trail or circuit, one is \emph{tracing} the graph. A \emph{traceable graph} is a graph that can be traced. The next five problems tell us exactly when a graph is a traceable graph.
+
+\begin{problem}
+WICN: Let $G$ be a traceable graph. Prove that $G$ is connected.
+\end{problem}
+
+\begin{problem}
+Let $G$ contain an eulerian circuit. Prove every vertex of $G$ is even.
+\end{problem}
+
+\begin{problem}
+Let $G$ contain an eulerian trail. Prove that the initial and terminal vertices of the trail are odd. Prove that the remaining vertices of $G$ are even.
+\end{problem}
+
+\begin{problem}
+Let $G$ be a connected graph having only even vertices. Prove that $G$ contains an eulerian circuit.
+\end{problem}
+
+\begin{problem}
+Let $G$ be a connected graph having exactly two odd vertices. Prove $G$ contains an eulerian trail. Further, prove that the initial and the terminal vertices of the trail are the odd vertices of $G$.
+\end{problem}
+
+Well, there you have it. The result discovered by Euler is: \emph{the graph $G$ is traceable if and only if $G$ is connected and has two or fewer odd vertices}. (What happened to the case of exactly one odd vertex?) Note that when $G$ has exactly two odd vertices, we know something about where to start the tracing of $G$, that might not be obvious to someone who is not a graph theorist. However, we must be careful in our assumptions about untrained people. This author has seen clever young people create good proofs of the ``only if'' portion of Euler's result. Yes, the ``if'' part is a bit harder. In fact, Euler himself did not give a proof of the ``if'' portion. (Perhaps he thought it was obvious.) That proof appeared in print in 1873 by C. Wiener, as he and his colleague Lüroth, for the purpose of creating a memorial, reconstructed from memory a proof given to them by a young German mathematician, Carl Hierholzer, who died in 1871.
+
+One final note. In truth, due to the layout of the bridges in Königsberg, Euler's original solution gave rise to a multigraph. (A multigraph is similar to a graph, but allows for any finite number of edges between a given pair of vertices.) Euler's result does also hold for any kind of multigraph, with or without loops. (A loop is a cycle of length one.) Note that any one of these non-standard structures can be turned into a graph with the application of a sequence of homeomorphic operations. The original structure is traceable if and only if the graph so created is traceable.
+
+For more on the history of the Königsberg Bridge Problem, and graph theory itself, seek out and read \emph{Graph Theory: 1736-1936} by Biggs, Lloyd, and Wilson. The author's copy was published in 1976 by Clarendon Press, Oxford, England. Inside, opposite the Preface, the code ``ISBN 0 19 853901 0'' is written. This book is a ``must read'' for graph theorists.
+
+
+\begin{center}
+\vspace{1cm}
+{\Large End of Section Three}
+\vspace{1cm}
+
+End of course, of course.
+\end{center}
+
+
+\end{document}

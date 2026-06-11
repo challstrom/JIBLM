@@ -1,0 +1,8 @@
+\contentsline {section}{\numberline {1}Vectors}{1}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Solid Geometry Review}{2}
+\contentsline {section}{\numberline {2}Directed Line Segments}{4}
+\contentsline {section}{\numberline {3}Parallels}{5}
+\contentsline {section}{\numberline {4}Angles and Perpendiculars}{6}
+\contentsline {section}{\numberline {5}Vectors Normal to a Plane}{7}
+\contentsline {section}{\numberline {6}Cross Products}{8}
+\contentsline {section}{\numberline {7}Distances}{9}

@@ -1,0 +1,2855 @@
+%\include{Roach}
+
+%\documentclass[12pt]{amsart}
+%\documentclass{report}
+%\usepackage{amssymb,latexsym}
+%\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{graphics,graphicx}
+\setlength{\topmargin}{-10pt}
+\setlength{\voffset}{-40pt}
+\setlength{\textheight}{700pt}
+%\usepackage{amsscr}
+%\usepackage[amsscr]{eucal}
+
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}{Lemma}
+%\newtheorem{proposition}{Proposition}
+%\newtheorem{definition}{Definition}
+%\newtheorem{corollary}{Corollary}
+%\newtheorem{notation}{Notation}
+%\newtheorem{remark}{Remark}
+%\newtheorem{assertion}{Assertion}
+%\newtheorem{claim}{Claim}
+
+%\newcommand{\abs}[1]{\left|#1\right|}
+%\newcommand{\norm}[1]{\left\|#1\right\|}
+%\newcommand{\p}[1]{\left(#1\right)}
+%\newcommand{\tail}[1]{#1^{\p{N}}}
+%\newcommand{\trunk}[1]{#1^{\left[N\right]}}
+%\newcommand{\dg}{^{\circ}}
+%\newcommand{\nl}{\newline}
+%\newcommand{\fl}{\flushleft}
+%\newcommand{\tild}{\texttt{\symbol{126}}}
+%\newcommand{\tild}{\sim}
+%\newcommand{\up}{\wedge}
+%\newcommand{\dn}{\lor}
+%\newcommand{\lra}{\leftrightarrow}
+%\newcommand{\ra}{\to}
+%\newcommand{\qqu}{\qquad \qquad}
+%\newcommand{\onto}{\dashv}
+%\newcommand{\power}{\Pi}
+%\newcommand{\univ}{\textbf{U}}
+%\newcommand{\ns}{\emptyset}
+%\newcommand{\of}{$(F, +, \cdot , <)\,$}
+%\newcommand{\zp}{Z^{+}}
+%\newcommand{\fld}{ $(F,+,\cdot)$}
+%\newcommand{\po}[1]{\dfrac{\pi}{#1}}
+%\newcommand{\lpo}[1]{\frac{\pi}{#1}}
+%\newcommand{\q}{\indent}
+
+%\pagestyle{plain}
+
+
+%\begin{document}
+\setcounter{page}{62}
+\lhead{Section 4.1}
+%\begin{large}
+\textbf{Chapter 4}\nl
+
+\textbf{The Real Number System} \nl
+
+It is not possible to show that the basic set of an ordered field con­tains an element $x$
+such that $x^{2} = 2.$ We, therefore, add the completeness axiom in order to completely
+characterize the real number system. \nl
+
+\textbf{4.1 The Completeness Axiom}\nl
+
+\textbf{Definition 4.1.1.} If \of is an ordered field, $b\in F,$ and $\ns \neq S\subseteq F,$ then:\nl
+a) $b$ is said to be an \textit{upper bound} of $S$ if and only if $x\leq b$ for each $x$ in $S.$\nl
+b) b is said to be a \textit{lower bound} of $S$ if and only if $b\leq x$ for each $x$ in $S.$\nl
+c) $S$ is said to be \textit{bounded} if and only if $S$ has an upper bound and a lower bound.\nl
+
+\textbf{Definition 4.1.2.} If \of is an ordered field, $b\in F,$ and $\ns \neq S\subseteq F,$ then: \nl
+a) $b$ is called the \textit{least upper bound} of $S,$ and denoted by \textit{lub} $S$, if and
+only if
+(1) $b$ is an upper bound of $S$ and (2) if $c$ is an upper bound of $S,$ then $b\leq c.$\nl
+b) $b$ is called the \textit{greatest lower bound} of $S$, and denoted by \textit{glb} $S$, if and only if (1) $b$ is a lower
+bound of $S$ and (2) if $c$ is a lower bound of $S,$ then $c\leq b.$\nl
+
+
+\textbf{Definition 4.1.3.} $(R,+,\cdot ,<)$ is called a \textit{complete ordered field} if and only if $(R,+,\cdot ,<)$ is an ordered field and the following statement is true. \nl
+C. Every nonempty subset of $R$ which has an upper bound also has a least upper bound. \nl
+
+\parbox{5in}{\textbf{Definition 4.1.4.} If $(R,+,\cdot ,<)$ is a complete ordered field, then $(R,+,\cdot,<)$} is called the \textit{real number system} and the elements of $R$ are called \textit{numbers.} $R, \zp, Z,$ and $Q$ will be
+assumed to belong to the real number system un­less otherwise stated.\nl
+
+\textbf{Example 4.1.1.}\nl
+
+a) glb $(0, 1) = 0.$ \nl
+
+b) glb $[2,3] = 2$\nl
+
+c) glb $\{1, \frac{1}{2}, \frac{1}{3}, \dots \} = 0$\nl
+
+
+\newpage
+%page63
+
+$ $\nl
+d) $(-1, \infty)$ has no least upper bound. \nl
+e) lub $\{1, 2, 3 \} = 3$\nl
+Proof of (a). 0 is a lower bound of $(0,1)$ since $0 < x < 1$ for each $x$ in $(0,1).$
+Assume there is a lower bound $c$ of $(0,1)$ greater than $0.$\nl
+
+Case 1. $c<1.$ Since $0 <\frac{c}{2} < c <1,$ then $\frac{c}{2}\in (0,1)$ and $\frac{c}{2}$ is less than the lower bound $c$ of $(0,1).$ This is a contradiction. \nl
+
+Case 2. $c\geq 1.$ Since $0 <\frac{1}{2} <1 \leq c,$ then $\frac{1}{2}\in (0,1)$ and $\frac{1}{2}$ is less than the lower bound $c$ of $(0,1).$   This is a contradiction. \nl
+
+\textbf{Theorem 4.1.1.} If $S$ is a number set which has a lower bound, then $S$ has a greatest
+lower bound.\nl
+Proof. Suppose $S$ is a nonempty number set which has a lower bound. Let
+$T = \{x \mid x $ is a lower bound of $S\}$. Since $T$ is bounded above by each element in $S, T$ has a
+least upper bound, say $b.$ Suppose $b$ is not a lower bound of $S.$ Thus there is a $x$ in $S$ such
+that $x < b.$ This means $x$ is a upper bound of $T$ less than $b$, which is a contradiction.  Suppose $b$
+is not the greatest lower bound of $S.$  Thus there is a lower bound $c$ of $S$ such that $c > b.$  Since
+$c\in T, b$ is not an upper bound of $T,$ which is a contradiction.  Therefore $b =$ glb $S.$\nl
+
+\textbf{Theorem 4.1.2.} $\zp$  does not have an upper bound.\nl
+ Proof. Suppose $\zp$ has an upper bound. By $C$ of Definition 4.1.3, $\zp$ has a least upper bound, say $b.$ Thus $n\leq b$ for each
+$n$ in $\zp$. If $n$ in $\zp,$ then $n+1\in \zp$ and $n+1 \leq b.$ Hence $n \leq  b-1,$ for each $n$ in $\zp,$ which contradicts the fact that $b$ is the least upper bound of $\zp.$ \nl
+
+
+\textbf{Theorem 4.1.3.} If $a\in R$ and $a > 0,$ then there is a $n$ in $\zp$ such that $\frac{1}{n} < a.$\nl
+
+\textbf{Theorem 4.1.4.} If $a,b\in R$ and $a < b,$ then there is a rational number $r$ such that $a < r < b.$\nl
+
+Proof. Suppose $a$ and $b$ are numbers and $a < b.$  $\frac{1}{(b - a)}$ is less that some positive integer.
+Let $k$ denote a positive integer such that $\frac{1}{(b - a)} < k.$  Thus, $\frac{1}{(b - a)} < k$ and $\frac{1}{k} < (b - a).$  It follows from Theorem 3.4.11 that there is a least integer $c$ greater than $k*a.$  Thus, $k*a < c \leq k*a + 1$ and $a < \frac{c}{k} \leq a + \frac{1}{k} < a + b - a = b.$  Thus $a < \frac{c}{k}
+< b.$  $\frac{c}{k} $ is a rational number between $a$ and $b.$\nl
+
+\newpage
+%page64
+
+
+Thus $m - 1 \leq un < m.$ Since $\frac{1}{v - u} < n$, we have $1 + un < vn.$ Hence $un < m < un + 1 < vn$ and
+$u < \frac{m}{n} < v.$  Therefore, $a + h <\frac{m}{n} < b + h$ and $a < \frac{m - nh}{n} < b.$ By Th 3.4.7 and Th 3.4.10, $\frac{m +(-1)nh}{n} $ is rational.\nl
+
+\textbf{Definition 4.1.5.} A number which is not rational is called \textit{irrational.}\nl
+
+\textbf{Exercises }
+State whether each of the following sets is bounded, bounded above, or bounded below.
+In each case give the least upper bound and the greatest lower bound where possible.\nl
+
+1. $[2,4)$\nl
+
+2. $\{\frac{1}{2}, \frac{3}{4},\frac{7}{8},\frac{15}{16},\frac{31}{32},\dots \}$\nl
+
+3. $\{n \mid n$ is an integer $\} $\nl
+
+4. $(-\infty,1)$\nl
+
+5. $\{0, \frac{1}{2}, -1,4 \}$ \nl
+
+6. $\zp$\nl
+
+7. Prove that glb $[0,1]=0.$ \nl
+
+8. Prove that glb $\{ \frac{1}{n} \mid n\in \zp\} = 0.$ (Hint: Use Th 4.1.3.)\nl
+
+9. Prove that if $a\in R, a > 0,$ and $b\in R,$ then there is an element $n$ in $\zp$ such that $na > b.$\nl
+
+10. Prove that the sum of a rational number and an irrational number is an irrational number. (Hint: Use Th 3.4.15.) \nl
+
+11. Prove that the product of a rational number and an irrational num­ber is an irrational number. \nl
+
+12. Show that if $a,b,c\in R, a < b,$ and $c$ is irrational, then there is an irra­tional number $t$ such
+that $a < t < b.$ (Hint: Apply Th 4.1.4 to $a - c < b - c.$) \nl
+
+13. Prove Theorem 4.1.3. \nl
+
+\newpage
+%page65
+
+\lhead{Section 4.2}
+\textbf{4.2 Logarithmic Functions}\nl
+
+\textbf{Definition 4.2.1.} Let $P = \{x \mid \in R$ and $x >0\}.$\nl
+
+ The proof of the following theorem is given in Appendix I.\nl
+
+
+\textbf{Theorem 4.2.1.} There is a function $L$ from $P$ into $R$ such that if $x,y\in P,$ then \nl
+Ll. $L(xy)=L(x)+L(y)$\nl
+L2. $L(x)\leq x - 1$\nl
+$L$ is called the natural logarithm or logarithm to the base $e$ where $L(e) = 1.$\nl
+
+\textbf{Theorem 4.2.2.} If $x,y\in P,$ then \nl
+\begin{tabular}{l l}
+a) $L(1) = 0$ & c) $L(\frac{1}{y}) = -L(y)$\\
+b) $L(\frac{x}{y}) =L(x)-L(y)$& d) $ 1 - \frac{1}{x} \leq L(x)$\\
+\end{tabular}\\
+Proof of (b). Suppose $x,y\in P.$ Thus $\frac{x}{y}\in P$ and $L(x) = L(y\frac{x}{y}) = L(y)+L(\frac{x}{y}). $
+Hence $L(\frac{x}{y}) =L(x) - L(y).$\nl
+
+\textbf{Theorem 4.2.3.} $L$ is increasing.\nl
+
+ Proof. Suppose $x,y\in P$ and $x < y.$ Thus $\frac{x}{y} < 1$ and $0 <1 - \frac{x}{y} = 1 - \dfrac{1}{(\frac{y}{x})} \leq L(\frac{y}{x})  = L(y)-L(x).$ Therefore $L(x) <L(y).$\nl
+
+\textbf{Definition 4.2.2.} If $a\in (P-\{1\}),$ let $log_{a}$ denote the function with domain $P$ such that $log_{a}(x) = \dfrac{L(x)}{L(a)} $ for each $x$ in $P,$ i.e.,  $log_{a} = \dfrac{L}{L(a)}.$\nl
+
+\textbf{Theorem 4.2.4.} If $a,b\in(P-\{1\})$ and $x,y\in P,$ then \nl
+\begin{tabular}{l l}
+&\\
+a) $log_{a}a = 1$ & d) $log_{a}\frac{1}{y} = -log_{a}y$ \\
+&\\
+b) $log_{a}(xy) = log_{a}x + log_{a}y$  &\\
+&\\
+c) $log_{a}\left(\frac{x}{y}\right) = log_{a}x - log_{a}y$& e) $log_{a}x = \dfrac{log_{b}x}{log_{b}a}$\\
+\end{tabular}\\
+
+Proof of (e). Suppose $a,b\in(P-\{1\})$ and $x\in P.$ Thus
+\[
+\dfrac{log_{b}x}{log_{b}a} = \dfrac{L(x)/L(b)}{L(a)/L(b)} = \dfrac{L(x)}{L(a)} = log_{a}x.
+\]
+
+\newpage
+%page66
+%Page66
+%Section 4.2
+\textbf{Theorem 4.2.5.}\nl
+%\begin{center}
+%\begin{tabular}{|c| c| c| c| c| c|}\hline
+%$n$&0&1&3&7&9\\\hline
+%1.&&.0414&.1139&.2304&.2788\\
+%2.&.3010&&.3617&&.4624\\
+%3.&.4771&.4914&&.5682&\\
+%4.&&.6128&.6335&.6721&\\
+%5.&&& .7243&&.7709\\
+%6.&&.7853&&.8261&\\
+%7.&.8451&.8513&.8633&&.8976\\
+%8.&&&.9191&&.9494\\
+%9.&&&&.9868&\\\hline
+%\end{tabular} \\
+%\end{center}
+\begin{tabular}{l l l}
+$E(1) = e = 2.718282$&$L(e) = 1$&$L(10) = 2.302585$\\
+$L(2) = .693147$&&$Log_{10}(2) = .301029$\\
+$L(3) = 1.098612$&&$Log_{10}(3) = .477121$\\
+$L(5) = 1.609438$&&$Log_{10}(5) = .698970$\\
+$L(7) = 1.945910$&&$Log_{10}(7) = .845098$\\
+\end{tabular}\nl
+
+This theorem is proved in Appendix 2.\nl
+
+%\textbf{Theorem 4.2.6.} If $x\in P$ and $n\in \zp.$ then $L(x^{n}) =n L(x)$ and $x^{n} = %E\left(n(L(x))\right).$   The proof is by induction. \nl
+
+\textbf{Example 4.2.1.} Find $log_{10}2100$ and $log_{b} 1.5.$ \nl
+Solution\nl
+
+\begin{tabular}{r l}
+$log_{10}2100$&$=log_{10}3\cdot 7\cdot 10^{2}$\\
+&$=log_{10}3 + log_{10}7 + log_{10}10^{2}$\\
+&$= .4771 + .8451 + 2log_{10}10 $\\
+&$=1.3222+2$\\
+&$=3.3222$\\
+&\\
+$log_{10}1.5$&$=log_{10}\frac{3}{2}$\\
+&$=log_{10}3 - log_{10}2$\\
+&$= .4771 - .3010$\\
+&$= .1761$\\
+\end{tabular}\\
+
+\textbf{Theorem 4.3.7.} $L$ has range $R.$\nl
+
+\textbf{Exercises}\nl
+Prove each of the following.\nl
+
+\begin{tabular}{l l}
+&\\
+1. $log_{10}4 =.6021$ &7. Theorem 4.2.2(c) \\
+&\\
+2. $log_{10}5 =.6990$  &8. Theorem 4.2.2(d) \\
+&\\
+3. $log_{10}6 =.7782$ &9. Theorem 4.2.4(a)\\
+&\\
+4. $log_{10}750 = 2.8751$ &10. Theorem 4.2.4(b)\\
+&\\
+5. $log_{10}72 = 1.8573$ &11. Theorem 4.2.4(c)\\
+&\\
+6. Theorem 4.2.2(a)& 12. Theorem 4.2.4(d)\\
+\end{tabular}
+
+\newpage
+%Page67
+\lhead{Section 4.3}
+\textbf{4.3 Exponential Functions}\nl
+
+\textbf{Definition 4.3.1.} Let $E$ denote the inverse of $L$ and let $e$ denote $E(1).$\nl
+
+\textbf{Theorem 4.3.1.} If $x,y\in R,$ then\nl
+a) $E(0) = 1$\nl
+b) $E(x + y) = E(x)E(y)$\nl
+c) $E(y - x) = \dfrac{E(y)}{E(x)}$\nl
+d) $E(-x) = \dfrac{1}{E(x)}$\nl
+Proof of (b). Suppose $x,y\in R.$ Let $a = E(x)$ and $b = E(y).$ Thus $L(a) = x$ and $L(b) = y.$ Hence $E(x + y)=E(L(a) + L(b)) = E(L(ab)) = ab = E(x)E(y).$\nl
+
+\textbf{Definition 4.3.2.} If $a\in P$ and $x\in R,$ let $a^{x}$ denote $E(xL(a))$  and if $x\neq 0,$ let $0^{x}$ denote $0$.\nl
+
+\textbf{Theorem 4.3.2.} If $x\in P$ and $n\in \zp.$ then $L(x^{n}) =n L(x)$ and $x^{n} = E\left(n(L(x))\right).$   The proof is by induction. \nl
+
+\textbf{Theorem 4.3.3.} If $a,b\in P, u\in (P-\{1\}),$ and $x,y\in R,$ then\nl
+
+\begin{tabular}{l l}
+a) $L(e)=1$&\\
+b) $E(0) = 1$&     k) $a^{-x} = \dfrac{1}{a^{x}}$ \\
+c) $L(x) = log_{e}x$&\\
+d) $E(x) =e^{x}$  &  l) $(ab)^{x} = a^{x}b^{x}$\\
+e) $1^{x} = 1 = a^{0}$&\\
+f) $a^{1} = a$&       m)  $ \dfrac{a^{x}}{b^{x}} = \left(\dfrac{a}{b}\right)^{x}$\\
+g) $a^{x +y} = a^{x}a^{y}$&\\
+h) $a^{x + 1} = a^{x}a$&\\
+i) $(a^{x})^{y} = a^{xy}$&    n) $log_{u}a^{x} = xlog_{u}a$\\
+j) $a^{x - y} = \dfrac{a^x}{a^y}$&    o) $a = u^{x} \lra x = log_{u}a$\\
+\end{tabular}\\
+
+Proof of (g). Suppose $a\in P$ and $x,y\in R.$ \nl
+
+\begin{tabular}{r l}
+
+$a^{x + y}$&$= E((x+y)L(a))$\\
+&$= E(xL(a)+yL(a))$\\
+&$=E(xL(a))E(yL(a))$\\
+&$=a^{x}a^{y}$\\
+\end{tabular}\\
+
+\textbf{Example 4.3.1.} Find the truth set of $\{x \mid log_{10}(x^{2} - 4) = 1 - log_{10}2\}.$\nl
+
+Solution.  $\{x \mid log_{10}(x^{2} - 4) = 1 - log_{10}2\}$
+
+\newpage
+%Page68
+
+%\textbf{Section 4.3}\nl
+
+\begin{tabular}{r l}
+$\{x \mid log_{10}(x^{2} - 4) = 1 - log_{10}2\}$& $= \{x \mid log_{10}(x^{2} - 4) + log_{10}2 = 1\}$ \\
+&$= \{x \mid log_{10}(2x^{2} -8) = 1\}$\\
+&$= \{x \mid 2x^{2} - 8 = 10^{1}\}$\\
+&$= \{x \mid x^{2} - 9 = 0\}$\\
+&$= \{x \mid (x-3)(x+3) = 0\}$\\
+&$= \{x \mid x-3 = 0$ or $x + 3 = 0\}$\\
+&$= \{x \mid x = 3$ or $x = -3\}$\\
+&$= \{3, -3\}$\\
+\end{tabular}\\
+
+
+
+\textbf{Example 4.3.2.} Solve $5\cdot 2^{x-1} =3^{2x}$ for $x.$\nl
+Solution. \nl
+$5\cdot 2^{x-1} =3^{2x}$ \nl
+$log_{10}5\cdot 2^{x-1} = log_{10}3^{2x}$ \nl
+$log_{10}5 + log_{10}2^{x-1} = log_{10}3^{2x}$\nl
+$log_{10}5 + (x-1)log_{10}2 = 2x log_{10}3$ \nl
+$.6990+(x-l).3010 = 2x(.4771)$ \nl
+$.6990 + .3010x -.3010 = .9542x$ \nl
+$.6532x = .3980$ \nl
+$x=.6100$ \nl
+
+\textbf{Definition 4.3.3.} If $x\in R, c\in Z, 1 \leq a < 10,$ and $x=a\cdot 10^{c},$ then $c$ is called the \textit{characteristic} and $log_{10}a$  is called the \textit{mantissa} of $x.$\nl
+
+%\textbf{Theorem 4.3.4.} If $n\in \zp,$ then $\left( \dfrac{n + 1}{n}\right)^{n} < e < \left( \dfrac{n}{n - %1}\right)^{n}.$\nl
+
+%A proof can be obtained by applying Theorem 3.4.2. to
+%\[
+%S = \left\lbrace n \mid n\in \zp \text{~and~} \left(1 + \frac{1}{k}\right)^{n} < E\left( \dfrac{n}{k}\right) < %\left(\dfrac{1}{1 - \frac{1}{k}}\right)^{n}\right\rbrace
+%\]
+%where $k\in Z_{2}.$ \nl
+%\
+%\textbf{Theorem 4.3.5.} $2.5 < \left( \dfrac{8}{7}\right)^{7} < e < \left(\dfrac{7}{6}\right)^{7}  < 3.$\nl
+
+\textbf{Exercises} If $log_{10}2 =.3010, log_{10}3 = .4771, log_{10}4 = .6021,$ and $log_{10}5 = .6990,$ find the truth set of each of the following.\nl
+
+\begin{tabular}{l l}
+&\\
+1. $log_{10}(x^{2} - 1) - log_{10}(x + 1) = 1$  &    5. $3^{4x - 3} = 27$\\
+&\\
+2. $log_{10}4x + log_{10}x = 2$&     6. $4^{x} = 2\cdot 2^{x}$\\
+&\\
+3. $4\cdot 3^{x} =2^{2x-1}$&              7. $0 < log_{10}x < 1$\\
+&\\
+4. $2^{x}\cdot 5^{x-1} = 3$        &          8. $1 <2^{log_{10}x} < 2$\\
+\end{tabular}
+
+\newpage
+
+%Page69
+\lhead{Section 4.4}
+Simplify each of the following expressions.\nl
+
+9. $\left(  \dfrac{x^{1/3}}{x^{1/4}}   \right)^{6}$\nl
+
+10. $\left(\dfrac{x^{2/3}}{x^{-(1/6)}}                \right)^{2}$\nl
+
+
+%$\left(\dfrac{a^{-1}b^{2}}{a^{2}b^{-2}}   \right)^{-1}$\nl
+
+%$\left(\dfrac{a^{3}b^{-1}}{ab^{2}}   \right)^{3}$\nl
+
+
+11. $\dfrac{\left(\dfrac{a^{-1}b^{2}}{a^{2}b^{-1}}   \right)^{-1}}{\left(\dfrac{a^{3}b^{-1}}{ab^{2}}   \right)^{3}}$\nl
+
+12. Prove Theorem 4.3.1(a). \nl
+
+13. Prove Theorem 4.3.1(c) and (d). \nl
+
+14. Prove Theorem 4.3.2(a) and (b). \nl
+
+15. Prove Theorem 4.3.2(c), (d), and (e). \nl
+
+16. Prove Theorem 4.3.2(f) and (h). \nl
+
+17. Prove Theorem 4.3.2(i) and (j). \nl
+
+18. Prove Theorem 4.3.2(k) and (l). \nl
+
+19. Show that $E$ is increasing. \nl
+
+20. Show that if $a\in P$ and $f(x) = a^{x},$ for each $x$ in $R,$ then $f$ is increasing if $a > 1$ and $f$ is decreasing if $0 < a < 1.$\nl
+
+\vfill
+
+\textbf{4.4 Radicals}\nl
+
+\textbf{Definition 4.4.1}   If $a \geq 0$ and $n \in \zp,$ let $\sqrt[n]{a}$ denote $a^{1/n}$ and $\sqrt{a}$ denote $a^{1/2}.$\nl
+
+\textbf{Theorem 4.4.1.}  If $a,b\in P$ and $n,m\in \zp,$ then\nl
+
+a) $(\sqrt[n]{a})^{m} = \sqrt[n]{a^{m}}$\nl
+
+b) $\sqrt[n]{ab} = \sqrt[n]{a}\sqrt[n]{b}$\nl
+
+c) $\sqrt[n]{\dfrac{a}{b}} = \dfrac{\sqrt[n]{a}}{\sqrt[n]{b}}$\nl
+
+\newpage
+%page70
+
+d)  $\sqrt[n]{\sqrt[m]{a}} = \sqrt[nm]{a}$\nl
+Proof of (a).  $(\sqrt[n]{a})^{m} = (a^{1/n})^{m}  = a^{m/n} = (a^{m})^{1/n} = \sqrt[n]{a^{m}}. $\nl
+
+\textbf{Example 4.4.1.}  Assuming $x\in P,$ simplify $\sqrt[3]{x\sqrt{x}}$\nl
+Solution.\nl
+$\sqrt[3]{x\sqrt{x}} = (x\sqrt{x})^{1/3} = (xx^{1/2})^{1/3} = x^{1/3}x^{1/6} = x^{\frac{(2+1)}{6}} = x^{1/2}.$\nl
+
+\textbf{Example 4.4.2.} Simplify $\dfrac{2}{\sqrt{3}} + \dfrac{\sqrt{6}}{\sqrt{2}} + \dfrac{\sqrt{12}}{6}.$\nl
+Solution.\nl
+\begin{tabular}{r l}
+$\dfrac{2}{\sqrt{3}} + \dfrac{\sqrt{6}}{\sqrt{2}} + \dfrac{\sqrt{12}}{6}$&$=\dfrac{2\sqrt{3}}{\sqrt{3}\sqrt{3}} +
+\dfrac{\sqrt{3}\sqrt{2}}{\sqrt{2}} + \dfrac{\sqrt{4}\sqrt{3}}{6}$ \\
+&\\
+&$=\dfrac{2\sqrt{3}}{3} + \sqrt{3} + \dfrac{\sqrt{3}}{3}$\\
+&\\
+&$=\sqrt{3}\left(\frac{2}{3} + 1 +\frac{1}{3}\right)$\\
+&\\
+&$=2\sqrt{3}$\\
+\end{tabular}\\
+\textbf{Theorem 4.4.2.} If $x \geq 0,$ then $\sqrt{x} \geq 0.$\nl
+\textbf{Theorem 4.4.3.}  If $x \in R,$ then $\abs{x} = \sqrt{x^{2}}.$\nl
+Proof.  Suppose $x \in R$.\nl
+
+\begin{tabular}{l l}
+$x^{2} = ((x^{2})^{1/2})^{2}$& Th 4.3.2(i)\\
+&\\
+$x^{2} = (\sqrt{x^{2}})^{2}$&Def 4.4.1.\\
+&\\
+$\sqrt{x^{2}} \geq 0$ and $(\sqrt{x^{2}} = x \text{~or~} \sqrt{x^{2}} = -x)$&Th 2.3.6, Th 4.4.2.\\
+&\\
+$\abs{x} = \sqrt{x^{2}}$&Th 3.3.1.\\
+\end{tabular}\\
+
+\textbf{Theorem 4.4.4.}  If $a > 0$ and $b > 0$, then $a = b$ if and only if $\sqrt{a} = \sqrt{b}.$\nl
+
+\textbf{Example 4.4.3.}  Solve the equation $x^{2} + 4x - 5 > 0$ for $x$.\nl
+Solution\nl
+
+\begin{tabular}{l l}
+$x^{2} + 4x - 5 > 0$&$\lra (x^{2} + 4x +4) - 4 - 5 > 0$\\
+&\\
+&$\lra (x + 2)^{2} > 9$\\
+&\\
+&$\lra \sqrt{(x + 2)^{2}} > 3$\\
+&\\
+&$\lra \abs{x + 2} > 3$\\
+&\\
+&$\lra x + 2 < -3$ or $3 < x + 2$\\
+&\\
+&$\lra x < -5$ or $1 < x$\\
+\end{tabular}
+
+\newpage
+%Page71
+\lhead{Section 4.5}
+\textbf{Exercises}\nl
+
+Assuming $a,b\in P,$ simplify each of the following.
+
+1. $\sqrt[4]{a^{}\sqrt[3]{a^{-7/2}\sqrt{a}}}$\nl
+
+2. $\sqrt{2a^{2}b^{3}}\sqrt{8b}$\nl
+
+3. $6\sqrt{12} - 2\sqrt{75} -10 \sqrt{\frac{3}{25}}$\nl
+
+4. $-\frac{1}{\sqrt{3}} + \frac{\sqrt{12}}{2} - \frac{2\sqrt{2}}{6}$\nl
+
+5. If $f(x) = \sqrt{x} + 1$  and $g(x) = x^{2},$ and $D_{f\circ g} = D_{g} =R,$ find $f\circ g.$\nl
+
+6. If $f(x) = x^{2} + 1$ and $g(x) = \sqrt{x},$ find $f\circ g.$\nl
+
+7. Find the inverse of $f$ if $f(x) = 1 - x^{2}$ and $D_{f} = [0,2].$\nl
+
+8. Find the inverse of $f$ if $f(x) = \sqrt{x} - 1.$\nl
+
+9. Solve $x^{2} - 6x - 7 < 0$ for $x.$\nl
+
+10. Prove Theorem 4.4.1(b). \nl
+
+11. Prove Theorem 4.4.1(c). \nl
+
+12. Prove Theorem 4.4.1(d). \nl
+
+13. Prove Theorem 4.4.4.(Hint:Use Theorem 3.1.9) \nl
+
+\vfill
+
+\textbf{4.5 Factoring}\nl
+
+\textbf{Theorem 4.5.1.} If $a,b,c,d,x,y\in R,$ then \nl
+a) $ax + ay = a(x + y)$\nl
+b) $x^{2} - y^{2} = (x + y)(x - y)$\nl
+c) $x^{2} + 2xy + y^{2} = (x + y)^2$\nl
+d) $x^{2} - 2xy + y^{2} = (x - y)^{2}$\nl
+e) $x^{2} + (a + b)x + ab =(x + a)(x + b)$\nl
+f) $acx^{2} + (ad + bc)x + bd = (ax + b)(cx + d) $\nl
+
+\newpage
+%page72
+
+%Page72
+\textbf{Example 4.5.1.}  Factor, i. e., write as a product, $(x - 2y)^{2} - 4y^{2}.$\nl
+Solution\nl
+\begin{tabular}{r l l}
+$(x - 2y)^{2} - 4y^{2}$&$=[(x - 2y) + 2y][(x - 2y) - 2y]$&Th 4.5.1(b)\\
+& $= x(x -4y)$&\\
+\end{tabular}\\
+
+\textbf{Example 4.5.2.} Factor $x^{4} + 2x^{2}y^{2}  + 9y^{4}.$ \nl
+Solution.\nl
+\begin{tabular}{r l l}
+$x^{4} + 2x^{2}y^{2}  + 9y^{4}$&$=x^{4} + 6x^{2}y^{2} + 9y^{4} - 4x^{2}y^{2} $&\\
+&$=(x^{2} + 3y^{2})^{2} -(2xy)^{2}$&Th 4.5.1(c)\\
+&$=(x^{2} + 3y^{2} + 2xy)(x^{2} + 3y^{2} - 2xy)$&Th 4.5.1(b)\\
+\end{tabular}\\
+
+\textbf{Example 4.5.3.} Factor $xa - 2xb + ya - 2yb.$\nl
+Solution.\nl
+\begin{tabular}{r l l}
+$xa - 2xb + ya - 2yb$&$=x(a - 2b) - y(a - 2b)$&Th 4.5.1\\
+&$=(a - 2b)(x - y)$&Th 4.5.1(a)\\
+\end{tabular}\\
+
+\textbf{Example 4.5.4.} Factor $(x+3)^{2} + 2(x+3) - 15.$\nl
+Solution.\nl
+\begin{tabular}{r l l}
+$(x+3)^{2} + 2(x+3) - 15$&$= [(x+3)-3] [(x+3)+5]$&Th 4.5.1(e)\\
+&$=x(x + 8)$&\\
+\end{tabular} \\
+
+\textbf{Theorem 4.5.2.} If $x,y\in R,$ then \nl
+a) $x^{3} + 3x^{2}y + 3xy^2 + y^{3} = (x + y)^{3}$\nl
+b) $x^{3} - 3x^{2}y + 3xy^2 - y^{3} = (x - y)^{3}$\nl
+c) $x^{3} + y^{3} =(x + y)(x^{2}  - xy + y^{2})$\nl
+d) $x^{3} - y^{3} =(x - y)(x^{2}  + xy + y^{2})$\nl
+
+\textbf{Example 4.5.5.} Factor $x^{3} - 6x^{2} + 12x - 8.$\nl Solution.\nl
+
+\begin{tabular}{r l l}
+$x^{3} - 6x^{2} + 12x - 8$&$=x^{3} - 3x^{2}(2) + 3x(2^{2})- 2^{3}$&\\
+&$=(x - 2)^{3}$&Th 4.5.2(b)\\
+\end{tabular}\\
+
+\textbf{Example 4.5.6.} Factor $x^{3}+27.$\nl
+Solution.\nl
+
+\begin{tabular}{r l l}
+$x^{3}+27$&$= x^{3} + y^{3}$&\\
+&$=(x + 3)(x^{2} - 3x + 9)$&Th 4.5.2(c)\\
+\end{tabular}
+
+\newpage
+%page73
+\lhead{Section 4.6}
+\textbf{Exercises}\nl
+Factor each of the following. \nl
+
+1. $(a+b)^{2} - (b-a)^{2}$\nl
+
+2. $(x+3)^{2} + (x+3) - 12$\nl
+
+3. $(x - y)^{2} + 3(x - y)y - 10y^{2}$\nl
+
+4. $4x^{4} + 1$ \nl
+
+5. $1 + 8x^{3}$\nl
+
+6. $2y^{2} + 8y +8$\nl
+
+7. $x^{2} - 6x + 2 -(y^{2} - 6x + 2)$\nl
+
+8. $(x - y)^{2} - y^{2}$\nl
+
+9. $x^{4} - 4x^{2}y^{2} + 4y^{4}$\nl
+
+10. $x^{2} - 4x + 4 $\nl
+
+11. $x^{2} + 4x + 4y - y^{2}$\nl
+
+12. $x^{3} + 9x^{2}y + 27xy^{2} + 27y^{3}$\nl
+Simplify each of the following.
+
+13. $[(a+b)(a - b)^{-1} -(a-b)(a+b)^{-1}](a^{2} - b^{2})$\nl
+
+14. $\dfrac{-(1 - x^{2})+ (1 + x)^{2}}{1 + x}$\nl
+
+\vfill
+\textbf{ 4.6 Polynomials}\nl
+
+\textbf{Definition 4.6.1.}  A function $f$ is said to be a \textit{polynomial} if and only if there is an $n\in Z_{0}$ (called the \textit{degree} of $f$) and there is a function $a : Z_{0}^{n} \ra R$ such that $a_{0} \neq 0$ and \nl
+\[
+f = \sum_{i = 0}^{n}a_{i}I^{n - i}, \text{~i. e.~} f(x) = \sum\limits_{i=0}^{n}a_{i}x^{n - i}, \text{~for~each~} x \text{~in~} R.
+\]
+
+\textbf{Theorem 4.6.1.} If $r \in R, n\in Z_{0}, a: Z_{0}^{n} \ra R, b_{0} = a_{0} \neq 0, b_{i} = b_{i-1}r + a_{i},$
+for each $i$ in $Z_{1}^{n},$ and $f = \sum_{i=0}^{n-1}a_{i}I^{n-i},$ then\nl
+a) $f=(I - r)\left(\sum_{i=0}^{n-1}b_{i}I^{n-1-i}\right) + b_{n}$\nl
+b) $f(r) = b_{n}$\nl
+c) If $f(r) = 0,$ then $f = (I-r)\sum_{1=1}^{n-1}b_{i}I^{n-1-i}$\nl
+
+\newpage
+%page74
+
+Proof of (a). Suppose $x,r \in R, n\in Z_{0}, a:Z_{0}^{n} \ra R, b_{0} = a_{0} \neq 0, b_{i} = b_{i-1}r + a_{i},$
+for each $i$ in $Z_{1}^{n},$ and $f = \sum_{i=0}^{n}a_{i}I^{n-i}.$\nl
+
+\fl $(x - r)\left(\sum\limits_{i=0}^{n-1}b_{i}x^{n-1-i} \right) + b_{n}$\nl
+
+$= \left(\sum\limits_{i=0}^{n-1}b_{i}x^{n-i} \right) - \left(\sum\limits_{i=0}^{n-1}b_{i}rx^{n-1-i} \right) + b_{n}$\nl
+
+$= b_{0}x^{n} + \left(\sum\limits_{i=1}^{n-1}b_{i}x^{n-i} \right) -  \left(\sum\limits_{i=0}^{n-1}b_{i}rx^{n-1-i} \right) + b_{n}$\nl
+
+$= b_{0}x^{n} + \left(\sum\limits_{i=1}^{n-1}(b_{i-1}r + a_{i})x^{n-i} \right) -  \left(\sum\limits_{i=0}^{n-1}b_{i}rx^{n-1-i} \right) + b_{n}$\nl
+
+$= a_{0}x^{n} + \overbrace{\left(\sum\limits_{i=1}^{n-1}b_{i-1}rx^{n-i} \right)}^{u} + \left(\sum\limits_{i=1}^{n-1}a_{i}x^{n-i} \right)  \overbrace{-~~\left(\sum\limits_{i=0}^{n-2}b_{i}rx^{n-1-i} \right)}^{-u} -b_{n-1}r$\nl
+ $ + (b_{n-1}r +a_{n}) $\nl
+
+We pause to note that the two overbraced sums differ only in sign and that both $b_{n-1}r$ and $-b_{n-1}r$ appear in the sum.  Thus, the expression in the line above reduces to\nl
+
+$\sum\limits_{i=0}^{n} a_{i}x^{n-i} = f(x).$  Thus, $f = (I - r)\left(\sum\limits_{i=0}^{n-1}b_{i}I^{n-1-i}\right) + b_{n}.$\nl
+
+\textbf{Example 4.6.1.}  If $f(x) = 2x^{3} - 7x^{2} + 9$ for each $x$ in $R,$ find $f(3).$  If $f(3) = 0,$ find a polynomial $q$ such that $f(x) = (x - 3)q(x),$ for each $x$ in $R.$ \nl
+Solution.  Suppose $f(x) = 2x^{3} - 7x^{2} + 9.$
+The computation may be done in the following manner.\nl
+\begin{tabular}{lllll|l}
+$a_{0}$&$a_{1}$&$\cdots$&$a_{n-1}$&$a_{n}$&$r$\\
+&$b_{0}r$&$\cdots$&$b_{n-2}r$&$b_{n-1}r$&\\ \cline{1-5}
+$b_{0}=a_{0}$&$b_{1}=b_{0}r + a_{1}$&$\cdots$&$b_{n-1}=b_{n-2}r+a_{n-1}$&$b_{n}=b_{n-1}r + a_{n}$&\\
+\end{tabular}\nl
+%\begin{tabular}{lllll}\hline
+%$b_{0}=a_{0}$&$b_{1}=b_{0}r + a_{1}$&$\cdots$&$b_{n-1}=b_{n-2}r+a_{n-1}$&$b_{n}=b_{n-1}r + a_{n}$\\
+%\end{tabular}\nl
+
+For this problem the computation would be done in the following manner.\nl
+
+\begin{tabular}{rrrr|l}
+2&-7&0&9&3\\
+&6&-3&-9&\\
+\end{tabular}\nl
+\begin{tabular}{rrrl}\hline
+2&-1&-3&~0
+\end{tabular}
+
+Thus $f(3) = 0$ and $f(x) = (x - 3)(2x^{2} - x - 3),$ for each $x$ in $R.$  This process is called synthetic division.\nl
+
+\newpage
+%page 75
+
+\textbf{Theorem 4.6.2.}  If $x,a\in R$ and $n\in \zp,$ then $x^{n} - a^{n} = (x - a)\sum\limits_{i=1}^{n}a^{i-1}x^{n-i}.$\nl
+
+\textbf{Definition 4.6.2.} A number $c$ is called a \textit{root of a polynomial} $f$ if
+and only if $f(c) = 0.$\nl
+
+\textbf{Theorem 4.6.3.} A number $c$ is a root of a polynomial $f$ if and only if $(x - c)$ is a factor of $f.$\nl
+
+\textbf{Theorem 4.6.4.} A polynomial of degree $n$ has at most $n$ roots. \nl
+
+\textbf{Theorem 4.6.5.} If $f= \sum\limits_{i=0}^{n}a_{i}I^{n-i}$ and $g= \sum\limits_{i=0}^{n}b_{i}I^{n-i}$ are polynomials such that $f(x) = g(x)$ for $n + 1$ values of $x,$ then $a_{i} =b_{i},$ for each $i,$ and $f = g.$\nl
+
+\textbf{Example 4.6.2.} Find values of $A, B, C,$ and $D$ such that
+
+
+(1) $\dfrac{x^{2} + 8}{x(x - 2)^{3}} = \dfrac{A}{x} + \dfrac{B}{x - 2} + \dfrac{C}{(x - 2)^{2}} + \dfrac{D}{(x - 2)^{3}},$\nl
+for each $x$ in $(R-\{ 0, 2\}).$\nl
+
+Solution. By multiplying both sides of equation (1) by $x(x-2)^{3},$ we get \nl
+(2) $x^{2} + 8 = A(x - 2)^{3} + Bx(x - 2)^{2} + Cx(x - 2) +Dx.$\nl
+
+Suppose equation (2) is true for each $x$ in $R.$ Letting $x = 0,$ equation (2) becomes $8 = -8A.$ Thus $A = -1.$ By letting $x = 2,$ equation (2) yields $12 =2D$ and $D = 6.$ Therefore, equation (2) may be written as \nl
+
+(3) $x^{2} + 8= (B-1)x^{3} + (6 - 4B + C)x^{2} + (-6 + 4B -2C)x + 8.$\nl
+
+Since $\zp \subseteq R$ and $\zp$ is infinite, then $R$ is infinite. By Th 4.6.5, the coef­ficients of
+like terms of equation (3) must be equal. Equating coefficients, we get $0 = B - 1$ and $1=6 -4B + C.$ Hence $B = 1$ and $C = -1.$ Equation (2) may now be written as \nl
+
+(4) $x^{2} + 8= -1(x-2)^{3} + x(x-2)^{2} - x(x - 2) + 6x.$\nl
+
+The fact that equation (4) is true for each $x$ in $R$ may be checked by mul­tiplication. By dividing both sides of equation (4) by $x(x-2)^{3},$ we have \nl
+$\dfrac{x^{2} + 8}{x(x - 2)^{3}}= \dfrac{-1}{x} + \dfrac{1}{x - 2} + \dfrac{-1}{(x - 2)^{2}}  + \dfrac{6}{(x - 2)^{3}},$\nl
+for each $x$ in $(R-\{0, 2 \}).$  The terms on the right-hand side of equation (1) are called partial fractions. \nl
+
+\textbf{Definition 4.6.3.} If the number $c$ is a root of a polynomial $f,$ then the greatest integer $n$ such that $(x - c)^{n}$ is a factor of $f$ is called the \textit{multiplicity of the root} $c.$\nl
+
+\newpage
+%page76
+
+\textbf{Theorem 4.6.6.} If the number $c$ is a root of a polynomial $f,$ then $n$ is the multiplicity of the
+root $c$ if and only if there is a polynomial $q$ such that $f(x)=( x - c)^{n}q(x),$ for each $x$ in $R,$ and
+$q(c) \neq 0$
+
+\textbf{Example 4.6.3.} Find the multiplicity of the root $-2$ of $f(x) =x^{4} + 5x^{3} + 6x^{2} -4x -8.$\nl Solution. \nl
+
+\begin{tabular}{rrrrr|l}
+1&-5&6&-4&-8&-2\\
+&-2&-6&0&8&\\
+\end{tabular}\nl
+\begin{tabular}{rrrr|l}\hline
+1&$~3$&$~$0&-4&-2\\
+&-2&-2&4&\\
+\end{tabular}\nl
+\begin{tabular}{rrr|l}\hline
+1&1&-2&-2\\
+&-2&2&\\
+\end{tabular}\nl
+\begin{tabular}{rrl}\hline
+$1$&$-1$&$~~~~$\\
+\end{tabular}
+
+Therefore $f(x)=(x+2)^{3}(x-1)$ and $(-2,-1) \neq 0$ By Th 4.6.6, we see that $-2$ is a root of $f$ of
+multiplicity 3. \nl
+
+\textbf{Theorem 4.6.7.} If $a,b,c\in R$ and $f(x)=ax^{2} + bx + c,$ for each $x$ in $R,$ then
+
+a) $\dfrac{-b + \sqrt{b^{2} - 4ac}}{2a}$ and $\dfrac{-b - \sqrt{b^{2}- 4ac}}{2a}$ are the only roots of $f$
+if $b^{2} - 4ac \geq 0.$\nl
+
+b) $f$ has no roots if $b^{2} - 4ac < 0.$\nl
+
+The formula in a) for finding the roots of a quadratic equation is called the \textit{Quadratic Formula.}\nl
+
+\textbf{Exercises}\nl
+For each of the following definitions of $f$ and $r,$ find a polynomial $q$ and a
+number $s$ such that $f(x)=(x - r)q(x) + s,$ for each $x$ in $R.$\nl
+
+\begin{tabular}{l l}
+1. $r=-1$& $f(x)= 2x^{3} + 3x^{2} - 4x -1$ \\
+
+2. $r=3$ &$f(x)= 2x^{4}- 5x^{3} - 4x^{2} + 8$ \\
+
+3. $r=2$ &$f(x)= x^{4} - 3x^{2} -x - 3$ \\
+\end{tabular}\nl
+
+
+For each of the following definitions of $f$ and $r,$ find the multiplicity of the root $r$ of $f.$ \nl
+
+\begin{tabular}{l l}
+
+4. $r=1$ &$f(x)=x^{4}+ x^{3}- 5x^{2} + 3x$ \\
+
+5. $r=-2$ &$f(x)=x^{3} -x^{2} - 2x + 8$ \\
+
+6. $r=-1$& $f(x)=x^{5} + 3x^{4} + 2x^{3} - 2x^{2} -3x -1$ \\
+
+\end{tabular}
+
+7. Finds the roots of $f(x)= 2x^{2} - 3x - 1.$ \nl
+
+\newpage
+%page77
+
+8. Find the roots of $f(x) = x^{2} + 3x - 2.$\nl
+
+9. Find values of $A, B, C,$ and $D$ such that $\dfrac{x^{3} -3x^{2} + 2x - 3}{(x^{2} + 1)^{2}} = \dfrac{Ax + B}{x^{2} + 1} + \dfrac{Cx + D}{(x^{2} + 1)^{2}}$ for each $x$ in $R.$\nl
+
+10. Prove Theorem 4.6.2. \nl­
+
+11. Prove Theorem 4.6.3. (Hint: Apply Th 4.6.2 to $f(x)-f(c)$.) \nl
+
+12. Prove Theorem 4.6.4. (Hint: Apply Th 3.4.2 to $S= \{n \mid n\in \zp $ and every polynomial of degree $n$ has at most $n$ roots$\}.$\nl
+
+13. Prove Theorem 4.6.5. (Hint: Apply Th 4.6.4 to $f - g$.) \nl
+
+14. Prove Theorem 4.6.6.\nl
+
+15. Prove Theorem 4.6.7.\nl
+
+\newpage
+%page78
+\lhead{Section 5.1}
+\textbf{Chapter 5}\nl
+
+\textbf{Trigonometry}\nl
+
+\textbf{5.1 Six Fundamental Identities}\nl
+
+\textbf{Definition 5.1.1.} Let $R^{2}$ denote $R\times R$ and let $0$ denote $(0, 0). $\nl
+
+\textbf{Definition 5.1.2.}  If $(a, b), (x,y)\in R^{2},$ let $d((a,b),(x, y))$ denote
+\[
+\sqrt{(x-a)^{2}+ (y-b)^{2}}.
+\]
+
+\textbf{Definition 5.1.3.}  Let $c_{1}$ denote $\{ u \mid u\in R^{2}$ and $d(u, 0) = 1\}.$\nl
+
+The proof of the following theorem will not be given, as it is beyond the scope of this course.\nl
+
+\textbf{Theorem 5.1.1.}   There is a positive number $\pi$ and a function $\alpha$ (called the \textit{wrapping function})
+with domain $R$ and range $c_{1}$ such that\nl
+
+T1.  $\alpha(0) = (1,0), \alpha\left(\dfrac{\pi}{2}\right) = (0, 1),$ and $\alpha(\pi) = (-1, 0).$\nl
+
+T2.  If $x,y\in R,$ then $d(\alpha(x-y), \alpha (0)) = d(\alpha (x), \alpha(y)).$\nl
+
+T3.  If $0 < x < \dfrac{\pi}{2},$ and $\alpha (x) = (a, b),$ then $a \neq 0$ and $0 < b < x < \dfrac{b}{a}.$\nl
+
+\textbf{Definition 5.1.4.} Let $\sin$ and $\cos$ denote the functions with domain $R$ such that for each $x$ in $R, \alpha (x) = (\cos(x), \sin(x)).$  The trigonometric functions are generally written without parentheses, i. e., $\sin(x)$ is written $\sin~ x.$\nl
+
+\textbf{Definition 5.1.5.}  Let $\tan, \cot, \sec, $ and $\csc$ denote the functions defined by
+\[
+\tan = \dfrac{\sin}{\cos},~~ \cot = \dfrac{\cos}{\sin},~~ \sec = \dfrac{1}{\cos}, \text{~and~} ~~\csc = \dfrac{1}{\sin}.
+\]
+$ $\nl
+
+\textbf{Definition 5.1.6.}  If each of $f$ and $g$ is a function, then $f(x) = g(x)$ is said to be an \textit{identity} if and only if $f(x) = g(x)$ for each $x$ in $D_{f}\cap D_{g}.$\nl
+
+\textbf{Theorem 5.1.2.}  The following are identities.\nl
+
+ID1.  $\sin~x ~\text{~csc~}x = 1$\nl
+
+ID2.  $\cos~x~\sec~x = 1$\nl
+
+
+\newpage
+%page79
+\begin{tabular}{l l}
+ID3. (a)$~ \tan ~x ~\cot~ x ~=~1,$ &(b) $ \tan~ x~= \dfrac{1}{\cot~x}$\\
+
+ID4. (a)$~\sin^{2~}x + \cos^{2}x~=~1,~$ &(b) $ \sin^{2}x~=~1 - \cos^{2}x$\\
+
+ID5. (a)$~\sec^{2}x = 1 + \tan^{2}x,$& (b) $ 1 = \sec^{2}x - \tan^{2}x$\\
+
+ID6. (a)$~\csc^{2}x = 1 + \cot^{2}x,$& (b) $1 = \csc^{2}x - \cot{2}x$\\
+\end{tabular}\\
+Proof of ID4(a). Suppose $x\in R$.\nl
+$\alpha(x) \in c_{1}$\nl
+$(\cos~ x, \sin ~x)\in c_{1}$\nl
+$\sqrt{(\cos~x - 0)^{2} + (\sin~x - 0)^{2}} = 1 $ \nl
+$\cos^{2}x + \sin^{2}x = 1. $\nl
+Proof of ID5(a). Suppose $x\in R$. \nl
+
+$\sin^{2}x + \cos^{2}x = 1$\nl
+
+$\dfrac{\sin^{2}x}{\cos^{2}x} + \dfrac{\cos^{2}x}{\cos^{2}x} = \dfrac{1}{\cos^{2}x}$\nl
+
+$\tan^{2}x + 1 = \sec{2}x$\nl
+
+\textbf{Example 5.1.1.} Show that $\tan x + \cot x = \sec x \csc x$ is an identity. \nl
+Solution. \nl
+\begin{tabular}{r l l}
+$\tan ~x + \cot~ x$ & $= \dfrac{\sin~ x}{\cos ~x} + \dfrac{\cos ~x}{\sin~ x}$ & Def 5.1.5 \\
+&&\\
+& $= \dfrac{\sin^{2}x + \cos^{2}x}{\sin~x ~\cos~x}$& \\
+&&\\
+&$=\dfrac{1}{\cos~x ~\sin~x}$&ID4\\
+&&\\
+&$= \sec~x ~\csc~x$&Def 5.1.5
+
+\end{tabular}
+
+
+\textbf{Example 5.1.2.} Show that  $\dfrac{\sin~x}{1 - \cos~x} = \dfrac{1 + \cos~x}{\sin~x}$is an identity. \nl
+Solution.  \nl
+\begin{tabular}{r l}
+&\\
+$\dfrac{\sin ~ x}{1 -\cos~x}$&$= \dfrac{\sin~x}{1 - \cos~x}\cdot \dfrac{1 + \cos~x}{1 + \cos~x}$\\
+&\\
+&$=\dfrac{\sin~x(1 + \cos~x)}{1 - \cos^{2}x}$\\
+&\\
+&$=\dfrac{\sin~x(1 + \cos~)}{\sin^{2}~x}$\\
+&\\
+&$=\dfrac{1 + \cos~x}{\sin ~x}$\\
+\end{tabular}\\
+\newpage
+%page80
+\textbf{Exercises}\nl
+
+Prove the following identities.\nl
+
+1. $\dfrac{\cos x}{\sec x} + \dfrac{\sin x}{\csc x} = 1$\nl
+
+2. $\dfrac{1}{1 - \sin x} + \dfrac{1}{1 + \sin x} = 2\sec ^{2} x$\nl
+
+3. $\dfrac{1 + \cos x}{1 - \cos x} - \dfrac{1 - \cos x}{1 + \cos x} = 4\cot x \csc x$\nl
+
+4. $\dfrac{1 + \cos x}{\sin x} + \dfrac{\sin x}{1 + \cos x} = 2 \csc x$\\
+
+5. $\dfrac{1}{\tan x + \cot x } = \dfrac{\sin x}{\sec x}$\nl
+
+6. $\cos x + \tan x \sin x = \sec x$\nl
+
+7. $\dfrac{\cot x + 1}{\sin x + \cos x}= \text{~csc~} x$\nl
+
+8. $\dfrac{\sec x + 1}{\tan x} = \dfrac{\tan x}{\sec x - 1}$\nl
+
+9. $\dfrac{1 - \cos x}{1 + \cos x} = (\csc x - \cot x)^{2}$\nl
+
+10. $(\sin x + \cos x)(\cot x + \tan x) = \sec x + \csc x$\nl
+
+11. $\dfrac{\tan x + \tan y}{\cot x + \cot y} = \tan x \tan y$\nl
+
+12. $\dfrac{\sin x + 2\sin x \cos x}{2 + \cos x -2\sin^{2} x} = \tan x$\nl
+
+13. $\dfrac{\sec x}{\csc x} + \dfrac{\sin x}{\cos x}  = 2\tan x$\nl
+
+14. $\dfrac{\tan^{2}x}{\sec x - 1} = 1 + \sec x$\nl
+
+15. $\dfrac{1}{\tan x + \sec x} = \sec x- \tan x$\nl
+
+16. $\dfrac{\sin x + \cos x \tan x}{\tan x} = 2\cos x$\nl
+
+17. $\dfrac{\tan x - \sin x \cos x}{\sin^{2}x} = \tan x$\nl
+
+18. Prove that ID6(a) is an identity.
+
+\newpage
+%page81
+\lhead{Section 5.2}
+\textbf{5.2 The Sine and Cosine Addition Formulas}\nl
+
+\textbf{Theorem 5.2.1.} The following are identities. \nl
+
+ID7. $\cos(x - y) = \cos x\cos y + \sin x \sin y $\nl
+ID8. $\cos(\dfrac{\pi}{2} - x) = \sin x$\nl
+ID9. $\sin(\dfrac{\pi}{2} - x) = \cos x $\nl
+ID10. $\cos(-x) = \cos x $\nl
+ID11. $\sin(-x) = -\sin x$\nl
+ID12. $\tan(-x) = -\tan x$\nl
+ID13a. $\cos(x+y) = \cos x \cos y - \sin x \sin y $\nl
+ID13b. $\cos(x-y) = \cos x \cos y + \sin x \sin y $\nl
+ID14. $\sin(x+y) = \sin x \cos y + \cos x \sin y$\nl
+ID15. $\sin(x-y) = \sin x \cos y - \cos x \sin y$\nl
+ID16. $\tan(x + y) = \dfrac{\tan x + \tan y}{1 - \tan x \tan y}$\nl
+ID17. $\tan(x - y) = \dfrac{\tan x - \tan y}{1 + \tan x \tan y} $\nl
+
+
+\textbf{Proof of ID7.} Suppose $x,y\in R.$ \nl
+\begin{tabular}{r l l}
+$d(\alpha(x-y),\alpha(0))$&$= d(\alpha(x), \alpha(y)) $& T2 \\
+$d((\cos (x-y), \sin (x-y)), (1,0))$&$=d(((\cos x, \sin x),( \cos y, \sin y))$ &Def 5.1.4\\
+$\sqrt{(\cos(x-y)- 1)^2 + \sin^{2}(x-y)}$&$=\sqrt{(\cos x - \cos y)^2 + (\sin x - \sin y)^2}$ &  Def 5.1.2 \\
+\end{tabular}\\
+By squaring both sides and collecting terms, we obtain \nl
+$2 - 2\cos(x-y) = 2-2\cos x\cos y- 2\sin x\sin y,$ which simplifies to
+$\cos(x-y)$ $= \cos x\cos y + \sin x \sin y.$\nl
+\textbf{Proof of ID8.} Suppose $x \in R.$ \nl
+\begin{tabular}{r l l}
+$\cos\left(\dfrac{\pi}{2}-x\right)$ &$= \cos\left(\dfrac{\pi}{2}\right)\cos x + \sin\left(\dfrac{\pi}{2}\right) \sin x$ &ID7\\
+&$= 0\cos x + 1\sin x$ &T1\\
+&$ =\sin x$ &\\
+\end{tabular}\\
+\textbf{Proof of ID9.} Suppose $x\in R.$\nl
+\begin{tabular}{r l l}
+$\cos x$ &$= \cos\left(\left(\dfrac{\pi}{2}\right) - \left(\dfrac{\pi}{2} -x\right)\right)$ & \\
+&$=\sin\left(\po{2} - x\right)$ &ID8\\
+\end{tabular}\\
+\textbf{Proof of ID10.} Suppose $x\in R.$ \nl
+\begin{tabular}{r l l}
+$\cos(-x)$ &$= \cos(0 - x)$& \\
+&$ = \cos 0 \cos x + \sin 0 \sin x$& by ID7. \\
+%\newpage
+%page82
+&$= 1\cos x + 0\sin x$&T1\\
+&$= \cos x$&\\
+\end{tabular}\\
+\newpage
+%page82
+
+%page82
+Proof of ID11. Suppose $x\in R.$ \nl
+\begin{tabular}{r l l}
+$\sin (-x)$&$=\cos\left(\dfrac{\pi}{2} - (-x)\right)$&ID8 \\
+&&\\
+&$=\cos\left(\pi - \left(\dfrac{\pi}{2}- x\right)\right)$&\\
+&&\\
+&$= \cos \pi \cos \left(\dfrac{\pi}{2} - x\right) + \sin \pi \sin\left(\dfrac{\pi}{2} - x\right)$&ID7\\
+&&\\
+&$=-1\sin x + 0\sin x$&T1\\
+&&\\
+&$=-\sin x$& \\
+\end{tabular}\\
+Proof of ID13. Suppose $x,y\in R.$ \nl
+\begin{tabular}{r l l}
+$\cos(x+y)$&$= \cos(x-(-y))$&\\
+&$=\cos x\cos(-y) + \sin x\sin(-y)$&ID7\\
+&$=\cos x\cos y - \sin x\sin y$&ID10,ID11\\
+\end{tabular}\\
+
+
+Proof of ID14. Suppose $x,y\in R.$\nl
+\begin{tabular}{r l l}
+$\sin (x + y)$&$=\cos \left(\po{2} - (x + y)\right)$&ID8\\
+&&\\
+&$=\cos \left(\left(\po{2} - x\right) - y\right) $&\\
+&&\\
+&$=\cos \left( \po{2} - x \right)\cos y + \sin\left(\po{2} - x\right)\sin y $&ID7\\
+&&\\
+&$=\sin x \cos y + \cos x \sin y$&ID8,ID9\\
+\end{tabular} \\
+
+Proof of ID15. Suppose $x,y\in R.$ \nl
+\begin{tabular}{r l l}
+$\sin(x-y)$&$= \sin(x+(-y))$& \\
+&$= \sin x \cos(-y) + \cos x \sin(-y)$&ID14\\
+&$= \sin x \cos y - \cos x \sin y$&ID10,ID11\\
+\end{tabular}\\
+
+\textbf{Theorem 5.2.2.} The following are identities. \nl
+ID18. $\sin x = \sin( \pi-x)$\nl
+ID19. $\cos x = -\cos (\pi -x)$\nl
+ID20. $\tan x = -\tan(\pi -x )$\nl
+ID21. $\sin x = -\sin(x - \pi)$\nl
+ID22. $\cos x = -\cos(x - \pi)$\nl
+ID23. $\tan x = \tan(x - \pi)$\nl
+
+\textbf{Theorem 5.2.3.} $\alpha (2\pi)=(1,0)$ and $\alpha\left(\dfrac{3\pi}{2}\right) = (0,-1). $\nl
+
+\textbf{Theorem 5.2.4.} The following are identities. \nl
+ID24. $\sin x = -\sin(2\pi - x)$\nl
+1D25. $\cos x = \cos( 2\pi - x)$\nl
+ID26. $\tan x = -\tan( 2\pi - x)$\nl
+ID27. $\sin x = \sin(x \pm 2\pi) $\nl
+ID28. $\cos x = \cos(x \pm 2\pi)$\nl
+ID29. $\tan x = \tan(x \pm 2\pi) $\nl
+\newpage
+
+%page83
+\lhead{Section 5.3}
+\textbf{Exercises}\nl
+1. Prove 1016. \nl
+2. Prove ID17. \nl
+3. Prove ID18. \nl
+4. Prove ID19. \nl
+5. Prove ID20. \nl
+6. Prove ID21. \nl
+7. Prove ID22. \nl
+8. Prove ID23. \nl
+9. Prove ID24. \nl
+10. Prove ID25. \nl
+11. Prove ID26. \nl
+12. Prove ID27. \nl
+13. Prove ID28. \nl
+14. Prove ID29. \nl
+15. Prove Theorem 5.2.3. \nl
+
+16. Show that $\cot (x + y) = \dfrac{\cot x \cot y - 1}{\cot x + \cot y}$ is an identity.\nl
+
+17. Show that $\cot (x - y) = \dfrac{\cot x \cot y + 1}{\cot y - \cot x}$ is an identity.\nl
+
+%\vfill
+\textbf{5.3 Application of the Addition Formulas}\nl
+
+Here is a memory crutch to help you remember the following theorem:\nl
+All Students Take Calculus.\nl
+\textbf{A} in All stands for ``all three functions $\sin, \cos,$ and $\tan$ are positive in the first quadrant.''\nl
+\textbf{S} in Students stands for ``only $\sin$ is positive in the first quadrant.''\nl
+\textbf{T} in Take stands for ``only $\tan$ is positive in the third quadrant.''\nl
+\textbf{C} in Calculus stands for ``only $\cos$ is positive in the fourth quadrant.''\nl
+
+\textbf{Theorem 5.3.1.}\nl
+
+a) If $x\in \left(0, \po{2}\right),$ then $\sin x >0, \cos x > 0,$ and $\tan x > 0.$
+
+%\newpage
+b) 	If $x\in \left(\po{2},\pi\right),$ then $\sin x >0, \cos x < 0,$ and $\tan x < 0$. \nl
+c) 	If $x\in\left(\pi,\dfrac{3\pi}{2}\right),$ then $\sin x < 0, \cos x < 0,$ and $\tan x > 0.$ \nl
+d) 	If $x\in \left(\dfrac{3\pi}{2},2\pi\right),$ then $\sin x < 0, \cos x > 0,$ and $\tan x < 0.$ \nl
+
+Proof of (a). Suppose $x\in \left(0, \po{2}\right).$ By Def 5.1.4 and T3, we have $\alpha(x) = (\cos x, \sin x), \cos x \neq 0, $ and $ 0 < \sin x < x < \dfrac{\sin x}{\cos x} = \tan x.$\nl
+If $\cos x < 0,$ then $0 < \dfrac{\sin x}{\cos x}$ implies $0 > \sin x,$ which is a contradiction.  Thus, $\cos x > 0.$\nl
+\newpage
+%page84
+Proof of (b). Suppose $x\in \left(\po{2}, \pi \right).$ Thus $\po{2} < x < \pi, -\po{2} > -x> -\pi,$ and
+$\po{2} > \pi - x > 0.$ Hence\nl
+\begin{tabular}{r l l}
+$\sin x$&$= \sin(\pi - x) > 0$ &ID18, Th 5.3.1(a) \\
+$\cos x$&$=-\cos(\pi - x) < 0$& ID19, Th 5.3.1(a)\\
+$\tan x$&$= -\tan(\pi - x) < 0$& ID20, Th 5.3.1(a) \\
+\end{tabular}\\
+
+\textbf{Theorem 5.3.2.}\nl
+
+a) If $x\in \left[0,\po{2}\right],$ then $\sin x \geq 0$ and $\cos x \geq 0.$\nl
+
+b) 	If $x\in  \left[\po{2},\pi\right],$ then $\sin x \geq 0$ and $\cos x \leq 0.$\nl
+
+c) 	If $x\in  \left[\pi,\dfrac{3\pi}{2}\right],$ then $\sin x \leq 0$ and $\cos x \leq 0.$\nl
+
+d)  If $x\in  \left[\dfrac{3\pi}{2},2\pi\right],$ then $\sin x \leq 0$ and $\cos x \geq 0.$\nl
+
+The folowing diagram tells which identies to use to convert from any trigonometric function to any other trigonometric function.\nl
+\begin{center}
+\begin{tabular}{c c c c c c c}
+$\cos$&$-$&$\sec$&$-$&ID5&$-$&$\tan$\\
+$\mid $&&&&&&\\
+ID4&&&&&&$\mid$\\
+$\mid$&&&&&&\\
+$\sin$&$-$&$\text{csc}$&$-$&ID6&$-$&$\text{cot}$\\
+\end{tabular}
+\end{center}
+
+
+
+
+
+
+
+
+
+
+\textbf{Examp1e 5.3.1.} If $x\in \left[\pi,\dfrac{3\pi}{2}\right] ,\cos x = -\dfrac{3}{5},
+y\in  \left[\po{2},\pi\right], \sin y = \dfrac{4}{5},$ find the value of $\sin (x + y)$\nl
+
+Solution. Suppose $x\in \left[\pi,\dfrac{3\pi}{2}\right] ,\cos x = -\dfrac{3}{5},
+y\in  \left[\po{2},\pi\right], \sin y = \dfrac{4}{5},$ By ID4,
+$\sin^{2}x + \cos^{2}x = 1.$ By Th 5.3.2, $\sin x \leq 0.$   Thus $\sin^{2}x + \dfrac{9}{25} = 1,$ and $\sin x = -\dfrac{4}{5}.$\nl
+Similarly, $\cos y = -\dfrac{3}{5}.$ Thus,
+
+\begin{tabular}{r l}
+$\sin (x + y)$&$=\sin x \cos y + \cos x \sin y$\\
+&$= \left(-\dfrac{4}{5}\right)\left(-\dfrac{3}{5}\right) + \left(-\dfrac{3}{5}\right)\left(\dfrac{4}{5}\right)$\\
+&$= 0$\\
+\end{tabular}\\
+
+\textbf{Exercises}\nl
+1. Simplify $\sin 3x \cos 2x - \cos 3x \sin 2x.$\nl
+
+2· Simplify $\cos \dfrac{x}{3} \cos \dfrac{2x}{3} - \sin \dfrac{x}{3} \sin \dfrac{2x}{3}.$\nl
+
+\newpage
+%page85
+\lhead{Section 5.4}
+3.  If $x\in \left[ \dfrac{3\pi}{2}, 2\pi \right], y\in \left[\pi, \dfrac{3\pi}{2}\right] , \cos x = +\dfrac{5}{13},$ and $\sin y = - \dfrac{4}{5},$ find $\sin (x + y).$\nl
+
+4.  If $x\in \left[ \dfrac{\pi}{2}, \pi \right], y\in \left[\pi, \dfrac{3\pi}{2}\right] , \cos x = -\dfrac{5}{13},$ and $\cos y = - \dfrac{12}{13},$ find $\cos (x + y).$\nl
+
+5.  If $x\in \left[ \pi, \dfrac{3\pi}{2} \right], y\in \left[\dfrac{3\pi}{2}, 2\pi \right] , \sin x = -\dfrac{3}{5},$ and $\cos y = \dfrac{4}{5},$ find $\tan (x + y).$\nl
+(Hint : Use ID5 and ID6.)\nl
+
+6.  If $x\in \left[ \dfrac{\pi}{2}, \pi \right], y\in \left[\pi, \dfrac{3\pi}{2}\right] , \csc x = \dfrac{5}{3},$ and $\csc y = - \dfrac{5}{4},$ find $\cos (x - y).$\nl
+
+7.  If $x\in \left[ \dfrac{3\pi}{2}, 2\pi \right], y\in \left[\dfrac{\pi}{2}, \pi \right] , \sin x = -\dfrac{3}{5},$ and $\cos y = - \dfrac{5}{13},$ find $\cot (x - y).$\nl
+(Hint : Use Problem 17 of Section 5.2.)\nl
+
+8. Express $\sin 3x + \sin x$ as a product.\nl
+
+9. Prove Theorem 5.3.1(c).\nl
+
+10. Prove Theorem 5.3.1(d).\nl
+
+11. Prove Theorem 5.3.2(a).\nl
+\vfill
+
+\textbf{5.4 The Double-and Half-Angle Formulas} \nl
+
+\textbf{Definition 5.4.1.} A function $f$ is said to have \textit{period} $p$ if and only if $p$ is the smallest positive number such that for each $x$ in $D_{f}, (x + p)$ is in $D_{f}$ and $f(x + p) =f(x).$ If $f$ is a function with period $p$ and $a$ is in $R,$ then $\{(x,f(x)) \mid a \leq x \leq a + p\}$ is called a \textit{cycle} of $f.$\nl
+
+\textbf{Theorem 5.4.1.} $\sin, \cos,$ and $\alpha$ have period $2\pi$ and $\tan$ has period $\pi.$\nl
+Proof that $\sin$ has period $2\pi.$ By ID27, the period of $\sin$ is less than or equal to $2\pi.$ Suppose $\sin$ has period $p$ and $0< p <2\pi.$ Since $0 <\pi - \dfrac{p}{2} < \pi$ and $\pi < \pi + \dfrac{p}{2} <2\pi$ we have, by assumption and Th 5.3.1,
+\[
+0< \sin\left(\pi - \dfrac{p}{2}\right) = \sin \left[\left(\pi - \dfrac{p}{2}\right) + p \right] = \sin\left( \pi + \dfrac{p}{2}\right) < 0.
+\]
+This contradiction proves the theorem.
+\newpage
+
+%Page86
+
+\textbf{Theorem 5.4.2.} If $n\in Z,$ then the following are identities.\nl
+ID30. $\sin x = \sin(x + 2\pi n)$\nl
+ID31. $\cos x = \cos(x + 2\pi n)$\nl
+ID32. $\tan x = \tan(x + \pi n)$\nl
+Proof of ID30. Let $S = \{n \mid n\in\zp$ and $\sin x = \sin(x + 2\pi n) \}.$\nl
+(1) $1\in S$ since $1\in\zp$ and $\sin x = \sin(x +2\pi) $\nl
+\begin{tabular}{r l l}
+(2) $k\in S$& $\ra k\in\zp $and $\sin x = \sin(x + 2\pi k)$&\\
+  & $\ra k+1\in \zp $ and $\sin x = \sin (x+2\pi k) = \sin((x+2\pi k)+2\pi)$&\\
+  &\qquad \qquad$ = \sin(x+2\pi(k+1))$& \\
+  & $\ra k+1\in S $&\\
+\end{tabular}\\
+By Th 3.4.2, $S = \zp$ and for each $n$ in $\zp,  \sin x = \sin(x+2\pi n).$   Similarly for each $n$ in $\zp$, $\sin x = \sin(x+2\pi(-n)).$ $  \sin x = \sin(x +2\pi\cdot 0).$ Therefore for each $n \in$ $Z,~ \sin x = \sin(x +2\pi n).$ \nl
+
+\textbf{Theorem 5.4.3.} The following are identities. \nl
+ID33. $\sin 2x = 2 \sin x \cos x$\nl
+ID34. (a) $\cos 2x = \cos^{2}x - \sin^{2}x$\nl
+ID34. (b) $\cos 2x =1 -2\sin^{2}x$\nl
+ID34. (c) $\cos 2x =2\cos^{2}x -1 $\nl
+ID35. $\cos 3x = 4\cos^{3}x -3\cos x $\nl
+
+ID36. $\tan 2x = \dfrac{2\tan x}{1 - \tan^{2}x}.$\nl
+
+ID37 $\sin \dfrac{x}{2} = \pm\sqrt{\dfrac{1 - \cos x}{2}}$\nl
+
+ID38 $\cos \dfrac{x}{2} = \pm\sqrt{\dfrac{1 + \cos x}{2}}$\nl
+
+ID39  $\tan \dfrac{x}{2} = \dfrac{1 - \cos x}{\sin x} = \dfrac{\sin x}{1 + \cos x}$\nl
+
+Proof of ID35\nl
+\begin{tabular}{r l l}
+$\cos 3x$&$= \cos(2x + x)$&\\
+& $=\cos 2x\cos x - \sin 2x\sin x$ & ID13 \\
+& $=(2\cos^{2}x -1)\cos x -2\sin^{2}x\cos x$& ID34(c),ID3\\
+& $=2\cos^{3}x - \cos x-2(1 - \cos^{2}x)\cos x$& ID4(b) \\
+& $=2\cos^{3}x - \cos x - 2\cos x + 2\cos^{3}x $&\\
+& $=4\cos^{3}x - 3\cos x$&\\
+\end{tabular}\\
+
+Proof of ID39\nl
+
+$\tan \dfrac{x}{2} = \dfrac{\sin \dfrac{x}{2}}{\cos \dfrac{x}{2}}$\nl
+
+\newpage
+
+%page87
+
+\qquad \qquad $= \dfrac{2\sin \dfrac{x}{2} \cos \dfrac{x}{2}}{2\cos^{2} \dfrac{x}{2}}$\nl
+
+\qquad \qquad $= \dfrac{\sin x}{1 + \cos x}$\nl
+
+\textbf{Exercises}\nl
+ 1. Prove ID31.\nl
+ 2. Prove ID32.\nl
+ 3. Prove ID33.\nl
+ 4. Prove ID34(a). \nl
+ 5. Prove ID34(b). \nl
+ 6. Prove ID34(c). \nl
+ 7. Prove ID36.    \nl
+ 8. Prove ID37.    \nl
+ 9. 	Prove ID38. \nl
+ Prove the following are identities. \nl
+
+ 10. $\dfrac{1 - \cos 2x}{\sin 2x} = \tan x $\nl
+
+ 11. $\dfrac{1 + \sin 2x + \cos 2x}{1 + \sin 2x - \cos 2x} = \cot x$\nl
+
+ 12. $(\sin x + \cos x)^{2} = 1 + \sin 2x$\nl
+ 13. $\tan x + \cot x = 2\csc 2x$\nl
+ 14. $\sin 3x = 3\sin x -4\sin^{3}x$\nl
+ 15. 	Prove $\cos$ has period $2\pi.$\nl
+ 16. 	Prove $\tan$ has period $\pi$.
+
+ \newpage
+ %page88
+ %Page88
+\lhead{Section 5.5}
+\textbf{5.5 Finding the Value of a Trigonometric Function of a Number}\nl
+\textbf{Theorem 5.5.1.}
+\begin{center}
+\begin{tabular}{|c |c |c |c |c |c |c |c |c|}\hline
+&0&$\po{6}$ &$\po{4}$&$\po{3}$&$\po{2}$&$\pi$&$\dfrac{3\pi}{2}$&$2\pi$\\ \hline
+$\sin$&0&$\dfrac{1}{2}$&$\dfrac{1}{\sqrt{2}}$&$\dfrac{\sqrt{3}}{2}$&1&0&-1&0\\ \hline
+$\cos$&1&$\dfrac{\sqrt{3}}{2}$&$\dfrac{1}{\sqrt{2}}$&$\dfrac{1}{2}$&0&-1&0&1\\ \hline
+$\tan$&0&$\dfrac {1}{\sqrt{3}}$&1&$\sqrt{3}$&$-$&0&$-$&0\\ \hline
+\end{tabular}\\
+\end{center}
+Proof\nl
+
+\begin{tabular}{r l l}
+$\cos \po{2}$&$= 4\cos^{3}\po{6} - 3\cos\po{6}$&ID35\\
+&&\\
+0&$=\cos\po{6}\left(4\cos^{2}\po{6} - 3\right)$&T1\\
+&&\\
+0&$= 4\cos^{2}\po{6} - 3$ since $\cos \po{6}\neq 0$ &Th 5.3.1\\
+&&\\
+$\cos \po{6}$&$=\dfrac{\sqrt{3}}{2}$&Th5.3.1\\
+&&\\
+$\sin^{2}\po{6} + \cos^{2}\po{6}$& $= 1$&ID4\\
+&&\\
+$\sin^{2}\po{6} + \dfrac{3}{4}$&$ = 1$&\\
+&&\\
+$\sin\po{6}$&$= \dfrac{1}{2}$& Th 5.3.1\\
+&&\\
+$\tan \po{6} = \dfrac{\sin \po{6}}{\cos \po{6}}$&$ = \dfrac{\dfrac{1}{2}}{\dfrac{\sqrt{3}}{2}} = \dfrac{1}{\sqrt{3}}$& Def 5.1.5\\
+&&\\
+%$\sin \po{4}$&$ = \sqrt{\dfrac{1 - \cos \po{2}}{2}}$&ID37\\
+%&&\\
+%&$= \frac{1}{2}$&T1\\
+
+%$\sin \po{4}$&$= \dfrac{1}{\sqrt{2}}$&Th 5.3.1\\
+%&&\\
+$\cos\po{4}$&$= \cos\left(\po{2} - \po{4}\right)$&\\
+
+&$= \sin\po{4}$&ID8\\
+
+&$= \dfrac{1}{\sqrt{2}}$&\\
+
+&&\\
+$\sin \po{4}$& $= \sqrt{\dfrac{1 - \cos(\pi / 2)}{2}}$&ID37\\
+&&\\
+
+&$=\dfrac{1}{\sqrt{2}}$&T1\\
+
+\end{tabular}\\
+
+
+\newpage
+%page89
+%\begin{small}
+
+\begin{tabular}{r l r l}
+$\tan \po{4}$&$= \dfrac{\sin \po{4}}{\cos \po{4} } = \dfrac{\dfrac{1}{\sqrt{2}}}{\dfrac{1}{\sqrt{2}}} = 1$&$\tan \po{3}$&$= \dfrac{\sin \po{3}}{\cos \po{3} } = \dfrac{\dfrac{\sqrt{3}}{2}}{\dfrac{1}{2}} = \sqrt{3}$\\
+&&&\\
+$\sin \po{3}$&$= \sin\left(\po{2} - \po{6}\right)$&$\cos \po{3}$&$=\cos\left(\po{2} - \po{6}\right)$\\
+&&&\\
+&$= \cos \po{6}$&&$= \sin \po{6}$\\
+&&&\\
+&$= \dfrac{\sqrt{3}}{2}$&&$= \frac{1}{2}$\\
+
+%&&&\\
+%$\cos \po{3}$&$=\cos\left(\po{2} - \po{6}\right)$&&\\
+%&&&\\
+%&$= \sin \po{6}$&&\\
+%&&&\\
+%&$= \frac{1}{2}$&&\\
+\end{tabular}\\
+%\end{small}
+The remainder of the table follows from T1 and Th 5.2.3. This completes the proof. \nl
+
+%\textbf{Theorem 5.5.2.}   $3 < \pi < 2\sqrt{3}$\nl
+
+To find the value of a trigonometric function of a number not in $\left[0, \po{2}\right],$ use ID30$-$ID32 to reduce the problem to that of finding the value of that trigonometric function of a number in  $\left[0, 2\pi \right].$  Then use ID18$-$ID26 to reduce the problem to that of finding the value of that trigonometric function of a number in $\left[0, \po{2} \right].$\nl
+
+Identities ID18$-$ID26 can be summarized as follows:  The absolute value of a trigonometric function of a number $x$ in $[0, \pi]$ is equal to the value of that trigonometric function evaluated at the number which denotes the distance from  $\alpha (x)$ along the unit circle to the $x$-axis.  The sign of the trigonometric function is given by Theorem 5.3.1.
+
+\textbf{Example 5.5.1.} Find $\sin \dfrac{7\pi}{6}$\nl
+
+Solution. By ID21 and Th 5.5.1, $\sin \dfrac{7\pi}{6} = -\sin\left(\dfrac{7\pi}{6}  -\pi\right)= -\sin\po{6} = -\dfrac{1}{2}$\nl
+
+\textbf{Example 5.5.2.} Find $\cos\left(-\dfrac{2\pi}{3}\right).$\nl
+
+Solution.  By ID10, ID19, and Th 5.5.1,\nl
+
+
+\[
+\cos \left( - \dfrac{2\pi}{3}\right) = \cos \left(\dfrac{2\pi}{3} \right) = -\cos \left(\pi - \dfrac{2\pi}{3}    \right)  = -\cos \left(\po{3}\right) = -\dfrac{1}{2}.
+\]
+
+\newpage
+%page90
+\textbf{Example 5.5.3.} Find $\tan \dfrac{7\pi}{4}.$\nl
+Solution. By ID26 and Th 5.5.1,\nl
+$\tan \left(\dfrac{7\pi}{4}\right) = -\tan \left(2\pi -\dfrac{7\pi}{4}\right) = - \tan \left(\po{4}\right) = -1.$\nl
+
+\textbf{Definition 5.5.1.} For each $x$ in $R, x\dg,$ read ``$x$ degrees", will denote $\dfrac{x\pi}{180}.$\nl
+
+\textbf{Theorem 5.5.2.} If $y\in R,$ then $y = \left(\dfrac{y~180}{\pi}\right)\dg. $\nl
+Proof. Suppose $y\in R.$ By Def 5.5.1,\nl
+
+$\left(\dfrac{y~180}{\pi}\right)\dg   =  \left(\dfrac{y~180}{\pi} \right)\cdot \left(\dfrac{\pi}{180} \right) = y.$\nl
+
+ \textbf{Theorem 5.5.3.} \nl
+
+\begin{tabular}{l l}
+a) $0\dg = 0$& e) $90\dg = \po{2}$\\
+&\\
+b) $30\dg = \po{6}$& f) $180\dg = \pi$\\
+&\\
+c) $45\dg = \po{4}$& g) $270\dg = \dfrac{3\pi}{2}$\\
+&\\
+d) $60\dg = \po{3}$& h) $360\dg = 2\pi$\\
+\end{tabular}\nl
+
+
+
+Proof of (b). $30\dg = \dfrac{30\pi}{180} = \po{6}.$\nl
+Proof of (c). $45\dg = \dfrac{45\pi}{180} = \po{4}.$\nl
+
+\textbf{Example 5.5.4.} Convert $\dfrac{2\pi}{3}$ to degrees, i.e., find a number $y$ such that $y\dg = \dfrac{2\pi}{3}.$\nl
+Solution. By Th 5.5.3, $\dfrac{2\pi}{3} = \left( \dfrac{2\pi}{3}\cdot\dfrac{180}{\pi}\right)\dg = 120\dg $\nl
+
+\textbf{Example 5.5.5.} Find $\tan 240\dg .$\nl
+Solution. By Def 5.5.1 and ID23, $\tan 240\dg = \tan \dfrac{240\pi}{180} =\tan \dfrac{4\pi}{3} = \tan\left( \dfrac{4\pi}{3} - \pi\right) = \tan \po{3} = \sqrt{3}.$\nl
+
+\textbf{Exercises}\nl
+1. 	Convert each of the following to degrees.\nl
+\begin{tabular}{l l}
+&\\
+a) $\dfrac{3\pi}{4}$  &  c) $\dfrac{7\pi}{6}$\\
+&\\
+b) $\dfrac{5\pi}{6}$   &  d) $\dfrac{5\pi}{4}$\\
+\end{tabular}
+
+\newpage
+%page91
+\lhead{Section 5.6}
+%Page91
+
+Find the value of each of the following. \nl
+
+2. $\sin 135\dg$ \nl
+
+3. $\cos 240\dg$ \nl
+
+4. $\tan -300\dg$ \nl
+
+5. $\sin -45\dg$ \nl
+
+6. $\cos 300\dg$ \nl
+
+7. $\tan 120\dg$ \nl
+
+Prove each ofthe following. \nl
+
+8. $\sin 15\dg = \dfrac{\sqrt{3} - 1}{2\sqrt{2}}$ (Hint: $15\dg = 45\dg - 30\dg.$) \nl
+
+9. $\cos 15\dg = \dfrac{\sqrt{3} + 1}{2\sqrt{2}}$ \nl
+
+10. $\tan 15\dg = \dfrac{\sqrt{3} - 1}{\sqrt{3} + 1}    $\nl
+
+11 $\sin 75\dg = \dfrac{\sqrt{3} + 1}{2\sqrt{2}}$\nl
+
+12. $\cos 75 = \dfrac{\sqrt{3} - 1}{2\sqrt{2}}$ \nl
+
+13. $\tan 75\dg = \dfrac{\sqrt{3} + 1}{\sqrt{3} - 1}$\nl
+
+
+14. Prove the rest of Theorem 5.5.4. \nl
+
+
+15. Prove Theorem 5.5.2. (Hint: Use T3 and Th 5.5.1.) \nl
+
+\vfill
+
+\textbf{5.6 The Sum, Difference, and Product of Sines and Cosines}\nl
+\textbf{Theorem 5.6.1.} The following are identities. \nl
+
+ID40. $\sin x \cos y = \frac{1}{2}[\sin (x + y) + \sin(x - y)]$ \nl
+
+ID41. $\cos x \cos y = \frac{1}{2}[\cos (x + y) + \cos(x - y)] $\nl
+
+\newpage
+%page92
+ID42. $\sin x \sin y = \frac{1}{2}[\cos (x - y) - \cos (x + y)]$\nl
+
+ID43. $\sin x + \sin y = 2\sin \frac{x + y}{2} \cos\frac{x - y}{2}$\nl
+
+ID44. $\sin x - \sin y = 2\cos \frac{x + y}{2} \sin\frac{x - y}{2}      $\nl
+
+ID45. $\cos x + \cos y = 2\cos \frac{x + y}{2}\cos\frac{x - y}{2}$\nl
+
+ID46. $\cos x - \cos y = -2\sin \frac{x + y}{2}\sin\frac{x-y}{2}$\nl
+
+Proof of ID43.\nl
+
+$2\sin\frac{x+y}{2}\cos\frac{x-y}{2}$\nl
+
+$=2\left( \frac{1}{2}\right)[\sin \left(\frac{x+y}{2} + \frac{x-y}{2}\right) + \sin \left(\frac{x+y}{2} - \frac{x-y}{2} \right)]$         ID40\nl
+
+$=\sin x + \sin y$\nl
+
+\textbf{Theorem 5.6.2.}\nl
+
+a) $\sin$ is increasing on $[-\lpo{2}, \lpo{2}]$ and is decreasing on $[\lpo{2}, \frac{3\pi}{2}]$\nl
+
+b) $\cos$ is decreasing on $[0, \pi ]$ and increasing on $[\pi, 2\pi]$\nl
+
+c) $\tan$ is increasing on $\left(-\lpo{2}, \lpo{2}\right)$\nl
+
+Proof of (a).   Suppose $x,y \in [0, \lpo{2}]$ and $y < x.$  Since $0 \leq y < x \leq \lpo{2},$ we have $0 < \frac{x+y}{2} < \lpo{2}$ and $0 < \frac{x-y}{2} \leq \lpo{4} < \lpo{2}.$  By Th 5.3.1, $0 < \cos \frac{x+y}{2}$ and $0 < \sin \frac{x-y}{2}.$\nl
+Therefore $\sin x - \sin y = 2\cos \frac{x + y}{2}\sin\frac{x - y}{2}> 0,$ by ID44.  Thus $\sin y < \sin x.$ Hence $\sin$ is increasing on $[0, \lpo{2}].$\nl
+
+Suppose $x,y \in [-\lpo{2}, 0]$ and $x < y.$  Thus $-\lpo{2} \leq x < y \leq 0$ and $\lpo{2} \geq -x > -y \geq 0.$  Since $\sin$ is increasing on $[0, \lpo{2}],$ we have $\sin (-x) > \sin (-y).$ By ID11, we see that $-\sin x > -\sin y$ and that $\sin x < \sin y.$  Therefore $\sin$ is increasing on $[-\lpo{2}, \lpo{2}].$\nl
+
+Suppose $x,y \in [\lpo{2}, \frac{3\pi}{2}]$ and  $x < y.$  Thus $\lpo{2} \leq x < y \leq \frac{3\pi}{2}$ and
+$-\lpo{2} \leq x - \pi  < y - \pi  \leq \lpo{2}.$  Since $\sin$ is increasing on $[-\lpo{2}, \lpo{2}],$ we have $\sin (x - \pi) < \sin (y - \pi).$  Thus by ID21, $-\sin x < -\sin y.$  Hence $\sin x > \sin y.$  Therefore the theorem is proven.\nl
+
+From Th 5.5.1, Th 5.6.2, ID18, ID21, ID24, and ID30, we can obtain the following graph of a portion of $\sin .$\nl
+
+%Similarly, we obtain the following graphs.\nl
+
+
+\newpage
+%page93
+%From Th 5.5.1, Th 5.6.2, ID18, ID21, ID24, and ID30, we can obtain the following graph of a portion if $\sin .$\nl
+
+Similarly, we obtain the following graphs.\nl
+
+\begin{figure}[h!]
+	\centerline{\includegraphics[scale=1.0]{Page93.eps}}
+%	\caption{Desert Phoo.}
+%	\caption{Top-Left}
+%	\label{Fi: contractibility}
+\end{figure}
+
+
+
+
+%\textbf{The graphs on page 93 go here.}\nl
+\newpage
+%page94
+\textbf{Example 5.6.1.} Graph one cycle of $f(x) = \frac{1}{2}\sin\left(2x - \po{3}\right).$\nl
+
+ Solution. $f$ obtains a maximum height of $\frac{1}{2}$ and a minimum height of $- \frac{1}{2}.$   Since $\sin$ has a period of $2\pi, f$ starts a cycle when $2x - \po{3} = 0.$ i.e., when
+$x = \po{6}$ and $f$ completes a cycle when $2x - \po{3} = 2\pi,$ i.e., when $x = \dfrac{7\pi}{6}.$   Each cycle of $f$ has the same shape as a corresponding cycle of $\sin.$
+
+%\textbf{The graph on page 94 goes here.}\nl
+
+\begin{figure}[h!]
+	\centerline{\includegraphics[scale=0.7]{Page94.eps}}
+%	\caption{The Set-Up for the Section on Contractibility.}
+%	\label{Fi: contractibility}
+\end{figure}
+
+\textbf{Exercises}\nl
+ Graph one cycle of each of the following. \nl
+1. $f(x) = 2\sin x$ \nl
+
+2. $f(x) = 3\cos 2x$ \nl
+
+3. $f(x) = -2\sin \pi x$ (Hint: Draw $g(x)=2\sin \pi x$ upside down.)\nl
+
+4. 	$f( x) = 2\cos \frac{x}{2}$­\nl
+
+5. 	$f(x) = \sin(-x)$ \nl
+
+6. $f(x) = 3\sin(-2x)$\nl
+
+7. Prove ID40. \nl
+
+8. 	Prove ID41.\nl
+
+9. 	Prove ID42. \nl
+
+10. Prove ID44.\nl
+
+11. Prove ID45. \nl
+
+12. Prove ID46. \nl
+
+13. Prove $\cos$ is decreasing on $[0,\frac{\pi}{2}].$ \nl
+
+14. Prove $\tan$ is increasing on $[0, \frac{\pi}{2}].$ \nl
+
+\newpage
+\lhead{Section 5.7}
+%page95
+\textbf{5.7 Inverse Trigonometric Functions}\nl
+
+\textbf{Example 5.7.1.} Find the truth set of $\sin x = \frac{1}{2}.$\nl
+
+Solution. From the graph of $\sin,$ we see that there is one element of
+the truth set in $[0,\frac{\pi}{2}],$ one in $[\frac{\pi}{2}, \pi],$ and none in $[\pi, 2\pi].$ By Th 5.5.1,
+we have $\sin \frac{\pi}{6} = \frac{1}{2}$ and by ID18, $\frac{1}{2} = \sin\frac{\pi}{6} = \sin(\pi - \frac{\pi}{6}) = \sin\frac{5\pi}{6}. $  Since $\sin$ has period $2\pi,$ the truth set of $\sin x = \frac{1}{2}$
+is $\{x \mid x= \frac{\pi}{6} + 2\pi n$ or $x = \frac{5\pi}{6} + 2\pi n$ for
+some integer $n\}.$\nl
+
+There are many instances in which it is desirable to find the inverse of a trigonometric function. Since none of the trigonometric functions are one-to-one, we must restrict their domain to a set on which they are one-to-one before taking their inverse. \nl
+
+\textbf{Definition 5.7.1.} \nl
+a) 	Let $\arcsin$ or $\sin^{-1}$ denote the inverse of $\{(x,y) \mid x\in [-\frac{\pi}{2}, \frac{\pi}{2}]$ and $y = \sin x\}$,
+i.e., $y = \arcsin x \lra y \in [-\frac{\pi}{2}, \frac{\pi}{2}] $ and $x = \sin y.$ \nl
+
+b) 	Let $\arccos$ or $\cos^{-1}$ denote the inverse of $\{(x,y) \mid x\in [0, \pi]$ and $y = \cos x\}$,
+i.e., $y = \arccos x \lra y \in [0, \pi] $ and $x = \cos y.$ \nl
+
+c) 	Let $\arctan$ or $\tan^{-1}$ denote the inverse of $\{(x,y) \mid x\in (-\frac{\pi}{2}, \frac{\pi}{2})$ and $y = \tan x\}$,
+i.e., $y = \arctan~x \lra y \in (-\frac{\pi}{2}, \frac{\pi}{2}) $ and $x = \tan y.$ \nl
+
+d) Let arccsc or $\csc^{-1}$ denote the inverse of $\{(x,y) \mid x\in  [-\lpo{2},0)\cup (0,\lpo{2}]$ and $y = \csc x\},$ i.e., $y = \text{arccsc~}x \lra y\in [-\lpo{2},0)\cup (0,\lpo{2} ]$ and $x = \csc~y.$ \nl
+
+e) Let arcsec or $\sec^{-1}$ denote the inverse of $\{(x,y) \mid x\in [0,\lpo{2})\cup (\lpo{2}, \pi]$ and $y =\sec x \},$ i.e., $y = \text{arcsec}~x \lra  y \in [0,\lpo{2})\cup (\lpo{2}, \pi]$ and $x = \sec~y.$ \nl
+
+f) Let arccot or $\cot^{-1}$ denote the inverse of $\{(x,y) \mid x \in (0,\pi)$ and $y = \text{cot} ~x \},$ i.e., $y = $ arccot $x \lra y \in (0,\pi)$ and $x = \cot~y.$ \nl
+
+\textbf{Example 5.7.2.} Find $\arcsin (-\frac{1}{2}).$\nl
+Solution. Let $x = \arcsin(-\frac{1}{2}).$ By Def 5.7.1, $x = \arcsin -\frac{1}{2} \lra$  $\sin x = -\frac{1}{2}$ and $x\in [-\lpo{2}, \lpo{2}].$   By Th 5.5.1 and ID11, we have $- \frac{1}{2} = -\sin\lpo{6}=
+\sin-\lpo{6}$ and $-\lpo{6} \in [-\lpo{2}, \lpo{2}].$   Thus $x = -\lpo{6}.$\nl
+
+\textbf{Example 5.7.3.}  Find the value of $\sin\left(\arccos (-\frac{3}{5}) + \arcsin \frac{4}{5}\right).$\nl
+
+\newpage
+%page96
+Solution. Let $x = \arccos (-\frac{3}{5}) $ and $ y = \arcsin \frac{4}{5}.$  By Def 5.7.1, $x = \arccos \left(-\frac{3}{5}\right) \lra
+ \cos x = \left(-\frac{3}{5}\right)$ and $x \in  [0,\pi],$
+ and $y = \arcsin \frac{4}{5} \lra \sin y = \frac{4}{5}$ and $y\in  [-\lpo{2}, \lpo{2}].$\nl
+ By ID4 and Th 5.3.2, we have $\sin x = \sqrt{1 - \cos^{2}x} = \sqrt{1 - \frac{9}{25}} = \frac{4}{5}$ and $\cos y =
+\sqrt{1 - \sin^{2}y} = \sqrt{1 - \frac{16}{25}} = \frac{3}{5}.$ Thus $\sin\left(\arccos (-\frac{3}{5}) + \arcsin \frac{4}{5}\right) = \sin(x + y)$ $= \sin x \cos y + \cos x \sin y = \frac{4}{5}\frac{3}{5} + (\frac{-3}{5})(\frac{4}{5}) = 0.$\nl
+
+\textbf{Example 5.7.4.} Find the value of $\sin\left(\arctan\left(-\frac{5}{12}\right)\right) $\nl
+
+Solution. Let $x = \arctan\left(-\frac{5}{12}\right).$ By Def 5.7.1, $x = \arctan\left(-\frac{5}{12}\right) \lra \tan x = -\frac{5}{12}$ and $x \in (-\lpo{2}, \lpo{2}).$   By ID6 and Th 5.3.2, we have $\sin\left(\arctan\left(-\frac{5}{12}\right)\right) = \sin x$\nl
+ $= \dfrac{1}{\csc x} = \dfrac{1}{-\sqrt{1 + \cot^{2}}} = \dfrac{1}{-\sqrt{1 + \frac{144}{25}}} = -\dfrac{5}{13}.$
+
+\textbf{Exercises}\nl
+Find the truth set of each of the following. \nl
+
+1. $\sin x = \frac{1}{\sqrt{2}}$ \nl
+
+2. $\tan x= -\sqrt{3}$\nl
+
+3. $\sec x =\frac{2}{\sqrt{3}}$ \nl		
+
+4. $\cot x= -1$ \nl
+
+5. $\csc x = 2$\nl
+ Find the value of each of the following. \nl
+
+6. arctan$(-\sqrt{3})$ \nl
+
+7. $\sin^{-1} (\cos(-60\dg))$ \nl
+
+8. $\tan(\sin^{-1}(-\frac{1}{\sqrt{2}}))$ \nl
+
+9. $\sin(2\arccos \frac{3}{5})$ \nl
+
+10. $\tan\left( \frac{1}{2}\arccos (\frac{-5}{13})\right)$
+
+\newpage
+
+%page97
+
+11. $\sin\left(\sin^{-1} \frac{1}{2} + \cos^{-1}(-\frac{4}{5})\right) $\nl
+
+12. $\cos(\arcsin x + \arccos y)$\nl
+
+13. $\tan(\tan^{-1} x + \tan^{-1} y)$\nl
+
+14. $\sin^{2} (\frac{1}{2}\cos^{-1} x)$\nl
+
+
+\newpage
+%page98
+\lhead{Section 6.1}
+\textbf{Chapter 6}\nl
+
+\textbf{Complex Numbers and Vector Spaces}\nl
+
+\textbf{6.1 Complex Numbers }\nl
+
+\textbf{Definition 6.1.1.} $(C,+,\cdot)$ is called the \textit{complex number system} and the elements of $C$ are called \textit{complex numbers} if and only if \nl
+a) $R\subseteq C$\nl
+b) $i\in C$ and $i^{2}=-1$\nl
+c) $(C,+,\cdot)$ is a field \nl
+d) For each $x$ in $C,$ there exist a real number $a$ (called the \textit{real
+part} of $x$ and denoted by $Re~x$) and a real number $b$ (called the \textit{imagin­ary part} of $x$ and denoted by $Im~ x$) such that $x = a + ib.$ \nl
+
+\textbf{Definition 6.1.2.} If $a,b\in R,$ and $x = a + ib,$ then $a - ib$ is called the \textit{complex conjugate} of $x$ and denoted by $\overline x.$\nl
+
+\textbf{Theorem 6.1.1.} If $x,y\in C,$ then \nl
+a) $\overline{i}= -i $\nl
+b) $\overline{\overline{x}} = x $\nl
+c) $\overline{x} = x$ if and only if $x =Re~x $\nl
+d) $\overline{x}= -x$ if and only if $x =iIm~x $\nl
+e) $x + \overline{x} = 2Re~x$\nl
+f) $x - \overline{x}= 2iIm~x$\nl
+g) $x\overline{x}=(Re~x)^{2} + (Im~x)^{2}$\nl
+h) $\overline{x + y} = \overline{x} + \overline{y}$\nl
+i) $\overline{xy} = \overline{x}~\overline{y} $\nl
+j) $\overline{x - y} = \overline{x} - \overline{y}$\nl
+
+k) $\overline{\left(\dfrac{x}{y}\right)}  = \dfrac{\overline{x}}{\overline{y}}$ if $y \neq 0$\nl
+
+l) $x = y$ if and only if $Re~x=Re~y$ and $Im~x =Im~y.$\nl
+m) $x\in R$ if and only if $Im~x = 0$\nl
+
+\textbf{Defniition 6.1.3.} If $x\in C,$ then $\sqrt{x\overline{x}}$ is called the absolute value of $x$ and denoted by $\abs{x}.$ \nl
+
+\textbf{Theorem 6.1.2.} If $x,y\in C,$ then\nl
+a) $\abs{x} = \sqrt{(Re~x)^{2} + (Im~x)^{2}} = \abs{\overline{x}}$\nl
+b) $\abs{x} \geq Re~x$\nl
+
+\newpage
+%page99
+
+c) $\abs{xy} = \abs{x}\abs{y}$\nl
+d) $\abs{x + y} \leq \abs{x} + \abs{y}$\nl
+
+e) $\abs{\dfrac{x}{y}} = \dfrac{\abs{x}}{\abs{y}}$ if $y \neq 0$\nl
+Proof of (d).  Suppose $x,y\in C.$  Thus\nl
+\begin{tabular}{r l}
+$\abs{x + y}^{2}$&$= (x + y)(~\overline{x + y}~)$\\
+&$=(x + y)(\overline{x} + \overline{y})$\\
+&$=x\overline{x} + x\overline{y} + y\overline{x} + y\overline{y}$\\
+&$=x\overline{x} + x\overline{y} +\overline{x\overline{y}} +y\overline{y}$\\
+&$=\abs{x}^{2} + 2Re~(x\overline{y}) + \abs{y}^{2}$\\
+&$\leq \abs{x}^{2} + 2\abs{x\overline{y}} + \abs{y}^{2}$\\
+&$=\abs{x}^{2} + 2\abs{x}\abs{y} + \abs{y}^{2}$\\
+&$=(\abs{x} + \abs{y})^{2}$\\
+\end{tabular}\\
+
+Therefore $\abs{x + y} \leq \abs{x} + \abs{y}.$\nl
+
+\textbf{Definition 6.1.4.}  If $a,b\in R$ and $x = a + ib,$ let $(a, b)$ denote $x$.\nl
+
+\textbf{Theorem 6.1.3.}  If $t,a,b,c,d\in R, x = (a, b),$ and $y = (c, d),$ then\nl
+a) $x + y = (a+c, b+d)$\nl
+b) $xy = (ac - bd, ad + bc)$\nl
+c) $tx = (ta, tb)$\nl
+
+\textbf{Theorem 6.1.4.}  If $x\in C,$ and $x \neq 0,$ then there is a positive number $r$ and a number $\theta$ in $[0, 2\pi)$ such that $x = r\alpha (\theta).$\nl
+Proof.  Suppose $x$ is in $C$ and $x\neq 0.$  Let $r = \abs{x}.$  Since\nl
+\[
+d\left(\dfrac{x}{\abs{x}}, 0 \right) = \sqrt{\dfrac{(Re~x)^{2}}{\abs{x}^{2}} + \dfrac{(Im~x)^{2}}{\abs{x}^{2}}}
+\]
+\[
+=\sqrt{\dfrac{(Re~x)^{2} + (Im~x)^{2}}{\abs{x}^{2}}} = \sqrt{\dfrac{\abs{x}^{2}}{\abs{x}^{2}}} = 1,
+\]\nl
+we see that $\dfrac{x}{\abs{x}}\in c_{1}.$  By th 5.1.1, there is a number $s$ such that $\alpha(s) = \dfrac{x}{\abs{x}} = \dfrac{x}{r}.$\nl
+Suppose $s \geq 2\pi.$  Let $M = \{n \mid n\in \zp \text{~and~} \dfrac{s}{2\pi} - 1 < n \}.$  Let $m$ denote the least element of $M$.  Thus $m - 1 \leq \dfrac{s}{2\pi} - 1 < m$ and $0 \leq s - 2\pi m < 2\pi.$
+By Th 5.4.2, $\alpha(s) = \alpha (s - 2\pi m).$   If $s < 0,$ then by a similar argument there is a number $t$ in $[0, 2\pi)$ such that $\alpha(s) = \alpha(t).$  Therefore there is a number $\theta$ in $[0, 2\pi)$ such that $\alpha (\theta) = \alpha(s) = \dfrac{x}{r}.$  Thus $x = r\alpha(\theta)$ and $\theta \in [0, 2\pi).$
+
+\newpage
+%page100
+
+\textbf{Example 6.1.1.}  Express $(2 - 5i) - (3 - 2i)$ as an ordered pair.\nl
+Solution. $(2-5i) -(3-2i)= 2 - 5i - 3 + 2i = -1 - 3i =(-1,-3) $\nl
+
+\textbf{Example 6.1.2.} Express $(2 - 3i)(2 + 3i)$ as an ordered pair\nl
+ Solution. $(2 - 3i)(2 + 3i)=4 + 6i - 6i -9i^{2} = 4 + 9 =(13,0)$\nl
+
+
+
+\textbf{Example 6.1.3.} Express $\dfrac{3 + 2i}{3 - 2i}$ as an ordered pair.\nl
+\[
+\text{Solution.~} \dfrac{3 + 2i}{3 - 2i} = \dfrac{3 + 2i}{3 - 2i}\cdot \dfrac{3 + 2i}{3 + 2i} = \dfrac{9 + 6i +6i + 4i^{2}}{9 + 6i -6i - 4i^{2}}
+\]
+\[
+=\dfrac{9 + 12i - 4}{9 + 4} = \dfrac{5 + 12i}{13} = \left(\dfrac{5}{13}, \dfrac{12}{13}\right).
+\]
+
+\textbf{Exercises}\nl
+
+Express each of the following as an ordered pair.
+
+1. 	$(3 - 2i) + (4 + 3i)$\nl
+2. 	$(3i - 5) + (4 - 2i)$\nl
+3. 	$(6 + 2i) - (2 + 4i)$\nl
+4. 	$(2 + i)(2 - i)$\nl
+5. 	$(3 - 2i)(2 + i)$\nl
+
+6. 	$\dfrac{3 + 2i}{5 - 3i}$\nl
+
+7.  $\dfrac{3}{-i}$\nl
+
+8. 	Prove Theorem 6.1.1 (a), (b), and (c). \nl
+
+9. 	Prove Theorem 6.1.1 (d) and (e).
+
+10. Prove Theorem 6.1.1 (f) and (g).
+
+11. Prove Theorem 6.1.1 (h) and (i).
+
+12. Prove Theorem 6.1.1 (j) and (k).
+
+13. Prove Theorem 6.1.1 (l) and (m).
+
+14. Prove Theorem 6.1.2 (a) and (b).
+
+15. Prove Theorem 6.1.2 (c) and (d).
+
+
+\newpage
+%page101
+\lhead{Section 6.2}
+\textbf{6.2 Generalized Exponents}\nl
+
+\textbf{Definition 6.2.1.} Let $L$ denote the function with domain $(C-\{0\})$ such that if $r\in P, \theta\in[0, 2\pi),$ and $x =r\alpha (\theta) = r(\cos \theta, i~\sin \theta),$ then $L(x) = (L(r),\theta).$ \nl
+
+\textbf{Definition 6.2.2.} Let $E$ denote the function defined on $C$ such that if $a,b\in R$ and $x = a + ib,$ then $E(x) = E(a)\alpha(b).$\nl
+
+The same symbol was used for the $L$ defined in Section 4.2 as for the $L$ defined above. This should cause no confusion since the former $L$ is a subset of the latter one. A similar statement is true for $E.$\nl
+
+\textbf{Theorem 6.2.1.} If $r\in P, \theta \in  [0,2\pi),$ and $x =r\alpha(\theta),$ then $E(L(x))=x.$\nl
+ Proof. Suppose $r\in P, \theta \in  [0,2\pi)$ and $x =r\alpha(\theta).$ Thus
+ \[
+ E(L(x)) = E(L(r\alpha(\theta)))=E(L(r),\theta) = E(L(r))\alpha(\theta) = r\alpha(\theta) = x
+ \]
+
+\textbf{Theorem 6.2.2.} If $a,b\in R$ and $x = a + ib,$ then $L(E(x))=x.$\nl
+Proof. Suppose $a,b\in R$ and $x = a + ib.$
+\[
+L(E(x)) = L(E(a)\alpha (b)) = (L(E(a)), b) = (a,b) = x
+\]
+
+\textbf{Definition 6.2.3.} If $a\in (C-\{ 0, 1 \}),$ let $log_{a}$ denote the function with domain $(C-\{0\})$ such that $log_{a}x=L(x)/L(a)$ for each $x$ in $(C-\{0\}).$\nl
+
+\textbf{Definition 6.2.4.} If $a\in (C-\{0\})$ and $x\in C,$ let $a^{x}$ denote $E(xL(a)).$\nl
+
+\textbf{Theorem 6.2.3.} If $a,b\in R$ and $x = a+i·b,$ then $e^{x} =e^{a}(\cos b +i\sin b).$\nl
+
+\textbf{Theorem 6.2.4.} If $r\in P, \theta \in  [0,2\pi),$ and $x = r(\cos \theta + i\sin \theta),$ then
+$log_{e}x = (log_{e}r, \theta).$\nl
+
+\textbf{Theorem 6.2.5.} All of the theorems of Sections 4.2 and 4.3 are true with $R$ replaced by $C$ and $P$ replaced by $(C - \{0\})$ with the excep­tion of Theorems L2, 4.2.2(d) and 4.2.3.\nl
+
+\textbf{Theorem 6.2.6.} If $r,s\in P, \theta,\phi \in [0,2\pi), x = r(\cos \theta + i\sin \theta),$ and $y = s(\cos \phi + i\sin \phi ),$ then $xy = rs[\cos( \theta + \phi) + i\sin( \theta + \phi )].$\nl
+
+Proof. Suppose  $r,s\in P, \theta,\phi \in [0,2\pi), x = r(\cos \theta + i\sin \theta),$ and $y = s(\cos \phi + i\sin \phi ).$\nl
+\begin{tabular}{l l}
+$xy = r\left(\cos\theta + i\sin\theta\right)\cdot s\left(\cos\phi + i\sin\phi\right)$&\\
+$=rs[\cos\theta\cos\phi - \sin\theta\sin\phi + i\left(\sin\theta\cos\phi + \cos\theta\sin\phi\right)]$&Theorem 6.1.3.\\
+$=rs[\cos(\theta + \phi) + i\sin(\theta + \phi)]$&Theorem5.2.1,ID13a and ID14\\
+\end{tabular}\\
+
+\newpage
+%page102
+
+
+
+\indent $=E(L(rs), \theta + \phi)$\nl
+\indent $=E(L(rs))\alpha ( \theta + \phi)$\nl
+\indent $=rs(\cos( \theta + \phi) + i\sin( \theta + \phi))$\nl
+
+\textbf{Theorem 6.2.7.} If $r,s\in P, \theta,\phi  \in [0,2\pi), x=r(\cos \theta  + i\sin \theta),$ and
+$y = s(\cos \phi + i\sin \phi),$ then $\dfrac{x}{y} = \dfrac{r}{s}(\cos( \theta - \phi) + i\sin( \theta - \phi )).$\nl
+
+\textbf{Theorem 6.2.8.} If $n\in R, r\in P, \theta \in [0,2\pi),$ and $x = r(\cos \theta + i\sin \theta),$ then $x^{n} = r^{n}(\cos n\theta + i\sin n\theta).$\nl
+Proof. Suppose  $n\in R, r\in P, \theta \in [0,2\pi),$ and $x = r(\cos \theta + i\sin \theta).$\nl
+\begin{tabular}{r l}
+$x^{n}$&$=(r\alpha(\theta))^{n}$\\
+&$=E(nL(r\alpha (\theta)))$\\
+&$=E(n(L(r), \theta))$\\
+&$=E(nL(r),n\theta ) $\\
+&$=E(L(r^{n}),n\theta )$\\
+&$=r^{n}\alpha(n\theta)$\\
+&$=r^{n}(\cos n\theta + i\sin n\theta)$\\
+\end{tabular}\\
+
+\textbf{Definition 6.2.5.} If $n\in \zp$ and $a,x\in C,$ then $a$ is called an $n$th root of $x$ if and only if $a^{n} = x.$\nl
+
+\textbf{Theorem 6.2.9.} If $n\in \zp, k\in Z_{0}^{n-1}, r\in P, \theta \in [0,2\pi),$ and $x = r(\cos \theta + i\sin \theta),$ then\nl
+\[
+r^{1/n} \left[\cos\left( \dfrac{\theta}{n}+ \dfrac{k2\pi}{n}\right) + i\sin\left( \dfrac{\theta}{n} + \dfrac{k2\pi}{n}\right)\right] \text{~is~ an~} n\text{th~root~of~} x.
+\]
+Proof. Suppose $n\in \zp, k\in Z_{0}^{n-1}, r\in P, \theta \in [0,2\pi),$ and $x = r(\cos \theta + i\sin \theta).$\nl
+Thus, $\left(\dfrac{\theta}{n} + \dfrac{k2\pi}{n}\right)\in [0, 2\pi)$ and
+\[
+ \left[r^{1/n} \left[\cos\left( \dfrac{\theta}{n}+ \dfrac{k2\pi}{n}\right) + i\sin\left( \dfrac{\theta}{n} + \dfrac{k2\pi}{n}\right)\right]\right]^{n}
+\]
+$= \left(r^{1/n}\right)^{n}\left[\cos(\theta + k2\pi) + i\sin(\theta + k2\pi)\right]$\nl
+%$=(r^{1/n})^{n}[\cos(\theta + k2\pi) + i\sin(\theta + k2\pi)]$\nl
+$=r(\cos\theta + i\sin \theta) = x$\\
+
+\textbf{Example 6.2.1.} Find the value of $i^{i}.$ Solution.
+$i^{i}=E(iL(i)) = E\left(iL\left(1\cdot\alpha\left(\po{2}\right)\right)\right) = E\left(i\left(L(1),\po{2}\right)\right)$ \nl
+$=E\left(i\left(0,\po{2}\right)\right) = E\left(ii\po{2}\right) = E\left(-\po{2}\right) = e^{-\lpo{2}}$\nl
+
+
+\textbf{Example 6.2.2.} Express $\dfrac{10(\cos 120\dg + i\sin 120\dg)}{2(\cos 30\dg + i\sin 30\dg)}$ as an ordered pair.
+
+\newpage
+%page103
+
+Solution.\nl
+\[
+\dfrac{10(\cos 120\dg + i\sin 120\dg)}{2(\cos 30\dg + i\sin 30\dg)} = 5\left(\cos 90\dg + i\sin 90\dg\right) = 5i = (0, 5)
+\]
+
+\textbf{Exercises} \nl
+
+1. 	If $x = 3(\cos 15\dg + i\sin 15\dg)$ and $y = 2(\cos 45\dg + i\sin 45\dg),$ find each
+of the following. \nl
+
+a) $xy$ \quad b) $x^{4}$ \quad c) $\dfrac{y}{x}$ \quad d) $y^{-2}$\nl
+
+Express each of the following as an ordered pair. \nl
+
+2. 	$(2+2i)^{2}$\nl
+3. 	$(\sqrt{3} - i)^{2}$\nl
+4. 	$\left[3\left(\cos \po{3} + i\sin \po{3}\right)\right]^{5}$ \nl
+
+5. 	$\dfrac{6(\cos(\frac{3\pi}{4} +i\sin \frac{3\pi}{4}))}{3(\cos(\frac{\pi}{2} +i\sin \frac{\pi}{2}))} $\nl
+
+6. 	$[4(\cos 135\dg + i\sin 135\dg)] [3(\cos 45\dg + i \sin 45\dg)]$\nl
+
+7. 	$[5(\cos \frac{7\pi}{6} + i\sin \frac{7\pi}{6}][2(\cos \lpo{3} + i\sin \lpo{3}] $\nl
+
+\begin{large}
+8.  $\left(\dfrac{\sqrt{3}}{2}, \dfrac{1}{2}\right)^{(3,6)}$\nl
+
+9.  $\left(\dfrac{1}{\sqrt{2}}, -\dfrac{1}{\sqrt{2}}\right)^{\left(\frac{8}{7},0\right)}$\nl
+
+10.  $(1 + i)^{-i}$\nl
+
+\end{large}
+
+
+11. Find three cube roots of $27^{i}.$\nl
+
+12. Find three cube roots of $-i.$\nl
+
+13. Find four fourth roots of $-1 + \sqrt{3}i.$\nl
+
+14. Find three cube roots of $-1 + i$\nl
+
+15. Prove Theorem 6.2.3. \nl
+
+16. Prove Theorem 6.2.4. \nl
+
+17. Prove Theorem 6.2.7. \nl
+
+%18. Prove Theorem 6.2.7. \nl
+
+\newpage
+%page104
+\lhead{Section 6.3}
+\textbf{6.3 Vector Spaces}\nl
+
+\textbf{Definition 6.3.1.} $(V,F,+,\cdot)$ is said to be a \textit{vector space} if $(F,+,\cdot)$ is a field, $V$ is a non-empty set whose elements are called vectors, $+$ is a binary operation over $V,~ \cdot$ is a function whose domain contains $F\times V,$ and the following statements are true. \nl
+
+\qquad V1. If $x,y\in V,$ then $x + y\in V.$ \nl
+
+\qquad V2. If $x,y\in V,$ then $x + y = y + x.$ \nl
+
+\qquad V3. If $x,y,z\in V,$ then $(x + y) + z = x + (y + z).$ \nl
+
+\qquad V4. There is an element $0$ in $V$ (called the zero vector) such that
+if $x\in V,$ then $x + 0 = x.$ \nl
+
+\qquad V5. If $x\in V,$ then there is an element $-x$ in $V$ (called the inverse
+of $x$) such that $x + (-x) = 0.$ \nl
+
+\qquad V6. If $a\in F$ and $x\in V,$ then $a\cdot x\in V.$ \nl
+
+\qquad V7. If $a,b\in F$ and $x\in V,$ then $(ab)\cdot x = a(b\cdot x).$ \nl
+
+\qquad V8. If $a\in F$ and $x,y\in V,$ then $a\cdot(x + y) =a\cdot x + a\cdot y.$ \nl
+
+\qquad V9. If $a,b\in F$ and $x\in V,$ then $(a + b)\cdot x = a\cdot x + b\cdot x.$ \nl
+
+\qquad V10. If $x\in V,$ then $1\cdot x = x,$ where $1$ is in $F$ and $1$ is the identity for $\cdot.$ \nl
+
+\textbf{Definition 6.3.2.} If $(V,F,+,\cdot)$ is a vector space, $a,b\in F$ and $x,y\in V,$ we will use $ab,~ ax,$ and $x - y$ to denote $a\cdot b, a\cdot x,$ and $x + (-y)$ respectively. \nl
+
+\textbf{Theorem 6.3.1.} If $(V,F,+,\cdot )$ is a vector space, then the following statements are theorems. \nl
+a) If $x,y,z\in V$ and either $x + z = y + z$ or $z + x = z + y,$ then $x = y.$\nl
+b) If $x,y\in V$ and $x + y = x,$ then $y = 0.$\nl
+c) If $x,y\in V$ and $x + y =0,$ then $y = -x.$\nl
+d) If $x\in V,$ then $0x = 0.$\nl
+e) If $a\in F,$ then $a0 = 0.$\nl
+f) If $a\in F, x\in V,$ and $ax = 0,$ then $a = 0$ or $x = 0.$\nl
+g) If $x\in V,$ then $-x = (-1)x.$\nl
+h) If $a\in F$ and $x\in V,$ then $(-a)x = a(-x) = -(ax).$\nl
+
+\textbf{Definition 6.3.3.} $(V,F,+,\cdot)$ is called an \textit{inner product} space if and only if $(V,F,+,\cdot)$ is a vector space, the domain of $\cdot$ contains $V\times V,$ and if $a\in F$ and $x,y,z\in V,$ then $x\cdot y\in R$ and \nl
+a) $x\cdot x \geq 0$\nl
+%\newpage
+%page105
+b) $x\cdot x = 0$ if and only if $x = 0.$ \nl
+c) $x\cdot y = y\cdot x$\nl
+d) $a(x\cdot y) =(ax)\cdot y $\nl
+e) $x\cdot (y + z) = x\cdot y + x\cdot z$\nl
+
+Note: $(V,+,\cdot)$ is a vector space means $(V,R,+,\cdot)$ is a vector space, where $(R,+,\cdot)$ is the real
+number system. \nl
+
+\textbf{Definition 6.3.4} If $n\in \zp,$ then $x$ is called an $n$\textit{-tuple of elements} of $R$ if and only if $x : Z_{1}^{n} \ra R.~$  If $n\in\zp$ and $x$ is an $n$-tuple, then for each $i$ in $Z_{1}^{n}, x(i)$ will be denoted by $x_{i}$ and $x$ will be denoted by $(x_{1} , x_{2},~ \dots ~,x_{n}).$ If $n\in\zp,$ let $R^{n}$ denote the set of all $n$-tuples. \nl
+
+\textbf{Theorem 6.3.2.} If $n\in\zp,$ then $(R^{n},+,\cdot)$ is an inner product space
+with $~\cdot~$ and $~+~$ defined such that for each $x,y\in R^{n}$ and $t\in R,$ we have\nl
+
+$x + y=(x_{1} + y_{1}, x_{2} + y_{2} , ~\dots ~ ,x_{n} + y_{n}),$\nl
+
+$t\cdot x = (tx_{1}, tx_{2}, ~\dots ~ ,tx_{n}),$ and
+\[
+x\cdot y = \sum\limits_{i=1}^{n}x_{i}y_{i}.
+\]
+
+\textbf{Exercises} \nl
+
+1. Prove Theorem 6.3.1(a) and (b). \nl
+
+2. Prove Theorem 6.3.1(c) and (d).\nl
+
+3. Prove Theorem 6.3.1(e) and (f).\nl
+
+4. Prove Theorem 6.3.1(g) and (h).\nl
+
+5. Prove Theorem 6.3.2. \nl
+
+\newpage
+%page106
+\lhead{Section 6.4}
+\textbf{6.4 Measure of an Angle}\nl
+
+\textbf{Definition 6.4.1.} $(V,F,+,\cdot)$ is said to be a \textit{normed linear} space if and only if $(V,F,+,\cdot)$ is a vector space and for each $x$ in $V$ there is a real num­ber $\abs{x}$ (called the \textit{norm} of $x$) such that \nl
+
+a) $\abs{x} \geq 0$\nl
+b) $\abs{x} = 0$ if and only if $x = 0$\nl
+c) $\abs{a\cdot x} = \abs{a}\abs{x}$ for every $a$ in $F$ \nl
+d) $\abs{x + y} \leq \abs{x} + \abs{y}$ for each $y$ in $V$.\nl
+
+
+\textbf{Theorem 6.4.1.} If $(V,F,+,\cdot)$ is an inner product space, then $(V,F,+,\cdot )$ is a normed linear
+space, with $\abs{x}= \sqrt{x\cdot x}$ for each $x$ in $V.$ \nl
+
+\textbf{Definition 6.4.2.} $(S,d)$ is called a \textit{metric space} if and only if $S$ is a non-empty set and $d : S\times S\ra R$ such that if $x,y,z\in S,$ then \nl
+a) $d(x,y) \geq 0$\nl
+b) $d(x,y) = 0$ if and only if $x = y$\nl
+c) $d(x,y) = d(y,x)$\nl
+d) $d(x,z) \leq d(x,y) + d(y,z)$\nl
+
+\textbf{Theorem 6.4.2.} If $(V,F,+,\cdot)$ is a normed linear space and $d(x,y) = \abs{x - y}$ for each $x$ and $y$ in $V,$ then $(V,d)$ is a metric space. \nl
+
+\textbf{Definition 6.4.3.} Suppose $(V,+,\cdot)$ is a vector space, $x,y\in V$ and $x \neq y.$\nl
+
+a) The \textit{line} $xy$ is denoted by $\overleftrightarrow{xy}$ and defined by $\overleftrightarrow{xy} = \{p \mid p = ay + (1-a)x\text{~for~some~} a \text{~in~} R\}.$ \nl
+
+b) The \textit{ray} $xy$ is denoted by $\overrightarrow{xy}$ and defined by $\overrightarrow{xy} = \{p \mid p =ay +( 1 - a)x$ for some $a\geq 0\}.$ $x$ is called the \textit{end point} of $\overrightarrow{xy}.$ \nl
+
+c) 	The \textit{segment} $xy$ is denoted by $\overline{xy}$ and defined by $\overline{xy}  =\{p \mid p = ay + (1 - a)x$ for some $a$ in $[0,1] \}.$ $x$ and $y$ are called \textit{end points} of $\overline{xy}.$ \nl
+
+\textbf{Definition 6.4.4.} If $(V,+,\cdot)$ is a vector space and $x,y,z\in V,$ then $x,y,$ and $z$ are said to be \textit{collinear} if and only if some line contains all three points.\nl
+
+\textbf{Definition 6.4.5.} Suppose $(V, +, \cdot)$ is a vector space and $x,y,$ and $z$
+are non-collinear (i.e., no line contains all three points) elements of V.\nl
+a) $\overrightarrow{yx} \cup \overrightarrow{yz}$ is called the \textit{angle} $xyz$ and denoted $\angle xyz.$\nl
+b) $\overline{xy}\cup \overline{yz} \cup \overline{zx}$ is called the \textit{triangle} $xyz$ and denoted by
+$\triangle xyz$.
+
+\newpage
+%page107
+
+\textbf{Theorem 6.4.3.} If $(V,+,\cdot)$ is an inner product space, $x,y,$ and $z$ are non-collinear elements of $V,~ u\in(\overrightarrow{xy} - \{y\}),$ and $v\in(\overrightarrow{yz} - \{y\}),$ then\nl
+\[
+\dfrac{(x - y)\cdot(z - y)}{\abs{x - y}\abs{z - y}} =  \dfrac{(u - y)\cdot(v - y)}{\abs{u - y}\abs{v - y}}
+\]
+
+\textbf{Definition 6.4.6.} Suppose $(V,+,\cdot)$ is an inner product space and $x,y,$ and $z$ are non-collinear elements of $V.$ The \textit{measure} of $\angle xyz$  is denoted by $m\angle xyz$ and defined by
+\[
+m\angle xyz = \arccos \left(  \dfrac{(x - y)\cdot(z - y)}{\abs{x - y}\abs{z - y}}  \right).
+\]
+
+Let $\sin \angle xyz, \cos \angle xyz,$ and $\tan\angle xyz$ denote $\sin(m\angle xyz), \cos(m\angle xyz),$ and $\tan (m\angle xyz),$ respectively. \nl
+
+\textbf{Definition 6.4.7} If $(V,+,\cdot)$ is an inner product space, then an angle $xyz$ is said to be a \textit{right angle} if and only if $(x - y)\cdot(z - y) = 0.$\nl
+\textbf{Exercises}\nl
+Assuming $(V,R,+,\cdot)$ is an inner product space and $x,y,z\in V,$ prove each of the following. \nl
+1. $\abs{x} - \abs{y} \leq \abs{x - y}$\nl
+
+2. $\abs{x + y}^{2} = \abs{x}^{2} + 2x\cdot y + \abs{y}^{2}     $ \nl
+
+3. $\abs{x - y}^{2} = \abs{x}^{2} - 2x\cdot y + \abs{y}^{2}$\nl
+
+4. $\abs{x + y}^{2} - \abs{x - y}^{2} = 4x\cdot y$\nl
+
+5. If $\angle xyz$ is a right angle, then $0 =(x - y)\cdot(z - y) = (y - x)\cdot(z - y) =(x - y)\cdot(y - z) = (y - x)\cdot(y - z).$\nl
+
+6. 	If $\angle xyz$ is a right angle, then\nl
+\begin{tabular}{r l}
+&a) $\abs{x - y}^{2} = (x - y)\cdot (x - z)$ and \\
+&b) $\abs{z - y}^{2} = (z - y)\cdot(z - x)$\\
+\end{tabular}\nl
+
+7. $\abs{ax + (1 - a)y} \leq \max \{ \abs{x},\abs{y}\}$ for each $a$ in $[0,1].$\nl
+
+8. If $x,y,$ and $z$ are non-collinear, $u\in (\overrightarrow{yx} -\{y\}),$ and $v\in(\overrightarrow{yz} -\{y\}),$ then  $\angle xyz = \angle uyv.$ \nl
+
+9. 	If $\angle xyz$ is a right angle, $r$ and $s$ are distinct elements of $\overrightarrow{xy}, u$ and $v$ are distinct elements of $\overrightarrow{yz},$ then $(r - s)\cdot (u - v) = 0.$\nl
+
+10. Prove Theorem 6.4.1. (Hint: Show $0 \leq \abs{(x\cdot y)x - (x\cdot x)y}^{2} \ra     $\nl
+$\abs{x\cdot y} \leq \abs{x}\abs{y}.$  Then show $\abs{x + y}^{2} \leq \left(\abs{x} + \abs{y}\right)^{2}.$)\nl
+
+11. Prove Theorem 6.4.2.\nl
+12. Prove Theorem 6.4.3.\nl
+
+\newpage
+%page108
+\lhead{Section 6.5}
+\textbf{6.5 Triangles} \nl
+
+\textbf{Definition 6.5.1.} If $(V,+,\cdot)$ is an inner product space and $A, B,$ and
+$C$ are non-collinear elements of $V,$ let\nl
+\begin{tabular}{r r l}
+&$a = d(B, C)$&$A = \angle CAB$\\
+&$b = d(A, C)$&$B = \angle ABC$\\
+&$c = d(A, B)$&$C = \angle BCA$\\
+\end{tabular}\nl
+
+
+\textbf{Theorem 6.5.1.} If $(V,+,\cdot)$ is an inner product space and $\angle ACB$ is a right angle, then\nl
+\begin{tabular}{r l}
+&a) $a^{2} + b^{2} = c^{2}$\\
+&\\
+&b) $\sin\angle A = \dfrac{a}{c}$\\
+&\\
+&c) $\cos\angle A = \dfrac{b}{c}$\\
+&\\
+&d) $\tan\angle A = \dfrac{a}{b}$\\
+&\\
+\end{tabular}\nl
+
+\textbf{Theorem 6.5.2.} If $(V,+,\cdot)$ is an inner product space and $A, B,$ and $C$ are non-collinear elements of $V,$ then\nl
+
+\begin{tabular}{r l}
+a) &$a^{2} = b^{2} + c^{2} - 2bc\cos\angle A$\\
+&$b^{2} = c^{2} + a^{2} -2ca\cos\angle B$\\
+&$c^{2} = a^{2} + b^{2} -2ab\cos\angle C$\\
+\end{tabular}(Law of Cosines)\\
+\begin{tabular}{r l}
+&\\
+b) &$\dfrac{\sin\angle A}{a} = \dfrac{\sin\angle B}{b} = \dfrac{\sin\angle C}{c}$\\
+&\\
+\end{tabular}(Law of Sines)\\
+
+\begin{tabular}{r l}
+c) &$m\angle PAC + m\angle CAB = \pi$ for each $P$ in $(\overleftrightarrow{AB} - \overrightarrow{AB})$\\
+%d) &$m\angle BAC + m\angle ACB \leq \pi$\\
+d) &$m\angle A + m\angle B + m\angle C  = \pi$\\
+\end{tabular}\nl
+
+\textbf{Example 6.5.1.} If $(V,R,+,\cdot)$ is an inner product space, $A, B,$ and $C$ are non-collinear elements of $V, a = 2, m\angle A = 45\dg,$ and $m\angle B =60\dg,$ find $c.$\nl
+Solution. Suppose $(V,R,+,\cdot)$ is an inner product space, $A, B,$ and $C$ are non-collinear elements of $V, a = 2, m\angle A = 45\dg,$ and $m\angle B =60\dg.$
+\[m\angle C = 180\dg - m\angle A - m\angle B = 180\dg -45\dg -60\dg =75\dg.\]
+
+By problem 11, Sect. 5.5 on page 91,
+
+\newpage
+%page109
+\[
+\sin\angle C = \sin 75\dg = \dfrac{\sqrt{3} + 1}{2\sqrt{2}}
+\]
+From the Law of Cosines, we have
+\[
+c = \dfrac{a\sin\angle C}{\sin\angle A} = \dfrac{2\left(\dfrac{\sqrt{3} + 1}{2\sqrt{2}}\right)}{\dfrac{1}{\sqrt{2}}} = \sqrt{3} + 1.
+\]
+
+\textbf{Example 6.5.2.} If $(V,R,+,\cdot)$ is an inner product space, $A, B,$ and $C$ are non-collinear
+elements of $V, a=3, b=4,$ and $m\angle C =60\dg,$ find $c.$\nl
+Solution. Suppose $(V,R,+,\cdot)$ is an inner product space, $A,B,$ and $C$ are non-collinear elements of $V, a = 3, b = 4,$ and $m\angle C =60\dg.$ By the Law of Cosines, we have \nl
+
+\begin{tabular}{r r l}
+&$c^{2}$&$= a^{2} + b^{2} -2ab\cos\angle C$ \\
+&&$=3^{2} + 4^{2} -2(3)(4)(1/2) = 13$ \\
+&c&$= \sqrt{13}$ \\
+\end{tabular}\nl
+
+\textbf{Exercises}\nl
+
+Assuming $(V,R,+,\cdot)$ is an inner product space and $A, B,$ and $C$ are non-collinear elements
+of $V,$ prove or solve each of the following. \nl
+
+1. If $a = 2, m\angle C = 30\dg,$ and $ m\angle B =105\dg,$ find $b, c,$ and $m\angle A.$\nl
+
+2. If $b = 3, c = 5,$ and $m\angle A = 120\dg,$ find $a.$\nl
+
+3. If $a =\sqrt{2}, b = 2,$ and $m\angle A = 45\dg,$ find $m\angle B.$ \nl
+
+4. If $a = 24, b = 25,$ and $c = 7,$ find $m\angle B.$\nl
+
+5. If $m\angle A = 30\dg, c = 2,$ and $a = \sqrt{2},$ find all possible values for $m\angle C.$\nl
+
+6. If $\angle ABC$ is a right angle, then $c < b$ and $a < b.$\nl
+
+7. 	If $\angle ABC$ is a right angle, then \nl
+\begin{tabular}{r l}
+&a) $m\angle BAC < m\angle ABC$ and\\
+&b) $m\angle BCA <  m\angle ABC.$\\
+\end{tabular}\nl
+
+8. If $P\in(\overleftrightarrow{AB} - \overrightarrow{AB}),$ then $m\angle BCA < m\angle CAP.$ \nl
+
+9. Prove Theorem 6.5.1. \nl
+
+10. Prove Theorem 6.5.2. \nl
+
+\newpage
+%page110
+\lhead{Section 6.6}
+\textbf{6.6 Lines}\nl
+
+Suppose line means line in $(R^{2},+,\cdot)$ as defined in Definition 6.4.3 and $+$ and $\cdot$ are defined as in Theorem 6.3.2.\nl
+
+\textbf{Theorem 6.6.1.} If $L$ is a line and $A,B\in L,$ then $L = \overleftrightarrow{AB}.$\nl
+
+\textbf{Theorem 6.6.2.} The intersection of two distinct lines contains exactly one point.\nl
+
+\textbf{Theorem 6.6.3.} $L$ is a line if and only if there exist numbers $A, B,$ and $C$ such that $L= \{(x,y) \mid x,y\in R \text{~and~} Ax + By + C= 0\}.$\nl
+
+\textbf{Definition 6.6.1.} If $L$ is a line, then $L$ is said to have \textit{slope} if and only if there is a number $m$ (called the slope of $L$) such that for each two points $(u,v)$ and $(a,b)$ of $L,$
+\[
+m = \dfrac{v - b}{u - a}.
+\]
+
+%\textbf{Definition 6.6.2.} If $E(x,y)$ is a statement for each $x$ and $y$ in $R,$ then $E(x,y)$ is said to be %an \textit{equation} for a set $S$ if and only if \nl
+%$S = \{ (x,y) \mid x,y\in R \text{~and~} E(x,y)\}.$ \nl
+
+\textbf{Theorem 6.6.4.} If $A,B,C\in R, B \neq 0,$ and $L$ is a line with the
+equation $Ax + By + C = 0,$ then $L$ has slope $-\dfrac{A}{B}.$\nl
+
+\textbf{Theorem 6.6.5.} If $L$ is a line containing two points $(x_{1}, y_{1})$ and $(x_{2}, y_{2}),~x_{1} \neq x_{2}$ and $(x, y) \in L,$ then $y =\left( \dfrac{y_{2} - y_{1}}{x_{2} - x_{1}}\right)(x - x_{1}) + y_{1}.$ This is called the two-point form of a line.\nl
+
+\textbf{Example 6.6.1.} Find the slope of the line which contains $(-1,2)$ and $(2,4).$\nl
+Solution. Suppose $L$ is a line which contains $(-1,2)$ and $(2,4).$ By Th6.6.5 and Def 6.6.1, $L$ has slope
+$\dfrac{4 - 2}{2 - (-1)} = \dfrac{2}{3}.$\nl
+
+\textbf{Theorem 6.6.6.} $L$ is a line with slope $m$ and $(a,b)\in L$ if and only if $y = m(x-a) + b$ is an equation for $L.$ This equation is called the point-slope form of $L.$\nl
+
+\textbf{Example 6.6.2.} If $L$ is a line with slope $- 1/2$ and $(-3,4)\in L,$ find an equation for $L.$\nl
+
+\newpage
+%page111
+
+Solution. Suppose $L$ is a line with slope $- 1/2$ and $(-3,4)\in L.$ By Th 6.6.6, $y =-1/2(x-(-3)) + 4$ is an equation for $L.$ This equation simplifies to $2y + x - 5 =0. $\nl
+
+\textbf{Definition 6.6.3.} $\{(x,y) \mid x\in R \text{~and~} y = 0\}$ is called the $x$-axis. $\{ (x,y) \mid y\in R \text{~and~} x = 0\}$ is called the $y$-axis. \nl
+
+\textbf{Definition 6.6.4.} If $L$ is a line which intersects the $y$-axis ($x$-axis),
+then each point of the intersection is called a $y-intercept$ ($x-intercept$) of $L.$\nl
+
+\textbf{Theorem 6.6.7.} $L$ is a line with slope $m$ and $y$-intercept $(0, c)$ if and only if $y = mx + c$ is an equation of $L.$ This equation is, called the slope-intercept form of $L. $\nl
+
+\textbf{Example 6.6.3.} Find the slope and $y$-intercept of the line with equation $4x - 3y + 1 =0.$\nl
+Solution. Suppose $L$ is a line with equation $4x - 3y + 1 = 0.$
+\begin{tabular}{r r l}
+&&$4x - 3y + 1 = 0$\\
+&$\lra$&$3y = 4x + 1$\\
+&$\lra$&$y = \dfrac{4}{3}x + \dfrac{1}{3}$\\
+\end{tabular}\nl
+
+By Th 6.6.7, $L$ has slope $\dfrac{4}{3}$ and $y$-intercept $\left(0,\dfrac{1}{3}\right).$\nl
+
+\textbf{Definition 6.6.5.} Two intersecting lines $\overleftrightarrow{AB}$ and $\overleftrightarrow{CD}$ are said to be \textit{perpendicular} if and only if $(A-B)\cdot(C-D) = 0.$\nl
+
+\textbf{Theorem 6.6.8.} Two lines with slopes $m$ and $n$ are perpendicular if and only if $m = -\dfrac{1}{n}.$\nl
+
+\textbf{Definition 6.6.6.} Two lines are said to be \textit{parallel} if and only if they do not intersect.\nl
+
+\textbf{Theorem 6.6.9.} Two lines with slope are parallel if and only if they have the same slope.\nl
+
+\textbf{Exercises}\nl
+
+1. Find an equation of the line which contains the given point and
+has the given slope in each of the following problems. \nl
+
+\newpage
+%page112
+\begin{tabular}{r l}
+&a) $(-1,3), m = 2$\\
+&\\
+&b) $(2, -1), m = -\frac{1}{3} $\\
+&\\
+&c) $(0, -4), m = -\frac{3}{4}$\\
+\end{tabular}\nl
+
+2. 	Find the slope and an equation of the line which contains the given
+points in each of the following problems. \nl
+\begin{tabular}{r l}
+&a) $(1,2), (3,-2)$\\
+&b) $(2,3), (-1,5)$ \\
+&c) $(0,2), (5,-6)$ \\
+\end{tabular}\nl
+
+3. 	In each of the following problems, find the slope and $y$-intercept
+of the line with the given equation. \nl
+\begin{tabular}{r l}
+&a) $5x - 2y + 2 = 0$\\
+&b) $2x - 3y - 1 = 0$\\
+&c) $3x + 2y - 3 = 0$\\
+\end{tabular}\nl
+
+
+4. If $L$ is a line parallel to the line with equation $2x - 6x - 1 = 0$ and $(2,5)\in L,$ find an equation for $L.$\nl
+
+5. If $L$ is a line parallel to the line containing the two points $(3,1)$ and $(-1,2)$ and $(-1,3)\in L,$ find an equation for $L.$\nl
+
+6. Find the point of intersection of the line with equation $3y - x + 1 = 0$ and the line perpendicular to it which contains $(2,3).$\nl
+
+7. 	If $h,k\in R,$ find the intercepts of the line with equation $\dfrac{x}{h} + \dfrac{y}{k} = 1.$\nl
+
+8. Prove Theorem 6.6.1. \nl
+
+9. Prove Theorem 6.6.2. \nl
+
+10. Prove Theorem 6.6.3.\nl
+
+11. Prove Theorem 6.6.4. \nl
+
+12. Prove Theorem 6.6.5. \nl
+
+13. Prove Theorem 6.6.6. \nl
+
+14. Prove Theorem 6.6.7. \nl
+
+15. Prove Theorem 6.6.8. \nl
+
+16. Prove Theorem 6.6.9. \nl
+
+\newpage
+%page113
+\lhead{Section 6.7}
+\textbf{6.7 Matrices}\nl
+
+A matrix is a rectangular array of numbers.  Matrices have been found to be useful in dealing with a large number of problems people encounter.  In this section we will develop the algebra of matrices and in the next section we will show how they can be used to solve a system of linear equations.\nl
+
+We will use $A_{ij}$ or $a_{ij}$ to denote the element in the $i^{\text{th}}$ row and $j^{\text{th}}$ column.  A matrix with $m$ rows and $n$ columns is called a \textit{m-\text{by}-n matrix}.  The word \textit{dimension}
+will refer to the number of rows and columns in a matrix.  A matrix is said to be \textit{square} if it has the same number of rows and columns.  \nl
+
+The first of the arithmetical operations that we will consider is addition. \nl
+
+\textbf{Definition 6.7.1.}  If $A$ and $B$ are matrices with the same dimensions, then there is a sum $A + B$ whose $ij^{\text{th}}$ element is defined by $(A + B)_{ij} = a_{ij} + b_{ij}.$  \nl
+
+\textbf{Example 6.7.1}\nl
+
+
+\begin{equation*}
+\left[
+\begin{array}{rrr}
+2 & -1 & 3\\
+-5&4&6\\
+7&0&-3\\
+\end{array}
+\right] +
+\left[
+\begin{array}{rrr}
+5 & 3 & -2\\
+3&-5&1\\
+-4&5&4\\
+\end{array}
+\right]=
+\left[
+\begin{array}{rrr}
+7 & 2 & 1\\
+-2&-1&7\\
+3&5&1\\
+\end{array}
+\right]
+\end{equation*}\nl
+
+\textbf{Theorem 6.7.1}  If $A,B,$ and $C$ are matrices with the same dimensions, then\nl
+\begin{tabular}{l l}
+$A + B = B + A$&(Commutative Law)\\
+$A + (B+C) = (A + B) + C$&(Associative Law)\\
+\end{tabular}\nl
+
+\textbf{Definition 6.7.2.}  There is a zero matrix $\underline{0}$ called the identity for addition whose $ij^{\text{th}}$ element is defined by $\underline{0}_{~ij}$ = 0.\nl
+Note : The dimension of $\underline{0}$ will be assumed to be the dimension necessary for the operation to take place.\nl
+\textbf{Example 6.7.2}\nl
+\begin{equation*}
+\left[
+\begin{array}{rrr}
+4 & -7 & 3\\
+-5&2&6\\
+7&3&2\\
+\end{array}
+\right] +
+\left[
+\begin{array}{rrr}
+0 & 0 &0 \\
+0&0&0\\
+0&0&0\\
+\end{array}
+\right]=
+\left[
+\begin{array}{rrr}
+4 & -7 & 3\\
+-5&2&6\\
+7&3&2\\
+\end{array}
+\right]
+\end{equation*}\nl
+
+\textbf{Theorem 6.7.2.}  If $A$ is a matrix, then $\underline{0} + A = \underline{0} = A + \underline{0}.$  (Identity for Addition)\nl
+
+\textbf{Definition 6.7.3.}  If $A$ is a matrix, then there is a matrix $-A$ called the additive inverse of $A$ whose $ij^{\text{th}}$ element is defined by $(A)_{ij} = -a_{ij}.$\nl
+\newpage
+\textbf{Example 6.7.3.}\nl
+\begin{equation*}
+\left[
+\begin{array}{rrr}
+-5 & 2 & -4\\
+3&-6&2\\
+1&7&-3\\
+\end{array}
+\right] +
+\left[
+\begin{array}{rrr}
+5 & -2 & 4\\
+-3&6&-2\\
+-1&-7&3\\
+\end{array}
+\right]=
+\left[
+\begin{array}{rrr}
+0 & 0 & 0\\
+0&0&0\\
+0&0&0\\
+\end{array}
+\right]
+\end{equation*}\nl
+
+%\newpage
+%Page 114
+\textbf{Theorem 6.7.3.}  If $A$ is a matrix, then\nl
+$A + -A = \underline{0} = -A + A.$  (Inverse of Addition)\nl
+
+\textbf{Definition 6.7.4.}  If $A$ is a matrix and $k$ is a number, then there is a scalar product $kA$ whose $ij^{\text{th}}$ element is defined by $(kA)_{ij} = ka_{ij}.$\nl
+
+
+\textbf{Example 6.7.4.}
+\begin{equation*}
+3\left[
+\begin{array}{rrr}
+5 & -2 & 4\\
+-1&6&2\\
+7&0&3\\
+\end{array}
+\right]=
+\left[
+\begin{array}{rrr}
+15 & -6 & 12\\
+-3&18&6\\
+21&0&9\\
+\end{array}
+\right]
+\end{equation*}\nl
+
+\textbf{Theorem 6.7.4.}  If $h$ and $k$ are numbers and $A$ and $B$ are matrices with the same dimensions, then \nl
+$k(A\pm B) = kA \pm kB$\nl
+$(hk)A = h(kA)$\nl
+$(h + k)A = hA + kA$\nl
+$1A = A$\nl
+$-1A = -A$\nl
+
+\textbf{Definition 6.7.5.} If $A$ is an $m$-by-$p$ matrix and $B$ is a $p$-by-$n$ matrix, then there is a $m$-by-$n$ product matrix $AB$ whose $ij^{\text{th}}$ element is defined by
+\[
+(AB)_{ij} = (\sum_{k=1}^{p}a_{ik}b_{kj}).
+\]\nl
+
+\textbf{Example 6.7.5.}\nl
+\begin{equation*}
+\left[
+\begin{array}{rrr}
+2 & -1 & 4\\
+-3&4&0\\
+%7&0&3\\
+\end{array}
+\right]
+\left[
+\begin{array}{rr}
+2 & 2\\
+1&0\\
+-3&-1\\
+\end{array}
+\right]=
+\left[
+\begin{array}{rr}
+-9&0\\
+-2&-6\\
+\end{array}
+\right]
+\end{equation*}\nl
+
+\textbf{Theorem 6.7.5.}  If $A,B,$ and $C$ are $n$-by-$n$ matrices and $k$ is a number, then \nl
+\begin{tabular}{ll}
+$A(BC) = (AB)C$&(Associative Law of Multiplication)\\
+$A(B\pm C) = AB \pm AC$&(Distributive Law)\\
+$(B \pm C)A = BA \pm CA$&\\
+$(kA)B = k(AB) = A(kB)$&\\
+$\underline{0}A = \underline{0} = A\underline{0}$\\
+\end{tabular}\nl
+
+Note : The Commutative Law does not hold for matrix multiplication.\nl
+
+\textbf{Definition 6.7.6.} There is a matrix $I$ called the identity matrix for multiplication whose $ij^{\text{th}}$ element is defined by $I_{ij} = 1$ if $i = j$ and $0$ if $i \neq j.$\nl
+
+Note : The dimensions of $I$ will be assumed to be the dimensions necessary for the operation to take place.\nl
+
+\textbf{Example 6.7.6.}\nl
+\begin{equation*}
+\left[
+\begin{array}{rrr}
+6 & 1 & 0\\
+-2&7&-3\\
+3&-5&4\\
+\end{array}
+\right]
+\left[
+\begin{array}{rrr}
+1 & 0 & 0\\
+0&1&0\\
+0&0&1\\
+\end{array}
+\right]=
+\left[
+\begin{array}{rrr}
+6 & 1 & 0\\
+-2&7&-3\\
+3&-5&4\\
+\end{array}
+\right]
+\end{equation*}\nl
+%\newpage
+%page 116
+\textbf{Theorem 6.7.6.} If $A$ is a square matrix, then $IA = A = AI.$  (Identity for Multiplication)\nl
+
+\textbf{Definition 6.7.7.}  If $A$ and $B$ are square matrices such that $AB = I,$ then $B$ is called the multiplicative inverse of $A$ and denoted by $A^{-1}.$\nl
+There are row operations which will transform a matrix into a form where the unknowns can easily be determined.\nl
+The allowable row operations for matrices are :\nl
+3) $E_{ij}(a)$ -- add to row $i$ the result of multiplying $a$ times row $j$ of the matrix.\nl
+2) $Ej(a)$ -- multiply row $j$ by $a$ to form a new row $j$ of the matrix.\nl
+1) $P_{ij}$ -- interchange rows $i$ and $j$ of the matrix.\nl
+
+\textbf{Theorem 6.7.7(a)}  If $A$ is a $m$-by-$m$ matrix, $I$ is the identity matrix for multiplication and there exists a sequence of allowable row operations that will transform the $m$-by-$2m$ matrix $[A | I]$ into a $m$-by-$2m$ matrix of the form $[I | C],$ then $A^{-1} = C$ is the multiplicative inverse for $A$.\nl
+
+\textbf{Example 6.7.7.}  We start with a matrix of the form $[A | I]$ where $A$ occupies the first three columns and $I$ occupies the next three columns.  Between the two 3-by-6 matrices is a list of the row operations used to transform the first 3-by-6 matrix into the second 3-by-6 matrix.\nl
+
+%\begin{tabular}{|rrrcrrr|c|rrrcrrr|}
+%2&0&4&$|$&1&0&0&$\ra$&1&0&2&$|$&1/2&0&0\\
+%$-1$&3&$1$&$|$&0&1&0&$E(.5)_{1}$&0&3&3&$|$&1/2&1&0\\
+%0&2&$-1$&$|$&0&0&1&$E(1)_{21}$&0&2&$-1$&$|$&0&0&1\\
+%\end{tabular}\nl
+
+\begin{equation*}
+\left[\begin{array}{rrrcrrr}
+2&0&4&|&1&0&0\\
+-1&3&1&|&0&3&3\\
+0&2&-1&|&0&0&1\\
+\end{array}
+\right]
+\begin{array}{c}
+\ra\\
+E(.5)_{1}\\
+E(1)_{21}\\
+\end{array}
+\left[
+\begin{array}{rrrcrrr}
+1&0&2&|&1/2&0&0\\
+0&3&3&|&1/2&1&0\\
+0&2&-1&|&0&0&1
+\end{array}
+\right]
+\end{equation*}\nl
+
+
+
+
+
+
+
+
+
+
+We continue using row operations until we obtain a 3-by-6 matrix of the form $[I | C]$ where $C$ is the last three columns on the right.\nl
+\end{large}
+%\begin{tabular}{c|rrrcrrr|c|rrrcrrr|}
+%$\ra$&E(-2)_{32}&$\ra 0&1&1&|&1/6&1/3&0\\$&1&0&0&$|$&5/18&$-4/9$&2/3\\
+%$E(1/3)_{2}$&0&1&1&$|$&1/6&1/3&0&$E(-2)_{13}$&0&1&0&$|$&1/18&1/9&1/3\\
+%$E(-2)_{32}$&0&0&$-3$&$|$&$-1/3$&$-2/3$&1&$E(-1)_{23}$&0&0&1&$|$&1/9&2/9&$-1/3$\\
+%\end{tabular}\nl
+\begin{equation*}
+\begin{array}{c}
+\ra\\
+E(1/3)_{2}\\
+E(-2)_{32}\\
+\end{array}
+\left[
+\begin{array}{rrrcrrr}
+1&0&2&|&1/2&0&0\\
+0&1&1&|&1/6&1/3&0\\
+0&0&-3&|&-1/3&-2/3&1\\
+\end{array}
+\right]
+\begin{array}{c}
+\ra \newline E(-1/3)_{3}\\
+E(-2)_{13}\\
+E(-1)_{23}\\
+\end{array}
+\left[
+\begin{array}{rrrcrrr}
+1&0&0&|&5/18&-4/9&2/3\\
+0&1&0&|&1/18&1/9&1/3\\
+0&0&1&|&1/9&2/9&-1/3\\
+\end{array}
+\right]
+\end{equation*}\nl
+
+
+
+
+
+
+
+
+
+
+\begin{large}
+
+By Theorem 6.7.7(a), we have \nl
+ \begin{equation*}
+A^{-1} = C = \left[
+\begin{array}{rrr}
+5/18 & -4/9 & 2/3\\
+1/18&1/9&1/3\\
+1/9&2/9&-1/3\\
+\end{array}
+\right]
+\end{equation*}\nl
+
+\textbf{Theorem 6.7.7(b)}  If $A$ and $B$ are $m$-by-$n$ matrices, $k$ is a number and $n$ a positive integer, then\nl
+$(AB)^{-1} = B^{-1}A^{-1}$ (Inverse of Multiplication)\nl
+$AA^{-1} = A^{-1}A = I$\nl
+$(kA)^{-1} = k^{-1}A^{-1} = (1/k)A^{-1}$\nl
+$(A^{-1})^{-1} = A$\nl
+
+
+\textbf{Definition 6.7.8.}  If $A$ is a matrix, then there is a transpose matrix $A^{t}$ whose $ij^{\textbf{th}}$ element is defined by $A_{ij} = a_{ji}.$\nl
+
+\textbf{Example 6.7.8.}\nl
+\begin{equation*}
+\left[
+\begin{array}{rr}
+5 &1 \\
+-3&6\\
+2&-4\\
+\end{array}
+\right]^{t}
+=
+\left[
+\begin{array}{rrr}
+5 &-3&2 \\
+1&6&-4\\
+\end{array}
+\right]
+\end{equation*}\nl
+%\newpage
+%page 117
+
+\textbf{Theorem 6.7.8.}  If $A$ and $B$ are matrices with the same dimension, then\nl
+$(A + C)^{t} = A^{t} + B^{t}$    (Matrix Transposition)\nl
+$(AB)^{t} = B^{t}A^{t}$\nl
+$(kA)^{t} = kA^{t}$\nl
+$(A^{t})^{t}= A$\nl
+$(A^{t})^{-1} = (A^{-1})^{t}$\nl
+
+\textbf{Definition 6.7.9.}  If $A$ is a square matrix and $n$ is a positive integer, then $A$ to the $n^{\text{th}}$ power is denoted by $A^{n}$ and defined by $A^{n} = AAAA \cdots A$ ($n$ factors.)\nl
+
+\textbf{Theorem 6.7.9.}  If each of $A$ and $B$ is a $m$-by-$m$ matrix with an inverse and $n$ is a positive integer, then \nl
+$(a^{n})^{-1} = (A^{-1})^{n}$\nl
+$(A^{n})^{t} = (A^{t})^{n}$\nl
+
+\newpage
+\lhead{Section 6.8}
+
+%\end{large}
+\textbf{Section 6.8 Systems of Linear Equations}\nl
+
+For a system of linear equations, there are three possibilities:\nl
+1) If there are more unknowns than equations, then the system is called under-defined and there are either infinitely many solutions or no solution.\nl
+2) If you have the same number of unknowns as equations, then there is either a unique solution or no solution.  If there is a solution, it can be found by either Theorem 6.8.1 or Theorem 6.8.2.\nl
+3) If you have more equations than unknowns, then the system is called over-defined and there is no unique solution, but there is a best approximation given by Theorem 6.8.3.\nl
+
+We will discuss two methods of solving systems of linear equations with the same number of unknowns as equations.  The \textit{first method} of solving a system of linear equations is to apply the following theorem:\nl
+
+\textbf{Theorem 6.8.1.}  If $A$ is an $m$-by-$m$ matrix, $Y$ is an $m$-by-$1$ matrix, $I$ is the identity matrix for multiplication and there is a sequence of allowable row operations that will transform the $m$-by-$(m + 1)$ matrix $[A | Y]$ into a $m$-by-$(m + 1)$ matrix of the form $[I | C],$ then $X = C$ is the solution of the system of linear equations $AX = Y.$\nl
+
+\textbf{Example 6.8.1.}  We will consider the following system of linear equations:\nl
+\begin{tabular}{r r r c r}
+$2x_{1}$&&$+~4x_{3}$&=& 2\\
+$-x_{1}$&$+3x_{2}$&$+x_{3}$&=& $-1$\\
+&$+2x_{2}$&$-x_{3}$&=& 3\\
+\end{tabular}\nl
+
+This system of linear equations can be abbreviated using matrices as $AX = Y$ where \nl
+\begin{equation*}
+\textit{A =}\left[
+\begin{array}{rrr}
+2 &0&4 \\
+-1&3&1\\
+0&2&-1\\
+\end{array}
+\right]
+\text{~and~} \textit{~Y~=~}\left[
+\begin{array}{rrr}
+2 \\
+-1\\
+3\\
+\end{array}
+\right]
+\end{equation*}\nl
+
+We start with a matrix in the form $[A | Y]$ and then, using allowable row operations, transform it into a matrix of the form $[I | C].$\nl
+
+%\begin{tabular}{|rrrcr|c|rrrcr|}
+%2&0&4&$|$&2&$\ra$&1&0&2&$|$&1\\
+%$-1$&3&1&$|$&$-1$&$E(.5)_{1}$&0&3&3&$|$&0\\
+%0&2&$-1$&$|$&3&$E(1)_{21}$&0&2&$-1$&$|$&3\\
+%\end{tabular}\nl
+
+\begin{equation*}
+\left[
+\begin{array}{rrrcr}
+2&0&4&|&2\\
+-1&3&1&|&-1\\
+0&2&-1&|&3\\
+\end{array}
+\right]
+\begin{array}{c}
+\ra\\
+E(.5)_{1}\\
+E(1)_{21}\\
+\end{array}
+\left[
+\begin{array}{rrrcr}
+1&0&2&|&1\\
+0&3&3&|&0\\
+0&2&-1&|&3\\
+\end{array}
+\right]
+\end{equation*}\nl
+\begin{center}
+and\nl
+\end{center}
+
+%\begin{tabular}{c|rrrcr|c|rrrcr|}
+%$\ra$&1&0&2&$|$&1&$\ra E(-1/3)_{3}$&1&0&0&$|$&3\\
+%$E(1/3)_{2}$&0&1&1&$|$&0&$E(-2)_{13}$&0&1&0&$|$&1\\
+%$E(-2)_{32}$&0&0&$-3$&$|$&3&$E(-1)_{23}$&0&0&1&$|$&$-1$\\
+%\end{tabular}\nl
+
+\begin{equation*}
+\begin{array}{c}
+\ra\\
+E(1/3)_{2}\\
+E(-2)_{32}\\
+\end{array}
+\left[
+\begin{array}{rrrcr}
+1&0&2&|&1\\
+0&1&1&|&0\\
+0&0&-3&|&3\\
+\end{array}
+\right]
+\begin{array}{c}
+\ra E(-1/3)_{3}\\
+E(-2)_{13}\\
+E(-1)_{23}\\
+\end{array}
+\left[
+\begin{array}{rrrcr}
+1&0&0&|&3\\
+0&1&0&|&1\\
+0&0&1&|&-1\\
+\end{array}
+\right]
+\end{equation*}\nl
+
+%\newpage
+We continue applying row operations until we obtain a matrix of the form $[I | C].$\nl
+By Theorem 6.8.1, the solution of the system of linear equations $AX =Y$ is \nl
+
+\begin{equation*}
+\textit{X = C =~}\left[
+\begin{array}{r}
+3\\
+1\\
+-1\\
+\end{array}
+\right]
+\end{equation*}\nl
+
+Note : The $A$ used in this example is the same $A$ used in Example 6.7.7 and the sequence of row operations
+is also the same.\nl
+
+The \textit{second method} of solving this system of linear equations is to apply the following theorem:\nl
+
+\textbf{Theorem 6.8.2.}  If $A$ is an $m$-by-$m$ matrix which has an inverse, $I$ is the identity matrix for multiplication and $Y$ is an $m$-by-1 matrix, then $X = A^{-1}Y$ is a solution to the system of linear equations $AX = Y.$\nl
+Proof.\nl
+Multiplying both sides of the equation $AX = Y$ by $A^{-1},$ we get $A^{-1}AX = A^{-1}Y.$\nl
+Since $A^{-1}A = I,$ the solution is $X = A^{-1}Y.$\nl
+
+\textbf{Example 6.8.2.}  Suppose $A$ and $Y$ are defined as in Example 6.8.1, then the solution of the system of linear equations $AX = Y$ is $A^{-1}Y =$\nl
+
+\begin{equation*}
+\textit{X =}\left[
+\begin{array}{rrr}
+5/18 & -4/9 & 2/3\\
+1/18&1/9&1/3\\
+1/9&2/9&-1/3\\
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+2\\
+-1\\
+3\\
+\end{array}
+\right]=
+\left[
+\begin{array}{r}
+3\\
+1\\
+-1\\
+\end{array}
+\right]
+\end{equation*}\nl
+
+\textbf{Definition 6.8.1.}  If $B$ is an $m$-by-1 matrix, then the norm of $B$ denoted by $|B|$ is defined to be $\sqrt{B^{t}B}.$\nl
+
+Note : $B^{t}B$ is a number greater than or equal to 0.\nl
+
+\textbf{Definition 6.8.2.}  If $A$ is an $m$-by-$n$ matrix, $Y$ is an $m$-by-1 matrix, then the matrix $X$ is said to be the least squares solution to $AX = Y$ if and only if for each $m$-by-1 matrix $Z$ not equal to $X, ~|AZ - Y | > |AX - Y|.$\nl 
+
+\textbf{Theorem 6.8.3.} If $A$ is an $m$-by-$n$ matrix, $Y$ is an $m$-by-1 matrix, $m > n$ and there exists a least squares solution for $AX = Y,$ then the least squares solution of $AX = Y$ is   $A^{t}AX = A^{t}Y.$\nl
+
+Note : Since $A^{t}A$ is an $n$-by-$n$ matrix and $A^{t}Y$ is an $n$-by-1 matrix, then the equation $A^{t}AX = A^{t}Y$ can be solved using Theorem 6.8.1 or Theorem 6.8.2.\nl
+
+
+
+
+
+
+
+
+
+
+%\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\end{document}
+
+

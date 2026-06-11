@@ -1,0 +1,396 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Foundations of Euclidean Geometry}
+\author{G. Edgar Parker}
+\date{ }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+\section{Introduction}
+\markboth{1. Introduction}{1. Introduction}
+
+\pagenumbering{arabic}
+
+In this course, not only will you be responsible for understanding why the mathematics we cover is correct, but the responsibility for discovery will also be assigned to the class. One of the immediate results of this responsibility for doing mathematics yourself, rather than just learning how someone else did it, will likely be an acute awareness of the difference between the challenge associated with understanding why something is correct and discovering for yourself whether or not a conjecture is a theorem.
+
+Doing mathematics can be extremely exhilarating when one succeeds in the discovery process; failing to do mathematics when one is putting in the time trying to do mathematics can be extremely frustrating. This introduction is designed to alert you to some tips which are designed to optimize the chances for success.
+
+First, you must put in the time necessary to give your creative intelligence a chance to work. Flashes of insight typically occur after information is organized and mulled over. Commitment to solving problems often leads to help from the subconscious. Students often tell me that they got ``the big idea'' while walking across campus or after turning in for the night.
+
+Second, solutions to problems need not come all at once. You may need to solve many small problems on the way to proving a theorem or disproving an incorrect conjecture. Some of the most important work in mathematics is the creation of technique. Take pride in progress toward a goal as well as reaching the goal. Any information you uncover is more than you knew before, and solving a problem is usually just a matter of putting together enough small solutions to allow you to see why the big problem is correct.
+
+Students often tell me that they would be glad to put in the time if they just knew where to start. The following scheme is offered toward that end.
+
+\subsection*{The awareness stage}
+
+\begin{itemize}
+
+  \item[1.] Identify all the words in the problem, and make sure that you \emph{know} the definition of each of them. Try to recall examples that have dealt with these notions before. If a definition is new, make some examples for the definition.
+
+  \item[2.] Identify any theorems that may have already dealt with ideas present in the problem. Put techniques that gave rise to proofs in those contexts firmly in mind.
+
+\end{itemize}
+
+\subsection*{The direct approach}
+
+\begin{itemize}
+
+  \item[3.] Make an example that models the hypothesis to the problem, and try to show that the example exhibits the properties of the conclusion. (If you can prove that your example fails to have the properties of the conclusion, you will have shown that the problem is not a theorem!)
+
+  \item[4.] See if what allowed you to establish the conclusion in the example is a property of all examples covered by the hypothesis. If it is, write a proof. If not, $\ldots$
+
+  \item[5.] $\ldots$ make an example which models the hypothesis, but fails to have whatever special properties you used to get the conclusion in the previous example. Go to 3.
+
+\end{itemize}
+
+\subsection*{The indirect, or contrapositive, approach}
+
+\begin{itemize}
+
+  \item[6.] Suppose that the conclusion is false, and try to show that the hypothesis must be false as well. If the problem is not a theorem, any conclusions you get must be qualities which an example that disproves the conjecture must have.
+
+  \item[7.] Try to be aware of properties that, if they were added to the hypothesis, would guarantee the conclusion. Alternatively, you might also try to find conclusions that follow from the hypothesis, even if they do not include the one you seek. Even if you are not able to solve the problem as stated, you may be able to create a substitute theorem.
+
+\end{itemize}
+
+The main mindset is to be aware that even when arguments do not come quickly or easily, the hunt itself may be an important learning experience. Working on problems yourself is the central ingredient. Not only will it provide you with theorems that are ``your own'', but even when someone beats you to a solution, it will put you in a much stronger position to analyze the argument given.
+
+
+
+\section{A Brief Review of the Logic of Quantification}
+\markboth{2. Review of Logic of Quantification}{2. Review of Logic of Quantification}
+
+\begin{enumerate}[1.]
+
+  \item There are two types of quantifications: universal and existential.
+
+  \item The most common syntax for an existential quantification is ``There is $\ldots$ such that $\ldots$''
+
+  \item The most common syntax for a universal quantification is ``If $\ldots$ then $\ldots$'' (\emph{This is also the syntax for conditionals!})
+
+  \item Quantifications are statements, but the sentences they connect are not.
+
+  \item The sentences connected in a quantification describe properties.
+
+  \item The sentence following ``There is'' or ``If'' in a quantification, is called the sentence of inclusion. The sentence following ``such that'' or ``then'' is called the sentence of property.
+
+  \item An existential quantification asserts the existence of at least one object about which the properties of the sentences of inclusion and property are true.
+
+  \item A universal quantification asserts that any object about which the properties from the sentence of inclusion are true, must also have the properties from the sentence of property be true about it.
+
+  \item To prove directly that an existential quantification is true, you must exhibit an object about which the properties from the sentences of inclusion and property are true.
+
+  \item The negation of a universal quantification is the existential quantification with the same sentence of inclusion, and whose sentence of property is the negation of that of the universal.
+
+  \item The negation of an existential quantification is the universal quantification with the same sentence of inclusion, and whose sentence of property is the negation of the existential.
+
+\end{enumerate}
+
+
+
+\section{A Theory of Sets and Ordered Pairs}
+\markboth{3. A Theory of Sets and Ordered Pairs}{3. A Theory of Sets and Ordered Pairs}
+
+We will not create an axiomatic set theory. Following, however, is an idiomatic presentation of the conventions that axiomatic set theory implies, and presupposes the existence of formal English as a language for expressing properties.
+
+The undefined terms are \emph{set}, \emph{element}, \emph{ordered pair}, \emph{first coordinate}, and \emph{second coordinate}.
+
+\begin{enumerate}[i.]
+  \item A set consists of an element of elements.
+  \item An element of a set, and the set consisting of that element, are different objects.
+  \item A set is defined by stating the properties its elements have (or the property its element has).
+  \item Given a definition for a set, any object having the properties specified is an element of the set; and any element of the set has the properties specified in the definition.
+  \item An ordered pair consists of a first coordinate and a second coordinate.
+  \item The first coordinate of an ordered pair may be the same set theoretic object as the second coordinate, but as a part of the ordered pair, being the first coordinate is distinguishable from being the second coordinate.
+\end{enumerate}
+
+We observe a notation for the creation of definitions of sets and for defining ordered pairs.
+
+Reserved symbols for definitions are $\{ \ : \ \}$. A symbol is created to follow the open brace and precede the colon, and the properties that an element must have are stated in terms of that symbol after the colon and before the closed brace. Thus
+\begin{equation*}
+\{ x :\ x \text{ is a number and } x > 5 \}
+\end{equation*}
+stands for ``the set to which an element belongs provided that it is a number and it is greater than $5$''.
+
+Reserved symbols for definitions of ordered pairs are $( \ , \ )$. The first coordinate of the ordered pair is written after the open parenthesis and before the comma; the second coordinate of the ordered pair is written after the comma and before the closed parenthesis. Thus $(p,5)$ stands for the ordered pair whose first coordinate is $p$ and whose second coordinate is $5$.
+
+
+\section{Problems and Theorems Sequence}
+\markboth{4. Problems and Theorems Sequence}{4. Problems and Theorems Sequence}
+
+\begin{description}
+
+  \item[Definition 1:] Suppose that each of $A$ and $B$ is a set. The statement that $A$ is a \emph{subset} of $B$ means that if $x$ is an element of $A$, then $X$ is an element of $B$.
+
+  \item[Notation:] Suppose that each of $A$ and $B$ is a set. ``$A \subset B$'' stands for ``$A$ is a subset of $B$''.
+
+  \item[Definition 2:] Suppose that each of $A$ and $B$ is a set, and that there is an element of $A$ which is an element of $B$. The \emph{intersection} of $A$ with $B$ is $\{ p\ :\ p$ is an element of $A$ and $p$ is an element of $B \}$.
+
+  \item[Notation:] Suppose that each of $A$ and $B$ is a set. ``$A \cap B$'' stands for ``the intersection of $A$ with $B$''.
+
+  \item[Definition 3:] Suppose that each of $A$ and $B$ is a set. The \emph{union} of $A$ with $B$ is $\{ p\ :\ p $ is an element of $A$ or $p$ is an element of $B \}$.
+
+  \item[Notation:] Suppose that each of $A$ and $B$ is a set. ``$A \cup B$'' stands for ``the union of $A$ with $B$''.
+
+  \item[] \emph{Point}, \emph{line}, and \emph{plane} are undefined terms.
+
+  \item[Axiom 0p:] There is a point.
+
+  \item[Axiom 0L:] There is a line.
+
+  \item[Axiom 0P:] There is a plane.
+
+  \item[Axiom 1L:] If $M$ is a line, then $M$ is a set, each element of which is a point.
+
+  \item[Axiom 1P:] If $M$ is a plane, then $M$ is a set, each element of which is a point.
+
+  \item[Axiom 2:] Suppose that $L$ is a line, and $x$ is a point which is an element of $L$. Then there is an element of $L$ different than $x$.
+
+  \item[Axiom 3:] Suppose that $x$ and $y$ are points. Then there is exactly one line such that $x$ and $y$ are elements of it.
+
+  \item[Axiom 4:] Suppose that $P$ is a plane. Then there is a line which is a subset of $P$, and if $L$ is a line which is a subset of $P$, than there is a point which is an element of $P$ that is not an element of $L$.
+
+  \item[Axiom 5:] Suppose that $x$, $y$, and $z$ are three points, and $z$ is not an element of the line of which $x$ and $y$ are elements. Then there is exactly one plane such that $x$, $y$, and $z$ are elements of it.
+
+  \item[Axiom 6:] Suppose that $P$ is a plane, $x$ and $y$ are elements of $P$, and $L$ is the line of which $x$ and $y$ are elements. Then $L \subset P$.
+
+  \item[Axiom 7:] Suppose that $P$ and $Q$ are planes, and that there is an element of $P$ which is an element of $Q$. Then $P \cap Q$ is a line.
+
+  \item[Problem 1:] Suppose that $L$ and $M$ are lines, and that $p$ is an element of $L \cap M$. Show that $L \cap M = \{ p \}$.
+
+  \item[Problem 2:] Suppose that $L$ is a line and $P$ is a plane, that it is not the case that $L$ is a subset of $P$, and that $q$ is an element of $L \cap P$. Show that $\{ q \} = L \cap P$.
+
+  \item[Problem 3:] Suppose that $L$ is a line, and $q$ is a point which is not an element of $L$. Show that there is exactly one plane so that if $P$ is it, then $q$ is an element of $P$ and $L \subset P$.
+
+  \item[Problem 4:] Suppose that $L$ and $M$ are lines, and that $q$ is an element of $L \cap M$. Show that there is exactly one plane such that if $P$ is it, then $L \cup M \subset P$.
+
+  \item[Model I:] The statement that $x$ is a point means that $x$ is an ordered pair, each coordinate of which is a number.
+
+    The statement that $L$ is a line means that there is a number such that if $A$ is it, there is a number such that if $B$ is it, and there is a number such that if $C$ is it; such that one of $A$ and $B$ is not $0$ and $L = \{ (x,y)\ :\ $ each of $x$ and $y$ is a number and $Ax + By = C \}$.
+
+    The statement that $P$ is a plane means that $P = \{ x\ :\ x$ is a point$\}$.
+
+  \item[Problem 5:] Suppose that $L$ is a line in Model I. Show that each element of $L$ is a point in Model I.
+
+  \item[Problem 6:] Suppose that $P$ is a plane in Model I. Show that each element of $P$ is a point in Model I.
+
+  \item[Problem 7:] Suppose that $L$ is a line in Model I. Show that there are two points that are elements of $L$.
+
+  \item[Problem 8:] Suppose that $x$ and $y$ are points in Model I. Show that there is exactly one line in Model I such that $x$ and $y$ are elements of it.
+
+  \item[Problem 9:] Suppose that $x$, $y$, and $z$ are three points in Model I. Show that there is exactly one plane in Model I such that $x$, $y$, and $z$ are elements of it.
+
+  \item[Problem 10:] Suppose that $P$ is a plane in Model I, and $L$ is a line in Model I such that $L \subset P$. Show that there is an element of $P$ which is not an element of $L$.
+
+  \item[Axiom 8:] Suppose that $P$ is a plane; $L$ is a line such that $L \subset P$; and $x$ is a point such that $x$ is an element of $P$, and $x$ is not an element of $L$. Then there is exactly one line such that if $M$ is it, then
+    \begin{enumerate}[\hspace{1cm}(i.)]
+      \item $M \subset P$;
+      \item $x$ is an element of $M$; and
+      \item if $y$ is an element of $M$, then it is not the case that $y$ is an element of $L$.
+    \end{enumerate}
+
+  \item[Problem 11:] Suppose that $L$ is a line in Model I, and $x$ is an element in Model I such that $x$ is not an element of $L$. Show that there is exactly one line such that if $M$ is it, then
+    \begin{enumerate}[\hspace{1cm}(i.)]
+      \item $M \subset P$;
+      \item $x$ is an element of $M$; and
+      \item if $y$ is an element of $M$, then it is not the case that $y$ is an element of $L$.
+    \end{enumerate}
+
+  \item[] \emph{Line segment} is an undefined term.
+
+  \item[Axiom 9:] Suppose that $M$ is a line segment. Then there is exactly one line of which $M$ is a subset.
+
+  \item[Definition 4:] Suppose that $M$ is a line segment and that $p$ and $q$ are points. The statement that $p$ and $q$ are the \emph{endpoints} of $M$ means that $p$ and $q$ are elements of $M$ such that if $Q$ is a line segment which is a subset of $M$, and $Q$ is not $M$, then one of $p$ and $q$ is not an element of $Q$.
+
+  \item[Axiom 10:] Suppose that $p$ and $q$ are points. Then there is a line segment such that $p$ and $q$ are the endpoints of it.
+
+  \item[Axiom 11:] Suppose that $L$ is a line, and that $p$ and $q$ are elements of $L$. Then
+    \begin{enumerate}[\hspace{1cm}(i.)]
+      \item there are elements $x$ and $y$ of $L$ such that if $p$ is an element of the line segment with endpoints $x$ and $q$, $q$ is an element of the line segment with endpoints $y$ and $p$, and neither of $x$ and $y$ is an element of the line segment with endpoints $p$ and $q$;
+      \item $L = \{ w\ :\ p$ is an element of the line segment with endpoints $w$ and $q$ which is different than $p \}$ $\cup \{ w\ :\ q$ is an element of the line segment with endpoints $w$ and $p$ different than $q \}$ $\cup \{ w\ :\ w$ is an element of the line segment with endpoints $p$ and $q \}$; and
+      \item if $z$ is an element of $L$, then $z$ is not an element of any two of $\{ w\ :\ p$ is an element of the line segment with endpoints $w$ and $q$ which are different then $p \}$, $\{ w\ :\ q$ is an element of the line segment with endpoints $w$ and $q$ different than $q \}$, or $\{ w\ :\ w$ is an element of the line segment with endpoints $p$ and $q \}$.
+    \end{enumerate}
+
+  \item[Notation:] ``$\overline{pq}$'' stands for ``the line segment with endpoints $p$ and $q$''.
+
+  \item[Problem 12:] Suppose that $p$, $q$, and $r$ are three points, and $r$ is an element of $\overline{pq}$. Show that $p$ is not an element of $\overline{rq}$.
+
+  \item[Problem 13:] Suppose that $L$ is a line, $p$ and $q$ are elements of $L$, and $r$ is an element of $\overline{pq}$. Show that $r$ is an element of $L$.
+
+  \item[Problem 14:] Suppose that $x$, $y$, $w$, and $z$ are points, and that $A$ is a point such that $A$ is an element of $\overline{xy} \cap \overline{wz}$. Show that there are points such that if $r$ and $s$ are they, then $\overline{xy} \cap \overline{wz} = \overline{rs}$; or that $\overline{xy} \cap \overline{wz} = \{ A \}$.
+
+  \item[Definition 5:] Suppose that $x$ and $y$ are points, and that $L$ is the line such that $x$ and $y$ are elements of it. The \emph{ray} from $x$ in the direction of $y$ is $\{ p\ :\ p$ is an element of $\overline{xy}$, or $y$ is an element of $\overline{xp} \}$.
+
+  \item[Notation:] ``$\overrightarrow{xy}$'' stands for ``the ray from $x$ in the direction of $y$''.
+
+  \item[Problem 15:] Suppose that $L$ is a line, and $x$ and $y$ are elements of $L$. Show that $L = \overrightarrow{xy} \cup \overrightarrow{yx}$.
+
+  \item[Problem 16:] Suppose that $L$ is a line, and $x$ and $y$ are elements of $L$. Show that $L$ is not $\overrightarrow{xy}$.
+
+  \item[Problem 17:] Suppose that $L$ is a line, and $x$ and $y$ are elements of $L$. Show that there is a point such that if $p$ is it, then $\{ t\ :\ t$ is an element of $L$ and $t$ is not an element of $\overrightarrow{xy} \}$ $= \{ t\ :\ t$ is an element of $\overrightarrow{xp}$ and $t$ is not $x \}$.
+
+  \item[Theorem 11R:] Suppose that each of $A$, $B$, and $C$ is a number, $\{ A,B \}$ is not $\{ 0 \}$, $L = \{ (x,y)\ :\ $ each of $x$ and $y$ is a number and $A*x + B*y = C \}$, and each of $p$ and $q$ is a number such that $(p,q)$ is not an element of $L$. Then $\{ (x,y)\ :\ $ each of $x$ and $y$ is a number and $A*x + B*y = A*p + B*q \}$ is a line in Model I such that
+    \begin{enumerate}[\hspace{1cm}(i.)]
+      \item $(p,q)$ is an element of it, and
+      \item if $z$ is an element of it, then $z$ is not an element of $L$.
+    \end{enumerate}
+
+  \item[Theorem 11S:] Suppose that each of $A$ and $B$ is a number. $\{ A,B \}$ is not $\{ 0 \}$, and each of $p$ and $q$ is a number. Then $\{ (x,y)\ :\ $ each of $x$ and $y$ is a number and $A*x + B*y = A*p + B*q \}$ is a line in Model I such that $(p,q)$ is an element of it.
+
+  \item[Problem 18 (Carol's Lemma):] Suppose that $p$, $q$, and $r$ are three points such that $r$ is an element of $\overline{pq}$. Then $\overline{rq} \subset \overline{pq}$.
+
+  \item[Model I (continued):] The statement that $M$ is a line segment in Model I means that there is a line in Model I such that if $L$ is it and $L = \{ (w,z)\ :\ $ each of $w$ and $z$ is a number and $A*w + B*z = C \}$, and numbers such that if $x$ and $y$ are they, then
+    \begin{enumerate}[\hspace{1cm}(i.)]
+      \item if $A$ is not $0$, then $M = \{ (p,q)\ :\ (p,q)$ is an element of $L$ and $x \leq q$ and $p \leq y \}$; or
+      \item if $A = 0$, then $M = \{ (p,q)\ :\ (p,q)$ is an element of $L$ and $x \leq q$ and $q \leq y \}$.
+    \end{enumerate}
+
+  \item[Problem 19:] Suppose that $M$ is a line segment in Model I. Show that there is exactly one line in Model I of which $M$ is a subset.
+
+  \item[Problem 20:] Suppose that $p$ and $q$ are points in Model I. Show that there is a line segment in Model I such that $p$ and $q$ are the endpoints of it.
+
+  \item[Problem 21:] Suppose that $L$ is a line in Model I, and that $p$ and $q$ are elements of $L$. Show that there are elements of $L$ such that if $x$ and $y$ are they, then $p$ is an element of the line segment in Model I with endpoints $x$ and $q$, $q$ is an element of the line segment in Model I with endpoints $y$ and $p$, and neither of $x$ and $y$ is an element of the line segment in Model I with endpoints $p$ and $q$. 
+
+  \item[Problem 22:] Suppose that $L$ is a line in Model I, and that $p$ and $q$ are elements of $L$. Show that $L = \{ w\ :\ p$ is an element of the line segment in Model I with endpoints $w$ and $q$ which is different than $p \}$ $\cup \{ w\ :\ q$ is an element of the line segment in Model I with endpoints $w$ and $p$ different than $q \}$ $\cup \{ w\ :\ w$ is an element of the line segment in Model I with endpoints $p$ and $q \}$.
+
+  \item[Problem 23:] Suppose that $L$ is a line in Model I, and that $p$ and $q$ are elements of $L$. Show that if $z$ is an element of $L$, then $z$ is not an element of any two of $\{ w\ :\ p$ is an element of the line segment in Model I with endpoints $w$ and $q$ which is different than $p \}$, $\{ w\ :\ q$ is an element of the line segment in Model I with endpoints $w$ and $p$ different than $q \}$, or $\{ w\ :\ w$ is an element of the line segment in Model I with endpoints $p$ and $q \}$.
+
+  \item[Theorem 8C:] Suppose that $x$ and $y$ are points in Model I. Then there is at most one line in Model I such that $x$ and $y$ are elements of it.
+
+  \item[Theorem 8J:] $\ $
+    \begin{enumerate}[\hspace{1cm}(i.)]
+      \item Suppose that $(a,b)$ and $(c,d)$ are points in Model I, and $a$ is not $c$. Then $\{ (x,y)\ :\ $ each of $x$ and $y$ is a number, and $\left( -\frac{(d-b)}{(c-a)} \right) * x + y = \left( -\frac{(d-b)}{(c-a)} \right) * a + b \}$ is a line in Model I such that $(a,b)$ and $(c,d)$ are elements of it.
+      \item Suppose that $(a,b)$ and $(c,d)$ are points in Model I, and $a = c$. Then $\{ (x,y)\ :\ $ each of $x$ and $y$ is a number, and $x = a \}$ is a line in Model I such that $(a,b)$ and $(c,d)$ are elements of it.
+    \end{enumerate}
+
+  \item[Axiom 10:] $\ $
+    \begin{enumerate}[\hspace{1cm}(i.)]
+      \item Suppose that $p$ and $q$ are points. Then there is a line segment such that $p$ and $q$ are the endpoints of it.
+      \item Suppose that $M$ is a line segment. Then there are points such that if $x$ and $y$ are they, then $M$ is the line segment whose endpoints are on $x$ and $y$.
+    \end{enumerate}
+
+  \item[Axiom 12 (Bailey's Axiom):] Suppose that $r$, $s$, and $t$ are points, and $r$ is an element of $\overline{st}$. Then $\overline{sr} \cup \overline{rt} = \overline{st}$.
+
+  \item[Theorem 17CB:] Suppose that $x$ and $y$ are points, and $p$ is an element of the line of which $x$ and $y$ are elements that is not an element of $\overrightarrow{xy}$. Then $\overrightarrow{yx} = \overrightarrow{xp} \cup \overline{yx}$ and $\overrightarrow{xp} \cap \overline{xy} = \{ x \}$.
+
+  \item[Definition 6:] Suppose that $M$ is a set, each element of which is a point. The statement that $M$ is an angle means that there are elements of $M$ such that if $x$, $y$, and $z$ are they, then $M = \overrightarrow{xy} \cup \overrightarrow{xz}$.
+
+  \item[Problem 24:] Suppose that $x$, $y$, and $z$ are points. Show that there is an angle such that $x$, $y$, and $z$ are elements of it.
+
+  \item[Problem 25:] Suppose that $x$, $y$, and $z$ are points. Show that there is exactly one angle such that $x$, $y$, and $z$ are elements of it.
+
+  \item[Problem 26:] Suppose that $M$ and $P$ are angles, and that there are points such that if $x$ and $y$ are they, then $M \cap P = \overrightarrow{xy}$. Show that $\{ p\ :\ p$ is an element of $M \cup P$ and if $p$ is not $x$, then $p$ is not an element of $\overrightarrow{xy} \}$ is an angle.
+
+  \item[Problem 27:] Suppose that $M$ is a line segment in Model I, and that $p$, $q$, and $r$ are points in Model I such that $r$ is an element of $\overline{pq}$. Show that $\overline{pr} \cup \overline{rq} = \overline{pq}$. (All of $\overline{pr}$, $\overline{rq}$, and $\overline{pq}$ are line segments in Model I.)
+
+  \item[Model II:] The statement that $p$ is a point in Model II means that $p$ is an ordered pair, each coordinate of which is a number.
+
+  \item[Definition 7:] Suppose that each of $(w, x)$ and $(y, z)$ is a point in Model II. $(w, x) + (y, z) = (w+y, x+z)$.
+
+  \item[Definition 8:] Suppose that $(x,y)$ is a point in Model II, and $c$ is a number. Then $c*(x,y) = (c*x,c*y)$.
+
+     The statement that $L$ is a line in Model II means that there are points in Model II such that if $x$ and $y$ are they, then $L = \{ p\ :\ $ there is a number such that if $A$ is it, then $p=(1+(-A))*x+A*y \}$.
+
+     The statement that $P$ is a plane in Model II means that $P = \{ x\ :\ x$ is a point in Model II $\}$.
+
+     The statement that $M$ is a line segment in Model II means that there are points in Model II such that if $x$ and $y$ are they, then $M = \{ p\ :\ $ there is a number in $[0,1]$ such that if $A$ is it, then $p=(1+(-A))*x+A*y \}$.
+
+  \item[Problem 28:] Suppose that $L$ is a line in Model I. Show that $L$ is a line in Model II.
+
+  \item[Problem 29:] Suppose that $L$ is a line in Model II. Show that $L$ is a line in Model I.
+
+  \item[Problem 30:] Suppose that $M$ is a line segment in Model I. Show that $M$ is a line segment in Model II.
+
+  \item[Problem 31:] Suppose that $M$ is a line segment in Model II. Show that $M$ is a line segment in Model I.
+
+  \item[Definition 9:] Suppose that $M$ is an angle, and $X$ is an element of $M$. The statement that $X$ is a \emph{vertex} of $M$ means there are elements of $M$ such that if $Y$ and $Z$ are they, then $M = \overrightarrow{xy} \cup \overrightarrow{xz}$.
+
+  \item[Problem 32:] Suppose that $x$, $y$, and $z$ are points. Show that there is exactly one angle such that
+    \begin{enumerate}[\hspace{1cm}(i.)]
+      \item $x$, $y$, and $z$ are elements of it; and
+      \item $x$ is a vertex of it.
+    \end{enumerate}
+
+  \item[Problem 33:] Suppose that $M$ is an angle, and that $x$ and $y$ are points such that $x$ is a vertex of $M$ and $y$ is a vertex of $M$. Show that $M$ is a line.
+
+  \item[Problem 26SF:] Suppose that $M$ and $P$ are angles, $x$ is the vertex of $M$ and $P$, and $y$ is a point such that $M \cap P = \overrightarrow{xy}$. Show that $\{ p\ :\ p$ is an element of $M \cup P$, and if $p$ is not $x$, then $p$ is not an element of $\overrightarrow{xy} \}$ is an angle.
+
+  \item[Problem 33StBu:] Suppose that $M$ is an angle, $x$ is a vertex of $M$, and $y$ is an element of $M$ such that $x$ is not $y$. Then there is an element of $M$ such that if $p$ is it, then $M = \overrightarrow{xy} \cup \overrightarrow{xp}$.
+
+  \item[Theorem 34 (Conjecture by Bailey, proof by Scoville):] Suppose that $x$, $y$, $z$, and $w$ are four points, $L$ is a line such that $\{ x,y,z,w \} \subset L$, and $\{ z,w \} \subset \overline{xy}$. Then $\overline{zw} \subset \overline{xy}$.
+
+  \item[Definition 10:] Suppose that $X$ is a set, and $E$ is a subset of $\{ (x,y)\ :\ x$ is an element of $X$ and $y$ is an element of $X \}$. The statement that $E$ is an \emph{equivalence relation} of $X$ means that
+    \begin{enumerate}[\hspace{1cm}(i.)]
+      \item if $p$ is an element of $X$, then $(p,p)$ is an element of $E$; and
+      \item if $(p,q)$ and $(q,r)$ are elements of $E$, then $(p,r)$ is an element of $E$.
+    \end{enumerate}
+
+  \item[] \emph{Congruent} is an undefined term.
+
+  \item[Axiom 13:] $\{ (x,y)\ :\ x \subset \{ p\ :\ p$ is a point $\}$, $y \subset \{ p\ :\ p$ is a point $\}$, and $x$ is congruent to $y \}$ is an equivalence relation on $\{ p\ :\ p$ is a point $\}$.
+
+  \item[Definition 11:] Suppose that each of $X$ and $Y$ is a set, and $f \subset \{ (p,q)\ :\ p$ is an element of $X$ and $q$ is an element of $Y \}$. The statement that $f$ is a \emph{function} from $X$ into $Y$ means that
+    \begin{enumerate}[\hspace{1cm}(i.)]
+      \item if $p$ is an element of $X$, then there is an element of $f$ whose first coordinate is $p$; and
+      \item if $r$ and $s$ are elements of $f$, then the first coordinate of $r$ is not the first coordinate of $s$.
+    \end{enumerate}
+
+  \item[Notation:] If $(p,q)$ is an element of $f$, then $q$ may be written as $f(p)$.
+
+  \item[Definition 12:] Suppose that $L$ is a line, and $f$ is an function from $L$ into $R$ such that $R_{f} = R$, and if $x$ and $y$ are elements of $L$, then $f(x)$ is not $f(y)$. The statement that $f$ is a \emph{ruler} on $L$ means that if $x$, $y$, and $z$ are points such that $y$ is an element of $\overline{xz}$, then $f(x) \leq f(y)$ and $f(y) \leq f(z)$.
+
+  \item[Definition 13:] Suppose that $f$ is a function from $\{ x\ :\ x$ is a line $\}$ into $\{ x\ :\ $ there is a line such that $x$ is a ruler on it $\}$. The statement that $f$ is a \emph{measuring stick} means that
+    \begin{enumerate}[\hspace{1cm}(i.)]
+      \item if $(L,g)$ is an element of $f$, then $g$ is a ruler on $L$; and
+      \item if each of $L$ and $M$ is a line, and $x$ and $y$ are elements of $L$, and $p$ and $q$ are elements of $M$ such that $\overline{xy}$ is congruent to $\overline{pq}$, then $\vert f(L)(x) + \ -f(L)(y) \vert = \vert f(M)(p) + \ -f(M)(q) \vert$.
+    \end{enumerate}
+
+  \item[Axiom 14:] There is a measuring stick.
+
+  \item[Problem 35:] Suppose that $L$ is a line in Model I. Show that there is a ruler on $L$.
+
+  \item[Problem 36:] Suppose that $x$ and $y$ are points in Model II. Show that there is a line segment with endpoints $x$ and $y$.
+
+  \item[Problem 37:] Suppose that $L$ is a line in Model II. Show that there is a ruler on $L$.
+
+\end{description}
+
+\end{document}

@@ -1,0 +1,367 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+
+% special characters
+
+\newcommand{\linethrough}[1]{\stackrel{\longleftrightarrow}{#1} }
+\newcommand{\ray}[1]{\stackrel{\longrightarrow}{#1} }
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+\title{Geometry}
+\author{James P. Ochoa}
+\date{ }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\section*{Theorem Sequence}
+\markboth{Theorem Sequence}{Theorem Sequence}
+
+\pagenumbering{arabic}
+
+We begin with some formal rules of logic. A statement is a sentence which, in a given context, is either true or false.
+
+\begin{description}
+
+\item[Logic Rule 1:] No unstated assumption may be used in a proof.
+
+\item[Logic Rule 2:] Let $p$ and $q$ be statements. If the compound statement ``$p$ and not $q$'' implies a contradiction, then the statement ``If $p$, then $q$'' is true.
+
+\end{description}
+
+We may use Logic Rule 2 to prove the statement in the following example.
+
+\begin{description}
+
+\item[Example 3:] Let $a$ be a positive integer. If $9$ divides $n$, then $3$ divides $n$.
+
+\item[Proof:] Suppose that $9$ divides $n$, and $3$ does not divide $n$. Since $3$ does not divide $n$, neither does $3^{2}$. Since $3^{2}=9$, it follows that $9$ cannot divide $n$. This is a contradiction, since $9$ divides $n$. Therefore, if $9$ divides $n$, then $3$ divides $n$.
+
+\item[Logic Rule 4:] Let $p$ be a statement. The negation of the statement ``Not $p$'' means the same as $p$.
+
+\item[Logic Rule 5:] Let $p$ and $q$ be statements. The negation of the statement ``If $p$, the $q$'' means the same as ``$p$ and not $q$.
+
+\item[Logic Rule 6:] Let $p$ and $q$ be statements. The negation of the statement ``$p$ and $q$'' means the same as ``Not $p$ or not $q$''. The negation of the statement ``$p$ or $q$'' means the same as ``Not $p$ and not $q$''.
+
+\end{description}
+
+Let $p(x)$ be a sentence about $x$ (in this case, $x$ is called a variable). We say that $z$ is in the domain of $p$ if the sentence $p(z)$ is a statement. For example, let $p(x)$ be the sentence ``$x+3=7$''. Then $6$ is in the domain of $p$, since $p(6)$ is the (false) statement ``$6+3=7$''. On the other hand, $w$ is not in the domain of $p$, since we cannot, in the current context, determine whether ``$w+3=7$'' is true or false.
+
+Let $p(x)$ be a sentence about $x$. The sentence ``For all $x$, $p(x)$'' is a statement. The expression ``for all'' is called the universal quantifer. It is understood that the phrase ``for all $x$'' refers only to $x$ in the domain of $p(x).$ The sentence ``There exists an $x$ such that $p(x)$'' is a statement. The expression ``there exists'' is called the existensial quantifer. It is understood that the phrase ``there exists an $x$'' refers to some $x$ in the domain of $p(x)$.
+
+\begin{description}
+
+\item[Logic Rule 7:] Let $p(x)$ be a sentence about $x$. The negation of the statement ``For all $x$, $p(x)$'' means the same as ``There exists an $x$ such that not $p(x)$''.
+
+\item[Logic Rule 8:] Let $p(x)$ be a sentence about $x$. The negation of the statement ``There exists an $x$ such that $p(x)$'' means the same as ``For all $x$, not $p(x)$''.
+
+\item[Logic Rule 9:] Let $p$ and $q$ be statements. Suppose the statements ``If $p$, then $q$'' and $p$ are steps in a proof. Then $q$ is a valid step.
+
+\item[Logic Rule 10:] Let $p$, $q$, and $r$ be statements. The following are all true statements:
+\begin{enumerate}[\hspace{1cm}1.]
+  \item If $p$, then $p$ or $q$.
+
+      If $q$, then $p$ or $q$.
+  \item If $p$ and $q$, then $p$.
+
+      If $p$ and $q$, then $q$.
+  \item If ``Not $q$'' implies ``Not $p$'', then $p$ implies $q$.
+
+      If $p$ implies $q$, then ``Not $q$'' implies ``Not $p$''.
+  \item If $p$ implies $q$ and $q$ implies $r$, then $p$ implies $r$.
+\end{enumerate}
+
+\item[Logic Rule 11:] For every statement $p$, either $p$ or ``Not $p$'' is true.
+
+\end{description}
+
+We next state some properties of equality.
+
+\begin{description}
+
+\item[Equality Properties 12:] Equality satisfies the following:
+\begin{itemize}
+  \item \emph{Reflexive Property}: $a=a$.
+  \item \emph{Symmetric Property}: If $a=b$, then $b=a.$
+  \item \emph{Transitivity Property}: If $a=b$ and $b=c$, then $a=c$.
+\end{itemize}
+
+\end{description}
+
+The following terms will remain undefined: \emph{point}, \emph{line}, to \emph{lie on}, \emph{between}, \emph{congruent}, \emph{plane}, to \emph{pass through}, and \emph{set}.
+
+\begin{description}
+
+\item[Axiom 13:] For every pair of points $P$ and $Q$, there exists a unique line passing through $P$ and $Q$.
+
+\item[Axiom 14:] For every line $l$, there exists at least two distinct points which lie on $l$.
+
+\item[Axiom 15:] There exist three distinct points with the property that no line passes through all of them.
+
+\item[Definition 16:] Two distinct lines are said to be parallel if no point lies on both lines.
+
+\end{description}
+
+We are now ready for our first few propositions. The proofs are provided.
+
+\begin{description}
+
+\item[Proposition 17:] If $l$ and $m$ are distinct lines that are not parallel, then there is exactly one point lying on both $l$ and $m$.
+
+\item[Proof:] Suppose not. Let $l$ and $m$ be distinct lines that are not parallel such that there are two distinct points, $P$ and $Q$, lying on both lines. By Axiom 13, $P$ and $Q$ determine a unique line. Thus, $l$ and $m$ must be the same line, a contradiction.
+
+\item[Proposition 18:] For every line, there is a point not lying on it.
+
+\item[Proof:] Let $l$ be a line. Let $P$, $Q$, and $R$ be three distinct points, with the property that no line passes through all three points. Axiom 15 guarantees that these point exist. At most, only two of these three points lie on $l$. It follows that one of the points is not on $l$.
+
+\item[Proposition 19:] For every point, there is at least one line passing through it.
+
+\item[Proof:] Let $P$ be a point. Let $Q$ be another point distinct from $P$ (Axiom 15 guarantees the existance of $Q$). Let $l$ be the line passing through $P$ and $Q$ (Axiom 13). Using Proposition 18, let $R$ be a point not on $l$. Let $m$ be the line passing through $Q$ and $R$. Note that $l$ and $m$ are not parallel. By Proposition 17, $Q$ must be the only point lying on both $l$ and $m$. Thus, $P$ does not lie on $m$.
+
+\end{description}
+
+The proof of the next proposition is the first assignment.
+
+\begin{description}
+
+\item[Proposition 20:] There exist three distinct lines with the property that no point lies on all three lines.
+
+\end{description}
+
+Let $l$ and $m$ be lines, and let $P$ be a point. If $P$ lies on both lines, we say that $l$ and $m$ intersect (or meet) at $P$.
+
+Let $A$, $B$, and $C$ be points. We write $A*B*C$ to mean that $B$ is between $A$ and $C$.
+
+\begin{description}
+
+\item[Betweenness Axiom 21:] If $A*B*C$, then $A$, $B$, and $C$ are three distinct points all lying on the same line, and $C*B*A$.
+
+\end{description}
+
+Let $P$ and $Q$ be distinct points. We write $\linethrough{PQ}$ to denote the line through $P$ and $Q$. Note that $\linethrough{AB}$ and $\linethrough{BA}$ are the same line.
+
+\begin{description}
+
+\item[Betweenness Axiom 22:] Given any two points $B$ and $D$, there exist points $A$, $C$, and $E$ lying on $\linethrough{BD}$ such that $A*B*D$, $B*C*D$, and $B*D*E$.
+
+\item[Betweenness Axiom 23:] If $A$, $B$, and $C$ are distinct points lying on the same line, then exactly one of the points is between the other two.
+
+\end{description}
+
+Let $A$ and $B$ be points. The line segment $AB$ is defined to be the set of points $A$, $B$, and all points between $A$ and $B$. The ray $\ray{AB}$ is the set of all points $C$ such that $A*B*C$ together with all points on $AB$. Betweenness Axiom 22 guarantees that given points $A$ and $B$, both $AB$ and $\ray{AB}$ exist. Every point on $AB$ is a point on $\ray{AB}$, and every point on $\ray{AB}$ is a point on $\linethrough{AB}$. That is, $AB$ is a subset of $\ray{AB}$, and $\ray{AB}$ is a subset of $\linethrough{AB}$. Finally, note that $AB$ and $BA$ are the same set of points.
+
+\begin{description}
+
+\item[Lemma 24:] Let $Q$ and $B$ be points. Suppose that $C$ is a point lying on both $\ray{AB}$ and $\ray{BA}$. Then, $C$ lies on $AB$.
+
+\item[Lemma 25:] Let $A$ and $B$ be points. Suppose that $C$ is a point on $\linethrough{AB}$. Then, $C$ lies on $\ray{AB}$ or on $\ray{BA}$.
+
+\item[Hint:] Either $C$ is on $\ray{AB}$ or it isn't. If $C$ is on $\ray{AB}$, we're done! Suppose $C$ is not on $\ray{AB}$. What can you conclude?
+
+\end{description}
+
+Let $U$ and $V$ be sets of points. We say that $U$ is a subset of $V$, and write $U \subseteq V$, if every point in $U$ is also a point in $V$. We say that $U$ and $V$ are equal, and write $U=V$, if they are subsets of each other. The intersection of $U$ and $V$, written $U \bigcap V$, is the set of all points which are in both $U$ and $V$. The union of $U$ and $V$, written $U \bigcup V$, is the set of all points which are in $U$ or $V$. Note that $U \bigcap V \subseteq U$ and $U \subseteq U \bigcup V$.
+
+\begin{description}
+
+\item[Proposition 26:] Let $A$ and $B$ be points. Then
+\begin{enumerate}[\hspace{1cm}1.]
+  \item $\ray{AB} \bigcap \ray{BA} = AB$, and
+  \item $\ray{AB} \bigcup \ray{BA} = \linethrough{AB}$.
+\end{enumerate}
+
+\item[Proof:] To prove part 1, we must show that $\ray{AB} \bigcap \ray{BA} \subseteq AB$ and $AB \subseteq \ray{AB} \bigcap \ray{BA}$. We already know that $AB \subseteq \ray{AB}$ and that $AB \subseteq \ray{BA}$. Thus, $AB \subseteq \ray{AB} \bigcap \ray{BA}$. Lemma 24 guarantees that $\ray{AB} \bigcap \ray{BA} \subseteq AB$. Thus, $\ray{AB} \bigcap \ray{BA} = AB$.
+
+  To prove part 2, we must show that $\ray{AB} \bigcup \ray{BA} \subseteq \linethrough{AB}$ and $\linethrough{AB} \subseteq \ray{AB} \bigcup \ray{BA}$. We already know that $\ray{AB} \subseteq \linethrough{AB}$ and $\ray{BA} \subseteq \linethrough{AB}$. Thus, $\ray{AB} \bigcup \ray{BA} \subseteq \linethrough{AB}$. Lemma 25 guarantees that $\linethrough{AB} \subseteq \ray{AB} \bigcup \ray{BA}$. Thus, $\linethrough{AB} = \ray{AB} \bigcup \ray{BA}$.
+
+\item[Definition 27:] Let $l$ be a line. Let $A$ and $B$ be two points that do not lie on $l$. We say that $A$ and $B$ are \emph{on the same side} of $l$ if the line segment $AB$ does not intersect $l$ (i.e. no point lies of both $AB$ and $l$). If $A$ and $B$ are not on the same side of $l$, then we say that $A$ and $B$ are \emph{on opposite sides} of $l$.
+
+\end{description}
+
+If $A$ and $B$ are not on $l$, then Logic Rule 11 guarantees that either $A$ and $B$ are on the same side of $l$ or they are on opposite sides of $l$.
+
+\vspace{0.3cm}
+
+The next lemma guarantees that our geometry is two-dimensional.
+
+\begin{description}
+
+\item[Betweenness Axiom 28 (Separation):] For any line $l$ and any three points $A$, $B$, and $C$ not lying on $l$:
+\begin{enumerate}[\hspace{1cm}1.]
+  \item If $A$ and $B$ are on the same side of $l$, and $B$ and $C$ are on the same side of $l$, then $A$ and $C$ are on the same side of $l$.
+  \item If $A$ and $B$ are on opposite sides of $l$, and $B$ abd $C$ are on oposite sides of $l$, then $A$ and $C$ are on the same side of $l$.
+\end{enumerate}
+
+\end{description}
+
+Let $l$ be a line. Let $P$ be a point not on $l$. The set of all points on the same side of $l$ as $P$ is called a half-plane determined by $l$.
+
+\begin{description}
+
+\item[Lemma 29:] Let $l$ be a line, and $A$ a point not on $l$. Then there exists a point $B$ such that $A$ and $B$ are on opposite sides of $l$.
+
+\item[Lemma 30:] Every line determines exactly two half-planes.
+
+\item[Lemma 31:] Let $l$ be a line. The two half-planes determined by $l$ have no point in common.
+
+\end{description}
+
+The following proposition follows immediately from the two previous lemmas. No proof is necessary.
+
+\begin{description}
+
+\item[Proposition 32:] Every line determines exactly two half-planes, and these half planes have no point in common.
+
+\item[Proposition 33:] Let $l$ be a line, and let $P$ be a point on $l$. Then there is a line distinct from $l$ passing through $P$.
+
+\item[Proposition 34:] Let $l$ be a line. Suppose $A$ and $B$ are points on opposite sides of $l$. Let $C$ be the point where $AB$ and $l$ intersect. Then $A*C*B$.
+
+\item[Proposition 35:] Suppose $A*B*C$. Let $l$ be a line distinct from $\linethrough{AC}$ passing through $C$. Then $A$ and $B$ are on the same side of $l$.
+
+\item[Proposition 36:] Suppose that $A*B*C$ and $A*C*D$. Let $l$ be a line, distinct from $\linethrough{AC}$, passing through $C$. The $B$ and $D$ are on opposite sides of $l$.
+
+\item[Proposition 37:] Suppose that $A*B*C$ and $A*C*D$. Then $B*C*D$ and $A*B*D$.
+
+\item[Proof:] Let $l$ be a line, distinct from $\linethrough{AC}$, passing through $C$. By Proposition 36, $B$ and $D$ are on opposite sides of $l$. By Proposition 34, $B*C*D$.
+
+  A similar argument shows that $A*B*D$.
+
+\item[Proposition 38:] Let $A$, $B$, and $C$ be points such that $C*A*B$, and let $l$ be the line passing through $A$, $B$. and $C$. If $P$ is a point on $l$, then $P$ lies on $\ray{AB}$, or $P$ lies on $\ray{AC}$.
+
+\item[Proof:] Let $P$ be a point on $l$. Either $P$ lies on $\ray{AB}$, or it does not. If $P$ lies on $\ray{AB}$, then we are done! Suppose that $P$ does not lie on $\ray{AB}$. Then, $P \neq A$, $P \neq B$, $P$ is not between $A$ and $B$, and $B$ is not between $A$ and $P$. Therefore, by Betweeness Axiom 23, $P*A*B$. Either $P=C$, or $P \neq C$. If $P=C$, we are done! Suppose that $P \neq C$. By Betweeness Axiom 23, either $A*P*C$, $A*C*P$, or $C*A*P$.
+
+  Suppose $C*A*P$ (we will show that this leads to a contradiction). By Betweeness Axiom 23, either $C*P*B$, $P*C*B$, or $P*B*C$. Suppose that $C*P*B$. Then $B*A*P$ and $B*P*C$. Therefore, by Proposition 37, $A*P*C$. However, this contradicts the fact that $C*A*P$. Suppose that $P*C*B$. Then $B*A*C$ and $B*C*P$. Therefore, $A*C*P$. However, this also contradicts the fact that $C*A*P$. Finally, suppose that $P*B*C$. Then $P*A*B$ and $P*B*C$. Therefore, $A*B*C$. Again, this contradicts that fact that $C*A*B$. It follows that if we assume that $C*A*P$, that we get a contradiction. Thus $P*C*A$ or $C*P*A$. Therefore, $P$ is on $\ray{AC}$.
+
+\item[Definition 39:] Let $A$, $B$, and $C$ be distinct points not lying on the same line. The set of points lying on $AB$, $BC$, or $AC$ is called \emph{triangle} $ABC$. We denote this triangle by $\triangle ABC$. The points $A$, $B$, and $C$ are called \emph{vertices} of $\triangle ABC$. The line segments $AB$, $BC$, and $AC$ are called the \emph{sides} of $\triangle ABC$. Note that $\triangle ABC$, $\triangle ACB$, $\triangle BAC$, $\triangle BCA$, $\triangle CAB$, and $\triangle CBA$ are the same set of points.
+
+\item[Proposition 40:] A triangle exits.
+
+\item[Theorem 41 (Pasch's Theorem):] Let $A$, $B$, and $C$ be points. Let $l$ be a line passing through $AB$ at a point between $A$ and $B$. Then $l$ intersects $AC$ or $BC$.  Moreover, if $C$ is not on $l$, then $l$ intersects exactly one of $AC$ or $BC$.
+
+\item[Hint:] Either $l$ intersects $BC$ or it does not. If $l$ intersects $BC$, we are done! Suppose $l$ does not intersect $BC$. Say something about the points $B$ and $C$. Conclude something about the points $A$ and $C$.
+
+\item[Proposition 42:] Let $A$, $B$, and $C$ be points such that $A*B*C$. If $P$ is a point on $AC$, then $P$ lies on $AB$ or on $BC$ (i.e. $AC = AB \bigcup BC$).
+
+\item[Proposition 43:] Let $A$, $B$, and $C$ be points such that $A*B*C$. Then $B$ is the only point lying on both $AB$ and $BC$ (i.e. $AB \bigcap BC = \{ B \}$).
+
+\item[Proposition 44:] Let $A$, $B$, and $C$ be points such that $A*B*C$. Then $B$ is the only point lying on both $\ray{BA}$ and $\ray{BC}$ (i.e. $\ray{BA} \bigcup \ray{BC} = \{ B \}$).
+
+\item[Proposition 45:] Let $A$, $B$, and $C$ be points such that $A*B*C$. If $P$ is a point on $\ray{AB}$, then $P$ is also on $\ray{AC}$. Conversly, if $P$ is on $\ray{AC}$, then $P$ is also on $\ray{AB}$ (i.e. $\ray{AB} = \ray{AC}$).
+
+\item[Definition 46:] Let $A$, $B$, and $C$ be three distinct points not lying on the same line. We define angle $CAB$, and write $\angle CAB$, to be the set of points lying on $\ray{AB}$ or on $\ray{AC}$.
+
+\item[Definition 47:] We say that the point is in the \emph{interior} of the angle $\angle CAB$ if
+\begin{enumerate}[\hspace{1cm}1.]
+  \item $D$ and $B$ are on the same side of $\linethrough{AC}$, and
+  \item $D$ and $C$ are on the same side of $\linethrough{AB}$.
+\end{enumerate}
+
+\item[Proposition 48:] Let $\angle CAB$ be an angle and let $D$ be a point such that $B*D*C$. Then, $D$ is a point in the interior of $\angle CAB$.
+
+\item[Proposition 49:] Let $\angle CAB$ be an angle, and let $D$ be a point lying on $\linethrough{BC}$. If $D$ is in the interior of $\angle CAB$, then $B*D*C$.
+
+\end{description}
+
+Propositons 48 and 49 tell us that a point $D$ on the line $\linethrough{BC}$ is in the interior of $\angle{CAB}$ if and only if $B*D*C$.
+
+\vspace{0.3cm}
+
+Here is something to ponder.
+
+\begin{description}
+
+\item[Conjecture 50:] Let $D$ be a point in the interior of the angle $\angle CAB$. Is there a point $E$ on $\ray{AB}$ and a point $F$ on $\ray{AC}$, such that $E*D*F$?
+
+\item[Proposition 51:] Let $D$ be a point in the interior of $\angle CAB$. If $E$ is a point on $\ray{AD}$, distinct from $A$, then $E$ is in the interior of $\angle CAB$.
+
+\item[Proposition 52:] Let $D$ be a point in the interior of $\angle CAB$. Let $E$ be a point on $\linethrough{AD}$ such that $E*A*D$. Then, no point on $\ray{AE}$ is in the interior of $\angle CAB$.
+
+\item[Proposition 53:] Let $D$ be a point in the interior of $\angle CAB$. Let $E$ be a point on $\linethrough{AC}$ such that $E*A*C$. Then $B$ is in the interior of $\angle DAE$.
+
+\item[Definition 54:] Let $A$, $B$, and $C$ be three distinct points not lying on the same line. Let $D$ be a point distinct from $A$. We say that $\ray{AD}$ is \emph{between} $\ray{AC}$ and $\ray{AB}$ if $D$ is in the interior of $\angle CAB$.
+
+\item[Theorem 55 (Crossbar Theorem):] Suppose $\ray{AD}$ is between $\ray{AC}$ and $\ray{AB}$ Then, $\ray{AD}$ intersects $BC$.
+
+\item[Hint:] Use Proposition 53.
+
+\item[Definition 56:] Let $P$ be a point. We say that $P$ is \emph{in the interior} of each of the three angles $\angle CAB$, $\angle ABC$, and $\angle ACB$. If $P$ is not in the interior of $\triangle ABC$ and does not lie on $\triangle ABC$, we say that $P$ is \emph{in the exterior} of $\triangle ABC$.
+
+\item[Definition 57:] Let $P$ be a point. We say that $r$ is a \emph{ray emanating from} $P$ if there is a point $Q$ such that $r$ is the ray $\ray{PQ}$.
+
+\item[Proposition 58:] Let $P$ be a point in the exterior of $\triangle ABC$. Let $r$ be a ray emamating from $P$ that intersects $AB$ at a point between $A$ and $B$. Then $r$ intersects $AC$ or $BC$.
+
+\item[Proposition 59:] Let $P$ be a point in the interior of $\triangle ABC$ and let $r$ be a ray emanating from $P$. Then $r$ intersects at least one of the sides of the triangle; moreover, if $r$ does not intersect a vertex, then $r$ intersects exactly one side.
+
+\end{description}
+
+We write $X \cong Y$ to mean $X$ and $Y$ are congruent.
+
+\begin{description}
+
+\item[Congruence Axiom 60:] Let $A$, $B$, and $A'$ be any points such that $A$ and $B$ are distinct. Let $r$ be any ray emanating from $A'$. Then there exists a unique point $B'$ on $r$, distinct from $A'$, such that $AB \cong A'B'$.
+
+\item[Congruence Axiom 61:] If $AB \cong CD$ and $AB \cong EF$, then $CD \cong EF$. Moreover, every segment is congruent to itself.
+
+\item[Congruence Axiom 62 (Segment Addition):] If $A*B*C$, $A'*B'*C'$, $AB \cong A'B'$, and $BC \cong B'C'$, then $AC \cong A'C'$.
+
+\item[Congruence Axiom 63:] Given $\angle BAC$ and distinct points $A'$ and $B'$, there exist points $C'$ and $D'$ on opposite sides of $\linethrough{A'B'}$ such that $\angle BAC \cong \angle B'A'C'$ and $\angle BAC \cong \angle B'A'D'$.
+
+\item[Definition 64:] We say that $\triangle ABC$ and $\triangle A'B'C'$ are \emph{congruent}, and write $\triangle ABS \cong \triangle A'B'C'$ if $\angle BAC \cong \angle B'A'C'$, $\angle ABC \cong \angle A'B'C'$, $\angle ACB \cong \angle A'C'B'$, $AB \cong A'B'$, $AC \cong A'B'$, and $BC \cong B'C'$.
+
+\item[Congruence Axiom 65 (Side-Angle-Side):] Given $\triangle ABC$ and $\triangle A'B'C'$, if $AB \cong A'B'$, $AC \cong A'C'$, and $\angle BAC \cong \angle B'A'C'$, then $\triangle ABC \cong \triangle A'B'C'$.
+
+\item[Congruence Axiom 66:] Let $\alpha$, $\beta$, and $\gamma$ be angles. If $\alpha \cong \beta$ and $\beta \cong \gamma$, then $\alpha \cong \gamma$. Moreover, every angle is congruent to itself.
+
+\item[Proposition 67:] Let $\triangle ABC$ be a triangle such that $AB \cong AC$. Then $\angle ABC$ $\cong \angle ACB$.
+
+\item[Proposition 68 (Segment Subtraction):] If $A*B*C$, $D*E*F$, $AB \cong DE$, and $AC \cong DF$, then $BC \cong EF$.
+
+\item[Hint:] Using Congruence Axiom 60, let $G$ be the unique point on $\ray{EF}$ such that $BC \cong EG$. Use Congruence Axiom 62 and Congruence Axiom 63 to show that $DG \cong DF$. Now use Congruence Axiom 60 again.
+
+\item[Proposition 69:] Suppose $AC \cong DF$. Let $B$ be a point such that $A*B*C$. Then there is a unique point $E$ between $D$ and $E$ such that $AB \cong DE$.
+
+\item[Definition 70:] Let $A$, $B$, $C$, and $D$ be points. We write $AB<CD$ if there is a point $E$, $C*E*D$, such that $AB \cong CE$.
+
+\item[Proposition 71:] Let $A$, $B$, $C$, and $D$ be points. Either $AB<CD$, $AB\cong CD$, or $AB>CD$.
+
+\item[Proposition 72:] If $AB<CS$ and $CD\cong EF$, then $AB<EF$.
+
+\item[Proposition 73:] If $AB<CD$ and $CD<EF$, then $AB<EF$.
+
+\item[Definition 74:] Let $\alpha$ and $\beta$ be angles. We say that $\alpha$ and $beta$ are \emph{supplementary angles} if there are points $A$, $B$, $C$, and $D$, such that $B*A*C$, $D$ is not on $\linethrough{BC}$, $\alpha = \angle BAD$, and $\beta = \angle CAD$.
+
+\item[Definition 75:] An angle is a \emph{right angle} if it is congruent to one of its supplementary angles. That is, if $\alpha$ and $\beta$ are supplementary angles, and $\alpha \cong \beta$, then $\alpha$ is a right angle.
+
+\item[Definition 76:] Let $\alpha$ and $\beta$ be angles. We say that $\alpha$ and $\beta$ are \emph{vertical angles} if there exist points $A$, $B$, $C$, $D$, and $E$ such that $B*A*C$, $D*A*E$, $\linethrough{BC}$ and $\linethrough{DE}$ are distinct lines, $\alpha = \angle BAE$, and $\beta = \angle CAD$.
+
+\end{description}
+
+
+\end{document}

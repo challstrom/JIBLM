@@ -1,0 +1,916 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Matrix Theory}
+\author{Kenneth E. Whipple}
+\date{}
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+\section*{Introduction: Some Comments About This Course}
+\addcontentsline{toc}{section}{\numberline{}Introduction: Some Comments About This Course}
+\markboth{Introduction}{Introduction}
+
+\pagenumbering{roman}
+
+These notes were used in a Junior level course, offered at Georgia State University in the 1970s and 1980s. Of all the courses that I taught using Moore's Method, I found this one to be the most sucessful. Some of the reasons for this are mentioned below.
+
+Since matrix theory is so important to many areas of mathematics, it is especially important that students gain the strong intuition in this subject that Moore's Method provides.
+
+This material gives students an introduction to the rigors of proving statements without having to deal with abstract concepts. There is a wide range of difficulty, which allows students of varying abilities and backgrounds to participate.
+
+Since the arithmetic of matrices resembles the arithmetic of numbers, many plausible but false conjectures occur, thus emphasizing the importance of careful treatment of the subject matter (students sometimes spend considerable effort trying to prove a conjecture for which a simple counterexample existed).
+
+The conjectures given in these notes are not all true -- it is left up to the students to determine which are true and to verify their conclusions. Some statements need modifications in order to be true, and students are encouraged to make necessary changes.
+
+While most statements are given in logical order, a few are intensionally out of order. These appear in their proper place later. For example, Statement 407, which states that the product of two singular matrices is singular, appears in Lesson 4, and again in Lesson 8 as Theorem 807. It was not expected that anyone would prove this before Lesson 8, and this theorem is not be needed until then.
+
+These notes need to be supplemented with examples that can be found in most textbooks on the subject. Also, computer enhancements were not available when these notes were developed.
+
+\begin{flushright}
+Kenneth E. Whipple
+
+Decatur, GA
+\end{flushright}
+
+\newpage
+
+
+\section{Sums and Scalar Products}
+\markboth{1. Sums and Scalar Products}{1. Sums and Scalar Products}
+
+\pagenumbering{arabic}
+
+\begin{description}
+
+  \item[Definitions:] A rectangular array (of numbers) is called a \emph{matrix} (of numbers). If a matrix has $m$ rows and $n$ columns, the matrix is said to be an \emph{$m$ by $n$ matrix}. The number belonging to the $i$th row and the $j$th column is called the \emph{$i,j$th term} of the matrix.
+
+  \item[Definitions:] Suppose each of $A$ and $B$ is an $m$ by $n$ matrix. Then $A$ is said to \emph{equal} $B$, denoted $A = B$, if the $i,j$th term of $A$ equals the $i,j$th term of $B$ for each $i$ and $j$ ($1 \leq i \leq m$ and $1 \leq j \leq n$). The \emph{sum} of $A$ and $B$, denoted $A + B$, is the $m$ by $n$ matrix whose $i,j$th term is the sum of the $i,j$th terms of $A$ and $B$ for each $i$ and $j$. If $t$ is a number, then the \emph{scalar product} of $t$ and $A$, denoted $tA$, is the $m$ by $n$ matrix whose $i,j$th term is the product of $t$ and the $i,j$th term of $A$ for each $i$ and $j$.
+
+  \item[] Suppose that each of $A$, $B$, and $C$ is an $m$ by $n$ matrix (for some suitable $m$ and $n$), and each of $s$ and $t$ is a number.
+
+  \item[Conjecture 101:] $A + B = B + A$.
+
+  \item[Conjecture 102:] $(A + B) + C = A + (B + C)$.
+
+  \item[Conjecture 103:] $t(A + B) = (tA) + (tB)$
+
+  \item[Conjecture 104:] $(s+t)A = (sA) + (tA)$
+
+  \item[Conjecture 105:] $(st)A = s(tA)$
+
+  \item[Theorem 106:] There exists only one $m$ by $n$ matrix $Z$ such that if $X$ is an $m$ by $n$ matrix, then $X + Z = X$. This matrix is called the \emph{$m$ by $n$ zero matrix}.
+
+  \item[Theorem 107:] There exists only one $m$ by $n$ matrix $Y$ such that $A + Y$ is the $m$ by $n$ zero matrix. This matrix is called the \emph{negative} of $A$. The matrix sum of $A$ and the negative of $B$ is denoted $A-B$.
+
+  \item[Definitions:] The statement that $A+B$ is \emph{defined} means that $A$ and $B$ have the same number of rows and the same number of columns. A matrix having the same number of rows as it does columns is said to be \emph{square}.
+
+\end{description}
+
+
+\section{Matrix Products}
+\markboth{2. Matrix Products}{2. Matrix Products}
+
+\begin{description}
+
+  \item[Definitions:] Suppose $A$ is an $m$ by $n$ matrix and $B$ is an $n$ by $p$ matrix. Then the \emph{matrix product} of $A$ with $B$, denoted $A*B$, is the $m$ by $p$ matrix whose $i,k$th term is $a_{i,1}b_{a,k} + a_{i,2}b_{2,k} + \cdots + a_{i,j}b_{j,k} + \cdots + a_{i,n}b_{n,k}$, where $a_{i,j}$ denotes the $i,j$th term of $A$, and $b_{j,k}$ denotes the $j,k$th term of $B$, for each $i$, $j$, and $k$. Note that if $R$ denotes the $i$th row of $A$, and $C$ denotes the $k$th column of $B$, then $R * C$ is a $1$ by $1$ matrix whose only term is the $i,k$th term of $A * B$. (It is often convenient to make no distinction between a $1$ by $1$ matrix and its single term.)
+
+  \item[] Suppose that $A$ is an $m$ by $n$ matrix, each of $B$ and $D$ is an $n$ by $p$ matrix, $E$ is a $p$ by $q$ matrix, $Z$ is the $n$ by $p$ zero matrix, $t$ is a number, $A_{i}$ denotes the $i$th row of $A$, and $E_{j}$ denotes the $j$th column of $E$, for each $i$ between $0$ and $m+1$, and each $j$ between $0$ and $p+1$.
+
+  \item[Conjecture 201:] $A*(B+D) = (A*B) + (A*D)$.
+
+  \item[Conjecture 202:] If $m=n=p$, then $A*B=B*A$.
+
+  \item[Conjecture 203:] $t(A*B) = (tA)*B = A*(tB)$.
+
+  \item[Conjecture 204:] $A*Z$ and $Z*E$ are zero matrices.
+
+  \item[Conjecture 205:] If $A*B$ is zero, then $A$ or $B$ is zero.
+
+  \item[Conjecture 206:] If $A$ is non-zero and $A*B=A*D$, then $B=D$.
+
+  \item[Conjecture 207:] $(t_{1}, t_{2}, \cdots, t_{m})*A = t_{1}A_{1} + t_{2}A_{2} + \cdots + t_{m}A_{m}$.
+
+  \item[Conjecture 208:] $A_{i}*B$ is the $i$'th row of $A*B$.
+
+  \item[Conjecture 209:] $B*E_{j}$ is the $j$'th column of $B*E$.
+
+  \item[Conjecture 210:] The $i,j$'th term of $(A*B)*E$ is $(A_{i}*B)*E_{j}$, and the $i,j$'th term of $A*(B*E)$ is $A_{i}*(B*E_{j})$.
+
+  \item[Conjecture 211:] $A*(B*E)=(A*B)*E$.
+
+  \item[Theorem 212:] There exists only one $n$ by $n$ matrix $I$ such that if $X$ is a matrix having $n$ columns, then $X*I=X$; and if $Y$ is a matrix having $n$ rows, then $I*Y=Y$. This matrix is called the \emph{$n$ by $n$ identity matrix}, and is denoted $I_{n}$.
+
+  \item[Conjecture 213:] If $m=n=p$, if $A$ is non-zero, and if $A*B=A=B*A$, then $B$ is the $n$ by $n$ identity matrix.
+
+  \item[Conjecture 214:] There exists an $n$ by $n$ matrix $T$ such that if $X$ is a matrix having $n$ columns, then $T*X=tX$.
+
+  \item[Conjecture 215:] If $A$ is non-zero, then there exists a matrix $X$ such that $A*X$ is the $m$ by $m$ identity matrix.
+
+  \item[Conjecture 216:] If $m=n$ and if $A*A$ is zero, then $A$ is zero.
+
+  \item[Definition:] The statement that $A*B$ is \emph{defined} means that the number of columns of $A$ equals the number of rows of $B$.
+
+\end{description}
+
+
+\section{Transpose of a Matrix}
+\markboth{3. Transpose of a Matrix}{3. Transpose of a Matrix}
+
+\begin{description}
+
+  \item[Definitions:] By the \emph{transpose} of an $m$ by $n$ matrix $A$ is meant the $n$ by $m$ matrix, denoted $\text{trp} A$, whose $i,j$th term is the $j,i$th term of $A$ for each $i$ and $j$. A matrix that equals its transpose is said to be \emph{symmetric}. A matrix that equals the negative of its transpose is said to be \emph{skew}.
+
+  \item[] Suppose each of $A$ and $B$ is an $m$ by $n$ matrix, $C$ is an $n$ by $p$ matrix, $D$ is an $n$ by $n$ matrix, and $s$ is a number.
+
+  \item[Questions:] What can be determined about the following?
+    \begin{description}
+      \item[301:] $\text{trp} (A+B)$
+      \item[302:] $\text{trp} (sB)$
+      \item[303:] $\text{trp} (A*C)$
+      \item[304:] $D+\text{trp} D$
+      \item[305:] $D-\text{trp} D$
+      \item[306:] $A*\text{trp} A$
+      \item[307:] $D$, if $D$ is both symmetric and skew
+      \item[308:] $X*D*\text{trp} X$, if $X$ is a $1$ by $n$ matrix and $D$ is skew
+      \item[309:] $D$, if $X*D*\text{trp} X=(0)$ for every $1$ by $n$ matrix $X$.
+    \end{description}
+
+  \item[Definitions:] The $i,i$th term of a matrix is called the \emph{diagonal} term of the matrix for each $i$. The sum of all diagonal terms of a matrix is called the \emph{trace} of the matrix.
+
+  \item[] Prove each of the following:
+
+  \item[Theorem 310:] If $D$ is a square matrix, then there exists a symmetric matrix $S$ and a skew matrix $K$ such that $D=S+K$. Are $S$ and $K$ unique?
+
+  \item[Theorem 311:] If each of $A$ and $B$ is a matrix such that both $A*B$ and $B*A$ is defined, then the trace of $A*B$ equals the trace of $B*A$.
+
+\end{description}
+
+
+\section{Singular and Non-Singular Matrices}
+\markboth{4. Singular and Non-Singular Matrices}{4. Singular and Non-Singular Matrices}
+
+\begin{description}
+
+  \item[Definitions:] The matrix $L$ is said to be a \emph{left inverse} of the matrix $A$ if $L*A$ is an identity matrix. The matrix $R$ is said to be a \emph{right inverse} of $A$ if $A*R$ is an identity matrix. A matrix that is both a left inverse and a right inverse of $A$ is called the \emph{inverse} of $A$. A square matrix having an inverse is said to be \emph{non-singular}, and a square matrix that does not have an inverse is said to be \emph{singular}.
+
+  \item[Conjecture 401:] If $L$ is a left inverse and $R$ is a right inverse of the matrix $A$, what is the relation between $L$ and $R$?
+
+  \item[Conjecture 402:] A matrix has at most one left inverse.
+
+  \item[Conjecture 403:] A matrix has at most one inverse.
+
+  \item[Conjecture 404:] If a matrix has an inverse, then the matrix is square.
+
+  \item[Conjecture 405:] If a matrix has a right inverse, then its transpose has a right inverse.
+
+  \item[] Suppose that each of $A$ and $B$ is an $n$ by $n$ matrix.
+
+  \item[Conjecture 406:] If $A$ and $B$ are both non-singular then $A*B$ is non-singular.
+
+  \item[Question 407:] If $A$ is singular and $B$ is non-singular, what can be said about $A*B$?
+
+  \item[Question 408:] If $A$ and $B$ are both singular, is $A*B$ singular?
+
+  \item[Question 409:] If $A*B$ is non-singular, are both $A$ and $B$ non-singular?
+
+  \item[Conjecture 410:] If $A$ has a row of column that is zero, then $A$ is singular.
+
+  \item[Conjecture 411:] If $A$ is singular, then $A$ has a row or column that is zero.
+
+  \item[Conjecture 412:] If $A$ has a right inverse, then $A$ is non-singular.
+
+\end{description}
+
+
+\section{Partitions}
+\markboth{5. Partitions}{5. Partitions}
+
+\begin{description}
+
+  \item[Definitions:] Suppose $A$ is an $m$ by $n$ matrix, $r$ and $s$ are two integers such that $0 \leq r < s \leq m$, and $u$ and $v$ are two integers such that $0 \leq u < v \leq n$. The $s-r$ by $v-u$ matrix whose $i,j$th term is the $(r+i),(u+j)$th term of $A$ is called the \emph{submatrix} of $A$ from $(r,u)$ to $(s,v)$. The statement that $a$ is a \emph{partition} of $A$ means that there exist positive integers $p,q$ and integers $r_{0}, r_{1}, \ldots, r_{p}, s_{0}, s_{1}, \ldots, s_{q}$ such that $0 = r_{0} < r_{1} < \ldots < r_{p}=m$, $0 = s_{0} <s_{1} < \ldots s_{q} = n$, and $a$ is the $p$ by $q$ rectangular array whose $i,j$th term is the submatrix of $A$ from $(r_{i-1},s_{j-1})$ to $(r_{1},s_{j})$ for each $i$ from $1$ to $p$ and each $j$ from $1$ to $q$.
+
+  \item[Definitions:] Suppose each of $A$ and $B$ is a matrix having $p$ and $q$ partitions $\alpha$ and $\beta$, respectively, and suppose $D$ is a matrix having a $q$ by $r$ partition $\delta$. Let $A_{i,j}$ and $B_{i,j}$ denote, respectively, the $i,j$th term of $\alpha$ and $\beta$, and let $D_{j,k}$ denote the $j,k$th term of $\delta$. If for each $i$ and $j$, $A_{i,j}+B_{i,j}$ is defined, then the \emph{sum} of $\alpha$ and $\beta$ (denoted $\alpha + \beta$) is defined to be the rectangular array whose $i,j$th term is $A_{i,j}+B_{i,j}$ Likewise, if for each $i$, $j$, $u$, and $v$, $A_{i,u}*D_{u,j}+A_{i,v}*D_{v,j}$ is defined, then the \emph{product} of $\alpha$ and $\beta$ (denoted $\alpha*\beta$) is defined to be the rectangular array whose $i,j$'th term is $A_{i,1}*D_{1,j}+A_{i,2}*D_{2,j}+ \ldots +A_{i,q}*D_{q,j}$. Note that in order for $\alpha + \beta$ to be defined, $\alpha$ must ``partition $A$'' in the same way as $\beta$ partitions $B$; and in order for $\alpha*\delta$ to be defined, $\alpha$ must ``partition the columns of $A$'' in the same way $\delta$ ``partitions the rows of $D$''.
+
+  \item[Theorem 501:] If $\alpha$ and $\beta$ are partitions of matrices $A$ and $B$ respectively, such that $\alpha + \beta$ is defined, then $A+B$ is defined and $\alpha+\beta$ is a partition of $A+B$.
+
+  \item[Question 502:] If $\alpha$ is a partition of matrix $A$, how should the transpose of $\alpha$ be defined in order that it be a partition of $\text{trp} A$?
+
+  \item[Exercises:] Suppose $\alpha$ is a $p$ by $q$ partition of matrix $A$, and $\delta$ is a $q$ by $r$ partition of matrix $D$, and $A*D$ is defined. Verify each of the following.
+    \begin{description}
+      \item[503:] If $(p,q,r)=(2,1,1)$, then $\alpha*\delta$ is defined and is a partition of $A*D$.
+      \item[504:] If $(p,q,r)=(1,1,2)$, then $\alpha*\delta$ is defined and is a partition of $A*D$.
+      \item[505:] If $q=1$, then $\alpha*\delta$ is defined and is a partition of $A*D$.
+      \item[506:] If $(p,q,r)=(1,2,1)$ and if $\alpha*\delta$ is defined, then $\alpha*\delta$ is a partition of $A*D$.
+      \item[507:] If $(p,r)=(1,1)$ and if $\alpha*\delta$ is defined, then $\alpha*\delta$ is a partition of $A*D$.
+    \end{description}
+
+  \item[Theorem 508:] If $\alpha$ and $\delta$ are partitions of matrices $A$ and $D$, respectively, such that $\alpha*\delta$ is defined, then $A*D$ is defined and $\alpha*\delta$ is a partition of $A*D$.
+
+\end{description}
+
+
+\section*{5b. Direct Sums}
+\addcontentsline{toc}{section}{\numberline{5b}Direct Sums}
+\markboth{5b. Direct Sums}{5b. Direct Sums}
+
+\begin{description}
+
+  \item[Definitions:] By the \emph{direct sum} of the matrix $A$ with the matrix $B$, denoted $A \oplus B$, is meant the matrix having the partition 
+    $\begin{bmatrix}
+      A & Z_{1} \\
+      Z_{2} & B
+    \end{bmatrix}$ 
+    where $z_{1}$ and $z_{2}$ are zero matrices. Note: Since $(A \oplus B) \oplus C = A \oplus(B \oplus C)$, they can be denoted $A \oplus B \oplus C$.
+
+  \item[Conjecture 509:] $A \oplus B=B \oplus A$.
+
+  \item[Question 510:] $(A \oplus B)+(C \oplus D) =$ ?
+
+  \item[Question 511:] $(A \oplus B)*(c \oplus D) =$ ?
+
+  \item[Question 512:] $\text{trp} (A \oplus B) =$ ?
+
+  \item[Conjecture 513:] If each of $A$ and $B$ is non-singular, then $A \oplus B$ is non-singular.
+
+  \item[Conjecture 514:] If each of $A$ and $B$ is singular, then $A \oplus B$ is singular.
+
+  \item[Conjecture 515:] If $A$ is singular and $B$ is non-singular, what is $A \oplus B$?
+
+\end{description}
+
+
+\section{Elementary Matrices}
+\markboth{6. Elementary Matrices}{6. Elementary Matrices}
+
+\begin{description}
+
+  \item[] Suppose $n$ is a positive integer greater than $1$, $r$ and $s$ are two positive integers less than $n+1$, and $t$ is a number different from $0$.
+
+  \item[Theorem 601:] There exists only one $n$ by $n$ matrix $P$ such that if $X$ is a matrix having $n$ rows, then $P*x$ is the same as $X$ -- except that the $r$th row of $P*X$ is the $s$th row of $X$, and the $s$th row of $P*X$ is the $r$th row of $X$. Such a matrix $P$ is called an \emph{elementary permutative} matrix.
+
+  \item[Question 602:] If $P$ is the matrix described above, and $Y$ is a matrix having $n$ columns, what can be said about $Y*P$?
+
+  \item[Conjecture 603:] An elementary permutative matrix is non-singular.
+
+  \item[Theorem 604:] There exists only one $n$ by $n$ matrix $M$ such that if $X$ is a matrix having $n$ rows, then $M*X$ is the same as $X$ -- except that the $r$th row of $M*X$ is the scaler product of $t$ and the $r$'th row of $X$. Such a matrix $M$ is called an \emph{elementary multiplicative} matrix.
+
+  \item[Question 605:] If $M$ is the matrix described above, and $Y$ is a matrix having $n$ columns, what can be said about $Y*M$?
+
+  \item[Conjecture 606:] An elementary multiplicative matrix is non-singular.
+
+  \item[Theorem 607:] There exists only one $n$ by $n$ matrix $A$ such that if $X$ is a matrix having $n$ rows, then $A*X$ is the same as $X$ -- except that the $r$th row of $A*X$ is the sum of the $r$th row of $X$ and $t$ times the $s$th row of $X$. Such a matrix $A$ is called an \emph{elementary additive} matrix.
+
+  \item[Question 608:] If $A$ is the matrix described above, and $Y$ is a matrix having $n$ columns, what can be said about $Y*A$?
+
+  \item[Conjecture 609:] An elementary additive matrix is non-singular.
+
+  \item[Definition:] A matrix is said to be an \emph{elementary} matrix if it is either an elementary permutative, an elementary multiplicative, or an elementary additive matrix.
+
+  \item[Conjecture 610:] If $E$ is an elementary matrix and $I$ is an identity matrix, then $E \oplus I$ and $I \oplus E$ are elementary matrices.
+
+  \item[Conjecture 611:] If each of $P$ and $Q$ is the product of elementary matrices, the $P \oplus Q$ is the product of elementary matrices.
+
+\end{description}
+
+
+\section{Equivalence}
+\markboth{7. Equivalence}{7. Equivalence}
+
+\begin{description}
+
+  \item[Definition:] The statement that the matrix $A$ is \emph{equivalent} to the matrix $B$, denoted by $A \text{eqv} B$, means that $A=P*B*Q$ where $P$ and $Q$ are each the product of elementary matrices. Note: Two equivalent matrices are the same size.
+
+  \item[] Suppose matrix $A$ is equivalent to matrix $A'$, matrix $B$ is equivalent to matrix $B'$, $I$ and $J$ are identity matrices, $Z$ is a zero matrix, and $X$ and $Y$ are matrices.
+
+  \item[Conjecture 701:] $A$ is equivalent to itself, and $A'$ is equivalent to $A$.
+
+  \item[Conjecture 702:] If $A \text{eqv} B$, then $A' \text{eqv} B'$.
+
+  \item[Question 703:] What can be said about a matrix that is equivalent to an identity matrix?
+
+  \item[Question 704:] What can be said about a matrix that is equivalent to a zero matrix?
+
+  \item[Conjecture 705:] If $t$ is a number, then $A \text{eqv} tA$.
+
+  \item[Conjecture 706:] If $A$ is non-singular, then $A'$ is non-singular.
+
+  \item[Conjecture 707:] The transpose of $A$ is equivalent to the transpose of $A'$.
+
+  \item[Conjecture 708:] If $A$ has a left inverse, then $A'$ has a left inverse that is equivalent to the left inverse of $A'$.
+
+  \item[Conjecture 709:] If $A+B$ is defined, then $A+B \text{eqv} A'+B'$.
+
+  \item[Conjecture 710:] If $A*B$ is defined, then $A*B \text{eqv} A'*B'$.
+
+  \item[Conjecture 711:] $A \oplus B eqv A' \oplus B'$.
+
+  \item[Conjecture 712:] If $A \oplus X eqv B \oplus X$, then $A eqv B$.
+
+  \item[Conjecture 713:] $ 
+    \begin{bmatrix}
+      I & X \\ 
+      Y & B
+    \end{bmatrix} 
+    \text{eqv} I \oplus (B-Y*X)$. 
+    Likewise $ 
+    \begin{bmatrix}
+      I \\ 
+      Y
+    \end{bmatrix} 
+    \text{eqv} 
+    \begin{bmatrix}
+      I \\ 
+      0Y
+    \end{bmatrix} 
+    $ and $
+    \begin{bmatrix}
+      I & X
+    \end{bmatrix} 
+    \text{eqv} 
+    \begin{bmatrix}
+      I & 0X
+    \end{bmatrix} 
+    $.
+
+  \item[Conjecture 714:] If $ 
+    \begin{bmatrix}
+      A & Z \\ 
+      X & B
+    \end{bmatrix} 
+    $ is a partition, then there exists a matrix $X'$ equivalent to $X$ such that $ 
+    \begin{bmatrix}
+      A & Z \\ 
+      X & B
+    \end{bmatrix} 
+    \text{eqv} 
+    \begin{bmatrix}
+      A' & Z \\ 
+      X' & B'
+    \end{bmatrix}
+    $.
+
+  \item[Conjecture 715:] If $P*A*Q=B$ where each of $P$ and $Q$ is the product of elementary matrices, and if $Z*I*A*J*Z$ is defined, then $ 
+    \begin{bmatrix}
+      I & A \\ 
+      Z & J
+    \end{bmatrix} 
+    \text{eqv} 
+    \begin{bmatrix}
+      P & B \\ 
+      Z & Q
+    \end{bmatrix}
+    $.
+
+  \item[Conjecture 716:] If $A$ is not zero, then $A$ is equivalent to a matrix $B$ such that the $1,1$th term of $B$ is $1$, and each of the other terms in the first row and first column of $B$ is $0$.
+
+\end{description}
+
+
+\section{Canonical Matrices}
+\markboth{8. Canonical Matrices}{8. Canonical Matrices}
+
+\begin{description}
+
+  \item[Theorem 801:] If each of $m$ and $n$ is a positive integer, and $r$ is a non-negative integer that does not exceed $m$ or $n$, then there exists only one $m$ by $n$ matrix $C$ such that if $X$ is a matrix having $n$ rows, then the $k$th row of $C*X$ is the $k$th row of $X$ if $k \leq r$ and zero if $k > r$. Such a matrix is called a \emph{canonical matrix of rank $r$}.
+
+  \item[Question 802:] What is necessary for a canonical matrix to have a left inverse? a right inverse?
+
+  \item[Conjecture 803:] The transpose of a canonical matrix is a canonical matrix of the same rank.
+
+  \item[Theorem 804:] If $A$ is a matrix, then $A$ is equivalent to a canonical matrix.
+
+  \item[Conjecture 805:] A non-singular matrix is the product of elementary matrices.
+
+  \item[] Suppose $A$ is a matrix that is equivalent to a canonical matrix of rank $r$, and $B$ is a matrix that is equivalent to a canonical matrix of rank $s$.
+
+  \item[Conjecture 806:] If $A*B$ is defined, then $A*B$ is equivalent to a canonical matrix whose rank does not exceed $r$ or $s$.
+
+  \item[Conjecture 807:] The product of two singular matrices is singular.
+
+  \item[Theorem 808:] No two canonical matrices are equivalent.
+
+  \item[Definition:] The statement that the matrix $X$ has \emph{rank} $t$ means that $X$ is equivalent to a canonical matrix of rank $t$.
+
+  \item[Conjecture 809:] Two $m$ by $n$ matrices are equivalent if and only if they have the same rank.
+
+  \item[Conjecture 810:] Suppose 
+    $\begin{bmatrix}
+      A & Z \\
+      X & B
+    \end{bmatrix}$ 
+    is a partition of matrix $M$ where each of $A$ and $B$ is square and $Z$ is zero. Then $M$ is non-singular if and only if both $A$ and $B$ are non-singular.
+
+  \item[Question 811:] Compare the rank of $A \oplus B$ with the ranks of $A$ and $B$.
+
+  \item[Question 812:] Compare the rank of $A$ with the rank of its transpose.
+
+  \item[Question 813:] If $A*B$ is defined, how does its rank compare with the ranks of $A$ and $B$?
+
+  \item[Theorem 814:] If $A$ has more than $r$ rows, then there exists a non-singular matrix $P$ such that the $k$th row of $P*A$ is zero for each $k$ greater than $r$.
+
+  \item[Theorem 815:] A matrix has a right (respectively, left) inverse if and only if its rank is the same as its number of rows (respectively, columns).
+
+  \item[Theorem 816:] If $A \oplus X eqv B \oplus X$, then $A \text{eqv} B$.
+
+\end{description}
+
+\section{Linear Independence}
+\markboth{9. Linear Independence}{9. Linear Independence}
+
+\begin{description}
+
+  \item[Definitions:] A matrix having only one row is called a \emph{vector}. The statement that the rows of a matrix $A$ are \emph{linearly dependent} means that there exists a non-zero vector $T$ such that $T*A$ is zero. If the rows of a matrix are not linearly dependent, then they are said to be \emph{linearly independent}. The vector $V$ is said to be a \emph{linear combination} of the rows of the matrix $M$ if there exists a vector $T$ such that $V=T*M$.
+
+  \item[Conjecture 901:] Suppose matrix $A$ is equivalent to matrix $B$. Then the rows of $A$ are linearly dependent if and only if the rows of $B$ are linearly dependent.
+
+  \item[Conjecture 902:] Suppose $ 
+    \begin{bmatrix}
+      A \\
+      B
+    \end{bmatrix}
+    $ is a partition of matrix $M$. Then the rows of $M$ are linearly independent if and only if both the rows of $A$ are linearly independent and the rows of $B$ are linearly independent.
+
+  \item[Conjecture 903:] The rows of an $m$ by $n$ matrix are linearly independent if and only if the rank of the matrix is $m$.
+
+  \item[Conjecture 904:] The rows of a matrix are linearly independent if and only if the matrix has an inverse.
+
+  \item[Conjecture 905:] The rows of a square matrix are linearly independent if and only if the matrix is non-singular.
+
+  \item[Conjecture 906:] Suppose the rows of matrix $M$ are linearly independent. Then the vector $V$ is a linear combination of the rows of $M$ if and only if the rows of $ 
+    \begin{bmatrix}
+      V \\
+      M
+    \end{bmatrix}
+    $ are linearly dependent.
+
+  \item[Conjecture 907:] Suppose $S$ is a set of $1$ by $n$ vectors containing a non-zero vector. Then there exists a matrix $M$ such that
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item the rows of $M$ are linearly independent,
+      \item each row of $M$ is a member of $S$, and
+      \item each member of $S$ is a linear combination of the rows of $M$.
+    \end{enumerate}
+
+  \item[Conjecture 908:] If the matrix $A$ has a right inverse $R$, and if the vector $V$ is a linear combination of the rows of $A$, then $V=V*R*A$.
+
+\end{description}
+
+
+\section{Vector Spaces}
+\markboth{10. Vector Spaces}{10. Vector Spaces}
+
+\begin{description}
+
+  \item[Definition:] The statement that the set of vectors $W$ is a \emph{vector space} means that if each of $X$ and $Y$ is a vector in $W$, and if each of $s$ and $t$ is a number, then $sX+tY$ is defined and is a vector in $W$.
+
+  \item[Theorem 1001:] If $M$ is a matrix, and if $W$ is the set of all linear combinations of the rows of $M$, then $W$ is the ``smallest'' vector space that contains the rows of $M$. The rows of $M$ are said to \emph{generate} the vector space $W$. If, in, addition, the rows of $M$ are linearly independent, then $M$ is called a \emph{basis} of $W$.
+
+  \item[Conjecture 1002:] If $M$ is a matrix whose rows belong to the vector space $W$, and if $X$ is a matrix such that $X*M$ is defined, then the rows of $X*M$ belong to $W$.
+
+  \item[Conjecture 1003:] If $B$ is a basis of the vector space $W$, and if $P$ is a non-singular matrix such that $P*B$ is defined, then $P*B$ is a basis of $W$.
+
+  \item[Conjecture 1004:] Suppose each of $A$ and $M$ is a matrix, the rows of $A$ are linearly independent, and the rows of $ 
+    \begin{bmatrix}
+      A \\
+      M
+    \end{bmatrix}
+    $ generate the vector space $W$. Then either $A$ is a basis of $W$, or there exists a matrix $C$ such that each row of $C$ is a row of $M$ and $ 
+    \begin{bmatrix}
+      A \\
+      C
+    \end{bmatrix}
+    $ is a basis of $W$.
+
+  \item[Conjecture 1005:] Suppose $B$ is a basis of the vector space $W$ having only $m$ rows, $M$ is a matrix having only $m$ rows, each row of $M$ belongs to $W$, and the rows of $M$ are linearly independent. Then there exists a non-singular matrix $P$ such that $M=P*B$.
+
+  \item[Theorem 1006:] The bases of the same vector space must have the same number of rows. The number of rows in a basis of a vector space is called the \emph{dimension} of the space.
+
+  \item[Conjecture 1007:] If a matrix $A$ generates the vector space $W$, then the rank of $A$ is the dimension of $W$.
+
+  \item[Conjecture 1008:] Suppose $B$ is a basis of the vector space $W$, and $A$ is a matrix such that $A*B$ is defined. Then $A*B$ is a basis of $W$ if and only if $A$ is non-singular.
+
+  \item[Conjecture 1009:] If $W$ is a vector space of dimension $k$, and if $M$ is a matrix having only $k$ linearly independent rows of $W$, then $M$ is a basis of $W$.
+
+\end{description}
+
+
+\section{Linear Transformations}
+\markboth{11. Linear Transformations}{11. Linear Transformations}
+
+\begin{description}
+
+  \item[Definition:] A transformation $T$ from a vector space $S$ into a vector space $W$ is said to be \emph{linear} if $T(sX+tY)=sT(X)+tT(Y)$ for every pair $X$ and $Y$ of vectors in $S$ and every pair $s$ and $t$ of numbers.
+
+  \item[Notation:] Suppose $T$ is a linear transformation from a vector space $S$ into a vector space $W$, and $A$ is a matrix whose rows are in $S$. Then $T(A)$ denotes the matrix whose $i$th row is $T(X)$ where $X$ is the $i$th row of $A$. If $H$ is a subset of $S$, then $T(H)$ denotes the set to which $Y$ belongs if $Y=T(X)$ for some $X$ in $H$.
+
+  \item[Conjecture 1101:] The range of $T$, i.e. $Y(S)$, is a vector space.
+
+  \item[Conjecture 1102:] If $A$ generates $S$, then $T(A)$ generates $T(S)$.
+
+  \item[Conjecture 1103:] If $A$ is a basis of $S$, then $T(A)$ is a basis of $T(S)$.
+
+  \item[Conjecture 1104:] If $T$ is reversible, then the inverse of $T$ is linear.
+
+  \item[Conjecture 1105:] If $B$ is a basis of $S$, and $F$ is a transformation from the rows of $B$ into $W$, then there exists only one linear transformation $L$ from $S$ into $W$ such that $L(X)=F(X)$ for each row $X$ in $B$.
+
+  \item[Conjecture 1106:] If $T$ is reversible and $A$ is a basis of $S$, then $T(A)$ is a basis of $T(S)$.
+
+  \item[Conjecture 1107:] If $T$ is reversible, then the dimension of $S$ equals the dimension of $T(S)$.
+
+  \item[Theorem 1108:] There exists a matrix $B$ such that $T(X)=X*B$ for each $X$ in $S$. Furthermore, $T$ is reversible if $B$ has a right inverse.
+
+  \item[Question 1109:] Must the matrix $B$ in Theorem 1208 be unique?
+
+  \item[Question 1110:] If $T$ is reversible in Theorem 1208, must $B$ have a right inverse?
+
+\end{description}
+
+
+\section{Congruence Transformations and Orthogonal Matrices}
+\markboth{12. Congruence Transformations and Orthogonal Matrices}{12. Congruence Transformations and Orthogonal Matrices}
+
+\begin{description}
+
+  \item[Definitions:] In this lesson, the word ``number'' means ``real number'', and the word ``vector'' means a $1$ by $n$ matrix for a given positive integer $n$. By the \emph{norm} of a vector $X$, denoted $\vert X \vert$, is meant the number $\sqrt{X*\text{trp}(X)}$. If $X$ and $Y$ are vectors, then the norm of $X-Y$ is called the \emph{distance} between $X$ and $Y$. Let $S$ denote the set of all $1$ by $n$ vectors. A transformation from a vector space $W$ in $S$ into $S$ is called a \emph{congruence} transformation if $\vert T(X)-T(Y) \vert = \vert X-Y \vert$ for all $X$ and $Y$ in $W$. If $T$ is a congruence transformation such that $T(Z)=Z$, where $Z$ denotes the zero vector, then $T$ is called an \emph{orientation}. If $T$ is a transformation such that $T(X)-X$ is constant for all vectors $X$, then $T$ is called a \emph{translation}.
+
+  \item[] Suppose $W$ is a vector space (in $S$), and $T$ is a transformation from $W$ into $S$.
+
+  \item[Conjecture 1201:] If $T$ is a congruence transformation, then $T$ is composed of orientation followed by a translation. 
+
+  \item[Conjecture 1202:] If $T$ is an orientation, then $T(X)*trp T(Y)=X*\text{trp}(Y)$ for all vectors $X$ and $Y$ in $W$.
+
+  \item[Conjecture 1203:] If $T$ is an orientation, then $T$ is a linear transformation.
+
+  \item[Definition:] A matrix is said to be \emph{orthogonal} if its transpose is also its inverse.
+
+  \item[Conjecture 1204:] If each of $A$ and $B$ is an $n$ by $n$ orthogonal matrix, then $A+B$ is orthogonal.
+
+  \item[Conjecture 1205:] If each of $A$ and $B$ is an $n$ by $n$ orthogonal matrix, then $A*B$ is orthogonal.
+
+  \item[Conjecture 1206:] If each of $A$ and $B$ is an orthogonal matrix, then $A \oplus B$ is orthogonal.
+
+  \item[Conjecture 1207:] If each of $A$ and $B$ is a square matrix and if $A \oplus B$ is orthogonal, then $A$ and $B$ are orthogonal.
+
+  \item[Conjecture 1208:] The $n$ by $n$ matrix $A$ is orthogonal if and only if $\vert X*A \vert = \vert X \vert$ for all vectors $X$.
+
+  \item[Conjecture 1209:] Suppose $S=W$. Then the transformation $T$ is an orientation if and only if there exists an orthogonal matrix $A$ such that $T(X)=X*A$ for all vectors $X$ in $W$.
+
+  \item[Conjecture 1210:] Suppose $S=W$. If $T$ is a congruence transformation, then $T$ is composed of a translation followed by an orientation.
+
+\end{description}
+
+
+\section{Rotations and Reflections}
+\markboth{13. Rotations and Reflections}{13. Rotations and Reflections}
+
+\begin{description}
+
+  \item[Exercises:] Suppose each of $\theta$, $a$, $b$, $c$, and $d$ is a number, $\theta > 0$, $R_{t}$ denotes the matrix $ 
+    \begin{bmatrix}
+       \cos t & \sin t \\
+      -\sin t & \cos t
+    \end{bmatrix} 
+    $ for each number $t$, and $I_{n}$ denotes the $n$ by $n$ identity matrix. In each of the following, describe the path $P$.
+    \begin{description}
+      \item[1301:] $P(t) = (a b)*R_{t}$ for each $0 \leq t \leq \theta$.
+      \item[1302:] $P(t)=(a b c)*(R_{t} \oplus I_{1})$ for $0 \leq t \leq \theta$.
+      \item[1303:] $P(t)=(a b c)*(I_{1} \oplus R_{t})$ for $0 \leq t \leq \theta$.
+      \item[1304:] $P(t)=(a b c d)*(R_{t} \oplus I_{2})$ for $0 \leq t \leq \theta$.
+    \end{description}
+
+  \item[Definitions:] A matrix of the form $R$, $I_{h} \oplus R$, $R \oplus I_{k}$, or $I_{h} \oplus R \oplus I_{k}$, where $R$ is a $2$ by $2$ orthogonal matrix of the type $
+    \begin{bmatrix}
+       a & b \\ 
+      -b & a
+    \end{bmatrix} 
+    $ is called a \emph{simple rotator}. A matrix by the form $(-1) \oplus  I_{k}$ is called a \emph{simple inverter}. Let $F_{n}$ denote the $n$ by $n$ simple inverter.
+
+  \item[Question 1305:] If $X$ is a $1$ by $3$ vector, what is the relationship between $X$ and $X*F_{3}$?
+
+  \item[Theorem 1306:] If $A$ is a $2$ by $2$ orthogonal matrix, then either $A$ or $A*F_{2}$ is a simple rotator.
+
+  \item[Theorem 1307:] If $A$ is a $3$ by $3$ orthogonal matrix, then there exists a simple rotator $R$ such that the $1,3$th term of $R*A$ is $0$.
+
+  \item[Theorem 1308:] If $A$ is a $3$ by $3$ orthogonal matrix whose $1,3$th term is $0$, then there exists a simple rotator $R$ such that the third column of $R*A$ is $\text{trp} (0\ 0\ 1)$. Furthermore, the third row of $R*A$ is $(0\ 0\ 1)$.
+
+  \item[Theorem 1309:] If $A$ is a $3$ by $3$ orthogonal matrix, then there exist simple rotators $R$, $S$, and $T$, such that either $A$ or $A*F_{3}$ equals $R*S*T$.
+
+  \item[Theorem 1310:] If $A$ is a $4$ by $4$ orthogonal matrix, then there exist simple rotators $R$, $S$, and $T$, such that the fourth column of $R*S*T*A$ is $\text{trp} (0\ 0\ 0\ 1)$. Furthermore, the fourth row of $R*S*T*A$ is $(0\ 0\ 0\ 1)$.
+
+  \item[Theorem 1311:] If $A$ is a $4$ by $4$ orthogonal matrix, then either $A$ or $A*F_{4}$ is the product of simple rotators.
+
+  \item[Theorem 1312:] If $A$ is an $n$ by $n$ orthogonal matrix for $n > 2$, then either $A$ or $A*F_{n}$ is the product of simple rotators.
+
+  \item[Definition:] If $A*F_{n}$ is the product of simple rotators, then $A$ is called an \emph{inverter}.
+
+\end{description}
+
+
+\section{Permutations}
+\markboth{14. Permutations}{14. Permutations}
+
+\begin{description}
+
+  \item[Definitions:] Let $N$ denote the set of integers from $1$ to $n$. A function from $N$ onto $N$ is called a \emph{permutation} of $N$. Let $P_{n}$ denote the collection of all permutations on $N$. If each of $\alpha$ and $\beta$ is a permutation of $N$, then the permutation, denoted $\alpha\beta$, such that $\alpha\beta(i)=\alpha(\beta(i))$ for each $i$ in $N$, is called the \emph{composition of $\alpha$ with $\beta$}, or simply $\alpha$ of $\beta$. The permutation, denoted $\mu$, such that $\mu(i)=i$ for each $i$ in $N$, is called the \emph{identity} permutation on $N$. If $\alpha$ is a permutation, then the permutation $\beta$ such that $\alpha \beta = \beta \alpha = \mu$, is called the \emph{inverse} of $\alpha$.
+
+  \item[Question 1401:] How many permutations are there in $P_{n}$?
+
+  \item[Exercise 1402:] Write a composition table for $P_{3}$. Suppose $r$ and $s$ are two integers between $0$ and $n+1$. Then the permutation, denoted $<r,s>$, such that $<r,s>(r)=s$, $<r,s>(s)=r$, and $<r,s>(i)=i$ for all other $i$ in $N$, is called an \emph{elementary} permutation. If $\vert r-s \vert = 1$, then $<r,s>$ is called an \emph{elementary adjacent} permutation. Note: An elementary permutation is its own inverse.
+
+  \item[Question 1403:] How many elementary permutations are there in $P_{n}$?
+
+  \item[Question 1404:] How many elementary adjacent permutations are there in $P_{n}$?
+
+  \item[Theorem 1405:] If $r$, $s$, and $t$ are three numbers in $N$, then $<r,s>\ <s,t>\ <r,s>\ =\ <r,t>$.
+
+  \item[Theorem 1406:] An elementary permutation is composed of an odd number of elementary adjacent permutations.
+
+  \item[Theorem 1407:] A permutation is composed of elementary permutations.
+
+  \item[Corollary 1408:] A permutation is composed of elementary adjacent permutations.
+
+  \item[Definitions:] By the \emph{signature} of a permutation $\alpha$, denoted $\text{sgn} \alpha$, is meant the product of all numbers $\frac{ (\alpha(j)-\alpha(i)) }{  \vert \alpha(j)-\alpha(i) \vert }$ for $1 \leq i < j \leq n$. If $\text{sgn} \alpha = 1$, then $\alpha$ is said to be \emph{even}, and if $\text{sgn} \alpha = -1$ then $\alpha$ is said to be \emph{odd}.
+
+  \item[Question 1409:] Which permutations in $P_{3}$ are even?
+
+  \item[Question 1410:] Which is $\mu$, even or odd?
+
+  \item[Theorem 1411:] If $\alpha$ is a permutation and $\epsilon$ is an elementary adjacent permutation, then $\text{sgn} (\alpha \epsilon) = - \text{sgn} \alpha$.
+
+  \item[Question 1412:] Which is an elementary adjacent permutation, even or odd?
+
+  \item[Question 1413:] Which is am elementary permutation, even or odd?
+
+  \item[Theorem 1414:] If each of $\alpha$ and $\beta$ is a permutation, then $\text{sgn} (\alpha \beta) = (\text{sgn} \alpha)$ $(\text{sgn} \beta)$.
+
+  \item[Theorem 1415:] If $\beta$ is the inverse of permutation $\alpha$, then $\text{sgn} \beta = \text{sgn} \alpha$.
+
+\end{description}
+
+
+\section{Determinants}
+\markboth{15. Determinants}{15. Determinants}
+
+\begin{description}
+
+  \item[Definition:] By the \emph{determinant} of an $n$ by $n$ matrix $B$, denoted $\text{det} B$, is meant the sum of all numbers of the form $(\text{sgn} \alpha) b_{1,\alpha 1}, b_{2,\alpha 2}, \cdots, b_{n,\alpha n}$, where $\alpha$ is a permutation of $\{ 1, 2, \cdots, n \}$, and $b_{i,j}$ denotes the $i,j$th term of $B$.
+
+  \item[Question 1501:] What is $\text{det} I_{n}$?
+
+  \item[Question 1502:] If $P$ is an elementary permutative matrix, and $B$ is a matrix the same size as $P$, how does $\text{det} (P*B)$ compare with $\text{det} B$? What is $\text{det} P$?
+
+  \item[Question 1503:] If $B$ is a square matrix having two of its rows the same, what is $\text{det} B$?
+
+  \item[Question 1504:] If $M$ is an elementary multiplicative matrix that multiplies a row by $t$, and if $B$ is a matrix the same size as $M$, how does $\text{det} (M*B)$ compare with $\text{det} B$? What is $\text{det} M$?
+
+  \item[Question 1505:] Suppose $r$ is an integer between $0$ and $n+1$; and each of $A$, $B$ and $C$ is an $n$ by $n$ matrix such that for each $i$ different from $r$, the $i$th rows of $A$, $B$, and $C$ are the same, and the $r$th row of $A$ is the sum of the $r$th rows of $B$ and $C$. How are $\text{det} A$, $\text{det} B$, and $\text{det} C$ related?
+
+  \item[Question 1506:] If $A$ is an elementary additive matrix and $B$ is a matrix the same size as $A$, how does $\text{det} (A*B)$ compare with $\text{det} B$? What is $\text{det} A$?
+
+  \item[Question 1507:] If $E$ is an elementary matrix and $B$ is a matrix the same size as $E$, how are $\text{det} (E*B)$, $\text{det} E$, and $\text{det} B$ related?
+
+  \item[Question 1508:] If $Q$ is a non-singular matrix and $B$ is a matrix the same size as $Q$, how are $\text{det} (Q*B)$, $\text{det} Q$, and $\text{det} B$ related?
+
+  \item[Question 1509:] If $B$ is a singular matrix, what is $\text{det} B$?
+
+  \item[Question 1510:] If each of $A$ and $B$ is an $n$ by $n$ matrix, how are $\text{det} A$, $\text{det} B$, and $\text{det} (A*B)$ related?
+
+  \item[Question 1511:] How does the determinant of the transpose of a square matrix compare with the determinant of the matrix?
+
+  \item[Question 1512:] Suppose $ 
+    \begin{bmatrix}
+      A & X \\
+      Z & I
+    \end{bmatrix}
+    $ or $ 
+    \begin{bmatrix}
+      I & X \\
+      Z & A
+    \end{bmatrix}
+    $ is a partition of the matrix $M$ where $I$ is an identity, $Z$ is zero, and $A$ is square. How are $\text{det} A$ and $\text{det} M$ related?
+
+  \item[Question 1513:] Suppose $
+    \begin{bmatrix}
+      A & X \\
+      Z & B
+    \end{bmatrix}
+    $ or $ 
+    \begin{bmatrix}
+      A & Z \\
+      X & B
+    \end{bmatrix}
+    $ is a partition of the matrix $M$ where $Z$ is zero, and each of $A$ and $B$ is square. How are $\text{det} A$, $\text{det} B$ and $\text{det} M$ related?
+
+  \item[Question 1514:] If $A$ is an orthogonal matrix, what is $\text{det} A$?
+
+\end{description}
+
+
+\newpage
+
+\section*{Answers}
+\markboth{Answers}{Answers}
+
+This section is intended for the instructor only. 
+\vspace{0.5cm}
+
+Below is a list of all false statements in the lessons, along with selected comments. 
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[] All statements in Lesson 1 are true. 
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[] False: 202, 205, 206, 213, 215, 216 
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[301:] $\ldots = \text{trp} A + \text{trp} B$.
+  \item[302:] $\ldots = s \text{trp} B$.
+  \item[303:] $\ldots = (\text{trp} C) * (\text{trp} A)$.
+  \item[304:] $\ldots$ is symmetric.
+  \item[305:] $\ldots$ is skew.
+  \item[306:] $\ldots$ is symmetric.
+  \item[307:] $\ldots$ is zero.
+  \item[308:] $\ldots$ equals $(0)$.
+  \item[309:] $\ldots$ is skew. 
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[401:] $L = R$
+  \item[402:] False.
+  \item[404:] True (hint: use 311)
+  \item[405:] False. However, its transpose has a left inverse.
+  \item[407:] $A*B$ is singular.
+  \item[408:] Stated later as Theorem 907. This can remain unsettled until then.
+  \item[409:] Same as 408. This can remain unsettled until later.
+  \item[411:] False.
+  \item[412:] Same as 409. This can remain unsettled until later.
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[502:] The transpose of the $p$ by $q$ partition $\alpha$ of $A$ is the $q$ by $p$ partition of $\text{trp} A$ whose $i,j$th term is the transpose of the $j,i$th term of $\alpha$.
+  \item[] 503-507: These are special cases of 508, and can be used as lemmas to prove 508.
+  \item[508:] All applications of this theorem used in these notes use partitions of size $2$ by $2$ or less.
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[509:] False.
+  \item[510:] $(A+C) \oplus (B+D)$, provided $A+C$ and $B+D$ are defined.
+  \item[511:] $(A*C) \oplus (B*D)$, provided $A*C$ and $B*D$ are defined.
+  \item[512:] $(\text{trp} A) \oplus (\text{trp} B)$.
+  \item[515:] Singular.
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[602:] $Y*P$ is the same as $Y$, except the $r$th column of $Y*P$ equals the $s$th column of $Y$ and the $s$th column of $Y*P$ equals the $r$th column of $Y$.
+  \item[605:] $Y*M$ is the same as $Y$, except the $r$th column of $Y*M$ equals the scalar product of $t$ with the $r$th column of $Y$.
+  \item[608:] $Y*A$ is the same as $Y$, except the $s$th column of $Y*A$ equals the sum of the $s$th column of $Y$ with $t$ times the $r$th column of $Y$.
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[703:] It is non-singular.
+  \item[704:] It is zero.
+  \item[705:] $A$ is equivalent to $tA$, provided that $t$ is not $0$.
+  \item[709:] False.
+  \item[710:] False.
+  \item[712:] Stated later as Theorem 816. This can remain unsettled until then.
+  \item[715:] True. This theorem gives a method for finding $P$ and $Q$. Starting with the partitioned matrix on the left, perform row and column operations on this matrix until $A$ is converted to $B$. The identity $I$ will be converted to $P$, and $J$ will be converted to $Q$.
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[802:] Its rank must equal the number of its columns. Its rank must equal the number of its rows.
+  \item[811:] The rank of $A \oplus B$ equals the sum of the rank of $A$ and the rank of $B$.
+  \item[812:] The rank of a matrix is the same as the rank of its transpose.
+  \item[813:] The rank of $A*B$ does not exceed the rank of $A$ nor the rank of $B$.
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[902:] False. However, if the rows of $M$ are linearly independent, then the rows of $A$ are linearly independent and the rows of $B$ are linearly independent.
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[] All statements in Lesson 10 are true.
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[1103:] False.
+  \item[1109:] No, unless $S$ is the set of all vectors of a given length.
+  \item[1110:] No, unless $S$ is the set of all vectors of a given length.
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[1204:] False.
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[] In 1301 to 1304, consider the domain of $P$ to be the time from $0$ to $\theta$, and let $S^{n}$ denote the set of all $1$ by $n$ vectors. The comments are intended to give an intuitive interpretation of simple rotations.
+  \item[1301:] $P$ is a circular path in $S^2$ starting at point $(a,b)$ and moving along the circle with center $(0,0)$ and radius $\sqrt{a^2+b^2}$ in a counter-clockwise (first quadrant to second quadrant to third quadrant to fourth quadrant to first quadrant) direction. Taking all points $(a,b)$ in $S^2$ collectively, this ``motion'' can be visualized as a rotation of the entire space $S^2$ about the point $(0,0)$. The ``angular velocity'' of this rotation is one radian per unit of time.
+  \item[1302:] $P$ is a circular path in $S^3$ along a circle with center $(0,0,c)$ and lying in a plane perpendicular to the $Z$-axis (i.e. $\{ (x,y,z): x=0, y=0 \}$). Taking all points $(a,b,c)$ in $S^3$ collectively, this ``motion'' can be visualized as a rotation of the space $S^3$ about the ``$Z$-axis''. 
+  \item[1303:] $P$ is a circular path in $S^3$ along a circle with center $(a,0,0)$ and lying in a plane perpendicular to the $X$-axis (i.e. $\{ (x,y,z): y=0, z=0 \}$). Taking all points $(a,b,c)$ in $S^3$ collectively, this ``motion'' can be visualized as a rotation of the space $S^3$ about the ``$X$-axis''. 
+  \item[1305:] $X$ ``lies opposite'' $X*F_3$ with respect to the ``$Y-Z$ plane''.
+  \item[] 1306-1311 are special cases of 1312. The proof of 1312 is an extension of the method used to prove 1311.
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[1401:] $n$ factorial.
+  \item[1402:] In the following table, $xyz$ denotes the permutation $\alpha$ such that $\alpha(1)=x$, $\alpha(2)=y$, and $\alpha(3)=z$.
+
+    \begin{tabular}{c|cccccc}
+      $\ $ & 123 & 132 & 213 & 231 & 312 & 321 \\
+      \hline
+      123  & 123 & 132 & 213 & 231 & 312 & 321 \\
+      132  & 132 & 123 & 312 & 321 & 213 & 231 \\
+      213  & 213 & 231 & 123 & 132 & 321 & 312 \\
+      231  & 231 & 213 & 321 & 312 & 123 & 132 \\
+      312  & 312 & 321 & 132 & 123 & 231 & 213 \\
+      321  & 321 & 312 & 231 & 213 & 132 & 123 \\
+    \end{tabular}
+    $\ \ \ $
+    \begin{tabular}{c|ccc}
+      $\ $     & $\cdots$ &     $\beta$     & $\cdots$ \\
+      \hline
+      $\cdots$ & $\cdots$ &     $\cdots$    & $\cdots$ \\
+      $\alpha$ & $\cdots$ & $\alpha(\beta)$ & $\cdots$ \\
+      $\cdots$ & $\cdots$ &     $\cdots$    & $\cdots$ \\
+    \end{tabular}
+
+  \item[1403:] $\frac{n(n-1)}{2}$
+  \item[1404:] $n-1$
+  \item[1409:] $123$, $231$, and $312$.
+  \item[1410:] Even.
+  \item[1412:] Odd.
+  \item[1413:] Odd.
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[1501:] $1$
+  \item[1502:] $\text{det}(P*B) = -\text{det}B$, $\text{det}B = -1$
+  \item[1503:] $0$
+  \item[1504:] $\text{det}(M*B) = t \text{det}B$, $\text{det}M = t$
+  \item[1505:] $\text{det}A = \text{det}B + \text{det}C$
+  \item[1506:] $\text{det}(A*B) = \text{det}B$, $\text{det}A = 1$
+  \item[1507:] $\text{det}(E*B) = (\text{det}E) (\text{det}B)$
+  \item[1508:] $\text{det}(Q*B) = (\text{det}Q) (\text{det}B)$
+  \item[1509:] $0$
+  \item[1510:] $\text{det}(A*B) = (\text{det}A) (\text{det}B)$
+  \item[1511:] They are the same.
+  \item[1512:] $\text{det}A = \text{det}M$
+  \item[1513:] $\text{det}M = (\text{det}A) (\text{det}B)$
+  \item[1514:] $\text{det}A = -1$ if $A$ is an inverter; otherwise, $\text{det}A = 1$.
+\end{enumerate}
+
+
+\end{document}

@@ -1,0 +1,148 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Jordan Curve Theorem}
+\author{William S. Mahavier}
+\date{ }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\pagenumbering{arabic}
+
+\section*{Introduction}
+\markboth{Introduction}{Introduction}
+
+This section was developed by Wm. S. Mahavier, who adapted the material from the text, (forthcoming). It is a good example of how one can take a traditional book and break the material up into bite-sized pieces for students to absorb. The sequence is probably best for students who have had at least an introduction to topology, and is certainly appropriate at the graduate level.
+
+\section*{Theorem Sequence}
+\markboth{Theorem Sequence}{Theorem Sequence}
+
+All point sets in this section are subsets of $\Re^2$. A rectangular grating is the union of a square with sides parallel to the axes, and a finite collection of line segments each of which is either vertical or horizontal and has both end points on the square. The $2$-cells of a rectangular grating ${\cal G}$ are the closures of the components of $\Re^2 - {\cal G}$ (one of which is not really a $2$-cell.) The $1$-cells of ${\cal G}$ are the sides of the bounded $2$-cells of ${\cal G}$. The $0$-clells of ${\cal G}$ are the corners of the bounded $2$-cells of ${\cal G}$.
+
+\begin{description}
+
+  \item[Theorem 1:] If $H$ and $K$ are disjoint closed subsets of $\Re^2$ and $H$ is bounded, then there is a grating ${\cal G}$ such that no $2$-cell of ${\cal G}$ intersects both $H$ and $K$.
+
+  \item[] A $k$-chain on a grating ${\cal G}$ is a function from the set of $k$-cells of ${\cal G}$ into the set $\{ 0,1 \}$. Obviously this is equivalent to choosing a subcollection of the $k$-cells of ${\cal G}$. If each of $C$ and $D$ is a $k$-chain, then $C+D$ is the $k$-chain such that $(C+D)(M) = 0$ if and only if $C(M) = D(M) = 1$ or $C(M) = D(M) = 0$.
+
+  \item[] The $k$-chain of a grating ${\cal G}$ with this operation are denoted $C_k ({\cal G})$. The $k$-chain which is $1$ only at the $k$-cell $K$ will be denoted $\tilde{K}$.
+
+  \item[Theorem 2:] The $k$-chains on a grating ${\cal G}$ form a commutative group.
+
+  \item[Theorem 3:] There is a homomorphism $\delta_2$ from $C_2({\cal G})$ into $C_1({\cal G})$ such that if $K$ is a $2$-cell of the grating ${\cal G}$, then $\delta_2(\tilde{K})$ is $1$ only at the $1$-cells which are subsets of $K$. Moreover, if $C$ is a $2$-chain and $L$ is a $1$-cell, then $\delta_2(C)(L) = 1$ if and only if there is an odd number of $2$-cells $K$ such that $C(K)=1$ and $K$ contains $L$.
+
+  \item[Theorem 4:] There is a homomorphism $\delta_1$ from $C_1({\cal G})$ into $C_0({\cal G})$ such that if $K$ is a $1$-cell of the grating ${\cal G}$, then $\delta_1(\tilde(K)$ is $1$ only at the $0$-cells which are subsets of $K$. Moreover, if $C$ is a $1$-chain and $L$ is a $0$-cell, then $\delta_1(C)(L)=1$ if and only if there is an odd number of $1$-cells $K$ such that $C(K)=1$ and $K$ contains $L$.
+
+  \item[] We will ignore the subscript and denote both $\delta_2$ and $\delta_1$ by $\delta$. These homomorphisms are called boundary operators, and for the $k$-chain $C$, $\delta C$ is called the boundary of $C$.
+
+  \item[] The statement that a $k$-chain $C$ is a cycle means that $k=0$ or $k=1$ and $\delta C = 0$ or $k=2$ and $\delta C = 0$.
+
+  \item[Theorem 5:] The $k$-cycles form a subgroup of $C_k({\cal G})$.
+
+  \item[Theorem 6:] If $k$ is positive and $C$ is a $k$-chain, then $\delta C$ is a $(k-1)$-cycle.
+
+  \item[] A cycle is said to be a bounding cycle if it is in the boundary of a chain.
+
+  \item[Theorem 7:] If $C$ is a bounding $0$-cycle, there are an even number of $0$-cells $K$ such that $C(K) = 1$.
+
+  \item[Theorem 8:] If $D$ is a $1$-cycle and $|D|$ is finite, then $\ldots \ni$ ???
+
+  \item[] If $C$ is a $k$-chain, the carrier of $C$, denoted $|C|$, is the union of all $k$-cells $K$ such that $C(K)=1$. A $k$-chain $C$ is said to be connected if $|C|$ is connected. A $k$-chain $D$ is said to be a component of a $k$-chain $C$ if $D$ is connected and $|D|$ is a component of $|C|$. A $k$-chain $C$ is said to be in a point set $M$ is $|C|$ is a subset of $M$.
+
+  \item[Theorem 9:] If $D$ is a component of a $k$-chain $C$ and $k$ is positive, then $|\delta D|$ is $|\delta C| \cap |D|$.
+
+  \item[Theorem 10:] If $C$ is a $1$-chain and $|\delta C|$ is a set consisting of two points $p$ and $q$, then $p$ and $q$ are in the same component of $|C|$.
+
+  \item[Theorem 11:] If $C$ is a $2$-chain, $|\delta C|$ is the point set boundary of $|C|$.
+
+  \item[] If each of ${\cal G}$ and $H$ is a grating, then $H$ is said to be a refinement of ${\cal G}$ if $H$ contains ${\cal G}$.
+
+  \item[Theorem 12:] If ${\cal G}$ and $H$ are gratings, $H$ is a refinement of ${\cal G}$, and $C$ is a $k$-chain on ${\cal G}$, then there is only one $k$-chain $D$ on $H$ such that $|C| = |D|$.
+
+  \item[Definition 13:] Suppose each of ${\cal G}$ and $H$ is a grating, and $H$ is a refinement of ${\cal G}$. For each $k$-chain $C$ on ${\cal G}$, $sdC$ denotes the $c$-chain on $H$ such that $|sdC| = |C|$. The chain $sdC$ is called a \emph{subdivision} of $C$.
+
+  \item[Theorem 14:] Each $1$-cycle is the boundary of exactly two $2$-chains.
+
+  \item[] Suppose $M$ is a point set and $C$ is a $k$-cycle on a grating ${\cal G}$. Then $C$ bounds in $M$ means that there is a refinment $H$ of ${\cal G}$, and a $(k+1)$-chain $D$ on $H$ such that $|D|$ is a subset of $M$ and $\delta D = sdC$.
+
+  \item[Theorem 15:] Suppose each of $C_1, C_2, \cdots, C_2$ is a $k$-cycle on the grating ${\cal G}$ which bounds in the points set $M$. Then $C_1 + C_2 + \cdots + C_n$ bounds in $M$.
+
+  \item[Theorem 16:] If the $k$-cycle $C$ does not bound in the points set $M$, then some component of $C$ does not bound in $M$.
+
+  \item[Theorem 17:] If $\Re^2-M$ is connected, then every $1$-cycle in $M$ bounds in $M$.
+
+  \item[Lemma 18:] Suppose $U$ is an open set and $p$ is a point of $U$. The set of all points $q$ of $U$ such that there is a grating ${\cal G}$ and a $1$-chain on ${\cal G}$ in $U$ whose boundary is $\tilde{p} + \tilde{q}$, is both open and closed in $U$.
+
+  \item[Theorem 19:] Suppose $U$ is an open set, $p$ and $q$ are two points of $U$, $p$ and $q$ are $0$-cells of the grating ${\cal G}$, and $C$ is $\tilde{p} + \tilde{q}$. Then $C$ bounds in $U$ if and only if $p$ and $q$ are in the same component of $U$.
+
+  \item[Theorem 20:] If $C$ and $D$ are $1$-cycles and $p$ and $q$ are two points not in $|C| \cup |D|$, then at least one of the cycles $C$, $D$, and $C+D$ bounds in $\Re^2 - \{ p,q \}$.
+
+  \item[] Two $1$-chains $C$ and $D$ on a grating ${\cal G}$ are said to have general intersection if
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item no $0$-cell common to $|C|$ and $|D|$ is the outer edge of ${\cal G}$, and
+      \item at each $0$-cell $p$ common to $|C|$ and $|D|$, the horizontal $1$-cells of ${\cal G}$ containing $p$ are contained in only one of $|C|$ and $|D|$ and the vertical $1$-cells of ${\cal G}$ containing $p$ are contained in only one of $|C|$ and $|D|$.
+    \end{enumerate}
+
+  \item[Theorem 21:] Suppose $C$ is a $1$-cycle and $D$ is a $1$-chain having general intersection with $C$ and whose boundary is $\tilde{p} + \tilde{q}$. Then $C$ bounds in $\Re^2 - \{p,q\}$ if and only if $|C|$ and $|D|$ intesect at an even number of $0$-cells.
+
+  \item[Theorem 22:] If two $1$-cycles $C$ and $D$ have general intersection, then $|C|$ and $|D|$ intersect at an even number of $0$-cells.
+
+  \item[Theorem 23:] Suppose $C$ and $D$ are $1$-chains having general intersection, $\delta C = \tilde{p} + \tilde{q}$, and $\delta D = \tilde{r} + \tilde{s}$, $|C| \cap |D|$ contains an odd number of $0$-cells and $M$ is a continuum which contains $p$ and $q$ but does not intersect $|D|$. Then $M \cup |C|$ separates $r$ and $s$.
+
+  \item[Lemma 24:] Suppose $U$ and $V$ are open sets, $U$ is bounded, ${\cal G}$ is a grating, and $C$ is a chain on ${\cal G}$ such that $|C| \subseteq U \cup V$. Then there is a refinement $H$ of ${\cal G}$ such that every cell of $H$ which is contained in $|sdC|$ is either a subset of $U$ or a subset of $V$.
+
+  \item[Theorem 25:] Suppose $U$ and $V$ are open sets in $\Re^2$; $U$ is bounded; $C$ and $D$ are $1$-chains such that $C$ is in $U$, $D$ is in $V$, and $\delta C = \delta D = \tilde{p} + \tilde{q}$; and $C+D$ bounds in $U \cup V$. Then $\tilde{p} + \tilde{q}$ bounds in $U \cap V$.
+
+  \item[Theorem 26:] Suppose $M$ and $N$ are closed subsets of $\Re^2$ and $M$ is bounded or $M$ and $N$ are disjoint. If $\delta C = \delta D = \tilde{p} + \tilde{q}$, $|C|$ does not intersect $M$, and $|D|$ does not intersect $N$ but $C+D$ bounds in $\Re^2 - (M \cap N)$, then $p$ and $q$ are not separated by $M \cup N$.
+
+  \item[Theorem 27:] Suppose that $M$ and $N$ are closed subsets of $\Re^2$, and either $M$ and $N$ are disjoint or $M$ is bounded and $M \cap N$ is connected. If $p$ and $q$ are not separated by either $M$ or $N$, then $P$ and $q$ are not separated by $M \cup N$.
+
+  \item[Theorem 28:] If $U$ and $V$ are connected open sets whose union is $\Re^2$, then the intersection of $U$ and $V$ is connected.
+
+  \item[Theorem 29:] Suppose $M$ is a closed set contained in a connected open set $U$ in $\Re^2$ and $V_1, V_2, \cdots$ are components of the point set $\Re^2-M$. Then the components of $U-M$ are $U \cap V_1, U \cap V_2, \cdots$.
+
+  \item[Theorem 30:] Suppose $U$ and $V$ are open subsets of $\Re^2$ which do not separate $\Re^2$, $K$ and $L$ are $1$-chains such that $|K|$ is a subset of $U$ and $|L|$ is a subset of $V$, and $\delta K = \delta L$. If $\delta K$ bounds in $U \cap V$, then $K+L$ bounds in $U \cup V$.
+
+  \item[Theorem 31:] Suppose $M$ and $N$ are connected closed subset of $\Re^2$ and $C$ is a $0$-cycle which bounds a $1$-chain $K$ such that $|K|$ does not intersect $M$ and bounds a $1$-chain $L$ such that $|L|$ does not intersect $N$. Suppose the $2n$ $0$-cells of $|C|$ are listed in some way as $(x_1,y_1), (x_2,y_2), \cdots, (x_n,y_n)$. If $K+L$ does not bound in $\Re^2-(M \cap N)$, then for some $r$, $M \cup N$ separates $x_r$ from $y_r$.
+
+  \item[Theorem 32:] No arc separates $\Re^2$.
+
+  \item[Theorem 33:] If $J$ is a simple closed curve in $\Re^2$, then $\Re^2-J$ is the union of two open sets each of which has $J$ as its point set boundary.
+
+  \item[Theorem 34:] If each of $M$ and $N$ is a closed connected subset of $\Re^2$ and $M$ is bounded, but $M \cap N$ is not connected, there is a pair of points separated by $M \cup N$ but not by $M$.
+
+  \item[Theorem 35:] The unit $2$-cell in $\Re^2$ is unicoherent; that is, if $M$ and $N$ are closed connected sets whose union is $\Re^2$, then $M \cap N$ is connected.
+
+\end{description}
+
+\end{document}

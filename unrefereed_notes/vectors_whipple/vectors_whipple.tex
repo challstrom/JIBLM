@@ -1,0 +1,506 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Vectors}
+\author{Kenneth E. Whipple}
+\date{}
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+\section{Vectors}
+\markboth{1. Vectors}{1. Vectors}
+
+\pagenumbering{arabic}
+
+\begin{description}
+
+  \item[Definitions:] $\ $
+    \begin{itemize}
+      \item An ordered triple of numbers is called a ($3$-dimensional) \emph{vector}.
+      \item If each of $(a,b,c)$ and $(d,e,f)$ is a vector, then the vector $(a+d,b+e,c+f)$ is called the \emph{sum} of $(a,b,c)$ and $(d,e,f)$, and the number $ad+be+cf$ is called the \emph{inner product} of $(a,b,c)$ and $(d,e,f)$.
+      \item If $t$ is a number and $(a,b,c)$ is a vector, then the vector $(ta,tb,tc)$ is called the \emph{scalar product} of $t$ with $(a,b,c)$. 
+      \item The vector $(0,0,0)$ is called the \emph{zero vector}. 
+      \item The square root of the inner product of a vector with itself is called the \emph{magnitude} of the vector. 
+      \item A vector having magnitude $1$ is called a \emph{unit vector}.
+    \end{itemize}
+
+  \item[Notations:] Suppose each of $u$ and $v$ is a vector, and $t$ is a number. Then:
+    \begin{itemize}
+      \item $u+v$ denotes the sum of $u$ and $v$,
+      \item $u \cdot v$ denotes the inner product of $u$ and $v$,
+      \item $tu$ denotes the scaler product of $t$ with $u$,
+      \item $o$ denotes the zero vector,
+      \item $-v$ denotes the vector $(-1)v$,
+      \item $u-v$ denotes the vector $u+(-v)$, and
+      \item $\vert \vert u \vert \vert$ denotes the magnitude of $u$.
+    \end{itemize}
+    
+ \item[Problems:] Suppose each of $u$, $v$, and $w$ is a vector, and each of $s$ and $t$ is a number. Determine which of the following statements are true, and verify your answers.
+    \begin{description}
+      \item[1.01:] $(u+v)+w = u+(v+w)$, \quad $u+v = v+u$
+      \item[1.02:] $s(u+v) = (su)+(sv)$, \quad $(s+t)u = (su)+(tu)$
+      \item[1.03:] $u \cdot v = v\cdot u$, \quad $(v \cdot v)w = (v \cdot w)u$
+      \item[1.04:] $(st)u = s(tu)$, \quad $s(u \cdot v) = (su) \cdot v = u \cdot (sv)$
+      \item[1.05:] $0v = o = to$, \quad $o \cdot v = 0$
+      \item[1.06:] If $u \cdot v = 0$, then $u=o$ or $v=o$.
+      \item[1.07:] If $sv=o$, then $s=0$ or $v=o$.
+      \item[1.08:] $u \cdot (v+w) = (u \cdot v)+(u \cdot w)$, \quad $\vert \vert tu \vert \vert = \vert t \vert \ \vert \vert u \vert \vert$
+    \end{description}
+
+  \item[Definition:] The statement that the vector $v$ is \emph{proportional} to the vector $u$ means that there exists a non-zero number $t$ such that $v=tu$.
+
+\end{description}
+
+
+\section*{Solid Geometry Review}
+\addcontentsline{toc}{section}{\numberline{}Solid Geometry Review}
+\markboth{Solid Geometry Review}{Solid Geometry Review}
+
+The geometric properties listed in this section are to be assumed without proof. They are not intended as a development of solid geometry, but as a list of geometric properties needed for the remaining sections of these notes.
+
+A point $w$ lies between two points $p$ and $q$ if and only if the distance from $p$ to $w$ plus the distance from $w$ to $q$ equals the distance from $p$ to $q$, and the two distances are positive.
+
+If $p$ and $q$ are two points, then there exists only one line containing both $p$ and $q$. This line is denoted by line $\overline{pq}$ (or by line $\overline{qp}$). A set of points is said to be colinear if it is a subset of some line; otherwise the set is said to be non-colinear. A set consisting of three points is colinear if and only if one of the three points lies between the other two.
+
+If $p$ and $q$ are two points, then the ray $\overrightarrow{pq}$ consist of all points $w$ in the line $\overline{pq}$ such that $p$ does not lie between $w$ and $q$ (this includes both points $p$ and $q$). If $w$ is in ray $\overrightarrow{pq}$, either $w$ equals $p$, $w$ equals $q$, $w$ lies between $p$ and $q$, or $q$ lies between $p$ and $w$. Point $p$ is called the initial point of ray $\overrightarrow{pq}$. Line $\overline{pq}$ is the union of two rays having only the point $p$ in common. If $t$ is a positive number and $\overrightarrow{R}$ is a ray having initial point $p$, then $\overrightarrow{R}$ contains only one point $q$ such that the distance from $p$ to $q$ is $t$.
+
+If $p$ and $q$ are two points, then the segment $\overline{pq}$ (also segment $\overline{qp}$) consists of all points between $p$ and $q$. Points $p$ and $q$ are called the endpoints of segment $\overline{pq}$. The union of a segment with both of its end points is called an interval, and these end points are called the end points of the interval. The union of a segment with one of its end points is called a directed segment, and this end point is called the initial point of the directed segment. The interval having endpoints $p$ and $q$ is denoted interval $pq$ (or interval $qp$). The union of segment $\overline{pq}$ with its end point $p$ is called the directed segment from $p$ to $q$, and point $q$ is called the final point of the directed segment from $p$ to $q$. The length of the segment $\overline{pq}$, the interval $pq$, and the directed segment from $p$ to $q$, are all equal to the distance from $p$ to $q$.
+
+If $p$, $q$ and $v$ are three points, then angle $p v q$ is the union of ray $\overrightarrow{v p}$ and ray $\overrightarrow{v q}$. Point $v$ is called the vertex of angle $p v q$, and rays $\overrightarrow{v p}$ and $\overrightarrow{v q}$ are called sides of the angle $p v q$. If $\theta$ is the measure of angle $p v q$, then $c^2 = a^2+b^2-2ab \cos(\theta)$ where $a$, $b$, and $c$ are the distances, respectively, from $w$ to $p$, from $w$ to $q$, and from $p$ to $q$.
+
+If the set of points $\{ p,q,w \}$ is non-colinear, then triangle $p q w$ is the union of interval $p q$, interval $q w$, and interval $p w$. The points $p$, $q$, and $w$ are called the vertices of triangle $p q w$; and the intervals $p q$, $q w$, and $p w$ are called the sides of triangle $p q w$.
+
+If $\{ a,b,c \}$ is a non-colinear set of three points, then there exists only one plane, denoted plane $a b c$, that contains $\{ a,b,c \}$. If a plane contains the two points $p$ and $q$, then it contains the line $\overline{p q}$. A set of points contained in a plane is said to be coplanar; otherwise, the set is non-coplanar.
+
+Line $L$ parallels line $M$ (also $L$ and $M$ are parallel) if and only if the union of $L$ and $M$ is coplanar and $L$ does not intersect $M$. Line $L$ skews line $M$ if and only if the union of $L$ and $M$ is non-coplanar. If $L$ is a line and $p$ is a point not on $L$, then only one line parallels $L$ and contains $p$. A line parallels a plane (or a plane parallels a line) if and only if they do not intersect. Two planes are parallel if and only if they do not intersect. If a line is parallel to each of two intersecting planes, then the line is parallel to their intersection.
+
+Line $\overline{w p}$ is perpendicular to line $\overline{w q}$ if and only if the measure of angle $p w q$ is $\frac{\pi}{2}$. If $L$ is a line and $p$ is a point, then only one line contains $p$ and is perpendicular to $L$. A line $L$ is perpendicular to a plane $P$ if and only if $L$ intersects $P$ and is perpendicular to each line in $P$ that contains the intersection of $L$ with $P$. If $P$ is a plane and $q$ is a point, then only one line contains $q$ and is perpendicular to $P$. Two lines that are perpendicular to the same plane are parallel. Two planes that are perpendicular to the same line are parallel. If one of two parallel lines is perpendicular to a plane $P$, then the other line is also perpendicular to $P$. Two planes are perpendicular to each other if and only if each plane contains a line that is perpendicular to the other plane. If line $L$ is parallel to plane $P$, and if line $M$ intersects $L$ and is perpendicular to $P$, then $M$ is perpendicular to $L$.
+
+Ray $\overrightarrow{p q}$ has the same direction as ray $\overrightarrow{r s}$ if and only if either one of the two contains the other, or line $\overline{p q}$ parallels line $\overline{r s}$ and segment $\overline{q s}$ does not intersect segment $\overline{p r}$. The directed segment from $p$ to $q$ has the same direction as the directed segment from $r$ to $s$ if and only if ray $\overrightarrow{p q}$ has the same direction as ray $\overrightarrow{r s}$. The directed segment from $p$ to $q$ has the same direction as ray $\overrightarrow{r s}$ if and only if ray $\overrightarrow{p q}$ has the same direction as ray $\overrightarrow{r s}$. The directed segment from $p$ to $q$ has the opposite direction from the directed segment from $q$ to $p$. If each of $A$, $B$, and $C$ is either a directed segment or a ray, if $A$ and $B$ have the same direction, and if $B$ and $C$ have the same direction, then $A$ and $C$ have the same direction. If $p$ and $q$ are two points and if $L$ is a line parallel to line $\overline{p q}$, then any ray contained in $L$ has the same direction as either ray $\overrightarrow{p q}$ or ray $\overrightarrow{q p}$.
+
+The directed segment from $p$ to $q$ has the same length and direction as the directed segment from $u$ to $v$ if and only if the midpoint between $p$ and $v$ equals the midpoint between $u$ and $q$.
+
+If $M$ is either a line or a plane, and if $p$ is a point, then the distance from $p$ to $M$ equals the distance from $p$ to the intersection of $M$ with the line through $p$ that is perpendicular to $M$. If each of $M$ and $N$ is either a line or a plane, and if $M$ does not intersect $N$, then the distance from $M$ to $N$ is the length of the interval having one endpoint $p$ in $M$ and the other endpoint $q$ in $N$ such that line $\overline{p q}$ is perpendicular to both $M$ and $N$ (if $M$ intersects $N$, then the distance between $M$ and $N$ is zero).
+
+The area of triangle $a b c$ is half the length of side $a b$ times the distance from $c$ to line $\overline{a b}$. The area of parallelogram $a b c d$ is twice the area of triangle $a b c$. The volume of a parallelepiped equals the area of one of its faces times the distance from the plane containing this face to the plane containing the opposite face of the parallelepiped.
+
+There exist three pairwise perpendicular lines; $X$, $Y$, and $Z$ (called axes) having a common point $o$ (called the origin). On each axis, there is a point $i$ in $X$, $j$ in $Y$, and $k$ in $Z$, such that the distance from each to the origin is $1$ (it is customary to think of plane $i o j$ being horizontal, $k$ lying above plane $i o j$, and $i$ lying to the right of an observer at $o$ facing $j$).
+
+
+\section{Directed Line Segments}
+\markboth{2. Directed Line Segments}{2. Directed Line Segments}
+
+\begin{description}
+
+  \item[Definitions:] $\ $
+    \begin{itemize}
+      \item By the \emph{coordinate vector} of a point $p$ (denoted by $\overline{p}$) is meant the vector $(x,y,z)$ such that $\vert x \vert$ is the distance from $p$ to plane $ojk$, $\vert y \vert$ is the distance from $p$ to plane $oik$, $\vert z \vert$ is the distance from $p$ to plane $oij$, $x>0$ only if $p$ lies on the $i$ side of $ojk$, $y>0$ only if $p$ lies on the $j$ side of plane $oik$, and $z>0$ only if $p$ lies on the $k$ side of $oij$. 
+      \item If $A$ is a directed segment from point $p$ to $q$, then the vector $q-p$ is called the \emph{vector associated with} $A$. Note that if $p$ is a point different from the origin $o$, then the coordinate vector of $p$ is the vector associated with the directed segment from $o$ to $p$. 
+      \item If $(x,y,z)$ is a vector, then $(x,y,z)$ denotes the \emph{point whose coordinate vector is} $(x,y,z)$.
+    \end{itemize}
+
+  \item[Theorem 2.01:] If $p$, $q$, and $r$ are three points, if $A$ is the directed segment from $p$ to $q$, if $B$ is the directed segment from $q$ to $r$, and if $C$ is the directed segment form $p$ to $r$, then the vector associated with $C$ is the sum of the vectors associated with $B$ and $C$, respectively.
+
+  \item[Theorem 2.02:] The length of a directed segment equals the magnitude of its associated vector.
+
+  \item[Problem 2.03:] Suppose $A$ is the directed segment from point $p$ to a point $q$, and $(9,0,-3)$ is the vector associated with $A$.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item What is the length of $A$?
+      \item If $p=(2,1,3)$, what is $q$?
+      \item If $p=(2,1,3)$, and $r$ is the point lying $\frac{2}{3}$ of the way between $p$ and $q$, what is $r$?
+    \end{enumerate}
+
+  \item[Theorem 2.04:] A point $w$ lies between two points $p$ and $q$ if and only if there exists a number $t$ between $0$ and $1$ such that $w=p+t(q-p)$.
+
+  \item[Question 2.05:] What is the coordinate vector of the midpoint between points $p$ and $q$?
+
+  \item[Question 2.06:] If $p$ and $q$ are two points, find the point $v$ such that $q$ is the midpoint between $p$ and $v$.
+
+  \item[Theorem 2.07:] Suppose $p$ and $q$ are two points. Then point $w$ belongs to ray $\overrightarrow{pq}$ if and only if there exists a non-negative number $t$ such that $w=p+t(q-p)$.
+
+  \item[Theorem 2.08:] Suppose $p$ and $q$ are two points. Then point $w$ belongs to line $\overline{pq}$ if and only if there exists a number $t$ such that $w=p+t(q-p)$.
+
+  \item[Problem 2.09:] Suppose $p=(1,0,-2)$ and $q=(2,-2,0)$.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item What is the difference between $p$ and $q$?
+      \item Find the point $w$ on ray $\overrightarrow{pq}$ such that the distance from $p$ to $w$ is $1$.
+      \item Find the point $v$ such that $p$ is between $v$ and $q$, and the distance from $p$ to $v$ is $2$.
+    \end{enumerate}
+
+  \item[Problem 2.10:] Determine which of the following sets are colinear. If the set is colinear, determine which of the three points in the set lies between the other two.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item $\{ (0,2,-1), (1,0,-3), (4,1,0) \}$
+      \item $\{ (0,2,-1), (1,0,-3), (4,-6,-9) \}$
+      \item $\{ (0,2,-1), (1,0,-3), (-3,8,5) \}$
+    \end{enumerate}
+
+  \item[Problem 2.11:] Suppose $L$ is the line containing point $(a,b,c)$ and having direction vector $(d,e,f)$.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item Prove that if $efg \neq 0$, then $L=\{ (x,y,z): \frac{x-a}{d} = \frac{y-b}{e} = \frac{z-c}{f} \}$
+      \item Find similar equations for the case $d=0$ and $ef\neq 0$.
+      \item Find similar equations for the case $d=e=0$.
+    \end{enumerate}
+
+\end{description}
+
+
+\section{Parallels}
+\markboth{3. Parallels}{3. Parallels}
+
+\begin{description}
+
+  \item[Theorem 3.01:] Two directed segments have the same associated vector if and only if they have the same direction and length.
+
+  \item[Problem 3.02:] Find each point $p$ such that the points $p$, $(3,1,2)$, $(-1,0,4)$, and $(0,6,-3)$, are the vertices of a parallelogram.
+
+  \item[Problem 3.03:] Suppose $u$ and $v$ are two vectors such that four of the five points having coordinate vectors $u-2v$, $v-u$, $3u$, and $5u-3v$, respectively, are the vertices of a parallelogram. Which four are they?
+
+  \item[Problem 3.04:] Prove that the midpoints of the sides of a quadrilateral are the vertices of a parallelogram.
+
+  \item[Theorem 3.05:] Suppose $u$ and $v$ are vectors associated with the directed segments $A$ and $B$, respectively. Then $A$ and $B$ have the same direction if and only if there exists a positive number $t$ such that $u=tv$. Also, $A$ and $B$ have opposite directions if and only if there exists a negative number $t$ such that $u = tv$.
+
+  \item[Definitions:] The statement that the vector $u$ is a \emph{direction vector of the line} $L$ means that $u$ is associated with some directed segment contained in $L$. The statement that the vector $u$ is a \emph{direction vector of the ray} $\overrightarrow{R}$ means that $u$ is associated with a directed segment contained in $\overrightarrow{R}$ whose initial point coincides with the initial point of $\overrightarrow{R}$.
+
+  \item[Theorem 3.06:] Two vectors are direction vectors of the same line if and only if they are proportional.
+
+  \item[Theorem 3.07:] Two lines are parallel if and only if they have proportional direction vectors.
+
+  \item[Problems:] In Problems 3.08 through 3.12, determine whether the given line either intersects, equals, parallels, or skews, line $(0,-1,2) (4,0,-3)$.
+    \begin{description}
+      \item[3.08:] Line $(-2,1,0) (2,2,-5)$
+      \item[3.09:] Line $(-2,1,0) (-14,-2,15)$
+      \item[3.10:] Line $(5,3,0) (-2,4,13)$
+      \item[3.11:] Line $(-8,-3,12) (-16,-5,22)$
+      \item[3.12:] Line $(5,3,0) (4,3,1)$
+    \end{description}
+
+  \item[Problem 3.13:] Find the equation of the line that contains $(4,-3,2)$ and is parallel to the line $(3,-4,1) (0,1,-1)$.
+
+  \item[Problem 3.14:] Find the intersection of the line $(3,1,-1) (5,4,-2)$ with the line $(3,-2,-4) (0,-2,2)$.
+
+  \item[Theorem 3.15:] A ray has only one unit vector.
+
+  \item[Theorem 3.16:] A line has only two direction unit vectors -- one being the ``negative'' of the other.
+
+  \item[Theorem 3.17:] Two rays have the same direction if and only if they have the same direction unit vector.
+
+\end{description}
+
+
+\section{Angles and Perpendiculars}
+\markboth{4. Angles and Perpendiculars}{4. Angles and Perpendiculars}
+
+\begin{description}
+
+  \item[Theorem 4.01:] If $\theta$ is the measure of an angle having sides with direction vectors $u$ and $v$, respectively, then $u \cdot v = \vert \vert u \vert \vert \  \vert \vert v \vert \vert \cos \theta$.
+
+  \item[Theorem 4.02:] If each of $u$ and $v$ is a vector, then $\vert u \cdot v \vert \leq \vert \vert u \vert \vert \  \vert \vert v \vert \vert$ and $\vert \vert u+v \vert \vert \leq \vert \vert u \vert \vert + \vert \vert v \vert \vert$.
+
+  \item[Theorem 4.03:] Suppose $\overrightarrow{R}$ is a ray having initial point $o$, and suppose $\alpha$, $\beta$, and $\delta$ are measures of the angles formed by $\overrightarrow{R}$ with each of ray $\overrightarrow{oi}$, ray $\overrightarrow{oj}$, and ray $\overrightarrow{ok}$, respectively. Then  $(\cos \alpha, \cos \beta, \cos \delta)$ is the direction unit vector of $\overrightarrow{R}$.
+
+  \item[Question 4.04:] What is the measure of the angle having vertex $(-3, 1, 3)$ such that one of its sides contains the point $(-5, 0, 5)$ and the other one contains the point $(\sqrt{23}, 1, \sqrt{23})$?
+
+  \item[Question 4.05:] What is the measure (to nearest hundredth of a radian) of the acute angle formed by line $(6, 2, -9) (10, -4, 3)$ and line $(4, 3, 4) (0, 7, 11)$?
+
+  \item[Theorem 4.06:] Suppose $L$ and $M$ are two intersecting lines having direction vectors $u$ and $v$, respectively. Then $L$ and $M$ are perpendicular if and only if $v \cdot v = 0$.
+
+  \item[Question 4.07:] What is the equation of the plane that contains the point $(3, 1, 4)$ and is perpendicular to line $(2, 4, 6) (4, -2, 2)$?
+
+  \item[Problem 4.08:] Find the other vertex of the rectangle that has the vertices $(36, -27, 76)$, $(37, -28, 71)$, and $(34, -27, 73)$.
+
+  \item[Theorem 4.09:] Suppose the line $L$ is perpendicular to the plane $p$, $u$ is a direction vector of $L$, and $q$ is a point in $P$. Then $w$ is a point in $P$ if and only if $u \cdot (w-q) = 0$.
+
+  \item[Theorem 4.10:] If $u$ is a direction vector of line $L$, $k$ is a number, and $P$ is the set of all points $w$ such that $u \cdot w = k$, then $P$ is a plane that is perpendicular to $L$.
+
+  \item[Problem 4.11:] Suppose $P$ contains the plane $\{ (x,y,z): x-3y+z = -25 \}$, and $L$ is the line that contains $(1, 0, 7)$ and is perpendicular to $P$.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item Find a direction vector of $L$.
+      \item Find the point of intersection of $L$ with $P$.
+      \item Find the distance from $(1, 0, 7)$ to $P$.
+    \end{enumerate}
+
+  \item[Question 4.12:] What is the equation of the plane that contains $(1, -1, 1)$ and is parallel to the plane $\{ (x,y,z): 2x-3y+z = 0 \}$?
+
+  \item[Question 4.13:] What is the point of intersection of the plane $\{ (x,y,z): 2x-3y-z = 5 \}$ with the line $(-1, 0, -5) (11, 3, 4)$?
+
+\end{description}
+
+
+\section{Vectors Normal to a Plane}
+\markboth{5. Vectors Normal to a Plane}{5. Vectors Normal to a Plane}
+
+\begin{description}
+
+  \item[Definition:] The vector $u$ is said to be normal to a plane $P$ if $u$ is a direction vector of a line perpendicular to $P$.
+
+  \item[Theorem 5.01:] Two vectors are normal to the same plane if and only if they are proportional.
+
+  \item[Theorem 5.02:] Suppose vector $u$ is normal to the plane $P$, and vector $v$ is normal to plane $Q$. Then $P$ and $Q$ are parallel (or equal) if and only if $u$ and $v$ are proportional.
+
+  \item[Question 5.03:] Suppose $L$ is the line containing $(-2, 7, 1)$ and having direction vector $(-4, 3, 0)$.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item What is the equation of the plane $P$ that contains $(16, 6, 5)$ and is perpendicular to $L$?
+      \item What is the point of intersection of $L$ with $P$?
+      \item What is the distance from $(16, 6, 5)$ to $L$?
+    \end{enumerate}
+
+  \item[Problem 5.04:] Determine whether each of the following lines either (1) intersects, (2) is contained in, or (3) parallels the plane $\{ (x,y,z): 7x-3y+z = 4 \}$:
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item the line containing $(1, 1, 0)$ with direction vector $(1, 2, -1)$
+      \item the line containing $(91, 37, 82)$ with direction vector $(7, -3, 1)$
+      \item the line containing $(3, -5, 7)$ with direction vector $(0, 1, 3)$
+    \end{enumerate}
+
+  \item[Question 5.05:] What is the distance from the point $(\sqrt{5}, 1, \sqrt{8})$ to the plane $\{ (x,y,z): \sqrt{5}x-3y + \sqrt{2}z = 8 \}$?
+
+  \item[Problem 5.06:] Find a direction vector of the line that contains point $(3, 7, 0)$ and is perpendicular to the line $(-1, 2, -2) (5, 5, 10)$.
+
+  \item[Question 5.07:] Suppose $u$ is a vector, $q$ is a point, and $k$ is a number. What is the distance from the point $q$ to the plane $\{ w: u \cdot w = k \}$?
+
+  \item[Problem 5.08:] Suppose $L$ and $M$ are two non-parallel lines, having direction vectors $(a,b,c)$ and $(d,e,f)$ respectively. Find a direction vector of the line that is perpendicular to both $L$ and $M$. Show how you found your answer.
+
+\end{description}
+
+
+\section{Cross Products}
+\markboth{6. Cross Products}{6. Cross Products}
+
+\begin{description}
+
+  \item[Definition:] If each of $(a,b,c)$ and $(d,e,f)$ is a vector, then the vector $(bf-ce, cd-af, ae-bd)$ is called the \emph{cross product} of $(a,b,c)$ with $(d,e,f)$, and is denoted by $(a,b,c) \times (d,e,f)$.
+
+  \item[Problems:] Suppose each of $u$, $v$, and $w$ is a vector, and $t$ is a number. Determine which of the following statements are true, and verify your answers.
+    \begin{description}
+      \item[6.01:] $u \times v = v \times u$
+      \item[6.02:] $u \cdot (u \times v) = 0$
+      \item[6.03:] $u \times (v+w) = (u \times v) + (u \times w)$
+      \item[6.04:] $u \times (t v) = (t u) \times v = t (u \times v)$
+      \item[6.05:] $u \times (v \times w) = (u \times v) \times w$
+      \item[6.06:] $(w \times u) \cdot v = w \cdot (u \times v)$
+      \item[6.07:] $u \times (v \times w) = (u \cdot w)v - (u \cdot v)w$
+      \item[6.08:] $\vert \vert u \times v \vert \vert ^{2} = \vert \vert u \vert \vert ^{2} \vert \vert v \vert \vert ^{2} - (u \cdot v)^{2}$
+    \end{description}
+
+  \item[Theorem 6.09:] If $P$ is a plane containing two non-parallel lines with direction vectors $u$ and $v$, respectively, then $u \times v$ is normal to $P$.
+
+  \item[Problem 6.10:] Find an equation of the plane $(1, 0, 1) (1, 1, 0) (0, 2, 1)$.
+
+  \item[Problem 6.11:] In each of the following, determine whether the set of four given points is coplanar. Verify your answers.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item $\{ (0, 1, 3), (3, 3, 3), (5, 4, 2), (3, 2, 2) \}$.
+      \item $\{ (0, 1, 3), (3, 3, 3), (5, 4, 2), (2, 3, 5) \}$.
+    \end{enumerate}
+
+  \item[Problem 6.12:] Find the intersection of the line $(5, -1, 2) (8, -3, -2)$ with the plane $(1, 1, -3) (1, 0, -4) (3, 3, 0)$.
+
+  \item[Problem 6.13:] Find the equation of the plane that contains point $(0, -7, -1)$ and line $\{ (x,y,z): x-1 = y = z-2 \}$.
+
+  \item[Question 6.14:] Suppose $P$ is the plane $(1, 0, 1) (1, 1, 0) (0, 2, 1)$. What is the intersection of $P$ with the line that contains point $(4, 2, 5)$ and is perpendicular to $P$?
+
+  \item[Problem 6.15:] Find an equation of the plane that contains the line $(1, 0, 1)$ $(-1, 1, 0)$ and is perpendicular to the plane $\{ (x,y,z): 2x-2y+z = 4 \}$.
+
+  \item[Problem 6.16:] Find an equation of the plane that contains point $(1, -3, -1)$ and is parallel to both line $(2, 1, 3) (4, 1, -2)$ and line $(6, 1, 0) (6, -1, 1)$.
+
+\end{description}
+
+
+\section{Distances}
+\markboth{7. Distances}{7. Distances}
+
+\begin{description}
+
+  \item[Theorem 7.01:] Suppose $A$ and $B$ are two directed segments having a common initial point, suppose $u$ and $v$ are the vectors associated with $A$ and $B$ respectively, and suppose $\theta$ is measure of the angle containing $A$ and $B$. Then
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item $\vert \vert u \times v \vert \vert = \vert \vert u \vert \vert \  \vert \vert v \vert \vert \ \sin \theta$, and
+      \item $\frac{ \vert \vert u \times v \vert \vert }{2}$ is the area of the triangle having sides $A$ and $B$.
+    \end{enumerate}
+
+  \item[Question 7.02:] What is the distance from point $(1, -3, 5)$ to line $(0, 4, -2)$ $(8, -10, 4)$?
+
+  \item[Problem 7.03:] Find a direction vector of a line that is parallel to both plane $\{ (x,y,z): x+2z = -3 \}$ and plane $\{ (x,y,z): x+y-z = 5 \}$.
+
+  \item[Question 7.04:] What is the area of triangle $(3, -2, 5) (1, 0, 8) (-2, 2, 6)$?
+
+  \item[Problem 7.05:] Suppose $L$ is the line containing point $(-1, 5, -1)$ and having direction vector $(0, 2, 1)$, suppose $M$ is the line containing point $(7, 2, 3)$ and having direction vector $(6, 2, -1)$, and suppose $N$ is the line that is perpendicular to both $L$ and $M$. Find both the intersection of $N$ with $L$ and the intersection of $N$ with $M$.
+
+  \item[Theorem 7.06:] Suppose $A$, $B$, and $C$ are three non-coplanar directed segments having a common initial point, and suppose $u$, $v$, and $w$ are the vectors associated with $A$, $B$, and $C$, respectively. Then the volume of the parallelepiped having edges $A$, $B$, and $C$ is $\vert u(w \times v) \vert$.
+
+  \item[Problem 7.07:] Find the distance from the point $q$ to the line that contains point $p$ and has direction vector $u$.
+
+  \item[Problem 7.08:] Find the distance from the line that contains point $p$ and has direction vector $u$ to the line that contains point $q$ and has direction vector $v$.
+
+\end{description}
+
+
+\newpage
+
+\section*{Answers}
+\markboth{Answers}{Answers}
+
+The following is intended for the instructor only.
+\vspace{0.5cm}
+
+The answers to the questions are given here; however, no proofs have been included.
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[1.01] True, True
+  \item[1.02] True, True
+  \item[1.03] True, False
+  \item[1.04] True, True
+  \item[1.05] True
+  \item[1.06] False
+  \item[1.07] True
+  \item[1.08] True, True
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[2.03]
+    \begin{enumerate}[\hspace{0.5cm}(a)]
+      \item $\sqrt{90}$
+      \item $(11,1,0)$
+      \item $(8,1,1)$
+    \end{enumerate}
+  \item[2.05] ${\frac{1}{2}(p+q)}$
+  \item[2.06] $2q-p$
+  \item[2.09]
+    \begin{enumerate}[\hspace{0.5cm}(a)]
+      \item $3$
+      \item $\left( \frac{4}{3}, -\frac{2}{3}, -\frac{4}{3} \right)$
+      \item $\left( \frac{1}{3}, \frac{4}{3}, -\frac{10}{3} \right)$
+    \end{enumerate}
+  \item[2.10]
+    \begin{enumerate}[\hspace{0.5cm}(a)]
+      \item non-colinear
+      \item (1,0,-3)
+      \item (0,2,-1)
+    \end{enumerate}
+  \item[2.11]
+    \begin{enumerate}[\hspace{0.5cm}(a)]
+      \item -
+      \item $\left\{ (x,y,z): x=a, \frac{y-b}{e} = {z-c}{f} \right\}$
+      \item $\{ (x,y,z): x=a, y=b \}$
+    \end{enumerate}
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[3.02] $(2, -5, 9)$ or $(4, 7, -5)$ or $(-4, 5, -1)$
+  \item[3.03] $u-2v$, $v-u$, $3u$, $5u-3v$
+  \item[3.08] parallel
+  \item[3.09] parallel
+  \item[3.10] intersects
+  \item[3.11] equals
+  \item[3.12] skews
+  \item[3.13] $\{ (x,y,z): 10x-10 = -6y+12 = 15z \}$
+  \item[3.14] $(1, -2, 0)$
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[4.04] $\frac{2\pi}{3}$ radians
+  \item[4.05] $\text{arc}\cos (\frac{22}{63}) = 1.93 \ldots$
+  \item[4.07] $\{(x,y,z) :  x-3y-2z = -8\}$
+  \item[4.08] $(39, -28, 74)$
+  \item[4.11]
+    \begin{enumerate}[\hspace{0.5cm}(a)]
+      \item $(1, -3, 1)$
+      \item $(-2, 9, 4)$
+      \item $\sqrt{99}$
+    \end{enumerate}
+  \item[4.12] $\{ (x,y,z): 2x-3y+z = 6 \}$
+  \item[4.13] $(3, 1, -2)$
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[5.03]
+    \begin{enumerate}[\hspace{0.5cm}(a)]
+      \item $\{ (x,y,z): 4x-3y = 46 \}$
+      \item $(10, -2, 1)$
+      \item $\sqrt{116}$
+    \end{enumerate}
+  \item[5.04]
+    \begin{enumerate}[\hspace{0.5cm}(a)]
+      \item is contained in
+      \item intersects
+      \item parallels
+    \end{enumerate}
+  \item[5.05] $\frac{1}{2}$
+  \item[5.06] $(1, 2, -1)$
+  \item[5.07] $\frac{\vert u \cdot q-k \vert}{\vert \vert u \vert \vert}$
+  \item[5.08] see next lesson
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[6.01] False. However, $u \times v = -(v \times u)$
+  \item[6.02] True
+  \item[6.03] True
+  \item[6.04] True
+  \item[6.05] False
+  \item[6.06] True
+  \item[6.07] True
+  \item[6.08] True
+  \item[6.10] $\{ (x,y,z): 2x+y+z = 3\}$
+  \item[6.11]
+    \begin{enumerate}[\hspace{0.5cm}(a)]
+      \item coplanar
+      \item non-coplanar
+    \end{enumerate}
+  \item[6.12] (-1, 3, -2)
+  \item[6.13] $\{ (x,y,z): 2x+y-3z = -4\}$
+  \item[6.14] (0, 0, 3)
+  \item[6.15] $\{ (x,y,z): x-2z = -1\}$
+  \item[6.16] $\{ (x,y,z): 5x+y+2z = 0\}$
+\end{enumerate}
+\vspace{0.5cm}
+
+\begin{enumerate}
+  \item[7.02] $5$
+  \item[7.03] $(2, -3, -1)$
+  \item[7.04] $\frac{\sqrt{273}}{2}$
+  \item[7.05] $(-1, 3, -2)$ and $(1, 0, 4)$
+  \item[7.07] $\frac{ \vert \vert u \times (p-q) \vert \vert }{ \vert \vert u \vert \vert }$; also $\frac{ \sqrt{\vert \vert p-q \vert \vert ^2 - (u \cdot (p-q))^2} }{ \vert \vert u \vert \vert }$
+  \item[7.08] $\frac{ \vert \vert (u \times v) \cdot (p-q) \vert \vert }{ \vert \vert u \vert \vert }$
+\end{enumerate}
+
+
+\end{document}

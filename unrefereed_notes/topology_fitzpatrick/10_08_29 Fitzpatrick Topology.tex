@@ -1,0 +1,787 @@
+\documentclass[10pt]{report}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsthm,amsmath,latexsym, amssymb}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem*{axiom}{Axiom}
+\newtheorem*{notation}{Notation}
+\newtheorem*{question}{Question}
+\newtheorem*{lemma}{Lemma}
+\newcommand{\cl}[1]{\overline{#1}}
+%opening
+\title{Topology}
+\author{John W. Bales $<<$ Ben Fitzpatrick}
+\date{}
+\begin{document}
+
+\maketitle
+
+\begin{abstract} These are the definitions and theorems from Ben Fitzpatrick's
+topology sequence MH 650, MH 651, MH 652 for the Auburn University academic year
+1970-1971 as transcribed by his student John W. Bales. Much editorial assistance was provided by fellow student Sam
+Creswell who made his notes available as well.
+
+\end{abstract}
+
+The following material is from Professor Ben Fitzpatrick's topology sequence taught at Auburn University in the 1970-71
+academic year. The original numbering of the theorems has been maintained. Where Dr. Fitzpatrick inserted additional
+theorems into the sequence we have retained the numbering which he gave to such extra theorems, if any. Although the
+definitions were not originally numbered, we have numbered them in the order in which they were given in class. With
+regard to Theorem Z, it was Dr. Fitzpatrick's custom to give it a designation outside the regular numbering sequence. 
+
+\vspace{12pt}
+
+``Point'' and ``region'' are undefined.\\
+
+\begin{axiom}[0] Every region is a point set.\\
+\end{axiom}
+
+\begin{definition} The statement that the point $P$ is a limit point of the set
+$M$ means that if $R$ is a region containing $P$ as an element, then $R$
+contains a point of $M$ different from $P$.\\
+\end{definition}
+
+\begin{definition} The statement that the point $P$ is a boundary point of the
+point set $M$ means that if $R$ is a region containing $P$, then $R$ contains a
+point of $M$ and a point not in $M$.\\
+\end{definition}
+
+\begin{notation} If $M$ is a point set, then ${\cl{M}}$ denotes the point
+set to which $P$ belongs if and only if $P$ is a point of $M$ or a limit point
+of $M$.\\
+\end{notation}
+
+\begin{definition}: The statement that the point set $M$ is closed means that if
+$P$ is a limit point of $M$, then $P$ belongs to $M$.\\
+\end{definition}
+
+\begin{theorem} No point of a region is a boundary point of that region.\\
+\end{theorem}
+
+\begin{theorem} If $M$ is a point set, then ${\cl{M}}$ is closed.\\
+\end{theorem}
+
+\begin{definition}
+ An order relation on a set $M$ is a collection $\Omega$ of ordered pairs of
+elements of $M$ with the following properties:
+\begin{enumerate}
+ \item If $x$ and $y$ are two elements of $M$, then $(x,y)$ or $(y,x)$ is an
+element of $\Omega.$
+ \item If $(x,y)$ and $(y,z)$ are elements of $\Omega$, then $(x,z)$ is an element
+of $\Omega.$
+ \item If $x$ is in $M$, then $(x,x)$ is not in $\Omega.$
+\end{enumerate}
+If $\Omega$ is an order relation on $M$, then the element $x$ of $M$ is said to
+precede the element $y$ of $M$ according to $\Omega$ if and only if $(x,y)$ is
+in $\Omega.$
+\end{definition}
+
+\begin{definition}
+ A well-ordering on $M$ is an order relation $\Omega$ on $M$ such that if $H$ is
+a subset of $M$, then there is an ``first'' element of $H$, i.e. an element $x$
+of $H$ such that if $y$ is any other element of $H$, then $x$ precedes $y$
+according to $\Omega.$
+\end{definition}
+
+\begin{definition}
+ The collection $G$ of point sets is said to be monotonic if and only if it is
+true that if $g$ and $h$ are two members of $G$, then either $g$ is a subset of
+$h$ or $h$ is a subset of $g$.
+\end{definition}
+
+\begin{definition}
+ The pointset $M$ is perfectly compact if and only if it is true that if
+$\mathcal{H}$ is a monotonic collection of subsets of $M$, then there is a point
+$P$ which is either common to all the members of $\mathcal{H}$ or is a limit
+point of every member of $\mathcal{H}$.
+\end{definition}
+
+\begin{theorem}
+ If $G$ is a collection of regions covering the closed and perfectly compact
+point set $M$ and $\Omega$ is a well-ordering on $G$, then there exists a member
+$y$ of $G$ such that the collection of regions in $G$ which $g$ does not
+precede according to $\Omega$ covers $M$.
+\end{theorem}
+
+\begin{theorem*}[$\mathbb{Z}$]
+ If $G$ is a non-degenerate set, then there exists a well-ordering on $G$.
+\end{theorem*}
+
+\begin{theorem}
+ If $G$ is a collection of regions covering the closed and perfectly compact
+point set $M$, then some finite sub-collection of $G$ covers $M$.
+\end{theorem}
+
+\begin{axiom}[$1_3$]
+ There exists a sequence $G_1, G_2, G_3, \cdots$ such that
+\begin{enumerate}
+ \item if $n$ is a positive integer, then $G_n$ is a collection, each member of
+which is a region, and $G_n$ covers $S$.
+\item If $n$ is a positive integer, $G_{n+1}$ is a sub-collection of $G_n$.
+\item if $R$ is a region, $A$ is a point of $R$ and $B$ is a point of $R$, then
+there exists a positive integer $n$ such that if $g$ is a region of the
+collection $G_n$ and $g$ contains $A$, then ${\cl{g}}$ is a subset of $R$
+and does not contain $B$ unless $B$ is $A$.
+\end{enumerate}
+
+\end{axiom}
+
+\begin{theorem}
+ If $P$ is a point, then there exists a sequence $R_1,R_2,R_3,\cdots$ such that
+\begin{enumerate}
+ \item[(i)] if $n$ is a positive integer, then $R_n$ is a region containing $P$
+ \item[(ii)] if $n$ is a positive integer, then $\cl{R}_{n+1}$ is a subset of $R_n$.
+ \item[(iii)] $P$ is the only point common to all the terms of the sequence $R_1, R_2, R_3, \cdots$
+ \item[(iv)] if $R$ is a region containing $P$, then there is a positive integer $n$ such that $R_n$
+is a subset of $R$.
+\end{enumerate}
+\end{theorem}
+
+\begin{definition}
+ The sequence $R_1,R_2,R_3,\cdots$ in the previous theorem is said to ``close down'' on the point
+$P$.
+\end{definition}
+
+\begin{theorem}
+ If $P$ is a point and $G$ is a finite collection of regions each containing $P$, then there is a
+region containing $P$ which is a subset of each member of $G$.
+\end{theorem}
+
+\begin{theorem}
+ If a point $P$ is a limit point f the sum of two point sets $H$ and $K$, then it is a limit point of
+one of them.
+\end{theorem}
+
+\begin{theorem}
+ No finite point set has a limit point.
+\end{theorem}
+
+\begin{theorem}
+ If the point $P$ is a limit point of the point set $M$, then there exists a sequence
+$P_1,P_2,P_3,\cdots$ of points of $M$ all distinct from $P$ and from one another such that $P$ is
+the sequential limit point of the sequence $P_1,P_2,P_3,\cdots$.
+\end{theorem}
+
+\begin{definition}
+ The statement that the point $P$ is the sequential limit point of the point sequence
+$P_1,P_2,P_3,\cdots$ means that if $R$ is a region containing $P$, then there is a positive integer
+$N$ such that if $k$ is a positive integer greater than or equal to $N$, then $P_k$ is a point of
+$R$.
+\end{definition}
+
+\begin{definition}
+ The statement that the point set $M$ is bi-compact means that if $G$ is a collection of regions
+covering $M$, then a finite sub-collection of $G$ covers $M$.
+\end{definition}
+
+\begin{theorem}
+ Every bi-compact point set is closed and perfectly compact.
+\end{theorem}
+
+\begin{theorem}
+ No point sequence has two sequential limit points and if the point $P$ is the sequential limit
+point of the point sequence $P_1,P_2,P_3,\cdots$, then $P$ is the sequential limit point of every
+infinite subsequence of $P_1,P_2,P_3,\cdots$.
+\end{theorem}
+
+\begin{theorem}
+ If $\alpha$ is a point sequence and the set of all terms of $\alpha$ is compact, then some
+subsequence of $\alpha$ has a sequential limit point.
+\end{theorem}
+
+\begin{definition}
+ The statement that the point set $M$ is compact means that if $K$ is an infinite subset of $M$, then
+$K$ has a limit point.
+\end{definition}
+
+\begin{theorem}
+ If the set of all terms of the infinite point sequence $\alpha$ is compact and there do not exist
+two points each of which is a sequential limit point of some subsequence of $\alpha$, then $\alpha$
+has a sequential limit point.
+\end{theorem}
+
+\begin{definition}
+The statement that the point set $D$ is a domain means that if $P$ is a point $D$, then there is a
+region which contains $P$ and is a subset of $D$.
+\end{definition}
+
+\begin{theorem}
+ If $H$ and $K$ are two mutually exclusive closed point sets and one of them is perfectly compact, then there exist
+mutually exclusive domains $D_H$ and $D_K$ containing $H$ and $K$ respectively.
+\end{theorem}
+
+\begin{theorem}
+ If $M$ is a point set and $G$ is a collection of regions covering $\cl{M}$, then there exists a
+subset $K$ of $M$ with no limit point such that 
+\begin{enumerate}
+ \item[(1)] no region of $G$ contains two points of $K$ and 
+ \item[(2)] if $P$ is a point of $M$, then some region of $G$ contains $P$ and intersects $K$.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+ If $G$ is a collection of domains covering the bi-compact point set $M$, then some finite sub-collection of $G$ covers
+$M$.
+\end{theorem}
+
+\begin{definition}
+ A point set $M$ is said to be separable if and only if there is a countable subset $K$ of $M$ such that every point of
+$M$ is a point of $K$ or a limit point of $K$. The point set $M$ is said to be completely separable if and only if there
+is a countable collection $G$ such that each element of $G$ is a domain and such that if $P$ is a point of $M$ and $R$
+is a region containing $P$, then some domain of the collection $G$ contains $P$ and is a subset of $R$.
+\end{definition}
+
+\begin{theorem}
+ If $M$ is a point set, then the following statements are equivalent:
+\begin{enumerate}
+ \item $M$ is completely separable.
+ \item Every subset of $M$ is separable.
+ \item If $K$ is an uncountable subset of $M$, then $K$ has a limit points.
+ \item If $G$ is a collection of domains covering $M$, then some countable sub-collection of $G$ covers $M$.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+ If $H$ and $K$ are two mutually exclusive closed point sets and $G$ is a monotonic collection of closed sets and each
+element of $G$ intersects both $H$ and $K$ and no element of $G$ is the sum of two mutually exclusive closed point sets,
+one intersecting $H$ and the other intersecting $K$, and some element of $G$ is perfectly compact, then the common part
+of all the elements of $G$ is closed and perfectly compact and intersects both $H$ and $K$ and is not the sum of two
+mutually exclusive closed point sets, one intersecting $H$ and the other intersecting $K$.
+\end{theorem}
+
+\begin{definition}
+ The statement that the point sets $H$ and $K$ are mutually separated means that they do not intersect and neither of
+them contains a limit point of the other.
+\end{definition}
+
+\begin{definition}
+ The point set $M$ is connected if and only if $M$ is not the sum of two mutually separated point sets.
+\end{definition}
+
+\begin{theorem}
+ If the connected point-set $M$ is the subset of the sum of two mutually separated point sets, then it is a subset of
+one
+of them.
+\end{theorem}
+
+\begin{notation}
+ If $G$ is a collection of sets, then $G^*$ denotes the set to which $P$ belongs if and only if $P$ is an element of
+some set in $G$.
+\end{notation}
+
+\begin{theorem}
+ If $G$ is a collection of connected point sets and some element of $G$ intersects every other element of $G$, then
+$G^*$
+is connected.
+\end{theorem}
+
+\begin{definition}
+ If each of $M$ and $N$ is a point set, then the statement that $T$ is a transformation from $M$ onto $N$ means that $T$
+is a collection each element of which is an ordered pair whose first term is an element of $M$ and whose second term is
+an element of $N$ and no two elements of $T$ have the same first term and every element of $M$ is the first term of some
+member of $T$ and every element of $N$ is the second term of some member of $T$.
+
+The statement that the transformation from $M$ onto $N$ is continuous means that if $x$ is a point of $M$ and $\epsilon$
+is a region containing $T(x)$, then there exists a region $\delta$ containing $x$ such that if $q$ belongs to the common
+part of $\delta$ and $M$, then $T(q)$ is in $\epsilon$.
+\end{definition}
+
+\begin{theorem}
+ If $T$ is a continuous transformation from $M$ onto $N$, then
+\begin{enumerate}
+ \item[(1)] $N$ is connected if $M$ is,
+ \item[(2)] $N$ is bi-compact if $M$ is, and
+ \item[(3)] $N$ is separable if $M$ is.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+Every perfectly compact point set is compact and every compact point set is perfectly compact.
+\end{theorem}
+
+\begin{theorem}
+ Every point of a non-degenerate connected point set is a limit point of that point set.
+\end{theorem}
+
+\begin{theorem}
+ If $M$ is connected and $M$ is a subset of $L$ and $L$ is a subset of $\cl{M}$, then $L$ is connected.
+\end{theorem}
+
+\begin{theorem}
+ If $H$ and $K$ are two point sets and $P$ is a boundary point of their common part, then $P$ is a boundary point of one
+on them.
+\end{theorem}
+
+\begin{definition}
+ If $M$ is a point set, then the statement that $C$ is a component of $M$ means that $C$ is a connected subset of $M$
+and
+is not a proper subset of any connected subset of $M$.
+\end{definition}
+
+\begin{theorem}
+ If $M$ is a point set, then every point of $M$ belongs to a component of $M$.
+\end{theorem}
+
+\begin{theorem}
+ If $M$ is a point set and $n$ is a positive integer such that $M$ has only $n$ components, then $M$ is the sum of $n$
+mutually separated point sets
+\end{theorem}
+
+\begin{definition}
+ A continuum is a closed and connected point set.
+\end{definition}
+
+\begin{theorem}
+ If $G$ is a monotonic collection of perfectly compact continua, then the common part of the elements of $G$ is a
+perfectly compact continuum.
+\end{theorem}
+
+\begin{definition}
+ Suppose $H$ and $K$ are two mutually exclusive closed point sets and $M$ is a continuum which intersects both $H$ and
+$K$, then $M$ is said to be irreducible from $H$ to $K$.
+\end{definition}
+
+\begin{theorem}
+ If $M$ is a closed and perfectly compact point set that intersects both of the
+two mutually exclusive closed point sets $H$ and $K$ and $M$ is not the sum of
+two mutually exclusive closed point sets one intersecting $H$ and the other
+intersecting $K$ but every closed proper subset of $M$ which intersects both
+$H$ and $K$ is the sum of two such point sets, then $M$ is an irreducible
+continuum from $H$ to $K$.
+\end{theorem}
+
+\begin{theorem}
+ If the perfectly compact continuum $M$ intersects both of two mutually
+exclusive closed point sets $H$ and $K$, then some sub-continuum of $M$ is
+irreducible from $H$ to $K$.
+\end{theorem}
+
+\begin{definition}
+ A topological transformation is a continuous and reversible transformation $T$
+such that $T^{-1}$ is also continuous.
+\end{definition}
+
+\begin{definition}
+ The point set $M$ is topologically equivalent to the point set $N$ if and only
+if there is a topological transformation from $M$ onto $N$.
+\end{definition}
+
+\begin{theorem}
+ Topological equivalence is an equivalence relation, i.e.
+ \begin{enumerate}
+  \item A point set is topologically equivalent to itself.
+  \item If the point set $M$ is topologically equivalent to the point set $N$,
+then $N$ is topologically equivalent to $M$.
+  \item If the point set $M$ is topologically equivalent to the point set $N$
+and $N$ is topologically equivalent to the point set $O$, then $M$ is
+topologically equivalent to $O$.
+ \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+ Suppose $H$ and $K$ are two closed point sets and $f$ is a continuous
+transformation from $H$ to a subset of the point set $M$ and $g$ is a
+continuous transformation from $K$ to a subset of the point set $M$.
+Furthermore, suppose that if $x$ belongs to $H$ and to $K$, then $f(x)=g(x)$.
+Then $f\cup g$ is a continuous transformation whose initial set is $H\cup K$.
+\end{theorem}
+
+\begin{theorem}
+ If $f$ is a continuous and reversible transformation whose initial set is
+bi-compact, then $f^{-1}$ is also continuous.
+\end{theorem}
+
+\begin{theorem}
+ Suppose $f$ is a transformation with initial set $M$ and $x$ is a point of $M$,
+then $f$ is continuous at $x$ if and only if it is true that if
+$P_1,P_2,P_3\cdots`$ is a point sequence which has $x$ as its sequential limit
+point and each term of this sequence is in $M$, then the point sequence
+$f(P_1),f(P_2),f(P_3),\cdots$ has $f(x)$ as its sequential limit point.
+\end{theorem}
+
+\begin{theorem}
+ If $M$ is a connected point set and $T$ is a connected subset of $M$ and $M-T$ is the sum of two mutually separated
+point sets $H$ and $K$, then $H+T$ is connected.
+\end{theorem}
+
+\begin{definition}
+ The statement that the point or subset $P$ of the connected point set $M$ separates the point or subset $H$ of $M$ from
+the point or subset $K$ of $M$ means that $M-P$ is the sum of two mutually separated point sets, one containing $H$ and
+the other containing $K$.
+\end{definition}
+
+Note:
+ In theorems \ref{T:S1}, \ref{T:S2} and \ref{T:S3}, $M$ denotes a connected point set and $P$, $A$, $B$ and $C$
+represent points of $M$.
+
+\begin{theorem}\label{T:S1}If $P$ separates $A$ from $B$ in $M$, then $P$ separates $B$ from $A$ in $M$ and $A$ does not
+separate $P$ from $B$ in $M$.
+\end{theorem}
+\
+\begin{theorem}\label{T:S2}If $P$ separates $A$ from $C$ in $M$ and $B$ separates $A$ from $C$ in $M$, then either $P$
+separates $A$ from $\{B,C\}$ in $M$ or $B$ separates $A$ from $\{PmC\}$ in $M$.
+\end{theorem}
+
+\begin{theorem}\label{T:S3}If $P$ separates $A$ from $B$ in $M$ and $B$ separates $P$ from $C$ in $M$, then $B$
+separates
+$\{A,P\}$ from $C$ in $M$ and $P$ separates $A$ from $\{B,C\}$ in $M$.
+\end{theorem}
+
+[Note: In Dr. Fitzpatrick's 1970-1971 topology courses, he did not state a theorem 39 or 40.]\\
+
+\setcounter{theorem}{40}
+
+\begin{axiom}[1] Consists of Axiom $1_3$ plus
+\begin{enumerate}
+ \item[4.] if $M_1,M_2,M_3,\cdots$ is a simply infinite sequence, each term of
+which is a closed point set, and each term of it contains the next term of it,
+and for each positive number $N$, $M_N$ is a subset of the closure of some
+element of $G_N$, then there is a point common to all the terms of the sequence
+$M_1,M_2,M_3,\cdots$.
+\end{enumerate}
+\end{axiom}
+
+\begin{theorem}
+ If $M$ is a closed point set and every point of $M$ is a limit point of $N$, then $M$ is uncountable.
+\end{theorem}
+
+\begin{theorem}
+ Every metric space satisfies Axiom $1_3$.
+\end{theorem}
+
+\begin{theorem*}[$42^\prime$]
+ Every complete metric space satisfies Axiom 1.
+\end{theorem*}
+
+\begin{theorem}
+ Every locally compact $1_3$ space satisfies Axiom 1.
+\end{theorem}
+
+\begin{definition}
+ The statement that a space is locally compact means that if $P$ is a point of the space, then there is a compact
+region containing $P$.
+\end{definition}
+
+\begin{theorem}
+ No domain is the sum of countable many closed point sets, no one of which contains a domain.
+\end{theorem}
+
+\begin{theorem}
+ No closed point set $M$ is the sum of countably many closed point sets such that if $T$ is any one of them every point
+of $T$ is a limit point of $M_T$.
+\end{theorem}
+
+\begin{definition}
+ Suppose $M$ is a set and $T$ is a set and $\Omega_1$ is a well-ordering on $M$ and $\Omega_2$ is a well-ordering on
+$T$. The statement that $\Omega_1$ is ordinally similar to $\Omega_2$ means that there is a reversible transformation
+$\phi$ from $M$ onto $T$ such that if $a$ and $b$ are two elements of $M$, then $a$ precedes $b$ according to $\Omega_1$
+if and only if $\phi(a)$ precedes $\phi(b)$ according to $\Omega_2$.(i.e. there is a reversible order-preserving
+transformation from $M$ onto $T$.)
+\end{definition}
+
+\begin{definition}
+ The statement that the subset $M^\prime$ of $M$ is an initial (final) segment of $M$ according to $\Omega$ means that
+there is an element $P$ of $M$ such that $M^\prime$ is the set of all elements of $M$ preceding $P$ (not preceding $P$)
+according to $\Omega$.
+\end{definition}
+
+\begin{theorem*}[unnumbered] If $\Omega_1$ is a well-ordering on $M$ and $\Omega_2$ is a well-ordering on $T$, then
+either (1) there is a reversible order-preserving transformation from $M$ onto $T$ or (2) there is a reversible
+order-preserving transformation from $M$ onto an initial segment of $T$ or (3) there is a reversible order-preserving
+transformation from an initial segment of $M$ onto $T$.
+\end{theorem*}
+
+\begin{definition}
+ The statement that $A$ is cardinally equivalent to $B$ means that there is a reversible transformation from $A$ onto
+$B$. The statement that $A$ is cardinally less than $B$ means that $A$ is cardinally equivalent to a subset of $B$ but
+is not cardinally equivalent to $B$. The statement that $A$ is cardinally greater than $B$ means that $B$ is cardinally
+less than $A$.
+\end{definition}
+
+\begin{definition}
+ If $M$ is a connected point set and $P$ is a point of $M$, then $P$ is said to be a separating point of $M$ if $M-P$ is
+not connected and is a non-separating point of $M$ is $M-P$ is connected.
+\end{definition}
+
+\begin{definition}
+ An arc is a non-degenerate compact continuum with no more than two non-separating points.
+\end{definition}
+
+\begin{definition}
+ The statement that $M$ is an arc from $A$ to $B$ means that $M$ is a compact continuum and if $P$ is a point of $M$
+other than $A$ or $B$, then $P$ is a separating point of $M$.
+\end{definition}
+
+\begin{question}
+ If $M$ is an arc are there two points $A$ and $B$ such that $M$ is an arc from $A$ to $B$?
+\end{question}
+
+\begin{question}
+ Is there a non-degenerate compact continuum $M$ such that no point of $M$ is a non-separating point of $M$? That is,
+is there a non-degenerate compact continuum $M$ such that every point of $M$ is a separating point of $M$?
+\end{question}
+
+\begin{proposition}[A1]
+If $M$ is an arc than $M$ has two non-separating points.
+\end{proposition}
+
+
+\begin{proposition}[A2]
+ If $M$ is an arc from $A$ to $B$ and $P$ is a  point of $M$ different from $A$ and from $B$, then $P$ separates $A$
+from $B$ in $M$.
+\end{proposition}
+
+\begin{proposition}[A3]
+ If $M$ is an arc from $A$ to $B$, $P$ is a point of $M$ different from $A$ and from $B$ and $H$ and $K$ are two
+mutually separated point sets whose sum is $M-P$, then $A$ is in $H$ and $B$ is in $K$ or $A$ is in $K$ and $B$ is in
+$H$.
+\end{proposition}
+
+\begin{proposition}[A4]
+ Under the hypothesis, $H+P$ is an arc from $P$ to $A$ or to $B$.
+\end{proposition}
+
+\begin{proposition}[A5]
+ If $M$ is an arc from $A$ to $B$, then $M$ is irreducible from $A$ to $B$.
+\end{proposition}
+
+\begin{proposition}[A6]
+ If $M$ is an arc from $A$ to $B$ and $P_1,P_2,P_3,\cdots$ is an infinite sequence of points of $M$ and for each
+positive integer $N$, $P_{N+1}$ separates the two-point set $\{A,P_N\}$ from $B$ in $M$, then $P_1,P_2,P_3,\cdots$ has a
+sequential limit point which either is $B$ or separates $B$ from $\{A,P_1,P_2,P_3,\cdots\}$ in $M$.
+\end{proposition}
+
+\begin{theorem*}[$30^\prime$]
+ If $M$ is a compact continuum and $K$ is a closed subset of $M$, then there is a sub-continuum of $M$ which contains
+$K$ and is such that no proper sub-continuum of it contains $K$.
+\end{theorem*}
+
+\begin{theorem}
+ If $M$ is a closed and perfectly compact point set and $H$ and $K$ are two mutually exclusive closed subsets of $M$
+and $M$ contains no continuum which intersects both $H$ and $K$, then $M$ is the sum of two mutually exclusive closed
+point sets, one containing $H$ and the other containing $K$.
+\end{theorem}
+
+\begin{theorem}
+ If $H$ and $K$ are two mutually exclusive and closed point sets and $M$ is a compact continuum which is irreducible
+from $H$ to $K$, then $M-M\cdot H$ is connected and $M-M\cdot(H+K)$ is connected and every point of $M\cdot H$ is a
+limit point of $M-M\cdot H$.
+\end{theorem}
+
+\begin{theorem*}[unnumbered]
+ If $H$ is a collection of regions covering $S$ and $M$ is a point set, $Z$ is a subset of $M$ and $G$ is a collection
+of regions and for each point $P$ of $M$ there exists a region of the collection $G$ that contains every region of the
+collection $H$ that contains $P$ and if every subset of $M$ that is cardinally greater than $Z$ has a limit point, then
+some subset of $G$ cardinally less than or equivalent to $Z$ covers $M$.
+\end{theorem*}
+
+\begin{theorem}
+ If $M$ is a closed and compact point set and $K$ is a component of $M$ and $H$ is a closed subset of $M-K$, then $M$ is
+the sum of two mutually separated point sets one containing $K$ and the other containing $H$.
+\end{theorem}
+
+\begin{theorem}
+ If $M$ is a continuum and $D$ is a domain with respect to $M$ and $D$ is a proper subset of $M$ and $\cl{D}$ is
+compact and $K$ is a component of $D$, then the boundary of $D$ with respect to $M$ contains a limit point of $K$.
+\end{theorem}
+
+\begin{definition}
+ If $M$ is a point set and $D$ is a subset of $M$, then the statement that $D$ is a domain with respect to $M$ means
+that no point of $D$ is a limit point of $M-D$.
+\end{definition}
+
+\begin{definition}
+ If $T$ is a subset of the point set $M$, then the statement that the point $X$ of $M$ is a boundary point of $T$ with
+respect to $M$ means that every region containing $X$ contains a point of $T$ and a point of $M-T$.
+\end{definition}
+
+\begin{proposition}[A7]
+ If $T$ is a continuous and reversible transformation whose initial set $M$ is an arc from $A$ to $B$, then $T$ is a
+topological transformation whose final set $N$ is an arc from $T(A)$ to $T(B)$.
+\end{proposition}
+
+\begin{proposition}[A8]
+ If $M$ is an arc from $A$ to $B$ and $P$ is a point of $M$ different from $A$ and from $B$ and $M-P$ is the sum of two
+mutually separated point sets $H$ and $K$ and $H^\prime$ and $K^\prime$ are two mutually separated point sets whose sum
+is $M-P$, then either $H^\prime$ is $H$ and $K^\prime$ is $K$ or $H^\prime$ is $K$ and $K^\prime$ is $H$.
+\end{proposition}
+
+\begin{proposition}[A9]
+ Suppose $M$ is an arc from $A$ to $B$; $\{P_1,P_2,P_3,\cdots\}$ is a countable dense subset of $M-\{A,B\}$; $n_1=1$;
+for each positive integer $j$, $n_{j+1}$ is the smallest integer $m>n_j$ such that one component of $M-P_m$ contains
+$\{P_1,P_2,P_3,\cdots\,P_{n_j}\}$; and $P$ is a limit point of $\{P_1,P_2,P_3,\cdots\}$. Then $P$ is a non-separating
+point of $M$.
+\end{proposition}
+
+\begin{definition}
+ The statement that the point set $M$ is the limiting set of the sequence of point sets $M_1,M_2,M_3,\cdots$ means that
+ \begin{enumerate}
+  \item there exist a point $X$ such that if $R$ is a region containing $X$ and $i$ is a positive integer, then there is
+a positive integer $j$ greater than $i$ such that $R$ intersects $M_j$ and
+  \item $M$ is the set of all such points.
+ \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+ If $M_1,M_2,M_3,\cdots$ is a sequence of connected point sets and $\cl{M_1+M_2+M_3+\cdots}$ is compact and for each
+positive integer $N$, $a_N$ is a point of $M_N$ and the point sequence $a_1,a_2,a_3,\cdots$ has a sequential limit
+point, then the limiting set of $M_1,M_2,M_3,\cdots$ is a compact continuum.
+\end{theorem}
+
+\begin{theorem}
+ If $K$ is a closed proper subset of the continuum $M$, $\cl{M-K}$ is compact and $H$ is a component of $M-K$, then $K$
+contains a limit point of $H$.
+\end{theorem}
+
+\begin{theorem}
+ If $K$ is a component of a closed and compact point set $M$ and $T$ is a closed point set containing no point of $K$,
+then 
+\begin{enumerate}
+ \item there is a domain $D$ containing $K$ such that no point of $T+M$ is a boundary point of $D$ and $D$ contains no
+point of $T$ and
+ \item $K$ is a component of $M+T$.
+\end{enumerate}
+\end{theorem}
+
+\begin{definition}
+ Suppose $M_1,M_2,M_3,\cdots$ is a simply infinite sequence each term of which is a point set. Then the statement that
+the point set $M$ is the sequential limiting set of the sequence $M_1,M_2,M_3,\cdots$ means that $M$ is the limiting
+set of every infinite sub-sequence of $M_1,M_2,M_3,\cdots$.
+\end{definition}
+
+\begin{theorem}
+ If the sequence of point sets $M_1,M_2,M_3,\cdots$ has a completely separable limiting set, then some infinite
+sub-sequence of that sequence has a sequential limiting set.
+\end{theorem}
+
+\begin{theorem}
+ Every non-degenerate compact continuum contains two non-separating points.
+\end{theorem}
+
+
+\begin{theorem}
+ If $M$ is a compact continuum and $H$ is a connected proper subset of $M$, then $M-H$ contains a non-separating point
+of $M$.
+\end{theorem}
+
+\begin{theorem}
+ If $M$ is an arc from $A$ to $B$, then $M-A$ and $M-B$ are connected.
+\end{theorem}
+
+\begin{theorem}
+ If $M$ is an arc from $A$ to $B$ and $P$ is a point of $M$ different from $A$ and from $B$, then $M-P$ is the sum of
+two mutually separated point sets and if $H$ and $K$ are two mutually separated point sets whose sum is $M-P$, then one
+of $H$ and $K$ contains $A$ and the other contains $B$.
+\end{theorem}
+
+\begin{theorem}
+ If $M$ is an arc from $A$ to $B$ and $P$ is a point of $M$ different from $A$ and from $B$ and $M-P$ is the sum of two
+mutually separated point sets $H$ and $K$ and $A$ is in $H$, then $H+P$ is an arc from $A$ to $P$ and $K+P$ is an arc
+from $B$ to $P$.
+\end{theorem}
+
+\begin{definition}
+ The statement that $P$ precedes $Q$ in the order from $A$ to $B$ means that either $P$ is $A$ and $Q$ is $B$ or $P$
+separates $A$ from $\{Q,B\}$.
+\end{definition}
+
+\begin{definition}
+ The statement that $T$ is a segment from the point $P$ of the arc $M$ to the point $Q$ of the arc $M$ means that $T$
+is the set of points to which the point $C$ belongs only in case $C$ is in $M$ and $C$ precedes $Q$ in $M$ and $P$
+precedes $C$ in $M$ (both in the order from $A$ to $B$ in $M$ or both in the order from $B$ to $A$ in $M$ provided $M$
+is an arc from $A$ to $B$.)
+\end{definition}
+
+\begin{definition}
+ If $M$ is an arc from $A$ to $B$ the statement that $T$ is a sect containing $A$ means that there is a point $P$ of
+$M$ different from $A$ such that $T$ is the subset of $M$ to which the point $Q$ belongs only in case $Q$ precedes $P$
+in the order of $A$ to $B$ in $M$.
+\end{definition}
+
+\begin{theorem*}[58.5]
+ If $M$ is an arc and $T$ is a subset of $M$, then $P$ is a limit point of $T$ only in case either
+ \begin{enumerate}
+  \item $P$ is a separating point of $M$ and every segment of $M$ containing $P$ contains a point of $T$ different from
+$P$ or
+  \item $P$ is a non-separating point of $M$ and every sect of $M$ containing $P$ contains a point of $T$ different
+from $P$.
+ \end{enumerate}
+\end{theorem*}
+
+\begin{lemma}
+ If $M$ is an arc from $A$ to $B$ and $C$ is a countable dense subset of $M$ which contains neither $A$ nor $B$ and $Z$
+is a countable dense subset of the number segment $(0,1)$, then there is a reversible transformation $T$ from $C$ onto
+$Z$ which preserves order.
+\end{lemma}
+
+\begin{theorem}
+ Every arc is topologically equivalent to the number interval $[0,1]$.
+\end{theorem}
+
+\begin{definition}
+ A simple closed curve is a non-degenerate compact continuum each two point subset of which separates it.
+\end{definition}
+
+\begin{theorem}
+ No point of a simple closed curve is a separating point of it.
+\end{theorem}
+
+\begin{theorem}
+ If $A$ and $B$ are points of the simple closed curve $J$, then $J$ is the sum of two arcs from $A$ to $B$ which have in
+common only $A$ and $B$.
+\end{theorem}
+
+\begin{theorem}
+ If $M$ is a connected point set, then there is no domain $D$ such that the common part of $D$ and $M$ is separable and
+contains a point set $H$ which contains an uncountable point set $K$ such that if $X$ is any point of $K$, then $M-X$ is
+the sum of two mutually separated point sets, one of which contains $H-X$.
+\end{theorem}
+
+\begin{definition}
+ The statement that the point set $M$ is connected im kleinen at the point $P$ of $M$ means that if $U$ is an open set
+containing $P$, then there is an open set $V$ containing $P$ such that if $qQ$ is a point of the common part of $V$ and
+$M$, then some connected set of the common part of $U$ and $M$ contains both $P$ and $Q$.
+\end{definition}
+
+\begin{definition}
+ The statement that the point set $M$ is open means that $M$ is a domain.
+\end{definition}
+
+\begin{theorem}
+ If $M$ is connected im kleinen and $D$ is a domain with respect to $M$, then every component of $D$ is a domain with
+respect to $M$.
+\end{theorem}
+
+\begin{definition}
+ The statement that the collection $H$ of point sets is coherent means that if $H_1$ and $H_2$ are two sub-collections
+of $H$ whose sum is $H$, then some member of $H_1$ intersects some member of $H_2$.
+\end{definition}
+
+\begin{theorem}
+ If $G_1,G_2,G_3,\cdots$ is an Axiom 1 sequence for $S$ and for each positive integer $n$, $H_n$ is a finite coherent
+sub-collection of $G_n$ and for each $n$ the closure of each element of $H_{n+1}$ is contained in some element of
+$H_n$, then the common part of $H_1^*,H_2^*,H_3^*,\cdots$ is a compact continuum.
+\end{theorem}
+
+\begin{theorem}
+ If $S$ is connected and connected im kleinen and $A$ and $B$ arer two points of $S$, then $S$ contains an arc from $A$
+to $B$.
+\end{theorem}
+
+\begin{theorem*}[$64^\prime$]
+ If $M$ is a connected point set and $G$ is a domain collection covering $M$ and $A$ and $B$ are two points of $M$, then
+there is a finite coherent sub-collection of $G$ such that $G^*$ contains both $A$ and $B$.
+\end{theorem*}
+
+\begin{theorem}
+ If the continuum $M$ is locally compact at the point $P$ of $M$ but is not connected im kleinen at $P$, then there is a
+region $R$ containing $P$ and a sequence $K_1,K_2,K_3,\cdots$ of distinct components of $M\cdot\cl{R}$ such that each
+$K_n$ contains a point of $R$ and a point on the boundary of $R$ and $K_1,K_2,K_3,\cdots$ converges to a continuum $K$
+which contains $P$ and intersects the boundary of $R$.
+\end{theorem}
+
+
+
+\end{document}

@@ -1,0 +1,25 @@
+\contentsline {section}{\hbox to\@tempdima {\hfil }Acknowledgements}{i}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Introduction To The Student}{ii}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Introduction To The Instructor}{iii}
+\contentsline {section}{\numberline {1}Discrete Mathematics}{1}
+\contentsline {subsection}{\numberline {1.1}Sets}{1}
+\contentsline {subsection}{\numberline {1.2}Relations, Functions, and Equivalence Relations}{4}
+\contentsline {section}{\numberline {2}Finite State Machines}{8}
+\contentsline {subsection}{\numberline {2.1}Finite State Transducers}{8}
+\contentsline {subsection}{\numberline {2.2}Finite State Acceptors}{10}
+\contentsline {section}{\numberline {3}Languages}{13}
+\contentsline {subsection}{\numberline {3.1}Alphabets and Languages}{13}
+\contentsline {subsection}{\numberline {3.2}Formal Grammars}{15}
+\contentsline {section}{\numberline {4}Equivalences}{18}
+\contentsline {subsection}{\numberline {4.1}FSAs Into Regular Expressions}{18}
+\contentsline {subsection}{\numberline {4.2}Regular Expressions Into Regular Grammars}{21}
+\contentsline {subsection}{\numberline {4.3}Regular Grammars Into NDFSAs}{24}
+\contentsline {subsection}{\numberline {4.4}NDFSAs into (D)FSAs}{27}
+\contentsline {section}{\numberline {5}Machine Minimization}{31}
+\contentsline {subsection}{\numberline {5.1}Minimal Finite State Acceptors}{31}
+\contentsline {subsection}{\numberline {5.2}Languages That Are Not Regular}{35}
+\contentsline {section}{\numberline {6}PDAs and CFGs}{37}
+\contentsline {subsection}{\numberline {6.1}Context-Free Languages}{37}
+\contentsline {subsection}{\numberline {6.2}Pushdown Acceptors}{39}
+\contentsline {subsection}{\numberline {6.3}Epilogue}{41}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Bibliography}{45}

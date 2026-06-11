@@ -1,0 +1,364 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+\title{Topology}
+\author{Ed Grace}
+\date{ }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\pagenumbering{arabic}
+
+\begin{description}
+
+  \item[] Throughout this outline, $S$ is a set of points in which there is determined a collection of subsets called \emph{neighborhoods}, satisfying the following two axioms:
+
+  \item[Axiom 1:] Each point of $S$ is contained in a neighborhood.
+
+  \item[Axiom 2:] If $A$ is a neighborhood of a point $p$, and $B$ is a neighborhood of $p$, then there exists a neighborhood $C$ of $p$ such that $A \cap B$ contains $C$.
+
+  \item[Definition 3:] $S$ is called a \emph{topological space} (or simply a \emph{space}).
+
+  \item[Definition 4:] $A$ is a \emph{neighborhood} of $p$ if $A$ is a neighborhood and $p \in A$
+
+  \item[Definition 5:] A point $p$ is an \emph{interior point} of a set $H$ if there exists a neighborhood $A$ of $p$ such that $A \in H$.
+
+  \item[Definition 6:] A point set $H$ is \emph{open} if every point of $H$ is an interior point.
+
+  \item[Proposition 7:] Neighborhoods are open.
+
+  \item[Proposition 8:] The union of any collection of open sets is open.
+
+  \item[Proposition 9:] The intersection of two open sets is open.
+
+  \item[Proposition 10:] $S$ is open.
+
+  \item[Definition 11:] A subset $H$ of $S$ is \emph{closed} if $S-H$ is open.
+
+  \item[Proposition 12:] The union of two closed sets is closed.
+
+  \item[Proposition 13:] The intersection of two closed sets is closed.
+
+  \item[Question 14:] Do Propositions 3, 5, and 6 extend to arbitrary collections?
+
+  \item[Definition 15:] A point $p$ is a \emph{limit point} of $H$ if every open set containing $p$ contains a point of $H$ distinct from $p$.
+
+  \item[Proposition 16:] A point set is closed if and only if it contains each limit point of the set.
+
+  \item[Proposition 17:] $S$ is closed.
+
+  \item[Proposition 18:] The empty set is both open and closed.
+
+  \item[Proposition 19:] A point $p$ is a limit point of $H$ if and only if each neighborhood of $p$ contains a point of $H$ distinct from $p$.
+
+  \item[Definition 20:] The \emph{closure} $\overline{H}$ of a point set $H$, is the union of $H$ and the set of all limit points of $H$.
+
+  \item[Proposition 21:] $\overline{H}$ is the intersection of all closed supersets of $H$.
+
+  \item[Corollary 21.1:] $\overline{H}$ is closed.
+
+  \item[Definition 22:] The \emph{interior} ($\text{Int } H$) of a point set $H$ is the set of interior points of $H$.
+
+  \item[Proposition 23:] $\text{Int } H$ is the union of all open subsets of $H$.
+
+  \item[Definition 24:] The \emph{boundary} ($\text{Bd } H$) of $H$ is $\overline{H} - \text{Int } H$.
+
+  \item[Proposition 25:] $\text{Bd } H = \overline{H} \cap \overline{S - H}$
+
+  \item[Proposition 26:] $\text{Bd } H$ is empty if and only if $H$ is both open and closed.
+
+  \item[Definition 27:] Two non-empty point sets $A$ and $B$ are \emph{separated} if $A \cap \overline{B} = B \cap \overline{A} = \emptyset$.
+
+  \item[Definition 28:] A point set is \emph{connected} if it is not the union of two separated sets.
+
+  \item[Proposition 29:] The unit interval $[0,1]$ (with the standard topology) is connected. (Assume every nonempty subset of $[0,1]$ has a least upper bound.)
+
+  \item[Proposition 30:] $S$ is not connected if and only if there exists a nonempty proper subset $H$ of $S$ such that $\text{Bd } H = \emptyset$.
+
+  \item[Proposition 31:] If $H$ is connected, then so is $H \cup H'$ where $H'$ is in $\overline{H} - H$.
+
+  \item[Proposition 32:] If each of $H$ and $K$ is connected and $H \cap K \neq \emptyset$, then $H \cup K$ and $H \cap K$ are connected.
+
+  \item[Definition 33:] A collection $G$ of points sets is \emph{coherent} if $G$ is not the union of two nonempty subcollections $E$ and $F$ such that $E^* \cap F^* = \emptyset$. ($E^* = \cup \{ H: H \in E \}$)
+
+  \item[Proposition 34:] If $G$ is a coherent collection of connected sets, then $G^*$ is connected.
+
+  \item[Proposition 35:] If $C$ is a connected set and $G$ is a collection of connected sets no member of which is separated from $C$, then $C \cup G^*$ is connected.
+
+  \item[Corollary 35.1:] If $C$ is connected and $G$ is a collection of connected sets such that $C \cap H \neq \emptyset$ for each element $H$ of $G$, then $C \cup G^*$ is connected.
+
+  \item[Corollary 35.2:] $R^n$ (Euclidean $n$-space) is connected.
+
+  \item[Definition 36:] A collection $G$ of open sets is an \emph{open covering} of a set $H$ if $H$ is a subset of $G^*$.
+
+  \item[Definition 37:] A set $H$ is \emph{bicompact} if each open covering of $H$ has a finite subcovering.
+
+  \item[Proposition 38:] The unit interval $[0,1]$ (with the standard topology) is bicompact.
+
+  \item[Proposition 39:] A closed subset of a bicompact space is bicompact. The union of a finite family of bicompact subsets of a space is bicompact.
+
+  \item[Corollary 39.1:] The bicompact subsets of $R^1$ are precisely the closed sets with finite diameters.
+
+  \item[Definition 40:] A family of sets has the \emph{finite intersection property} (f.i.p) provided each of its finite subfamilies has nonempty intersection.
+
+  \item[Proposition 41:] A space is bicompact if and only if each family of closed sets having the f.i.p. has nonempty intersection.
+
+  \item[Proposition 42:] A subset of $R^n$ is bicompact if and only if it is closed and has finite diameter.
+
+  \item[Definition 43:] A topological space is \emph{regular} if for each point $p$ and each neighborhood $N$ of $p$, there exists a neighborhood $M$ of $p$ such that $\overline{M}$ is a subset of $N$.
+
+  \item[Proposition 44:] $S$ is regular if and only if for each point $p$ and each closed set $H$ not containing $p$, there exist open sets $V$ and $W$ such that $H \subset V \subset S - W \subset S - \{ p \}$.
+
+  \item[Definition 45:] A point set $K$ is \emph{nowhere dense} if $\overline K$ does not contain a non-empty open set.
+
+  \item[Proposition 46:] No bicompact regular space is the union of countably many nowhere dense sets.
+
+  \item[Definition 47:] $S$ is a \emph{Hausdorff space} if for each pair $x,y$ of distinct points of $S$, there exist disjoint open sets $X$ and $Y$ such that $x$ belongs to $X$ and $y$ belongs to $Y$.
+
+  \item[Proposition 48:] In a Hausdorff space, a set is bicompact if and only if it is closed.
+
+  \item[Proposition 49:] A space is Hausdorff if and only if it is regular.
+
+  \item[Definition 50:] $S$ is \emph{normal} if for each pair $E,F$ of closed disjoint sets, there exist open sets $V$ and $W$ such that $E \subset V \subset S - W \subset S - F$.
+
+  \item[Proposition 51:] Every bicompact Hausdorff space is regular.
+
+  \item[Proposition 52:] Ever regular bicompact space is normal.
+
+  \item[Definition 53:] A space is \emph{Lindelof} if each open covering of the space has a countable subcovering.
+
+  \item[Proposition 54:] Every Lindelof space is normal.
+
+  \item[Definition 55:] A \emph{component} of a point set $X$ is a connected subset of $X$ that is not a proper subset of a connected subset of $X$.
+
+  \item[Proposition 56:] Each point of a set $H$ belongs to one and only one component of $H$.
+
+  \item[Proposition 57:] Is each component of an open set open?
+
+  \item[Definition 58:] The \emph{$p$-component} of a set $X$ is the component of $X$ that contains $p$.
+
+  \item[Proposition 59:] The $p$-component of a point set $X$ is the union of all connected subsets of $X$ that contain $p$.
+
+  \item[Proposition 60:] If $H$ and $K$ are connected sets, $K \subset H$, and $H - K = A \cup B$ where $A,B$ are separated sets, then $A \cup K$ is connected.
+
+  \item[Question 61:] Is $K \cup C$ connected when $C$ is a component of $H - K$?
+
+  \item[Definition 62:] A \emph{continuum} is a bicompact connected Hausdorff space.
+
+  \item[Proposition 63:] Every nondegenerate continuum is uncountable.
+
+  \item[Proposition 64:] Every nondegenerate connected regular Hausdorff space is uncountable.
+
+  \item[Question 65:] Does there exist a nondegenerate countable connected Hausdorff space?
+
+  \item[Proposition 66:] No continuum is the union of a countable ($>1$) family of nonempty disjoint closed sets.
+
+  \item[Proposition 67:] Suppose $p$ and $q$ are distinct points of a bicompact Hausdorff space $M$, and suppose $\{ H_a: a \in A \}$ is an indexed collection of closed sets in $M$ such that for each $a \in A$, $H_a \subset H_{a+1}$, and $H_a$ cannot be separated between $p$ and $q$. Then $\cap \{ H_a: a \in A \}$ cannot be separated between $p$ and $q$.
+
+  \item[Definition 68:] A continuum $C$ is \emph{irreducible between two disjoint sets} if $C$ intersects each set and no proper subcontinuum of $C$ intersects both sets.
+
+  \item[Proposition 69:] Each pair of points of a continuum lies in a subcontinuum irreducible between the two points.
+
+  \item[Definition 70:] A continuum $H$ is \emph{irreducible about a set} $K$ if $H$ contains $K$ and no proper subcontinuum of $H$ contains $K$.
+
+  \item[Proposition 71:] If $K$ is any subset of a continuum $C$, then $C$ contains a subcontinuum irreducible about $K$.
+
+  \item[Proposition 72:] Suppose $X$ is a bicompact Hausdorff space, and $p$ and $q$ belong to different components of $X$. Then there exist separated sets $H$ and $K$ such that $p$ belongs to $H$, $q$ belongs to $K$, and $X = H \cup K$.
+
+  \item[Question 73:] Does Proposition 72 hold when $X$ is not bicompact?
+
+  \item[Proposition 74:] Suppose $C$ is a continuum, and $D$ is an open proper subset of $C$ that contains a point $p$. Then $\text{Bd } D$ contains a limit point of the $p$-component of $D$.
+
+  \item[Definition 75:] Suppose that $\{ X_n \}$ is a sequence of subsets of $S$. The set of all points $x$ in $S$ such that every open set containing $x$ intersects all but a finite number of elements of $\{ X_n \}$ is called the \emph{limit inferior} of $\{ X_n \}$ ($\text{lim inf } X_n$). The set of all points $y$ in $S$ such that every open set containing $y$ intersects infinitely many elements of $\{ X_n \}$ is called the \emph{limit superior} of $\{ X_n \}$ ($\text{lim sup } X_n$).
+
+  \item[Proposition 76:] $\text{lim inf } X_n = \text{lim sup } X_n$.
+
+  \item[Proposition 77:] $\text{lim sup } X_n \neq \emptyset$.
+
+  \item[Proposition 78:] If $\text{lim inf } X_n \neq \emptyset$, then $\text{lim sup } X_n \neq \emptyset$.
+
+  \item[Proposition 79:] $\text{lim inf } X_n = \text{lim inf } \overline{X_n}$ and $\text{lim sup } X_n = \text{lim sup } \overline{X_n}$.
+
+  \item[Proposition 80:] $\text{lim inf } X_n$ and $\text{lim sup } X_n$ are both closed sets.
+
+  \item[Proposition 81:] If $\{ X_n \}$ is a sequence of connected sets in a continuum, and if $\text{lim inf } X_n$ is not empty, then $\text{lim sup } X_n$ is a continuum.
+
+  \item[Definition 82:] A function $f$ of $S$ into a space $T$ is \emph{continuous} provided that if $p$ is a point of the closure of a subset $X$ of $S$, then $f(p)$ belongs to $\overline{f[x]}$. A continuous function is sometimes called a \emph{map}.
+
+  \item[Proposition 83:] For real-valued functions of one real variable, this definition is equivalent to the standard $\delta - \epsilon$ definition.
+
+  \item[Proposition 84:] Suppose $f$ is a function of $S$ into a space $T$. Then $f$ is continuous if and only if for each open set $G$ of $T$, $f^{-1}[G]$ is open in $S$.
+
+  \item[Question 85:] Does Proposition 84 hold when the word ``open'' is everywhere replaced by the word ``closed''?
+
+  \item[Proposition 86:] Every continuous image of a connected space is connected.
+
+  \item[Proposition 87:] Every continuous image of a bicompact space is connected.
+
+  \item[Question 88:] Is the Lindelof property a continuous invariant?
+
+  \item[Proposition 89:] Every continuous image of a Hausdorff space is Hausdorff.
+
+  \item[Proposition 90:] The composition of two continuous functions is continuous.
+
+  \item[Proposition 91:] Suppose $X$ is a bicompact space, $Y$ is a Hausdorff space, and $f$ is a one-to-one map of $X$ onto $Y$. Then $f^-1$ is continuous.
+
+  \item[Question 92:] Does Proposition 91 hold when $X$ is not required to be bicompact?
+
+  \item[Proposition 93:] Every line interval $[a,b]$ is an image of $[0,1]$ under a one-to-one map.
+
+  \item[Proposition 94:] $S$ is a normal space if and only if for each pair $A, B$ of disjoint closed subsets of $S$, there exists a map $f$ of $S$ into a line interval $[a,b]$ such that $f[A] = a$ and $f[B] = b$.
+
+  \item[Proposition 95:] For each positive integer $n$, let $f_n$ be a map of $S$ into the real line. Suppose there exists a convergent series of positive numbers $\sum_{n=1}^\infty$ $M_n$, such that for each point $x$ of $S$ and each $n$, $\vert f_n(x) \vert \leq{M_N}$. Then for each point $x$ of $S$, the infinite series $\sum_{n=1}^\infty f_n(x)$ converges to a number $f(x)$, and the function $f$ so defined is continuous.
+
+  \item[Definition 96:] $S$ has the \emph{continuous extension property} provided that for each map $f$ of any closed subset $H$ of $S$ into an interval $[a,b]$, there exists a map $f^*$ of $S$ into $[a,b]$ such that $f^*(x) = f(x)$ for each point $x$ of $H$.
+
+  \item[Proposition 97:] $S$ is normal if and only if $S$ has the continuous extension property.
+
+  \item[Proposition 98:] Suppose $S$ is normal, and $f$ is a map of a closed subset $H$ of $S$ into $I^n$ (the Cartesian product of $[0,1]$ with itself $n$ times). Then there exists an extension $f^*$ of $f$ to all of $S$ (i.e., $f^*: S \rightarrow I^n$ and $f^*(x) = f(x)$ for each point $x$ of $H$).
+
+  \item[Definition 99:] A collection $C$ of open sets is a \emph{base} for $S$ if for each point $p$ of $S$, and each open set $U$ of $S$ that contains $p$, there exists an element $G$ of $C$ such that $p \in G \subset U$.
+
+  \item[Definition 100:] The \emph{Cartesian product} of the indexed collection of sets $\{ X_a : a \in A \}$ is the set of functions  $\times \{ X_a : a \in A \} =$ $\{ f: A \rightarrow \cup \{ X_a: a \in A \}$ and $f(a) \in X_a \}$.
+
+  \item[Definition 101:] The $a$-th \emph{projection map} is the function $P_a: \times \{ X_a: a \in A \} \rightarrow X_a$ such that $P_a(x) = x_a$ for every point $x$ of $\times \{ X_a: a \in A \}$.
+
+  \item[] To define the standard topology given to the Cartesian product, called the \emph{product topology}, we define the base.
+
+  \item[Definition 102:] A subset $D$ of $\times \{ X_a: a \in A \}$ belongs to $D$ if there is a finite subset $\{ a_1, a_2, \cdots , a_n \}$ of $A$, and open subsets $D_1, D_2, \cdots , D_n$ of $X_{a_1}, X_{a_2}, \cdots , X_{a_n}$, respectively, such that $D = \{ x \in \times \{ X_a: a \in A \}\ :\ x_{a_1}$ belongs to $D_i$ for $i = 1, 2, \cdots , n \}$. The collection forms a base for the product topology.
+
+  \item[Proposition 103:] If $D$ is open in $\times \{ X_a: a \in A \}$, then $P_a[D]$ is open for every $a$ belonging to $A$.
+
+  \item[Proposition 104:] A function $f: S \rightarrow \times \{ X_a: a \in A \}$ is continuous if and only if $P_af$ is continuous for each $a$ belonging to $A$.
+
+  \item[Proposition 105:] The space $\times \{ X_a: a \in A \}$ is Hausdorff if and only if each $X_a$ is a Hausdorff space.
+
+  \item[Proposition 106:] The product of two connected spaces is connected.
+
+  \item[Proposition 107:] The product of two normal spaces is normal.
+
+  \item[Proposition 108:] The product of two bicompact spaces is bicompact.
+
+  \item[Question 109:] Do Propositions 106, 107, and 108 extend to all Cartesian products?
+
+  \item[Definition 110:] A function $d: S\times S \rightarrow [0,+\infty)$ is a \emph{metric} for $S$ if for every $x$, $y$, and $z$ belonging to $S$:
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item $d(x,y) = 0$ if and only if $x = y$;
+      \item $d(x,y) = d(y,x)$; and
+      \item $d(x,y) + d(y,z) \geq d(x,z)$.
+    \end{enumerate}
+
+  \item[Definition 111:] $S$ is a \emph{metrizable space} (\emph{metric space}) if there exists a metric $d$ for $S$ such that the collection $\{ N(x,r): x$ belongs to $S$ and $r>0 \}$ is a base for the topology of $S$ where $N(x,r) = \{ y: d(x,y) < r \}$.
+
+  \item[Proposition 112:] The function $d$ (defined above) is continuous.
+
+  \item[Definition 113:] $S$ is \emph{first countable} if for each point $p$ of $S$ there exists a countable collection $C$ of open sets (each containing $p$) such that every open set in $S$ that contains $p$ also contains an element of $C$.
+
+  \item[Proposition 114:] $S$ is metrizable if and only if $S$ is first countable.
+
+  \item[Definition 115:] A set is said to be of \emph{type $G_{\delta}$} if it is the intersection of countably many open sets.
+
+  \item[Proposition 116:] Every closed subset of a metric space is of type $G_{\delta}$.
+
+  \item[Proposition 117:] $S$ is \emph{second countable} if $S$ has a countable base.
+
+  \item[Proposition 118:] Every bicompact metric space is second countable.
+
+  \item[Definition 119:] A sequence $\{ X_n \}$ is a convergent sequence if $\text{lim } \text{inf } X_n = \text{lim } \text{sup } X_n$.
+
+  \item[Proposition 120:] If $M$ is a bicompact metric space, then every sequence of subsets of $M$ has a convergent subsequence.
+
+  \item[Definition 121:] A set $D$ is a \emph{dense subset} of a set $E$ if $D \subset E \subset \overline{D}$.
+
+  \item[Definition 122:] $S$ is a \emph{separable} space if there exists a countable dense subset of $S$.
+
+  \item[Proposition 123:] A metric space is separable if and only if it is second countable.
+
+  \item[Proposition 124:] Proposition 123 holds for all spaces.
+
+  \item[Proposition 125:] Proposition 120 holds for separable metric spaces.
+
+  \item[Proposition 126:] A metric space $M$ is bicompact if and only if every infinite subset of $M$ has a limit point.
+
+  \item[Proposition 127:] Proposition 126 holds for all spaces.
+
+  \item[Proposition 128:] If every uncountable subset of a metric space $M$ has a limit point, then every uncountable subset of $M$ has a limit point.
+
+  \item[Proposition 129:] A metric space $M$ is Lindelof if and only if every uncountable subset of $M$ has a limit point.
+
+  \item[Proposition 130:] Proposition 129 holds for all spaces.
+
+  \item[Definition 131:] A sequence of points $p_i$ in a metric space $(M,d)$ is a \emph{Cauchy sequence} if for each real number $r>0$, there exists an integer $N$ such that $m,n > N$ implies $d(p_m, p_n) < r$. The metric space $(M,d)$ is \emph{complete} if each Cauchy sequence in $M$ has a limit point in $M$.
+
+  \item[Definition 132:] A \emph{homeomorphism} is a one-to-one map whose inverse is continuous.
+
+  \item[Proposition 133:] Suppose $(M_1, d_1)$ and $(M_2, d_2)$ are metric spaces, and there exists a homeomorphism of $M_1$ onto $M_2$ (i.e., $M_1$ and $M_2$ are homeomorphic). Then $(M_2, d_2)$ is complete if $(M_1, d_1)$ is complete.
+
+  \item[Proposition 134:] Every closed subspace of a complete metric space is a complete metric space (with respect to the restricted metric).
+
+  \item[Proposition 135:] Suppose $D$ is a dense type $G_{\delta}$ subset of a complete metric space $(M,d)$. Then $D$ is not the union of countably many nowhere-dense subsets of $M$.
+
+  \item[Question 136:] Is $D$ in Proposition 135 a complete metric space?
+
+  \item[Proposition 137:] The rationals are not a $G_{\delta}$ subset of $R^1$.
+
+  \item[Definition 138:] Let $\#$ denote the first uncountable ordinal, and let $[1,\#]$ denote the set of all ordinals up to and including $\#$ (similarly, $[1,\#)$ denotes those up to but not including $\#$). For every pair of ordinals $a$ and $b$ ($a < b$) in $(1,\#)$, the segment $(a, b) = \{ x: a < x < b \}$ and the sects $[1,a)$ and $(a,\#]$ are neighborhoods.
+
+  \item[Proposition 139:] If $C$ is a collection of neighborhoods that cover $[1,\#)$, then there exists $x < \#$ such that $\cup \{ G \in C: x \in G \}$ covers $[x,\#)$.
+
+  \item[Proposition 140:] Suppose $f$ is map of $[1,\#)$ into $R^1$. Then a point $x$ of $[1,\#)$ and a real number $r$ exist such that $f[ [x,\#) ] = r$.
+
+  \item[Proposition 141:] $[1,\#)$ and $[1,\#]$ are normal.
+
+  \item[Proposition 142:] $[1,\#]$ is metrizable.
+
+  \item[Proposition 143:] $[1,\#)$ is metrizable.
+
+  \item[Proposition 144:] $[1,\#]$ is bicompact.
+
+  \item[Definition 145:] A metric space $S$ is {\bf complete} if there exists a metric $k$ for $S$ such that $(S,k)$ is complete.
+
+  \item[Proposition 146:] $[1,\#)$ is bicompact.
+
+  \item[Proposition 147:] Every infinite subset of $[1,\#)$ has a limit point.
+
+  \item[Proposition 148:] The product of countably many metric spaces is metrizable.
+
+  \item[Proposition 149:] The product obtained by crossing $[0,1]$ with itself countably many times is metrizable.
+
+  \item[Proposition 150:] Proposition 148 is true if the word ``countable'' is replaced by the word ``uncountable''.
+
+  \item[Proposition 151:] Every regular second countable Hausdorff space is metrizable.
+
+\end{description}
+
+\end{document}

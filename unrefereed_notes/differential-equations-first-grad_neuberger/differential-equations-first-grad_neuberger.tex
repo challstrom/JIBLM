@@ -1,0 +1,505 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+\title{First Graduate Course in Differential Equations}
+\author{John W. Neuberger}
+\date{ }
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+
+
+\section*{Introduction}
+\markboth{Introduction}{Introduction}
+
+\pagenumbering{roman}
+
+This material is indicative of John Neuberger's typical first year graduate course in differential equations. It extends H. S. Wall's undergraduate differential equations course. Wall developed an interest in differential equations for the occasion of Ernst Hellinger's arrival as a refugee from Germany in the 1930s. Wall wanted to understand some of Hellinger's interests in order to encourage Hellinger's research revival after several years of great difficulty in Germany. 
+
+The similarity of much of this material with Courant and Hilbert's ``Methods of Mathematical Physics'' is no coincidence. Hilbert, Hellinger, and Courant were prominent figures in Göttingen's great period. Wall was a visitor for a year at Göttingen. His teacher was Van Vleck, a student of Felix Kleins at Göttingen. 
+
+I have never handed out such notes as these except after the course had finished. 
+
+Each course has its own character, and there are rather striking differences in ability levels from year to year. Some of the courses include much more numerics.
+
+
+
+\section*{Theorem sequence}
+\markboth{Theorem sequence}{Theorem sequence}
+
+\pagenumbering{arabic}
+
+\begin{description}
+
+  \item[Theorem 1:] If $M > 0$, there is $K > 0$ such that
+    \begin{equation*}
+    (M)^n/n! \leq k(1/2)^n \ \forall \ n=1,2,\cdots
+    \end{equation*}
+
+  \item[Definition 2:] Suppose each of $f, f_1, f_2, \cdots$ is a function whose domain includes $[a,b]$. The statement that $f_1, f_2, \cdots$ \emph{converges uniformly to $f$} on $[a,b]$ means that if $\epsilon > 0$, $\exists N \in Z^+$ such that if $n \geq N$, then $| f_n(t)-f(t) | < \epsilon \ \forall \ t \in [a,b]$.
+
+  \item[Theorem 3:] Suppose that $L > 0$, and each of $f_1, f_2, \cdots$ is a continuous function on $\Re$ such that
+    \begin{equation*}
+    | f_n(t) | \leq L  \left| \int_o^t|f_{n-1}| \right|  \ \forall \ n \in Z^+, t \in \Re
+    \end{equation*}
+    If $[a,b]$ is an interval, then $f_1, f_2, \cdots$ \emph{converges uniformly to $0$} on $[a,b]$.
+
+  \item[Definition 4:] Suppose that each of $f_1, f_2, \cdots$ is a function whose domain includes $[a,b]$. The statement that $\{ f_i \}_{i=1}^{\infty}$ is \emph{uniformly Cauchy} means that if $\epsilon > 0$, then $\exists N \ni$ for all $n,m \geq N$, $| f_n(t) - f_m(t) | < \epsilon$ for all $t \in [a,b]$.
+
+  \item[Theorem 5:] Suppose $f_0$ is continuous on $\Re$, each of $c$ and $b$ is a number, and each of $f_1, f_2, \cdots$ is a function on $\Re$ such that
+    \begin{equation*}
+    f_n(t) = b+\int_c^t f_{n-1} \ \forall \ t \in \Re, n \in Z^+
+    \end{equation*}
+    Show that $\{ f_i \}_{i=1}^{\infty}$ is uniformly Cauchy on $\Re$.
+
+  \item[Theorem 6:] Under the hypothesis of the previous theorem, let $f(t) = \lim_{n \rightarrow \infty}$ $f_n(t)$ for all $t \in \Re$, and show that $\{ f_i \}_{i=1}^{\infty}$ converges uniformly to $f$ on each interval $[a,d]$.
+
+  \item[Theorem 7:] Under the hypothesis of the previous theorem, there is a unique continuous function $y$ such that
+    \begin{equation*}
+    y(t) = b + \int_c^t y \ \forall \ t \in \Re
+    \end{equation*}
+
+  \item[Definition 8:] Let $E$ be the unique funtion from $\Re \to \Re$ that is its own derivative and is $1$ at $0$.
+
+  \item[Theorem 9:] Show that:
+    \begin{enumerate}[\hspace{1cm}i)]
+      \item $E(t) > 0 \ \forall \ t \in \Re$.
+      \item $E$ is increasing.
+      \item $E(t) \geq (1+t)$ if $t \geq 0$.
+      \item $E(t) E(s) = E(t+s) \ \forall \ s,t \in \Re$.
+      \item If $L=E^{-1}$, then $L(u)+L(v)=L(u v) \ \forall \ u,v > 0$.
+      \item $L'(t) = \frac{1}{t} \ \forall \ t>0$.
+    \end{enumerate}
+
+  \item[Theorem 10:] Suppose $a < c < b$, $q \in \Re$, and each of $p$ and $g$ is a continuous function on $[a,b]$. Suppose also that each of $y_0, y_1, \cdots$ is a continuous function on $[a,b]$ such that
+    \begin{equation*}
+    y_n(t) = q + \int_c^t g + \int_c^t p y_{n-1} \ \forall \ t \in [a,b]
+    \end{equation*}
+    There is a function $y$ on $[a,b]$ to which $y_1, y_2, \cdots$ converges uniformly on $[a,b]$. Moreover, $y$ is the unique continuous function $f$ on $[a,b]$ such that $f(t) = q + \int_c^t g + \int_c^t pf \ \forall \ t \in [a,b]$.
+
+  \item[Definition 11:] An \emph{integrating factor} for the ordinary differential equation $y' = py + g$ is a function $\mu$ which is never zero, such that if $\mu$ is multiplied by the differential equation, then the left-hand side of the equation can be written as the derivative of $\mu y'$.
+
+  \item[Problem 12:] Find an integrating factor for $y(c)=q$, $y'=py+g$.
+
+  \item[Problem 13:] Show that if $g$ is a continuous function on $[0,1]$, then:
+    \begin{enumerate}[\hspace{1cm}i)]
+      \item there is a unique function $y$ on $[0,1]$ such that $y(0) = 0 = y(1)$ and $-y'' = g$.
+      \item Find as nice a form for your answer as possible.
+    \end{enumerate}
+
+  \item[Note:] Study of functional analysis was born with Problem 9!
+
+  \item[Definition 14:] A \emph{metric space} $S$ is a collection of points with a distance (metric) $d$ satisfying:
+    \begin{enumerate}[\hspace{1cm}i)]
+      \item $d(x,x) = 0$
+      \item $d(x,y) > 0$ if $x \ne y$
+      \item $d(x,y) = d(y,x)$
+      \item $d(x,y) + d(y,z) \geq d(x,z)$
+    \end{enumerate}
+
+  \item[Definition 15:] A \emph{complete} metric space is a metric space, in which every Cauchy sequence has a sequential limit (in the space).
+
+  \item[Definition 16:] Let $S$ be a metric space. A function $f \ : \ S \rightarrow S$ is a \emph{contraction mapping} if $\exists 0 < \lambda < 1$ such that $d(f(x),f(y)) \leq \lambda d(x,y) \ \forall \ x,y \in S$.
+
+  \item[Theorem 17:] If $S$ is a complete metric space, $f \ : \ S \rightarrow S$ is a contraction mapping on $S$, $x_0 \in S$, and $x_n = f(x_{n-1}) \ \forall \ n=1,2,\cdots$ then $x_1, x_2, \cdots$ converges to the unique fixed point of $f$.
+
+  \item[Problem 18:] Find all non-trivial functions $y$ on $\Re$ such that
+    \begin{equation*}
+    y(0) = 0 \text{ and } y'(t) = ( (y(t)^2 )^{1/3} \ \forall \ t \in \Re
+    \end{equation*}
+
+  \item[Theorem 19:] Suppose that $g$ is a continuous function from $\Re$ to $\Re$ such that $g(t)+g(s)=g(t+s) \ \forall \ t,s \in \Re$. Then $\exists c \in \Re$ such that $g(t) = c t \ \forall \ t \in \Re$.
+
+  \item[] or
+
+  \item[Theorem 20:] Suppose $f$ is continuous from $\Re$ to $\Re$ such that $f(t) f(s) = f(t+s) \ \forall \ t,s$. Then either $f = 0$ or $\exists$ a number $c$ such that $f(t) = e^{ct} \ \forall \ t \in \Re$.
+
+  \item[Theorem 21:] Suppose $a < b$, $a \leq c \leq b$, each of $q_{11}$, $q_{12}$, $q_{21}$, $q_{22}$, $f$, and $g$ is a continuous function on $[a,b]$, and each of $r$ and $s$ is a number. There is a unique pair $u,v$ each of which is a function on $[a,b]$ such that:
+    \begin{enumerate}[\hspace{1cm}i)]
+      \item $u(c)=r$, $u'= f + q_{11}u + q_{12}v$;
+      \item $v(c)=s$, $v'= g + q_{21}u + q_{22}v$.
+    \end{enumerate}
+
+  \item[Definition 22:] A \emph{linear (vector) space}, $(S, +, \cdot)$, is a set of points $S$, together with two functions: $+\ :\ S \times S \rightarrow S$ and $\cdot\ :\ \Re \times S \rightarrow S$ such that, given $x,y \in S$ and $a,b \in \Re$:
+    \begin{enumerate}[\hspace{1cm}i)]
+      \item $x+y = y+x$
+      \item $(x+y)+z = x+(y+z)$
+      \item $\exists 0 \in S$ such that $x+0 = x$ all $x$
+      \item $(a+b)x = ax+bx$
+      \item $a(x+y) = ax+ay$
+      \item If $ax=0$, then $a=0$ or $x$ is the zero element of the set.
+    \end{enumerate}
+
+  \item[Definition 23:] A \emph{linear transformation} $T$ is a function with domain and range of a linear space such that given $x,y$ in the space, and $\alpha \in \Re$:
+    \begin{equation*}
+    Tx+Ty = T(x+y) \text{ and } \alpha Tx = T(\alpha x)
+    \end{equation*}
+
+  \item[Definition 24:] Suppose $H=(S,+,\cdot)$ is a linear space. A norm for $H$ is a function $|| \cdot ||$ such that if each of $x,y \in S$ and $\alpha \in \Re$, then:
+    \begin{enumerate}[\hspace{1cm}i)]
+      \item $||x|| > 0$ unless $x$ is the zero element in which case $||x||=0$
+      \item $||ax|| = |a| ||x||$
+      \item $||x+y|| \leq ||x||+||y||$
+    \end{enumerate}
+
+  \item[Definition 25:] A linear transformation $T$ is \emph{bounded}, provided $\exists$ a number $M \ni ||Tx|| \leq M ||x||$ for all $x$ in the domain of $T$. The smallest such number $M$ is denoted $|T|$.
+
+  \item[Definition 26:] $L(\Re^2,\Re^2)$ is the set of linear transformations from $\Re^2$ into $\Re^2$.
+
+  \item[Theorem 27:] If $a < b$, $a \leq c \leq b$, $Q\ :\ [a,b] \rightarrow L(\Re^2,\Re^2)$ is continuous, $G\ :\ [a,b] \rightarrow \Re^2$ is continuous, and $\alpha \in \Re^2$, then there is a unique function $Y$ from $[a,b] \rightarrow \Re^2$ such that:
+    \begin{equation*}
+    Y(c) = \alpha \text{ and } Y'(t)=G(t)+Q(t)Y(t) \ \forall \ t \in [a,b]
+    \end{equation*}
+
+  \item[Definition 28:] If $\begin{pmatrix} a & b \\ c & d \end{pmatrix} \in L(\Re^2,\Re^2)$, then $\left| \begin{pmatrix} a & b \\ c & d \\ \end{pmatrix} \right|$ is the least number $M$ such that
+    \begin{equation*}
+    \left|\left| \begin{pmatrix} a & b \\ c & d \end{pmatrix}  \begin{pmatrix} x \\ y \end{pmatrix} \right|\right| 
+    \leq M \left|\left| \begin{pmatrix} x \\ y \end{pmatrix} \right|\right| 
+    \ \forall \ \begin{pmatrix} x \\ y \end{pmatrix} \in \Re^2
+    \end{equation*}
+
+  \item[Note:] The greatest lower bound of all such $M$ is \emph{in} the set of all such $M$.
+
+  \item[Problem 29:] Find all functions $f$ on $[0,1]$, and all $\lambda \ne 0$ such that $f'' = - \left( \frac{1}{\lambda} \right) f$ and $f(0) = 0 = f(1)$.
+
+  \item[Note:] These eigenfunctions form a basis for the space of continuous functions on $[0,1]$, with root mean square norm: $||f|| = \sqrt{\int_0^1 f^2}$.
+
+  \item[Theorem 30:] Suppose that each of $H$ and $K$ is a normed linear space, and $A$ is a linear transformation from $H$ to $K$. Then $A$ is bounded if and only if $A$ is continuous.
+
+  \item[Theorem 31:] Suppose $a < b$, $a \leq c \leq b$, $Q$ is a continuous function from $[a,b] \rightarrow L(\Re^2,\Re^2)$, $G$ is a continuous function from $[a,b] \rightarrow L(\Re^2,\Re^2)$, and $\alpha \in L(\Re^2,\Re^2)$. Then $\exists$ a unique function $Y$ from $[a,b] \rightarrow L(\Re^2,\Re^2)$ such that 
+    \begin{equation*}
+    Y(c) = \alpha \text{ and } Y'(t) = G(t)+Q(t)Y(t) \ \forall \ t \in [a,b]
+    \end{equation*}
+
+  \item[Note:] $Q(t)Y(t)$ means the composition of the two linear transformations.
+
+  \item[Definition 32:] Suppose $a < b$, and $Q$ is a continuous function from $[a,b]$ to $L(\Re^2,\Re^2)$. Denote by $M$ the function from $[a,b] \times [a,b] \rightarrow L(\Re^2,\Re^2)$ such that if each of $s$ and $r$ is in $[a,b]$, then 
+    \begin{equation*}
+    M(r,s)=Y(r) \text{ where } Y(s)=I \text{ and } Y'(t)=Q(t)Y(t) \ \forall \ t \in [a,b]
+    \end{equation*}
+
+  \item[Note:] $M$ depends on $[a,b]$ and on $Q$. $M$ is somewhat like $E$.
+
+  \item[Theorem 33:] Suppose that $a < b$, $Q$ is a continuous function from $[a,b]$ to $L(\Re^2,\Re^2)$, and $M$ is as in the previous definition. Then
+    \begin{equation*}
+    M(r,s) M(s,q) = M(r,q) \ \forall \ r,s,q \in [a,b]
+    \end{equation*}
+
+  \item[Note:] $M(r,s) M(s,r) = M(r,r) = I$. $M(r,s)$ and $M(s,r)$ are inverses. $e^x$ and $e^{-x}$ are reciprocals. $M$ never has determinant zero, and $e^x$ is never zero.
+
+  \item[Problem 34:] Suppose that $Q(t) \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 & -1 \\ 1 & \ 0 \end{pmatrix}  \begin{pmatrix} x \\ y \end{pmatrix} \ \ \forall \ \ t \in \Re$, $\begin{pmatrix} x \\ y \end{pmatrix}$ in $\Re^2$. Find an expression for $M(t,s) \ \forall \ t,s \in \Re$.
+
+  \item[Theorem 35:] Under the hypothesis of Thereom 33, and using Definition 32, show that $M_2(s,r) = -M(s,r)Q(r) \ \forall \ r,s \in [a,b]$.
+
+  \item[Hint:] You need to show that the derivative has to exist. Establish the product rule first.
+
+  \item[Theorem 36:] Suppose $a \leq c \leq b$, $Q$ is a continuous function from $[a,b] \rightarrow L(\Re^2,\Re^2)$, $G$ is a continuous function from $[a,b] \rightarrow \Re^2$, and $Y$ is a function from $[a,b]$ to $\Re^2$ such that $Y'(t)=G(t)+Q(t)Y(t) \ \forall \ t \in [a,b]$. Then
+    \begin{equation*}
+    Y(t) = M(t,c) Y(c) + \int_c^t M(t,s)G(s) ds \ \forall \ t \in [a,b]
+    \end{equation*}
+
+  \item[Hint:] Use an integrating factor for $Y' = G + QY$ to obtain the result.
+
+  \item[Problem 37:] Find $A_1, A_2 \in L(\Re^2,\Re^2)$, $G\ :\ [0,1] \rightarrow \Re^2$, and $Q\ :\ [0,1] \rightarrow L(\Re^2,\Re^2)$, so that the problem of finding $Y\ :\ [0,1] \rightarrow \Re^2$ such that
+    \begin{equation*}
+    A_1 Y(0) + A_2 Y(1) = 0 \text{ and } Y' = G+QY
+    \end{equation*}
+    is equivalent to finding $y\ :\ [0,1] \rightarrow \Re$ such that
+    \begin{equation*}
+    y(0) = 0 = y(1) \text{ and } -y'' = g
+    \end{equation*}
+
+  \item[Theorem 38:] Suppose $A \in L(\Re^2,\Re^2)$ and $Q(t) = A \ \forall \ t \in \Re$. Then $M$, as defined in Definition 32, has the property that 
+    \begin{equation*}
+    M(t,s) = M(t-s,0) \ \forall \ t,s \in \Re
+    \end{equation*}
+    Moreover, if $T(r) = M(r,0) \ \forall \ r \in \Re$, then
+    \begin{align*}
+        T(0) & = I, \\
+    T(t)T(s) & = T(t+s) \ \forall \ t,s \in \Re \text{, and } \\
+        T(t) & = e^{tA} \ \forall \ t \in \Re
+    \end{align*}
+
+  \item[Theorem 39:] Suppose that $(a,b) \in \Re^2$, each of $\alpha$ and $\beta$ is a positive number, and $f$ is a continuous function from $[a-\alpha, a+\alpha] \times [b-\beta, b+\beta] \rightarrow \Re$. Suppose moreover that $\exists \ K > 0$ such that the following \emph{Lipschitz} condition holds:
+    \begin{equation*}
+    |f(t,x)-f(t,y)| \leq K|x-y| \ \ \forall \ \ t \in [a-\alpha, a+\alpha],\ x,y \in [b-\beta, b+\beta]
+    \end{equation*}
+    Then there is $\gamma > 0$, for which there is a unique function $y\ :\ [a-\gamma, a+\gamma] \rightarrow \Re$ such that
+    \begin{equation*}
+    y(a)=b \text{ and } y'(t)=f(t,y(t)) \ \ \forall \ \ t \in [a-\gamma, a+\gamma]
+    \end{equation*}
+
+  \item[Note:] The previous theorem is called a local existence theorem, and the argument given generalizes to $n$ dimensions.
+
+  \item[Note also:] The previous theorem might well be stated in the following way.
+
+  \item[Theorem 40:] Let $\Omega = [a-\alpha, a+\alpha] \times [b-\beta, b+\beta]$, $f$ be a continuous function with bound $B$ on $\Omega$, and for each $t \in [a-\alpha,a+\alpha]$ assume that $f$ is Lipschitz with Lipschitz constant $K$ on $[b-\beta, b+\beta]$. If $0 < \gamma < \text{min} \left\{ \frac{1}{K}, \frac{\beta}{K}, \alpha \right\}$, then there exists a unique solution to
+    \begin{equation*}
+    y(a) = b \text{ and } y' = f(t,y) \ \forall \ t \in [a-\gamma, a+\gamma]
+    \end{equation*}
+
+  \item[Theorem 41:] Suppose $a < b$, $Q\ :\ [a,b] \rightarrow L(\Re^2,\Re^2)$ is continuous, and $A_1,A_2 \in L(\Re^2,\Re^2)$. Let $M$ and $Q$ be defined from Definition 32. TFAE:
+    \begin{enumerate}[\hspace{1cm}i)]
+      \item If $G\ :\ [a,b] \rightarrow \Re^2$ is continuous, then $\exists$ unique $Y\ :\ [a,b] \rightarrow \Re^2$ such that $A_1Y(a) + A_2Y(b) = 0$, and $Y' = G + QY$.
+      \item $[A_1 + A_2 M(b,a)]^{-1}$ exists.
+    \end{enumerate}
+
+  \item[Problem 42:] Restate Problem 13 in vector and matrix notation by defining $A_1, A_2, Q, G$ and $Y$ such that i) and ii) are true \emph{and} imply the solution to 13.
+
+  \item[Theorem 43:] Suppose $A_1,A_2 \in L(\Re^2,\Re^2)$, $Q\ :\ [a,b] \rightarrow \Re$ is continuous, and $(A_1+A_2 M_Q(b,a))^{-1}$ exists. Then there exists a function $K\ :\ [a,b] \times [a,b] \rightarrow L(\Re^2,\Re^2)$ such that if $G\ :\ [a,b] \rightarrow \Re^2$ is continuous, then the unique function $Y\ :\ [a,b] \rightarrow \Re^2$ satisfying $A_1Y(a)+A_2Y(b)=0$ and $Y'=G+QY$ is given by
+    \begin{equation*}
+    Y(t) = \int_a^b K(t,s) G(s) ds \ \ \forall \ \ t \in [a,b]
+    \end{equation*}
+
+  \item[Theorem 44:] If each of $g,q\ :\ [a,b] \rightarrow \Re$ is continuous, and if $A_1,A_2 \in L(\Re^2,\Re^2)$, then there exists a unique function $y\ :\ [a,b] \rightarrow \Re$ satisfying
+    \begin{equation*}
+    y''-qy = g \text{ and } A_1 \begin{pmatrix} y(a) \\ y'(a) \end{pmatrix}  +  A_2 \begin{pmatrix} y(b) \\ y'(b) \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \eqno(*)
+    \end{equation*}
+    if and only if $(A_1 + M(b,a) A_2)^{-1}$ exists where $Q(t) = \begin{pmatrix} 0 & 1 \\ q(t) & 0 \end{pmatrix}$, $t \in [0,1]$, and $M = M_Q$. Furthermore, $y$ may be wrtten as
+    \begin{equation*}
+    y(t) = \int_a^b k(t,s) g(s) ds \ \ \forall \ \ t \in [a,b]
+    \end{equation*}
+    for some continuous function $k$ on $[a,b] \times [a,b]$.
+
+  \item[Theorem 45:] Suppose $ Q\ :\ [a,b] \rightarrow L(\Re^2,\Re^2)$ is continuous. Then 
+    \begin{equation*}
+    \text{det}(M_Q(t,s)) = e^{\int_s^t tr Q} \ \ \forall \ \ t,s \in [a,b]
+    \end{equation*}
+
+  \item[Theorem 46:] Under the hypothesis of Theorem 44,
+    \begin{equation*}
+    k(t,s) = k(s,t) \ \ \forall \ \ s,t \in [a,b] \Longleftrightarrow \text{det}A_1 = \text{det}A_2
+    \end{equation*}
+
+  \item[Note:] $k=$ one of small corners of $K$ from Theorem 43.
+
+  \item[Problem 47:] Find an inequality for $|| A_n \cdots A_1 x - B_n \cdots B_1 x || \leq \ldots$
+
+  \item[Note:] The inequality is key to a numerical process, and one gets a good error estimate with a good inequality.
+
+  \item[Problem 48:] Write a code to solve $Y'=G+QY$ for $Y \in \Re^2$.
+
+  \item[Definition 49:] Suppose $f_1, f_2, \cdots$ is a sequence of functions from $[a,b] \rightarrow \Re$. The statement that the sequence is \emph{equi-continuous} at $c$ means: $\forall \epsilon >0 \exists \delta > 0$ such that if $x \in [a,b]$ and $|x-c| < \delta$, then $|f_n(x)-f_n(c)| < \epsilon \ \forall \ n \in Z^+$.
+
+  \item[Definition 50:] Suppose $f_1, f_2, \cdots$ is a sequence of functions from $[a,b] \rightarrow \Re$. The statement that the sequence is \emph{uniformly equi-continuous} on $[a,b]$ means: $\forall \ \epsilon > 0 \ \exists \ \delta > 0$ such that if $x,c \in [a,b]$ such that $|x-c| < \delta$, then $|f_n(x)-f_n(c)| < \epsilon \ \ \forall \ \ n \in Z^+$.
+
+  \item[Definition 51:] The sequence $f_1, f_2, \cdots\ :\ [a,b] \rightarrow \Re$ is \emph{uniformly bounded} on [a,b] if $\exists M \in \Re \ni f_n(x) \leq M \ \forall \ x \in [a,b]$.
+
+  \item[Theorem 52:] ``Pointwise equi-continuous on $I$'' implies ``uniformly equi-contin-uous on $I$''.
+
+  \item[Theorem 53:] If $f_1, f_2, \cdots\ :\ [a,b] \rightarrow \Re$ is a uniformly bounded equi-continuous sequence of functions, then $\{ f_i \}_{i=1}^{\infty}$ has a uniformly convergent subsequence.
+
+  \item[Theorem 54:] Suppose $a < b$, $k$ is a continuous real valued function on $[a,b] \times [a,b]$ (like $k$ in Theorem 44). Suppose also that each of $\{ f_i \}_{i=1}^\infty$ and $\{ g_i \}_{i=1}^\infty$ is a sequence of continuous functions on $[a,b]$ such that $\{ g_i \}_1^\infty$ is uniformly bounded, and
+    \begin{equation*}
+    f_n(t) = \int_a^b k(t,s) g_n(s) ds \ \ \forall \ \ t \in [a,b],\ n \in Z^+
+    \end{equation*}
+    Then $\{ f_i \}_{i=1}^{\infty}$ is uniformly bounded and equi-continuous.
+
+  \item[Claim:] The previous two theorems have to do with compactness and kernels.
+
+  \item[Definition 55:] The function $Q\ :\ S \times S \rightarrow \Re$ is \emph{bilinear} if $\forall \ x,y,z \in S$ and $\forall \ c \in \Re$:
+    \begin{enumerate}[\hspace{1cm}i)]
+      \item $Q(x+y,z) = Q(x,z) + Q(y,z)$;
+      \item $Q(x,y+z) = Q(x,y) + Q(x,z)$;
+      \item $Q(cx,y) = cQ(x,y)$; and
+      \item $Q(x,cy) = cQ(x,y)$.
+    \end{enumerate}
+
+  \item[Definition 56:] The normed linear space $( (S,+,\cdot), || \cdot || )$ is an \emph{inner product space} if there is a bilinear function $Q\ :\ S \times S \rightarrow \Re$ such that
+    \begin{enumerate}[\hspace{1cm}i)]
+      \item $Q(x,y) = Q(y,x) \ \ \forall \ \ x,y \in S$; and
+      \item $Q(x,x) = ||x||^2 \ \ \forall \ \ x \in S$.
+    \end{enumerate}
+
+  \item[Notation:] Typically, an inner product $Q(x,y)$ is written $\langle x,y \rangle$.
+
+  \item[Theorem 57:] If $( (S,+,\cdot), || \cdot || )$ is an inner product space, then the function $Q$ above is unique.
+
+  \item[Definition 58:] Suppose $H = ( (S,+,\cdot), || \cdot || )$ is an inner product space, and $T \in L(H,H)$. The statement that $T$ is \emph{compact} means that if $x_1, x_2, \cdots$ is a bounded sequence in $H$, then $Tx_1, Tx_2, \cdots$ has a convergent subsequence.
+
+  \item[Definition 59:] If $H$ is an inner product space and $T \in L(H,H)$, then ``$T$ is \emph{symmetric}'' means $\langle Tx,y \rangle = \langle x,Ty \rangle \ \forall \ x,y \in H$.
+
+  \item[Definition 60:] If $H$ is an inner product space and $T \in L(H,H)$, then ``$T$ is \emph{non-negative}'' means $\langle Tx,x \rangle \geq 0 \ \forall \ x \in H$.
+
+  \item[Theorem 61:] If $H$ is an inner product space, $T$ is a symmetric member of $L(H,H)$, $\alpha$ and $\beta$ are distinct eigenvalues of $T$, and $x,y$ are the eigenvectors associated with $\alpha$ and $\beta$ respectively, then $\langle x,y \rangle = 0$.
+
+  \item[Theorem 62:] Suppose $H$ is an inner product space, $T$ is a symmetric member of $L(H,H)$, and $Tx = \lambda x$ for some number $\lambda$ and some $x \in H$, $x \ne 0$. If $y \in H$ and $\langle x,y \rangle = 0$, then $\langle x,Ty \rangle = 0$.
+
+  \item[Theorem 63 (Cauchy, Schwartz, Bunakowski inequality):] If $H$ is an inner product space, then
+    \begin{equation*}
+    \langle x,y \rangle ^2 \leq ||x||^2 ||y||^2 \ \ \forall \ \ x,y \in H
+    \end{equation*}
+
+  \item[Hint:] Find $t$ such that $\langle y-tx,x\rangle=0$ and rewrite.
+
+  \item[Note:] From this point forward, we will suppose $H$ is an inner product space, and $T \in L(H,H)$ is symmetric and non-negative.
+
+  \item[Definition 64:] $N_T = \inf \{ \langle Tx,x \rangle \ : \ ||x||=1 \}$.
+
+  \item[Definition 65:] The \emph{operator norm} on $T$ is denoted by $|T|$, and is the smallest number $M$ satisfying $||Tx|| \leq |M| ||x||$ for all $x \in H$. Equivalently, $|T| = \sup \{ ||Tx|| \ : \ ||x||=1 \}$.
+
+  \item[Theorem 66:] $N_T \leq |T|$.
+
+  \item[Theorem 67:] If $\lambda \in \Re$, $\lambda \ne 0$, $x \in H$, then
+    \begin{equation*}
+    ||Tx||^2 = \frac{1}{4} \left[ \left\langle T \left( \frac{\lambda x+1}{\lambda Tx} \right), \left( \frac{\lambda x+1}{\lambda Tx} \right) \right\rangle  -  \left\langle T \left( \frac{\lambda x-1}{\lambda Tx} \right), \left( \frac{\lambda x-1}{\lambda Tx} \right) \right\rangle \right]
+    \end{equation*}
+
+  \item[Hint:] Use bilinearity of inner product.
+
+  \item[Theorem 68:] $||Tx||^2 \leq \frac{N_T}{4} \left[ \left|\left| \frac{\lambda x+1}{\lambda Tx} \right|\right| ^2  +  \left|\left| \frac{\lambda x-1}{\lambda Tx} \right|\right| ^2 \right] , \ \ \forall \ \ x \in H,\ \lambda \in \Re,\ \lambda \ne 0$.
+
+  \item[Hint:] Simplify to $\frac{N_T}{2} \left[ \frac{ \lambda^2 ||x||^2 + 1 }{ \lambda^2 ||Tx|| ^2 } \right]$, and pick $\lambda$ to minimize.
+
+  \item[Theorem 69:] Show that $|T| \leq N_T$, and conclude that $|T| = N_T$.
+
+  \item[Theorem 70:] If $T$ is a compact, symmetric, non-negative member of $L(H,H)$ for some inner product space $H$, then $| T |$ is an eigenvalue of $T$.
+
+  \item[Theorem 71:] If $T$ is a compact symmetric member of $L(H,H)$, then $T$ has an eigenvalue $\lambda$ such that $|\lambda| = |T|$.
+
+  \item[Definition 72:] If $X = (S,+,\cdot)$ is a (real or complex) vector space, and $M \subset S$, the statement that $M$ is \emph{convex} means that if $x,y \in M$, then $tx+(1-t)y \in M \ \forall \ t \in [0,1]$.
+
+  \item[Definition 73:] If $X = ( (S,+,\cdot), || \cdot || )$, then ``$M \subset S$ is \emph{complete}'' means that every Cauchy sequence in $M$ converges to a point in $M$.
+
+  \item[Definition 74:] A \emph{Hilbert space} is a complete inner product space.
+
+  \item[Theorem 75:] If $H$ is an inner product space, $M$ is a complete convex subset of $H$, $x \in H$, and $x \notin M$, then there is a unique point $y$ of $M$ such that
+    \begin{equation*}
+    ||x-y|| < ||x-w|| \ \forall \ w \in M,\ w \neq y
+    \end{equation*}
+
+  \item[Hint:] Show there can't be \emph{two} points $y_1$ and $y_2$ such that $||x-y_1|| \leq ||x-w||$ for all $w \in M$ \emph{and} $||x-y_2|| \leq ||x-w||$ for all $w \in M$.
+
+  \item[Definition 76:] Suppose $H$ is an inner product space. The statement that $P$ is an \emph{orthogonal projection} on $H$ means that there is a subspace $S$ of $H$ such that if $x \in H$, then
+    \begin{equation*}
+    Px \in S \text{ and } ||x-Px|| < ||x-y|| \ \forall \ y \in S,\ y \neq Px
+    \end{equation*}
+
+  \item[Theorem 77:] Suppose $H$ is a Hilbert space. If $P$ is an orthogonal projection on $H$, then
+    \begin{enumerate}[\hspace{1cm}i)]
+      \item $P \in L(H,H)$;
+      \item $\langle Px,y \rangle = \langle x,Py \rangle \ \forall \ x,y \in H$; and
+      \item $P^2=P$.
+    \end{enumerate}
+
+  \item[Theorem 78:] Prove the converse to the previous theorem.
+
+  \item[Theorem 79:] Suppose that $H$ is an inner product space, and $T$ is a symmetric compact member of $L(H,H)$. If $\lambda \neq 0$, then the set $\{ x \in H\ :\ Tx = \lambda x \}$ is finite dimensional. Equivalently, the eigenspace of $T$ for the eigenvalue $\lambda$ is finite dimensional.
+
+  \item[Theorem 80:] Prove Bessel's identity. Suppose that $H$ is an inner product space, and $\phi_1, \phi_2, \cdots, \phi_n$ is an orthonormal sequence of members of $H$. If $c_1, c_2, \cdots, c_n \in \Re$ and $x \in H$, then
+    \begin{equation*}
+    \left|\left| x-(c_1\phi_1+\cdots+c_n\phi_n) \right|\right| ^2 = \left|\left| x \right|\right| ^2 - \sum_{i=1}^n \langle x,\phi_i \rangle ^2 + \sum_{i=1}^n ( c_i - \langle x,\phi_i \rangle )^2
+    \end{equation*}
+
+  \item[Hint:] Theorem 70.
+
+  \item[Theorem 81:] Under the hypothesis of Theorem 79, if $\lambda \rangle 0$, then there exists at most finitely many eigenvalues of $T$ with magnitude greater than $\lambda$.
+
+  \item[Note:] $T$ can have infinitely many eigenvalues.
+
+  \item[Definition 82:] The \emph{dual space} $H^*$, of the Hilbert space $H$, is the collection of all linear functionals on $H$.
+
+  \item[Theorem 83:] If $H$ is a Hilbert space, and $f \in H^*$, then there is a unique point $y \in H$ such that $f(x) = \langle x,y \rangle \ \forall \ x \in H$.
+
+  \item[Definition 84:] If $H$ is a Hilbert space, and $T \in L(H,H)$, then the \emph{null space} of $T$ is defined by $N(T) = \{ x\ :\ Tx = 0 \}$.
+
+  \item[Note:] $N(T)$ is a subspace of $H$.
+
+  \item[Theorem 85:] Suppose each of $H$ and $K$ is a Hilbert space, and $T \in L(H,K)$. Then there is a unique member $T^*$ of $L(K,H)$ such that $\langle Tx,y \rangle _K = \langle x,T^*y \rangle _H  \ \forall \ x \in H, y \in K$.
+
+  \item[Theorem 86:] Suppose each of $H$ and $K$ is a Hilbert space, and $T \in L(H,K)$. Then $N(T) = \Re(T^*)^\perp$ and $N(T)^\perp = ( R(T^*)^\perp )^\perp = \overline{R(T^*)}$.
+
+  \item[Problem 87 (Suburban Problem):] Divide a square grid into $n$ by $n$ pieces, and attach a number to each grid point along boundary. Given the values of grid points on the boundary, pick initial values for all interior grid points, and then assign values to each interior grid point by averaging its nearest neighbors. Iterate. Write a code for this elliptic problem.
+
+  \item[Problem 88:] Prove that iteration in the ``Suburban Problem'' 87 goes to a unique solution.
+
+  \item[Problem 89:] Let $u$ be a real valued continuously differentiable function on the square disk with corners at $(0,0)$ and $(1,1)$, such that $u_1 = u_2$ and $u(0,y) = f(y)$, $0 \leq y \leq 1$. Suppose $x \in (0,1]$. Find an expression for the value of $u$ at $(x,0)$.
+
+  \item[Problem 90:] Divide $[0,1]$ into $n$ pieces of equal length, and $[0,x]$ into $n$ pieces of equal length. Replace the partial differential equation in Problem 89 with a difference equation. Solve the difference equation to arrive at a value at $(x,0)$. (Discover the Bernstein polynomials).
+
+  \item[Definition 91:] Let $p \ : \ [a,b] \rightarrow \Re$ be a continuous function.
+    \begin{enumerate}[\hspace{1cm}i)]
+      \item $L_m y = y''-py$ if $y \in C^{(2)} ([a,b])$ and $y(a) = y'(a) = y(b) = y'(b) = 0$. (minimal operator)
+      \item $L_M y = y''-py$ if $y \in C^{(2)} ([a,b])$ (maximal operator)
+      \item $L y = y''-py$ if $y \in C^{(2)} ([a,b])$ and $A_1 \begin{pmatrix} y(a) \\ y'(a) \end{pmatrix} + A_2 \begin{pmatrix} y(b) \\ y'(b) \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}$, where \emph{not both} of $A_1$ and $A_2$ are zero matrices.
+    \end{enumerate}
+
+  \item[Definition 92:] Let $L^2_{[a,b]}$ denote the set of all square Lebesgue integrable functions with inner product $\langle f,g \rangle = \int_a^b f g$. Two such functions are considered equivalent if they differ only on a set of measure zero.
+
+  \item[Definition 93:] If $H$ is a Hilbert space and $T \in L(H,H)$, then the \emph{adjoint} of $T$ is the operator $T^*$ with domain all $y \in H$ for which there is $z \in H$ such that $\langle Tx,y \rangle = \langle x,z \rangle$ for all $x$ in the domain of $T$. For each such $y$, $T^*y = z$.
+
+  \item[Theorem 94:] $L_M$ and $L_m$ are adjoints.
+
+  \item[Theorem 95:] Suppose that for each $g \in C_{[a,b]} \exists$ unique $y \in \text{Dom}(L)$ such that $Ly=g$. Then $\langle Lf,g \rangle = \langle f,Lg \rangle \ \forall \ f,g \in \text{Dom}(L) \iff \text{det}(A_1) = \text{det}(A_2)$.
+
+  \item[Problem 96:] Determine $\text{Range}(L_m)$.
+
+  \item[Problem 97:] If $g \in C_{[a,b]}$, find $y \in \text{Dom}(L_M)$ such that $L_M y = g$ and $||y||$ is minimum.
+
+  \item[Hint:] Pick two numbers, $(c,d)$, such that if $y$ satisfies $y(a)=c$, $y'(a)=d$, and $y''-py = q$, then $||y||$ is minimum as compared to $||z||$ for any other solution $z$ to $z''-pz = g$.
+
+  \item[Problem 98:] Suppose for each $g \in C_{[a,b]}$, $T_g$ denotes the element $y$ as in Problem 97. Investigate $T^*$ for $T$ as in Problem 97.
+
+  \item[Theorem 99:] $H = L^2_{[0,1]} \times L^2_{[0,1]}$ is a Hilbert space under the inner product $\langle f,g \rangle = \sqrt{\int_0^1 f^2 + (f')^2}$, and $\{ \begin{pmatrix} f \\ f' \end{pmatrix} \ :\ f \in C^1_{[0,1]} \}$ is a subspace of $H$.
+
+  \item[Theorem 100:] The closure in $L_2 \times L_2$ of $\left\{ \begin{pmatrix} f \\ f' \end{pmatrix}  \ : \ f \in C^1_{[0,1]} \right\}$ is a function; i.e., no two pairs have the same first term and distinct second terms.
+
+  \item[Lemma 101:] If $\begin{pmatrix} f_1 \\ f_1' \end{pmatrix}$, $\begin{pmatrix} f_2 \\ f_2' \end{pmatrix}, \cdots$ converges in $L^2_{[0,1]} \times L^2_{[0,1]}$ to $\begin{pmatrix} f \\ g \end{pmatrix}$, then $f_1, f_2, \cdots$ converges \emph{uniformly} (everywhere) to $f$. Thus $f$ is continuous.
+
+  \item[Problem 102:] If each of $H$ and $K$ is a Banach space, if $\begin{pmatrix} r \\ s \end{pmatrix}  \in H \times K$, and if $T \in L(H,K)$, find the unique point $x \in H$ such that $\phi(x) = \frac{1}{2}  \left|\left| \begin{pmatrix} x \\ T x \end{pmatrix} - \begin{pmatrix} r \\ s \end{pmatrix} \right|\right| ^2$ is minimum.
+
+  \item[Problem 103:] Write $(py')'-qy = g$ as a system where $p$ is continuous and positive on $[a,b]$, letting $v=py'$. Generalize many of the above theorems to this setting.
+
+  \item[Problem 104 (Method of Lines on heat equation):] Solve the system numerically: $Y_i'(t) = \frac{ Y_{i+1}(t) - 2 Y_i(t) + Y_{i-1}(t) }{h^2} \ \forall \ i=1,2,\cdots,n-1, h = \frac{1}{n}$, where $Y(t) = \begin{pmatrix} y_1(t) \\ \vdots \\ y_n(t) \end{pmatrix}$.
+
+  \item[Theorem 105 (Jordan Normal Form theorem):] If $A$ is a linear transformation from a complex finite dimensional space onto itself, there always exists a basis of eigenvectors and generalized eigenvectors.
+
+  \item[Problem 106:] Suppose $A z = \lambda z$, and $z$ is a generalized eigenvector (for eigenvalue $\lambda$) of index $2$. $e^{tA} z = \cdots$.
+
+  \item[Definition 107:] Suppose that each of $X$ and $Y$ is a Banach space, $F$ is a function, the domain of $F$ is a subset of $X$, and the range of $F$ is a subset of $Y$. The statement that $F$ is \emph{Fréchet differentiable} at the point $x \in X$ means that:
+    \begin{enumerate}[\hspace{1cm}i)]
+      \item $\{ q \in X \ : \ ||q-x|| < r \} \subset \text{Dom}(F)$ for some $r \rangle 0$; and
+      \item there exists $T \in L(X,Y)$ such that if $\epsilon \rangle 0$, then $\exists \delta \rangle 0$ satisfying:
+        \begin{equation*}
+        \frac{ || F(y)-[F(x)+T(y-x)] || _Y }{ ||y-x|| } < \epsilon
+        \end{equation*}
+        provided $y \in X$ and $0 < ||y-x|| < \delta$. We denote $T$ by $F'(x)=T$, and $T$ is unique.
+    \end{enumerate}
+
+  \item[Definition 108:] Suppose that each of $X$ and $Y$ is a Banach space, $F$ is a function, the domain of $F$ is a subset of $X$, and the range of $F$ is a subset of $Y$. The statement that $F$ is \emph{twice differentiable} at $x \in X$ means that if $h \in X$ and $g_h(y) = F'(y)h \ \forall \ y \in {Dom}(F')$, then $g_h$ is differentiable at $x$. If $F$ is twice differentiable at $x$, then $F''(x)(h,k) = (g_h'(x))k \ \forall \ h,k \in X$.
+
+  \item[Note:] $F''$ is bilinear, but not necessarily linear.
+
+  \item[Theorem 109:] If the domain of $F''$ contains an open subset $\Omega \in X$, and $F''$ is continuous in an appropriate sense, then $F''(x)$ is a \emph{symmetric} bilinear function for all $x \in \Omega$.
+
+  \item[Problem 110:] Define higher Fréchet derivatives $F^{(n)}$ for $n > 2$. Prove a symmetry result under the continuity hypothesis above. Define a Taylor's formula, $F(x) = F(a) + F'(a)(x-a) + \frac{1}{2!}F''(a)(x-a)^2 + \cdots + \frac{1}{n-1}\int_0^1 F^{(n-1)}(a + s(x-a))(x-a)^{n-1} ds + \frac{1}{n}\int_0^1 F^{(n)}(a + s(x-a))(x-a)^n ds$.
+
+     If $F^{(n)}$ exists and is continuous for all $y$ such that $||y-a|| < r$, then for all $x$ such that $||x-a|| < r$, $F(x) = F(a) + F'(a)(x-a) + \frac{1}{2!}F''(a)(x-a)^2 + \cdots + \frac{1}{n-1}\int_0^1 F^{(n-1)}(a + s(x-a))(x-a)^{n-1} ds + \frac{1}{n}\int_0^1 F^{(n)}(a + s(x-a))(x-a)^n ds$.
+
+\end{description}
+
+\end{document}

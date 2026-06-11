@@ -1,0 +1,259 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Topology}
+\author{R. W. Heath}
+\date{}
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\pagenumbering{arabic}
+
+Let us assume that Space -- the set of all points -- exists, and satisfies the axioms stated below. Denote Space by $S$.
+
+\begin{description}
+
+  \item[Axiom 1:] There exist a collection of subsets of $S$ called \emph{regions} such that (1) every point lies in some region (the regions ``cover'' $S$), and (2) if the point $p$ lies in each of the regions $R_1$ and $R_2$ then there is a region $R_3$ such that $p \in R_3 \subset (R_1 \cap R_2)$.
+
+  \item[Definition:] The point $q$ is a \emph{limit point} of the point set $M$ provided that every region containing $q$ contains a point of $M$ other than $q$. The point set $a$ is \emph{closed} provided that it contains all of its limit points. The set $B$ is \emph{open} iff $S-B$ is closed.
+
+  \item[Proposition 1:] Every region is open.
+
+  \item[Proposition 2:] A (non-empty) set is open iff it is a union of regions.
+
+  \item[Proposition 3:] The union or intersection of 2 closed sets is closed.
+
+  \item[Proposition 4:] The union or intersection of 2 open sets is open.
+
+  \item[Proposition 5:] Every finite set is closed.
+
+  \item[Question 1:] How can Propositions 3 and 4 be generalized?
+
+  \item[Axiom 2:] For any two points $p$ and $q$, there are disjoint open sets $U$ and $V$ such that $p \in U$ and $q \in V$.
+
+  \item[Axiom 3:] For any point $p$ and any closed point set $M$ not containing $p$, there are disjoint open sets $Q$ and $R$ containing $p$ and $M$ respectively.
+
+  \item[Lemma:] Axiom 3 implies that if $p$ is in an open set $R$, then there exists an open set $Q$ such that $p \in Q \subset \overline{Q} \subset R$.
+
+  \item[Question 2:] Do Axioms 1 and 3 imply Axiom 2?
+
+  \item[Definition:] If $M$ is a point set, then $M'$ (the derived set of $M$) is the set of all limit points of $M$, and $\overline{M} = M \cup M'$. ($\overline{M}$ called the \emph{closer} of $M$.)
+
+  \item[Lemma:] If $p$ is a limit point of $H \cup K$, then $p$ is a limit point of at least one of $H$ and $K$.
+
+  \item[Proposition 6:] If $M$ is a point set, then $\overline{M}$ is closed.
+
+  \item[Axiom 4:] There is a distance function $d$ for $S$ such that (1) for each $x$ and $y$ in $S$, $d(x,y) = d(y,x) \geq 0$; and (2) for any point $x$ and set $M$, $\inf \{ d(x,y) | y \in M \} \equiv 0$ iff $x \in \overline{M}$.
+
+  \item[Proposition 7:] Part (2) of Axiom 4 is equivalent to: (1) for any $x$ and $y$ in $S$, $d(x,y)=0$ iff $x=y$, together with (2) for any point $p$ and positive number $c$, there is a region $R$ such that $p \in R \subset \{ x | d(x,p) < c \}$; and conversely, for any region $R$ containing the point $p$, there is a positive number $c$ such that $p \in \{ x | d(x,p) < c \} \subset R$.
+
+  \item[Notation:] The set $\{ x | d(x,p) < c \}$, sometimes called the $c$ \emph{neighborhood} of $p$ (with respect to $d$), will be denoted by $U_c(p)$.
+
+  \item[Definition:] A space $T$ is \emph{compact} iff every infinite subset of it has a limit point. The space is \emph{bicompact} iff every open cover of it has a finite subcover. A subset $M$ of $T$ is bicompact iff every cover of $M$ by a collection of open sets has a finite subcollection that also covers $M$.
+
+  \item[Proposition 8:] Every bicompact subset of $S$ is closed.
+
+  \item[Proposition 9:] $S$ is bicompact iff it is compact.
+
+  \item[Proposition 10:] Suppose that $S$ is bicompact. If for each natural number $n$, $M_n$ is a closed set and $M_1 \cap M_2 \cap \cdots \cap M_n \neq \emptyset$, then $\bigcap_{n=1}^\infty M_n \neq \emptyset$.
+
+  \item[Definition:] Let $M$ be a point set. The point $q$ is a \emph{boundary point} of $M$ provided that every region containing $q$ contains both a point of $M$ and a point of $S-M$; $p$ is an \emph{interior point} of $M$ if some region containing $p$ is contained in $M$; and $p$ is an \emph{exterior point} of $M$ if it is neither a boundary point nor an interior point.
+
+  \item[Proposition 11:] Suppose that $S$ is the union of countably many closed sets $M_!, M_2, \cdots$. Then for some natural number $n$, $M_n$ contains an interior point. (True if $S$ is bicompact -- Baire Category).
+
+  \item[Definition:] A set is \emph{countable} provided that it can be put into one-to-one correspondence with some subset of the natural numbers; otherwise it is \emph{uncountable}.
+
+  \item[Definition:] A point $q$ is a \emph{sequential limit point} of the sequence $p_1,p_2,p_3,\cdots$ provided that every region containing $q$ contains all but (at most) finitely many terms of the sequence (i.e. contains $p_n$ for all but at most finitely many values of $n$).
+
+  \item[Proposition 12:] A sequence of points of $S$ can have at most one sequential limit point (hence if $q$ is the sequential limit point of $p_1, p_2, \cdots$, we can write $\lim p_n = q$).
+
+  \item[Example 1:] The points are the real numbers and regions are all rays extending to the right (sets of the form $(a,\infty)$ for all real numbers $a$).
+
+  \item[Example 2:] Points are the real numbers, and regions are all ``left-handed sects'' (sects of the form $[a,b)$).
+
+  \item[Example 3:] Points are real numbers, and for each real number $a$, $\{ a \}$ is a region (\emph{discrete} topology). (A space in which the whole space and $\emptyset$ are the only regions is called an \emph{indiscrete} space).
+
+  \item[Example 4:] Points are the real numbers, and for each real number $x$ and each $c>0$, the set $R(x,c)$ consisting of $x$ together with all rational numbers in $(x-c,x+c)$ is a region.
+
+  \item[Example 5:] Points of the space $T$ are real numbers and $R$ is a region iff $T-R$ is either finite or empty (finite complement topology).
+
+  \item[Example 6:] $R^n$, with usual metric distance function.
+
+  \item[Example 7:] Points $-$ all sequences $x_1, x_2, x_3, \cdots$ such that $\vert x_n \vert \leq 1$. Topology is that ``generated'' by the distance function $d | x = x_1, x_2, \cdots$ and $y = y_1, y_2, \cdots$ such that $d(x,y) = \sum_{n=1}^\infty \frac{x_n - y_n}{2^n}$.
+
+  \item[Example 8:] Let $\Omega$ denote the first uncountable ordinal, and $[1,\Omega]$ denote the set of all ordinals up to and including $\Omega$ (similarly $[1,\Omega)$ denotes those up to but \emph{not} including $\Omega$). For every pair of ordinals $a$ and $b$, $a<b$, in $[1,\Omega]$, the segment $(a,b) = \{ x | a<x<b \}$ is a region. Also, the sects $[1,a)$ and $(a,\Omega]$ are regions.
+
+  \item[Problem 18:] Show that if $G$ is a collection of segments which covers $[1,\Omega)$, then there exists $x<\Omega$ such that $\bigcup G(x) = \bigcup \{ g \in G | x \in g \}$ covers $[1,\Omega)$.
+
+  \item[Problem 19:] Determine which of Axioms 1 - 4 are satisfied by $[1,\Omega]$.
+
+  \item[Problem 20:] Determine which of Axioms 1 - 4 are satisfied by $[1,\Omega)$.
+
+  \item[Problem 21:] Show that $[1,\Omega]$ is bicompact.
+
+  \item[Problem 22:] Show that $[1,\Omega)$ is compact but not bicompact.
+
+  \item[Proposition 23:] If every uncountable subset of $S$ has a limit point, then every uncountable subset contains a limit point.
+
+  \item[Definition:] A space $T$ is said to be Lindelöf provided that for every open covering $G$ of $T$, there is a countable subcover.
+
+  \item[Proposition 24:] If $S$ is $\aleph_1$-compact, then $S$ is Lindelöf.
+
+  \item[Definition:] A space $T$ is seperable provided that there is a countable subset $M$ of $T$ such the $\overline{M}=T$.
+
+  \item[Proposition 25:] If $S$ is $\aleph_1$-compact, then $S$ is seperable.
+
+  \item[Definition:] If $M$ is a subset of the space $T$, then the relative topology on $M$ is that in which $K \subset M$ is open iff, for some open set $L$ in $T$, $K = M \cap L$. In this case, we say that $K$ ``is open in $M$'' or ``is open (rel. $M$)''.
+
+  \item[Definition:] The space $T$ is hereditarily seperable provided that every subset of $T$ is seperable (in its relative topology.)
+
+  \item[Proposition 26:] If $S$ is $\aleph_1$-compact, then $S$ is hereditarily seperable.
+
+  \item[Proposition 27:] If $S$ is $\aleph_1$-compact (every uncountable subset has a limit point), then $S$ has a countable basis.
+
+  \item[Definition:] A collection $B$ of open subsets of a space $T$ is a \emph{basis} for $T$ provided that for every $p \in T$ and every open set $R$ containing $p$, there is a member $Q$ of $B$ such that $p \in Q \subset R$. A collection $C$ of open subsets of $T$ is a \emph{subbasis} for $T$ provided that the set of all finite intersections of member of $C$ is a basis for $T$.
+
+  \item[Propositions 28, 29, 30, and 31:] The converse of Prop. 24 - 27, respectively.
+
+  \item[Example 9:] Let $S$ be the space whose points are the points of $E^2$, and let a distance function $d$ for $S$ be defined as follows: for $x$ and $y$ points of $S$ such that $\text{Im }x \cdot \text{Im }y \neq 0$, $d(x,y) = \vert x-y \vert$; and for $x$ and $y$ points of $S$ such that $\text{Im }x = 0$, $d(x,y) = \vert x-y \vert + \alpha(x,y)$, where $\alpha(x,y)$ is the radian measure of the smallest non-negative angle formed by the $x$-axis and the line $xy$. Let the set of all neighborhoods $U_c(p) = \{ x | d(x,p) < c \}$ be the regions for $S$.
+
+  \item[Proposition 32:] Suppose that the space $T$ satisfies Axioms 1 - 3. Then $T$ satisfies Axiom 4 iff there exists a function $g$ from $N \times T$ into $2^T$ such that (1) for each $x$ in $T$, $\{ g_n(x) | n \in N \}$ is a local base for the topology at $x$ (i.e., any open set containing $x$ contains a $g_n(x)$ which contains $x$ for some $n$); and (2) for $x$ in $T$ and any point sequence $\langle y_n \rangle$ in $T$ such that for each $n$, $x \in g_n(y_n)$, the sequence $\langle y_n \rangle$ converges to $x$ (has $x$ as a sequential limit point).
+
+  \item[Proposition 33:] If $N$ is a countably infinite set, then there is a collection $C$ of subsets of $N$ such that (1) $C$ is uncountable; and (2) if $A$ and $B$ are two members of $C$, then $A$ and $B$ have at most finitely many points in common.
+
+  \item[Proposition 34:] The collection $C$ above can be assumed to be maximal with respect to property (2) (i.e. it can be assumed that the collection $C$ has the additional property that any subset of $N$ which does not belong to $C$ intersects some member of $C$ in infinitely many elements).
+
+  \item[Example 10:] Let the points of the space $T$ consist of the real numbers $1$, $\frac{1}{2}$, $\frac{1}{3}$, $\frac{1}{4}$, $\cdots$, and the members of a collection $C$ consist of subsets of $\{ 1, \frac{1}{2}, \frac{1}{3}, \cdots \}$ satisfying Proposition 34. Regions for $T$ will be either single points $\{ \frac{1}{n} \}$ from $\{ 1, \frac{1}{2}, \frac{1}{3}, \cdots \}$, or for each $M \in C$, the set consisting of $\{ M \} \cup \{ \frac{1}{m} \in M | m>n \}$ for some $n$.
+
+  \item[Proposition 34.5:] Example 10 satisfies Axiom 4.
+
+  \item[Definition:] A subset $M$ of a space $T$ is \emph{conditionally compact} if every infinite subset of $M$ has a limit point (in $T$).
+
+  \item[Proposition 35:]  If $M$ is a conditionally compact set in $S$, then $\overline{M}$ is compact (as a space).
+
+  \item[Proposition 35.5:] Add $S$ normal to above hypothesis.
+
+  \item[Definition:] A space $T$ is \emph{normal} iff for every pair of disjoint closed sets $M$ and $N$ in $T$, there exist disjoint open sets $R$ and $Q$ containing $M$ and $N$ respectively. (A normal $T_1$-space is called $T_4$.)
+
+  \item[Proposition 36:] If $S$ is bicompact, then $S$ is normal. (Bicompact $T_2 \Rightarrow T_3 \Rightarrow T_4$)
+
+  \item[Proposition 36.4:] If $T$ is a regular space, $M$ a bicompact subset of $T$, and $N$ a closed subset, then there exist disjoint open sets containing them.
+
+  \item[Definition:] A topological space $T$ is \emph{completely normal} provided that for any two mutually separated sets $M$ and $K$ in $T$, there exist mutually exclusive open sets $Q$ and $R$ containing $M$ and $K$ respectively.
+
+  \item[Proposition 36.5:] A topological space $X$ is completely normal iff $X$ is hereditarily normal.
+
+  \item[Proposition 36.6:] A bicompact $T_2$-space is completely normal.
+
+  \item[Proposition 36.7:] A perfectly normal topological space is completely normal.
+
+  \item[Definition:] A space $T$ is perfectly normal iff $T$ is normal and every closed set in $T$ is $G_\delta$.
+
+  \item[Proposition 36.8:] Suppose that the topological space $X$ is normal. If $M$ and $K$ are disjoint closed sets in $X$, then there exist open sets $Q$ and $R$, containing $M$ and $K$ respectively, such that $\overline{Q} \cap \overline{R} = \emptyset$.
+
+  \item[Definition:] A function $f: S \rightarrow T$ (from a space $S$ into a space $T$) is \emph{continuous at the point} $x$ of $S$ provided that for every open set $Q$ that contains $f(x)$, there is an open set $R$ containing $x$ such that $Q$ contains $f(R)$. The function $f$ is \emph{continuous} (on $S$) if it is continuous at every point of $S$.
+
+  \item[Proposition 37:] Show that the above definition is compatible with the epsilon-delta ($\epsilon-\delta$) definition in the case of metric spaces.
+
+  \item[Proposition 38:] The function $f: S \rightarrow T$ is continuous iff for every open set $Q$ in $T$, $f^{-1}(Q)$ is open in $S$.
+
+  \item[Proposition 39:] The continuous image of a bicompact set is bicompact.
+
+  \item[Proposition 40:] The continuous image of a Lindelöf $T_2$-space is a Lindelöf $T_2$-space.
+
+  \item[Proposition 36.9:] A Lindelöf $T_2$-space $T$ is hereditarily Lindelöf iff it is perfectly normal.
+
+  \item[Proposition:] A $T_3$ Lindelöf space is normal.
+
+  \item[Example 11:] Let $S_O$ denote the space whose points are the points of $E^2$ with a basis consisting of regions of the following 3 types: (i) for each $z \in E^2$ such that $\text{Im }z \neq 0$, every open disc $\{x | \vert x-z \vert , c \}$ centered on $z$ is a region; (ii) for each $z \in E^2$ such that $\text{Im }z = 0$ and $\text{Re }z$ is rational, each open disc counted on $z$ is a region; and (iii) for each $z$ such that $\text{Im }z = 0$ and $\text{Re }z$ is irrational, each ``bow-tie'' region (as defined in example 9) centered on $z$ is a region.
+
+  \item[Proposition 41:] Example 11 satisfies Axioms 1 - 4, but if $d$ is any semi-metric for $S_O$ which is compatible with the topology of $S_O$, then there is some point $p \in S_O$ and some $c>0$ such that $\{ x \in S_O | d(x,p) < c \}$ is not an open set.
+
+  \item[Example 12:] The points are the points of $E^1$, and a basis consists of: (i) for each irrational $p \in E^1$, $\{ p \}$ is a region; and (ii) every segment $(a,b)$ is a region (``ordinary topology'' at each rational, and ``discrete topology'' at each irrational).
+
+  \item[Problem 42:] What can you say about Example 12?
+
+  \item[Example 13:] The points with (i) $\{ p \}$ a region for each rational $p$; and (ii) every segment a region (Example 12 with roles of rationals and irrationals reversed).
+
+  \item[Problem 43:] What can you say about Example 13?
+
+  \item[Proposition 44:]  $[1,\Omega)$ (see Example 8) is normal.
+
+  \item[Definition:] Let $A$ be a set. The collection $C$ of ordered pairs each of whose terms belongs to $A$ is a (total) \emph{ordering} of $A$ iff (i) $C$ is transitive [ $(a,b) \in C$ and $(b,c) \in C \Rightarrow (a,c) \in C$ ]; and (ii) if each of $a$ and $b$ belongs to $A$, then exactly one of $a=b,(a,b) \in C$ and $(b,a) \in C$ is true (``trichotomy law''). The notation ``$a<b$'' denotes that $(a,b) \in C$. Where there is no confusion with the pair ``$(a,b)$'', the segment $(a,b) = \{ x \in A | a<x<b \}$ and the closed interval $[a,b] = \{ x \in A | a \leq x \leq b\}$ ( $[a,b)$ similarly etc.) The order topology on $A$ generated by $C$ is the topology for which the set of all segments is a basis, and $A$ with this topology is an ordered space (or a \emph{linearly ordered space}). A \emph{partial} ordering satisfies all of the above except that $a$ and $b$ in $A$ and $a \neq b$ does not necessarily imply that $(a,b)$ or $(b,a)$ belongs to $C$.
+
+  \item[Example 14:] The points of the space $L$ are the points of the unit square $[0,1] \times [0,1]$, and the topology of $L$ is the order topology induced by the lexigraphical ordering ($x,y$ precedes $u,v$ iff either (i) $x<u$, or (ii) $x=u$ and $y<v$).
+
+  \item[Proposition 45:] The space $L$ of Example 14 is bicompact and first countable, but not semi-metric (does not satisfy Axiom 4). Also, while every uncountable subset of $L$ has a limit point, there is an uncountable subset of $L$ which contains no limit point.
+
+  \item[Definition:] Let $T$ be a topological space (space satisfying Axiom 1), and let $M$ be a subset of $T$. The \emph{relative topology} on $M$ is the topology with respect to which a point $p$ of $M$ is a limit point of a subset $H$ of $M$ iff $p$ is a limit point of $H$ in $T$. A subset $H$ of $M$ is \emph{relatively open in} $M$ -- or ``\emph{open (rel. $M$)}'' -- iff $H$ contains no limit point of $M-H$.
+
+  \item[Proposition 46:] Let $M$ be a subset of a topological space $T$. The subset $H$ of $M$ is relatively open in $M$ iff there is an open subset $K$ of $T$ such that $H = M \cap K$.
+
+  \item[Problem 47:] Give an example of a linearly ordered space $T$ and a subset $M$ of $T$ such that the relative topology on $M$ is not the order topology generated by the induced ordering on $M$.
+
+  \item[Definition:] A set $M$ is \emph{connected} provided that there do \emph{not} exist (non-empty) subsets $H$ and $K$ of $M$ such that $M = H \cup K$ and $H \cap \overline{K} = \overline{H} \cap K = \emptyset$. (Such sets $H$ and $K$ with $\overline{H} \cap K = H \cap \overline{K} =\emptyset$ are called \emph{mutually separated} sets.
+
+  \item[Proposition 48:] The set $M$ is not connected iff $M$ is the union of two disjoint (relatively) open and closed subsets.
+
+  \item[Proposition 49:] If $M$ is connected, then so is $\overline{M}$.
+
+  \item[Proposition 50:] If each of $M$ and $K$ is connected, then so is each of $M \cup K$ and $M \cap K$.
+
+  \item[Definition:] A \emph{continuum} is a closed and connected set (in other places, you may see the added restriction of bicompactness).
+
+  \item[Proposition 51:] If $A$ is a connected set and $G$ is a collection of connected sets each of which intersects $A$, then $A \cup G^*$ is connected.
+
+  \item[Proposition 52:] Every nondegenerate connected subset of $S$ is uncountable.
+
+  \item[Proposition 52.1:] If $C$ is a monotone collection of bicompact continua in a $T_2$-space $X$, then $\bigcap C$ is a bicompact continuum.
+
+  \item[Proposition 53.3:] If $D$ is a connected subset of a connected set $M$ and $M-D = A \cup B$ where $A$ and $B$ are mutually separated, then $A \cup D$ is connected.
+
+  \item[Definition:] A set $A$ is said to \emph{separate} the connected set $B$ if $B-A$ is not connected. The point $p$ is called a \emph{separating point} of the connected set $M$ if $M - \{ p \}$ is connected.
+
+  \item[Proposition 53:] Every nondegenerate compact continuum contains two nonseparating points.
+
+  \item[Example 15:] Let $S$ be the space whose points are the points of the closed upper half plane and for which $R$ is a region, provided that $R$ is either (i) an open disc contained in the open upper half plane, or (ii) an open disc tangent to the $X$-axis together with the point of tangency.
+
+  \item[Example 16:] Let $T$ be the space whose points are the points of the closed upper half plane, for which a distance function $d$ is defined by $d(x,y)= \vert x-y \vert$ if $(\text{Im }y) > 0$ and $d(x,y) = \vert x-y \vert - \beta(x,y)$ if $\text{Im }x \cdot \text{Im }y = 0$ and $\beta(x,y)$ is the radian measure of the smallest nonnegative angle formed by the line $xy$ and the vertical line through $x$, and let regions for $T$ be $d$-neighborhoods.
+
+  \item[Proposition 54:] The spaces $T$ and $S$ of Examples 16 and 15 respectively are homeomorphic (i.e. there is a 1-to-1 continuous $f: S \rightarrow T$ such that $f^{-1}$ is also continuous).
+
+  \item[Proposition 55:] The space $T$ satisfying Axioms 1 - 3 satisfies Axiom 4 iff there is a function $g$ from $N \times T$ into the set of all open subsets of $T$ such that (1) for each $x$ in $T$, $\{ g(n,x) | n \in N \}$ is a basis for the topology at $x$; and (2) if $x_1, x_2, x_3, \cdots$ is a point sequence in $S$ such that $\langle x_n \rangle \rightarrow y$, then for each $m$ there is an $n$ such that $y \in g(n,x_n)$.
+
+  \item[Proposition 56:] The Cartesian product of countably many metric spaces $x_i$ ($i=1,2,3,\cdots$) is metric.
+
+  \item[Definition:] If for each $a \in A$, $X_a$ is a topological space, then $\prod \{ X_a | a \in A \}$, the \emph{Cartesian product} of the spaces $X_a$, is the space whose points are the set of all functions $\{ f: A \rightarrow \bigcup_{a \in A}$ : for each $a, f(a) \in X_a \}$, and for which a sub-basis is $\{ \pi_a^{-1} (B) : B \in B_a : a \in A \}$ where $\pi_b$ is the projection function $\pi_b : \prod_{a \in A} X_a \rightarrow X_b$, $\pi_b(f) = f(b)$, and $B_b$ is a basis for $X_b$ for each $b$.
+
+\end{description}
+
+\end{document}

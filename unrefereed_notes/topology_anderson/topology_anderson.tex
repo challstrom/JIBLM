@@ -1,0 +1,392 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Topology}
+\author{Stuart Anderson}
+\date{ }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\section*{Introduction}
+\addcontentsline{toc}{section}{\numberline{}Introduction}
+\markboth{Introduction}{Introduction}
+
+\pagenumbering{roman}
+
+These are notes from a Texas-style topology course that I took from Dr. Stuart Anderson in Spring 1990 at Texas A \& M, Commerce. This was the first Texas-style course I had ever taken.
+
+The course is fairly self-contained, except as noted at the beginning. Near the end of the course, Dr. Anderson spent about a week lecturing on the Axiom of Choice, its equivalence to Zorn's Lemma and Zermelo's Theorem, and its relation to Tychonoff's Theorem.
+
+As with many Texas-style courses, the biggest challenge for the instructor is to keep all the students involved. I have observed Texas-style classes where a few students end up proving all the theorems, or where a few students never present any proofs. One way to prevent this is to split the proof of a theorem into several lemmas. This provides some easier proofs for weaker students. If all else fails, the instructor can always ask a student to have a proof ready for the next class.
+
+Finally, a set of notes for a Texas-style course should be used only as an outline for a course. The instructor should feel free to make changes to suit his class. I have never used the same set of notes twice. 
+
+Good luck. These are a great set of notes!
+
+\begin{flushright}
+James Ochoa
+\end{flushright}
+
+
+\section{Preliminaries}
+\markboth{1. Preliminaries}{1. Preliminaries}
+
+\pagenumbering{arabic}
+
+\begin{description}
+
+  \item[] Basic notation and terminology of sets and functions are assumed.
+
+  \item[Theorem 1 (DeMorgan's Laws):] Let $A$ and $B$ be subsets of the set $X$. Then
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item $X \setminus (A \bigcup B) = (X \setminus A) \bigcap (X \setminus B)$ and
+      \item $X \setminus (A \bigcap B) = (X \setminus A) \bigcup (X \setminus B)$.
+    \end{enumerate}
+
+  \item[Definition 2:] Let $I$ be an indexing set. For each $\delta \in I$, let $A_{\delta}$ be a set. We define the following two sets:
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item $\displaystyle{ \bigcup_{\delta \in I} A_{\delta} } = \{ x \ \vert \text{ there exists } \delta \in I \text{ such that } x \in A_{\delta} \}$ and
+      \item $\displaystyle{ \bigcap_{\delta \in I} A_{\delta} } = \{ x \ \vert \text{ for all } \delta \in I, x \in A_{\delta} \}$
+    \end{enumerate}
+
+  \item[Theorem 3 (Generalized DeMorgan's Laws):] Let $\{ A_{\delta} \ \vert \ \delta \in I\}$ be a collection of subsets of the set $X$. Then
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item $\displaystyle{ X \setminus (\bigcup_{\delta \in I} A_{\delta}) = \bigcap_{\delta \in I}(X \setminus A_{\delta}) }$ and
+      \item $\displaystyle{ X \setminus (\bigcap_{\delta \in I} A_{\delta}) = \bigcup_{\delta \in I}(X \setminus A_{\delta}) }$
+    \end{enumerate}
+
+  \item[Theorem 4:] Let $A$ and $B$ be subsets of the set $X$. Then
+    \begin{equation*}
+    A \setminus B = A \bigcap (X \setminus B)
+    \end{equation*}
+
+  \item[Theorem 5:] Let $f \ : \ X \rightarrow Y$ be a function, and let $A$ and $B$ be subsets of $Y$. Then
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item $f^{-1}(A \bigcup B) = f^{-1}(A) \bigcup f^{-1}(B)$,
+      \item $f^{-1}(A \bigcap B) = f^{-1}(A)\bigcap f^{-1}(B)$,
+      \item $f^{-1}(Y \setminus B) = X \setminus f^{-1}(B)$, and
+      \item $f^{-1}(A \setminus B) = f^{-1}(A) \setminus f^{-1}(B)$.
+    \end{enumerate}
+
+  \item[Theorem 6:] Let $f \ : \ X \rightarrow Y$ be a function. Let $A$ be a subset of $X$, and let $B$ be a subset of $Y$. Then
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item $A \subset f^{-1}(f(A))$,
+      \item $f(f^{-1}(B)) \subset B$, and
+      \item $f(X) \setminus f(A) \subset f(X \setminus A)$.
+    \end{enumerate}
+
+\end{description}
+
+
+
+\section{Theorem Sequence}
+\markboth{2. Theorem Sequence}{2. Theorem Sequence}
+
+\begin{description}
+
+  \item[Definition 7:] A topological space $(X,\tau)$ is a set $X$ and a family of sets $\tau$ satisfying the following three conditions:
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item the empty set $\emptyset$, and $X$, are members of $\tau$;
+      \item if $A$ and $B$ are in $\tau$, then $A \bigcap B$ is in $\tau$; and
+      \item if $I$ is an indexing set, and $A_{\delta}$ is in $\tau$ for each $\delta$ in $I$, then $\bigcup_{\delta \in I} A_{\delta}$ is in $\tau$.
+    \end{enumerate}
+    The members of $\tau$ are called \emph{open sets} and $\tau$ is called the \emph{topology on} $X$.
+
+  \item[Definition 8:] Let $(X,\tau)$ be a topological space. A subset $A$ of $X$ is called a \emph{closed set} if $X \setminus A$ is open.
+
+  \item[Theorem 9:] The union of finitely many closed sets is closed. The intersection of an arbitrary family of closed sets is closed.
+
+  \item[Theorem 10:] For any topological space $(X, \tau)$, the sets $\emptyset$ and $X$ are closed.
+
+  \item[Theorem 11:] Let $A$ be a subset of $X$. Then $A$ is open if and only if for each $x$ in $A$, there is an open set $O_{x}$ such that $x$ is a member of $O_{x}$ and $O_{x}$ is a subset of $A$.
+
+  \item[Definition 12:] Let $(X,\tau)$ be a topological space, and let $A$ be a subset of $X$. The \emph{interior} of $A$, notated $\text{int} (A)$, is the union of all open subsets of $A$. The \emph{exterior} of $A$, notated $\text{ext} (A)$, is the union of all open sets not intersecting $A$.
+
+  \item[Theorem 13:] The interior and exterior operators satisfy the following:
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item $\text{int} (\emptyset) = \emptyset$ and $\text{ext} (\emptyset) = X$,
+      \item $\text{int} (X) = X$ and $\text{ext} (X) = \emptyset$,
+      \item $\text{int} (\text{int} (A)) = \text{int} (A)$,
+      \item $\text{int} (A \bigcap B) = \text{int} (A) \bigcap \text{int} (B)$,
+      \item $\text{ext} (A \bigcup B) = \text{ext} (A) \bigcup \text{ext} (B)$,
+      \item $\text{int} (A) \subseteq A$ and $\text{ext} (A) \subseteq X \setminus A$, and
+      \item if $A \subseteq B$, then $\text{int} (A) \subseteq \text{int} (B)$ and $\text{ext} (B) \subseteq \text{ext} (A)$.
+    \end{enumerate}
+
+  \item[Definition 14:] Let $x$ be a member of $X$, and let $A$ be a subset of $X$. Then $x$ is said to be a \emph{boundary point} of $A$ if every open set containing $x$ intersects both $A$ and $X \setminus A$. The set of all boundary points of $A$, notated $\partial A$, is called the \emph{boundary} of $A$.
+
+  \item[Theorem 15:] For every subset $A$ of $X$, the sets $\text{int} (A)$, $\text{ext} (A)$, and $\partial A$, are mutually disjoint and their union is $X$. Moreover, $\text{int} (A)$ and $\text{ext} (A)$ are open sets, and $\partial A$ is a closed set.
+
+  \item[Theorem 16:] A set $A$ is closed if and only if $\partial A \subseteq A$. A set $A$ is open if and only if $\partial A \subseteq X \setminus A$.
+
+  \item[Definition 17:] The \emph{closure} of a set $A$, notated $\overline{A}$, is the intersection of all closed sets containing $A$.
+
+  \item[Theorem 18:] A set $A$ is closed if and only if $\overline{A}=a$.
+
+  \item[Theorem 19:] If $A$ is a set, then $\overline{A} = \text{int} A \bigcup \partial A$.
+
+  \item[Theorem 20:] The closure operator satisfies the following:
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item $\overline{\emptyset} = \emptyset$ and $\overline{X}=X$;
+      \item $A \subseteq \overline{A}$;
+      \item $\overline{\overline{A}} = \overline{A}$;
+      \item $\overline{A \bigcup B} = \overline{A} \bigcup \overline{B}$; and
+      \item if $A \subseteq B$, then $\overline{A} \subseteq \overline{B}$.
+    \end{enumerate}
+
+  \item[Theorem 21:] A point $x$ is in $\overline{A}$ if and only if every open set containing $x$ intersects $A$.
+
+  \item[Definition 22:] A point $x$ is a \emph{limit point} (also called \emph{cluster point} or \emph{accumulation point}) of a set $A$ if every open set containing $x$ contains a point of $A$ different from $x$. The derived set of a set $A$, notated $A'$, is the set of all limit points of $A$.
+
+  \item[Theorem 23:] A set $A$ is closed if and only if $A' \subseteq A$.
+
+  \item[Theorem 24:] For any set $A$, $\overline{A} = A \bigcup A'$.
+
+  \item[Definition 25:] Let $\tau$ and $\sigma$ be topologies on $X$. We say that $\tau$ is \emph{finer} (or \emph{larger}) than $\sigma$ if $\sigma \subseteq \tau$. We say that $\tau$ is \emph{coarser} (or \emph{smaller}) than $\sigma$ if $\tau \subseteq \sigma$. If $\tau \subseteq \sigma$ or $\sigma \subseteq \tau$, then the topologies are said to be \emph{comparable}. Otherwise, they are \emph{not comparable}.
+
+  \item[Definition 26:] A family $\mathcal{B}$ of subsets of a set $X$ is a base for a topology on $X$ if the following two conditions are satisfied:
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item for each $x$ in $X$, there is a $B \in \mathcal{B}$ such that $x \in B$; and
+      \item if $A$ and $B$ are in $\mathcal{B}$ and $x \in A\bigcap B$, then there is a $C$ in $\mathcal{B}$ such that $x \in C$ and $C \subseteq A \bigcap B$.
+    \end{enumerate}
+
+  \item[Theorem 27:] Let $\mathcal{B}$ be a base for a topology on a set $X$. Let
+    \begin{equation*}
+    \tau = \{ U \ \vert \ U \text{ is the union of members of } \mathcal{B} \}
+    \end{equation*}
+    Then $\tau$ is a topology on $X$.
+
+  \item[Definition 28:] The topology $\tau$ defined in Theorem 27 is called the \emph{topology generated by} $\mathcal{B}$.
+
+  \item[Theorem 29:] The topology generated by the base $\mathcal{A}$ is finer than the topology generated by the base $\mathcal{B}$ if and only if for any $B \in \mathcal{B}$ and any $x \in B$, there exists an $A \in \mathcal{A}$ such that $x \in A$ and $A \subseteq B$.
+
+  \item[Theorem 30:] A family $\mathcal{B}$ of subsets of $X$ is a base for a given topology $\tau$ on $X$ if and only if the following two conditions are true:
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item for each $U$ in $\tau$ and $x \in U$, there is a $B \in \mathcal{B}$ such that $x \in B$ and $B \subseteq U$, and
+      \item $\mathcal{B} \subseteq \tau$.
+    \end{enumerate}
+
+  \item[Problem 31: (double-check this one!)] Let $X$ be a set. Prove or disprove the following statements.
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item If $I$ is a set and $\{ \tau _{\delta} \ \vert \ \delta \in I \}$ is a collection of topologies on $X$, then $\displaystyle{ \bigcap_{\delta \in I} \tau_{\delta} }$ is a topology on $X$.
+      \item If $\tau$ and $\sigma$ are topologies on $X$, then $\tau \bigcup \sigma$ is a topology on $X$.
+      \item If $\{ \tau_{\delta} \ \vert \ \delta \in I \}$ is a collection of topologies on $X$, then there exist unique topologies $\tau$ and $\sigma$ on $X$ such that $\tau \subseteq \tau_{\delta} \subseteq \sigma$ for all $\delta \in I$.
+    \end{enumerate}
+
+  \item[Definition 32:] A \emph{metric space} $(X,d)$ is a set $X$ together with a function $d  \ : \ X \times X  \rightarrow \Re$ which satisfies the following conditions:
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item $d(x,y) \geq 0$ for all $x,y \in X$;
+      \item $d(x,y) = 0$ if and only if $x=y$;
+      \item $d(x,y) = d(y,x)$ for all $x,y \in X$; and
+      \item $d(x,y) \leq d(x,z)+d(z,y)$ for all $x,y,z \in X$.
+    \end{enumerate}
+    The function $d$ is called a \emph{metric} on $X$.
+
+  \item[Definition 33:] Let $(X,d)$ be a metric space. For $x \in X$ and $r>0$, the set $B(x,r) = \{ y \ \vert \ y \in X \text{ and } d(x,y)<r \}$ is called the \emph{$r$-neighborhood} (\emph{$r$-ball}) about $x$.
+
+  \item[Theorem 34:] Let $(X,d)$ be a metric space. The collection of all sets $B(x,r)$ such that $x \in X$ and $r>0$, is a base for a topology on $X$.
+
+  \item[Definition 35:] The topology generated by $r$-neighborhoods in Theorem 34 is called the \emph{metric topology} on $X$ generated by $d$.
+
+  \item[Definition 36:] A topological space $(X,\tau)$ is called \emph{metrizable} if there is a metric $d$ on $X$ such that the metric topology on $X$ generated by $d$ is $\tau$.
+
+  \item[Theorem 37:] Let $(X,\tau)$ be a topological space, and $Y \subseteq X$. Let $\tau_{Y} = \{ Y \bigcap U \ \vert \ U \in \tau \}$. Then $\tau_{Y}$ is a topology on $Y$.
+
+  \item[Definition 38:] The topological space $(Y, \tau_{Y})$ in Theorem 37 is called the \emph{relative} (or \emph{induced}) \emph{topology} on $Y$. Sets in $\tau_{Y}$ are called \emph{open in} $Y$ or \emph{open relative to} $Y$. Similar terminology is used for closed sets.
+
+  \item[Theorem 39:] Let $(Y, \tau_{Y})$ be a subspace of $(X,\tau)$ and $A \subseteq Y$. Then
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item $A$ is $\tau_{Y}$-closed if and only if $A = Y \bigcap F$, where $F$ is a $\tau$-closed subset of $X$;
+      \item a member $x$ of $Y$ is a $\tau_{Y}$-limit point of $A$ if and only if $x$ is a $\tau$-limit point of $A$;
+      \item the $\tau_{Y}$-closure of $A$ is the intersection of $Y$ and the $\tau$-closure of $A$; and
+      \item the intersection of $Y$ and the $\tau$-interior of $A$ is a subset of the $\tau_{Y}$-interior of $A$.
+    \end{enumerate}
+
+  \item[Theorem 40:] Let $(Y, \tau_{Y})$ be a subspace of $(X,\tau)$ and $A \subseteq Y$. Then
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item if $A$ is closed in $Y$ and $Y$ is closed in $X$, then $A$ is closed in $X$; and
+      \item if $A$ is open in $Y$ and $Y$ is open in $X$, then $A$ is open in $X$.
+    \end{enumerate}
+
+  \item[Definition 41:] A topological space $(X,\tau)$ is \emph{connected} if $X$ is not the union of two nonempty disjoint open sets. A subset $Y$ of $X$ is connected if $(Y, \tau_{Y})$ is connected.
+
+  \item[Theorem 42:] The space $X$ is connected if and only if the only subsets of $X$ which are both open and closed are $\emptyset$ and $X$.
+
+  \item[Theorem 43:] Let $\{ A_{\delta} \ \vert \ \delta \in I \}$ be a collection of subsets of the set $X$. If $A_{\alpha} \bigcap A_{\beta} \neq \emptyset$, then $\displaystyle{ \bigcup_{\delta \in I} A_{\delta} }$ is connected.
+
+  \item[Theorem 44:] Let $A$ be a subset of $X$. If $A$ is connected and $A \subseteq B \subseteq \overline{A}$, then $B$ is connected.
+
+  \item[Definition 45:] Let $A$ and $B$ be subsets of $X$. We say that $A$ and $B$ are \emph{separated} if $A \bigcap \overline{B} = \overline{A} \bigcap B = \emptyset$.
+
+  \item[Theorem 46:] If $A$ and $B$ are both closed or both open, then the sets $A \setminus B$ and $B \setminus A$ are separated sets.
+
+  \item[Theorem 47:] A space $X$ is connected if and only if $X$ is not the union of two nonempty separated sets.
+
+  \item[Definition 48:] A nonempty subset $C$ of $X$ is said to be a \emph{component} of $X$ if
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item $C$ is connected, and
+      \item if $A$ is any connected subset of $X$ and $A \bigcap C \neq \emptyset$, then $A \subseteq C$.
+    \end{enumerate}
+    If $x$ is a member of $X$ and $C$ is the component of $X$ such that $x \in C$, then we write $C=C(x)$.
+
+  \item[Theorem 49:] Let $x$ be a member of $X$. Then the component $C(x)$ is the union of all connected subsets of $X$ containing $x$.
+
+  \item[Theorem 50:] Let $(X, \tau)$ be a topological space. Then
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item each component of $X$ is closed, and
+      \item if $A$ and $B$ are distinct components of $X$, then $A$ and $B$ are separated.
+    \end{enumerate}
+
+  \item[] We will accept the following theorem without proof.
+
+  \item[Theorem 51:] The components of $X$ form a partition of $X$ into maximal connected subsets.
+
+  \item[Definition 52:] A space $X$ is \emph{locally connected} if it has a basis consisting of connected sets.
+
+  \item[Theorem 53:] If $X$ is locally connected, then the components of open sets are open.
+
+  \item[Theorem 54:] A space $X$ is locally connected if and only if for each $x$ in $X$ and each neighborhood $U$ of $x$, there exists an open connected set $V$ such that $x \in V$ and $V \subseteq U$.
+
+  \item[Definition 55:] Let $(X,\tau)$ and $(Y,\sigma)$ be topological spaces, $f \ : \ X \rightarrow Y$ be a function, and $x$ be a member of $X$. We say that $f$ is \emph{continuous} at $x$ if the inverse image of every open set containing $f(x)$ is an open set containing $x$. That is, $f$ is continuous at $x$ if for each open set $V$ containing $f(x)$, there is an open set $U$ such that $x \in U$ and $f(U) \subseteq V$. We say that the function $f$ is continuous if $f$ is continuous at every point in $X$.
+
+  \item[Theorem 56:] Let $f \ : \ (X,\tau) \rightarrow (Y,\sigma)$. The following six conditions are equivalent:
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item $f$ is continuous,
+      \item the inverse image of each open subset of $Y$ is open in $X$,
+      \item the inverse image of each closed subset of $Y$ is closed in $X$,
+      \item the inverse image of each member of a base for $\sigma$ is open in $X$,
+      \item for every subset $A$ of $X$, $f(\overline{A}) \subseteq \overline{f(A)}$, and
+      \item for every subset $B$ of $Y$, $\overline{f^{-1}(B)} \subseteq f^{-1}(\overline{B})$.
+    \end{enumerate}
+
+  \item[Definition 57:] A function $F \ : \ (X,\tau) \rightarrow (Y,\sigma)$ is a homeomorphism if $f$ is one-to-one (notated $1-1$) and onto, and both $f$ and $f^{-1}$ are continuous. In this case, $(X,\tau)$ and $(Y,\sigma)$ are said to be topologically equivalent. Any property which when possessed by a space is possessed by all homeomorphic images of that space, is called a \emph{topological property} or a \emph{topological invariant}.
+
+  \item[Theorem 58:] If $X$ and $Y$ are topological spaces and $f$ is a $1-1$ function from $X$ onto $Y$, then the following are equivalent:
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item $f$ is a homeomorphism;
+      \item if $G$ is a subset of $X$, then $f(G)$ is open in $Y$ if and only if $G$ is open in $X$;
+      \item if $F$ is a subset of $X$, then $f(F)$ is closed in $Y$ if and only if $F$ is closed in $X$; and
+      \item if $E$ is a subset of $X$, then $f(\overline{E}) = \overline{f(E)}$.
+    \end{enumerate}
+
+  \item[Theorem 59:] Let $X$, $Y$, and $Z$ be topological spaces $f \ : \ X \rightarrow Y$ and $g \ : \ Y \rightarrow G$. If $f$ and $g$ are continuous, then $g \circ f \ : \ X \rightarrow Z$ is continuous.
+
+  \item[Theorem 60:] If $A$ is a subset of $X$ and $f \ : \ X \rightarrow Y$ is continuous, then $f|_{A} \ : \ A \rightarrow Y$ is continuous.
+
+  \item[Theorem 61:] If $X = A \bigcup B$ where $A$ and $B$ are both open (or both closed) in $X$, and $f \ : \ X \rightarrow Y$ is a function such that both $f|_{A}$ and $f|_{B}$ are continuous, then $f$ is continuous.
+
+  \item[Theorem 62:] The continuous image of an connected set is connected. That is, if $X$ is connected and $f \ : \ X \rightarrow Y$ is continuous, then $f(X)$ is connected.
+
+  \item[Definition 63:] $\ $
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item A space $(X,\tau)$ is called a \emph{$T_{0}$-space} if for each pair of distinct members of $X$, there is an open set $U$ containing one of the members but not the other.
+      \item A space $(X,\tau)$ is called a \emph{$T_{1}$-space} if for each pair of distinct members $x$ and $y$ of $X$, there is an open set $U$ containing $x$ but not $y$.
+      \item A space $(X,\tau)$ is called a \emph{Hausdorff $(T_{2})$ space} if for each open pair of members $x$ and $y$ in $X$, there exist disjoint open sets $U$ and $V$ such that $x \in U$ and $y \in V$.
+      \item A space $(X,\tau)$ is called \emph{regular} if for each closed subset $K$ of $X$ and $x$ in $X$, there exist disjoint open sets $U$ and $V$ such that $K \subseteq V$ and $x \in V$.
+      \item A space is called a \emph{$T_{3}$-space} if it is both regular and $T_{1}$.
+      \item A space $(X,\tau)$ is called \emph{normal} if for each pair $E$ and $F$ of disjoint closed subsets of $X$, there exist disjoint open sets $U$ and $V$ such that $E \subseteq U$ and $F \subseteq V$.
+      \item A space is called a \emph{$T_{4}$-space} if it is both normal and $T_{1}$.
+    \end{enumerate}
+
+  \item[Theorem 64:] A space $(X,\tau)$ is a $T_{1}$-space if and only if singleton sets are closed.
+
+  \item[Theorem 65:] If $(X,\tau)$ is a Hausdorff space, then
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item each finite set is closed; and
+      \item $x$ is a limit point of a subset $A$ of $X$ if and only if each open set containing $x$ contains infinitely many members of $A$.
+    \end{enumerate}
+
+  \item[Definition 66:] A function $f \ : \ (X,\tau) \rightarrow (Y,\sigma)$ is said to be \emph{open} (respectively closed) if the image of each open (respectively closed) set in $X$ is open (respectively closed) in $Y$.
+
+  \item[Theorem 67:] If $(X,\tau)$ is Hausdorff and $f \ : \ (X,\tau) \rightarrow (Y,\sigma)$ is a closed, one-to-one, and onto, then $(Y,\sigma)$ is Hausdorff.
+
+  \item[Theorem 68:] A space $(X,\tau)$ is regular if and only if for each $x$ in $X$ and each open set $U$ containing $x$, there exists an open set $V$ such that $x \in V$ and $\overline{V} \subseteq U$.
+
+  \item[Theorem 69:] A space $(X,\tau)$ is normal if and only if for each closed set $K$ and open set $U$ containing $K$, there exists an open set $V$ such that $K \subseteq V \subseteq \overline{V} \subseteq U$.
+
+  \item[Theorem 70:] Every metric space is normal.
+
+  \item[Theorem 71 (Urysohn's Lemma):] A space $X$ is normal if and only if for each pair of disjoint closed sets $A$ and $B$ in $X$, there exists a continuous function $f \ : \ X \rightarrow [0,1]$ such that $f(a)=0$ for all $a \in A$ and $f(b)=1$ for all $b \in B$.
+
+  \item[Theorem 72 (Tietze's Extension Theorem):] A space $X$ is normal if and only if whenever $A$ is a closed subset of $X$ and there is a continuous function $f \ : \ A \rightarrow \Re$, there exists a continuous extension of $f$ to all of $X$; that is, there is a continuous function $F \ : \ X \rightarrow \Re$ such that $F|_{A} = f$. Moreover, if $f$ is bounded, then $F$ may chosen to be bounded also.
+
+  \item[Definition 73:] A collection of sets $\Phi = \{ A_{\delta} \ : \ \delta \in \mathcal{A} \}$ is called a \emph{covering} (\emph{cover}) of $X$ if $\displaystyle{ X \subseteq \bigcup_{\delta \in \mathcal{A}} A_{\delta} }$. Any subcollection of $\Phi$ which is also a cover of $X$ is called a \emph{subcover}.
+
+  \item[Definition 74:] A cover $\Phi$ of the space $X$ is called an \emph{open cover} of $X$ if each member of $\Phi$ is an open subset of $X$.
+
+  \item[Definition 75 (need to think about this one!):] A space $(X,\tau)$ is \emph{compact} if every open cover of $X$ has a finite subcover. A subset $Y$ of $X$ is said to be compact if $(Y,\tau _{Y})$ is compact.
+
+  \item[Definition 76:] A family of sets $\Phi = \{ A_{\delta} \ \vert \ \delta \in \mathcal{A} \}$ has the \emph{finite intersection property} if the intersection of each finite subfamily of $\Phi$ is nonempty; that is, if $\Psi$ is a finite subset of $\Phi$, then $\displaystyle{ \bigcap_{\delta \in \Psi} A_{\delta} }$ is a nonempty set.
+
+  \item[Theorem 77:] A space $X$ is compact if and only if each family of closed subsets of $X$ which has the finite intersection property has a nonempty intersection; that is, if $\Phi$ is a collection of closed subsets of $X$, then $\displaystyle{ \bigcap_{\delta \in \Phi} A_{\delta} }$ is a nonempty set.
+
+  \item[Theorem 78:] The continuous image of a compact set is compact.
+
+  \item[Theorem 79:] A compact subset of a Hausdorff space is closed.
+
+  \item[Theorem 80:] Disjoint compact subsets of a Hausdorff space have disjoint neighborhoods. That is, if $A$ and $B$ are disjoint compact subsets of a Hausdorff space, then there exist disjoint open sets $U$ and $V$ such that $A \subseteq U$ and $B \subseteq V$.
+
+  \item[Definition 81:] If $X$ is compact, $Y$ is Hausdorff, and $f \ : \ X \rightarrow Y$ is continuous, then $f$ is a \emph{closed map}.
+
+  \item[Theorem 82:] A one-to-one continuous function from a compact space onto a Hausdorff space is a homeomorphism.
+
+  \item[Definition 83:] A family $\varphi$ of subsets of a set $X$ is a \emph{subbase} for a topology on $X$ if for each $x$ in $X$, there is an $S$ in $\varphi$ such that $x \in S$.
+
+  \item[Theorem 84:] Let $\varphi$ be a base for a topology on $X$. Let $\mathcal{B}$ be the set of all finite intersections of members of $\varphi$. Then $\mathcal{B}$ is a base for a topology on $X$.
+
+  \item[Definition 85:] Let $Y$ be a set and let $\{ (X_{\alpha}, \tau _{\alpha}) \ \vert \ \alpha \in A \}$ be a collection of topological spaces. For each $\alpha$ in $A$, let $f_{\alpha}$ be a function from $Y$ into $X_{\alpha}$. The smallest topology $w$ on $Y$ such that for all $\alpha$ in $A$, $f_{\alpha} \ : \ Y \rightarrow X_{\alpha}$ is continuous, is called the \emph{weak topology} on $Y$.
+
+  \item[Theorem 86:] Let $Y$ be a set and let $\{ (X_{\alpha}, \tau _{\alpha}) \ \vert \ \alpha \in A \}$ be a collection of topological spaces. For each $\alpha$ in $A$, let $f_{\alpha}$ be a function from $Y$ into $X_{\alpha}$. The family $\varphi = \{ f^{-1}(U) \ \vert \ U \in T_{\alpha} \text{ and } \alpha \in A \}$ is a subbase for the weak topology $w$ on $Y$.
+
+  \item[Definition 87:] $\ $
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item The \emph{Cartesian product} of the collection of sets $\{ X_{\alpha} \ \vert \ \alpha \in A \}$ is the set
+        \begin{equation*}
+        \prod_{\alpha \in A} X_{\alpha} = \{ x \ : \ A \rightarrow \bigcup_{\alpha \in A} \ \vert \ x(\alpha) \in X_{\alpha} \text{ for each } \alpha \in A \}
+        \end{equation*}
+      \item The set $X_{\alpha}$ is called the $\alpha$-th \emph{coordinate space}, and $x(\alpha)$ is called the $\alpha$-th \emph{coordinate} of $x$.
+      \item Let $\beta \in A$. The function $P_{\beta} \ : \ \prod_{\alpha \in A} \rightarrow X_{\beta}$ defined by $P_{\beta}(x) = x(\beta)$ is called the $\beta$-th \emph{projection function}.
+      \item The \emph{product topology} on $\prod_{\alpha \in A} X_{\alpha}$ is the weak topology determined by the functions $P_{\alpha}$.
+    \end{enumerate}
+
+  \item[Theorem 88:] Each projection function is an open function.
+
+  \item[Theorem 89:] A product space is connected if and only if each coordinate space is connected.
+
+  \item[Theorem 90 (Alexander's Sub-base Theorem):] Let $X$ be a topological space, and let $\varphi$ be a subbase for the topology on $X$. If every open cover of $X$ by members of $\varphi$ has a finite subcover, then $X$ is compact.
+
+  \item[Theorem 91 (Tychonoff's Theorem):] A product space is compact if and only if each coordinate space is compact.
+
+\end{description}
+
+\end{document}

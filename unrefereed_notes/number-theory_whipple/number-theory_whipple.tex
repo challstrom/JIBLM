@@ -1,0 +1,927 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Number Theory}
+\author{Kenneth E. Whipple}
+\date{}
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+\section*{Preface}
+\addcontentsline{toc}{section}{\numberline{}Preface}
+\markboth{Preface}{Preface}
+
+\pagenumbering{roman}
+
+These notes cover topics usually found in an introductory course in number theory. The course is divided into 12 lessons, which are listed below along with a brief description of each.
+
+\begin{description}
+  \item[Lesson 1.] \emph{Introduction}: a collection of problems from various sources, that are related to Number Theory.
+  \item[Lesson 2.] \emph{Divisors}: theorems concerning divisors and the recursion principle, with related topics.
+  \item[Lesson 3.] \emph{Remainders}: residues and solutions to linear equations.
+  \item[Lesson 4.] \emph{Greatest Common Divisors}: numerous theorems and problems using this powerful concept.
+  \item[Lesson 5.] \emph{Prime Factors}: unique factorization, and related topics.
+  \item[Lesson 6.] \emph{Congruence}: basic congruence theorems and problems.
+  \item[Lesson 7.] \emph{Chinese Reminder Theorem}: simultaneous congruence systems, and related problems.
+  \item[Lesson 8.] \emph{Pythagorean Triplets}: generating Pythagorean triplets, and related conjectures.
+  \item[Lesson 9.] \emph{Residue Systems}: using residue systems to solve modulo problems.
+  \item[Lesson 10.] \emph{Quadratic Residues}: the Legendre function, with related theorems and problems.
+  \item[Lesson 11.] \emph{Reduced Residue Systems}: integral powers, and the totient function.
+  \item[Lesson 12.] \emph{Some Prime Considerations}: problems related to the density of primes.
+\end{description}
+
+\newpage
+
+
+\section{Introduction}
+\markboth{1. Introduction}{1. Introduction}
+
+\pagenumbering{arabic}
+
+\begin{description}
+
+  \item[] The ``Theory of Numbers'' is primarily concerned with the study of integers (positive, negative, and zero). The usual properties of addition and multiplication are assumed.
+
+  \item[Problems:] The following problems, which are related to the subject of number theory, were collected from various sources such as popular magazines, puzzle books, and textbooks from other subjects. They will serve as an introduction to the subject. Many can be solved without resorting to theorems found later in the course. Others are rather difficult and may need the theorems and techniques of later lessons.
+    \begin{description}
+      \item[1.01:] A dollar and $62$ cents ($\mathdollar 1.62$) is composed from pennies, nickels, and dimes. If the number of pennies and dimes is twice the number of nickels, how many are there of each type of coin?
+      \item[1.02:] What are the last three digits of $7^{9999}$?
+      \item[1.03:] What is the remainder when $2^{999}$ is divided by $5$?, by $10$?
+      \item[1.04:] Is a cube necessarily the difference of two squares?
+      \item[1.05:] Last night I found an old bill which stated: ``$72$ turkeys $\mathdollar \_67.9\_$''. I could not read the first and last digits of the number, which was the total price of the fowls, for they had faded and were illegible (these digits have been replaced with blanks). I remember that each turkey cost the same amount. What is the total cost of the turkeys?
+      \item[1.06:] A man has a check cashed, but the teller mistakes the figures and pays cents for dollars and dollars for cents. The man then pays a bill for $\mathdollar 24.11$, after which he finds he has twice as much money as the face value of the original check. What was the face value?
+      \item[1.07:] The population of Nosuch Junction at one time was a perfect square. Later, with an increase of 100, the population was one more than a perfect square. Now, with an additional increase of 100, the population is again a perfect square. What was the original population?
+      \item[1.08:] Can the digits of the square of an integer greater than $3$ be the same?
+      \item[1.09:] What is the remainder when $3^{2n+1}+2^{n+2}$ is divided by $7$?
+      \item[1.10:] Show that if each of two two-digit numbers $AB$ and $BC$ is divisible by $7$, then $CA$ is also divisible by $7$. Is there any number besides $7$ for which this is true?
+      \item[1.11:] What day of the week was July 4, 1920 (July 4, 1980 was on Friday)?
+      \item[1.12:] In how many zeros does $100$ factorial end?
+      \item[1.13:] A magician is able to perform a perfect shuffle of a deck of cards. He has a choice of two ways to do it, depending on whether (1) the bottom card falls first, or (2) the bottom card falls second. In case (1), the bottom and top cards stay in their original positions while each of the other cards changes position. In case (2), each of the cards changes position. He needs to know how many perfect shuffles of the deck is necessary to return all of the cards to their original position, and which method of shuffling requires the fewest number of shuffles to accomplish this.
+      \item[1.14:] What is the remainder when $2^{1000}$ is divided by $7$?
+      \item[1.15:] What is the remainder of $(6790)(3988)(985) + (3081)(61955)(89)$ divided by $11$? Do not use a calculator on this problem.
+      \item[1.16:] If the remainder of $x$ divided by $7$ is $4$, what is the remainder of $6x+23$ divided by $14$?
+      \item[1.17:] If the remainder of $100x$ divided by $55$ is $35$, what is the remainder of $x$ divided by $11$?
+      \item[1.18:] If $x$ is a prime number greater than $3000$, what is the remainder of $x^2$ divided by $24$?
+      \item[1.19:] On a desert island, five men and a monkey gather coconuts all day, then sleep. The first man awakens, and decides to take his share. He divides the coconuts into five equal shares, with one coconut left over. He gives the extra one to the monkey, hides his share, and goes to sleep. Later, the second man awakens and takes his fifth from the remaining pile; he too finds one extra and gives it to the monkey. Each of the remaining three men does likewise in turn. Find the minimum number of coconuts originally present. (Hint: try $-4$ coconuts)
+      \item[1.20:] A gang of robbers stole a stack of ten-dollar bills. Nine of the members met at their hideout to divide the loot. After dividing the loot equally, they had two bills left over. Then another member of the gang showed up, so they gathered the money together and re-divided it. This time they had three bills left over. Then another member of the gang showed up. After gathering the money together and re-dividing it again, they had four bills left over. If the original number of bills stolen was less than 1000, how much money did they steal?
+      \item[1.21:] Does the infinite series $\frac{1}{2}+\frac{1}{3}+\frac{1}{5}+\frac{1}{7}+\frac{1}{11}+\cdots+\frac{1}{p_n}+\cdots$, where $p_n$ denotes the $n^{th}$ prime, converge?
+      \item[1.22:] Do there exist three points $A$, $B$, and $C$ in a plane such that if $P$ is any point in the plane, at least one of the three distances $P$ to $A$, $P$ to $B$, or $P$ to $C$, is irrational?
+      \item[1.23:] What is the remainder when the $100$th power of an integer not divisible by $5$ is divided by $125$?
+    \end{description}
+
+\end{description}
+
+
+\section{Divisors}
+\markboth{2. Divisors}{2. Divisors}
+
+\begin{description}
+
+  \item[Definitions:] The statement that the integer $a$ \emph{divides} the integer $b$ means that $a \neq 0$ ($a$ is unequal to $0$) and there is an integer $n$ such that $b=na$. If $a$ divides $b$, then $a$ is called a \emph{divisor} of $b$, and $b$ is called a \emph{multiple} of $a$. A positive integer having more than two positive divisors is called a \emph{composite}. An integer greater than one that is not composite is called a \emph{prime}. Unless otherwise stated, lowercase letters will be used to denote integers.
+
+  \item[Theorem 2.01:] If $a$ divides $b$ and $b$ divides $c$, then $a$ divides $c$.
+
+  \item[Theorem 2.02:] If $a$ divides $b$ and $b \neq 0$, then $\vert a \vert \leq \vert b \vert$.
+
+  \item[Definition:] Throughout these notes, the word \emph{set} or \emph{subset} means a collection that contains at least one element.
+
+  \item[Recursion Principle:] If $S$ is a set of numbers such that $S$ contains $1$, and $S$ contains $n+1$ whenever $S$ contains $n$, then $S$ contains all positive integers. 
+
+  \item[Theorem 2.03:] If $n$ is a positive integer, then $n^2$ is the sum of all positive odd integers less than $2n$.
+
+  \item[Theorem 2.04:] If $n$ is a positive integer, then $\frac{n(n+1)}{2}$ is the sum of all positive integers less than $n+1$.
+
+  \item[Theorem 2.05:] If $n$ is a positive integer, then $\frac{n(n+1)(2n+1)}{6}$ is the sum of all squares less than $n^2+1$.
+
+  \item[Theorem 2.06:] If $n$ is an integer greater than $2$, if each of $x$ and $y$ is an integer, and if $y$ is not $0$, then $y^3$ divides $(x+y)^n-(x^n+ nx^{n-1}y + \frac{1}{2} n(n-1)x^{n-2} y^2)$.
+
+  \item[Definitions:] Suppose $S$ is a set of numbers. A number that is less than or equal to every number in $S$ is called a \emph{lower bound} of $S$, and a number that is greater than or equal to every number in $S$ is called an \emph{upper bound} of $S$.
+
+  \item[Theorem 2.07:] If $S$ is a subset of the positive integers, then $S$ contains a lower bound of $S$.
+
+  \item[Theorem 2.08:] If $S$ is a set of integers having a lower bound, then $S$ contains a lower bound of $S$.
+
+  \item[Theorem 2.09:] If $S$ is a set of integers having an upper bound, then $S$ contains an upper bound of $S$.
+
+  \item[Theorem 2.10:] Every integer greater than $1$ has a prime divisor.
+
+  \item[Theorem 2.11:] If $a>b$, then $a-b$ divides $a^n-b^n$.
+
+  \item[Problem 2.12:] Find all positive integers $n$ such that $n+1$ divides $n^2+59$.
+
+  \item[Problem 2.13:] Find all positive integers $n$ such that $n-3$ divides $n^3-3$.
+
+\end{description}
+
+
+\section{Remainder Theorem}
+\markboth{3. Remainder Theorem}{3. Remainder Theorem}
+
+\begin{description}
+
+  \item[Theorem 3.01 (Remainder):] If each of $n$ and $x$ is an integer, and $n>0$, then there exists only one integer $q$ such that $0 \leq x-nq < n$. The number $x-nq$ is called the residue of $x$ modulo $n$, and is denoted by $x \text{mod} n$.
+
+  \item[Theorem 3.02:] If each of $n$ and $x$ is an integer and $n>0$, then there exists only one integer $q$ such that $\frac{-n}{2} < x-nq \leq \frac{n}{2}$.
+
+  \item[Theorem 3.03:] If $n$ is a positive integer and if $S$ is a set of $n$ consecutive integers, then only one member of $S$ is a multiple of $n$.
+
+  \item[Problem 3.04:] Prove that if $n$ is both a multiple of $2$ and a multiple of $3$, then $n$ is a multiple of $6$.
+
+  \item[Problem 3.05:] If $n$ is odd, what is $n^2 \text{mod} 8$?
+
+  \item[Problem 3.06:] If $p$ is a prime greater than $3$, what is $p \text{mod} 6$?
+
+  \item[Problem 3.07:] What is $(5n^3+7n) \text{mod} 6$?
+
+  \item[Problem 3.08:] What is $n^6 \text{mod} 7$ if $n$ is not a multiple of $7$?
+
+  \item[Problem 3.09:] If $p$ and $q$ are two primes both greater than $3$, what is $(p^2-q^2) \text{mod} 3$?, $(p^2-q^2) \text{mod} 8$?
+
+  \item[Theorem 3.10:] If $n>0$ and $(x \text{mod} n) > 0$, then $((-x) \text{mod} n) + (x \text{mod} n) = n$.
+
+  \item[Problems:] In Problems 3.11 through 3.16, find integral solutions for $x$ and $y$.
+    \begin{description}
+      \item[3.11:] $9x+12y=8$
+      \item[3.12:] $9x+12y=6$
+      \item[3.13:] $18x+30y=114$
+      \item[3.14:] $18x+30y=116$
+      \item[3.15:] $37x+49y=1$
+      \item[3.16:] $37x+49y=832$
+    \end{description}
+
+  \item[Problem 3.17:] Find a necessary condition on the integers $a$, $b$, and $c$, for the equation $ax+by=c$ to have an integral solution for $x$ and $y$.
+
+  \item[Problem 3.18:] Find a relation between different integral solutions for $x$ and $y$ in the equation $ax+by=c$.
+
+\end{description}
+
+
+\section{Greatest Common Divisor}
+\markboth{4. Greatest Common Divisor}{4. Greatest Common Divisor}
+
+\begin{description}
+
+  \item[Definitions:] The largest integer that divides both integer $a$ and integer $b$ is called the \emph{greatest common divisor} of $a$ and $b$, and is denoted by $\text{GCD}(a,b)$. The smallest positive integer that is a multiple of both $a$ and $b$ is called the \emph{least common multiple} of $a$ and $b$, and is denoted $\text{LCM}(a,b)$. If $\text{GCD}(a,b) = 1$, then $a$ is said to be \emph{relatively prime} to $b$.
+
+  \item[Theorem 4.01:] If each of $a$, $q$, and $r$ is an integer, then $\text{GCD}(a,aq+r) = \text{GCD}(a,r)$.
+
+  \item[Problem 4.02:] What is $\text{GCD}(20533, 41067)$?
+
+  \item[Problem 4.03:] What is $\text{GCD}(79457, 79471)$?
+
+  \item[Problem 4.04:] What is $\text{GCD}(819, 1430)$?
+
+  \item[Theorem 4.05:] If each of $a$ and $b$ is an integer, then there exist integers $x$ and $y$ such that $ax+by = \text{GCD}(a,b)$.
+
+  \item[Theorem 4.06:] If $a$ and $b$ are two integers and $d = \text{GCD}(a,b)$, then there exist integers $x$, $y$, $u$, and $v$, such that $ax+by=d$, $au+bv=0$, and the matrix $
+    \begin{bmatrix}
+      a & 1 & 0 \\
+      b & 0 & 1
+    \end{bmatrix}
+    $ is equivalent to the matrix $
+    \begin{bmatrix}
+      d & x & y \\
+      0 & u & v
+    \end{bmatrix}
+    $ using integral row operations only (these are: swapping rows, negating a row, and adding a multiple of one row to the other).
+
+  \item[Problem 4.07:] Find an integer solution of $819x+1430y = \text{GCD}(819, 1430)$.
+
+  \item[Problem 4.08:] Find an integer solution of $584x-1606y = \text{GCD}(584, 1606)$.
+
+  \item[Problem 4.09:] Find an integer solution of $227x+659y = 99125$.
+
+  \item[Problem 4.10:] Write a program or algorithm that given two integers $a$ and $b$, finds integers $x$ and $y$ such that $ax+by = \text{GCD}(a, b)$.
+
+  \item[Theorem 4.11:] The greatest common divisor of $a$ and $b$ is a multiple of every common divisor of $a$ and $b$.
+
+  \item[Theorem 4.12:] $\text{GCD}(m,ab)$ divides $\text{GCD}(m,a) * \text{GCD}(m,b)$.
+
+  \item[Theorem 4.13:] If $\text{GCD}(m,a) = 1$, then $\text{GCD}(m,ab) = \text{GCD}(m,b)$.
+
+  \item[Theorem 4.14:] $\text{GCD}(ma,mb) = \vert m \vert \ \text{GCD}(a,b)$.
+
+  \item[Problems:] In Problems 4.15 through 4.18, assume that $\text{GCD}(a,b) = 1$, and determine all possible values for $n$.
+    \begin{description}
+      \item[4.15:] $n = \text{GCD}(a+3b, a^2-b^2)$.
+      \item[4.16:] $n = \text{GCD}(a^2+b^2, a^2-b^2)$.
+      \item[4.17:] $n = \text{GCD}(a^2-b^2,a^3-b^3)$.
+      \item[4.18:] $n = \text{GCD}(7a+3b, 2a-b)$.
+    \end{description}
+
+  \item[Problem 4.19:] Simplify $\text{GCD}(m^2-m+1, 3m^3+m^2+m+2)$.
+
+  \item[Problem 4.20:] Simplify $\text{GCD}(2m^2-3m+4, 2m^2-5m+3)$.
+
+  \item[Problem 4.21:] Simplify $\text{GCD}(m^2+1, m^3+1)$.
+
+\end{description}
+
+
+\section{Prime Factors}
+\markboth{5. Prime Factors}{5. Prime Factors}
+
+\begin{description}
+
+  \item[Theorem 5.01:] If the prime $p$ divides $ab$, then $p$ divides $a$ or $p$ divides $b$.
+
+  \item[Corollary 5.02:] If the prime $p$ divides $q_1 q_2 q_3 \cdots q_n$ where each $q_i$ is prime, then $p=q_i$ for some $i$ between $0$ and $n+1$.
+
+  \item[Theorem 5.03:] Every integer greater than $1$ is either a prime or the product of primes.
+
+  \item[Definition:] The statement that the finite sequence $(p_1, p_2, \cdots, p_n)$ is a \emph{prime factor sequence} of the integer $x$ means that $x = p_1 p_2 \cdots p_n$ where each $p_i$ is a prime and $p_1 \leq p_2 \leq \cdots \leq p_n$.
+
+  \item[Theorem 5.04:] An integer greater than $1$ has only one prime factor sequence.
+
+  \item[Problem 5.05:] Write a program or procedure that produces the prime factor sequence of an integer greater than $1$.
+
+  \item[Theorem 5.06:] There exist infinitely many primes.
+
+  \item[Problem 5.07:] If $\text{GCD}(a,b) = 1$, what is the relation between two integral solutions for $x$ and $y$ of the equation $ax+by=1$?
+
+  \item[Theorem 5.08:] If $m$ is a common multiple of the two integers $a$ and $b$, and if $ab$ is not $0$, then $m$ is a multiple of $\frac{ab}{ \text{GCD}(a,b) }$.
+
+  \item[Theorem 5.09:] The product of two positive integers equals the product of their greatest common divisor and their least common multiple.
+
+  \item[Theorem 5.10:] The least common multiple of two integers divides every common multiple of the two integers.
+
+  \item[Problem 5.11:] Prove that $\text{GCD}(m,n)$ is a multiple of the greatest common divisor of $\frac{(n-m)}{ \text{GCD}(m,n) }$ and $\frac{(mn)}{ \text{GCD}(m,n) }$.
+
+  \item[Theorem 5.12:] The $n^{th}$ root of a positive integer is either a positive integer or an irrational number.
+
+\end{description}
+
+
+\section{Congruence}
+\markboth{6. Congruence}{6. Congruence}
+
+\begin{description}
+
+  \item[Definitions:] The statement that $a$ is congruent to $b$ modulo $n$, denoted by $a \cong b [\text{mod} n]$, where each of $a$, $b$, and $n$ is an integer, means that $n>0$ and $n$ divides $a-b$. Note that $a \cong a [\text{mod} n]$; and if $a \cong b [\text{mod} n]$, then $b \cong a [\text{mod} n]$.
+
+  \item[Theorem 6.01:] If $a \cong b [\text{mod} n]$ and $b \cong c [\text{mod} n]$, then $a \cong c [\text{mod} n]$.
+
+  \item[Theorem 6.02:] If $a \cong b [\text{mod} n]$ and $c \cong d [\text{mod} n]$, then $a+c \cong b+d [\text{mod} n]$ and $ac \cong bd [\text{mod} n]$.
+
+  \item[Theorem 6.03:] If $a \cong b [\text{mod} n]$, and if $d$ is a common divisor of $a$, $b$, and $n$, then $(\frac{a}{d}) \cong (\frac{b}{d}) [\text{mod} \frac{n}{d}]$.
+
+  \item[Theorem 6.04:] If $a \cong b [\text{mod} n]$, if $d$ is a common divisor of $a$ and $b$, and if $\text{GCD}(d,n) = 1$, then $(\frac{a}{d}) \cong (\frac{b}{d}) [\text{mod} n]$.
+
+  \item[Theorem 6.05:] If $n>1$, and $\text{GCD}(x,n) = 1$, then there exists an integer $y$ such that $xy \cong 1 [\text{mod} n]$. The number $y$ is called an inverse of $x$ modulo $n$.
+
+  \item[Question 6.06:] If $n$ is an odd integer greater than $1$, what is the smallest positive inverse of $2$ modulo $n$?
+
+  \item[Question 6.07:] If $n$ is prime greater than $3$, what is the smallest positive inverse of $3$ modulo $n$?
+
+  \item[Problems:] Solve for all $x$ in Problems 6.08 through 6.11.
+    \begin{description}
+      \item[6.08:] $25x \cong 4 [\text{mod} 11]$.
+      \item[6.09:] $34x \cong 60 [\text{mod} 98]$.
+      \item[6.10:] $15x \cong 3 [\text{mod} 9]$.
+      \item[6.11:] $35x \cong 15 [\text{mod} 182]$.
+    \end{description}
+
+  \item[Problem 6.12:] When does the congruence $ax \cong b [\text{mod} n]$ have a solution $x$?
+
+  \item[Problems:] In Problems 6.13 through 6.16, simplify the given number, without using a calculator.
+    \begin{description}
+      \item[6.13:] $(22*51+698) \text{mod} 7$
+      \item[6.14:] $3^20 \text{mod} 7$
+      \item[6.15:] $10^515 \text{mod} 7$
+      \item[6.16:] $2^71 \text{mod} 125$
+    \end{description}
+
+  \item[Theorem 6.17:] Theorem. If $a \cong b [\text{mod} n]$, then $\text{GCD}(a,n) = \text{GCD}(b,n)$.
+
+  \item[Problem 6.18:] Suppose that $f$ is a polynomial with integral coefficients. Prove that if $a \cong b [\text{mod} n]$, then $f(a) \cong f(b) [\text{mod} n]$.
+
+  \item[Problem 6.19:] Verify the rule for ``casting out nines''.
+
+\end{description}
+
+
+\section{Chinese Remainder Theorem}
+\markboth{7. Chinese Remainder Theorem}{7. Chinese Remainder Theorem}
+
+\begin{description}
+
+  \item[Definition:] Two systems of simultaneous congruence statements are said to be \emph{equivalent} provided they have the same solution sets.
+
+  \item[Theorem 7.01:] Both $a \cong b [\text{mod} m]$ and $a \cong b [\text{mod} n]$ are true if and only if $a \cong b [\text{mod}\ \text{LCM}(m,n)]$ is true.
+
+  \item[Problems:] In Problems 7.02 through 7.08, solve for $x$ in the given system.
+    \begin{description}
+      \item[7.02] $\{ x \cong 2 [\text{mod} 3], x \cong 3 [\text{mod} 5] \}$
+      \item[7.03] $\{ x \cong 53 [\text{mod} 5], x \cong 119 [\text{mod} 7] \}$
+      \item[7.04] $\{ x \cong 4 [\text{mod} 6], x \cong 7 [\text{mod} 9] \}$
+      \item[7.05] $\{ x \cong 3 [\text{mod} 24], x \cong 4 [\text{mod} 16] \}$
+      \item[7.06] $\{ x \cong 36 [\text{mod} 54], x \cong 54 [\text{mod} 72] \}$
+      \item[7.07] $\{ x \cong 1 [\text{mod} 2], x \cong 2 [\text{mod} 3], x \cong 1 [\text{mod} 5], x \cong 5 [\text{mod} 7] \}$
+      \item[7.08] $\{ 5x \cong 1 [\text{mod} 3], 2x \cong 4 [\text{mod} 10], 4x \cong 8 [\text{mod} 9] \}$
+    \end{description}
+
+  \item[Problem 7.09:] Find five consecutive positive integers such that the first is divisible by $2$, the second is divisible by $3$, the third is divisible by $5$, the forth is divisible by $7$, and the fifth is divisible by $11$. Find another set of five consecutive integers satisfying the same conditions.
+
+  \item[Problem 7.10:] From a certain collection of marbles, a boy can make $6$ equal piles and have $5$ left over, or $21$ equal piles and have $8$ left over, or $35$ equal piles and have $1$ left over. How many marbles does he have in his collection? Find two solutions to this problem.
+
+  \item[Problem 7.11:] Find a necessary and sufficient condition for the system $\{ x \cong a [\text{mod} m], x \cong b [\text{mod} n] \}$ to have a solution $x$.
+
+  \item[Question 7.12:] What is the relation between different solutions for $x$ of the system $\{ x \cong a [\text{mod} m], x \cong b [\text{mod} n] \}$?
+
+\end{description}
+
+
+\section{Pythagorean Triplets}
+\markboth{8. Pythagorean Triplets}{8. Pythagorean Triplets}
+
+\begin{description}
+
+  \item[Definition:] An ordered triple $(a, b, c)$ of positive integers is called a \emph{pythagorean triplet} whenever $a \cong b \cong c$ and $a^2 + b^2 = c^2$. If $\text{GCD}(a,b) = 1$, then the triplet is called a \emph{primitive pythagorean triplet}. 
+
+  \item[Note:] If $(a,b,c)$ is a pythagorean triplet and $k$ is a positive integer, then $(ka,kb,kc)$ is a pythagorean triplet. If $(a,b,c)$ is a pythagorean triplet and if $d = \text{GCD}(a,b)$, then $(\frac{a}{d}, \frac{b}{d}, \frac{c}{d})$ is a primitive pythagorean triplet.
+
+  \item[Theorem 8.01:] If $(a,b,c)$ is a primitive pythagorean triplet, then $\text{GCD}(a,c) = \text{GCD}(b,c) = 1$.
+
+  \item[Theorem 8.02:] If $(a,b,c)$ is a pythagorean triplet, then $a<b<c$.
+
+  \item[Question 8.03:] If $(a,b,c)$ is a primitive pythagorean triplet, can both $a$ and $b$ be odd?
+
+  \item[Question 8.04:] If $(a,b,c)$ and $(d,e,c)$ are both primitive pythagorean triplets, must $a=d$?
+
+  \item[Problem 8.05:] If $(a,b,c)$ is a primitive pythagorean triplet and if $y$ is an odd member of $\{ a, b \}$, what is $\text{GCD}(c-y, c+y)$?
+
+  \item[Theorem 8.06:] Suppose each of $a$, $b$, and $t$ is a positive real number, point $(a,b)$ lies on the unit circle (i.e. $\{ (x,y): x^2+y^2=1 \}$), and $(0,t)$ is the point on the $y$-axis lying between $(a,b)$ and $(-1,0)$. Then $t$ is rational if and only if both $a$ and $b$ are rational.
+
+  \item[Note:] $(a,b,c)$ is a pythagorean triplet if and only if $a$, $b$, and $c$ are positive integers such that $a<b<c$, and both $(\frac{a}{c}, \frac{b}{c})$ and $(\frac{b}{c}, \frac{a}{c})$ lie on the unit circle.
+
+  \item[Theorem 8.07:] The triplet $(a,b,c)$ is a primitive pythagorean triplet if and only if there exist positive integers $m$ and $n$ such that $\text{GCD}(m,n) = 1$, $mn$ is even, and the set $\{ 2mn, n^2-m^2, m^2+n^2 \}$ equals the set $\{ a,b,c \}$.
+
+  \item[Problem 8.08:] If $(a,b,c)$ is a primitive pythagorean triplet, then find $c \text{mod} 4$.
+
+  \item[Problem 8.09:] Prove that if $(a,b,c)$ is a pythagorean triplet, and if $T$ is a triangle having sides of lengths $a$, $b$, and $c$, respectively, then the radius of the inscribed circle of $T$ has an integral length.
+
+  \item[Question 8.10:] Is it necessary that one of the numbers in a pythagorean triplet be a multiple of $4$?
+
+  \item[Question 8.11:] Is it necessary that one of the numbers in a pythagorean triplet be a multiple of $3$?
+
+  \item[Question 8.12:] Is it necessary that one of the numbers in a pythagorean triplet be a multiple of $5$?
+
+  \item[Problem 8.13:] Write a program that uses Theorem 8.07 to generate pythagor-ean triplets.
+
+  \item[Question 8.14:] Is it necessary that one of the numbers in a primitive pyth-agorean triplet be a prime?
+
+\end{description}
+
+
+\section{Residue Systems}
+\markboth{9. Residue Systems}{9. Residue Systems}
+
+\begin{description}
+
+  \item[Notation:] Suppose $n$ is an integer, and $S$ is a finite integer set or finite integer sequence. Then $\sum S$ denotes the sum of all members of $S$, and $\prod S$ denotes the product of all members of $S$. If $W$ is a finite integer set, then $n+W$ denotes the set $\{ n+x : x \in W \}$, and $n*W$ denotes the set $\{ nx: x \in W \}$. If $T$ is a finite set, then $\#T$ denotes the number of elements in $T$.
+
+  \item[] Throughout this lesson, assume that each of $A$ and $B$ is a finite integer set, each of $k$, $x$, and $y$ is an integer, $n$ is a positive integer, and $p$ and $q$ are distinct odd primes.
+
+  \item[Definitions:] The statement that $A$ is \emph{congruent} to $B$ modulo $n$, means that there exists a one-to-one correspondence between the members of $A$ and the members of $B$ such that if $x$ in $A$ corresponds to $y$ in $B$, then $x \cong y [\text{mod} n]$. A set of integers, no two of which are congruent modulo $n$, is said to be a \emph{residue system} modulo $n$. A residue system modulo $n$ that contains $m$ integers is called a \emph{complete residue system} modulo $n$.
+
+  \item[Notes:] The congruence relation between integer sets is an equivalence relation; i.e. it is reflexive, symmetric, and transitive. Any subset of the set $\{ 0, 1, 2, \cdots , n-1 \}$ is a residue system modulo $n$.
+
+  \item[Theorem 9.01:] The set $A$ is a complete residue system modulo $n$ if and only if $A$ is congruent to the set $\{ 0, 1, 2, \cdots, n-1 \}$ modulo $n$.
+
+  \item[Note:] Two complete residue systems modulo $n$ are equivalent modulo $n$, and if one of two sets that are equivalent modulo $n$ is a complete residue system modulo $n$, so is the other.
+
+  \item[Theorem 9.02:] If $A$ is a residue system modulo $n$, then $k+A$ is a residue system modulo $n$.
+
+  \item[Theorem 9.03:] Any set of $n$ consecutive integers is a complete residue system modulo $n$.
+
+  \item[Theorem 9.04:] If $A$ is a residue system modulo $n$, and if $\text{GCD}(n,k) = 1$, then $k*A$ is a residue system modulo $n$.
+
+  \item[Theorem 9.05:] If $x^2 \cong y^2 [\text{mod} p]$, then $x \cong y [\text{mod} p]$ or $x \cong -y [\text{mod} p]$.
+
+  \item[Theorem 9.06:] If $A$ is a complete residue system modulo $n$, and if $x$ is an integer, then $A$ contains an integer $y$ such that $x \cong y [\text{mod} n]$.
+
+  \item[Theorem 9.07:] $(p-1)! \cong -1 [\text{mod} p]$.
+
+  \item[Theorem 9.08:] If $\text{GCD}(p,k) = 1$, then $k^{p-1} \cong 1 [\text{mod} p]$.
+
+  \item[Problems:] In Problems 9.09 through 9.16, evaluate or simplify the given expression.
+    \begin{description}
+      \item[9.09:] $13^{1007} \text{mod} 1009$
+      \item[9.10] $15! \text{mod} 17$
+      \item[9.11] $5^{23} \text{mod} 115$
+      \item[9.12] $(7(125!)+(5!)) \text{mod} 127$
+      \item[9.13] $(5^{17}+17^5) \text{mod} 85$
+      \item[9.14] $(5^{16}+17^4) \text{mod} 85$
+      \item[9.15] $(p^q-q^p) \text{mod} (pq)$
+      \item[9.16] $(p^{q-1}+q^{p-1}) \text{mod} (pq)$
+    \end{description}
+
+\end{description}
+
+
+\section{Quadratic Residues}
+\markboth{10. Quadratic Residues}{10. Quadratic Residues}
+
+\begin{description}
+
+  \item[] Throughout this lesson, $p$ denotes an odd prime.
+
+  \item[Problems:] Solve for $x$ in each of Problems 10.01 through 10.04.
+    \begin{description}
+      \item[10.01:] $x^2-6x \cong 2 [\text{mod} 53]$
+      \item[10.02:] $5x^2+4x \cong -1 [\text{mod} 13]$
+      \item[10.03:] $3x^2+7x \cong 6 [\text{mod} 53]$
+      \item[10.04:] $2x^2+12x \cong -5 [\text{mod} 7]$
+    \end{description}
+
+  \item[Definition:] The number $n$ is called a \emph{quadratic residue} modulo $p$, provided that $n \cong x^2 [\text{mod} p]$ for some integer $x$.
+
+  \item[Problem 10.05:] Suppose $\text{GCD}(p,a) = 1$. Find necessary and sufficient conditions on the integers $a$, $b$, and $c$ for the congruence $ax^2+bx+c \cong 0 [\text{mod} p]$ to have a solution $x$.
+
+  \item[Question 10.06:] What can be said about the product of two quadratic $\ $ residues modulo $p$?
+
+  \item[Question 10.07:] What can be said about the product of two non-quadratic residues modulo $p$?
+
+  \item[Question 10.08:] What can be said about the product of a quadratic residue modulo $p$ with a non-quadratic residue modulo $p$?
+
+  \item[Theorem 10.09:] If $n$ is a quadratic residue modulo $p$, then there exists an integer $x$ between $-1$ and $\frac{p}{2}$ such that $n \cong x^2 [\text{mod} p]$.
+
+  \item[Question 10.10:] How many quadratic residues modulo $p$ are there between $0$ and $p$?
+
+  \item[] Let $Q$ denote the set of all quadratic residues lying between $0$ and $p$, and let $N$ denote all integers between $0$ and $p$ not in $Q$.
+
+  \item[Problem 10.11:] Prove that $\prod Q \cong (-1)^{(p+1)/2} [\text{mod} p]$.
+
+  \item[Problem 10.12:] Prove that $\prod N \cong (-1)^{(p-1)/2} [\text{mod} p]$.
+
+  \item[Theorem 10.13:] If $x$ is a non-quadratic residue modulo $p$, then $x*Q$ is congruent to $N$ modulo $p$, and $x*N$ is congruent to $Q$ modulo $p$.
+
+  \item[Problem 10.14:] Prove that if $x$ is a non-quadratic residue modulo $p$, then $x^{(p-1)/2} \cong -1 [\text{mod} p]$.
+
+  \item[Definition:] The function $L_p$ defined by $L_p(x)=1$ if $x$ is a quadratic residue modulo $p$ and $L_p(x)=-1$ for all other integers $x$, is called the \emph{Legendre function}.
+
+  \item[Theorem 10.15:] If $\text{GCD}(p,x)=1$, then $L_p(x) \cong x^{(p-1)/2} [\text{mod} p]$.
+
+  \item[Theorem 10.16:] If $\text{GCD}(p,xy)=1$, then $L_p(xy) = L_p(x) L_p(y)$.
+
+  \item[Question 10.17:] If $p$ divides $x^2+1$, what is $p \text{mod} 4$?
+
+  \item[Questions:] Do not use a calculator in Questions 10.18 through 10.21.
+    \begin{description}
+      \item[10.18:] Is $-5$ a quadratic residue modulo $13$?
+      \item[10.19:] Is $10$ a quadratic residue modulo $101$?
+      \item[10.20:] Is $23$ a quadratic residue modulo $17$?
+      \item[10.21:] Is $425$ a quadratic residue modulo $41$?
+    \end{description}
+
+  \item[Problem 10.22:] Suppose $n$ is an integer, $\text{GCD}(p,n)=1$, $A= \{ x: 0<x< \frac{p}{2}$, $(nx \text{mod} p) < \frac{p}{2} \}$, and $B= \{ x: 0 < x < \frac{p}{2} < (nx \text{mod} p) \}$. Prove that $n*A$ and $(-n)*B$ are disjoint sets whose union is congruent to $\{ x: 0<x< \frac{p}{2} \}$ modulo $p$.
+
+  \item[Problem 10.23:] Prove that $L_p(n)=(-1)^{\#B}$ (as defined in Problem 10.22).
+
+  \item[Theorem 10.24:] $L_p(2)=(-1)^{\frac{(p+1)(p-1)}{8}}$.
+
+  \item[Question 10.25:] Is $2$ a quadratic residue modulo $137$?
+
+  \item[Question 10.26:] Is $18$ a quadratic residue modulo $149$?
+
+  \item[] Suppose $\text{GCD}(n,p)=1$, $n>0$, $A= \{ nx \text{mod} p: 0<x< \frac{p}{2}, nx \text{mod} p < \frac{p}{2} \}$, $B= \{ nx \text{mod} p: 0<x< \frac{p}{2} < nx \text{mod} p \}$, $C= \{ x: 0<x< \frac{p}{2} \}$, and $D= \{ (x,y): 0 < yp < xn, 0 < x < \frac{p}{2} \}$.
+
+  \item[Problem 10.27:] Prove that $\Sigma C = p(\#B)+\Sigma A-\Sigma B$.
+
+  \item[Notation:] If each of $x$ and $y$ is an integer, and $y$ is not $0$, then $x \setminus y$ denotes the largest integer that does not exceed $\frac{x}{y}$.
+
+  \item[Problem 10.28:] Evaluate $\# \{ (x,y): 0<13y<10x, 0<x \leq 6 \}$ and $\sum [(10x) \setminus 13: 1 \leq x \leq 6]$.
+
+  \item[Problem 10.29:] Prove that $\#D = \sum [(nx) \setminus p: 0<x< \frac{p}{2}]$.
+
+  \item[Problem 10.30:] Prove that $p(\#D)-p(\#B) = (n-1)(\sum C)-2(\sum B)$.
+
+  \item[Problem 10.31:] Prove that if $n$ is odd, then $L_p(n)=(-1)^{\#D}$.
+
+  \item[Theorem 10.32:] If $p$ and $q$ are distinct odd primes, then
+    \begin{equation*}
+    L_p (q) L_q (p) = (-1)^{ \frac{(p-1)(q-1)}{4} }
+    \end{equation*}
+
+  \item[Question 10.33:] Is $283$ a quadratic residue modulo $19$?
+
+  \item[Question 10.34:] Is $42$ a quadratic residue modulo $997$?
+
+  \item[Question 10.35:] Is $60$ a quadratic residue modulo $379$?
+
+  \item[Question 10.36:] Is $307$ a quadratic residue modulo $379$?
+
+  \item[Question 10.37:] For what odd primes $p$ is $L_p(3)=1$?
+
+  \item[Question 10.38:] For what odd primes $p$ is $L_p(-3)=1$?
+
+  \item[Question 10.39:] For what odd primes $p$ is $L_p(5)=1$?
+
+\end{description}
+
+
+\section{Reduced Residue Systems}
+\markboth{11. Reduced Residue Systems}{11. Reduced Residue Systems}
+
+\begin{description}
+
+  \item[Definition:] Suppose $n$ is a positive integer. The statement that the integer set $S$ is a \emph{reduced residue system} modulo $n$ means that: 
+    \begin{enumerate}[(1)]
+      \item $S$ is a residue system modulo $n$, 
+      \item each integer in $S$ is relatively prime to $n$, and 
+      \item each integer that is relatively prime to $n$ is congruent modulo $n$ to some member of $S$.
+    \end{enumerate}
+
+  \item[Notation:] Throughout this lesson, let $A_k$ denote the set $\{ x: 0 < x \leq k,$ $\text{GCD}(x,k)=1 \}$ where $k$ is a positive integer.
+
+  \item[Theorem 11.01:] The integer set $S$ is a reduced residue system modulo $n$ if and only if $S$ is congruent to $A_n$ modulo $n$.
+
+  \item[Theorem 11.02:] If $S$ is a reduced residue system modulo $n$, and if $k$ is relatively prime to $n$, then $k*S$ is a reduced residue system modulo $n$.
+
+  \item[Notation:] The number $\#A_n$ is denoted $\Phi(n)$. Note that if an integer set $S$ has only $\Phi(n)$ elements, and satisfies conditions (1) and (2) of the definition of reduced residue system modulo $n$, then $S$ is a reduced residue system modulo $n$.
+
+  \item[Question 11.03:] Is $\{ -30, -19, -15, -4, 15, 39 \}$ a reduced residue system modulo $7$?
+
+  \item[Question 11.04:] Is $\{ -33, 15, 25, 59 \}$ a reduced residue system modulo $12$?
+
+  \item[Question 11.05:] For what numbers $x$ between $1$ and $18$ is $\{ x^n: 1 \leq n \leq 6 \}$ a reduced residue system modulo $18$?
+
+  \item[Problem 11.06:] Prove that if $k$ is the smallest positive integer such that $x^k \cong 1 [\text{mod} n]$, then $\{ x^i: 0 < i \leq k \}$ is a residue system modulo $n$.
+
+  \item[Problem 11.07:] Prove that if $k$ is the smallest positive integer such that $x^k \cong 1 [\text{mod} n]$, and if $x^m \cong 1 [\text{mod} n]$, then $k$ divides $m$.
+
+  \item[Question 11.08:] Is $\{ 2: 0<x<5 \}$ a reduced residue system modulo $59$?
+
+  \item[Theorem 11.09:] If the positive integer $x$ is relatively prime to $n$, then $x^{\Phi(n)} \cong 1 (\text{mod} n)$.
+
+  \item[Theorem 11.10:] If the positive integer $m$ is relatively prime to $n$, if $A$ is a reduced residue system modulo $m$, and if $B$ is a reduced residue system modulo $n$, then the set $\{ nx+my: x \in A, y \in B \}$ is a reduced residue system system modulo $mn$.
+
+  \item[Theorem 11.11:] If the positive integer $m$ is relatively prime to $n$, then $\Phi(mn)$ $= \Phi(m) \Phi(n)$.
+
+  \item[Theorem 11.12:] If $p$ is a prime and $a$ is positive, then $\Phi(p^{a}) = p^{a}-p^{a-1}$.
+
+  \item[Theorem 11.13:] If $n = p_1^{a_1} p_2^{a_2} \cdots p_r^{a_r}$, where each $p_i$ is a prime, each $a_i$ is a positive integer, and $p_1 < p_2 < \cdots <p_r$, then $\Phi(n) = p_1^{a_1-1} (p_1-1)$ $p_2^{a_2-1} (p_2-1)$ $\cdots$ $p_r^{a_r-1} (p_r-1)$.
+
+  \item[Problem 11.14:] Evaluate $\Phi(30!)$ in prime factored form.
+
+  \item[Theorem 11.15:] The set $\{ 1, 2, \cdots, n \}$ is the union of the disjoint sets $\{ \left( \frac{n}{\delta_1} \right) *A_{\delta_1}, \left( \frac{n}{\delta_2} \right) *A_{\delta_2}, \cdots, \left( \frac{n}{\delta_r} \right) *A_{\delta_r} \}$ which are the positive divisors of $n$.
+
+  \item[Theorem 11.16:] If $n$ is a positive integer, then $n$ is the sum of all numbers $\Phi(d)$ for which $d$ is a positive divisor of $n$.
+
+  \item[Theorem 11.17:] If $m$ and $n$ are positive integers, and if $d=\text{GCD}(m,n)$, then $\Phi(mn) = \frac{\Phi(m) \Phi(n) d}{\Phi(d)}$.
+
+  \item[Theorem 11.18:] If $n>1$, then $\sum A_n = \frac{n \Phi(n)}{2}$.
+
+  \item[Theorem 11.19:] If $d$ is a positive divisor of the positive integer $n$, then $\Phi(d)$ divides $\Phi(n)$.
+
+  \item[Problem 11.20:] Find the sum of all integers between $0$ and $1750$ that are relatively prime to $1750$.
+
+\end{description}
+
+
+\section{Some Prime Considerations}
+\markboth{12. Some Prime Considerations}{12. Some Prime Considerations}
+
+\begin{description}
+
+  \item[Notation:] Throughout this lesson, $p_i$ denotes the $i$th prime, $\text{GPF}(x)$ denotes the greatest prime factor of $x$, and $N(y,n)$ denotes the number $\# \{ x: 0<x<y, \text{GPF}(x) \leq p_n \}$.
+
+  \item[Definition:] A positive integer that is not a multiple of a square greater than one is said to be \emph{square-free}. Note that each positive integer is the product of a square and a square-free integer.
+
+  \item[Problem 12.01:] Prove that if $n$ is a positive integer, then there exist $2^n$ square-free integers between $0$ and $1+p_1 p_2 \cdots p_n$.
+
+  \item[Problem 12.02:] Evaluate: (a) $N(60,3)$, and (b) $N(60,5)$.
+
+  \item[Problem 12.03:] Prove that if each of $y$ and $n$ is a positive integer, then $N(y,n) \leq 2^n\sqrt{y}$.
+
+  \item[Problems:] In Problems 12.04 through 12.06, let $n$ be a positive integer, let $y$ be a number greater than $p_n$ , let $J$ be the set of all integers $i$ greater than $n$ such that $p_i \leq y$, and for each $i$ in $J$ let $G_i$ denote the set of all multiples of $p_i$ between $0$ and $y+1$.
+    \begin{description}
+      \item[12.04:] Prove that $\# G \leq \frac{y}{p_i}$ for each $i$ in $J$.
+      \item[12.05:] Prove that $\{ x: 0 < x \leq y, \text{GPF}(x) > p_n \}$ is the union of all $G_i$ for $i$ in $J$.
+      \item[12.06:] Prove that $\sum \{ \frac{1}{p_i}: i \in J \} \geq 1- \frac{2^n}{\sqrt{y}}$.
+    \end{description}
+
+  \item[Theorem 12.07:] The series $\sum \{ \frac{1}{p_i}: i>0 \}$ diverges.
+
+  \item[Question 12.08:] Do there exist infinitely many primes that are congruent to $-1$ modulo $4$?
+
+  \item[Question 12.09:] Do there exist infinitely many primes that are congruent to $1$ modulo $4$?
+
+  \item[Question 12.10:] Do there exist infinitely many prime triples $(p,q,r)$ such that $q-p = r-q = 2$?
+
+  \item[Question 12.11:] If $n$ is a positive integer, do there exist $n$ consecutive composites?
+
+  \item[Problem 12.12:] Prove that for $n>3$, $p_{n+1} < \sqrt{p_1 p_2 \cdots p_n}$
+
+  \item[Problem 12.13:] Prove that if $n>30$, then there exists a composite $c$ between $0$ and $n$ such that $\text{GCD}(c, n) = 1$.
+
+\end{description}
+
+
+\newpage
+
+\section*{Answers}
+\markboth{Answers}{Answers}
+
+The following is intended for the instructor only.
+\vspace{0.5cm}
+
+The answers to the questions are given here; however, no proofs have been included.
+\vspace{0.5cm}
+
+\textbf{Lesson 1:}
+
+\begin{description}
+  \item[1.01] Either $4$ dimes, $18$ nickels, $32$ pennies; or $11$ dimes, $9$ nickels, $7$ pennies. 
+  \item[1.02] $7^{9999} = \ldots 143$.
+  \item[1.03] (a) $3$; (b) $8$ 
+  \item[1.04] Yes.
+  \item[1.05] $72$ turkeys: $\mathdollar 367.92$.
+  \item[1.06] $\mathdollar 13.51$
+  \item[1.07] $2401$.
+  \item[1.08] No. 
+  \item[1.09] $0$.
+  \item[1.11] Sunday. 
+  \item[1.12] $24$ zeros. 
+  \item[1.13] Only $8$ perfect shuffles are necessary using method (1), but $52$ perfect shuffles are required using method (2).
+  \item[1.14] $2$. 
+  \item[1.15] $5$. 
+  \item[1.16] $5$. 
+  \item[1.17] $2$.
+  \item[1.18] $1$. 
+  \item[1.19] $3121$. 
+  \item[1.20] $983$.
+  \item[1.21] No. See Theorem 12.07. 
+  \item[1.22] Yes. $(0,0)$, $(-a,0)$, and $(a,0)$, where $a$ is any number such that $a$ is irrational. 
+  \item[1.23] $1$. (This is the only problem that uses Theorem 2.06).
+\end{description}
+\vspace{0.3cm}
+
+\textbf{Lesson 2:}
+
+\begin{description}
+  \item[2.12] $n$ must be $1$, $2$, $3$, $4$, $5$, $9$, $11$, $14$, $19$, or $29$.
+  \item[2.13] $n$ must be $1$, $2$, $4$, $5$, $6$, $7$, $9$, $11$, $15$, or $27$.
+\end{description}
+\vspace{0.3cm}
+
+\textbf{Lesson 3:}
+
+\begin{description}
+  \item[3.05] $1$.
+  \item[3.06] Either $1$ or $5$. 
+  \item[3.07] $0$.
+  \item[3.08] $1$.
+  \item[3.09] (a) $0$; (b) $0$. 
+  \item[3.11] No solution.
+  \item[3.12] $x=-2-4t,\ y=2+3t$ for any integer $t$.
+  \item[3.13] $x=8-5t,\ y=-1+3t$ for any integer $t$. 
+  \item[3.14] No solution. 
+  \item[3.15] $x=4-49t,\ y=-3+37t$ for any integer $t$.
+  \item[3.16] $x=832(4-49t),\ y=832(-3+37t)$; see 3.15.
+  \item[3.17] Any common divisor of $a$ and $b$ must also divide $c$. Also, if $x=h,\ y=k$ is a solution of the equation $ax+by=1$, then $x=ch,\ y=ck$ is a solution of the equation $ax+by=c$.
+  \item[3.18] If $x=h,\ y=k$ is a solution of the equation $ax+by=c$, then $x=h-bt,\ y=k+at$ is also a solution of the equation $ax+by=c$ for any integer $t$.
+\end{description}
+\vspace{0.3cm}
+
+\textbf{Lesson 4:}
+
+\begin{description}
+  \item[4.02] $1$.
+  \item[4.03] $7$.
+  \item[4.04] $13$.
+  \item[4.07] $(x,y) = (7,-4)$. $\text{GCD}(819,1430) = 13$.
+
+    Procedure for finding $x$, $y$, and $\frac{GCD}(819, 1430)$: (see 4.06 and 4.10)
+
+    $\begin{array}{crrr|rl}
+      (1) &  819 &  1 &  0 & & \\
+      (2) & 1430 &  0 &  1 & & \\
+      (3) &  819 &  1 &  0 & \text{ Row(1) minus} & 0*\text{Row(2)} \\
+      (4) &  611 & -1 &  1 & \text{ Row(2) minus} & \text{Row(3)} \\
+      (5) &  208 &  2 & -1 & \text{ Row(3) minus} & \text{Row(4)} \\
+      (6) &  195 & -5 &  3 & \text{ Row(4) minus} & 2*\text{Row(5)} \\
+      (7) &   13 &  7 & -4 & \text{ Row(5) minus} & \text{Row(6)} \\
+    \end{array}$
+
+    \begin{center}$(195 \text{mod} 15) = 0$\end{center}
+  \item[4.08] $(x,y) = (3,1)$. $\text{GCD}(584, 1606) = 146$.
+  \item[4.09] $(x,y)=(90*99125, -31*99125)=(8921250, -3072875)$.
+  \item[4.10] Construct a three-column table in the following manner.
+    \begin{itemize}
+      \item[Step 1.] Let the first row equal $(a \ 1 \ 0)$.
+      \item[Step 2.] Let the second row equal $(b \ 0 \ 1)$.
+      \item[Step 3.] Let $r=(x \text{mod} y)$ and let $q = \frac{(x- r)}{y}$, where $x$ is the first number in the previous row and $y$ is the first number in the current row.
+      \item[Step 4.] Let the next row equal the previous row minus $q$ times the current row.
+      \item[Step 5.] Repeat steps 3 and 4 while $q \neq 0$.
+      \item[Step 6.] Let $(e \ s \ t)$ denote the current (and last) row.
+      \item[Step 7.] If $e<0$, then let $(d \ x \ y)$ equal $(-e \ -s \ -t)$; else let $(d \ x \ y)$ equal $(e \ s \ t)$.
+      \item[Step 8.] Then $\text{GCD}(a,b)=d=ax+by$.
+    \end{itemize}
+  \item[4.15] $n$ is a positive divisor of $8$. $n = \text{GCD}(r,8)$ where $r = (a+3b) \text{mod} 8$. So $n=1$ if $r$ is odd; $n=2$ if $r$ is $2$ or $6$; $n=4$ if $r$ is $4$; and $n=8$ if $r$ is $0$.
+  \item[4.16] $n$ is a positive divisor of $2$. $n = \text{GCD}(2,a-b)$. So $n=2$ if $a$ and $b$ are both odd, and $n=1$ if $a$ or $b$ is even.
+  \item[4.17] $n = \vert a-b \vert$. So $n$ can be any positive integer.
+  \item[4.18] $n$ is a positive divisor of $13$. $n = \text{GCD}(r,13)$ where $r = (2a-b) \text{mod} 13$. Hence $n=13$ if $r$ is $0$, and $n=1$ if $r$ is positive.
+  \item[4.19] $1$.
+  \item[4.20] $\text{GCD}(3,m-1)$ (equals $1$ if $m \text{mod} 3$ is $0$ or $2$, and equals $3$ if $m \text{mod} 3$ is $1$).
+  \item[4.21] $\text{GCD}(2,m-1)$ (equals $2$ if $m$ is odd, and equals $1$ if $m$ is even).
+\end{description}
+\vspace{0.3cm}
+
+\textbf{Lesson 5.}
+
+\begin{description}
+\item[5.04] Prime Factors Pseudo-Program:
+  \begin{itemize}
+  \item[Step 1.] Input $n$ (number to be factored)
+
+         Set $i = 0$ (index)
+  \item[Step 2.] If $n \text{mod} 2$ is $0$, then:
+    \begin{enumerate}[(1)]
+      \item increase $i$ by $1$
+      \item set $f_i = 2$
+      \item divide $n$ by $2$
+    \end{enumerate}
+  \item[Step 3.] Repeat Step 2 until $n \text{mod} 2$ is no longer $0$.
+  \item[Step 4.] Set $p = 3$ (factor candidate)
+  \item[Step 5.] If $n \text{mod} p$ is $0$, then:
+    \begin{enumerate}[(1)]
+      \item increase $i$ by $1$
+      \item set $f_i = p$
+      \item divide $n$ by $p$
+    \end{enumerate}
+  \item[Step 6.] If $n \text{mod} p$ is not $0$, then increase $p$ by $2$
+  \item[Step 7.] Repeat Steps 5 and 6 until $p$ exceeds $n$
+  \item[Step 8.] Output: $f_1, f_2, \cdots , f_i$ (prime factor sequence)
+  \end{itemize}
+\item[5.06] $(x_1, y_1)$ and $(x_2, y_2)$ are two solutions if and only if there exists an integer $t$ such that $x_2=x_1-tb$ and $y_2=y_1+ta$.
+\end{description}
+\vspace{0.3cm}
+
+\textbf{Lesson 6.}
+
+\begin{description}
+  \item[6.04] $\frac{(n+1)}{2}$. 
+  \item[6.05] $\frac{(n+1)}{3}$ if $n \cong -1 [\text{mod} 3]$; $\frac{(2n+1)}{3}$ if $n \cong 1 [\text{mod} 3]$.
+  \item[6.08] $x \cong 5 [\text{mod} 11]$.
+  \item[6.09] $x \cong -4 [\text{mod} 49]$.
+  \item[6.10] $x \cong -1 [\text{mod} 3]$.
+  \item[6.11] No solution. 
+  \item[6.12] The congruence $ax \cong b [\text{mod} n]$ has a solution if and only if $\text{GCD}(a,n)$ divides $b$. 
+  \item[6.13] $0$.
+  \item[6.14] $2$.
+  \item[6.15] $-2$ or $5$.
+  \item[6.16] $-27$ or $98$.
+\end{description}
+\vspace{0.3cm}
+
+\textbf{Lesson 7.}
+
+\begin{description}
+  \item[7.02] $x \cong 8 [\text{mod} 15]$.
+  \item[7.03] $x \cong 28 [\text{mod} 35]$.
+  \item[7.04] $x \cong 16 [\text{mod} 18]$.
+  \item[7.05] No solution.
+  \item[7.06] $x \cong 198 [\text{mod} 216]$.
+  \item[7.07] $x \cong 131 [\text{mod} 210]$.
+  \item[7.08] $x \cong 2 [\text{mod} 45]$.
+  \item[7.09] $\{ x-4, x-3, x-2, x-1, x \}$ for any positive $x$ such that $x \cong 792 [\text{mod} 2310]$.
+  \item[7.10] Any positive $x$ such that $x\cong 71 [\text{mod} 210]$.
+  \item[7.11] The system $\{ x \cong m \cong a, x \cong n \cong b \}$ has a solution for $x$ if and only if $a \cong d\cong b$ where $d=\text{GCD}(m,n)$.
+  \item[7.12] Any two solutions are congruent modulo $LCM(m, n)$.
+\end{description}
+\vspace{0.3cm}
+
+\textbf{Lesson 8.}
+
+\begin{description}
+  \item[8.03] Only one of $a$ and $b$ is odd, and $c$ must be odd.
+  \item[8.04] No.
+  \item[8.05] $2$.
+  \item[8.08] $1$.
+  \item[8.10] Yes.
+  \item[8.11] Yes.
+  \item[8.12] Yes.
+  \item[8.13] Pseudo-program for Generating Pythagorean Triplets:
+    \begin{itemize}
+      \item[Step 1.] Set $c=1$.
+      \item[Step 2.] Increase $c$ by $4$.
+      \item[Step 3.] Set $m=0$.
+      \item[Step 4.] Increase $m$ by $2$.
+      \item[Step 6.] Set $h=c-mm$
+      \item[Step 7.] If $h<0$, then go to Step 14.
+      \item[Step 5.] If $\text{GCD}(m,h)>1$, then go to Step 4
+      \item[Step 8.] If $h$ is not a square, then go to Step 4.
+      \item[Step 10.] Set $a=2m\sqrt{h}$.
+      \item[Step 11.] Set $b=\vert h-mm \vert$.
+      \item[Step 12.] If $a>b$, then swap the values of $a$ and $b$.
+      \item[Step 13.] Output: $(a, b, c)$
+      \item[Step 14.] Repeat steps 2 through 13 while $c<1000$.
+    \end{itemize}
+  \item[8.14] No.
+\end{description}
+\vspace{0.3cm}
+
+\textbf{Lesson 9.}
+
+\begin{description}
+  \item[9.09] $621$.
+  \item[9.10] $1$.
+  \item[9.11] $5$.
+  \item[9.12] $0$.
+  \item[9.13] $22$.
+  \item[9.14] $1$.
+  \item[9.15] $p-q$.
+  \item[9.16] $1$.
+\end{description}
+\vspace{0.3cm}
+
+\textbf{Lesson 10.}
+
+\begin{description}
+  \item[10.01] $x \cong 3 \pm 8 [\text{mod} 53]$.
+  \item[10.02] $x \cong -3 \pm 1 [\text{mod} 13]$.
+  \item[10.03] $x \cong -10 \pm 7$.
+  \item[10.04] No solution.
+  \item[10.05] The congruence $ax^2+bx+c \cong 0 [\text{mod} p]$ has a solution $x$ if and only if $b^2-4ac$ is a quadratic residue modulo $p$.
+  \item[10.06] The product of two quadratic residues modulo $p$ is a quadratic residue modulo $p$.
+  \item[10.07] See Theorem 10.13.
+  \item[10.08] The product of a quadratic residue modulo $p$ that is not a multiple of $p$, with a non-quadratic residue modulo $p$, is a non-quadratic residue modulo $p$.
+  \item[10.10] $\frac{(p-1)}{2}$.
+  \item[10.17] $1$.
+  \item[10.18] No.
+  \item[10.19] No.
+  \item[10.20] No.
+  \item[10.21] No.
+  \item[10.25] Yes.
+  \item[10.26] No.
+  \item[10.28] $13$ and $13$.
+  \item[10.33] Yes.
+  \item[10.34] Yes.
+  \item[10.35] No.
+  \item[10.36] Yes.
+  \item[10.37] $L_p(3)=1$ if and only if $p^2 \cong 1 [\text{mod} 12]$.
+  \item[10.38] $L_p(-3)=1$ if and only if $p \cong 1 [\text{mod} 12]$ or $p \cong 7 [\text{mod} 12]$.
+  \item[10.39] $L_p(5)=1$ if and only if $p^2 \cong 1 [\text{mod} 5]$.
+\end{description}
+\vspace{0.3cm}
+
+\textbf{Lesson 11.}
+
+\begin{description}
+  \item[11.03] Yes.
+  \item[11.04] No.
+  \item[11.05] $5$ and $11$.
+  \item[11.08] Yes.
+  \item[11.14] $(2^{40}) (3^{17}) (5^{7}) (7^{4}) (11^{2}) (13)$.
+  \item[11.20] $525000$.
+\end{description}
+\vspace{0.3cm}
+
+\textbf{Lesson 12.}
+
+\begin{description}
+  \item[12.02] (a) $16$; (b) $26$.
+  \item[12.08] Yes.
+  \item[12.09] Yes.
+  \item[12.10] No.
+  \item[12.11] Yes.
+\end{description}
+
+\end{document}

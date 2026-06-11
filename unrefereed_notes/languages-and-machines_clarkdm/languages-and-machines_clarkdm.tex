@@ -1,0 +1,2559 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% special characters
+
+\newcommand{\El}{\mathcal L}
+\newcommand{\Ps}{\mathcal P}
+\newcommand{\Pb}{\mathbf P}
+\newcommand{\Sb}{\mathbf S}
+\newcommand{\A}{\mathbf A}
+\newcommand{\B}{\mathbf B}
+\newcommand{\C}{\mathbf C}
+\newcommand{\R}{\mathbf R}
+\newcommand{\T}{\mathbf T}
+\newcommand{\U}{\mathbf U}
+\newcommand{\emptysetb}{\mathbf \emptyset}
+\newcommand{\lambdab}{\mathbf \lambda}
+
+\makeatletter
+%% overlay.sty = overlay and align two symbols, respecting changing styles
+\def\loverlay#1#2{\mathpalette\@overlay{{#1}{#2}{}{\hfil}}}
+\def\overlay#1#2{\mathpalette\@overlay{{#1}{#2}{\hfil}{\hfil}}}
+\def\roverlay#1#2{\mathpalette\@overlay{{#1}{#2}{\hfil}{}}}
+   % calls to \@overlay look like
+   %    \@overlay\textstyle{{x}{y}{\hfil}{\hfil}}
+\def\@overlay#1#2{\@@overlay#1#2}
+   % strip brackets from 2nd arg, to get
+   %    \@@overlay\textstyle{x}{y}{\hfil}{\hfil}
+\def\@@overlay#1#2#3#4#5{{%
+   \def\overlaystyle{#1}%
+   \setbox0=\hbox{\m@th$\overlaystyle#2$}%
+   \setbox1=\hbox{\m@th$\overlaystyle#3$}%
+   \ifdim \wd0<\wd1 \setbox2=\box1 \setbox1=\box0 \setbox0=\box2\fi
+      % \box0 is now the wider box
+   \rlap{\hbox to\wd0{#4\box1\relax#5}}\box0%
+}}
+% end overlay command definitions
+\makeatother
+
+
+% cents symbol command, using overlay
+\newcommand{\cents}{\overlay{{\textsf c}}{|} }
+
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Languages and Machines}
+\author{David M. Clark}
+\date{ }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+\section*{Acknowledgements}
+\addcontentsline{toc}{section}{\numberline{}Acknowledgements}
+\markboth{Acknowledgements}{Acknowledgements}
+
+\pagenumbering{roman}
+
+This guide was written under the auspices of SUNY New Paltz. The author gratefully acknowledges Harry Lucas and the Educational Advancement Foundation for their support, and Allison Vandenbrul for her hard work in the preparation of the included graphics. He also wishes to acknowledge the hard work of the many SUNY New Paltz students whose efforts and feedback have led to the refined guide that is now before you.
+
+\begin{flushright}
+David M. Clark \\
+Department of Computer Science \\
+SUNY New Paltz \\
+New Paltz, New York 12561
+\end{flushright}
+
+
+
+\newpage
+
+\section*{Introduction To The Student}
+\addcontentsline{toc}{section}{\numberline{}Introduction To The Student}
+\markboth{Introduction To The Student}{Introduction To The Student}
+
+In this course, we will learn about some of the fundamental relationships between computing machines and the languages that they understand. Experience shows us that there is a fundamental tradeoff between hardware and software: the same performance can often be achieved by a complex computer running a simple (high-level) program, as by a simple computer running a complex (low-level) program.  In order to understand the capabilities of different computing machines, it is helpful to overlook the hardware/software dichotomy and view the combination as a single entity. For this reason, we will use the word \emph{machine} to refer to the combination of a computer and the software that runs it. We will formalize this vague concept in several ways as we go along.
+
+Computer chips are now built into many different familiar devices, ranging from toasters and soda machines to high-level computers. While each of these is a machine in our general sense, some are much more complex and powerful than others. Our goal in this course is to find ways to classify machines according to their complexity, and to understand the capabilities of machines in each complexity category.
+
+It turns out that the complexity of a particular machine is best understood by looking at how and what it is able to communicate with a user. What kind of instructions is it able to understand, and what kind of responses is it able to give? In short, we need to know what language it speaks. Simple machines communicate simple ideas in simple languages; complex machines communicate complex ideas in complex languages. We will find that there is a significant spectrum from simple to complex. This spectrum is understood by studying, simultaneously, \emph{languages} and the \emph{machines} that speak them.
+
+Before we begin a study of languages and machines, there are a few preliminary tools from discrete mathematics that we need to review. Although the ideas we study here may be somewhat familiar, you may not have yet seen them laid out in the systematic and more formal way that they are needed for our purposes.
+
+
+
+\newpage
+
+\section*{Introduction To The Instructor}
+\addcontentsline{toc}{section}{\numberline{}Introduction To The Instructor}
+\markboth{Introduction To The Instructor}{Introduction To The Instructor}
+
+This discovery guide is primarily written for advanced undergraduate computer science and computer engineering students. These students often are very capable but have never before been asked to explain in clear English why what they are doing is correct and why what they are saying is true. I have found this course to be extremely valuable for these students. I have also had them return to tell me how much they appreciated the kind of thinking it taught them, as they moved through subsequent courses.
+
+As these students normally have no prior theorem-proving experience, I have viewed ``discovery'' essentially as problem-solving. Students solve and present in class all of the problems in the text, and then write up a final version of each one in a cumulative portfolio. Important results are stated throughout as theorems. As the nature of most of these theorems is to assert that there is an algorithm to do something, I have simply presented as a ``proof'' a description of the algorithm, and have found my students amply challenged by working through several problems that illustrate that algorithm.
+
+Chapter 1 is written to be brief and yet to contain all of the discrete mathematics that will be needed in subsequent chapters. Throughout, languages are treated as sets of strings, thereby requiring the formalism of set theory. The definitions of all finite state machines require transition functions, which in turn require direct products to form their domains. Equivalence relations are entirely new to most of my students, yet they are required in Chapter 5 to construct minimal automata. It is essential to spend the necessary time in Chapter 1 to master these topics.
+
+Chapters 2 through 5 give a thorough treatment of finite state automata and regular languages, and Chapter 6 offers an introduction to pushdown automata and context-free languages. I have only been able to do Chapter 6 when I have taught students who had a good prerequisite discrete mathematics course, including equivalence relations, so that I could begin in Chapter 2.
+
+There is a recurrent theme of pedagogical significance that is sprinkled throughout the text. The last problem in Chapter 2 presents the classical example $L_=$ of a context-free language that is not regular. Here I ask the students if they can find a finite state acceptor (FSA) for $L_=$. The answer is ``no'', but getting this answer provides an excellent opportunity to discuss the distinction between the assertion that ``No one in this room knows of a FSA for $L_=$.'' and ``There is no FSA for $L_=$.'' Urging them to try to find one can lead to interesting discoveries; for example, a simple ``infinite state acceptor'' for $L_=$. This observation can lead to the discovery that there is in fact an infinite state acceptor for every language, so that the existence of such a device tells us nothing at all about a language. If the students conjecture that there is no FSA for $L_=$, I urge them to look for a convincing argument for this. The last problem in Chapter 3 asks for a formal grammar for $L_=$, which can be constructed with only two simple but non-regular productions.
+
+I let this problem hang for most of the term, perhaps mentioning it occasionally. In Chapter 5, we are finally able to use equivalence relations to prove something interesting about $L_=$, in Problem 5.3. This can be a convincing demonstration of the relevance of equivalence relations. As an immediate consequence of Problem 5.3 and the Myhill-Nerode Corollary, we finally see that $L_=$ is not a regular language. Tracing the essence of this argument, we can give a simple bare-hands argument that $L_=$ is not regular in Example 1 without using any of this new machinery. The language $L_=$ recurs in Chapter 6, Examples 1 and 4, and our prototype context-free language. I believe that the saga of $L_=$ provides an fine example of the process of mathematical inquiry and discovery.
+
+The correlation between languages and machines presented here is a beautiful topic which many people can appreciate. These notes are thorough and complete, and should provide adequate guidance for any instructor with a sound grasp of abstract algebra and a working sense of algorithmic computation.
+
+I would certainly appreciate any corrections, comments, or ideas that you care to share.
+
+\begin{flushright}
+David Clark \\
+October 2002
+\end{flushright}
+
+
+
+
+\newpage
+
+\section{Discrete Mathematics}
+\markboth{1. Discrete Mathematics}{1. Discrete Mathematics}
+
+\pagenumbering{arabic}
+
+
+In this chapter, we will study four basic concepts from discrete mathematics that are used throughout theoretical computer science: sets, functions, relations, and equivalence relations.
+
+
+\subsection{Sets} %1.1
+
+
+By a \textbf{set}, we mean a collection of objects taken from some fixed universe of objects that we will call $\U$. If $\A$ is a set, then for each object $x$ in $\U$, either
+\begin{equation*}
+x \in \A \text{ (read ``$x$ is a member of $\A$'')}
+\end{equation*}
+or
+\begin{equation*}
+x \notin \A \text{ (read ``$x$ is not a member of $\A$'')}
+\end{equation*}
+
+If $\A$ and $\B$ are sets,
+\begin{equation*}
+\A \subseteq \B \text{ (read ``$\A$ is a subset of $\B$'')}
+\end{equation*}
+if each member of $\A$ is also a member of $\B$.
+
+Sets are assumed to satisfy two important principles that we will use frequently. In mathematics, sets are completely determined by their members:
+
+\begin{description}
+\item[Set Equality Principle:] If $\A$ and $\B$ are sets that have the same members (that is, $\A \subseteq \B$ and $\B \subseteq \A$), then $\A = \B$ are the same set.
+\end{description}
+
+This notion of ``set'' does not always match the colloquial notion. For example, it might sometimes be the case that the students enrolled in Languages \& Machines are exactly the same students as are enrolled in Calculus 2. While this would be two different classes, it would be a single set of students.
+
+\begin{description}
+\item[Set Specification Principle:] If $\Pb$ is a property that each object in $\U$ either has or does not have, then there is a set denoted by
+  \begin{equation*}
+  \{ x\ |\ x \in \U \text{ and } x \text{ has property } \Pb \}
+  \end{equation*}
+  whose members are exactly those objects in $\U$ having property $\Pb$.
+\end{description}
+
+For example,
+\begin{equation*}
+\Sb = \{ (x,y)\ |\ x \text{ and } y \text{ are real numbers, and } 2x + y^2 = 7 \}
+\end{equation*}
+is the set of points on a parabola in the plane.
+
+Using these two simple axioms, we can build many special sets and prove a variety of interesting facts about them. For example, our original ``universe''
+\begin{equation*}
+\U = \{ x\ |\ x \in \U \text{ and } x = x \}
+\end{equation*}
+is a set, the \emph{universal set}, where we have taken the property $\Pb$ to be $x = x$, which is true of every $x$ in $\U$. At the other extreme,
+\begin{equation*}
+\emptyset = \{ x\ |\ x \in \U \text{ and } x \neq x \}
+\end{equation*}
+is called the \emph{empty set} since it has no members.
+
+We can construct new sets from old using the Set Specification Principle:
+\begin{equation*}
+\A \cap \B = \{ x\ |\ x \in \A \text{ and } x \in \B \}
+\end{equation*}
+is called the \emph{intersection} of $\A$ and $\B$;
+\begin{equation*}
+\A \cup \B = \{ x\ |\ x \in \A \text{ or } x \in \B \}
+\end{equation*}
+is called the \emph{union} of $\A$ and $\B$;
+\begin{equation*}
+\A \sim \B = \{ x\ |\ x \in A \text{ but } x \text{ is not in } \B \}
+\end{equation*}
+is called the \emph{difference} between $\A$ and $\B$;
+\begin{equation*}
+\sim \B = \U \sim \B = \{ x\ |\ x \in \U \text{ but } x \text{ is not in } \B \}
+\end{equation*}
+is called the \emph{complement} of $\B$ in $\U$.
+
+
+\setlength{\unitlength}{0.88mm}
+\begin{picture}(120,30)(20,0)
+  \put(15,0){%A-int-B
+  \put(0,0){\line(1,0){30}} \put(0,20){\line(1,0){30}}
+  \put(0,0){\line(0,1){20}} \put(30,0){\line(0,1){20}}
+  \put(10,10){\circle{15}} \put(20,10){\circle{15}}
+  %
+  \put(9,9){A} \put(19,9){B}
+  %
+  \multiput(14,11)(1,0){3}{\circle*{.5}}
+  \multiput(14,12)(1,0){3}{\circle*{.5}}
+  \multiput(14,13)(1,0){3}{\circle*{.5}}
+  \multiput(15,14)(1,0){1}{\circle*{.5}}
+  \multiput(14,10)(1,0){4}{\circle*{.5}}
+  \multiput(14,9)(1,0){3}{\circle*{.5}}
+  \multiput(14,8)(1,0){3}{\circle*{.5}}
+  \multiput(14,7)(1,0){3}{\circle*{.5}}
+  \multiput(15,6)(1,0){1}{\circle*{.5}}
+  }
+
+  \put(50,0){%A-union-B
+  \put(0,0){\line(1,0){30}} \put(0,20){\line(1,0){30}}
+  \put(0,0){\line(0,1){20}} \put(30,0){\line(0,1){20}}
+  \put(10,10){\circle{15}} \put(20,10){\circle{15}}
+  %
+  \put(9,9){A} \put(19,9){B}
+  %
+  \multiput(4,11)(1,0){13}{\circle*{.5}}
+  \multiput(4,12)(1,0){13}{\circle*{.5}}
+  \multiput(4,13)(1,0){13}{\circle*{.5}}
+  \multiput(5,14)(1,0){11}{\circle*{.5}}
+  \multiput(6,15)(1,0){9}{\circle*{.5}}
+  \multiput(7,16)(1,0){7}{\circle*{.5}}
+  \multiput(10,17)(1,0){1}{\circle*{.5}}
+  \multiput(3,10)(1,0){14}{\circle*{.5}}
+  \multiput(4,9)(1,0){13}{\circle*{.5}}
+  \multiput(4,8)(1,0){13}{\circle*{.5}}
+  \multiput(4,7)(1,0){13}{\circle*{.5}}
+  \multiput(5,6)(1,0){11}{\circle*{.5}}
+  \multiput(6,5)(1,0){9}{\circle*{.5}}
+  \multiput(7,4)(1,0){7}{\circle*{.5}}
+  \multiput(10,3)(1,0){1}{\circle*{.5}}
+  \multiput(26,11)(-1,0){9}{\circle*{.5}}
+  \multiput(26,12)(-1,0){10}{\circle*{.5}}
+  \multiput(26,13)(-1,0){10}{\circle*{.5}}
+  \multiput(25,14)(-1,0){10}{\circle*{.5}}
+  \multiput(24,15)(-1,0){9}{\circle*{.5}}
+  \multiput(23,16)(-1,0){7}{\circle*{.5}}
+  \multiput(20,17)(-1,0){1}{\circle*{.5}}
+  \multiput(27,10)(-1,0){10}{\circle*{.5}}
+  \multiput(26,9)(-1,0){9}{\circle*{.5}}
+  \multiput(26,8)(-1,0){10}{\circle*{.5}}
+  \multiput(26,7)(-1,0){10}{\circle*{.5}}
+  \multiput(25,6)(-1,0){10}{\circle*{.5}}
+  \multiput(24,5)(-1,0){9}{\circle*{.5}}
+  \multiput(23,4)(-1,0){7}{\circle*{.5}}
+  \multiput(20,3)(-1,0){1}{\circle*{.5}}
+  }
+  
+  \put(85,0){
+  \put(0,0){\line(1,0){30}} \put(0,20){\line(1,0){30}}
+  \put(0,0){\line(0,1){20}} \put(30,0){\line(0,1){20}}
+  \put(10,10){\circle{15}} \put(20,10){\circle{15}}
+  %
+  \put(9,9){A} \put(19,9){B}
+  %
+  \multiput(4,11)(1,0){9}{\circle*{.5}}
+  \multiput(4,12)(1,0){10}{\circle*{.5}}
+  \multiput(4,13)(1,0){10}{\circle*{.5}}
+  \multiput(5,14)(1,0){10}{\circle*{.5}}
+  \multiput(6,15)(1,0){9}{\circle*{.5}}
+  \multiput(7,16)(1,0){7}{\circle*{.5}}
+  \multiput(10,17)(1,0){1}{\circle*{.5}}
+  \multiput(3,10)(1,0){10}{\circle*{.5}}
+  \multiput(4,9)(1,0){9}{\circle*{.5}}
+  \multiput(4,8)(1,0){10}{\circle*{.5}}
+  \multiput(4,7)(1,0){10}{\circle*{.5}}
+  \multiput(5,6)(1,0){10}{\circle*{.5}}
+  \multiput(6,5)(1,0){9}{\circle*{.5}}
+  \multiput(7,4)(1,0){7}{\circle*{.5}}
+  \multiput(10,3)(1,0){1}{\circle*{.5}}
+  }
+
+  \put(120,0){
+  \put(0,0){\line(1,0){30}} \put(0,20){\line(1,0){30}}
+  \put(0,0){\line(0,1){20}} \put(30,0){\line(0,1){20}}
+  \put(10,10){\circle{15}} \put(20,10){\circle{15}}
+  %
+  \put(9,9){A} \put(19,9){B}
+  %
+  \multiput(0,0)(1,0){30}{\circle*{.5}}
+  \multiput(0,1)(1,0){30}{\circle*{.5}}
+  \multiput(0,2)(1,0){30}{\circle*{.5}}
+  \multiput(0,3)(1,0){30}{\circle*{.5}}
+  \multiput(0,4)(1,0){17}{\circle*{.5}}
+  \multiput(0,5)(1,0){16}{\circle*{.5}}
+  \multiput(0,6)(1,0){15}{\circle*{.5}}
+  \multiput(0,7)(1,0){14}{\circle*{.5}}
+  \multiput(0,8)(1,0){14}{\circle*{.5}}
+  \multiput(0,9)(1,0){14}{\circle*{.5}}
+  \multiput(0,10)(1,0){14}{\circle*{.5}}
+  \multiput(0,11)(1,0){14}{\circle*{.5}}
+  \multiput(0,12)(1,0){14}{\circle*{.5}}
+  \multiput(0,13)(1,0){14}{\circle*{.5}}
+  \multiput(0,14)(1,0){15}{\circle*{.5}}
+  \multiput(0,15)(1,0){16}{\circle*{.5}}
+  \multiput(0,16)(1,0){17}{\circle*{.5}}
+  \multiput(0,17)(1,0){30}{\circle*{.5}}
+  \multiput(0,18)(1,0){30}{\circle*{.5}}
+  \multiput(0,19)(1,0){30}{\circle*{.5}}
+  \multiput(27,11)(1,0){3}{\circle*{.5}}
+  \multiput(27,12)(1,0){3}{\circle*{.5}}
+  \multiput(27,13)(1,0){3}{\circle*{.5}}
+  \multiput(26,14)(1,0){4}{\circle*{.5}}
+  \multiput(25,15)(1,0){5}{\circle*{.5}}
+  \multiput(24,16)(1,0){6}{\circle*{.5}}
+  \multiput(28,10)(1,0){2}{\circle*{.5}}
+  \multiput(27,9)(1,0){3}{\circle*{.5}}
+  \multiput(27,8)(1,0){3}{\circle*{.5}}
+  \multiput(27,7)(1,0){3}{\circle*{.5}}
+  \multiput(26,6)(1,0){4}{\circle*{.5}}
+  \multiput(25,5)(1,0){5}{\circle*{.5}}
+  \multiput(24,4)(1,0){6}{\circle*{.5}}
+  }
+\end{picture}
+\begin{equation*}
+\A \cap \B \qquad\qquad\qquad \A \cup \B \qquad\qquad\qquad \A \sim \B \qquad\qquad\qquad \sim \B
+\end{equation*}
+
+Often it turns out that different expressions represent the same set. For example, we can use the above definitions to prove the distributive property of intersection over union:
+
+\begin{description}
+\item[Theorem:] For every choice of sets $\A$, $\B$, and $\C$,
+  \begin{equation*}
+  \A \cap (\B \cup \C) = (\A \cap \B) \cup (\A \cap \C)
+  \end{equation*}
+
+\item[Proof:] Let $x \in \A \cap (\B \cup \C)$. Then $x \in \A$, and either $x \in \B$ or $x \in \C$.
+  \begin{description}
+    \item[Case 1:] $x \in \B$. Then $x \in \A \cap \B$, and therefore $x \in (\A \cap \B) \cup (\A \cap \C)$. 
+    \item[Case 2:] $x \in \C$. Then $x \in \A \cap \C$, and therefore $x \in (\A \cap \B) \cup (\A \cap \C)$.
+  \end{description}
+
+  In both cases, we conclude that $x \in (\A \cap \B) \cup (\A \cap \C)$.
+
+  Let $x \in (\A \cap \B) \cup (\A \cap \C)$. Then either $x \in \A \cap \B$ or $x \in \A \cap \C$.
+  \begin{description}
+    \item[Case 1:] $x \in \A \cap \B$. Then $x \in \A$, and $x \in \B \cup \C$ since $x \in \B$. Thus $x \in \A \cap (\B \cup \C)$. 
+    \item[Case 2:] $x \in \A \cap \C$. Then $x \in \A$, and $x \in \B \cup \C$ since $x \in \C$. Thus $x \in \A \cap (\B \cup \C)$.
+  \end{description}
+
+  In both cases, we conclude that $x \in \A \cap (\B \cup \C)$.
+
+  By the Set Equality Principle, $\A \cap (\B \cup \C) = (\A \cap \B) \cup (\A \cap \C)$. 
+\end{description}
+
+
+\setlength{\unitlength}{1mm}
+\begin{picture}(100,30)(20,0)
+  \put(30,0){%A
+  \put(0,0){\line(1,0){30}} \put(0,30){\line(1,0){30}}
+  \put(0,0){\line(0,1){30}} \put(30,0){\line(0,1){30}}
+  \put(10,10){\circle{15}} \put(20,10){\circle{15}}
+  \put(15,20){\circle{15}}
+  %
+  \put(9,9){A} \put(19,9){B} \put(14,19){C}
+  %
+  \multiput(4,11)(1,0){13}{\circle*{.5}}
+  \multiput(4,12)(1,0){13}{\circle*{.5}}
+  \multiput(4,13)(1,0){13}{\circle*{.5}}
+  \multiput(5,14)(1,0){11}{\circle*{.5}}
+  \multiput(6,15)(1,0){9}{\circle*{.5}}
+  \multiput(7,16)(1,0){7}{\circle*{.5}}
+  \multiput(10,17)(1,0){1}{\circle*{.5}}
+  \multiput(3,10)(1,0){14}{\circle*{.5}}
+  \multiput(4,9)(1,0){13}{\circle*{.5}}
+  \multiput(4,8)(1,0){13}{\circle*{.5}}
+  \multiput(4,7)(1,0){13}{\circle*{.5}}
+  \multiput(5,6)(1,0){11}{\circle*{.5}}
+  \multiput(6,5)(1,0){9}{\circle*{.5}}
+  \multiput(7,4)(1,0){7}{\circle*{.5}}
+  \multiput(10,3)(1,0){1}{\circle*{.5}}
+  }
+
+  \put(65,0){%B-union-C
+  \put(0,0){\line(1,0){30}} \put(0,30){\line(1,0){30}}
+  \put(0,0){\line(0,1){30}} \put(30,0){\line(0,1){30}}
+  \put(10,10){\circle{15}} \put(20,10){\circle{15}}
+  \put(15,20){\circle{15}}
+  %
+  \put(9,9){A} \put(19,9){B} \put(14,19){C}
+  %
+  \multiput(14,11)(1,0){13}{\circle*{.5}}
+  \multiput(14,12)(1,0){13}{\circle*{.5}}
+  \multiput(14,13)(1,0){13}{\circle*{.5}}
+  \multiput(19,14)(1,0){7}{\circle*{.5}}
+  \multiput(20,15)(1,0){5}{\circle*{.5}}
+  \multiput(21,16)(1,0){3}{\circle*{.5}}
+  \multiput(13,10)(1,0){14}{\circle*{.5}}
+  \multiput(14,9)(1,0){13}{\circle*{.5}}
+  \multiput(14,8)(1,0){13}{\circle*{.5}}
+  \multiput(14,7)(1,0){13}{\circle*{.5}}
+  \multiput(15,6)(1,0){11}{\circle*{.5}}
+  \multiput(16,5)(1,0){9}{\circle*{.5}}
+  \multiput(17,4)(1,0){7}{\circle*{.5}}
+  \multiput(20,3)(1,0){1}{\circle*{.5}}
+  \multiput(9,21)(1,0){13}{\circle*{.5}}
+  \multiput(9,22)(1,0){13}{\circle*{.5}}
+  \multiput(9,23)(1,0){13}{\circle*{.5}}
+  \multiput(10,24)(1,0){11}{\circle*{.5}}
+  \multiput(11,25)(1,0){9}{\circle*{.5}}
+  \multiput(12,26)(1,0){7}{\circle*{.5}}
+  \multiput(15,27)(1,0){1}{\circle*{.5}}
+  \multiput(8,20)(1,0){14}{\circle*{.5}}
+  \multiput(9,19)(1,0){13}{\circle*{.5}}
+  \multiput(9,18)(1,0){13}{\circle*{.5}}
+  \multiput(9,17)(1,0){13}{\circle*{.5}}
+  \multiput(10,16)(1,0){11}{\circle*{.5}}
+  \multiput(11,15)(1,0){9}{\circle*{.5}}
+  \multiput(12,14)(1,0){7}{\circle*{.5}}
+  \multiput(15,13)(1,0){1}{\circle*{.5}}
+  }
+
+  \put(100,0){%A-int-(B-union-C)
+  \put(0,0){\line(1,0){30}} \put(0,30){\line(1,0){30}}
+  \put(0,0){\line(0,1){30}} \put(30,0){\line(0,1){30}}
+  \put(10,10){\circle{15}} \put(20,10){\circle{15}}
+  \put(15,20){\circle{15}}
+  %
+  \put(9,9){A} \put(19,9){B} \put(14,19){C}
+  %
+  \multiput(14,11)(1,0){4}{\circle*{.5}}
+  \multiput(14,12)(1,0){3}{\circle*{.5}}
+  \multiput(14,13)(1,0){3}{\circle*{.5}}
+  \multiput(15,14)(1,0){1}{\circle*{.5}}
+  \multiput(13,10)(1,0){5}{\circle*{.5}}
+  \multiput(14,9)(1,0){4}{\circle*{.5}}
+  \multiput(14,8)(1,0){3}{\circle*{.5}}
+  \multiput(14,7)(1,0){3}{\circle*{.5}}
+  \multiput(15,6)(1,0){1}{\circle*{.5}}
+  \multiput(9,17)(1,0){2}{\circle*{.5}}
+  \multiput(10,16)(1,0){4}{\circle*{.5}}
+  \multiput(11,15)(1,0){5}{\circle*{.5}}
+  \multiput(12,14)(1,0){4}{\circle*{.5}}
+  \multiput(15,13)(1,0){1}{\circle*{.5}}}
+\end{picture}
+\begin{equation*}
+\qquad\qquad\qquad \A \qquad\qquad\qquad\qquad \B \cup \C \qquad\qquad\quad\quad \A \cap (\B \cup \C)
+\end{equation*}
+
+
+\setlength{\unitlength}{1mm}
+\begin{picture}(100,30)(20,0)
+  \put(30,0){%A-int-B
+  \put(0,0){\line(1,0){30}} \put(0,30){\line(1,0){30}}
+  \put(0,0){\line(0,1){30}} \put(30,0){\line(0,1){30}}
+  \put(10,10){\circle{15}} \put(20,10){\circle{15}}
+  \put(15,20){\circle{15}}
+  %
+  \put(9,9){A} \put(19,9){B} \put(14,19){C}
+  %
+  \multiput(14,11)(1,0){3}{\circle*{.5}}
+  \multiput(14,12)(1,0){3}{\circle*{.5}}
+  \multiput(14,13)(1,0){3}{\circle*{.5}}
+  \multiput(15,14)(1,0){1}{\circle*{.5}}
+  \multiput(14,10)(1,0){4}{\circle*{.5}}
+  \multiput(14,9)(1,0){3}{\circle*{.5}}
+  \multiput(14,8)(1,0){3}{\circle*{.5}}
+  \multiput(14,7)(1,0){3}{\circle*{.5}}
+  \multiput(15,6)(1,0){1}{\circle*{.5}}}
+
+  \put(65,0){%A-int-C
+  \put(0,0){\line(1,0){30}} \put(0,30){\line(1,0){30}}
+  \put(0,0){\line(0,1){30}} \put(30,0){\line(0,1){30}}
+  \put(10,10){\circle{15}} \put(20,10){\circle{15}}
+  \put(15,20){\circle{15}}
+  %
+  \put(9,9){A} \put(19,9){B} \put(14,19){C}
+  %
+  \multiput(9,17)(1,0){2}{\circle*{.5}}
+  \multiput(10,16)(1,0){4}{\circle*{.5}}
+  \multiput(11,15)(1,0){5}{\circle*{.5}}
+  \multiput(12,14)(1,0){4}{\circle*{.5}}}
+
+  \put(100,0){%(A-int-B)-union-(A-int-C)
+  \put(0,0){\line(1,0){30}} \put(0,30){\line(1,0){30}}
+  \put(0,0){\line(0,1){30}} \put(30,0){\line(0,1){30}}
+  \put(10,10){\circle{15}} \put(20,10){\circle{15}}
+  \put(15,20){\circle{15}}
+  %
+  \put(9,9){A} \put(19,9){B} \put(14,19){C}
+  %
+  \multiput(14,11)(1,0){4}{\circle*{.5}}
+  \multiput(14,12)(1,0){3}{\circle*{.5}}
+  \multiput(14,13)(1,0){3}{\circle*{.5}}
+  \multiput(15,14)(1,0){1}{\circle*{.5}}
+  \multiput(13,10)(1,0){5}{\circle*{.5}}
+  \multiput(14,9)(1,0){4}{\circle*{.5}}
+  \multiput(14,8)(1,0){3}{\circle*{.5}}
+  \multiput(14,7)(1,0){3}{\circle*{.5}}
+  \multiput(15,6)(1,0){1}{\circle*{.5}}
+  \multiput(9,17)(1,0){2}{\circle*{.5}}
+  \multiput(10,16)(1,0){4}{\circle*{.5}}
+  \multiput(11,15)(1,0){5}{\circle*{.5}}
+  \multiput(12,14)(1,0){4}{\circle*{.5}}
+  \multiput(15,13)(1,0){1}{\circle*{.5}}}
+\end{picture}
+\begin{equation*}
+\qquad\qquad\qquad \A \cap \B \qquad\qquad\qquad\quad \A \cap \C \qquad\qquad\quad (\A \cap \B) \cup (\A \cap \C)
+\end{equation*}
+
+
+Since the above theorem does not involve more than three sets, we are able to use \emph{Venn Diagrams} to illustrate it. If $\A$ and $\B$ are sets, the \emph{Cartesian product} of $\A$ and $\B$, denoted by $\A\times \B$, consists of all ordered pairs $(x,y)$ where $x \in \A$ and $y \in \B$:
+\begin{equation*}
+\A \times \B = \{ (x,y)\ |\ x \in \A \text{ and } y \in \B \}
+\end{equation*}
+
+For any set $\A$, the \emph{power set} of $\A$, denoted by $\Ps(\A)$, is the set of all subsets of $\A$:
+\begin{equation*}
+\Ps(\A) = \{ \B\ |\ \B \subseteq \A \}
+\end{equation*}
+
+We sometimes write $\B \subsetneq \A$, read ``$\B$ is a \emph{proper subset} of $\A$'', to mean that $\B$ is a subset of $\A$ but $\B$ is not equal to $\A$.
+
+\subsubsection*{Problems}
+
+Confirm each of the identities in (1.1), (1.2), and (1.3) with a Venn Diagram, by drawing each side and checking that they are the same:
+
+\begin{description}
+  \item[(1.1)] the Associative Laws:
+    \begin{align*}
+    \A \cap (\B \cap \C) & = (\A \cap \B) \cap \C \\
+    \A \cup (\B \cup \C) & = (\A \cup \B) \cup \C
+    \end{align*}
+  \item[(1.2)] the Distributive Laws:
+    \begin{align*}
+    \A \cup (\B \cap \C) & = (\A \cup \B) \cap (\A \cup \C) \\
+    \A \cap (\B \cup \C) & = (\A \cap \B) \cup (\A \cap \C)
+    \end{align*}
+  \item[(1.3)] DeMorgan's Laws:
+    \begin{align*}
+    \sim(\A \cap \B) & = \sim \A \cup \sim \B \\
+    \sim(\A \cup \B) & = \sim \A \cap \sim \B
+    \end{align*}
+  \item[(1.4)] Which one of the following three statements is always true? Find examples of sets $\A$, $\B$, and $\C$ for which each of the remaining two fail.
+    \begin{itemize}
+      \item $\A \cap (\B \times \C) = (\A \cap \B) \times (\A \cap \C)$
+      \item $\A \times (\B \cup \C) = (\A \times \B) \cup (\A \times \C)$
+      \item $\A \cup (\B \times \C) = (\A \cup \B) \times (\A \cup \C)$
+    \end{itemize}
+  \item[(1.5)] If $\A$ has $5$ elements, how many elements does $\Ps(\A)$ have? If $\A$ has $n$ elements, how many elements does $\Ps(\A)$ have?
+\end{description}
+
+
+\subsection{Relations, Functions, and Equivalence Relations} %1.2
+
+
+A \emph{relation} from a set $\A$ to a set $\B$ is a subset $r$ of $\A \times \B$. We call $\A$ the \emph{domain} of $r$, and call $\B$ the \emph{codomain} of $r$. If $\A = \B$, we say that $r$ is a \emph{relation on} $\A$. For $x \in \A$ and $y \in \B$, we often write ``$xry$'' to mean that $(x,y) \in r$. For example, the ``less than or equal to'' relation $\leq$ on the set $\R$ of real numbers is formally defined as
+\begin{equation*}
+\leq = \{ (x,y)\ |\ x \text{ is less than or equal to } y \}
+\end{equation*}
+
+We normally write ``$3 \leq 7$'' instead of ``$(3,7) \in \leq$''.
+
+One special kind of relation is a \emph{function}. A function $f$ from $\A$ to $\B$ is a rule which associates each member $x \in \A$ with a member $y = f(x) \in \B$. We express this by writing
+\begin{equation*}
+f\ :\ \A \to \B
+\end{equation*}
+and saying that ``$f$ is a function from $\A$ to $\B$''. The \emph{range} of $f$, denoted by $f(\A)$, is the subset $f(\A) = \{ f(x)\ |\ x \in \A \}$ of $B$ consisting of all \emph{images} $f(x)$ of elements $x$ in $\A$. If $\A$ is a finite set, then it is often convenient to store a function $f$ from $\A$ to $\B$ as the set of ordered pairs $(x,y)$, where $x \in \A$ and $y = f(x) \in \B$.  Thus we can define a \textbf{function} $f$ as \emph{being} a relation from $\A$ to $\B$ in which each member of $\A$ occurs exactly once as the first term of some ordered pair. This gives us
+\begin{equation*}
+f = \{ (x,y)\ |\ x \in \A \text{ and } y = f(x) \in \B \} \subseteq \A \times \B
+\end{equation*}
+
+We say that $f$ is
+\begin{itemize}
+  \item \emph{one-to-one} if $f(x) \neq f(y)$ whenever $x,y \in \A$ and $x \neq y$;
+  \item \emph{onto} $\B$ if for every $y \in \B$, there is an $x \in \A$ such that $f(x) = y$.
+\end{itemize}
+
+We call $f$ a \emph{bijection} if it is both one-to-one and onto $\B$. We say that $\A$ and $\B$ are the \emph{same size} if there exists some bijection from $\A$ onto $\B$.
+
+Another special kind of relation is an \emph{equivalence relation}, an idea which requires some digression to explain. There are many occasions in computer science when we want to describe certain objects as being ``equivalent'' in some sense. For example, two programs might be thought of as ``equivalent'' if they always produce the same output from the same input. Of course, this notion is not clear until we specify what inputs are allowable. If we allow a larger set of possible inputs, we can expect fewer programs to be ``equivalent''. When we clean up or simplify a program, we are producing a new program which is equivalent to the old one, but is in some way easier to read. Alternatively, we might fix a program and fix a set of possible input strings, and define two input strings to be ``equivalent'' if they generate the same output from the program. This would give us a different notion of ``equivalence'' of input strings for each program. In a very different context, we might think of two formulas in propositional logic to be ``equivalent'' if they have the same truth tables.
+
+All of these notions of ``equivalent'' have something in common. In each case, there is a set (programs, input strings, formulas) which is broken up into disjoint bunches so that two members are ``equivalent'' exactly when they are in the same bunch. This observation leads to the following definition. We say that a collection $\Ps$ of non-empty subsets of a set $\A$ is a \emph{partition} of $\A$ if each member of $\A$ is in exactly one member of $\Ps$; that is,
+\begin{enumerate}
+  \item $\bigcup \Ps = \A$ (the union of all the sets in $\Ps$); and
+  \item $X \cap Y = \emptyset$ for every pair of distinct $X,Y \in \Ps$. (We say $X$ and $Y$ are \emph{disjoint}.)
+\end{enumerate}
+
+Associated with any partition $\Ps$ of $\A$ is a relation $\equiv_{\Ps}$ of ``equivalence'' on $\A$: Elements $x$ and $y$ of $\A$ are ``equivalent''; that is, $x \equiv_{\Ps} y$, if $x$ and $y$ are in the same member of $\Ps$. A relation $\equiv_{\Ps}$ that arises out of a partition $\Ps$ in this way always has three special properties:
+\begin{itemize}
+  \item $\equiv$ is \emph{reflexive}: $x \equiv x$ for any $x \in \A$;
+  \item $\equiv$ is \emph{symmetric}: $y \equiv x$ whenever $x \equiv y$;
+  \item $\equiv$ is \emph{transitive}: $x \equiv z$ whenever $x \equiv y$ and $y \equiv z$.
+\end{itemize}
+
+\setlength{\unitlength}{1mm}
+\begin{picture}(110,40)(-55,-20)
+\put(-50,-10){\line(0,1){30}} 
+\put(-10,-10){\line(0,1){30}}
+\put(-50,-10){\line(1,0){40}} 
+\put(-50,20){\line(1,0){40}}
+\qbezier[15](-40,10)(-32.5,10)(-25,10)
+\qbezier[15](-25,0)(-17.5,0)(-10,0)
+\qbezier[30](-40,-10)(-40,5)(-40,20)
+\qbezier[30](-25,-10)(-25,5)(-25,20)
+\put(50,-10){\line(0,1){9}} 
+\put(50,1){\line(0,1){19}}
+\put(10,-10){\line(0,1){30}}
+\put(19,-10){\line(0,1){30}}
+\put(21,-10){\line(0,1){19}} 
+\put(21,11){\line(0,1){9}}
+\put(34,-10){\line(0,1){19}} 
+\put(34,11){\line(0,1){9}}
+\put(36,-10){\line(0,1){9}} 
+\put(36,1){\line(0,1){19}}
+\put(10,-10){\line(1,0){9}} 
+\put(21,-10){\line(1,0){13}}
+\put(36,-10){\line(1,0){14}}
+\put(10,20){\line(1,0){9}} 
+\put(21,20){\line(1,0){13}}
+\put(36,20){\line(1,0){14}}
+\put(21,11){\line(1,0){13}} 
+\put(21,9){\line(1,0){13}}
+\put(36,1){\line(1,0){14}} 
+\put(36,-1){\line(1,0){14}}
+\put(-30,-15){$\A$} 
+\put(30,-15){$\Ps$}
+\put(-5,0){$x \equiv y$} 
+\put(23,-5){$x$} 
+\put(30,5){$y$}
+\put(-37,-5){$x$} 
+\put(-30,5){$y$}
+\end{picture}
+
+A binary relation $\equiv$ which has these three properties is called an \emph{equivalence relation}. Thus $\equiv_{\Pb}$ is an equivalence relation for every partition $\Pb$. What is surprising is that every equivalence relation can be obtained in this way from some partition.
+
+\begin{description}
+\item[Equivalence Relation Theorem:] Let $\equiv$ be an equivalence relation on the set $\A$. For each $x \in \A$, define the \emph{$\equiv$-class} of $x$ to be the set
+  \begin{equation*}
+  [x] = \{ y\ |\ y \in \A \text{ and } x \equiv y \}
+  \end{equation*}
+  Then the set $\Ps = \{ [x]\ |\ x \in \A \}$ of all $\equiv$-classes forms a partition of the set $\A$ such that $x \equiv y$ if and only if $x$ and $y$ are in the same member of $\Ps$.
+
+\item[Proof:] Every member $x$ of $\A$ is in some $\equiv$-class, namely the class $[x]$ that it determines. This is because $\equiv$ is \emph{reflexive}, so $x \equiv x$. This tells us that $\bigcup \Ps = \A$.
+
+  To see that distinct $\equiv$-classes are disjoint, suppose that $[x] \cap [y] \neq \emptyset$. We will show that $[x] = [y]$. Let $u \in [x]$; that is, $x \equiv u$. Choose any $z \in [x] \cap [y]$. Since $x \equiv z$, we have, by \emph{symmetry}, $z \equiv x$. Since $y \equiv z \equiv x \equiv u$, we have, by \emph{transitivity}, $y \equiv u$. Thus $u \in [y]$. Similarly, $[y] \subseteq [x]$, so $[x] = [y]$. This shows that the $\equiv$-classes $[x]$ and $[y]$ are either equal or disjoint. 
+\end{description}
+
+\subsubsection*{Problems}
+
+In (1.6) through (1.10), verify that the relation is an equivalence relation, and then describe its equivalence classes.
+
+\begin{description}
+  \item[(1.6)] $\A$ is the set of points $(x,y)$ in the plane. $(x,y) \equiv (x',y')$ if $(x,y)$ and $(x',y')$ are the same distance from the origin.
+  \item[(1.7)] $x \equiv y$ if $x$ and $y$ are integers and $x - y$ is a multiple of $3$.
+  \item[(1.8)] $x \equiv y$ if $x$ and $y$ are integers and $x + y$ is even.
+  \item[(1.9)] Let $\Sb = \{ a,b,c,d,e,f,g,h \}$, and let $\T = \{ a,b,c \}$. For $X,Y \in \Ps(S) = \A$, we define $X \equiv Y$ if $X$ and $Y$ have the same intersection with $\T$.
+  \item[(1.10)] Let $f$ be any function from the set $\A$ into a set $\B$. For $x$ and $y$ in $\A$, we say that $x$ is \emph{equivalent to} $y$ \emph{modulo} $f$ if $f(x) = f(y)$.
+  \item[(1.11)] Let $\A = \{0,1\} \times \{0,1\} \times \{0,1\} \times \{0,1\} \times \{0,1\} = \{0,1\}^5$ be the set of 32 different five-tuples of 0s and 1s. For $x,y \in \A$, define $x \equiv y$ to mean that $x$ and $y$ have the same number of 1s. Write down all the members of each of the different $\equiv$-classes.
+  \item[(1.12)] Suppose $\A = \{ 0,1 \}^n$ is the set of all $n$-tuples of 0s and 1s. For $x,y \in \A$, again define $x \equiv y$ to mean that $x$ and $y$ have the same number of 1s. How many different $\equiv$-classes does $\A$ have?
+  \item[(1.13)] Computer graphics uses techniques to continuously transform one image into another. As an example of this, consider the letters of the alphabet:
+    \begin{center}
+    {\large \textsf{A B C D E F G H I J K L M N O P Q R S T U V W X Y Z} }
+    \end{center}
+    Two letters are said to be \emph{topologically equivalent} if each can be continuously transformed into the other by bending, stretching, shrinking and rotating. Cutting and gluing are not allowed; nor can a point be stretched into a segment, or a segment shrunk to a point. For example, {\large \textsf E} is equivalent to {\large \textsf Y}:
+
+\setlength{\unitlength}{1mm}
+\begin{picture}(60,10)(-60,-5)
+\put(-40,-5){\line(0,1){10}} 
+\put(-40,-5){\line(1,0){6}}
+\put(-40,5){\line(1,0){6}} 
+\put(-40,0){\line(1,0){5}}
+\put(-26,-5){\line(0,1){6}} 
+\put(-16,-5){\line(0,1){6}}
+\put(-21,-5){\line(0,1){6}} 
+\put(-26,1){\line(1,0){10}}
+\put(-8,-3){\line(3,4){3}} 
+\put(-5,1){\line(1,0){10}}
+\put(8,-3){\line(-3,4){3}} 
+\put(0,-5){\line(0,1){6}}
+\put(16,1){\line(5,-1){5}} 
+\put(26,1){\line(-5,-1){5}}
+\put(21,-5){\line(0,1){5}}
+\put(32,5){\line(1,-1){5}} 
+\put(42,5){\line(-1,-1){5}}
+\put(37,-5){\line(0,1){5}}
+\end{picture}
+
+    How many different equivalence classes of letters are there? List the members of each.
+\end{description}
+
+
+
+
+\newpage
+
+\section{Finite State Machines}
+\markboth{2. Finite State Machines}{2. Finite State Machines}
+
+
+In this chapter, we will study the simplest class of computing machines. These machines are important for two reasons.
+\begin{itemize}
+  \item They model the logic of familiar machines -- such as vending machines, washing machines, and toasters -- which require logic circuitry but are not normally thought of as computers.
+  \item They are simple enough to completely analyze from several different perspectives, illustrating how we would optimally like to understand more complex machines.
+\end{itemize}
+
+Finite state machines are characterized by the fact that their action, at any point in their operation, is determined only by their current state and their current input. They have no long-term memory, and are therefore unable to carry out any logical process of reviewing the past or anticipating the future. The reader might well picture some biological models of this sort of behavior.
+
+
+\subsection{Finite State Transducers} %2.1
+
+
+Before giving any general definitions, let's look at an example of a simple vending machine. The directions on the machine ask the user to follow three steps.
+\begin{enumerate}
+  \item Choose either
+    \begin{description}
+      \item[(W)] Pure Spring Water ($65 \cents$) or
+      \item[(C)] Coca-Cola ($45 \cents$).
+    \end{description}
+  \item Insert either quarters (q) or half-dollars (h).
+  \item Press ``RETURN'' (R) for your drink and change.
+\end{enumerate}
+
+In order to executes its instructions, the machine needs to be able to remember, at any time, the user's selection and the amount of money it has received. Memory will take the form of \emph{internal states}, one for each possible data set. The machine logic is represented by a directed labeled graph. The internal states form the vertices of the graph. Each arrow tells
+\begin{enumerate}
+  \item for a particular input, what the output should be; and
+  \item what new internal state it should go to.
+\end{enumerate}
+
+The start state is ``$S$'', and each other state has a name that indicates what it is to remember. A ``--'' means no output.
+
+\setlength{\unitlength}{.76mm}
+\begin{picture}(145,55)(-85,-20)
+\put(-80,15){\circle{10}} 
+\put(-40,15){\circle{10}}
+\put(0,15){\circle{10}} 
+\put(-15,10){Start}
+\put(30,15){\circle{10}} 
+\put(-40,30){\circle{12}}
+\put(60,30){\circle{10}} 
+\put(-60,5){\circle{10}}
+\put(-60,-10){\circle{10}} 
+\put(15,0){\circle{10}}
+\put(60,0){\circle{10}}
+%State Labels
+\put(-83,14){$50W$} 
+\put(-41,14){$W$} 
+\put(-1,14){$S$}
+\put(29,14){$C$} 
+\put(-44.5,29){$100W$} 
+\put(57,29){$50C$}
+\put(-63,4){$25W$} 
+\put(-63,-11){$75W$} 
+\put(12,-1){$75C$}
+\put(57,-1){$25C$}
+%Horizontal Lines
+\put(22,0){\line(1,0){30}} 
+\put(7,15){\line(1,0){15}}
+\put(-7,15){\line(-1,0){25}} 
+\put(-47,15){\line(-1,0){25}}
+\put(-80,30){\line(1,0){33}} 
+\put(-33,30){\line(1,0){86}}
+\put(37,15){\line(1,0){18}} 
+\put(-53,5){\line(1,0){13}}
+\put(-53,-10){\line(1,0){53}} 
+\put(0,0){\line(1,0){8}}
+\put(-74,-10){\line(1,0){7}}
+%Vertical Lines
+\put(-80,30){\line(0,-1){8}} 
+\put(0,30){\line(0,-1){8}}
+\put(55,23){\line(0,-1){16}} 
+\put(60,23){\line(0,-1){16}}
+\put(-60,15){\line(0,-1){3}} 
+\put(-40,5){\line(0,1){3}}
+\put(-60,-1){\line(0,-1){3}} 
+\put(0,8){\line(0,-1){18}}
+\put(-74,30){\line(0,-1){40}}
+%Arrow Heads
+\put(-50,29){$\blacktriangleright$} 
+\put(20,14){$\blacktriangleright$} 
+\put(-73,14){$\blacktriangleleft$}
+\put(-33,14){$\blacktriangleleft$} 
+\put(-53,4){$\blacktriangleleft$} 
+\put(22,-1){$\blacktriangleleft$}
+\put(-1.5,22){$\blacktriangledown$} 
+\put(-61.5,-4.5){$\blacktriangledown$} 
+\put(53.5,6){$\blacktriangledown$}
+\put(-1.5,6){$\blacktriangle$} 
+\put(53.5,21){$\blacktriangle$} 
+\put(58.5,21){$\blacktriangle$}
+%Input/Output
+\put(-70,32){h/--}
+\put(-30,32){R/W+35}
+\put(20,32){R/C+5}
+\put(-55,17){h/--}
+\put(-20,17){W/--}
+\put(10,17){C/--}
+\put(40,17){h/--}
+\put(62,13){q/--}
+\put(40,10){q/--}
+\put(-37,5){q/--}
+\put(-72,10){q/--}
+\put(-82,0){q/--}
+\put(-40,-15){R/W+10} 
+\put(5,-10){R/C+30}
+\put(35,-5){h/--}
+\put(-56,-4){h/--}
+\end{picture}
+
+For example, if the user asks for a Water and puts in a quarter and a half dollar and then presses ``RETURN'', the machine will go from state $S$ to $W$ to $25W$ to $75W$, and then will output a Water and a dime.
+
+Our vending machine is an example of a large class of finite state machines. A \emph{finite state transducer} is a quintuple
+\begin{equation*}
+M = \langle \Sigma_1, \Sigma_2, Q, s, \delta \rangle
+\end{equation*}
+where
+\begin{itemize}
+  \item $\Sigma_1$ is a finite set of symbols, called the \emph{input alphabet};
+  \item $\Sigma_2$ is a finite set of symbols, called the \emph{output alphabet};
+  \item $Q$ is a finite set, the \emph{internal states} of $M$;
+  \item $s \in Q$ is called the \emph{initial state} of $M$;
+  \item $\delta\ :\ Q \times \Sigma_1 \to Q \times \Sigma_2$ is called the \emph{state transition function}.
+\end{itemize}
+
+A finite state transducer is illustrated as a directed labeled graph whose vertices are the states of $Q$, and we label the arrow
+\begin{equation*}
+q \overset{a/d}{\longrightarrow} q'
+\end{equation*}
+from state $q$ to state $q'$ with $a/d$ if $\delta(q,a) = (q',d)$; that is, in state $q \in Q$ reading input symbol $a \in \Sigma_1$, the machine is to go to state $q' \in Q$ and output symbol $d \in \Sigma_2$.
+
+
+\subsubsection*{Problems}
+
+\begin{description}
+  \item[(2.1)] Construct a transition diagram for a finite state transducer that will read a sequence of letters from the set $\{ a,b,c \}$ starting from the left (for example, ``$caabbacccbacb$''). As output, it will change each letter to an ``$e$'' until it has read three ``$a$''s. After that, it will change each ``$a$'' to ``$b$'', each ``$b$'' to ``$c$'', and each ``$c$'' to ``$a$''.
+  \item[(2.2)] Construct a transition diagram for a stamp vending machine that asks the user to
+    \begin{enumerate}
+      \item choose either a 10-stamp book (\$3.40) or a 20-stamp book (\$6.80); 
+      \item insert either \$1, \$5, or \$10 bills; 
+      \item press ``RETURN'' for stamps and change.
+    \end{enumerate}
+    You may assume that the user never inserts a bill that will need to be returned as change; for example, a \$1 followed by a \$10.
+  \item[(2.3)] Construct a transition diagram for a finite state transducer which will take as input a sequence of letters from $\{ a,b,c \}$, ending with a single ``$x$''. It will output a blank symbol $-$ for each $a$, $b$, and $c$. When it reads ``$x$'', it will output the \emph{remainder} when the number of ``$a$''s in the input is divided by $3$. (Thus its output will be $0$, $1$, or $2$.)
+\end{description}
+
+
+\subsection{Finite State Acceptors} %2.2
+
+In order to fully analyze the capabilities of finite state machines, we will focus on a particular variant of this concept which is designed to answer YES or NO question. A \emph{finite state acceptor} (FSA) is a quintuple
+\begin{equation*}
+M = \langle \Sigma, Q, s, Y, \delta \rangle
+\end{equation*}
+where
+\begin{itemize}
+  \item $\Sigma$ is a finite set of symbols, called the \emph{input alphabet};
+  \item $Q$ is a finite set, the \emph{internal states} of $M$;
+  \item $s \in Q$ is called the \emph{initial state} of $M$;
+  \item $Y$ is a subset of $Q$ called the \emph{accepting states} of $M$;
+  \item $\delta\ :\ Q \times \Sigma \to Q$ is called the \emph{state transition function}.
+\end{itemize}
+
+Like a finite state transducer, a finite state acceptor is illustrated by a directed labeled graph. The vertices of the graph are again the states of $Q$, and there is a labeled arrow for each state $q \in Q$ and each symbol $a \in \Sigma$. The arrow
+\begin{equation*}
+q \overset{a}{\longrightarrow} q'
+\end{equation*}
+indicates that $\delta(q,a) = q'$. In practice, this means that $M$ in state $q$ reading input symbol $a$, will go into state $q'$.
+
+The function of $M$ will be to read a string $w$ of symbols from $\Sigma$ and either accept or reject it. To explain how this works, we need a few definitions. Let $\Sigma^*$ denote the set of all finite strings of symbols from $\Sigma$. It is convenient to always include the \emph{empty string}, which we denote by $\lambda$, in $\Sigma^*$. The transition function $\delta$ can be extended recursively to a function
+\begin{equation*}
+\delta^*\ :\ Q \times \Sigma^* \to Q
+\end{equation*}
+by defining
+\begin{enumerate}
+  \item $\delta^*(q,\lambda) = q$ and $\delta^*(q,a) = \delta(q,a)$ for $a \in \Sigma$;
+  \item $\delta^*(q,au) = \delta^*(\delta(q,a),u)$ for $a \in \Sigma$, $u \in \Sigma^*$.
+\end{enumerate}
+
+For example, if $q \in Q$ and $a,b,c \in \Sigma$, then we have
+\begin{equation*}
+\delta^*(q,abc) = \delta^*(\delta(q,a),bc) = \delta^*(\delta(\delta(q,a),b),c) = \delta(\delta(\delta(q,a),b),c)
+\end{equation*}
+
+\begin{center}
+\setlength{\unitlength}{1mm}
+\begin{picture}(70,12)(-45,9)
+\put(-40,15){\circle{6}} 
+\put(-20,15){\circle{6}}
+\put(0,15){\circle{6}} 
+\put(20,15){\circle{6}}
+\put(-31,18){$a$} 
+\put(-11,18){$b$} 
+\put(9,18){$c$} 
+\put(-41,14){$q$}
+\put(-35,15){\line(1,0){10}} 
+\put(-27,14){$\blacktriangleright$}
+\put(-15,15){\line(1,0){10}} 
+\put(-7,14){$\blacktriangleright$}
+\put(5,15){\line(1,0){10}}
+\put(13,14){$\blacktriangleright$}
+\end{picture}
+\end{center}
+
+If $M$ begins in its start state $s$ reading a string $w \in \Sigma^*$, then $\delta^*(s,w)$ is the state it will be in when it reaches the end of $w$ and halts. We say that $M$ \emph{accepts} the string $w$ if $\delta^*(s,w) \in Y$; otherwise, it \emph{rejects} $w$. The set
+\begin{equation*}
+L = \El(M) := \{ w \in \Sigma^*\ |\ \delta^*(s,w) \in Y \}
+\end{equation*}
+consists of all strings accepted by $M$, and is called \emph{the language recognized by} $M$. We think of each string in $\Sigma^*$ as expressing a question (namely, ``Am I in $L$?''). The finite state acceptor answers YES if, reading $w$, it ends in a state of $Y$; otherwise, it answers NO. In the transition diagram, we mark the start state with ``START'', and indicate the accepting states of $Y$ with a double circle.
+
+In practice, we often find that after reading only part of a string, we can be certain regardless of what follows, that the answer will be NO. In these cases, it is useful to specify a ``dead state'' which is non-accepting and cannot be exited. We frequently denote the dead state by $Z$, and since many arrow go to $Z$, follow the convention that undrawn arrows are intended to go to $Z$.
+
+We denote the collection of languages recognizable by some FSA by
+\begin{equation*}
+\mathbb{FSA} := \{ L\ |\ L = \El(M) \text{ for some finite state acceptor } M \}
+\end{equation*}
+
+An understanding of what languages are in $\mathbb{FSA}$ will give us an indication of the capabilities of finite state machines.
+
+
+\subsubsection*{Problems}
+
+\begin{description}
+  \item[(2.4)] Consider the FSA $M$ illustrated below. Here $s$ is the start state, $x$ (indicated with a double circle) is the only accepting state, and all undrawn arrows go the the ``dead'' state $z$.
+
+\begin{center}
+\setlength{\unitlength}{1mm}
+\begin{picture}(100,30)(-50,-15)
+%Circles as states
+\put(-30,10){\circle{6}}
+\put(-31,9.5){$u$}
+\put(-30,-10){\circle{6}}
+\put(-31,-10.5){$w$}
+\put(-10,0){\circle{6}}
+\put(-11,-.5){$s$}
+\put(10,0){\circle{6}}
+\put(9,-.5){$v$}
+\put(30,10){\circle{6}}
+\put(30,10){\circle{4.5}} 
+\put(29,9.5){$x$}
+\put(30,-10){\circle{6}}
+\put(29,-10.5){$y$}
+\put(0,-10){\circle{6}}
+\put(-1,-10.5){$z$}
+%Transition arrows
+\qbezier(10,5)(10,10)(25,10) 
+\put(23,9){$\blacktriangleright$} 
+\put(15,5){2}%v2x
+\qbezier(-10,5)(-10,10)(-25,10) 
+\put(-26,9){$\blacktriangleleft$} 
+\put(-18,5){0}%s2u
+\qbezier(-10,-5)(-10,-10)(-25,-10) 
+\put(-11.5,-7){$\blacktriangle$} 
+\put(-18,-8){0}%w2s
+\qbezier(10,-5)(10,-10)(25,-10) 
+\put(23,-11){$\blacktriangleright$} 
+\put(15,-8){1}%v2y
+\put(-5,0){\line(1,0){10}} 
+\put(3,-1){$\blacktriangleright$} 
+\put(-1,1){$1$}%s2v
+\put(30,-5){\line(0,1){10}} 
+\put(28.5,3){$\blacktriangle$} 
+\put(28.5,-6){$\blacktriangledown$} 
+\put(32,-1){0}%x2y%
+\put(-30,-5){\line(0,1){10}} 
+\put(-31.5,-6){$\blacktriangledown$} 
+\put(-32.5,-1){0}%u2w
+\qbezier(35,9)(40,8)(40,10) 
+\qbezier(35,11)(40,12)(40,10) 
+\put(35,10){$\blacktriangleleft$} 
+\put(42,9){2}%x2x
+\qbezier(-35,9)(-40,8)(-40,10) 
+\qbezier(-35,11)(-40,12)(-40,10) 
+\put(-38,10){$\blacktriangleright$} 
+\put(-46,9){1,2}%u2u
+\qbezier(-35,-9)(-40,-8)(-40,-10) 
+\qbezier(-35,-11)(-40,-12)(-40,-10) 
+\put(35,-10){$\blacktriangleleft$} 
+\put(-46,-10.5){1,2}%w2w
+\qbezier(35,-9)(40,-8)(40,-10) 
+\qbezier(35,-11)(40,-12)(40,-10) 
+\put(-38,-10){$\blacktriangleright$} 
+\put(42,-11){1}%y2y
+\qbezier(-15,1)(-20,2)(-20,0) 
+\qbezier(-15,-1)(-20,-2)(-20,0) 
+\put(-18,0){$\blacktriangleright$} 
+\put(-23,-1){2}%s2s
+\end{picture}
+\end{center}
+
+    List three strings in $\{ 0,1,2 \}^*$ that are accepted by $M$, and three strings that are not accepted by $M$.
+  \item[(2.5)] Let $\Sigma = \{ a,b,c,d \}$. Construct a FSA $M_1$ that will answer the question, ``Does $w$ begin with $ab$, contain exactly four $c$s, and end with $d$?''.
+  \item[(2.6)] Construct an FSA $M_2$ that recognizes the language consisting of all strings that are either
+    \begin{itemize}
+      \item a positive multiple of three 2s, followed by a possibly empty string of 0s and 1s; or 
+      \item a positive multiple of two 3s, followed by a possibly empty string of 1s and 2s.
+    \end{itemize}
+  \item[(2.7)] Construct an FSA that recognizes the union of the languages recognised by $M_1$ and $M_2$ in (2.5) and (2.6) above.
+  \item[(2.8)] The \emph{concatenation} of $\El(M_1)$ and $\El(M_2)$ consists of all strings $uv$ ($u$ followed by $v$), where $M_1$ accepts $u$, and $M_2$ accepts $v$. Construct an FSA that recognizes the concatenation of the languages $\El(M_1)$ and $\El(M_2)$ in (2.5) and (2.6) above.
+\end{description}
+
+In the following problems, assume that $L_1$ and $L_2$ are arbitrary languages in $\mathbb{FSA}$, where $M_1 = \langle \Sigma, Q_1, s_1, Y_1, \delta_1 \rangle$ recognizes $L_1$, and $M_2 = \langle \Sigma, Q_2, s_2, Y_2, \delta_2 \rangle$ recognizes $L_2$.
+
+\begin{description}
+  \item[(2.9)] Demonstrate that $\mathbb{FSA}$ is \emph{closed under complement}; that is, if $L_1 \in \mathbb{FSA}$, then $\Sigma^* \sim L_1 \in \mathbb{FSA}$. (Tell how to use $M_1$ to design a FSA $M$ that will recognize $\Sigma^* \sim L_1$.)
+  \item[(2.10)] Demonstrate that $\mathbb{FSA}$ is \emph{closed under intersection}; that is, if $L_1,L_2 \in \mathbb{FSA}$, then $L_1 \cap L_2 \in \mathbb{FSA}$. (Tell how to use $M_1$ and $M_2$ to design a FSA $M$ that will recognize $L_1 \cap L_2$. Hint: Try using $Q = Q_1 \times Q_2$ for the states of $M$.)
+  \item[(2.11)] Demonstrate that $\mathbb{FSA}$ is \emph{closed under union}; that is, if $L_1,L_2 \in \mathbb{FSA}$, then $L_1 \cup L_2 \in \mathbb{FSA}$. (Tell how to use $M_1$ and $M_2$ to design a FSA $M$ that will recognize $L_1 \cup L_2$. See (2.10).
+\end{description}
+
+Do you think there is a FSA for $L_= := \{ a^n b^n\ |\ n = 1,2,3,\cdots \}$?
+
+
+
+
+\newpage
+
+\section{Languages}
+\markboth{3. Languages}{3. Languages}
+
+
+Computing machines manipulate strings of symbols, which they take as input and give back as output. In this chapter, we will take a close look at the way symbols can be put together into strings, which in turn are put together into languages. 
+
+
+\subsection{Alphabets and Languages} %3.1
+
+By an \emph{alphabet} $\Sigma$, we mean a finite set of \emph{symbols}. A \emph{string} over alphabet $\Sigma$ is a sequence of symbols from $\Sigma$ written in a particular order. We denote by $\Sigma^*$ the set of all strings over the alphabet $\Sigma$; including the \emph{empty string}, which will be represented by $\lambda$ (as it is otherwise very hard to see). If $w \in \Sigma^*$ is a string, we denote the \emph{length} of $w$ by $|w|$. Given strings $u,v \in \Sigma^*$, the \emph{concatenation} of $u$ and $v$ is the string $w = uv$ formed by tacking $v$ onto the end of $u$. We say that $u$ is a \emph{prefix} of $w$, and that $v$ is a \emph{suffix} of $w$. If $x,y,z \in \Sigma^*$ and $w = xyz$, we say that $y$ is a \emph{substring} of $w$. Nonnegative integral powers of a string $w$ are defined \emph{recursively} by saying
+\begin{enumerate}
+  \item $w^0 = \lambda$ and
+  \item $w^{n+1} = w^nw$
+\end{enumerate}
+Thus $w^n \in \Sigma^*$ if $w \in \Sigma^*$.
+
+The Roman alphabet $\Sigma = \{ a,b,c,\cdots,x,y,z \}$ is an example of an alphabet. The words in the dictionary are all members of $\Sigma^*$, but other strings like $quizzottlmf$ are in $\Sigma^*$ as well. The string $watchdog$ is the concatenation of $watch$ and $dog$. $watch$ is a prefix of $watchdog$, but so are $wa$ and $watc$ as well. $|watchdog| = 8$; and in general, $|uv| = |u| + |v|$. A dog that barks too much might be called a $(watchdog)^3 = watchdogwatchdogwatchdog$. The string $\lambda$ serves as an identity, since $\lambda w = w \lambda = w$ for every string $w$.
+
+By a \emph{language over} $\Sigma$, we mean a subset $L$ of $\Sigma^*$. While every subset of $\Sigma^*$ is a language, some languages are of much more interest than others. The set of all strings of Roman letters which contain exactly 13 $p$s is a language, as is the set of strings which form a grammatically correct English sentence. We will often be interested in creating new languages from old ones. If $L_1$ and $L_2$ are languages over $\Sigma$, then the language
+\begin{equation*}
+L_1 L_2 := \{ w \in \Sigma^*\ |\ w=uv \text{ for some } u \in L_1,\ v \in L_2 \}
+\end{equation*}
+is called the \emph{concatenation} of $L_1$ and $L_2$. If $L$ is a language over $\Sigma^*$, then the language
+\begin{equation*}
+L^* = \{ w \in \Sigma^*\ |\ w = u_1 u_2 \cdots u_n \text{ for some } n \geq 0 \text{ and some } u_1,\cdots,u_n \in \Sigma^* \}
+\end{equation*}
+is called the \emph{Kleene star} of $L$. Note that when $n = 0$, we get $\lambda \in L^*$.
+
+The ideas of concatenation and Kleene star give us a way to describe the languages we will study in this chapter. For an alphabet $\Sigma$, we can recursively define the set of \emph{regular expressions} over $\Sigma$ as follows.
+\begin{enumerate}
+  \item $\emptysetb$, $\lambdab$, and each symbol $a \in \Sigma$ is a regular expression.
+  \item If $\alpha$ and $\beta$ are regular expressions, then $(\alpha \beta)$ is a regular expression.
+  \item If $\alpha$ is a regular expression, then $\alpha^\star$ is a regular expression.
+  \item If $\alpha$ and $\beta$ are regular expressions, then $(\alpha \sqcup \beta)$ is a regular expression.
+\end{enumerate}
+
+Thus, for example, $(\ (cc)^\star (b^\star (a^\star \sqcup c)^\star)\ )$ is a regular expression over $\{ a,b,c \}$. A regular expression $w$ defines a language $\El(w)$, which we also define recursively.
+\begin{enumerate}
+  \item $\El(\emptysetb) = \emptyset$, the empty language; $\El(\lambdab) = \{ \lambda \}$, a language containing only one string which is very short; and $\El(a) = \{ a \}$ for each $a \in \Sigma$.
+  \item $\El(\alpha \beta) = \El(\alpha) \El(\beta)$, the concatenation of $\El(\alpha)$ and $\El(\beta)$.
+  \item $\El(\alpha^\star) = \El(\alpha)^*$, the Kleene star of $\El(\alpha)$.
+  \item $\El(\alpha \sqcup \beta) = \El(\alpha) \cup \El(\beta)$, the union of $\El(\alpha)$ and $\El(\beta)$.
+\end{enumerate}
+
+Pursuing the above example, if $\alpha = (\ (cc)^\star (b^\star (a^\star \sqcup c)^\star)\ )$, then
+\begin{align*}
+\El(\alpha) & = \El ((cc)^\star) \El (b^\star) \El ( (a^\star \sqcup c)^\star ) \\
+            & = \El (cc)^* \El (b)^* \{ \El( (a^\star) \cup \El(c) )^* \} \\
+            & = \{cc\}^* \{b\}^* \{ \ \{ \{a\}^* \cup \{c\} \}^* \ \} \\
+            & = \{cc\}^* \{b\}^* \{a,c\}^*
+\end{align*}
+
+This consists of $\lambda$, all strings of $a$s or $c$s, and all strings beginning with an even number of $c$s followed by a string of $b$s followed by a (possibly empty) string of $a$s and $c$s.
+
+A language that can be represented by a regular expression is called a \emph{regular language}. The set of all regular languages over some alphabet is denoted by
+\begin{equation*}
+\mathbb{REG} := \{ \El(\alpha)\ |\ \alpha \text{ is a regular expression} \}
+\end{equation*}
+
+
+\subsubsection*{Problems}
+
+\begin{description}
+  \item[(3.1)] Construct a FSA to recognize the language $\El(\alpha)$ where
+    \begin{equation*}
+    \alpha := (010)^\star (333)(1 \sqcup 4)^\star \sqcup 0^\star (3^\star \sqcup 2^\star)
+    \end{equation*}
+  \item[(3.2)] If $w \in \Sigma^*$, we define $w^R \in \Sigma^*$ recursively as follows.
+    \begin{enumerate}
+      \item $\lambda^R = \lambda$ and $a^R = a$ for all $a \in \Sigma$.
+      \item If $w = au$, where $a \in \Sigma$ and $u \in \Sigma^*$, then $w^R = u^R a$.
+    \end{enumerate}
+    What string is $w^R$ if $w = tar$? if $w = senihcamdnasegaugnal$?
+  \item[(3.3)] Let $\Sigma = \{a,b\}$. Give examples of two strings in $L$ and two strings not in $L$ where $L = \{ w \in \Sigma^*\ |\ w^R w = w w^R \}$.
+  \item[(3.4)] Let $\Sigma = \{a,b\}$. Make a complete list of all of the strings in the finite language $L = \{ w\ |\ \text{ for some } u \in \Sigma \Sigma,\ w = u u^R u \}$.
+  \item[(3.5)] Let $\Sigma = \{0,1\}$. Find a regular expression representing the languages consisting of
+    \begin{enumerate}
+      \item all strings in $\Sigma^*$ with no more than three $1$s;
+      \item all strings in $\Sigma^*$ with a number of $1$s divisible by $3$;
+      \item all strings in $\Sigma^*$ not containing the substring $11$.
+    \end{enumerate}
+  \item[(3.6)] Let $\Sigma = \{a,b,c\}$. Compute $\El(\alpha)$, where $\alpha = ( a^\star \sqcup b^\star \sqcup c^\star )^\star b ( a^\star b^\star c^\star )^\star$, and give a simple verbal description of the strings in this language.
+  \item[(3.7)] Let $\Sigma = \{a,b\}$. Describe a method to generate all of the strings in the language $L = \{ w\ |\ \text{ for some } u \in \Sigma^*,\ www = uu \}$, and explain why your method is correct.
+\end{description}
+
+
+\subsection{Formal Grammars} %3.2
+
+Regular expressions provide a means of specifying certain fairly simple languages. A much more powerful method of language specification is given by means of something called a ``formal grammar''. The idea is to use syntactic or grammatical rules to tell how to construct the strings in the language. Although spoken languages are especially complex, we might begin to specify the grammatically correct sentences of English with rules that look something like this: Let $S$ denote a sentence. Any sentence should have two components, a \emph{subject} and a \emph{predicate}. For example, in the sentence
+\begin{equation*}
+\text{``The noisy dog chased the sneaky cat.''}
+\end{equation*}
+the subject is ``The noisy dog'' and the predicate is ``chased the sneaky cat''. We might indicate this fact with the \emph{production rule}
+\begin{equation*}
+S \to JP
+\end{equation*}
+
+A subject $J$, in turn, is a \emph{noun phrase}, typically consisting of several modifying words followed by a noun; and a predicate $P$ is a verb followed by a noun phrase (its direct object). We could specify this by the production rules
+\begin{equation*}
+J \to MN \ \ \ \ P \to VJ.
+\end{equation*}
+
+There are many allowable modifying words, for example:
+\begin{equation*}
+M \to \text{The, the, $M$ noisy, $M$ sneaky, $M$ overfed, $M$ clean, $M$ dirty}
+\end{equation*}
+and nouns and verbs, for example:
+\begin{equation*}
+N \to \text{dog, cat, rat} \ \ V \to \text{chased, complemented, ate}
+\end{equation*}
+
+Using these production rules, we can start with the sentence symbol $S$, and generate a production sequence that not only gives us a sentence in the language, but also illustrates the grammatical construction of the sentence. Here we include braces $\{\ \}$, which are not symbols in the language, to record this construction:
+\begin{align*}
+S & \to JP. \to \{MN\} \{VJ\}. \\
+  & \to \text{ \{ \{$M$ noisy\} \{dog\} \}\ \{ \{chased\} \{$MN$\} \}.} \\
+  & \to \text{ \{ \{The noisy\} \{dog\} \}\ \{ \{chased\} \{ \{$M$ sneaky\} \{cat\} \} \}.} \\
+  & \to \text{ \{ \{The noisy\} \{dog\} \}\ \{ \{chased\} \{ \{the sneaky\} \{cat\} \} \}.}
+\end{align*}
+
+These ideas are quite general, as we now show. A \emph{formal grammar} $G = \langle \Sigma, N, S, \to \rangle$ is a quadruple consisting of the following:
+\begin{itemize}
+  \item a finite alphabet $\Sigma$ of \emph{terminal symbols};
+  \item a finite alphabet $N$ of \emph{nonterminal symbols};
+  \item a special nonterminal symbol $S$ called the \emph{starting symbol};
+  \item a relation $\to$ on $(\Sigma \cup N)^*$ called the \emph{production rules} and written as $u \to v$ where $u,v \in (\Sigma \cup N)^*$.
+\end{itemize}
+
+The formal grammar $G$ determines a language $\El(G)$ consisting of all strings $w$ in $\Sigma^*$ obtainable from a \emph{production sequence} starting with $S$ and using the production rules of $G$. Notice that the sentences in the language $\El(G)$ are only those strings generated from $S$ which contain no nonterminal symbols.
+
+As a familiar example of a grammar for a language, the set of regular expressions over a given alphabet $\Sigma$ is itself a language over the larger alphabet
+\begin{equation*}
+\Sigma' := \Sigma \cup \{ \emptysetb, \lambdab, (, ), +, \sqcup, \star \}
+\end{equation*}
+
+The definition of a ``regular expression'' is a specification of this language that is exactly equivalent to the grammar with production rules
+\begin{equation*}
+S \to \emptysetb \ \ \ \ S \to \lambdab \ \ \ \ S \to a
+\end{equation*}
+for each $a \in \Sigma$, together with
+\begin{equation*}
+S \to (SS) \ \ \ \ S \to S^\star \ \ \ \ S \to (S \sqcup S)
+\end{equation*}
+
+For example, using this grammar, we can generate the regular expression
+\begin{equation*}
+(\ (33)^\star (2^\star (1^\star \sqcup 3)^\star) \ )
+\end{equation*}
+using the following production sequence.
+\begin{align*}
+S & \to (SS) \to (S^\star (SS)) \\
+  & \to (\ (SS)^\star (S^\star S^\star) \ ) \\
+  & \to (\ (33)^\star (2^\star (S \sqcup S)^\star) \ ) \\
+  & \to (\ (33)^\star (2^\star (S^\star \sqcup 3)^\star) \ ) \\
+  & \to (\ (33)^\star (2^\star (1^\star \sqcup 3)^\star) \ )
+\end{align*}
+
+
+\subsubsection*{Problems}
+
+\begin{description}
+  \item[(3.8)] Use the above grammar for the language of regular expressions to construct a production sequence for the regular expression
+    \begin{equation*}
+    (\ ((a+c) \sqcup \lambdab)\ ( (\emptysetb \sqcup b)^\star ((a \sqcup (b \sqcup c))^\star ) \ )
+    \end{equation*}
+  \item[(3.9)] Construct a production sequence for each of the following sentences, using the above production rules for English.
+    \begin{enumerate}
+      \item ``The dirty rat complemented the clean cat.''
+      \item ``The overfed cat ate the noisy rat.''
+    \end{enumerate}
+  \item[(3.10)] Let $L_{alg}$ be the language consisting of all meaningful algebraic expressions, in the sense of high school algebra, over the alphabet $\Sigma = \{ w,x,y,z,(,),+,-,\cdot,\div \}$. For example, ``$( (x+z) \cdot (w+y) ) \div (w-x)$'' is in $L_{alg}$, but ``$xy) + y \div z \cdot$'' and ``$(w \cdot y) \div (x-(y+z)) \div x$'' are in $\Sigma^*$ but not in $L_{alg}$. Write down a formal grammar $G$ for the language $L_{alg}$.
+  \item[(3.11)] Let $L_{set}$ be the language consisting of all expressions over the alphabet $\Sigma = \{ A,B,C,\emptyset,U,(,),\cup,\cap,\sim,\times \}$ which define a new set for any choice of sets $A$, $B$, and $C$. For example, ``$(\ (B \cup \sim C) \times (A \cup C) \ ) \sim (B \cap C)$'' is in $L_{set}$, but ``$AB) \cap C \times B \cup$'' and ``$(C \times A) \cap (B \sim (A \cup C) ) \times B$'' are in $\Sigma^*$ but not in $L_{set}$. Write down a formal grammar $G$ for the language $L_{set}$.
+  \item[(3.12)] Find a formal grammar that generates $L_= = \{ a^n b^n\ |\ n = 1,2,3,\cdots \}$.
+\end{description}
+
+
+
+
+\newpage
+
+\section{Equivalences}
+\markboth{4. Equivalences}{4. Equivalences}
+
+
+Languages and machines is a subject primarily concerned with language specifications. In general, there are two kinds of language specifications:
+\begin{description}
+  \item[Generating Algorithm:] These specifications give a method of generating all strings in the language.
+  \item[Test Algorithm:] These specifications give a method to test a particular string in order to tell whether or not it is in the language.
+\end{description}
+
+Generating Algorithm specifications are often simple and easy to come by, but they fail to give us a method to determine if a particular string is in the language. Regular expressions are examples of Generating Algorithm specifications. By making appropriate choices for each occurance of $\star$ and $\sqcup$, we can generate every string in the language represented by a regular expression $\alpha$. But in order to determine if a string $w$ is in $\El(\alpha)$, you have to figure out if there is some way to use the constructions specified by $\alpha$ to create $w$.
+
+Test Algorithm specifications give a method to find out if an arbitrary string $w$ is in the language being specified. Such specifications may be complex, but applying the algorithm must require no decisions or judgement on the part of the user who is simply to follow the instructions. These specifications are often given by a machine which is thought of as implementing the algorithm. Finite state acceptors are typical examples of test algorithm specifications of languages.
+
+In this chapter, we will look at some relationships between these two forms of specifications. 
+
+
+\subsection{FSAs Into Regular Expressions} %4.1
+
+
+In Problem (2.4), you used ad-hoc methods to find a regular expression for the language recognized by a particular FSA. It turns out that there is a very nice method to find a regular expression for the language specified by any FSA. In this section, we will present this method.
+
+Look again at the FSA $M$ of problem (2.4). Suppose that we use the name of each state to represent the \emph{set} of all strings that lead from that state to an accepting state. In particular, $s$ represents the language $\El(M)$. Looking at the diagram, we can write down equations that relate these sets. Using ``$+$'' to represent ``union'', we have for example,
+\begin{equation*}
+s = 2s + 0u + 1v
+\end{equation*}
+
+This equation says that the strings leading from $s$ to an accepting state are exactly those consisting of a $2$ followed by another one of those, those consisting of a $0$ followed by a string leading from $u$ to an accepting state, and those consisting of a $1$ followed by a string leading from $v$ to an accepting state. We can write down a similar equation for each of the other five states:
+\begin{align*}
+u & = \{1,2\}u + 0w \\
+w & = \{1,2\}w + 0s \\
+v & = 2x + 1y \\
+x & = 2x + 0y + \lambda \\
+y & = 1y + 0x
+\end{align*}
+
+Notice that the $\lambda$ in the equation for $x$ indicates that it is an accepting state. This gives us a set of simultaneous equations of the form $x = ax+b$ where the symbols $a,b,x$ represent \emph{languages} (rather than \emph{numbers}). Here is a fact you can prove that tells how to solve such an equation.
+
+\begin{description}
+\item[Regular Equation Lemma:] Let $a$ and $b$ be languages where $\lambda \notin a$. Then the equation $x = ax+b$ has exactly one solution, namely $x = a^* b$.
+
+\item[Proof:] It is easy to check that $x = a^*b$ is a solution, since
+  \begin{equation*}
+  ax+b = a(a^* b) + b = (aa^* + \lambda) b = a^* b = x
+  \end{equation*}
+
+  Assume that $x$ is some solution; that is, $x$ is a subset of $\Sigma^*$ such that $x = ax+b$. We will show that $x$ can only be $a^* b$.
+
+  Let $w \in a^* b$. Then $w = u_n u_{n-1} \cdots u_3 u_2 u_1 v$, where each $u_i$ is in $a$ and $v \in b$. Since $x = ax+b$, the union of $ax$ and $b$, we know that $v \in x$. Since $ax \subseteq x$ and $u_1 \in a$, we have $u_1 v \in x$. Since $u_2 \in a$, we have $u_2 u_1 v \in x$. After $n$ steps, we conclude that $u_n u_{n-1} \cdots u_3 u_2 u_1 v = w \in x$. Therefore $a^* b \subseteq x$.
+
+  It remains to show that $x \subseteq a^*b$. Suppose not, and let $w$ be a string of minimal length that is in $x$ but not in $a^* b$. Since $w \notin a^* b$, we know that $w \notin b$. Therefore, $w \in ax$. Let $w = uv$, where $\lambda \neq u \in a$ and $v \in x$. Since $|v| < |x|$, we conclude that $v \in a^* b$. But that means that $w = uv$ is also in $a^* b$, a contradiction.
+\end{description}
+
+Now suppose we are given a FSA $M$ with $n$ states, including start state $s$. We can use it to write down a set of $n$ simultaneous equations telling about the strings that lead from each state to an accepting state. Let $x$ be any state other than $s$. We use the lemma to express $x = a^* b$ in terms of the alphabet symbols of $\Sigma$ and the other state variables. Substituting $a^* b$ for each occurrence of $x$ in the other equations gives us $n-1$ equations with $n-1$ variables. Repeating this process $n-1$ times leaves us with one equation in one variable $s$. We then use the lemma to solve that equation and obtain a regular expression for the language $\El(M)$! This establishes an important theorem. 
+
+\begin{description}
+\item[Theorem:] $\mathbb{FSA} \subseteq \mathbb{REG}$; that is, the language recognized by a finite state acceptor can be represented by a regular expression.
+\end{description}
+
+Let us try applying this technique to Problem (2.4). From
+\begin{equation*}
+s = 2s + 0u + 1v
+\end{equation*}
+we get
+\begin{equation*}
+s = 2^* (0u + 1v)
+\end{equation*}
+
+From
+\begin{equation*}
+w = \{1,2\} w + 0s
+\end{equation*}
+we get
+\begin{equation*}
+w = \{1,2\}^* 0s = \{1,2\}^* 02^* (0u + 1v)
+\end{equation*}
+
+Thus
+\begin{equation*}
+u = \{1,2\} u + 0w = \{1,2\}^* 0w = \{1,2\}^* 0 \{1,2\}^* 02^* (0u + 1v)
+\end{equation*}
+
+Applying the lemma to solve for $u$ again,
+\begin{equation*}
+u = ( \{1,2\}^*0 \{1,2\}^* 02^* 0 )^* \{1,2\}^* 0 \{1,2\}^* 02^* 1v
+\end{equation*}
+and therefore
+\begin{align*}
+s & = 2^* (0u+1v) \\
+  & = 2^* (0 ( \{1,2\}^* 0 \{1,2\}^* 02^* 0)^* \{1,2\}^* 0 \{1,2\}^* 02^*1v) + 1v \\
+  & = 2^* (0 ( \{1,2\}^* 0 \{1,2\}^* 02^* 0)^* \{1,2\}^* 0 \{1,2\}^* 02^* 1 + 1) v
+\end{align*}
+
+This expression has the form $s = av$, where $a$ represents all strings that take $M$ from state $s$ to state $v$. It remains only to find an expression for $v$.
+
+Solving $y = 1y + 0x$ gives $y = 1^* 0x$, so we have
+\begin{align*}
+x & = 2x + 0y + \lambda = 2^* (0y + \lambda) \\
+  & = 2^* (01^* 0x + \lambda) = 2^* 01^* 0x + 2^*
+\end{align*}
+so that
+\begin{equation*}
+x = (2^* 01^* 0)^* 2^* = (2^* 01^* 02^*)^*
+\end{equation*}
+
+The last equation gives us
+\begin{equation*}
+v = 2x + 1y = 2x + 11^* 0x = (2 + 11^* 0) x = (2 + 11^* 0) (2^* 01^* 02^*)^*
+\end{equation*}
+
+Notice that the first expression tells how to get from $v$ to $x$, while the second tells how to return to $x$ from $x$. Combining this with the expression for $s$ gives the final solution:
+\begin{align*}
+s & = 2^* (0 (\{1,2\}^* 0 \{1,2\}^* 02^* 0)^* \{1,2\}^* 0 \{1,2\}^* 02^* 1+1) v \\
+  & = 2^* (0 (\{1,2\}^* 0 \{1,2\}^* 02^* 0)^* \{1,2\}^* 0 \{1,2\}^* 02^* 1+1) (2+11^* 0) (2^* 01^* 02^*)^*
+\end{align*}
+
+A regular expression for the language $\El(M)$ is therefore given by
+\begin{equation*}
+2^\star (0 (\{1,2\}^\star 0 \{1,2\}^\star 02^\star 0)^\star \{1,2\}^\star 0 \{1,2\}^\star 02^\star 1 \sqcup 1) (2 \sqcup 12^\star 0) (2^\star 01^\star 0^\star 2^\star)^\star
+\end{equation*}
+
+
+\subsubsection*{Problems}
+
+Find a regular expression for the language recognized by each FSA, by solving equations.
+
+\begin{description}
+
+\item[(4.1)] $\ $
+
+\setlength{\unitlength}{.85mm}
+\begin{picture}(125,28)(-58,-15)
+%Circles as states
+\put(-30,10){\circle{6}} \put(-30,10){\circle{4.5}} \put(-31,9.5){$q$}
+\put(-30,-10){\circle{6}} \put(-31,-10.5){$n$}
+\put(-10,0){\circle{6}} \put(-11,-.5){$m$}
+\put(-50,0){\circle{6}} \put(-51,-.5){$p$}
+%Transition arrows
+\qbezier(-10,5)(-10,10)(-25,10) \put(-11,4){$\blacktriangledown$} \put(-18,5){0}%q2m
+\qbezier(-50,5)(-50,10)(-35,10) \put(-37,9){$\blacktriangleright$} \put(-42,5){3}%p2q
+\qbezier(-10,-5)(-10,-10)(-25,-10) \put(-26,-11){$\blacktriangleleft$} \put(-18,-8){1}%m2n
+\qbezier(-50,-5)(-50,-10)(-35,-10) \put(-51,-6){$\blacktriangle$} \put(-42,-8){2}%n2p
+%Circles as states
+\put(10,0){\circle{6}} \put(10,0){\circle{4.5}} \put(9,-1){$s$}
+\put(6,-6){\footnotesize{Start}}
+\put(30,0){\circle{6}} \put(30,0){\circle{4.5}} \put(29,-1){$t$}
+\put(60,1){\circle{6}} \put(59,0){$z$} \put(56,-5){\footnotesize{Dead}}
+\put(50,10){\circle{6}} \put(50,10){\circle{4.5}} \put(49,9.5){$u$}
+\put(50,-10){\circle{6}} \put(50,-10){\circle{4.5}} \put(49,-11){$v$}
+%Transition arrows
+\put(15,0){\line(1,0){10}} \put(23,-1){$\blacktriangleright$} \put(19,1){$3$}%s2t
+\put(5,0){\line(-1,0){10}} \put(-6,-1){$\blacktriangleleft$} \put(1,1){$0$}%s2m
+\qbezier(30,5)(30,10)(45,10) \put(43,9){$\blacktriangleright$} \put(35,5){2}%t2u
+\qbezier(30,-5)(30,-10)(45,-10) \put(43,-11){$\blacktriangleright$} \put(35,-8){1,0}%t2v
+\qbezier(55,9)(60,8)(60,10) \qbezier(55,11)(60,12)(60,10) \put(55,10){$\blacktriangleleft$} \put(62,9){2}%u2u
+\qbezier(55,-9)(60,-8)(60,-10) \qbezier(55,-11)(60,-12)(60,-10) \put(62,-11){0,1} \put(55,-10){$\blacktriangleleft$}%v2v
+\end{picture}
+
+
+\item[(4.2)] $\ $
+
+\setlength{\unitlength}{.75mm}
+\begin{picture}(145,25)(3,4)
+%circles
+\put(20,20){\circle{6}} \put(20,20){\circle{7.5}}
+\put(46,20){\circle{6}} \put(72,20){\circle{6}}
+\put(96,20){\circle{6}} \put(122,20){\circle{6}}
+\put(122,20){\circle{7.5}} \put(140,6){\circle{6}}
+%letters
+\put(19,19){q} \put(45,19){p} \put(71,19){s} 
+\put(95,19){u} \put(121,19){v} \put(139,5){z}
+%words
+\put(122,10){DEAD} \put(122,6){STATE} \put(66,25){START}
+%curved lines
+\qbezier(13,22)(7,22)(7,20) \qbezier(7,20)(7,18)(13,18)
+\qbezier(129,22)(135,22)(135,20) \qbezier(135,20)(135,18)(129,18)
+%straight lines
+\put(26,20){\line(1,0){14}} \put(51,20){\line(1,0){14}}
+\put(77,20){\line(1,0){14}} \put(101,20){\line(1,0){14}}
+%numbers
+\put(3,19){1} \put(33,22){0} \put(59,22){2} 
+\put(84,22){1} \put(108,22){0} \put(138,19){2}
+%arrowheads
+\put(12,17){$\blacktriangleright$}
+\put(25,19){$\blacktriangleleft$}
+\put(50,19){$\blacktriangleleft$}
+\put(90,19){$\blacktriangleright$}
+\put(114,19){$\blacktriangleright$}
+\put(128,17){$\blacktriangleleft$}
+\end{picture}
+
+
+\item[(4.3)] $\ $
+
+\setlength{\unitlength}{.85mm}
+\begin{picture}(125,60)(0,0)
+%circles
+\put(15,45){\circle{6}} \put(15,45){\circle{7.5}}
+\put(15,20){\circle{6}} \put(15,20){\circle{7.5}}
+\put(35,32.5){\circle{6}} \put(60,32.5){\circle{6}}
+\put(80,45){\circle{6}} \put(80,20){\circle{6}}
+\put(80,60){\circle{6}} \put(80,5){\circle{6}}
+\put(105,45){\circle{6}} \put(105,45){\circle{7.5}}
+\put(105,20){\circle{6}} \put(105,20){\circle{7.5}}
+\put(40,55){\circle{6}}
+%curved lines
+\qbezier(9,47)(3,47)(3,45) \qbezier(3,45)(3,43)(9,43)
+\qbezier(9,22)(3,22)(3,20) \qbezier(3,20)(3,18)(9,18)
+\qbezier(21,45)(35,45)(35,37) \qbezier(35,28)(35,20)(21,20)
+\qbezier(60,37)(60,45)(75,45) \qbezier(60,28)(60,20)(75,20)
+\qbezier(84,49)(86,52.5)(84,56) \qbezier(76,56)(74,52.5)(76,49)
+\qbezier(84,9)(86,12.5)(84,16) \qbezier(76,16)(74,12.5)(76,9)
+\qbezier(111,47)(117,47)(117,45) \qbezier(117,45)(117,43)(111,43)
+\qbezier(111,22)(117,22)(117,20) \qbezier(117,20)(117,18)(111,18)
+%straight lines
+\put(40,32.5){\line(1,0){15}} 
+\put(85,45){\line(1,0){14}}
+\put(85,20){\line(1,0){14}}
+%letters
+\put(14,44){u} \put(14,19){w} \put(34.5,31.5){s} \put(59,31.5){p}
+\put(79.5,44){q} \put(79.5,19){r} \put(79.5,59){v} \put(79.5,4){t}
+\put(104,44){y} \put(104,19){x} \put(39,54){z}
+%numbers
+\put(0,19){2} \put(35,17){2} \put(60,17){2} \put(87,12){2}
+\put(92,46){2} \put(119,44){2} \put(0,44){1} \put(35,45){1}
+\put(60,45){1} \put(87,52){1} \put(92,16){1} \put(119,19){1}
+\put(48,34){0} \put(72,52){0} \put(72,12){0}
+%words
+\put(45,55){DEAD} \put(45,51){STATE} \put(38,27){START}
+%arrowheads
+\put(8,42){$\blacktriangleright$}
+\put(8,21){$\blacktriangleright$}
+\put(20,44){$\blacktriangleleft$}
+\put(20,19){$\blacktriangleleft$}
+\put(54,31.5){$\blacktriangleright$}
+\put(74,44){$\blacktriangleright$}
+\put(74,19){$\blacktriangleright$}
+\put(98,44){$\blacktriangleright$}
+\put(98,19){$\blacktriangleright$}
+\put(110,46){$\blacktriangleleft$}
+\put(110,17){$\blacktriangleleft$}
+\put(83,15.5){$\blacktriangleright$}
+\put(74,9){$\blacktriangleleft$}
+\put(74.5,55){$\blacktriangleleft$}
+\put(83.5,49){$\blacktriangleright$}
+\end{picture}
+
+\end{description}
+
+
+\subsection{Regular Expressions Into Regular Grammars} %4.2
+
+
+Formal grammars are classified according to the complexity of their production rules. The simplest form of a production rule is a rule of the form
+\begin{equation*}
+A \to aB, \ \ \ \ A \to a, \ \ \ \ \text{ or } A \to \lambda
+\end{equation*}
+where $A$ and $B$ are nonterminal symbols and $a$ is a terminal symbol. Grammars which only have production rules of these two forms are called \emph{regular grammars}. The set of languages generated by regular grammars is denoted by
+\begin{equation*}
+\mathbb{RG} = \{ \ L\ |\ L = \El(G) \text{ for some regular grammar $G$.} \ \}
+\end{equation*}
+
+When we construct regular grammars, it is often convenient to notice that productions of the form
+\begin{equation*}
+A \to B \text{  (where $A$ and $B$ are non-terminal)}
+\end{equation*}
+may be included, as they can be replaced by regular productions $A \to aC$ for each production $B \to aC$, by $A \to a$ for each production $B \to a$, and by $A \to \lambda$ for each production $B \to \lambda$.
+
+For example, let $L \subseteq \{a,b,c\}^*$ consist of all strings containing at least one $b$, that either begin with $a$ and end with $c$, or begin with $c$ and end with $a$. We show that $L \in \mathbb{RG}$ by writing down a regular grammar for $L$:
+\begin{align*}
+& S \to A,C \\
+& A \to aU & & U \to aU,cU,bV & & V \to aV,bV,cV,c \\
+& C \to cX & & X \to aX,cX,bY & & Y \to aY,bY,cY,a
+\end{align*}
+The reader should check that this grammar does indeed generate the language $L$.
+
+
+\subsubsection*{Problems}
+
+Find a regular grammar that generates each of the following languages:
+
+\begin{description}
+  \item[(4.4)] $\El(\alpha)$ where $\alpha = (a^\star \sqcup b^\star \sqcup c^\star)^\star b(a^\star b^\star c^\star)^\star$. (See problem (3.6).)
+  \item[(4.5)] All strings in $\{0,1\}^*$ with no more than three $1$s.
+  \item[(4.6)] All strings in $\{0,1\}^*$ where the number of $1$s is divisible by $3$.
+  \item[(4.7)] $\El(\alpha)$ where $\alpha = (\ (a \sqcup b)^\star (cc^\star)\ )^\star \sqcup (\ (a \sqcup c)^\star (bb^\star)\ )^\star$
+\end{description}
+
+
+\subsection*{\ }
+
+
+The example and problems above give us evidence that regular languages (those defined by regular expressions) can always be generated by regular expressions. This is, in fact, true in general.
+
+\begin{description}
+\item[Theorem:] $\mathbb{REG} \subseteq \mathbb{RG}$; that is, every regular expression defines a language that can be generated by a regular grammar.
+
+\item[Proof:] The recursive definition of regular expressions tells us that this will be true provided that we can do two things:
+  \begin{enumerate}
+    \item Find a regular grammar to generate the languages $\emptyset$, $\{\lambda\}$, and $\{a\}$ for each $a \in \Sigma$.
+    \item Given regular grammars $G_\alpha$ and $G_\beta$ for the languages defined by the regular expressions $\alpha$ and $\beta$, explain how to use them to construct regular grammars for the languages defined by $\alpha \beta$, $\alpha^*$, and $\alpha \sqcup \beta$.
+  \end{enumerate}
+
+  Part (1.) is easy: $S \to aS$, for any $a\in \Sigma$, is a grammar that generates $\emptyset$. The grammar $S \to \lambda$ generates $\{\lambda\}$, and the grammar $S \to a$ generates $\{a\}$.
+
+  To describe an algorithm for part (2.), let $S_\alpha$ and $S_\beta$ be the start states of $G_\alpha$ and $G_\beta$, and fix these two grammars so that they have no non-terminal symbols in common. Now we produce three new grammars $G$.
+  \begin{description}
+    \item[$\alpha\beta$: ] We take $S_\alpha$ as the start state of $G$, and all production rules of $G_\alpha$ and $G_\beta$ as production rules for $G$. We then replace each rule $A \to a$ in $G_\alpha$ with $A \to aS_\beta$, where $a$ is either $\lambda$ or is in $\Sigma$.
+    \item[$\alpha^\star$: ] We take $S_\alpha$ again as the start state, and all production rules of $G_\alpha$ as production rules for $G$. For each rule $A \to a$ in $G_\alpha$, we add $A \to aS_\alpha$, where $a$ is either $\lambda$ or is in $\Sigma$. We also include $S_\alpha \to \lambda$ in $G$.
+    \item[$\alpha \sqcup \beta$: ] We take all production rules of both $G_\alpha$ and $G_\beta$ as production rules for $G$. We then add a new start state $S$ for $G$, together with the production $S \to S_\alpha$ and $S \to S_\beta$.
+  \end{description}
+
+  To illustrate this algorithm, consider the regular expression
+  \begin{equation*}
+  \alpha = (\ (00)^\star (1\sqcup 2)^\star\ ) \sqcup (012)^\star
+  \end{equation*}
+
+  We recursively construct a regular grammar for the language $\El(\alpha)$, keeping track of the start symbol for each smaller grammar.
+\end{description}
+
+\vspace{0.25cm}
+
+\begin{center}
+  \begin{tabular}{clcl}
+             &  Regular Expression                               & Start &  Production Rules \\
+  \tiny{(1)} &  $(00)$                                           &   A   &  $\{A \to 0B;\ B \to 0\}$ \\
+  \tiny{(2)} &  $(00)^\star$                                     &   A   &  $(1)\cup\{B \to 0A;\ A \to \lambda\}$ \\
+  \tiny{(3)} &  $(1\sqcup 2)$                                    &   C   &  $\{C \to 1;\ C \to 2\}$ \\
+  \tiny{(4)} &  $(1\sqcup 2)^\star$                              &   C   &  $(3)\cup\{C \to 1C; C \to 2C; C \to \lambda\}$\\
+  \tiny{(5)} &  $((00)^\star (1\sqcup 2)^\star)$                 &   A   &  $((2)\sim \{B \to 0;\ A \to \lambda\})$ \\
+             &                                                   &       &  $\ \ \ \cup \{B \to 0C;\ A \to C\} \cup (4)$ \\
+  \tiny{(6)} &  $(012)$                                          &   D   &  $\{D \to 0E;\ E \to 1F;\ F \to 2\}$ \\
+  \tiny{(7)} &  $(012)^\star$                                    &   D   &  $(6)\cup\{F \to 2D;\ D \to \lambda\}$ \\
+  \tiny{(8)} &  $((00)^\star(1\sqcup2)^\star)\sqcup(012)^\star$  &   G   &  $(5)\cup(7)\cup\{G \to A;\ G \to D\}$ \\
+  \end{tabular}
+\end{center}
+
+\vspace{0.25cm}
+
+\begin{description}
+  \item[\ \ \ \ \ \ ] Expanding (8) and eliminating obviously redundant productions, the final grammar for $\alpha$ has starting symbol $G$ and productions
+  \begin{align*}
+  G & \to A,D; \\
+  A & \to 0B,C; \\
+  B & \to 0A; \\
+  C & \to 1C,2C,\lambda; \\
+  D & \to 0E,\lambda; \\
+  E & \to 1F; \\
+  F & \to 2D.
+  \end{align*}
+
+  Together with our previous theorem, we have now established that
+  \begin{center}
+  \framebox[2in]{ $\mathbb{FSA} \subseteq \mathbb{REG} \subseteq \mathbb{RG}$ }
+  \end{center}
+
+\end{description}
+
+
+\subsubsection*{Problems}
+
+Use the recursive method above to find regular grammars for the languages defined by the regular expressions
+
+\begin{description}
+  \item[(4.8)] $(\ (aa)^\star (b\sqcup c)^\star\ )^\star \sqcup (abc)^\star$
+  \item[(4.9)] $(\ (012)^\star \sqcup(345)^\star\ ) 4^\star$
+\end{description}
+
+
+\subsection{Regular Grammars Into NDFSAs} %4.3
+
+
+Given that $\mathbb{FSA} \subseteq \mathbb{REG} \subseteq \mathbb{RG}$, it is tempting to try to prove that $\mathbb{RG} \subseteq \mathbb{FSA}$, as this would tell us that finite state acceptors, regular expressions, and regular grammars, all specify exactly the same languages! It turns out that this is not as easy as it might seem from testing a simple example. Let $G$ be the regular grammar with terminal alphabet $\Sigma = \{0,1,2\}$, non-terminal alphabet $N = \{S,A,B,C,D,E\}$, and production rules
+\begin{align*}
+S & \to 0S,1A,2B; \\
+A & \to 1A,0C; \\
+B & \to 2B,0C; \\
+C & \to 1D; \\
+D & \to 2E; \\
+E & \to \lambda
+\end{align*}
+
+We will construct the finite state acceptor
+\begin{equation*}
+M = \langle \{0,1,2\},\ \{S,A,B,C,D,E\},\ S,\ \{E\},\ \delta \rangle
+\end{equation*}
+where we take
+\begin{itemize}
+  \item the input alphabet $\{0,1,2\}$ to be the terminal alphabet of $G$; 
+  \item the states $\{S,A,B,C,D,E\}$ to be the non-terminal symbols of $G$; 
+  \item the initial state $S$ to be the start symbol of $G$; 
+  \item the accepting state $E$ is the only state $I$ for which $I \to \lambda$ in $G$; 
+  \item the transition function $\delta(I,x)=J$ if $I \to xJ$ is in $G$.
+\end{itemize}
+This gives us the transition diagram below.
+
+\setlength{\unitlength}{.86mm}
+\begin{picture}(130,50)(-10,-3)
+%circles
+\put(10,22){\circle{6}} \put(30,8){\circle{6}}
+\put(30,36){\circle{6}} \put(50,22){\circle{6}}
+\put(70,22){\circle{6}} \put(92,22){\circle{6}}
+\put(92,22){\circle{7.5}} \put(112,20){\circle{6}}
+%curved lines
+\qbezier(10,27)(10,36)(23,36) 
+\qbezier(37,36)(50,36)(50,27)
+\qbezier(50,17)(50,8)(37,8) 
+\qbezier(23,8)(10,8)(10,17)
+\qbezier(3,24)(-3,24)(-3,22) 
+\qbezier(-3,22)(-3,20)(3,20)
+\qbezier(31,41)(34,44)(35.5,42.5)
+\qbezier(35.5,42.5)(37,41)(34,38) 
+\qbezier(34,6)(37,4)(35.5,1.5)
+\qbezier(35.5,1.5)(34,0)(31,3)
+%straight lines
+\put(54,22){\line(1,0){12}} \put(74,22){\line(1,0){13}}
+%arrowheads
+\put(22,35){$\blacktriangleright$}
+\put(49,26){$\blacktriangledown$}
+\put(22,7){$\blacktriangleright$} 
+\put(49,16){$\blacktriangle$}
+\put(3,19){$\blacktriangleright$}
+\put(33.5,37.5){$\blacktriangleright$}
+\put(33.5,5){$\blacktriangleright$}
+\put(64,21){$\blacktriangleright$}
+\put(85,21){$\blacktriangleright$}
+%letters
+\put(9,21){S} \put(29,7){B} \put(29,35){A} \put(49,21){C}
+\put(69,21){D} \put(91,21){E} \put(111,19){Z}
+%words
+\put(-5,13){START} \put(108,24){DEAD} \put(108,13){STATE}
+%numbers
+\put(-6,21){0} \put(48,36){0} \put(48,6){0} 
+\put(12,36){1} \put(36,43){1} \put(59,23){1} 
+\put(12,6){2} \put(37,0){2} \put(80,23){2}
+\end{picture}
+
+
+We ask the reader to check that $\El(G)$ and $\El(M)$ are both the language $0^* (11^* \cup 22^*) 012$.
+
+A second example raises some serious problems. Let $G$ be the grammar with terminal alphabet $\{0,1,2\}$, non-terminal alphabet $\{S,A,B,C,D,E\}$, start symbol $S$, and productions
+\begin{align*}
+S & \to 0S,1A,1B; \\
+A & \to 2A,0C; \\
+B & \to 3B,0C; \\
+C & \to 1D,2E; \\
+D & \to 1D,\lambda; \\
+E & \to 2E,2
+\end{align*}
+
+You can check that this grammar generates the language
+\begin{equation*}
+\El(G) = 0^* 1 (2^* \cup 3^*) 0 (11^* \cup 222^*)
+\end{equation*}
+
+If we follow the same construction for $M$, we face several dilemmas. For example, is $\delta(S,1)$ supposed to be $A$ or $B$? (We have both $S \to 1A$ and $S \to 1B$.) A straightforward application of the above procedure gives us the peculiar diagram below. We have added accepting state $F$, and translated $E \to 2$ into $\delta(E,2) = F$.
+
+\setlength{\unitlength}{.93mm}
+\begin{picture}(110,50)(0,-6)
+%circles
+\put(20,20){\circle{6}} \put(40,6){\circle{6}}
+\put(40,34){\circle{6}} \put(62,20){\circle{6}}
+\put(82,34){\circle{6}} \put(82,34){\circle{7.5}}
+\put(82,6){\circle{6}} \put(102,6){\circle{6}}
+\put(102,6){\circle{7.5}} \put(102,34){\circle{6}}
+%curved lines
+\qbezier(20,25)(20,34)(33,34) \qbezier(47,34)(60,34)(60,25)
+\qbezier(60,15)(60,6)(47,6) \qbezier(33,6)(20,6)(20,15)
+\qbezier(13,22)(7,22)(7,20) \qbezier(7,20)(7,18)(13,18)
+\qbezier(41,39)(44,42)(45.5,40.5)
+\qbezier(45.5,40.5)(47,39)(44,36) \qbezier(44,4)(47,2)(45.5,-0.5)
+\qbezier(45.5,-0.5)(44,-2)(41,1) \qbezier(63,25)(63,34)(76,34)
+\qbezier(63,15)(63,6)(76,6)
+\put(43,0){\qbezier(41,39)(44,42)(45.5,40.5)
+\qbezier(45.5,40.5)(47,39)(44,36)}
+\put(42,-1){\qbezier(44,4)(47,2)(45.5,-0.5)
+\qbezier(45.5,-0.5)(44,-2)(41,1)}
+%straight line
+\put(87,6){\line(1,0){10}}
+%arrowheads
+\put(12,17){$\blacktriangleright$}
+\put(43.5,35.5){$\blacktriangleright$}
+\put(43.5,3){$\blacktriangleright$}
+\put(32,33){$\blacktriangleright$}
+\put(59,24){$\blacktriangledown$}
+\put(32,5){$\blacktriangleright$} 
+\put(59,14){$\blacktriangle$}
+\put(86.5,35.5){$\blacktriangleright$}
+\put(85.5,2){$\blacktriangleright$}
+\put(95,5){$\blacktriangleright$}
+\put(75,33){$\blacktriangleright$}
+\put(75,5){$\blacktriangleright$}
+%letters
+\put(19,19){S} \put(39,33){A} \put(39,5){B} \put(61,19){C}
+\put(81,33){D} \put(81,5){E} \put(101,5){F} \put(101,33){Z}
+%numbers
+\put(4,19){0} \put(57,34){0} \put(57,4){0} 
+\put(19,32){1} \put(19,5){1} \put(65,34){1} \put(88,42){1} 
+\put(45,42){2} \put(64,4){2} \put(89,-3){2} \put(90,7){2} 
+\put(47,-3){3}
+%words
+\put(4,11){START} \put(106,35){DEAD} \put(106,31){STATE}
+\end{picture}
+
+A string presented to this finite state ``machine'' can be executed in various different ways, as there are different choices when two arrows have the same label. Notice, however, that the set of strings for which \emph{some possible} sequence of choices leads to an accepting state is exactly $\El(G)$! This is an example of what is called a \emph{non-deterministic finite state acceptor} (NDFSA). Formally, a NDFSA is a quintuple
+\begin{equation*}
+N = \langle \Sigma, Q, s, Y, \delta \rangle
+\end{equation*}
+defined exactly as we defined a FSA, except that the transition function $\delta$ maps $Q \times \Sigma$ into the set of all \emph{subsets} of $Q$; that is, $\delta(q,a)\subseteq Q$ for $q \in Q$ and $a \in \Sigma$. In state $q$ reading input symbol $a$, the action of $N$ is not determined in advance; all we know is that it will go into some state in the set $\delta(q,a)$. The set $\delta(q,a)$ is illustrated in the transition diagram as the set of states pointed to by some arrow leaving $q$ with label $a$. If $N$ starts in state $s$ reading a string $w \in \Sigma^*$, there might be many different possible runs of $N$, each with a different sequence of choices of transitions. We say that $N$ \emph{accepts} the string $w$ if \emph{some} possible run of $N$ terminates in an accepting state of $Y$. As usual,
+\begin{equation*}
+\El(N) = \{ w \in \Sigma\ |\ N \text{ accepts } w \}
+\end{equation*}
+and the set of languages $\El(N)$ recognized by some NDFSA $N$ is denoted by
+\begin{equation*}
+\mathbb{NDFSA} = \{ \El(N)\ |\ N \text{ is a NDFSA} \}
+\end{equation*}
+
+The above NDFSA illustrates these ideas. Here, $\delta(S,1) = \{A,B\}$ and $\delta(E,2) = \{E,F\}$. Reading the string $w = 13022$, it could terminate in either $E$, $F$, or $Z$. Since one of these ($F$) is accepting, $N$ accepts $w$ and therefore $w \in \El(N)$. The language $\El(N)$ is easily checked to be exactly
+\begin{equation*}
+\El(G) = 0^* 1 (2^* \cup 3^*) 0 (11^* \cup 222^*)
+\end{equation*}
+which is therefore in $\mathbb{NDFSA}$. The method we used to construct this NDFSA from the grammar $G$ illustrates our next theorem.
+
+\begin{description}
+
+\item[Theorem:] $\mathbb{RG} \subseteq \mathbb{NDFSA}$; that is, for every regular grammar $G$, there is a non-deterministic finite state acceptor $N'$ such that $\El(G) = \El(N')$.
+
+\item[Proof:] Given the regular grammar $G = \langle \Sigma, N, S, \to \rangle$, let $N' = \langle \Sigma, Q, S, Y, \delta \rangle$ where
+
+  \begin{itemize}
+    \item the input alphabet $\Sigma$ of $N'$ is the terminal alphabet of $G$; 
+    \item the set $Q = N \cup \{F,Z\}$ of states of $N'$ consists of the non-terminal symbols of $G$ together with a new (accepting) state $F$ and a new dead state $Z$; 
+    \item the initial state $S$ of $N'$ is the start symbol of $G$; 
+    \item the set $Y$ of accepting states of $N'$ consists of $F$ together with all states $I$ for which $I \to \lambda$ is in $G$.
+    \item the transition function $\delta$ of $N'$ is defined by taking $\delta(I,x)$ to contain $J$ if $I \to xJ$ is in $G$, to contain $F$ if $I \to x$ is in $G$, and to contain $I$ if $I \to \lambda$ is in $G$.
+  \end{itemize}
+
+  Then $N'$ will be a NDFSA such that $\El(N') = \El(G)$.
+
+\end{description}
+
+We can summarize the central facts that we have discovered in a single inequality:
+
+\begin{center}
+\framebox[2.5in]{ $\mathbb{FSA} \subseteq \mathbb{REG} \subseteq \mathbb{RG} \subseteq \mathbb{NDFSA}$ }
+\end{center}
+
+
+\subsubsection*{Problems}
+
+For each regular grammar $G$ below, construct a NDFSA $N$ such that $\El(N) = \El(G)$. Using the NDFSA, find a regular expression for the language $\El(G)$.
+
+\begin{description}
+  \item[(4.10)] $S \to 1A,1B; \quad A \to 1A,1D; \quad B \to 2B,2; \quad D \to 3D,\lambda$ 
+  \item[(4.11)] $S \to 0A,0B,0C; \quad A \to 1A,1B; \quad B \to 2B,2C; \quad C \to 3C,0,1,2$
+  \item[(4.12)] 
+    \begin{align*}
+    & S \to 0A,0B,0C; \\
+    & A \to 1A,1D,1B;   & & B \to 2B,2E,2C;   & & C \to 3C,3F,3A; \\
+    & D \to 0D,\lambda; & & E \to 0E,\lambda; & & F \to 0F,\lambda
+    \end{align*}
+\end{description}
+
+
+\subsection{NDFSAs into (D)FSAs} %4.4
+
+
+A non-deterministic finite state acceptor $N$ implicitly gives us a Test Algorithm to determine if a string $w$ is in the language $\El(N)$. But the algorithm it gives is awkward and inefficient, as it requires that we do some kind of tree search to examine all possible runs of $N$, reading $w$ to see if one ends in an accepting state. It would be nice to have a more direct algorithm to determine if $N$ accepts an arbitrary string $w$.
+
+Consider the NDFSA $N$ for the language
+\begin{equation*}
+\El(N) = 0^* 1 (2^* \cup 3^*) 0 (11^* \cup 222^*)
+\end{equation*}
+that we constructed above from a grammar for this language:
+
+
+\setlength{\unitlength}{.95mm}
+\begin{picture}(108,55)(0,-6)
+%circles
+\put(20,20){\circle{6}} \put(40,6){\circle{6}}
+\put(40,34){\circle{6}} \put(62,20){\circle{6}}
+\put(82,34){\circle{6}} \put(82,34){\circle{7.5}}
+\put(82,6){\circle{6}} \put(102,6){\circle{6}}
+\put(102,6){\circle{7.5}} \put(102,34){\circle{6}}
+%curved lines
+\qbezier(20,25)(20,34)(33,34) \qbezier(47,34)(60,34)(60,25)
+\qbezier(60,15)(60,6)(47,6) \qbezier(33,6)(20,6)(20,15)
+\qbezier(13,22)(7,22)(7,20) \qbezier(7,20)(7,18)(13,18)
+\qbezier(41,39)(44,42)(45.5,40.5)
+\qbezier(45.5,40.5)(47,39)(44,36) \qbezier(44,4)(47,2)(45.5,-0.5)
+\qbezier(45.5,-0.5)(44,-2)(41,1) \qbezier(63,25)(63,34)(76,34)
+\qbezier(63,15)(63,6)(76,6)
+\put(43,0){\qbezier(41,39)(44,42)(45.5,40.5)
+\qbezier(45.5,40.5)(47,39)(44,36)}
+\put(42,-1){\qbezier(44,4)(47,2)(45.5,-0.5)
+\qbezier(45.5,-0.5)(44,-2)(41,1)}
+%straight line
+\put(87,6){\line(1,0){10}}
+%arrowheads
+\put(12,17){$\blacktriangleright$}
+\put(43.5,35.5){$\blacktriangleright$}
+\put(43.5,3){$\blacktriangleright$}
+\put(32,33){$\blacktriangleright$}
+\put(59,24){$\blacktriangledown$}
+\put(32,5){$\blacktriangleright$} \put(59,14){$\blacktriangle$}
+\put(86.5,35.5){$\blacktriangleright$}
+\put(85.5,2){$\blacktriangleright$}
+\put(95,5){$\blacktriangleright$}
+\put(75,33){$\blacktriangleright$}
+\put(75,5){$\blacktriangleright$}
+%letters
+\put(19,19){S} \put(39,33){A} \put(39,5){B} \put(61,19){C}
+\put(81,33){D} \put(81,5){E} \put(101,5){F} \put(101,33){Z}
+%numbers
+\put(4,19){0} \put(57,34){0} \put(57,4){0} \put(19,32){1}
+\put(19,5){1} \put(65,34){1} \put(88,42){1} \put(45,42){2}
+\put(64,4){2} \put(89,-3){2} \put(90,7){2} \put(47,-3){3}
+%words
+\put(4,11){START} \put(106,35){DEAD} \put(106,31){STATE}
+\end{picture}
+
+
+In order to know if a string $w$ is accepted by $N$, we must keep track of all states that $N$ could possibly be in as it reads $w$. Starting in state $S$ reading $0$, the new state must be $S$. But reading a $1$, the new state could be either $A$ or $B$. In order to keep track of this information, we draw a different diagram.
+
+
+\setlength{\unitlength}{.71mm}
+\begin{picture}(163,70)(-18,-3)
+\put(-15,0) {
+%circles
+\put(20,40){\circle{6}} \put(44,40){\circle{8}}
+\put(68,26){\circle{8}} \put(68,54){\circle{8}}
+\put(96,40){\circle{8}} \put(116,26){\circle{8}}
+\put(120,54){\circle{8}} \put(120,54){\circle{9.5}}
+\put(16,10){\circle{6}} \put(16,10){\circle{7.5}}
+\put(44,10){\circle{6}} \put(72,10){\circle{6}}
+\put(100,10){\circle{8}} \put(100,10){\circle{9.5}}
+%oval EZF
+\qbezier(140,26)(140,30)(146,30) \qbezier(146,30)(152,30)(152,26)
+\qbezier(152,26)(152,22)(146,22) \qbezier(146,22)(140,22)(140,26)
+\qbezier(139.25,26)(139.5,30.75)(146,30.75)
+\qbezier(146,30.75)(152.75,30.75)(152.75,26)
+\qbezier(152.75,26)(152.75,21.25)(146,21.25)
+\qbezier(146,21.25)(139.25,21.25)(139.25,26)
+%curved lines
+\qbezier(16,42)(10,42)(10,40) \qbezier(10,40)(10,38)(16,38)
+\qbezier(14,16)(14,22)(16,22) \qbezier(16,22)(18,22)(18,16)
+\qbezier(128,57)(134,57)(134,54) \qbezier(134,54)(134,51)(128,51)
+\qbezier(70,59)(73,62)(74.5,60.5)
+\qbezier(74.5,60.5)(76,59)(74,57)
+\qbezier(74,23)(76,22)(74.5,19.5)
+\qbezier(74.5,19.5)(73,18)(70,21) \qbezier(134,10)(146,10)(146,18)
+\qbezier(142,34)(142,40)(145,40) \qbezier(145,40)(148,40)(148,34)
+\qbezier(44,46)(44,54)(62,54) \qbezier(46,34)(46,26)(62,26)
+\qbezier(74,54)(94,54)(94,46) \qbezier(74,26)(94,26)(94,34)
+\qbezier(98,46)(98,54)(112,54) \qbezier(98,34)(98,26)(110,26)
+%straight lines
+\put(25,40){\line(1,0){12}} \put(122,26){\line(1,0){12}}
+\put(23,10){\line(1,0){16}} \put(50,10){\line(1,0){16}}
+\put(78,10){\line(1,0){14}} \put(108,10){\line(1,0){22}}
+\put(44,16){\line(0,1){18}}
+%letters
+\put(18.5,38){S} \put(14,8){D} \put(42,8){C} \put(70,8){E}
+\put(41,38){AB} \put(65,24){BZ} \put(65,52){AZ} \put(93,38){CZ}
+\put(113,24){EZ} \put(117,52){DZ} \put(97,8){EF} \put(142,24){EZF}
+\put(13,44){START}
+%numbers
+\put(7,39){0} \put(41,24){0} \put(88,54){0} \put(88,24){0}
+\put(15.5,23){1} \put(30,42){1} \put(30,6){1} \put(100,54){1} \put(135,53){1} 
+\put(48,54){2} \put(75,61){2} \put(128,27){2} \put(144,41){2} 
+\put(57,6){2} \put(85,6){2} \put(120,6){2} \put(99,24){2} 
+\put(48,24){3} \put(76,18){3}
+%arrowheads
+\put(36,39){$\blacktriangleright$}
+\put(65,9){$\blacktriangleright$}
+\put(91,9){$\blacktriangleright$}
+\put(129,9){$\blacktriangleright$}
+\put(133,25){$\blacktriangleright$}
+\put(14.5,37){$\blacktriangleright$}
+\put(60,25){$\blacktriangleright$}
+\put(60,53){$\blacktriangleright$}
+\put(111,53){$\blacktriangleright$}
+\put(109,25){$\blacktriangleright$}
+\put(73,22){$\blacktriangleright$}
+\put(73,56){$\blacktriangleright$}
+\put(22,9){$\blacktriangleleft$}
+\put(127,50){$\blacktriangleleft$}
+\put(17,15){$\blacktriangledown$}
+\put(43,15){$\blacktriangledown$}
+\put(147,33){$\blacktriangledown$}
+\put(93,45){$\blacktriangledown$} 
+\put(93,33){$\blacktriangle$}
+\put(145,17){$\blacktriangle$}
+ }
+\end{picture}
+
+
+Seeing $0$ in starting state $S$, it can only go back to $S$. Seeing $1$, it can go to either $A$ or $B$. If it is in $A$ or $B$ and sees $2$, it will go to either $A$ or $Z$, and so forth. Reading the string $w = 001330222$, we see that $N$ can end in any one of the states in the set $\{E,Z,F\}$. Since one of these, $F$, is an accepting state, we know that $N$ accepts $w$. On the other hand, the diagram tells us that $N$ reading $u = 0012202$ will end in a state in the set $\{E,Z\}$. Since this set does not contain an accepting state, $N$ does not accept $u$.
+
+Now if we look at this second diagram, we see that it is precisely the transition diagram for a (deterministic) finite state acceptor $M$ for the language $\El(N)$! The states $Q^M$ of $M$ are the following \emph{sets} of states of $N$:
+\begin{equation*}
+\{\ \{S\}, \{A,B\}, \{A,Z\}, \{B,Z\}, \{C,Z\}, \{D,Z\}, \{E,Z\}, \{E,Z,F\}, \{Z\}\ \}
+\end{equation*}
+
+The starting state is $S^M = \{S\}$, the transition function is given by
+\begin{equation*}
+\delta^M (X,a) = \{\ \delta(x,a)\ |\ x \in X,\ a \in \{0,1,2,3\}\ \}
+\end{equation*}
+where $X \in Q^M$, and the accepting states are $\{D,Z\}$ and $\{E,Z,F\}$. This example illustrates an algorithm that can be applied to any NDFSA.
+
+
+\begin{description}
+
+\item[Theorem:] $\mathbb{NDFSA} \subseteq \mathbb{FSA}$; that is, for every non-deterministic finite state acceptor $N$, there is a (deterministic) finite state acceptor $M$ such that $\El(M) = \El(N)$.
+
+\item[Proof:] Given $N = \langle \Sigma, Q, s, Y, \delta \rangle$, let $M = \langle \Sigma, Q^M, s^M, Y^M, \delta^M \rangle$ where
+\begin{itemize}
+  \item $Q^M = \Ps(Q)$ is the set of all subsets of $Q$;
+  \item $s^M = \{s\}$; 
+  \item $Y^M = \{X \subseteq Q\ |\ X \cap Y \neq \emptyset \}$; 
+  \item $\delta^M(X,a) = \bigcup \{ \delta(x,a)\ |\ x \in X \}$.
+\end{itemize}
+
+Then $M$, reading a string $w \in \Sigma^*$, will end in a state of $Y^M$ if and only if some possible run of $N$ will end in a state of $Y$. Thus $M$ and $N$ accept exactly the same strings.
+
+\end{description}
+
+Notice that in the example above, $N$ has 8 states, so that using this construction, $M$ will have $2^8 = 256$ states. In practice, it is not necessary to use all of the states of $M$, since most of them can never be reached from its start state. In the example, there are only $14$ of the $256$ states of $M$ that are accessible from the start state. 
+
+This observation suggests that in general, NDFSAs are much more compact and easy to construct than the corresponding FSAs. On the other hand, they are much more cumbersome to use, since all the work of finding all possible paths through the diagram is done in advance when we construct the FSA.
+
+Combining all of the theorems that we have proven, we conclude that the four classes of languages we have studied are in fact all the same:
+
+\begin{center}
+\framebox[2.5in]{ $\mathbb{FSA} = \mathbb{REG} = \mathbb{RG} = \mathbb{NDFSA}$ }
+\end{center}
+
+These languages are generally referred to as \emph{regular languages}. Each of them has Generating Algorithm specifications by regular expressions and by regular grammars, and also has Test Algorithm specifications by a FSA and a NDFSA.
+
+From the fact that $\mathbb{FSA} \subseteq \mathbb{REG}$ and that $\mathbb{REG} \subseteq \mathbb{RG}$, if follows that $\mathbb{FSA} \subseteq \mathbb{RG}$. It is worth noticing that there is a very simple algorithm to construct a regular grammar $G$ directly from a finite state acceptor $M$ without constructing a regular expression along the way. We take the \emph{states} of $M$ (perhaps with simplified, one character names) as the \emph{non-terminal symbols} of $G$.
+
+We can then translate the transition diagram of $M$ into production rules for $G$ in exactly the same way that we translated them into the equations we needed to solve in order to produce a regular expression: If
+\begin{equation*}
+\delta(x,a) = x, \ \ \ \ \delta(x,b) = u, \ \ \ \ \delta(x,c) = v
+\end{equation*}
+in $M$, for example, we can write down productions
+\begin{equation*}
+x \to ax; \ \ \ \ x \to bu; \ \ \ \ x \to cv
+\end{equation*}
+for $G$ instead of writing the equation $x = ax + bu + cv$. (Writing down the grammar is like writing down the equations for a regular expression without solving them!)
+
+
+\subsubsection*{Problems}
+
+\begin{description}
+  \item[(4.13), (4.14), (4.15)] For each of the NDFSAs that you constructed in problems (4.10), (4.11), and (4.12), use the above algorithm to construct a (D)FSA which recognizes the same language.
+  \item[(4.16), (4.17), (4.18)] For each of the FSAs that you constructed in problems (4.13), (4.14), and (4.15), construct a regular grammar which generates the language recognized by the FSA. In order to do this, it will be convenient to redraw each FSA with a new single letter name for each state. These single letters will then become the nonterminal symbols of your grammar. If all your steps are correct, the resulting grammars you get will be equivalent to the grammars you started with in problems (4.10), (4.11), and (4.12).
+\end{description}
+
+
+
+
+\newpage
+
+
+\section{Machine Minimization}
+\markboth{5. Machine Minimization}{5. Machine Minimization}
+
+
+When we write a computer program, our first task is to put together a version which runs properly and which we believe to be correct. Once this has been achieved, it is often important to revise the program in order to make it as clean, simple, and understandable as possible. Doing so makes it much easier to be confident of its correctness, and makes it much less difficult to maintain and modify it in the future. But the general problem of reducing a program to an equivalent program of minimal complexity is in general quite difficult, and algorithms to do so are extremely rare. In general, it is not even easy to find a practical way to measure the complexity of a program.
+
+Once again, the finite state acceptor model of a simple computing machine gives us a context in which these problems can be fully resolved, providing a prototype of what we would optimally seek for more complex machines. In this chapter, we will see how to construct a minimal finite state acceptor for any regular language. As a by-product of this investigation, we will find a simple method to show that many more complex languages are \emph{not} regular.
+
+
+\subsection{Minimal Finite State Acceptors} %5.1
+
+
+The \emph{number of internal states}, $|Q|$, of a finite state acceptor $M = \langle \Sigma, Q, s, \delta, Y \rangle$ provides us with a useful measure of the \emph{complexity} of $M$. Our problem is to find a method to generate from a regular language $L$ a finite state acceptor $M$ such that
+\begin{itemize}
+  \item $M$ recognizes $L$; and
+  \item if $M'$ is any FSA which recognizes $L$, then $M'$ has at least as many states as $M$.
+\end{itemize}
+
+We can then view $M$ as a minimal FSA that recognizes $L$. For example, let $L_0$ be the regular language recognized by the FSA below.
+
+
+\setlength{\unitlength}{1mm}
+\begin{picture}(102,50)(28,-13)
+%circles
+\put(35,5){\circle{6}} \put(65,5){\circle{6}}
+\put(95,5){\circle{6}} \put(125,5){\circle{6}}
+\put(35,25){\circle{6}} \put(65,25){\circle{6}}
+\put(65,25){\circle{7}} \put(95,25){\circle{6}}
+\put(125,25){\circle{6}} \put(125,25){\circle{7}}
+%straight lines
+\put(40,5){\line(1,0){20}} \put(70,5){\line(1,0){20}}
+\put(100,5){\line(1,0){20}} \put(40,25){\line(1,0){20}}
+\put(70,25){\line(1,0){20}} \put(100,25){\line(1,0){20}}
+\put(35.5,10){\line(0,1){10}} \put(65.5,10){\line(0,1){10}}
+\put(95.5,10){\line(0,1){10}} \put(125.5,10){\line(0,1){10}}
+%curved lines
+\qbezier(93,0)(93,-5)(95,-5) \qbezier(95,-5)(97,-5)(97,0)
+%letters
+\put(34,4){q} \put(64,4){x} \put(94,4){z} \put(124,4){w}
+\put(34,24){p} \put(64,24){s} \put(94,24){u} \put(124,24){v}
+\put(60,31){START}
+%numbers
+\put(50,1){0} \put(80,1){0} \put(110,1){0}
+\put(80,26){0} \put(110,26){0} \put(32,14){0}
+\put(92,14){1} \put(126,14){1} \put(62,14){1} \put(50,26){1}
+\put(96,-9){0,1}
+%arrowheads
+\put(58,4){$\blacktriangleright$}
+\put(58,24){$\blacktriangleright$}
+\put(88,4){$\blacktriangleright$}
+\put(88,24){$\blacktriangleright$}
+\put(118,24){$\blacktriangleright$}
+\put(99,24){$\blacktriangleleft$} 
+\put(99,4){$\blacktriangleleft$}
+\put(34,9){$\blacktriangledown$} 
+\put(64,9){$\blacktriangledown$}
+\put(94,9){$\blacktriangledown$} 
+\put(124,9){$\blacktriangledown$}
+\put(34,18){$\blacktriangle$} 
+\put(64,18){$\blacktriangle$}
+\put(124,18){$\blacktriangle$} 
+\put(96,-1){$\blacktriangle$}
+\end{picture}
+
+
+It is easy to check that $L_0 = ( \{00\} \cup \{11\} )^*$. 
+
+
+\subsubsection*{Problems}
+
+\begin{description}
+  \item[(5.1)] Construct an FSA $M_0$ that also recognizes $L_0$, but has only 4 states. 
+  \item[(5.2)] Let $M_0'$ be any finite state acceptor that recognizes $L_0$, and let $s'$ be its start state. Looking at which states are accepting and which are not, explain why the states $s'$, $\delta(s',0)$, $\delta(s',1)$, and $\delta^*(s',10) = \delta(\delta(s',1),0)$ must all be distinct. Thus $M_0'$ has at least as many states as $M_0$.
+\end{description}
+
+
+\subsection*{ }
+
+Our goal is to find a general procedure that will produce, from any regular language $L$, a minimal FSA $M$ that recognizes $L$.
+
+To begin with, let $L \subseteq \Sigma^*$ be an arbitrary language. We define a special equivalence relation $\equiv_L$ on the set $\Sigma^*$ \emph{based on the language} $L$. If $w \in \Sigma^*$, let $R_w = \{ z \in \Sigma^*\ |\ wz \in L \}$. We call this the \emph{right-set} for $w$. Notice that if $w$ does not happen to be an initial segment of a string in $L$, then $R_w = \emptyset$. We take $Z(L) = \{ w \in \Sigma^*\ |\ R_w = \emptyset\}$ to be the set of strings which are not an initial segment of any member of $L$. We use these ideas to define an equivalence relation of $\Sigma^*$: for $x,y \in \Sigma^*$,
+\begin{equation*}
+x \equiv_L y \text{ if } R_x = R_y
+\end{equation*}
+
+In the above example of $L_0 = (\{00\}\cup\{11\})^*$, we see that $R_0 = R_{110} = R_{00110}$ consists exactly of the set $0L_0 = \{ 0u\ |\ u \in L_0 \}$. Thus the equivalence class $[0]$ of $0$ under $\equiv_{L_0}$ is exactly $L_00$. On the other hand, $01 \in Z(L_0)$ so $R_{01} = \emptyset$. Continuing in this way, we find that for each $w\in\{0,1\}^*$, the right-set $R_w$ is either $L_0$, $0L_0$, $1L_0$, or $\emptyset$. These choices give us exactly four different $\equiv_{L_0}$-classes:
+\begin{align*}
+[\lambda] & = L_0 \\
+[0] & = L_00 \\
+[1] & = L_01 \\
+[01] & = \Sigma^* \sim(L_0 \cup L_00 \cup L_01) = Z(L_0)
+\end{align*}
+
+These four $\equiv_{L_0}$-classes have a curious property. If any member of $L_00$ is extended on the right by adding a $0$, the result is always a string in $L_0$. If any member of $L_00$ is extended on the right with a $1$ instead, we get a string in $Z(L_0)$. These facts are summarized in the following diagram.
+
+\begin{center}
+\setlength{\unitlength}{1mm}
+\begin{picture}(76,32)(47,3)
+%letters
+\put(52,30){$\lambda\in L_0$} 
+\put(58,10){$L_00$}
+\put(100,30){$L_01$} 
+\put(102,10){$Z(L_0)$}
+%straight lines
+\put(66,31){\line(1,0){30}} 
+\put(66,11){\line(1,0){30}}
+\put(60,15){\line(0,1){12}} 
+\put(104,15){\line(0,1){12}}
+%curved lines
+\qbezier(113,13)(117,13)(117,11) 
+\qbezier(117,11)(117,9)(113,9)
+%numbers
+\put(81,32){1} 
+\put(81,7){1} 
+\put(57,21){0} 
+\put(105,21){0}
+\put(118,10){0,1}
+%arrowheads
+\put(65,30){$\blacktriangleleft$}
+\put(95,30){$\blacktriangleright$}
+\put(95,10){$\blacktriangleright$}
+\put(59,14){$\blacktriangledown$} 
+\put(59,26){$\blacktriangle$}
+\put(103,14){$\blacktriangledown$}
+\put(112,12){$\blacktriangleleft$}
+\end{picture}
+\end{center}
+
+Since $\lambda \in L_0$, we can take any string $w \in \{0,1\}^*$ and find which class $w$ is in by tracing the diagram, building $w$ by starting with $\lambda$ and successively adding $0$s or $1$s on the right until we have $w$. Our ending point will be the $\equiv_{L_0}$-class of $w$. If we land in $L_0$, then $w \in L_0$; otherwise, it is not. What we have done is to build a four-state FSA, whose start state and only accepting state is $L_0$, that recognizes $L_0$!
+
+Can we repeat this construction with any language $L$, using the $\equiv_L$-classes to find an FSA for $L$? There is one important hitch, as the following example shows.
+
+\begin{description}
+  \item[(5.3)] Let $L_= = \{ a^n b^n\ |\ n=1,2,3,\cdots \}$. Show that there are infinitely many $\equiv_{L_=}$-classes by making an infinite list of strings, no two of which are equivalent by $\equiv_{L_=}$.
+\end{description}
+
+Obviously, we cannot use the $\equiv_L$-classes as states of a \emph{finite} state acceptor if there are infinitely many of them! But if the set of $\equiv_L$-classes is finite, then this construction will always work.
+
+\begin{description}
+
+\item[Standard FSA Theorem:] Suppose that $L \subseteq \Sigma^*$ is a language such that $\Sigma^*$ has only finitely many different $\equiv_L$-classes. Then $L$ is recognized by an FSA which has exactly as many states as there are $\equiv_L$-classes in $\Sigma^*$.
+
+\item[Proof:] Let $M = \langle \Sigma, Q, s, Y, \delta \rangle$, where
+  \begin{itemize}
+    \item $Q$ is the (finite) set of all $\equiv_L$-classes; 
+    \item $s = [\lambda]$ is the start state; 
+    \item $Y = \{ [x]\ |\ x \in L \}$ (which is unambiguously defined since you can check that for all $x,y \in \Sigma^*$, if $x \in L$ and $x \equiv_L y$, then $y \in L$);
+    \item $\delta([x],a) = [xa]$ (which is unambiguously defined since you can check that for all $x,y \in \Sigma^*$ and $a \in \Sigma$, if $x\equiv_L y$, then $xa \equiv_L ya$).
+  \end{itemize}
+
+  This defines an FSA $M$ with exactly as many states as there are $\equiv_L$-classes (since its states \emph{are} the $\equiv_L$-classes!). To see which strings $w$ are accepted by $M$, we need to know when $\delta^*(s,w) \in Y$. If $w = a_1 a_2 \cdots a_n \in \Sigma^*$, then
+  \begin{align*}
+  \delta^*(s,w) & = \delta^*([\lambda], a_1 a_2 \cdots a_n)  =  \delta^*(\delta([\lambda],a_1), a_2 \cdots a_n) \\
+                & = \delta^*([a_1], a_2 \cdots a_n)  =  \delta^*([a_1 a_2], \cdots a_n)  =  \cdots = [a_1 a_2 \cdots a_n] = [w]
+  \end{align*}
+
+  Thus $\delta^*(s,w) \in Y$ if and only if $w \in L$, so $M$ recognizes $L$.
+
+\end{description}
+
+The FSA $M$ constructed in this proof is called the \emph{standard} FSA for $L$, as it is constructed in a uniform way from the language $L$ itself. 
+
+In case $L$ is a regular language, the relation $\equiv_L$ is very special. To see this, let $M = \langle \Sigma, Q, s, \delta, Y \rangle$ be an arbitrary FSA which recognizes $L$. We now define a second equivalence relation on $\Sigma^*$, this one \emph{based on the machine} $M$. For $x,y \in \Sigma^*$,
+\begin{equation*}
+x \equiv_{M} y \text{ if } \delta^*(s,x) = \delta^*(s,y)
+\end{equation*}
+
+Thus two strings are equivalent if $M$ lands in the same state reading one as reading the other. A state $q$ of an FSA $M$ is said to be \emph{accessible} if there is \emph{some} string $x$ such that $\delta^*(s,x) = q$; that is, $M$ can reach $q$ from the start state. For each accessible state $q$, we have a distinct $\equiv_{M}$-class consisting of all strings $x$ such that $\delta^*(s,x) = q$. 
+
+\begin{description}
+
+\item[Myhill-Nerode Theorem:] Let $L$ be a regular language. Then the set of $\equiv_L$-classes is finite, and every FSA that recognizes $L$ has at least as many states as the standard FSA for $L$ has.
+
+\item[Proof:] Let $M$ be an FSA that recognizes $L$, and let $q_1, q_2, \cdots, q_n$ be a list of the accessible states of $M$. Then $K_{q_1}, K_{q_2}, \cdots, K_{q_n}$ is a list of all of the $\equiv_{M}$-classes. Since $M$ has at least $n$ states, it will suffice to show that the number of $\equiv_{L}$-classes in $\Sigma$ is no more than $n$. We will do this by showing that each $\equiv_{L}$-class is a union of $\equiv_M$-classes. (This fact is sometimes stated by saying that the partition induced by $\equiv_{M}$ is a \emph{refinement} of the partition induced by $\equiv_L$.)
+
+Let $x \equiv_{M} y$. We must show that $x \equiv_L y$. Since $x \equiv_{M} y$, we have for all $z \in \Sigma^*$, that $\delta^*(s,x) = \delta^*(s,y)$, and consequently
+\begin{equation*}
+\delta^*(s,xz) = \delta^*(\delta^*(s,x),z) = \delta^*(\delta^*(s,y),z) = \delta^*(s,yz)
+\end{equation*}
+
+Thus $\delta^*(s,xz) \in Y$ if and only if $\delta^*(s,yz) \in Y$, and therefore $xz \in L$ if and only if $yz \in L$. But this tells us that $x \equiv_L y$.
+
+\end{description}
+
+Our original finite state acceptor $M$ for $L_0$, for example, has six accessible states $s$, $u$, $v$, $w$, $z$, and $x$, which give us a partition of each of the $\equiv_{L_0}$-classes into $\equiv_M$-classes: $L_0 = K_s \cup K_v$, $L_01 = K_x \cup K_w$, $L_00 = K_u$, and $Z(L_0) = K_z$.
+
+
+\subsubsection*{Problems}
+
+For each of the following regular languages, look at the different right-sets to determine the distinct $\equiv_L$-classes. Then construct the standard FSA for $L$.
+
+\begin{center}
+\setlength{\unitlength}{1mm}
+\begin{picture}(95,48)(32,2)
+%circles
+\put(40,40){\circle{6}} \put(40,40){\circle{7}}
+\put(60,40){\circle{6}} \put(80,40){\circle{6}}
+\put(100,40){\circle{6}} \put(100,40){\circle{7}}
+\put(120,40){\circle{6}} \put(40,9){\circle{6}}
+\put(80,9){\circle{6}} \put(100,9){\circle{6}}
+\put(100,9){\circle{7}} \put(120,9){\circle{6}}
+%straight lines
+\put(45,40){\line(1,0){10}} \put(65,40){\line(1,0){10}}
+\put(85,40){\line(1,0){9}} \put(106,40){\line(1,0){9}}
+\put(85,9){\line(1,0){9}} \put(106,9){\line(1,0){9}}
+\put(40,14){\line(0,1){20}} \put(80,14){\line(0,1){20}}
+\put(120,14){\line(0,1){20}}
+%letters
+\put(39,39){s} \put(59,39){t} \put(79,39){u} \put(99,39){v}
+\put(119,39){w} \put(39,8){r} \put(79,8){z} 
+\put(99,8){y} \put(119,8){x} \put(59,8){M}
+%numbers
+\put(50,41){1} \put(69,41){1} \put(89,41){1}
+\put(37,21){1} \put(77,21){1} \put(121,21){1} 
+\put(90,5){1} \put(110,5){1} \put(110,41){1}
+%arrowheads
+\put(54,39){$\blacktriangleright$}
+\put(74,39){$\blacktriangleright$}
+\put(93,39){$\blacktriangleright$}
+\put(114,39){$\blacktriangleright$}
+\put(119,13){$\blacktriangledown$}
+\put(105,8){$\blacktriangleleft$} 
+\put(84,8){$\blacktriangleleft$}
+\put(79,33){$\blacktriangle$} 
+\put(39,33){$\blacktriangle$}
+\end{picture}
+\end{center}
+
+\begin{description}
+  \item[(5.4)] $L = 0^* 1^* 2^*$ 
+  \item[(5.5)] $L = 00 (1^* \cup 2^*)$
+  \item[(5.6)] $L = (1^* \cup 2^*) 00$ 
+  \item[(5.7)] $L = 111 \cup (020)^*$ 
+  \item[(5.8)] $L = (111)^* 1$ 
+  \item[(5.9)] Above is an FSA $M$ for the language $L = (111)^* 1$. Find a regular expression for each $\equiv_M$-class: $K_r$, $K_s$, $K_t$, $K_u$, $K_v$, $K_w$, $K_x$, $K_y$, and $K_z$. 
+  \item[(5.10)] Express each $\equiv_L$-classes as a union of $\equiv_M$-classes, thereby illustrating the proof that $M$ must have at least as many states as there are $\equiv_L$-classes.
+\end{description}
+
+
+\subsection{Languages That Are Not Regular} %5.2
+
+
+Combining the two previous theorems gives us a very useful characterization of regular languages which will allow us to say which languages are \emph{not} regular.
+
+\begin{description}
+
+\item[Myhill-Nerode Corollary:] A language $L \subseteq \Sigma^*$ is regular if and only if the set of $\equiv_L$-classes in $\Sigma^*$ is finite.
+
+\item[Proof:] If $L$ is regular, then the M-N Theorem tells us that the set of $\equiv_L$-classes is finite. If the set of $\equiv_L$-classes is finite, then the Standard FSA Theorem shows us how to construct the standard FSA for $L$ which guarantees that $L$ is a regular language.
+
+\end{description}
+
+For example, this corollary tells us for certain that the language $L_=$ in problem (5.3) is \emph{not} a regular language, because there are infinitely many $\equiv_{L_=}$-classes. Using the same ideas, we can formulate a direct explanation as to why this and certain other languages are not regular, without reference to equivalence relations.
+
+\begin{description}
+
+\item[Example 1:] The language $L_= = \{ a^n b^n\ |\ n = 1,2,3,\cdots \}$ is not regular.
+
+  Let $M$ be any FSA. We will show that $M$ does not recognize $L_=$ by finding two strings, $u \in L_=$ and $v \notin L_=$, such that $M$ ends in the same state reading either $u$ or $v$. Imagine that we ask $M$ to read strings of $a$s: $a, a^2, a^3, a^4, \cdots$, starting in its start state $s$. Let $q_n = \delta^*(s,a^n)$ be its ending state when it reads $a^n$. Since $M$ has only finitely many states, there must be two different indices $m < n$ such that $q_m = q_n$. Taking $u = a^m b^m$ and $v = a^n b^m$, we have
+  \begin{equation*}
+  \delta^*(s,u) = \delta^*(s, a^m b^m) = \delta^*(q_m,b^m) = \delta^*(q_n,b_m) = \delta^*(s, a^n b^m) = \delta^*(s,v)
+  \end{equation*}
+
+  This tells us that either $M$ accepts both $u \in L_=$ and $v \notin L_=$, or it accepts neither. In either case, $M$ is not an FSA for $L_=$.
+
+\item[Example 2:] The language $L_{alg}$ of all meaningful algebraic expressions over $\Sigma = \{ w,x,y,z,(,),+,-,\cdot,\div \}$ is not regular.
+
+  Again, let $M$ be any FSA. Notice that in a string $w \in L_{alg}$, the number of ``(''s and ``)''s must be exactly the same. This time, imagine $M$ beginning in its start state $s$ reading $(, ((, (((, ((((, \cdots$. Again, there must be $m < n$ such that $M$ is in the same state after reading $m$ ``(''s as after reading $n$ ``(''s. Let $u = (( \cdots ((x+x)+x) \cdots +x)+x) \in L_{alg}$ where there are $n$ ``(''s before the first ``$x+$'', followed by $n$ ``$+x)$''s. Now let $v$ be obtained from $u$ by removing the first $n-m$ ``(''s, leaving only $m$ ``(''s. Then $M$, starting in $s$, will end in the same state reading $u$ or reading $v$, so it either accepts both or rejects both. Thus $M$ does not recognize $L_{alg}$.
+
+\end{description}
+
+
+\subsubsection*{Problems}
+
+Use an argument like the ones given above to show that each of the following languages is not regular.
+
+\begin{description}
+  \item[(5.11)] $L = \{ 0^n 10^n\ |\ n=1,2,3,\cdots \}$ 
+  \item[(5.12)] $L = \{ wcw\ |\ w \in \{a,b\}^* \}$ 
+  \item[(5.13)] $L_{re}$ is the set of regular expressions over the alphabet $\{a,b,c\}$. 
+  \item[(5.14)] $L \subseteq \{0,1\}$ is the set of $w$ containing the same number of $a$s as $b$s.
+\end{description}
+
+
+
+
+\newpage
+
+
+\section{PDAs and CFGs}
+\markboth{6. PDAs and CFGs}{6. PDAs and CFGs}
+
+
+As we have seen, the beauty of regular languages is that they can be so thoroughly understood from so many different points of view. But we have also seen that many relatively simple languages are not regular. In this chapter, we will examine a larger class of languages which is broad enough to include, for example, many different computer languages, while still restrictive enough to be very well-understood. These are called \emph{context-free languages}. They correspond to a model of computing machine called a \emph{pushdown acceptor}, a machine which is significantly more powerful than a finite state acceptor, but is still simple enough to be very well-behaved. 
+
+
+\subsection{Context-Free Languages} %6.1
+
+
+Regular grammars are very limited because they can only generate a string from left to right, one character at a time. As we have seen, for example, the language $L_=$ is not regular because a regular grammar cannot produce a string of $a$s followed by a string of $b$s and guarantee that there will be the same number of $a$s as $b$s. In this section, we will study a slightly broader class of grammars that will allow us to generate many new languages, including most modern computer languages, but is restrictive enough to ensure that the constructed languages are still relatively simple.
+
+We will say that a formal grammar $G = \langle \Sigma, N, S, \to \rangle$ is \emph{context-free} if each production rule of $G$ has the form $A \to v$ where $A \in N$ and $v \in (\Sigma \cup N)^*$. If $G$ is context-free, we say that the language $\El (G)$ is a \emph{context-free language}, and we denote the set of all context-free languages by $\mathbb{CFL}$.
+
+Regular grammars, for example, are all context-free. In contrast, look at the example of a grammar for email addresses. There you see production rules like
+\begin{center}
+$LOC.edu \to newpaltz.edu$
+\end{center}
+and
+\begin{center}
+$COMP.newpaltz \to matrix.newpaltz$
+\end{center}
+telling us that $LOC$ can be replaced by $newpaltz$ provided that it occurs in the context $LOC.edu$, and $COMP$ can be replaced by $matrix$ provided that it occurs in the context $COMP.newpaltz$. If such \emph{context-sensitive} rules are allowed in a grammar, it turns out that much more complex languages can be generated.
+
+\begin{description}
+
+\item[Example 1:] A very simple context-free grammar will generate the language $L_= = \{ a^n b^n\ |\ n=1,2,\cdots \}$:
+  \begin{equation*}
+  S \to aSb,\lambda
+  \end{equation*}
+
+\item[Example 2:] The language $L_{re}$ of all regular expressions over an alphabet $\Sigma$ is generated by a context-free grammar which simply restates the definition of ``regular expressions'':
+  \begin{align*}
+    S & \to \lambda,\oslash,a \text{ for each } a \in \Sigma \\
+    S & \to (S \sqcup S),(SS),S^*
+  \end{align*}
+
+\item[Example 3:] As a more interesting example, let $L \subseteq \{a,b\}^*$ be the set of strings with the same number of $a$s as $b$s. Consider the context-free grammar $G$ with production rules
+  \begin{equation*}
+  S \to SaSbS,SbSaS,\lambda
+  \end{equation*}
+
+  Since $G$ generates $a$s and $b$s in pairs, it clearly generates only strings in $L$. The question is whether or not \emph{all} strings in $L$ can be generated by $G$. We show that they can be, in two steps.
+  \begin{description}
+    \item[Step 1:] We first show that if $\lambda \neq w \in L$, then there are $x,y,z \in L$ such that $w$ is either $xaybz$ or $xbyaz$. Consider the first and last letters in $w$. If $w = ayb$ or $w = bya$, then $y \in L$, and we take $x = \lambda = z$. Suppose $w$ begins and ends with the same letter, say $w = aua$. Read $w$ from left to right, keeping a count of the number of $a$s minus the number of $b$s. The count will look like this: $0, 1, \cdots, -1, 0$. Since it must increase or decrease by one at each step, it must go from $1$ to $0$ at some point in between. Thus $w = aybva$, where the count is $0$ after the $b$. Thus $ayb \in L$, so $y \in L$ and $va \in L$. We take $x = \lambda$ and $z = va$. This gives us $w = xaybz$, where $x,y,z \in L$. 
+    \item[Step 2:] If $w \in L$ is $\lambda$, then $G$ generates $w$. Otherwise, use Step 1 to write $w$, say, as $xbyaz$. Now do the same with each of $x$, $y$, and $z$; say we get $x = x_1 ay_1 bz_1$, $y = \lambda$, and $z = x_2 by_2 az_2$. Continuing in this way, we replace each successive $x_i$, $y_i$, and $z_i$ by smaller and smaller strings in $L$ until they are eventually replaced by $\lambda$. This gives us a way to produce $w$ from $G$:
+      \begin{equation*}
+      S \to SbSaS \to [SaSbS] b \lambda a[SbSaS] \to \cdots \to xbyaz = w
+      \end{equation*}
+      (where ``['' and ``]'' are not symbols in the string).
+  \end{description}
+
+\end{description}
+
+
+\subsubsection*{Problems}
+
+Write production rules for a context-free grammar for each of the following languages.
+
+\begin{description}
+  \item[(6.1)] $L = \{ 0^n 10^n\ |\ n=1,2,3,\cdots \}$ 
+  \item[(6.2)] $L = \{ w^R cw\ |\ w \in \{a,b\}^* \}$, where $w^R$ is the reverse of $w$.
+  \item[(6.3)] $L = \{ ab^n c^n ab^m c^m a\ |\ n,m=1,2,3,\cdots \}$
+  \item[(6.4)] $L_{alg} \subseteq \{ w,x,y,z,(,),+,-,\cdot,\div \}^*$ is the set of all meaningful algebraic expressions.
+  \item[(6.5)] $L_{w^Rw} = \{ w^R w\ |\ w \in \{a,b\}^* \}$
+\end{description}
+
+
+\subsection{Pushdown Acceptors} %6.2
+
+
+The limitations of a finite state acceptor stem from the fact that is has no extended (long-term) memory. The states of the FSA act as a short-term memory, dictating different behavior in each different state. But it cannot, for example, recognize the language $L_=$, because it cannot remember how many $a$s it has seen in order to compare the length of a string of $a$s with that of a string of $b$s. We would like to extend the FSA model only far enough to allow some kind of extended memory.
+
+What, then, is the simplest form of extended memory? Extended memory consists of a database which is organized in such a way that we are able to add data to it and retrieve data from it. The more sophisticated our management of the database, the more powerful the resulting computing facility. So what we are looking for is the \emph{least}-sophisticated method we can think of for management of an arbitrarily large database. You can see such a system in action if you come to visit my office, and notice how I manage my mail. There you will see a stack of mail on my desk. When mail comes in, I put it on top of the stack. Perhaps I read some of it, and then dispense with it as necessary. The rest sits on top of the stack. During slack periods, when they arise, I work my way down the stack, dealing with the most recent mail first. During more busy periods, like the beginning, middle, and end of the term, the stack tends to get higher. Between terms, I always work my way to the bottom of the stack and clear my desk. Some people manage their refrigerators in the same way, but this is a practice I wouldn't recommend.
+
+Now imagine a machine $P$, similar to a finite state acceptor, which is further endowed with a \emph{pushdown stack}. The items on the stack are symbols from a pushdown alphabet $\Gamma$. We designate an input alphabet $\Sigma$, a set $Q$ of internal states, and a start state $s$. We start $P$ in state $s$, looking at the left-most symbol of an input string $w \in \Sigma^*$. The action of $P$ will be determined by
+\begin{enumerate}
+  \item the current internal state $q \in Q$;
+  \item the symbol from $\Gamma$ at the top of the pushdown stack; and
+  \item the currently-read input symbol $a \in \Sigma$.
+\end{enumerate}
+A transition function will tell $P$ how to use 1., 2., and 3. to determine
+\begin{enumerate}
+  \item what new state to enter; and
+  \item whether it should \emph{push} $\downarrow$ a particular new symbol of $\Gamma$ on top of the stack, or \emph{pop} $\uparrow$ the top symbol off of the stack.
+\end{enumerate}
+
+The machine $P$ will halt if its transition function has no instruction for the current values of 1., 2., and 3. If $P$, reading $w \in \Sigma^*$, eventually halts with an empty pushdown stack having finished reading $w$, we say that $P$ \emph{accepts} $w$.
+
+These ideas can be completely formalized. A \emph{pushdown acceptor (PDA)} is a quintuple
+\begin{equation*}
+P = \langle \Sigma, \Gamma, Q, s, \delta \rangle
+\end{equation*}
+consisting of an \emph{input alphabet} $\Sigma$, a \emph{pushdown alphabet} $\Gamma$, a set $Q$ of \emph{internal states}, an \emph{initial state} $s \in Q$, and \emph{transition function} $\delta$, where $\delta$ is a function from a \emph{subset} of $Q \times (\Gamma \cup \{\lambda,-\}) \times (\Sigma \cup \{\lambda,-\})$ into $Q \times ( (\Gamma \times \{\downarrow,\uparrow\}) \cup \{-\})$. An input or stack reading of $\lambda$ indicates that there are no further symbols; $-$ in the second position indicates that $P$ is to ignore the pushdown stack; and $-$ in the third position indicates that $P$ is not to read and advance the input tape.
+
+For example, the instruction $\delta(q,g,a) = (r,g \uparrow)$ means that in state $q \in Q$ with $g \in \Gamma$ at the top of the stack reading input $a$, it will enter state $r$ and remove $g$ from the top of the stack. We will write this as
+\begin{equation*}
+(q,g,a) \to (r,g \uparrow)
+\end{equation*}
+
+The instruction $\delta(q,-,a) = (r,g \downarrow)$ means that regardless of what is on the stack, if $P$ is in state $q$ reading $a$, then it will enter state $r$ and add $g$ to the top of the stack. We will, for compositional convenience, write the contents of the stack as a string $w \in \Gamma^*$ with \emph{the top at the right and the bottom at the left}.
+
+As usual, we will denote the \emph{language recognized by} $P$ as
+\begin{equation*}
+\El(P) = \{ w \in \Sigma^*\ |\ P \text{ accepts } w \}
+\end{equation*}
+and the set of languages recognized by pushdown acceptors as
+\begin{equation*}
+\mathbb{PDA} = \{ \El(P)\ |\ P \text{ is a PDA} \}
+\end{equation*}
+
+\begin{description}
+
+\item[Example 4:] The long evasive language $L_= = \{ a^n b^n\ |\ n=1,2,\cdots \}$ is recognized by a very simple pushdown acceptor $P = \langle \{a,b\}, \{a\}, \{s,t,\}, s, \delta \rangle$, where $\delta$ is given by
+  \begin{align*}
+  & (s,-,a) \to (s,a \downarrow) & & (s,a,b) \to (t,a \uparrow) & & (t,a,b) \to (t,a \uparrow)
+  \end{align*}
+
+  The action of $P$ is seen by tracing its transitions, as we do here for two sample input strings, $u = aaabbb \in L_=$ and $v = aababb \notin L_=$.
+
+  \begin{center}
+  \begin{tabular}{clr|clr}
+  State & Stack     & Input     &  State & Stack     & Input    \\
+   $s$  & $\lambda$ & $aaabbb$  &   $s$  & $\lambda$ & $aababb$ \\
+   $s$  & $a$       &  $aabbb$  &   $s$  & $a$       &  $ababb$ \\
+   $s$  & $aa$      &   $abbb$  &   $s$  & $aa$      &   $babb$ \\
+   $s$  & $aaa$     &    $bbb$  &   $t$  & $a$       &    $abb$ \\
+   $t$  & $aa$      &     $bb$  &        & \emph{HALT!} &       \\
+   $t$  & $a$       &      $b$  \\
+   $t$  & $\lambda$ & $\lambda$ 
+  \end{tabular}
+  \end{center}
+
+  Here we see that $P$ will accept $u$ but not $v$.
+
+\item[Example 5:] Let $L \subseteq \{a,b\}^*$ consist of all strings with the same number of $a$s as $b$s. We give here production rules for a PDA $P$ that recognizes $L$:
+  \begin{align*}
+  & (s,-,a) \to (s,a \downarrow) & & (s,a,b) \to (s,a \uparrow) & & (s,\lambda,b) \to (t,b \downarrow) \\
+  & (t,-,b) \to (t,b \downarrow) & & (t,b,a) \to (t,b \uparrow) & & (t,\lambda,a) \to (s,a \downarrow)
+  \end{align*}
+
+  In state $s$, it will push $a$s onto the stack and pop them off as it sees $b$s. In state $t$, it will push $b$s on the stack and pop them off as it sees $a$s. It needs to have both options, depending upon whether or not the number of $a$s read exceeds the number of $b$s read.
+
+\end{description}
+
+
+\subsubsection*{Problems}
+
+\begin{description}
+  \item[(6.6)] Trace the action of the PDA in Example 5 above for the string $u = aabbbbaaaaabbb \in L$ and $v = bbabaabb \notin L$.
+\end{description}
+
+Construct a pushdown acceptor for each of the following languages. In each case, trace the action of your PDA for the given string $u \in L$ and $v \notin L$.
+
+\begin{description}
+  \item[(6.7)] $L = \{ 0^n 10^n\ |\ n=1,2,3,\cdots \}$. Let $u = 000010000$ and $v = 0001001001$. 
+  \item[(6.8)] $L = \{ w^R cw\ |\ w \in \{a,b\}^* \}$ where $w^R$ is the reverse of $w$. Let $u = baabacabaab$ and $v = aaabacabbaa$. 
+  \item[(6.9)] $L = \{ ab^n c^n ab^m c^ma\ |\ n,m=1,2,3,\cdots \}$ Let $u = abbccabbbccca$ and $v = abbcabbbccca$.
+\end{description}
+
+
+\subsection{Epilogue} %6.3
+
+
+We have now gathered a bundle of context-free languages which are recognizable by a pushdown acceptor, but which are known not be be regular. If this is a representative sample, we would be tempted to guess that
+\begin{equation*}
+\mathbb{REG} \subsetneq \mathbb{PDA} = \mathbb{CFL}
+\end{equation*}
+
+Checking again, we have seen a couple of languages generated by a simple context-sensitive grammar for which we don't yet have a PDA: $L_{alg} \subseteq \{ w,x,y,z,(,),+,-,\cdot,\div \}^*$ and $L_{w^Rw} = \{ w^Rw\ |\ w \in \{ a,b \}^* \}$. Both of these languages are somewhat problematic, but can be successfully handled with an adequate enhancement of the PDA model.
+
+\begin{description}
+
+\item[Example 6:] It is convenient to first look at a slightly simplified version of $L_{alg}$. Let $L$ be the language given by the context-free grammar $S \to [SS],x$. This is the language of all proper algebraic expressions in a single variable $x$, with a single binary operation denoted by juxtaposition. A typical string in $L$ might look like
+  \begin{equation*}
+  w = [[[[xx]x][x[xx]]][[x[x[xx]]]x]]
+  \end{equation*}
+
+  A machine checking $w$ for membership in $L$ must, among other things, check that each left bracket matches a right bracket. Without too much difficulty, we can construct a ``PDA'' $P$ to recognize $L$ if we enhance the model by allowing $P$ to read, push, and pop entire strings on the pushdown stack at once, instead of just individual symbols. Here are the transitions for such a PDA which has a single state $s$.
+  \begin{align*}
+  & (s,-,[) \to (s,[ \downarrow) & & (s,[,x) \to (s,x \downarrow) \\
+  & (s,x,x) \to (s,x \uparrow)   & & (s,[,]) \to (s,] \uparrow)   & & (s,[x,]) \to (s,[x \uparrow)
+  \end{align*}
+
+  The last instruction utilizes our enhancement. If $P$ finds $[x$ at the top of the stack (meaning the $x$ is the top symbol and $[$ is just beneath it) and reads input $]$, then it will pop the \emph{string} $[x$ off the stack. To illustrate the actions of $P$, we trace them for the input string $w = [[[[xx]x][xx]]x]$:
+
+  \begin{center}
+  \begin{tabular}{clrcclr}
+  State & Stack     & Input             & \ & State & Stack     & Input      \\
+   $s$  & $\lambda$ & $[[[[xx]x][xx]]x]$ & &   $s$  & $[[[x$    & $][xx]]x]$ \\ 
+   $s$  & $[$       &  $[[[xx]x][xx]]x]$ & &   $s$  & $[[$      &  $[xx]]x]$ \\ 
+   $s$  & $[[$      &   $[[xx]x][xx]]x]$ & &   $s$  & $[[[$     &   $xx]]x]$ \\ 
+   $s$  & $[[[$     &    $[xx]x][xx]]x]$ & &   $s$  & $[[[x$    &    $x]]x]$ \\ 
+   $s$  & $[[[[$    &     $xx]x][xx]]x]$ & &   $s$  & $[[[$     &     $]]x]$ \\ 
+   $s$  & $[[[[x$   &      $x]x][xx]]x]$ & &   $s$  & $[[$      &      $]x]$ \\ 
+   $s$  & $[[[[$    &       $]x][xx]]x]$ & &   $s$  & $[$       &       $x]$ \\ 
+   $s$  & $[[[$     &        $x][xx]]x]$ & &   $s$  & $[x$      &        $]$ \\ 
+        &           &                    & &   $s$  & $\lambda$ &  $\lambda$ 
+  \end{tabular}
+  \end{center}
+
+  This shows that $w$, but no initial segment of $w$, is in $L$.
+
+\end{description}
+
+In general, we can enhance the notion of a PDA by allowing $P$ to search for an arbitrary string $u \in \Gamma^*$ at the top of its stack, and replace it by another arbitrary string $v \in \Gamma^*$. We would write this, for example, as $(q,u,a) \to (r,v)$, meaning that $P$, in state $q$ with $u$ at the top of the stack reading input $a$, should go into state $r$ and replace $u$ with $v$. It turns out that it is not difficult to show that this kind of enhancement can actually be achieved by an ordinary PDA, simply by adding a sequence of new states which cause $P$ to pop $u$, character by character, and then push $v$, character by character.
+
+\begin{description}
+
+\item[Example 7:] Now, consider $L_{w^Rw}$. We might imagine a PDA checking for membership in $L_{w^Rw}$ by pushing each symbol of $w^R$ onto the stack, and then popping them back off the stack provided they matched the incoming symbol from $w$. There is one problem: without the center marker $c$, how do we know when to stop pushing and start popping?! This question can be circumvented by using a \emph{non-deterministic acceptor} $P$:
+  \begin{align*}
+  & (s,-,a) \to (s,a \downarrow) & & (s,-,a) \to (t,a \downarrow) & & (t,a,a) \to (t,a \uparrow) \\
+  & (s,-,b) \to (s,b \downarrow) & & (s,-,b) \to (t,b \downarrow) & & (t,b,b) \to (t,b \uparrow)
+  \end{align*}
+  In state $s$, the machine $P$ pushes $a$s and $b$s onto the stack as it reads them, and it can choose either to continue in state $s$ or to move into state $t$. In state $t$, it pops symbols off the stack as long as they match the input symbol. Like the non-deterministic FSA, we say that $P$ \emph{accepts} a string if there is some possible run of $P$ that stops having read the entire input string and having emptied its stack.
+
+\end{description}
+
+Combining these two enhancements gives the notion of a \emph{non-deterministic pushdown acceptor (NDPDA)}
+\begin{equation*}
+P = \langle \Sigma, \Gamma, Q, s, \delta \rangle
+\end{equation*}
+which differs from a PDA in that its \emph{transition function} $\delta$ is a function from a \emph{subset} of $Q \times (\Gamma^* \cup \{\lambda,-\}) \times (\Sigma \cup \{\lambda,-\})$ into the collection of \emph{subsets} of $Q \times (\Gamma^* \cup \{-\})$. The subset $\delta(q,g,a)$ is the set of all actions the $P$ may take in state $q \in Q$ reading $a \in \Sigma \cup \{\lambda\}$ with $g \in \Gamma^*$ at the top of the stack. This model is now broad enough to capture all context-free languages.
+
+\begin{description}
+
+\item[Theorem:] $\mathbb{CFL} \subseteq \mathbb{NDPDA}$; that is, every context-free language is recognized by some non-deterministic pushdown acceptor.
+
+\item[Proof:] Let $G = \langle \Sigma, N, S, \to \rangle$ be a context-free grammar for a language $L$. We construct a NDPDA $M = \langle \Sigma, \Sigma \cup N, \{s,q\}, s, \delta \rangle$ with the transitions
+  \begin{align*}
+  & (s,\lambda,-) \to (q,S) & & (q,A,-) \to (q,u^R) & & (q,a,a) \to (q,\lambda)
+  \end{align*}
+  for each production rule $A \to u$ of $G$, and each $a \in \Sigma$. State $s$ is only used to put the start symbol $S$ on the stack and then enter state $q$, where $P$ will remain. In state $q$, it will non-deterministically apply all possible production sequences from $G$, disposing of terminal symbols as they appear at the top of the stack. Notice that $u$ must be put on the stack upside-down, so that its leftmost symbol will be at the top of the stack. If $P$ is given $w \in \Sigma^*$, it will be able to finish reading $w$ and empty its stack if and only if $G$ is able to produce $w$ from $S$.
+
+\end{description}
+
+This brings us to our final question: Is $\mathbb{PDA} = \mathbb{NDPDA}$? That is, is it always possible -- as it is with finite state acceptors -- to simulate a non-deterministic pushdown acceptor with a (deterministic) pushdown acceptor? To appreciate this problem, it is worth trying to see if you can find a PDA for the language $L_{w^Rw}$. In fact, there is no such PDA: \emph{non-deterministic push-down acceptors are not, in general, equivalent to (deterministic) pushdown acceptors!} However, the converse of the above theorem is true: NDPDAs are equivalent to context-free grammars. Proofs of these facts require a considerably more extended development than we can give here, but we will include them in a final summary of the relationships between languages and machines that we have discovered in this text:
+\begin{center}
+\framebox[4.5in]{ $\mathbb{FSA} = \mathbb{REG} = \mathbb{RG} = \mathbb{NDFSA} \subsetneq \mathbb{PDA} \subsetneq \mathbb{CFL} = \mathbb{NDPDA}$ }
+\end{center}
+
+
+\subsubsection*{Problems}
+
+\begin{description}
+  \item[(6.10)] Trace the action of the enhanced PDA given in Example 5 with the input string $w = [[[[xx]x][x[xx]]][[x[x[xx]]]x]]$ to see if it is accepted.
+  \item[(6.11)] Construct a regular (unenhanced) PDA that is equivalent to the one given in Example 5.
+  \item[(6.12)] Find a sequence of possible actions of the NDPDA in Example 6 with the input string $w = aababaababaa$ which shows that it is accepted.
+\end{description}
+
+
+
+
+\newpage
+
+
+\section*{Bibliography}
+\addcontentsline{toc}{section}{\numberline{}Bibliography}
+\markboth{Bibliography}{Bibliography}
+
+
+A number of very fine texts are available which give a much more extended account of the subject treated in this text. For example:
+\begin{itemize}
+  \item H. R. Lewis; C. H. Papadimitriou. \emph{Elements of the Theory of Computation}. Prentice-Hall, Upper Saddle River, N.J., 2nd Ed. (1998).
+  \item T. A. Sudkamp. \emph{Languages and Machines}. Addison-Wesley, 2nd Ed. (1997).
+\end{itemize}
+The material on finite state acceptors and their equivalences originated in several different sources:
+\begin{itemize}
+  \item G. H. Mealy. ``A method for synthesizing sequential circuits''. \emph{Bell System Technical Journal 34} (1955), 1045-1079. [invention of finite state acceptors]
+  \item E. F. Moore. ``Gedanken experiments on sequential machines''. \emph{Automata Studies}, ed. C. E. Shannon and J. McCarthy. Princeton University Press (1956), 129-153. [algorithm for minimization]
+  \item A. Nerode. ``Linear automaton transformations''. \emph{Proceedings of the American Mathematical Society 9} (1958), 541-544. [Nerode-Myhill Theorem]
+  \item M. O. Rabin; D. Scott. ``Finite automata and their decision problems''. \emph{IBM Journal of Research and Development 3} (1959), 114-125. [equivalence of deterministic and nondeterministic FSAs]
+  \item S. Ginsburg. ``Examples of abstract machines''. \emph{IEEE Transactions on Electronic Computers EC-11} (1962), 132-135. [finite state transducers]
+\end{itemize}
+The original work on CFLs and PDAs appeared in
+\begin{itemize}
+  \item N. Chomsky. ``Three models for the description of languages''. \emph{IRE Transsactions on Information Theory 2} (1956), 113-124. [invention of regular and context-free grammars]
+  \item N. Chomsky. ``Context-free grammar and pushdown storage''. \emph{Quarterly Progress Report 65}. M.I.T. Research Laboratory in Electronics, Cambridge, MA (1962), 187-194. [the equivalence]
+  \item M. P. Schutzenberger. ``On context-free languages and pushdown automata''. \emph{Information and Control 6} (1963), 246-264. [the equivalence]
+  \item J. Evey. ``Application of pushdown store machines''. \emph{Proceedings of the 1963 Fall Joint Computer Conference}, Montreal: AFIPS Press (1963), 215-217. [the equivalence]
+\end{itemize}
+
+\end{document}

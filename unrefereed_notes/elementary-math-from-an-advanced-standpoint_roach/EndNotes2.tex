@@ -1,0 +1,553 @@
+%\include{Roach}
+
+
+%\documentclass[12pt]{amsart}
+%\documentclass{report}
+%\usepackage{amssymb,latexsym}
+%\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{graphics,graphicx}
+\setlength{\topmargin}{-10pt}
+\setlength{\voffset}{-40pt}
+\setlength{\textheight}{700pt}
+%\usepackage{amsscr}
+%\usepackage[amsscr]{eucal}
+
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}{Lemma}
+%\newtheorem{proposition}{Proposition}
+%\newtheorem{definition}{Definition}
+%\newtheorem{corollary}{Corollary}
+%\newtheorem{notation}{Notation}
+%\newtheorem{remark}{Remark}
+%\newtheorem{assertion}{Assertion}
+%\newtheorem{claim}{Claim}
+
+%\newcommand{\abs}[1]{\left|#1\right|}
+%\newcommand{\norm}[1]{\left\|#1\right\|}
+%\newcommand{\p}[1]{\left(#1\right)}
+%\newcommand{\tail}[1]{#1^{\p{N}}}
+%\newcommand{\trunk}[1]{#1^{\left[N\right]}}
+%\newcommand{\dg}{^{\circ}}
+%\newcommand{\nl}{\newline}
+%\newcommand{\fl}{\flushleft}
+%\newcommand{\tild}{\texttt{\symbol{126}}}
+%\newcommand{\tild}{\sim}
+%\newcommand{\up}{\wedge}
+%\newcommand{\dn}{\lor}
+%\newcommand{\lra}{\leftrightarrow}
+%\newcommand{\ra}{\to}
+%\newcommand{\qqu}{\qquad \qquad}
+%\newcommand{\onto}{\dashv}
+%\newcommand{\power}{\Pi}
+%\newcommand{\univ}{\textbf{U}}
+%\newcommand{\ns}{\emptyset}
+%\newcommand{\of}{$(F, +, \cdot , <)\,$}
+%\newcommand{\zp}{Z^{+}}
+%\newcommand{\fld}{ $(F,+,\cdot)$}
+%\newcommand{\po}[1]{\dfrac{\pi}{#1}}
+%\newcommand{\lpo}[1]{\frac{\pi}{#1}}
+%\newcommand{\q}{\indent}
+
+
+%\pagestyle{plain}
+
+
+%\begin{document}
+
+
+\setcounter{page}{120}
+\lhead{ }
+%\begin{large}
+
+\begin{center}
+\textbf{Appendix 1}
+\end{center}
+$ $\nl
+
+The purpose of this section is to prove Theorem 4.2.1 using only theorems from calculus which are intuitively obvious.
+% Suppose $a,b, c \in P$ and $a < b.$  If $f$ is a positive valued function defined on $[a,b],$ then the integral of $f$ on $[a, b]$ is denoted by $\int_{a}^{b} f$ and is equal to the area bounded by $f$ and the lines $x = a,\, x = b,$ and $y = 0.$\nl
+
+%\textbf{Definition 1.}  If $0 < a < b$ and $f$ is a positive valued function integrable on $[a, b],$ then let
+%$\int_{b}^{a}$ denote $-\int_{a}^{b}$ and let $\int_{a}^{a} f = 0.$\nl
+
+\textbf{Definition 1.}  Let $h$ denote the function $\{(x, y) \mid x \in P \text{~and~}y = \dfrac{1}{x}\}.$\nl
+
+\textbf{Definition 2.}  Suppose $a, b, c \in P$ and $a < b.$  The integral of $h$ from $a$ to $b$ is denoted by $\int_{a}^{b} h$ and is equal to the area bounded by $h$ and the lines $x = a,\,\, x = b,$ and $y = 0.$\nl
+\indent Let $L$ denote the function $\{(x, y)\mid x \in P \text{~and~} y = -\int_{x}^{1} h \text{~if~} x < 1,~y = 0 \text{~if~} x = 1, \text{~and~} y = \int_{1}^{x} h \text{~if~} x > 0\}.$\nl
+
+Figure 1 on page 115 is a graph of the function $L.$\nl
+
+\textbf{Definition 3.}  If $0 < a < b,$ then let $\int_{b}^{a} h$ denote $-\int_{a}^{b} h$ and let $\int_{a}^{a} h = 0.$\nl
+
+%Suppose $a < b.$ We will assume that (1) there is a collection $A_{[a,b]}$ of nonnegative valued functions defined on $[a,b]$ and (2) there is a meaning for the word area such that
+%if $f\in A_{[a,b]},$ then $\{(x,y)\mid x\in [a,b] \text{~and~} 0 \leq  f(x)\}$ has area and its value is denoted by $\int_{a}^{b}f.$
+%If $f\in A_{[a,b]},$ then $f$ is said to be integrable on $[a,b].$ If $f\in A_{[a,b]}$ and $c \in [a,b],$ let $\int_{b}^{a} = -\int_{a}^{b}f$ and $\int_{c}^{c} f$  denote $0.$\nl
+
+
+
+\textbf{Theorem 1.} If $a,b,c \in P,~a < c < b,$ and $f$ is a function integrable on $[a, b],$ then
+$\int_{a}^{b} f = \int_{a}^{c} f + \int_{c}^{b} f.$   That is, the area of the whole is the sum of the areas of the parts.  It follows from Definition 3 that this theorem is true even if $c$ is not between $a$ and $b.$\nl
+
+\textbf{Theorem 2.} If $0 < x < y,$ then $1 - \dfrac{x}{y} \leq L(y) - L(x) \leq \dfrac{y}{x} - 1.$\nl
+Proof.  Suppose $0 < x < y.$  Since $h$ is decreasing, $\dfrac{1}{y} \leq h(t) \leq \dfrac{1}{x}$ for each
+$t\in [x, y].$  $\int_{x}^{y} h$ is less than the area of a rectangle which contains the region whose area $\int_{x}^{y} h$ represents;\nl
+and $\int_{x}^{y} h$ is greater than the area of a rectangle which is enclosed by the region whose area
+$\int_{x}^{y} h$ represents.   Thus,\nl
+\begin{tabular}{l l}
+&\\
+$\dfrac{1}{y}(y - x) < \int_{x}^{y} h < \dfrac{1}{x}(y - x),$&\\
+&\\
+$\dfrac{1}{y}(y - x) < \int_{x}^{1} h + \int_{1}^{y} h < \dfrac{1}{x}(y - x),$&(Th. 1)\\
+&\\
+$1 - \dfrac{x}{y} < \int_{1}^{y} h - \int_{1}^{x} h < \dfrac{y}{x} - 1,$ and&(Def. 3)\\
+&\\
+$1 - \dfrac{x}{y} < L(y) - L(x) < \dfrac{y}{x} -1.$&(Def. 2)\\
+\end{tabular}\nl
+
+Figure 2 on page 115 is a graph illustrating the rectangles discussed in the proof.\nl
+
+\textbf{Theorem 3.} If $b > 0,$ then $L(b) \leq b - 1.$ \nl
+
+Proof.\nl
+\begin{tabular}{l l}
+Case 1: $b > 1.$  If $a = 1,$ then $0 < a < b$ and $L(a) = 0.$&By Th. 2, we get $L(b) < b - 1.$\\
+Case 2: $b = 1.~L(b) = 0 = 1 - 1 = b - 1.$&By Def. 2.\\
+Case 3: $b < 1.$ If $a = 1,$ then $0<b<a$ and $L(a)=0.$&By Th. 2, we get $1 - b < -L(b)$\\
+&and $L(b) < b - 1$\\
+\end{tabular}\nl
+
+%\begin{figure}[h!]
+%	\centerline{\includegraphics[scale=0.5]{Desert.eps}}
+%	\caption{Desert Phoo.}
+%	\caption{Top-Left}
+%	\label{Fi: Appendix1}
+%\end{figure}
+
+%\newpage
+%\lhead{}
+
+\textbf{Theorem 4.} If $a, b, c \in P$ and $a < b,$ then $\int_{a}^{b}h = \int_{ca}^{cb} h.$\nl
+The proof of this theorem is beyond the scope of this book.  Instead, I will show that $\int_{a}^{b} h$ is
+approximately equal to $\int_{ca}^{cb} h.$  By approximating $\int_{a}^{b} h$ and $\int_{ca}^{cb} h$ with trapezoids, we get\nl
+Case 1: $a < b.$ $\int_{a}^{b} h \cong \dfrac{\frac{1}{a} + \frac{1}{b}}{2}(b - a) = \dfrac{a + b}{2ab}(b-a)$
+and\nl
+$\int_{ca}^{cb} h \cong \dfrac{\frac{1}{ca} + \frac{1}{cb}}{2}(cb - ca) = \dfrac{a + b}{2ab}(b - a).$  Thus,
+$\int_{a}^{b} h \cong \int_{ca}^{cb} h.$\nl
+Case 2: $b < a.$  $\int_{a}^{b} h = - \int_{b}^{a} h \cong -\int_{cb}^{ca} h = \int_{ca}^{cb} h.$\hfill (By Case 1)\nl
+Case 3: $a = b.$  $\int_{a}^{b} h = 0 = \int_{ca}^{cb} h.$\hfill(Def. 3)\nl
+
+Figure 3 on page 115 is a graph illustrating the trapezoids discussed in the proof.\nl
+%\newpage
+%\lhead{}
+
+
+%\textbf{Definition 1.} Let $h$ denote the function $\{(x,y) \mid x\in R \text{~and~} y = \frac{1}{x}\}.$ Let $L$ denote the function $\{(x,y) \mid x\in R \text{~and~} y = \int_{1}^{x} h\}.$\nl
+
+%\textbf{Should $x, y, 1/x, 1/y,$ and $y - x$ all be underlined inside the integrals, as $x$ and $y$ are constants?}\nl
+
+%\textbf{Theorem 5.} If $0 < x < y,$ then $1 - \frac{x}{y} \leq L(y) - L(x) \leq \frac{y}{x} - 1.$\nl
+
+% Proof. Suppose $0 < x < y.$ Since $\frac{1}{y} \leq h(t ) \leq \frac{1}{x}$ for each $t\in [x,y],$ we have,
+%$\int_{x}^{y}\frac{1}{y} \leq \int_{x}^{y} h \leq \int_{x}^{y}\frac{1}{x}.$  (Th. 3.4) Thus \nl $\frac{1}{y}(y %- x) \leq \int_{x}^{1} h + \int_{1}^{y} h \leq \frac{1}{x}(y - x),$ (Th. 2), and \nl $ \frac{1}{y}(y - x) \leq %\int_{1}^{y} h  - \int _{1}^{x} h \leq \frac{1}{x}(y - x),$ (Def.). So by Definition,\nl
+
+
+%$1 - \dfrac{x}{y} \leq L(y) - L(x) \leq \dfrac{y}{x} -1.$\nl
+
+%\textbf{Theorem 6.} If $x > 0,$ then $L(x) \leq (x-1).$ \nl
+%\newpage
+%\lhead{}
+
+\textbf{Theorem 5.} If $x,y\in P,$ then $L(xy) = L(x) + L(y).$\nl
+Proof.  Suppose $x,y \in P.$  $L(xy) = \int_{1}^{xy} h = \int_{1}^{x} h + \int_{x}^{xy} h = \int_{1}^{x} h + \int_{1}^{y} h$\nl
+$= L(x) + L(y).$\nl
+
+\newpage
+\lhead{}
+
+\begin{center}
+These are the graphs for Appendix 1.
+\end{center}
+
+\begin{figure}[h!]
+	\centerline{\includegraphics[scale=1.2]{Appendix1.eps}}
+%	\caption{Desert Phoo.}
+%	\caption{Top-Left}
+	\label{Fi: Appendix1}
+\end{figure}
+
+%\end{document}
+
+\newpage
+\lhead{}
+%Appendix2
+\begin{center}
+\textbf{Appendix 2}
+\end{center}
+The purpose of this Appendix is to provide a method of calculating the value of $L$ for any positive number to six significant figures using only properties which follow from Theorem 4.2.1 and to calculate $e$ to six significant figures.  To illustrate the procedure, we will calculate the value of $L$ of all positive integers less that or equal to 10 to six significant figures.\nl
+
+From Theorem 4.21 and Theorem 4.2.2 we have $1 - 1/x < L(x) < x - 1.$\nl
+If we use $x - 1$ as an approximation of $L(x),$ our error is less than $$x - 1 - (1 - 1/x) = x + 1/x - 2.$$ %\nl
+If $x = 1.000001,$ then the error is equal to $x + 1/x - 2 = 0$ to six significant figures.\nl
+We will first find the inverse of $L.$  That is, we will find an expression for $x$ as a function of $L(x)$ using Theorem 4.3.2.  Given a value of $L(x),$ we can find $x$ as follows:%\nl
+\begin{eqnarray*}
+L(x) &=& L(x) \, 1000000\cdot 000001 \\
+&=& L(x) \, 1000000\cdot L(1.000001)\\
+&=& L \left(1.000001^{L(x)1000000} \right).  
+\end{eqnarray*}
+Therefore, $x = 1.000001^{L(x)\cdot 1000000}.$
+
+Since $e = E(1), L(e) = 1, e = 1.000001^{1000000} = 2.71828.$\nl
+If $x < 1,$ use the formula $L(x) = - L(x)$ to convert the problem to one of finding the value of $L$ for a number $> 1.$\nl
+
+The procedure for finding the value of $L(x)$ for some number $x > 1$ is as follows:\nl
+1)  Find two numbers $u$ and $v$ which have prime factors with known values of $L$ such that $u < x < v.$  For example, to compute $L(2)$ we will use $x = 2, u = 1, L(1) = 0, v = 2.718282,$ and $L(2.718282) = 1.$\nl
+2)  Then use the formula $f(x) = \left(\frac{L(v)- L(u)}{v - u}\right)(x - u) + L(u)$ to find an approximation for $L(x).$  This is the formula for the straight line between the points $(u, L(u))$ and $(v, L(v)).$  In this case $f(x) = .581977.$\nl
+3)  Set $L(u) = f(x).$  Therefore, $u = 1.000001^{L(u)1000000}.$  In this case,  $L(u) = .581977$ and $u = 1.000001^{.581977*1000000} = 1.789572.$\nl
+4)  Repeat Steps 2 and 3 until there is no change in $L(u)$ for six significant figures.  In this case, we get $L(2) = .6931474,$ which is accurate to six figures in seven or more iterations.  This is the end of the    procedure.\nl
+
+$L(4) = L(2^{2}) = 2L(2) = 2\cdot.6931474 = 1.3862948.$\nl
+To calculate $L(x)$ for $x = 3,$ we use $u = 2, L(2) =.6931474, v = 4,$ and $L(4) = 1.3862948.$  After 8 iterations, we get $L(3) = 1.098613.$\nl
+$L(8) = L(2^{3}) = 3\cdot L(2) = 3\cdot.6931474 = 2.079442.$\nl
+To calculate $L(x)$ for $x = 5,$ we use $u = 4, L(4) = 1.3862948, v = 8,$ and $L(8) = 2.079442.$  After 8 iterations, we get $L(5) = 1.609438.$\nl
+$L(6) = L(2\cdot3) = L(2) + L(3) = .6931474 + 1.098613 = 1.791760.$\nl
+To calculate $L(x)$ for $x = 7,$ we use $u = 4, L(4) = 1.3862948, v = 8,$ and $ L(8) = 2.079442.$  After 5 iterations, we get $L(7) = 1.945911.$\nl
+$L(9) = L(3^{2}) = 2L(3) = 2\cdot1.098613 = 2.197226.$\nl
+$L(10) = L(2\cdot5) = L(2) + L(5) = .6931474 + 1.609438 = 2.302585.$\nl
+
+To find the log of a number base 10, we use the formula $Log_{10}(x) = \frac{L(x)}{L(10)}.$   For example,
+$Log_{10}(2) = L(2)/L(10) = .6931474/2.302585 = .301030.$\nl
+%\newpage
+
+To illustrate the general procedure, we will use the prime number $x = 251.$  Let $u = 250 = 2\cdot5^{3}$ and $v = 252 = 7\cdot2^{2}\cdot3^{2}.$\nl
+
+$L(250) = L(2\cdot5^{3}) = L(2) + 3L(5) = .6931474 + 3\cdot1.609438 = 5.521461$ and\nl
+$L(252) = L(7\cdot2^{2}\cdot3^{2}) = L(7) + 2L(2) + 2L(3) = 1.945911 + 2\cdot.6931474 + 2\cdot1.098613 = 5.529432.$  \nl
+After 2 iterations, we get $L(251) = 5.525455.$\nl
+
+\newpage
+\lhead{}
+\begin{center}
+\textbf{Appendix 3}
+\end{center}
+$ $\nl
+Part a)\nl
+
+The purpose of this Appendix is to calculate $\pi$ to 6 sugnificant figures and to calculate the value of any trigonometric function of any angle accurate to 6 significant figures using only properties that follow from Theorem 5.1.1.  By Theorem 5.5.1 and successive applications of identities ID37 through ID39 of Theorem 5.4.3, we have:\nl
+$\cos \left(\po{6}\right) = \sqrt{3}/2 = .8660254$\nl
+%$\sin\left(\po{24}\right) = \sqrt{\left(1 + \cos\left(\po{12}\right)\right)/2} = \sqrt{(1 - .8660254)/2} = %.2588191$\nl
+$\cos\left(\po{12}\right) = \sqrt{\left(1 + \cos\left(\po{6}\right)\right)/2} = \sqrt{(1 + .8660254)/2} = .9659258$\nl
+$\cos\left(\po{24}\right) = \sqrt{\left(1 + \cos\left(\po{12}\right)\right)/2} = \sqrt{(1 + .9659258)/2} = .99144486$\nl
+$\cos\left(\po{48}\right) = \sqrt{\left(1 + \cos\left(\po{24}\right)\right)/2} = \sqrt{(1 + .9914449)/2} = .99785892$\nl
+$\cos\left(\po{96}\right) = \sqrt{\left(1 + \cos\left(\po{48}\right)\right)/2} = \sqrt{(1 + .9978589)/2} = .999464587$\nl
+$\cos\left(\po{192}\right) = \sqrt{\left(1 + \cos\left(\po{96}\right)\right)/2} = \sqrt{(1 + .9994646)/2} = .999866138$\nl
+%$\sin\left(\po{384}\right) = \sqrt{\left(1 - \cos\left(\po{192}\right)\right)/2} = \sqrt{(1 - .9998661)/2} = %.008181140$\nl
+$\cos\left(\po{384}\right) = \sqrt{\left(1 + \cos\left(\po{192}\right)\right)/2} = \sqrt{(1 + .9998661)/2} = .9999665339$\nl
+$\cos\left(\po{768}\right) = \sqrt{\left(1 + \cos\left(\po{384}\right)\right)/2} = \sqrt{(1 + .9999665339)/2} = .999999163344$\nl
+$\sin\left(\po{768}\right) = \sqrt{\left(1 - \cos\left(\po{384}\right)\right)/2} = \sqrt{(1 + .9999665)/2} = .004090604$\nl
+%$\tan\left(\po{768}\right) = \dfrac{1 - \cos(\pi/384)}{\sin(\pi/384)} = \dfrac{1 - .9999665}{.008181140} = %.004090638$\nl
+
+By Theorem 5.1.1, $\sin(x) < x < \sin(x)/\cos(x).$  Therefore, by using $x$ as an approximation for $\sin(x),$ our error is less that $\sin(x)/\cos(x) - \sin(x).$   For $x = \pi/768,$ our error is $\sin(x)/\cos(x) - \sin(x) = 0$ for seven decimal places.\nl
+$\pi = 768\cdot(\pi/768) = 768\cdot\sin(\pi/768) = 768\cdot .004090604 = 3.14159.$\nl
+
+%\textit{For small values if $\theta, \sin \theta$ and $\tan \theta$ are both good approximations of $\theta.$  %$\sin \theta$ is a little less than $\theta$ and $\tan \theta$ is a little more than $\theta.$   We can get an %even better approximation of $\theta$ by taking the average of the two.  We can, therefore, obtain a value of %$\pi$ accurate to 6 significant figures.}\nl
+
+%\textit{$\pi = 768\cdot(\pi/768) \cong 768\cdot(\sin(\pi/768) + \tan(\pi/768))/2$\nl
+% $\qquad= 768\cdot(.004090604 + .004090638)/2 = 3.14159.$}\nl
+
+Since $\pi$ is an irrational number, an exact value of $\pi$ cannot be calculated, but by Theorem 5.5.1 and successive applications of identities ID37 through ID39 of Theorem 5.4.3, $\pi$ can be computed to any desired degree of accuracy, limited only by the accuracy of the device used.\nl
+
+Part b)\nl
+
+The procedure for calculating $\sin$ and $\cos$ of any angle to six significant figures is as follows:  First, we must reducae the angle to an angle in the first quadrant using the process described on Page 89.\nl
+
+For example, we will use $\angle = 25\dg = 25\dg\cdot\pi/180 = .4363323$ radians.\nl
+$\angle = (\angle/2^{7})\cdot2^{7} = (.4363323/2^{7})\cdot2^{7}.$  Let $y = .4363323/2^{7} = .003408846.$\nl
+By Theorem 5.1.1, $\sin(y) < y < \sin(y)/\cos(y).$   Therefore, by using $y$ as an approximation for $\sin(y),$ our error is less that $\sin(y)/\cos(y) - 1\sin(y)$ $ = \sin(.003408846)/\cos(.003408846) = 0$ for seven decimal places.  We lose one significant figure due to accumulated round off error leaving six significant figures.\nl
+$\sin(y) = y = .4363323/2^{7} = .003408846.$\nl
+$\cos(.003408846) = \sqrt{1 - \sin^{2}(.003408846)} =  \sqrt{1 - .000011620232} = .999994189.$\nl
+From Theorem 5.4.3, we have $\sin(2x) = 2\sin(x)\cos(x).$\nl
+From Theorem 5.1.2, ID 4b, we have $\cos(x) = \sqrt{1 - \sin^{2}(x)}.$\nl
+$\sin(2\cdot y) = 2\sin(.003408846)\cdot\cos(.003408846)$\nl
+\indent $= 2\cdot(.003408846\cdot.99997675953) = .006817653.$\nl
+$\cos(2\cdot y) = \sqrt{1 - \sin^{2}(2\cdot.003408846)} = \sqrt{1 - .0000464803908}$\nl
+$ = .99997675953.$\nl
+$\sin(2^{2}\cdot y) = 2\sin(2\cdot.003408846)\cdot\cos(2\cdot.003408846)$\nl
+$ = 2\cdot(.006817653\cdot.99997675953) = .0013634989.$\nl
+$\cos(2^{2}\cdot y) = \sqrt{1 - \sin^{2}(2^{2}\cdot.003408846)} = \sqrt{1 - .00018591292}$\nl
+$ = .999907039218.$\nl
+$\sin(2^{3}\cdot y) = 2\sin(2^{2}\cdot.003408846)\cdot\cos(2^{2}\cdot.003408846)$\nl
+$ = 2\cdot(.0013634989\cdot.999907039218) = .0027267443.$\nl
+$\cos(2^{3}\cdot y) = \sqrt{1 - \sin^{2}(2^{3}\cdot.003408846)} = \sqrt{1 - .00074351343}$\nl
+$ = .9999628174.$\nl
+%$\sin(2^{2}\cdot y) = 2\sin(2\cdot.003408846)\cdot\cos(2\cdot.003408846) = 2\cdot(.006817653\cdot.999994189) = %.0013634989.$\nl
+%$\cos(2^{2}\cdot y) = \sqrt{1 - \sin^{2}(2^{2}\cdot.003408846)} = \sqrt{1 - .00018591292} = .999907039218.$\nl
+%$\sin(2^{3}\cdot y) = 2\sin(2^{2}\cdot.003408846)\cdot\cos(2^{2}\cdot.003408846) = %2\cdot(.0013634989\cdot.9999070392184189) = .0027267443.$\nl
+%$\cos(2^{3}\cdot y) = \sqrt{1 - \sin^{2}(2^{3}\cdot.003408846)} = \sqrt{1 - .00074351343} = .9999628174.$\nl
+$\sin(2^{4}\cdot y) = 2\sin(2^{3}\cdot.003408846)\cdot\cos(2^{3}\cdot.003408846)$\nl
+$ = 2\cdot(.0027267443\cdot.9999628174) = .0545146079.$\nl
+$\cos(2^{4}\cdot y) = \sqrt{1 - \sin^{2}(2^{4}\cdot.003408846)} = \sqrt{1 - .002971842463}$\nl
+$ = .998512973.$\nl
+$\sin(2^{5}\cdot y) = 2\sin(2^{4}\cdot.003408846)\cdot\cos(2^{4}\cdot.003408846)$\nl
+$ = 2\cdot(.0545146079\cdot.998512973) = .10886708.$\nl
+$\cos(2^{5}\cdot y) = \sqrt{1 - \sin^{2}(2^{5}\cdot.003408846)} = \sqrt{1 - .000185204251}$\nl
+$ = .994056315.$\nl
+$\sin(2^{6}\cdot y) = 2\sin(2^{5}\cdot.003408846)\cdot\cos(2^{5}\cdot.003408846)$\nl
+$ = 2\cdot(.10886708\cdot.994056315) = .21644003.$\nl
+$\cos(2^{6}\cdot y) = \sqrt{1 - \sin^{2}(2^{6}\cdot.003408846)} = \sqrt{1 - .04684622864}$\nl
+$ = .976295915.$\nl
+$\sin(2^{7}\cdot y) = 2\sin(2^{6}\cdot.003408846)\cdot\cos(2^{6}\cdot.003408846)$\nl
+$ = 2\cdot(.21644003\cdot.976295915) = .422619033.$\nl
+$\cos(2^{7}\cdot y) = \sqrt{1 - \sin^{2}(2^{7}\cdot.003408846)} = \sqrt{1 - .178606847}$\nl
+$ = .906307527.$\nl
+
+
+Therefore, $\sin 25\dg = sin(\angle) = \sin(y\cdot2^{7}) = \sin(.003408846\cdot2^{7})$\nl
+$ = .422619033.$\nl
+$\cos 25\dg = \cos(\angle) = \cos(y\cdot2^{7}) = \cos(.003408846\cdot2^{7}) = .906307527.$\nl
+
+By adding more iteration, $\sin$ and $\cos$ may be calculated to any desired degree of accuracy.  Definition 5.1.5 can be used to find any other trigonometric function.\nl
+
+
+
+
+\newpage
+%symbols
+\lhead{}
+\begin{center}
+\textbf{Table of Symbols}
+\end{center}
+$ $\nl
+%\thispagestyle{empty}
+\begin{tabular}{l l c}
+\textbf{symbol}&\textbf{meaning}&\textbf{page of first appearance}\\
+$\sim p$& not $p$ &1\\
+$p\up q$& $p$ and $q$ &1\\
+$p\dn q$ &$p$ or $q$& 1 \\
+$p\ra q$& $p$ implies $q$ &1\\
+$p \lra q$&$p$ if and only if $q$& l\\
+$t$ &a theorem &6 \\
+$f$ &$\sim t$ &6 \\
+$\forall $ &the universal quantifier (for each)& 11\\
+$\exists$&the existential quantifier (there exists) & 11 \\
+$x\in S$ &$x$ is an element of the set $S$& 16 \\
+$x\notin S$ &$x$ is not an element of the set $S$& 16 \\
+$\{x \mid p(x)\}$ &the set to which $x$ belongs if and only if $p(x)$& 16 \\
+$x = y$ &$x$ equals $y$ &16 \\
+$A\subseteq B$ &$A$ is a subset of $B$ &16 \\
+$A \subset B$ &$A$ is a proper subset of $B$& 17 \\
+$A \neq B$ &$A$ is not equal to $B$ &17 \\
+$(a,b)$&an ordered pair &17 \\
+$(a,b)$& open interval from a to b &37 \\
+$(a,b)$&a complex number &99\\
+$(a,b,c)$ &an ordered triple &17\\
+$A\times B$ &the Cartesian product of $A$ and $B$ &17\\
+$x\sim y$ &$(x,y)$ is in the binary relation $\sim$ &17 \\
+$D_{f}$ &the domain of $f$& 19 \\
+$R_{f}$ &the range of $f$& 19\\
+$f(x)$ &the second term of the ordered pair &\\
+& of the function $f$ whose first term is $x$ &19 \\
+$f:A\ra B$ &$f$ is a function from $A$ into $B$ &19\\
+$f:A\onto b$ &$f$ is a function from $A$ onto $B$& 19 \\
+$x\ast y$ &the second term of the ordered pair of the &\\
+&binary operation $\ast$ whose first term is $(x,y)$ &19 \\
+$A\cap B$ &$A$ intersection $B$ &21 \\
+$A\cup B$& $A$ union $B$& 21 \\
+$\ns$&the empty set &21 \\
+$\Pi A$& the power set of $A$ &21 \\
+\end{tabular}
+
+\newpage
+\lhead{}
+\begin{tabular}{l l r}
+$A-B$& the difference of $A$ and $B$& 21 \\
+$A^{'}$& the complement of $A$ &21 \\
+\textbf{U} &the universal set .& 21\\
+$\cup G$ &the union of the elements $G$& 21\\
+$\cap G$ &the intersection of the elements of $G$ &21\\
+$-x$ &the additive inverse of $x$& 27 \\
+$x^{-1}$ &the multiplicative inverse of $x$& 27\\
+$x - y$ &$x + (-y)$ &29\\
+$x\div y$& $x\cdot y^{-1}$& 29 \\
+$\frac{x}{y}$ &$x\cdot y^{-1}$& 29\\
+$x > y$& $x$ is greater than $y$& 33 \\
+$x < y$& $x$ is less than $y$& 33 \\
+$x \geq y$ &$x$ is greater than or equal to $y$& 33\\
+$x \leq y$ &$x$ is less than or equal to $y$& 33\\
+$[a,b]$& the closed interval from $a$ to $b$ &37 \\
+$[a,b$), $(a,b]$&half open intervals from $a$ to $b$ &37 \\
+%& half open intervals from a to b &	37\\
+$[a, \infty ), (a,\infty)$  &infinite intervals &38 \\
+$(-\infty , a], (-\infty,a)$&infinite intervals&38\\
+$(-\infty , \infty )$&infinite interval&38\\
+$\abs{x}$&the absolute value of $x$ &39,98 \\
+$\abs{x}$& the norm of $x$ &106 \\
+$\zp$ &the set of positive integers& 44 \\
+$Z$ &the set of integers& 46 \\
+$Z_{a}$ &the set of integers greater than or equal to $a$ &46\\
+$Z_{m}^{n}$ &the set of integers in the interval $[m,n]$& 48 \\
+$\sum_{i=1}^{n}a_{i}$&the sum of $a_{1}, a_{2}, \dots ,a_{n}$ & 48\\
+$Q$ &the set of rational numbers& 50 \\
+\underline{c}&the constant function &53\\
+\end{tabular}
+\newpage
+\lhead{}
+\begin{tabular}{l l r}
+$n!$&$n$ factorial& 59 \\
+$\binom{n}{k}$& binomial coefficient& 59\\
+$\prod_{i=1}^{n}a_{i}$&the product of $a_{1}, a_{2}, \dots  ,a_{n}$& 58\\
+glb $S$ &greatest lower bound of $S$& 62 \\
+lub $S$ &least upper bound of $S$& 62 \\
+$R$ & the set of real numbers & 62\\
+$P$ &the set of positive numbers& 65 \\
+$log_{a}$ &logarithmic function to the base $a$& 65 \\
+$L$ &logarithmic function to the base $e$ &65,101 \\
+$E$& exponential function& 67,101 \\
+$log_{a}x$& log of $x$ to the base $a$ &65,101\\
+$a^{x}$& $a$ to the $x$ power& 67,101 \\
+$\sqrt[n]{a}$  & the $n^{\text{th}}$ root of $a$ &69 \\
+$d(u, v)$& the distance from $u$ to $v$& 78\\
+\textbf{0}& the zero vector &78 \\
+$c_{1}$& the unit circle &78 \\
+$\alpha$& the wrapping function& 78 \\
+$\pi$ &pi& 78 \\
+$x^{\circ} $& $x$ degrees& 90\\
+$Im~x$& the imaginary part of $x$ &98 \\
+$Re~x$& the real part of $x$& 98 \\
+$\overline{x}$ &the complex conjugate of $x$& 98 \\
+$\overleftrightarrow{xy}$& the line xy& 106 \\
+$\overrightarrow{xy}$ &the ray $xy$& 106 \\
+$\overline{xy}$ &the segment $xy$ &106\\
+$\angle xyz$& the angle $xyz$& 106\\
+$\triangle xyz$& the triangle $xyz$& 106 \\
+$m \angle xyz$&the measure of the angle $xyz$ &107\\
+\end{tabular}
+\newpage
+\lhead{}
+%Index
+\begin{center}
+\textbf{Index}
+\end{center}
+$ $\nl
+\begin{tabular}{l r l r}
+Absolute value &39,98 &Equivalence, justification &5,13\\
+And (connective) &  1 &Existential quantifier &11\\
+Angle  &   106 & Exponent & 32,44,67\\
+\indent right & 107 &  Factorial &59\\
+Arc Functions& 95& Field &26\\
+Axioms && \indent complete ordered &62\\
+\indent predicate calculus& 11,12& \indent ordered& 33\\
+\indent statement calculus& 4,5 &  Finite Set& 48\\
+Biconditional &1 &Formula& 11,12\\
+Binary Operation& 19 &Function &19\\
+Binary Relation &17 &\indent algebra of &51\\
+Binomial Theorem &59& \indent arc& 95\\
+Bound &&\indent constant& 53\\
+\q greatest lower &62 &\q cycle of &85\\
+\q least upper &62 &\q decreasing &53,56\\
+\q lower &62 &\q domain of &19\\
+\q upper &62 &\q increasing &53,56\\
+Bounded Set& 62 &\q inverse &55\\
+Cartesian product &17 &\q inverse trigonometric &95\\
+Collinear points &106& \q one-to-one &48\\
+Complement of a set& 21 &\q logarithmic &65,101\\
+Complete Ordered Field& 62&\q period of &85\\
+Complex number system &98 &\q range of& 19\\
+Complex conjugate &98 &\q trigonometric& 78\\
+Composite statement& 1& Generalization, justification &13 \\
+Conclusion &5& Greatest lower bound &62\\
+Conjunction& 1& Hypothesis &5\\
+Connectives& 1 &Identity &27,53\\
+Cosecant& 78 &Implication &1\\
+Cosine &78& Inductive set &44\\
+\q graph of& 93 &Infinite sequence &48\\
+\q Law of &108 &Infinite set &48\\
+Cotangent& 78 &Inner product space &104\\
+Cycle of a Function& 85 &Integer& 46\\
+Decimal &57 &Intercept &111\\
+Definition& 1 &Intersection of sets &21\\
+Degree &90 &Intervals &37\\
+Difference of sets& 21 &Inverse &27,55,96\\
+Disjunction& 1 &Irrational number &64\\
+Divisibility& 47& Justification &5,12\\
+Domain of a function& 19 &Law of Cosines &108\\
+Empty set &21 &Law of Sines &108\\
+Equation of a set& 110 &Least upper bound &62\\
+Equality &&Line &106\\
+\q of objects &16 &\q slope of &110\\
+%\q of sets &16&Logarithmic functions& 65,101\\
+\q of sets &16&Linear equations&117\\
+&&Logaritmic functions&65,101\\
+
+\end{tabular}
+
+\newpage
+%2nd page of Index
+\lhead{}
+\begin{tabular}{l r l r}
+Lower Bound &62&\q empty &21\\
+Matrices&113&\q equality of& 16\\
+Measure of an angle& 107& \q equation for& 110\\
+Modens Ponens& 5,12&\q finite& 48\\
+Multiplicity of a root of a&& \q infinite &48\\
+\q polynomial& 76&\q  intersection &21\\
+Negation& 1& \q notation &16\\
+Normed linear space& 106&\q power& 21\\
+Not free & 11&\q proper subset& 17\\
+Number& & \q subset& 16\\
+\q irrational &64& \q truth &16\\
+\q rational& 50&\q union of& 21\\
+\q real& 62 &\q universal &21\\
+Or (connective)& 1& Sine& 78\\
+Ordered field& 33 &\q graph of &93\\
+Ordered pair &17& \q Law of &108\\
+Ordered triple& 17 &Slope of a line &110\\
+Parallel lines& 111& Space&\\
+Partial fractions& 75& \q inner product& 104\\
+Period of a function &85& \q  normed linear& 106\\
+Perpendicular lines &111& \q vector &104\\
+Pi $(\pi)$ &78& Statement, definition of& 1\\
+Polynomial& 73& Subset& 16\\
+Positive integer& 44& Substatement &2\\
+Power set& 21 &Summation notation& 48\\
+Product && Synthetic division &75\\
+\q Cartesian& 17 &Tangent &78\\
+\q inner product space& 104& \q graph of& 93\\
+Proof of a theorem &5,12& Tautology& 3\\
+Proper subset& 17 &Theorem, definition of& 5,12\\
+Quadratic Formula&76&Triangle&106\\
+%Quantifiers& 11 &Triangle &106\\ %out
+Quantifiers&11&Trigonometric Functions&78\\
+%Range of a function &19 &Trigonometric functions& 78\\ %out
+Range of a Function&19&\q table of values&88\\
+%Rational number &50 &\q table of values& 88\\ %out
+Rational Number&50&Truth Set&16\\
+%Ray& 106& Truth set& 16\\ %out
+Ray&106&Union of Sets&21\\
+%Real number system& 62& Union of sets& 21\\ %out
+Real number system&62&Universal quantifiers&11\\
+%&&Universal quantifiers &11\\ %out
+Root &&Universal set &21\\
+\q of a polynomial& 75& Upper bound &62\\
+\q of a number& 102& Variable& 11\\
+Secant& 78& Vector space& 104\\
+Segment& 106& $x$-axis &111\\
+Sequence, infinite& 48& $x$-intercept& 111\\
+Set && $y$-axis& 111\\
+\q bounded &62& $y$-intercept &111\\
+\q complement of &21&&\\
+\q difference of &21&&\\
+\end{tabular}
+
+
+%\end{large}
+
+
+
+
+
+
+
+%\end{document}
+
+

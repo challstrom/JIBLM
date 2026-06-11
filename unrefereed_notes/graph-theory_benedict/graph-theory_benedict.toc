@@ -1,0 +1,19 @@
+\contentsline {section}{\hbox to\@tempdima {\hfil }Preface}{i}
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Remarks}{i}
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Nature of the Text}{i}
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Dedication}{i}
+\contentsline {section}{\numberline {1}Introductory Concepts}{1}
+\contentsline {subsection}{\numberline {1.1}Basic Ideas}{1}
+\contentsline {subsection}{\numberline {1.2}Graph Theoretic Equality}{2}
+\contentsline {subsection}{\numberline {1.3}Degrees of Vertices}{4}
+\contentsline {subsection}{\numberline {1.4}Subgraphs}{6}
+\contentsline {subsection}{\numberline {1.5}The Complement of a Graph}{8}
+\contentsline {section}{\numberline {2}Special Subgraphs}{11}
+\contentsline {subsection}{\numberline {2.1}Walks}{11}
+\contentsline {subsection}{\numberline {2.2}Components}{12}
+\contentsline {subsection}{\numberline {2.3}Blocks of a Graph}{13}
+\contentsline {section}{\numberline {3}Three Famous Results and One Famous Graph}{17}
+\contentsline {subsection}{\numberline {3.1}The Four-Color Theorem}{17}
+\contentsline {subsection}{\numberline {3.2}Planar Graphs}{19}
+\contentsline {subsection}{\numberline {3.3}The Petersen Graph}{22}
+\contentsline {subsection}{\numberline {3.4}Traceable Graphs}{22}

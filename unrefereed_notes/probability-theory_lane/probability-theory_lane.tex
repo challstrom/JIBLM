@@ -1,0 +1,1742 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% theorem-like environments
+
+\newenvironment{corollary}[1]
+{ \begin{description} \item[Corollary {#1}:] }
+{ \end{description} }
+
+\newcounter{definitioncount}[section]
+\newenvironment{definition}
+{ \begin{description} \refstepcounter{definitioncount} \item[Definition \arabic{section}.\arabic{definitioncount}:] }
+{ \end{description} }
+
+\newcounter{examplecount}[section]
+\newenvironment{example}
+{ \begin{description} \refstepcounter{examplecount} \item[Example \arabic{section}.\arabic{examplecount}:] }
+{ \end{description} }
+
+\newenvironment{lemma}[1]
+{ \begin{description} \item[Lemma {#1}:] }
+{ \end{description} }
+
+\newenvironment{notation}
+{ \begin{description} \item[Notation:] }
+{ \end{description} }
+
+\newcounter{problemcount}[section]
+\newenvironment{problem}
+{ \begin{description} \refstepcounter{problemcount} \item[Problem \arabic{section}.\arabic{problemcount}:] }
+{ \end{description} }
+
+\newenvironment{problemnamed}[1]
+{ \begin{description} \refstepcounter{problemcount} \item[Problem \arabic{section}.\arabic{problemcount} (#1):] }
+{ \end{description} }
+
+\newenvironment{question}
+{ \begin{description} \item[Question:] }
+{ \end{description} }
+
+\newenvironment{remark}
+{ \begin{description} \item[Remark:] }
+{ \end{description} }
+
+\newcounter{theoremcount}[section]
+\newenvironment{theorem}
+{ \begin{description} \refstepcounter{theoremcount} \item[Theorem \arabic{section}.\arabic{theoremcount}:] }
+{ \end{description} }
+
+\newenvironment{theoremnamed}[1]
+{ \begin{description} \refstepcounter{theoremcount} \item[Theorem \arabic{theoremcount} (#1):] }
+{ \end{description} }
+
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+\title{Probability Theory}
+\author{Ralph E. Lane}
+\date{ }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+\pagenumbering{arabic}
+
+\setcounter{section}{-1} % one less than desired section number
+
+\section{Integrals}
+\markboth{0. Integrals}{0. Integrals}
+
+In what follows, each function is assumed to be a function whose range is a set of real numbers, and whose range of real values is a number-set.
+
+\begin{definition}
+Suppose that $[a,b]$ is an interval which is in the range of the function $x$ and in the range of the function $y$. The statement that $G$ is the \emph{graph} of the function $y$ with respect to the function $x$ in the interval $[a,b]$ means that $G$ is the set of ordered triples such that $p,q,r$ is in $G$ if and only if $p$ is in $[a,b]$, $q = x(p)$, and $r = y(p)$. The statement that $P$ is a \emph{point} of $G$ means that there is a number $p$ in $[a,b]$ such that $P$ is the point with abscissa $x(p)$ and ordinate $y(p)$.
+\end{definition}
+
+\begin{notation}
+If $[a,b]$ is an interval in the range of the function $x$ and in the range of the function $y$, and $D$ is a subdivision $[t_0,t_1],\ [t_1,t_2],\ \cdots ,\ [t_{n-1},t_n]$ of $[a,b]$, then
+  \begin{equation*}
+  S_D(x,y) = \sum_{i=0}^{n=1} \frac{1}{2} [ y(t_i) + y(t_{i+1} ] [ x(t_{i+1}) - x(t_i) ]
+  \end{equation*}
+\end{notation}
+
+\begin{definition}
+Suppose that $D$ is a subdivision of the interval $[a,b]$. The statement that $E$ is a \emph{refinement} of $D$ means that $E$ is a subdivision of $[a,b]$ such that if $[p,q]$ is an interval in $D$, then there is a subset of $E$ which is a subdivision of $[p,q]$.
+\end{definition}
+
+\begin{definition}
+The statement that $c$ is the \emph{integral} of the function $y$ with respect to the function $x$ in the interval $[a,b]$, or that $\displaystyle c = \int_{t=a}^{b} y(t) \ dx(t)$, means that $[a,b]$ is in the range of $x$ and in the range of $y$, and that $c$ is the number such that the following is true:
+
+If $p > 0$, then there is a subdivision $D$ of $[a,b]$ such that if $E$ is a refinement of $D$, then $|S_E(x,y) - c| < p$.
+
+The statement that $\displaystyle \int_{t=b}^{a} y(t) \ dx(t) \ = k$ means that $\displaystyle \int_{t=a}^{b} y(t) \ dx(t) \ = -k$ and $\displaystyle \int_{t=a}^{a} y(t) \ dx(t) \ = 0$.
+\end{definition}
+
+\begin{definition}
+The statement that the function $f$ is \emph{quasi-continuous} in the interval $[a,b]$ means that $[a,b]$ is in the range of $f$, and that if $p > 0$, then there is a subdivision $D$ of $[a,b]$ such that if $[x,y]$ is an interval in $D$, and $x < s < t < y$, then $|f(s) - f(t)| < p$.
+\end{definition}
+
+\begin{definition}
+The statement that $f$ is of \emph{bounded variation} in the interval $[a,b]$ means that $[a,b]$ is in the range of $f$ and that there is a non-negative real number $V$ such that if $[t_0,t_1],\ [t_1,t_2],\ \cdots ,\ [t_{n-1},t_n]$ is a subdivision of $[a,b]$, then
+
+  \begin{equation*}
+  \sum_{i=0}^{n-1} |f(t_{i+1}) - f(t_i)| \leq V
+  \end{equation*}
+  
+  The least of the set of all such numbers $V$ is denoted by $V_a^b (f)$, and is said to be the \emph{total variation} of $f$ in $[a,b]$.
+\end{definition}
+
+The following theorems and corollary provide a variety of results which can be used in manipulating formulas involving integrals. The first theorem, in particular, is almost a complete description of the integral; and each statement in it can be given a geometric interpretation.
+
+\begin{theorem}
+Suppose that $\displaystyle \int_{t=a}^{b} y(t) \ dx(t) \ = I$ and $\displaystyle \int_{t=a}^{b} y_1(t) \ dx(t) \ = I_1$. Then each of the following statements is true.
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item $\displaystyle \int_{t=a}^{b} [y(t)+y_1(t)] \ dx(t) \ = \int_{t=a}^{b} y(t) \ dx(t) \ + \ \int_{t=a}^{b} y_1(t) \ dx(t)$
+    \item If $k$ is a number, then $\displaystyle \int_{t=a}^{b} k y(t) \ dx(t) \ = \ k \int_{t=a}^{b} y(t) \ dx(t)$
+    \item If $M \geq |y(t)|$ for each number $t$ in $[a,b]$, and $x$ is of bounded variation in $[a,b]$, then
+      \begin{equation*}
+      \left| \int_{t=a}^{b} y(t) \ dx(t) \right| \leq M V_a^b (x)
+      \end{equation*}
+    \item If $a < c < b$, then there are a number $J_1$ and a number $J_2$ such that $\displaystyle \int_{t=a}^{c} y(t) \ dx(t) \ = J_1$ and $\displaystyle \int_{t=c}^{b} y(t) \ dx(t) \ = J_2$; moreover,
+      \begin{equation*}
+      \int_{t=a}^{c} y(t) \ dx(t) \ + \ \int_{t=c}^{b} y(t) \ dx(t) \ = \ \int_{t=a}^{b} y(t) \ dx(t) 
+      \end{equation*}
+    \item If $k$ is a number, then $\displaystyle \int_{t=a}^{b} y(t) \ d[x(t)+k] \ = \ \int_{t=a}^{b} y(t) \ dx(t)$
+    \item $\displaystyle \int_{t=a}^{b} x(t) \ dy(t) \ = \ x(b)y(b) - x(a)y(a) - \int_{t=a}^{b} y(t) \ dx(t)$
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+If $[a,b]$ is an interval in the range of the function $x$, then $\displaystyle \int_{t=a}^{b} 1 \ dx(t) \ = 1$; that is to say, if $y(t) = 1$ for each real number $t$, then $\displaystyle \int_{t=a}^{b} y(t) \ dx(t) \ = 1$.
+\end{theorem}
+
+\begin{theorem}
+If $[a,b]$ is an interval in the range of the function $x$, then 
+  \begin{equation*}
+  \int_{t=a}^{b} x(t) \ dx(t) \ = \frac{[x(b)]^2 - [x(a)]^2}{2}
+  \end{equation*}
+\end{theorem}
+
+\begin{theorem}
+Suppose that $x$ has a derivative $x'$ which is continuous in the interval $[a,b]$, and that $\displaystyle \int_{t=a}^{b} y(t) \ dx(t) \ = c$ or $\displaystyle \int_{t=a}^{b} y(t) \ x'(t) dt \ = c_1$. If $y$ is bounded in $[a,b]$ (i.e., if there is a number $M$ such that $|y(t)| < M$ for each number $t$ in $[a,b]$, then
+  \begin{equation*}
+  \int_{t=a}^{b} y(t) \ dx(t) \ = \ \int_{t=a}^{b} y(t) \ x'(t) dt
+  \end{equation*}
+\end{theorem}
+
+\begin{theorem}
+Suppose that $[a,b]$ is an interval, $[c,d]$ is an interval, and $u,$ $v,$ $x,$ $y$ is a function sequence such that if $D$ is a subdivision of $[a,b]$, and $E$ is a subdivision of $[c,d]$, then there are a refinement $F$ of $D$ and a refinement $G$ of $E$ such that $S_F(x,y) = S_G(u,v)$. If $\displaystyle \int_{t=a}^{b} y(t) \ dx(t) \ = k_1$ and $\displaystyle \int_{t=c}^{d} v(t) \ du(t) \ = k_2$, then
+  \begin{equation*}
+  \int_{t=a}^{b} y(t) \ dx(t) \ = \ \int_{t=c}^{d} v(t) \ du(t)
+  \end{equation*}
+\end{theorem}
+
+\begin{corollary}{0.5a}
+Suppose that $[a,b]$ is an interval, $[c,d]$ is an interval, and $f$ is a continuous non-decreasing function such that $f(c) = a$ and $f(d) = b$. If there is a number which is the integral of the function $y$ with respect to the function $x$ in the interval $[a,b]$, then
+  \begin{equation*}
+  \int_{t=a}^{b} y(t) \ dx(t) \ = \ \int_{t=c}^{d} y[f(t)] \ dx[f(t)]
+  \end{equation*}
+  
+  Moreover, if $g$ is a continuous non-increasing function such that $g(c) = b$ and $g(d) = a$, then
+  \begin{equation*}
+  \int_{t=a}^{b} y(t) \ dx(t) \ = \ - \int_{t=c}^{d} y[g(t)] \ dx[g(t)]
+  \end{equation*}
+\end{corollary}
+
+\begin{definition}
+The statement that $\displaystyle \int_{t=\infty}^{\infty} y(t) \ dx(t) \ = c$ means that
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item if $[a,b]$ is an interval, then there is a number which is the integral of $y$ with respect to $x$ in $[a,b]$; and that
+    \item if $p > 0$, then there is an interval $[a,b]$ such that if $A < a$ and $B > b$, then 
+      \begin{equation*}
+      \left| \int_{t=a}^{B} y(t) \ dx(t) \ - c \right| < p
+      \end{equation*}
+  \end{enumerate}
+\end{definition}
+
+
+
+\newpage
+
+\section{Events and Sets of Events}
+\markboth{1. Events and Sets of Events}{1. Events and Sets of Events}
+
+We shall use the word ``\emph{event}'' without defining it; for example, we may refer to the flipping of a penny and a nickel as an event. The word ``\emph{set}'' will also be used without definition; for example, we may speak of ``a set of tools'', ``a set of rules'', or ``a set of points''. A thing which belongs to a set is said to be a \emph{member} of the set; we suppose that every set has a member.
+
+\begin{definition}
+The statement that $A$ is a \emph{subset} of the set $B$ means that $A$ is a set such that each member of $A$ is a member of $B$.
+\end{definition}
+
+\begin{definition}
+The statement that $C$ is the \emph{common part} of the set $A$ and the set $B$, or that $C = A - B$, means that $C$ is the set such that $p$ is a member of $C$ if and only if it is true that $p$ is a member of $A$ and $p$ is a member of $B$.
+
+The statement that $A$ and $B$ are \emph{mutually exclusive} means that if $p$ is a member of $A$, then $p$ is not a member of $B$.
+\end{definition}
+
+\begin{definition}
+The statement that $C$ is the \emph{union} of the set $A$ and the set $B$, or that $C = A \cup B$, means that $C$ is the set such that $p$ is a member of $C$ if and only if it is true that $p$ is a member of $A$ or $p$ is a member of $B$ (i.e.: $p$ is in $A$, or $p$ is in $B$, or $p$ is in $A$ and also in $B$).
+\end{definition}
+
+\begin{definition}
+The statement that $R$ is a \emph{probability range} means that $R$ is a collection of sets such that the following statements are true:
+
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item there is in $R$ a set $I$ such that if $A$ is in $R$, then $A$ is a subset of $I$;
+    \item there is in $R$ a set $O$ such that if $A$ is in $R$, then $O$ is a subset of $A$;
+    \item if $A$ is in $R$, and $B$ is in $R$, then $A \cap B$ is in $R$; and
+    \item if $A$ is in $R$, then there is a set $A'$ in $R$ such that $A \cap A' = 0$ and $A \cup A' = I$; the set $A'$ is said to be the \emph{complement} of $A$.
+  \end{enumerate}
+\end{definition}
+
+\begin{example}
+Suppose that $R$ consists of two sets, $O$ and $I$, such that $O$ is a subset of $I$. Then $R$ is a probability range. Hence there is at least one probability range.
+\end{example}
+
+\begin{question}
+Is there a probability range which consists of three sets? Four sets?
+\end{question}
+
+\begin{theorem}
+Suppose that $R$ is a probability range. If $A$ is in $R$, and $B$ is in $R$, then $A \cup B$ is in $R$.
+\end{theorem}
+
+\begin{theorem}
+Suppose that $R$ is a probability range, $A$ is in $R$, and $B$ is in $R$, and $C$ is in $R$. Then each of the following statements is true:
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item $A \cap B = B \cap A$, and $A \cup B = B \cup A$;
+    \item $A \cap (B \cap C) = (A \cap B) \cap C$, and $A \cup (B \cup C) = (A \cup B) \cup C$;
+    \item $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$, and $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$;
+    \item $A' \cap B' = (A \cup B)'$, and $A' \cup B' = (A \cap B)'$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{problem}
+A certain club has amended its by-laws so that they are:
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item No person shall be a member of the executive committee unless he or she is an officer of the club or a member of the social committee.
+    \item No person shall be a member of the social committee unless he or shee is an officer of the club or a member of the executive committee.
+    \item Each officer of the club shall be a member of the executive committee.
+  \end{enumerate}
+  Make a simple statement which is equivalent to the above rules. 
+  
+  Can you think of some way of making such problems as this easier to solve?
+\end{problem}
+
+\begin{problem}
+Construct a diagram on which there are indicated three sets of points, $I,A,B$, such that the following statements are true:
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item $I$ is a circle plus its interior, $A$ is a circle pluts its interior, and $B$ is a circle plus its interior.
+    \item There is a point in $I$ which is not in $A$ and not in $B$.
+    \item There is a point in $A$ which is not in $B$.
+    \item There is a point in $B$ which is not in $A$.
+    \item There is a point which is in the interior of $A$ and is also in $B$.
+    \item $A$ is a subset of $I$, and $B$ is a subset of $I$.
+  \end{enumerate}
+  Is any of these statements redundant? How many mutually exclusive sets of points, each bounded by arcs of the circles, are in $I$?
+\end{problem}
+
+\begin{problem}
+Can you construct a diagram analogous to that of Problem 1.2, but involving four sets $I,A,B,C$, such that the boundaries of $A,B,C$ divide $I$ into 8 connected regions? Five sets, $I,A,B,C,D$, such that the boundaries of $A,B,C,D$ divide $I$ into 16 connected regions?
+\end{problem}
+
+\begin{problem}
+Is it possible to represent the real numbers by sets of points such that if $a$ is a real number, $b$ is a real number, $A$ is the set which represents $a$, and $B$ is the set which represents $b$, and $a < b$, then the union of $A$ and $B$ is $B$, and the common part of $A$ and $B$ is $A$?
+\end{problem}
+
+\begin{problem}
+Is it possible to represent the complex numbers by sets of points such that if $A$ is the set which represents the complex number $a$, and $B$ is the set which represents the complex number $b$, and $a \neq b$, then then $A$ is not $B$, and the union of $A$ and $B$ is a set which represents a complex number, and $B$ is a set which represents a complex number?
+\end{problem}
+
+\begin{problem}
+A kitchen sink has a drainboard which consists of regular hexagonal tiles, each having a shortest diameter of $1$ inch, spaced $\frac{1}{16}$ inch apart. The diameter of a penny is $\frac{3}{4}$ inch. Describe a probability range to be considered in dealing with the following question. What is the probability that a penny dropped on the drainboard will lie entirely on one tile and not extend out over a crack between tiles?
+\end{problem}
+
+
+
+\newpage
+
+\section{Set Functions}
+\markboth{2. Set Functions}{2. Set Functions}
+
+In order to consider probabilities, we need to be able to assign to each set of events in some collection (such as a probability range) a number which we regard as the probability of that set of events.
+
+\begin{definition}
+The statement that $f$ is a function with \emph{range} $R$ and \emph{range of values} $V$ means that $R$ is a set, $V$ is a set, and $f$ is a collection of ordered pairs such that
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item if $x,y$ is in $f$, then $x$ is in $R$ and $y$ is in $V$;
+    \item if $x$ is in $R$, then there is just one pair in $f$ whose first term is $x$; and 
+    \item if $y$ is in $V$, then there is in $f$ a pair whose second term is $y$.
+  \end{enumerate}
+  
+  If $x,y$ is in $f$, then $y$ may be denoted by $f(x)$.
+  
+  If $R$ is a collection of sets (i.e., if each member of $R$ is a set), then $f$ is said to be a \emph{set-function}.
+\end{definition}
+
+\begin{example}
+Suppose that a penny is to be tossed. Let $H_o$ denote the set consisting of the events in which the penny shows ``heads'', let $T_o$ denote the set consisting of the events in which the penny shows ``tails'', and let $O$ denote the set consisting of the events in which the result of tossing the penny is to be disregarded (such as events in which the penny comes to rest leaning against a wall or some other object).
+
+  Let $H$ denote the union of $H_o$ and $O$, let $T$ denote the union of $T_o$ and $O$, and let $I$ denote the union of $H$ and $T$. The collection whose members are $H,T,O,I$ is a probability range. If $P(H) = \frac{1}{2}$, $P(T) = \frac{1}{2}$, $P(I) = 1$, $P(O) = 0$, then $P$ is a set-function whose range is $O,H,T,I$ and whose range of values is the set $0, \frac{1}{2}, 1$.
+\end{example}
+
+\begin{definition}
+Suppose that $f$ is a set-function with range $R$. The statement that $f$ is \emph{additive} means that if $A$ is in $R$, and $B$ is in $R$, then $f(A) + f(B) = f(A \cup B) + f(A \cap B)$.
+\end{definition}
+
+\begin{notation}
+If $R$ is a probability range, each of whose members is a finite set, then $N$ is the function such that if $X$ is in $R$, then $N(X)$ is the number of the members of $X$ which are not members of $O$; we assume that $N$ is additive.
+
+  If $R$ is a probability range, each of whose members is a point-set having area, then $A$ is the function such that if $X$ is in $R$, then $A(X)$ is the area of $X$ minus the area of $O$; we assume that $A$ is additive.
+\end{notation}
+
+\begin{theorem}
+Suppose that $R$ is a probability range, each of whose members is a finite set, and that $N(I) > O$. Let $P$ denote the function such that if $X$ is in $R$, then $P(X) = \frac{N(X)}{N(I)}$. Then $P$ is additive.
+\end{theorem}
+
+\begin{theorem}
+Suppose that $R$ is a probability range, each of whose members is a point-set which has area, and that $A(I) > O$. Let $P$ denote the function such that if $X$ is in $R$, then $P(X) = \frac{A(X)}{A(I)}$. Then $P$ is additive.
+\end{theorem}
+
+\begin{theoremnamed}{In-and-Out Theorem}
+Suppose that $R$ is a probability range, and that $f$ is an additive set-function with range $R$. If $n$ is an integer greater than $1$, and $x_1,x_2,\cdots,x_n$ is a sequence of sets in $R$, then
+  \begin{equation*}
+  f ( x_1 \cup x_2 \cup \cdots \cup x_n ) = z_1 - z_2 + z_3 - \cdots - (-1)^n z_n
+  \end{equation*}
+  where
+  \begin{align*}
+  z_1 = & \sum f(X_i), \qquad 1 \leq i \leq n \\
+  z_2 = & \sum f(X_i \cap X_j), \qquad 1 \leq i < j \leq n \\
+  z_3 = & \sum f(X_i \cap X_j \cap X_k), \qquad 1 \leq i < j < k \leq n \\
+  \vdots & \\
+  z_n = & \sum f(X_1 \cap X_2 \cap X_3 \cap \cdots \cap X_n)
+  \end{align*}
+\end{theoremnamed}
+
+\begin{question}
+If the symbols $\cap$ and $\cup$ were interchanged throughout the statement of Theorem 2.3, would the resulting statement be true?
+\end{question}
+
+\begin{problem}
+A bag contains $20$ objects, of which $7$ are red, $7$ are marbles, and $7$ are made of glass. Moreover, the number of red marbles is $3$, the number of glass marbles is $3$, the number of red glass things is $3$, and the number of red glass marbles is $1$. How many of the objects are neither red, nor marbles, nor made of glass?
+\end{problem}
+
+\begin{problem}
+A polynomial in $x,y,z$ is symmetric and has constant term zero. It is said that $x$ is a factor of $6$ terms, $xy$ is a factor of $3$ terms, $xyz$ is a factor of $1$ term, and there are $9$ terms in all. Is this information consistent?
+\end{problem}
+
+\begin{problem}
+As a preliminary step in an advertising campaign, a survey is made in which each of 100 businesspeople reported which, if any, of trade journals $A,B,C$ he or she subscribed to. The reports were tabulated as follows:
+
+  \begin{center}
+  \begin{tabular}{|c|c|}
+  \hline
+  Journals & Subscribers \\
+  \hline
+  A          & 25 \\
+  B          & 35 \\
+  C          & 45 \\
+  A and B    &  4 \\
+  B and C    & 10 \\
+  C and A    &  6 \\
+  A, B, \& C &  2 \\
+  \hline
+  \end{tabular}
+  \end{center}
+
+  How many of the $100$ men did not subscribe to any of the three trade journals? How many subscribed to one only? Two only?
+\end{problem}
+
+\begin{problem}
+Three pieces of paper, labeled $A,B,C$, are laid on a table. They cover a region whose area is $28$ square inches. The area of $A$ is $11.4$ square inches. The area of $B$ is $13.1$ square inches. The area of the region covered both by $A$ and by $B$ is $3.7$ square inches. The area of the region covered both by $B$ and by $C$ is $4.3$ square inches. The area covered both by $C$ and by $A$ is $3.9$ square inches, and the area covered by all of $A,B,C$ is $1.2$ square inches. What is the area of $C$?
+\end{problem}
+
+\begin{problem}
+Before considering the issuance of a group insurance policy, an insurance company gets the following information about the employees of a corporation:
+
+  \begin{center}
+  \begin{tabular}{|l|r|}
+  \hline
+  Category                 & People \\
+  \hline
+  Total                    & 2,888  \\
+  Men                      & 1,676  \\
+  Married                  & 1,429  \\
+  Foreign-born             &   750  \\
+  Married men              & 1,102  \\
+  Married foreign-born     &   416  \\
+  Foreign-born men         &   460  \\
+  Married foreign-born men &   180  \\
+  Single USA-born women    &   672  \\
+  \hline
+  \end{tabular}
+  \end{center}
+  
+  Are these figures consistent? If not, could the error be found without asking the corporation to check the entire set of figures?
+\end{problem}
+
+\begin{problem}
+A polynomial in $x,y,z,w$ is symmetric and has constant term $1$. It has just $16$ terms, of which just $4$ are divisible by $xy$, just $2$ are divisible by $xyz$, and just $1$ is divisible by $xyzw$. How many of the terms are divisible by $x$?
+\end{problem}
+
+\begin{problem}
+Three persons, $x,y,z$, wish to purchase a combination of life annuities which will provide them with a monthly income whose amount will depend upon which one/s of them is alive when an income payment falls due. The desired incomes are:
+
+  \begin{center}
+  \begin{tabular}{|c|r|}
+  \hline
+  Surviving    & Monthly \\
+  annuitants   & income  \\
+  \hline
+  x only       &   \$75 \\
+  y only       &    100 \\
+  z only       &    100 \\
+  x and y only &    150 \\
+  y and z only &    175 \\
+  z and x only &    150 \\
+  x, y, and z  &    225 \\
+  \hline
+  \end{tabular}
+  \end{center}
+
+  An insurance company issues joint-life annuities (a joint-life annuity provides income just so long as all members of the joint life remain alive) at the following rates per \$10 of monthly income, the premium being payable when the contract is issued.
+  
+  \begin{center}
+  \begin{tabular}{|c|r|}
+  \hline
+  Single life & Rate   \\
+  \hline
+  x           & \$2045 \\
+  y           &   1523 \\
+  z           &   1275 \\
+  \hline
+  \hline
+  Joint life  & Rate   \\
+  \hline
+  x,y         & \$1276 \\
+  y,z         &    960 \\
+  z,x         &   1104 \\
+  x,y,z       &    790 \\
+  \hline
+  \end{tabular}
+  \end{center}
+  
+  The contract to be issued by the company is to be prepared so that in effect, the company buys and sells single-life and joint-life annuities of amounts such that, no matter in what order $x$, $y$, and $z$ may die, the income payments will be of the amounts which they have specified. How much will the contract cost if purchased from this company?
+\end{problem}
+
+
+
+\newpage
+
+\section{Probability Distributions}
+\markboth{3. Probability Distributions}{3. Probability Distributions}
+
+\begin{theorem}
+Suppose that $R$ is a probability range which consists of a finite collection of sets, and that $A_1,A_2,A_3,\cdots$ is a sequence each term of which is in $R$. Then the common part of the members of the sequence is in $R$.
+\end{theorem}
+
+\begin{remark}
+It is often convenient, in dealing with a probability range which is an infinite collection of sets, to be able to use a result analogous to the one stated in Theorem 3.1; so we introduce the following definition.
+\end{remark}
+
+\begin{definition}
+The statement that $R$ is a \emph{complete probability range} means that $R$ is a probability range such that if
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item $A_1,A_2,A_3,\cdots$ is a sequence of members of $R$; and
+    \item $A_{n+1}$ is a subset of $A_n$, $n=1,2,3,\cdots$; and
+    \item $A$ is the common part of the sets $A_1,A_2,A_3,\cdots$;
+  \end{enumerate}
+  then $A$ is in $R$.
+\end{definition}
+
+\begin{theorem}
+Suppose that $R$ is a complete probability range, and that $A_1,$ $A_2,$ $A_3,$ $\cdots$ is a sequence of members of $R$. If $A$ is the common part of the sets $A_1,A_2,A_3,\cdots$, then $A$ is in $R$.
+\end{theorem}
+
+\begin{definition}
+The statement that $(R,P)$ is a \emph{probability distribution} means that
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item $R$ is a complete probability range; and
+    \item $P$ is a function, whose range is $R$, such that
+      \begin{enumerate}[\hspace{1cm}(a)]
+        \item if $A$ is in $R$, then $P(A) \geq 0$;
+        \item $P$ is additive;
+        \item $P(I) = 1$ and $P(O) = 0$; and
+        \item if $A_1,A_2,A_3,\cdots$ is a sequence of members of $R$ such that $A_{n+1}$ is a subset of $A_n$, $n=1,2,3,\cdots$, and $A$ is the common part of the sets $A_1,A_2,A_3,\cdots$, and $e > 0$, then there is a positive number $N$ such that $|P(A_n) - P(A)| < e$ if $n$ is an integer greater than $N$.
+      \end{enumerate}
+  \end{enumerate}
+  
+  If $X$ is in $R$, then $P(X)$ is said to be the \emph{probability} of the set $X$.
+\end{definition}
+
+\begin{theorem}
+Suppose that $(R,P)$ is a probability distribution, and that $A_1,A_2,A_3,\cdots$ is a sequence of members of $R$. If $A$ is the common part of the sets $A_1,A_2,A_3,\cdots$, and $e > 0$, then there is a positive number $N$ such that 
+  \begin{equation*}
+  |P ( A_1 \cap A_2 \cap A_3 \cap \cdots \cap A_n ) - P(A)| < e
+  \end{equation*}
+  if $n$ is an integer greater than $N$.
+\end{theorem}
+
+\begin{definition}
+The statement that $\tau$ is a \emph{chance variable} means that there is a probability distribution $(R,P)$ such that
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item if $p$ is in the set $I$, then $\tau (p)$ is a real number; and
+    \item if $t$ is a real number, and $(\tau \leq t)$ denotes the set whose members are the members $p$ of $I$ for which $\tau (p) \leq t$, together with the members of $O$, then $(\tau \leq t)$ is in $R$.
+  \end{enumerate}
+\end{definition}
+
+\begin{remark}
+The phrases ``random variable'' and ``stochastic variable'' are used to mean the same as ``chance variable''. Whichever phrase is used, what is meant is a function whose range consists of the members of some set $I$, and whose range of values is a real-number set.
+\end{remark}
+
+\begin{lemma}{3.4a}
+Suppose that $\tau$ is a chance variable from the probability distribution $(R,P)$. If $t_1 < t$, then each of the sets $(\tau > t)$ and $(t_1 < \tau \leq t)$ and $(\tau = t)$ is in $R$.
+\end{lemma}
+
+\begin{theorem}
+If $\tau$ is a chance variable, $t$ is a real number, and $e > 0$, then there is a positive number $d$ such that
+  \begin{equation*}
+  0 \leq P (t_1 < \tau \leq t) - P(\tau - t) < e \quad \text{ if } t-d < t_1 < t
+  \end{equation*}
+\end{theorem}
+
+\begin{problem}
+A penny is to be flipped repeatedly until ``heads'' shows on each of two successive flips, or ``tails'' shows on each of two successive flips, or 5 flips have been made. If any of tehse events occurs, no more flips are to be made.
+
+  Let $\xi$ (the Greek letter xi) denote the number of flips made, and if $x$ is one of the first five positive integers, let $(\xi = x)$ denote the set of events in which the number of flips of the penny is $x$.
+  
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item Describe a probability distribution for this experiment.
+    \item What is the probability that the number of flips is an even integer?
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+Suppose that a penny is to be flipped just until ``heads'' shows.
+
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item Describe a probability distribution for this experiment.
+    \item What is the probability that ``heads'' never shows on a trial of the experiment?
+    \item What is the probability that the number of flips is an even integer?
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+A pointer is mounted on a dial, along whose edge there is a scale on which an observer can read each of the numbers in the interval $0$ through $1$. The length of the scale is $1$ meter; and if $0 < x < 1$, then the length of the part of the scale containing the numbers $0$ through $x$ is $x$ meters. The pointer is given a spin, and the number to which it points when it comes to rest is denoted by $\xi$.
+
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item For each real number $x$, find $P(\xi \leq x)$.
+    \item For each real number $x$, find the number $P(x - 0.1 < \xi < x)$.
+    \item For each real number $x$, find the number $P(\xi = x)$.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+The pointer of Problem 3.3 is given two spins. When the pointer comes to rest after the first spin, it points to a number $\xi$; after the second spin, it points to a number $\eta$ (the Greek letter eta). For each real number $t$, find
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item $P(\xi + \eta \leq t)$
+    \item $P(\xi - \eta \leq t)$
+    \item $P(|\xi - \eta| \leq t)$
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+A needle $2 \frac{1}{2}$ inches long is dropped on a floor made of boards $2 \frac{1}{4}$ inches wide, very closely fitted together. What is the probability that the needle lies entirely on one board?
+\end{problem}
+
+\begin{problem}
+A white plastic sphere whose radius is $1$ is imbedded in a large block of black plastic. The block is cut in two, and a cross-section of the sphere is observed on the cut surface. The radius of the cross-section is $\xi$. It is supposed that the probability that the block will be cut at or two the left of a point is proportional to the distance of that point from the left end of the block. For each real number $x$, find $P(\xi \leq x)$.
+\end{problem}
+
+\begin{problem}
+A white plastic sphere is imbedded in a block of black plastic. The block is cut in two, and it is observed that the sphere has been cut so that the radius of the cross-section is $1$, which is very small compared to the size of the block. Find the positive number $r$ such that the probability that the radius of the sphere is less than or equal to $r$ is $0.9$.
+\end{problem}
+
+
+
+\newpage
+
+\section{Permutations}
+\markboth{4. Permutations}{4. Permutations}
+
+Suppose that there are given four marbles and a row of three boxes on a shelf; we are to put a marble in each of the three boxes. How many results are possible? We may label the marbles $1,2,3,4$ and indicate the result of a trial of this experiment by writing down a sequence $a_1,a_2,a_3$, where $a_1$ is the number of the marble in the leftmost box, $a_2$ is the number of the marble in the middle box, and $a_3$ is the number of the marble in the rightmost box. The question now reduces to this: How many three-term sequences can be made from the first four positive integers without using an integer more than once in any one sequence? In complicated problems, it is often possible to avoid confusion by reducing the problem to one involving only positive integers.
+
+\begin{definition}
+If $r$ is a positive integer and $n$ is a positive integer, then the statement that $s$ is an \emph{$r$-term sequence from the first $n$ positive integers} means that $s$ is a sequence $x_1,x_2,\cdots,x_r$, which has just $r$ terms, each of which is one of the integers $1,2,\cdots,n$. 
+
+  The statement that $S$ is an $r$-term sequence from the first $n$ positive integers, \emph{without repetition}, means that $S$ is an $r$-term sequence from the first $n$ positive integers, and that if $x$ and $y$ are terms of $S$, then $x \neq y$.
+\end{definition}
+
+\begin{theorem}
+If $r$ is a positive integer and $n$ is a positive integer, let $R(r,n)$ denote the number of $r$-term sequences from the first $n$ positive integers. Then each of the following statements is true:
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item $R(r,n) = n$ if $r = 1$;
+    \item $R(r+1,n) = nR(r,n)$; and
+    \item $R(r,n) = n^r$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{lemma}{4.2a}
+If $r$ is a positive integer and $n$ is a positive integer, let $S(r,n)$ denote the number of $r$-term sequences from the first $n$ positive integers, without repetition. Then each of the following statements is true:
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item $S(r,n) = n$ if $r = 1$;
+    \item $S(r,n) = 0$ if $r > n$; and
+    \item $S(r+1,n+1) = S(r+1,n) + (r+1)S(r,n)$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{definition}
+Suppose that $x$ is a number, and $r$ is a positive integer. Then
+  \begin{equation*}
+  x^{(r)} = x (x-1) (x-2) \cdots (x-r+1)
+  \end{equation*}
+\end{definition}
+
+\begin{theorem}
+If $n$ is a positive integer and $r$ is a positive integer, then the number of $r$-term sequences from the first $n$ positive integers, without repetition, is $n^{(r)}$.
+\end{theorem}
+
+\begin{remark}
+Suppose that $n$ is a non-negative integer. By $n$ \emph{factorial} (usually denoted by $n!$ or $\llcorner n$), we mean $1$ if $n = 0$, or $n \times (n-1) \times \cdots \times 2 \times 1$ if $n > 0$. If $r$ is a positive integer, and $n$ is an integer greater than or equal to $r$, then $n^{(r)} = \frac{n!}{(n-r)!}$. 
+
+  Since direct calculation of numbers such as $120^{(50)}$ and $1000^{(75)}$ is impractical, we now seek an approximation formula.
+\end{remark}
+
+\begin{lemma}{4.3a}
+If $n$ is a positive integer, then
+  \begin{align*}
+  \int_1^n \log x \ dx \ + \frac{1}{2} \log n \\
+  > \log n! > \int_{1/2}^{n+1/2} \log x \ dx \\
+  > \int_1^n \log x \ dx \ + \frac{1}{2} \log n + \frac{1}{2} \log 2 - \frac{1}{2}
+  \end{align*}
+
+  Moreover, if $m$ is an integer greater than $n$, then
+  \begin{align*}
+  \int_1^m \log x \ dx \ + \frac{1}{2} \log m > \log m! \\
+  > \int_1^n \log x \ dx \ + \frac{1}{2} \log n - \log n!
+  \end{align*}
+\end{lemma}
+
+\begin{lemma}{4.3b}
+If $n$ is a positive integer, and $m$ is an integer greater than $n$, then
+  \begin{equation*}
+  \sqrt{2e} < \frac{m!}{ m^{m+2} e^{-m} } < \frac{n!}{ n^{n+2} e^{-n} } < e
+  \end{equation*}
+\end{lemma}
+
+\begin{theorem}
+There is a positive number $C$ such that if $n$ is an integer greater than $1$, then
+  \begin{equation*}
+  C n^{n+1/2} e^{-n} < n! < C n^{n+1/2} e^{-n} e^{1712n}
+  \end{equation*}
+\end{theorem}
+
+\begin{remark}
+It can be shown that the number $C$ of Theorem 4.3 is $\sqrt{2 \pi}$, so that $n! \doteq \sqrt{2 \pi n} n^n e^{-n}$.
+
+  \begin{align*}
+        \sqrt{2 \pi}     & \doteq 2.5066282746 \\
+             e           & \doteq 2.7182818285 \\
+  \log_{10} \sqrt{2 \pi} & \doteq 0.3990899342 \\
+        \log_{10} e      & \doteq 0.4342944819
+  \end{align*}
+\end{remark}
+
+\begin{lemma}{4.4a}
+If $r$ is a positive integer, and $n$ is an integer greater than $r$, then
+  \begin{align*}
+  \int_{n-r}^n \log x \ dx \ + \log n - \frac{1}{2} \log (n-r+\frac{1}{2}) < \log n^{(r)} \\
+  < \int_{n-r}^n \log x \ dx \ + \frac{1}{2} \log n - \frac{1}{4} \log (n-r)
+  \end{align*}
+\end{lemma}
+
+\begin{theorem}
+If $r$ is a positive integer, and $n$ is an integer greater than $r$, then
+  \begin{equation*}
+  \sqrt{ \frac{n}{n-r+s} } \left( \frac{n}{n-r} \right) ^n \left( \frac{n-r}{e} \right) ^r < n^{(r)} 
+  < \sqrt{ \frac{n}{n-r} } \left( \frac{n}{n-r} \right) ^n \left( \frac{n-r}{e} \right) ^r
+  \end{equation*}
+\end{theorem}
+
+\begin{problem}
+A bag contains five marbles -- one blue, one red, one green, one white, and one black. A marble is drawn, its color is noted, and it is returned to the bag and mixed with the others. 
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item In a sequence of four such drawings, what is the number of possible results? The probability that the white marble will not be drawn?
+    \item In a sequence of six such drawings, what is the number of possible results? The probability that the white marble will not be drawn?
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+Six slips of paper are numbered $1,2,3,4,5,6$, put in a hat, and shuffled. Each of the three persons in turn draws a slip, notes the number on it, replaces it in the hat, and shuffles the slips.
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item What is the probability that no two of the numbers drawn differ by more than $2$?
+    \item What is the probability that each two of the numbers drawn differ by at least $2$?
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+Six slips of paper are numbered $1,2,3,4,5,6$, put in a hat, and shuffled. Each of the three persons in turn draws a slip.
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item What is the probability that no two of the numbers drawn differ by more than $2$?
+    \item What is the probability that each two of the numbers drawn differ by at least $2$?
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+Four slips of paper are numbered $1$, three are numbered $2$, two are numbered $3$, and one is numbered $4$. They are put in a hat and shuffled. Three slips are drawn. What is the probability that no two of the three are numbered alike?
+\end{problem}
+
+\begin{problem}
+In how many distinguishable orders can the letters of the word ``seeds'' be written on a line? The letters of the word ``Mississippi''? The letters of the word ``Mississippian''?
+\end{problem}
+
+\begin{problem}
+In preparing a ``scrambled words'' puzzle, we wish to rearrange the letters of a word so that no two vowels will be adjacent to each other and no two consonants will be adjacent to each other. How many such scramblings (excluding the word itself) are possible if the given word is
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item ``animal''?
+    \item ``nominal''?
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+Six marbles are poured out of a bag into a trough, one end of which is slightly elevated.
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item In how many orders can the marbles line up in the trough?
+    \item If three of the marbles look alike, and the other three have different appearances, how many distinguishable orders are there?
+    \item If theree of the marbles are identical blue marbles, two are identical red marbles, and one is a green marble, how many distinguishable orders are there?
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+In a group of 30 people, no one has February 29 as a birthday. What is the probability that no two of the 30 people have the same birthday?
+\end{problem}
+
+\begin{problem}
+In controlling the quality of production of a certain item, a sample of size 100 is to be taken out of each batch of 10,000 units produced, the sample being taken by drawing an item, testing it, replacing it, mixing it with the rest of the 10,000 units, making a nother drawing, and so on. 
+
+  What is the probability that in a sample of size 100 from a batch of 10,000, no unit is drawn more than once? Is it likely that satisfactory results could be obtained by simply taking a batch of 100 units from the 10,000?
+\end{problem}
+
+\begin{problem}
+In how many orders can 20 people enter a room in single file?
+\end{problem}
+
+\begin{problem}
+What is the probability that if a hand of bridge is dealt, 
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item North will get all 13 spades?
+    \item There will be a player who gets all 13 spades?
+    \item Each player's hand will consist of a complete suit?
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+A restaurant has eight stools at its counter. Four strangers enter and set themselves so that there is an empty stool between each person and their neighbor. What is the probability that they would be so seated if they had drawn lots for their positions at the counter?
+\end{problem}
+
+
+
+\newpage
+
+\section{Combinations}
+\markboth{5. Combinations}{5. Combinations}
+
+If $n$ is a positive integer and $r$ is a positive integer, let $\binom{n}{r}$ denote the number of $r$-member subsets of an $n$-member set.
+
+\begin{remark}
+The symbols ${}_n C_r$, ${}^n C_r$, $C^n_r$, for example, are sometimes used for $\binom{n}{r}$.
+\end{remark}
+
+\begin{definition}
+Suppose that $n$ is a positive integer and $r$ is a positive integer. The statement that $S$ is an \emph{increasing $r$-term sequence} from the first $n$ positive integers means that $S$ is an $r$-term sequence $x_1,x_2,\cdots,x_n$, each of whose terms is an integer, such that if $p$ is an integer, $q$ is an integer, and $1 \leq p < q \leq r$, then $1 \leq x_p < x_q \leq n$.
+\end{definition}
+
+\begin{lemma}{5.1a}
+The number of $r$-term increasing sequences from the first $n$ positive integers is the number of $r$-term subsets from an $n$-member set.
+\end{lemma}
+
+\begin{lemma}{5.1b}
+Suppose that $r$ is a positive integer. Then each of the following statements is true:
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item $\binom{n}{1} = n$;
+    \item $\binom{n}{r} = 0$ if $r$ is an integer greater than $n$; and
+    \item $\binom{n+1}{r+1} = \binom{n}{r} + \binom{n}{r+1}$ if $r$ is a positive integer.
+  \end{enumerate}
+\end{lemma}
+
+\begin{theorem}
+If $n$ is a positive integer and $r$ is a positive integer, then 
+  \begin{equation*}
+  \binom{n}{r} = \frac{n}{1} \times \frac{n-1}{2} \times \cdots \times \frac{n-r+1}{r}
+  \end{equation*}
+\end{theorem}
+
+\begin{definition}
+Suppose that $x$ is a number, and $r$ is an integer. Then
+  \begin{equation*}
+  \binom{x}{r} = 
+    \begin{cases}
+    0 & \text{ if } r < 0 \\
+    1 & \text{ if } r = 0 \\
+    \frac{x}{1} \times \frac{x-1}{2} \times \cdots \times \frac{x-r+1}{r} & \text{ if } r > 0
+    \end{cases}
+  \end{equation*}
+\end{definition}
+
+\begin{corollary}{5.1a}
+If $n$ is a positive integer, and $z$ is a number, then
+  \begin{equation*}
+  (1+z)^n = \sum_{x=0}^{n} \binom{n}{x} z^x
+  \end{equation*}
+\end{corollary}
+
+\begin{corollary}{5.1b}
+If $n$ is a positive integer, then $\displaystyle \sum_{x=0}^{n} \binom{n}{x} = 2^n$.
+\end{corollary}
+
+\begin{theorem}
+Suppose that $r$ is a nonnegative integer.
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item If $n$ is a nonnegative integer, then $\binom{n}{r} = \binom{n}{n-r}$.
+    \item If $a$ is a number, and $n$ is a positive integer, then
+      \begin{equation*}
+      \sum_{x=0}^{n-1} \binom{x+a}{r} = \binom{n+a}{r+1} - \binom{a}{r+1}
+      \end{equation*}
+  \end{enumerate}
+\end{theorem}
+
+\begin{corollary}{5.2a}
+If $n$ is a positive integer, then
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item $\displaystyle \sum_{x=1}{n} x = \binom{n+1}{2}$
+    \item $\displaystyle \sum_{x=1}{n} x^2 = \binom{n+1}{2} + 2 \binom{n+1}{3}$
+    \item $\displaystyle \sum_{x=1}{n} x^3 = \binom{n+1}{2} + 6 \binom{n+1}{3} + 6 \binom{n+1}{4}$
+    \item $\displaystyle \sum_{x=1}{n} x^4 = \binom{n+1}{2} + 14 \binom{n+1}{3} + 36 \binom{n+1}{4} + 24 \binom{n+1}{5}$
+  \end{enumerate}
+\end{corollary}
+
+\begin{definition}
+Suppose that $n$ is a positive integer and $r$ is a positive integer. The statement that $S$ is a \emph{non-decreasing $r$-term sequence} from the first $n$ positive integers means that $S$ is an $r$-term sequence $x_1,x_2,\cdots,x_r$ such that if $p$ is an integer, $q$ is an integer, and $1 \leq p < q \leq r$, then $1 \leq x_p \leq x_q \leq n$.
+\end{definition}
+
+\begin{theorem}
+If $n$ is a positive integer and $r$ is a positive integer, then the number of non-decreasing $r$-term sequence from the first $n$ positive integers is $\binom{n+r-1}{r}$.
+\end{theorem}
+
+\begin{corollary}{5.3a}
+If $n$ is a positive integer, and $r$ is an integer greater than or equal to $n$, then the number of non-decreasing $r$-term sequences from the first $n$ positive integers, each of which contains each of the first $n$ positive integers, is $\binom{r-1}{n-1}$.
+\end{corollary}
+
+\begin{lemma}{5.4a}
+If $|z| < 1$, then $\displaystyle \sum_{r=0}^{\infty} z^r = (1-z)^{-1}$.
+\end{lemma}
+
+\begin{lemma}{5.4b}
+Suppose that $p > 0$, and that each of the series $\displaystyle \sum_{r=0}^{\infty} a_r z^r$ and $\displaystyle \sum_{r=0}^{\infty} b_r z^r$ converges if $|z| < p$. For each non-negative integer $r$, let 
+  \begin{equation*}
+  c_r = \sum_{q=0}^{r} a_q b_{r-q}
+  \end{equation*}
+  Then,
+  \begin{equation*}
+  \sum_{r=0}^{\infty} c_r z^r = \left( \sum_{r=0}^{\infty} a_r z^r \right) \left( \sum_{r=0}^{\infty} b_r z^r \right) \quad \text{ if } |z| < p
+  \end{equation*}
+\end{lemma}
+
+\begin{lemma}{5.4c}
+If $n$ is a positive integer, and $|z| < 1$, then 
+  \begin{equation*}
+  \sum_{r=0}^{\infty} \binom{n+r-1}{r} z^r = (1-z)^{-n}
+  \end{equation*}
+\end{lemma}
+
+\begin{theorem}
+If $n$ is an integer, and $|z| < 1$, then
+  \begin{equation*}
+  \sum_{r=0}^{\infty} \binom{n}{r} z^r = (1+z)^{n}
+  \end{equation*}
+\end{theorem}
+
+\begin{theorem}
+Suppose that $r$ is a positive integer, and that $n_1,n_2,\cdots,n_r$ is a sequence of positive integers. Let $X$ denote the set such that $s$ is in $X$ if and only if the following two statements are true:
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item $s$ is a non-decreasing sequence, each of whose term is one of the first $r$ positive integers; and
+    \item if $k$ is one of the first $r$ positive integers, then at most $n_k$ terms of $s$ are $k$.
+  \end{enumerate}
+  Then $1 + N(X) = (n_1 + 1) (n_2 + 1) \cdots (n_r + 1)$.
+\end{theorem}
+
+\begin{corollary}{5.5a}
+Suppose that $n$ is a positive integer, and that for each positive integer $r$, the number of increasing $r$-term sequences from the first $n$ positive integers is denoted by $N_r$. Then $1 + N_1 + N_2 + \cdots + N_n = 2^n$.
+\end{corollary}
+
+\begin{theorem}
+Let $A_1,A_2,\cdots,A_n,A,B$ denote a sequence of sets such that $A$ is a subset of $B$, and $A$ is the union of $A_1,A_2,\cdots,A_n$. Suppose that $R$ is a probability range such that each of $A_1,A_2,\cdots,A_n,A,B$ is in $R$. If $f$ is an additive set function with range $R$, and
+  \begin{align*}
+  f(B)                     & = p_0 \\
+  f(A_i)                   & = p_1 \text{ for } i=1,2,3,\cdots,n \\
+  f(A_i \cap A_j)          & = p_2 \text{ for } 1 \leq i < j \leq n \\
+  f(A_i \cap A_j \cap A_k) & = p_3 \text{ for } 1 \leq i < j < k \leq n \\
+  \vdots & \\
+  f(A_1 \cap A_2 \cap \cdots \cap A_n) & = p_n \\
+  \end{align*}
+then
+  \begin{equation*}
+  f (B \cap A') = \binom{n}{0} p_0 - \binom{n}{1} p_1 + \binom{n}{2} p_2 - \cdots \pm \binom{n}{n} p_n
+  \end{equation*}
+\end{theorem}
+
+\begin{corollary}{5.6a}
+If $m$ is a positive integer, $n$ is a positive integer, and $r$ is a positive integer less than or equal to $n$, then
+  \begin{equation*}
+  \binom{n-r}{m} = \binom{n}{m} - \binom{r}{1} \binom{n-1}{m-1} + \binom{r}{2} \binom{n-2}{m-2} - \cdots \pm \binom{r}{r} \binom{n-r}{m-r} 
+  \end{equation*}
+\end{corollary}
+
+\begin{problem}
+A bag contains $3$ red marbles and $5$ blue marbles. If the marbles are withdrawn one by one, what is the probability that
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item all of the red marbles are drawn before all of the blue marbles are drawn?
+    \item all of the red marbles are drawn in the first $x$ draws, $x=3,4,5,6,7,8$?
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+A dealer receives a shipment of $100$ electric clocks, and draws a sample of $10$ clocks to be tested. If there are just $5$ defective clocks in the shipment, what is the probability that at least one of the defective clocks is in the sample?
+\end{problem}
+
+\begin{problem}
+What is the probability that a bridge player will get the same hand in each of two successive deals?
+\end{problem}
+
+\begin{problem}
+What is the probability that in one deal of bridge, some player will get a hand containing all 13 cards of some suit?
+\end{problem}
+
+\begin{problem}
+A bag contains $10$ white marbles, and $7$ marbles of $7$ other colors.
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item How many distinguishable sets of $5$ marbles can be drawn from the bag?
+    \item If $5$ marbles are drawn from the bag, what is the probability that all $5$ are white?
+    \item How many distinguishable sets of $8$ marbles can be drawn from the bag?
+    \item If $8$ marbles are drawn from the bag, what is the probability that no two of the marbles drawn are the same color?
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+A company makes $10$ kinds of candy, to be packed in boxes holding $15$ pieces each. How many assortments (of one or more kinds of candy) of $15$ pieces can be boxed? 
+
+  If $15$ pieces of candy are taken from a very large batch containing equal proportions of each kind of candy, what is the probability that among the $15$ pieces there will be at least one piece of each kind of candy?
+\end{problem}
+
+\begin{problem}
+A drawer in a filing cabinet has $5$ markers, labeled $A,B,C,D,E$, and arranged so that cards may be filed in front of or behind any marker. A set of $20$ blank cards is to be put into the drawer. How many distinguishable arrangements are there?
+\end{problem}
+
+\begin{problem}
+A dozen identical rubber balls are dropped into a box whose bottom is divided into four square sections of equal size, marked $1,2,3,4$, each square being large enough to contain all $12$ balls. How many distinguishable distributions of the balls are there?
+\end{problem}
+
+\begin{problem}
+In Problem 5.1, the marbles are to be drawn out one by one until just two red marbles have been drawn, and then no more marbles are to be drawn. What is the probability that just $x$ marbles will be drawn ($x=2,3,4,5,6,7$)?
+\end{problem}
+
+\begin{problem}
+A set of $30$ marbles is to be put into a row of $50$ boxes, in such a fashion that each marble has probability $0.02$ of being put into any one of the boxes. What is the probability that there will be a pair of adjacent boxes which contain at least two marbles? A box which contains at least two marbles?
+\end{problem}
+
+\begin{problem}
+In each of the following, find a series in powers of $s$ and $\frac{1}{s}$, which for the indicated values of $s$ is equal to the given function.
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item $\frac{z^2}{(2-z)^2}, \quad |z| < 2$.
+    \item $\frac{2_z}{(2z-1)^2}, \quad |z| > 2$.
+    \item $\frac{(2z)^2}{(2z-1)^2} + \frac{4}{(2-z)^2}, \quad \frac{1}{2} < |z| < 2$.
+    \item $\frac{1}{(1-z)} - \frac{2}{(1-z)^2} + \frac{1}{(1-z)^3}, \quad |x| < 1$.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+Consider the expansion of $(u+v+w+x+y+z)^4$. After like terms have been collected, how many terms will there be? What will be the sum of the coefficients? What will be the coefficient of $u^4$? Of $u^3 v$? Of $u^2 v w$? Of $u^2 v^2$? Of $u v w x$?
+\end{problem}
+
+\begin{problem}
+Suppose that $n$ is a positive integer. A set of $n$ slips of paper are labeled $1,2,3,\cdots,n$; they are put in a hat and thoroughly mixed. The slips of paper are now withdrawn one by one. If $k$ is one of the first $n$ positive integers, and the $k$th slip is labeled ``$k$'', then it is said that a match has occurred. What is the probability that all $n$ of the slips of paper will be withdrawn without the occurrence of a match?
+\end{problem}
+
+\begin{problem}
+Five men and their wives are to enter a room in single file. In how many orders can they do so without any man immediately preceding or immediately following his own wife?
+\end{problem}
+
+\begin{problem}
+A certain brand of breakfast food is to be boxed so that each package contains one of a set of $n$ toys. The number $n$ is to be just large enough so that if a child's mother buys $20$ boxes of the breakfast food, the probability is at least $0.9$ that she will get a complete set of the toys. What is the number $n$?
+\end{problem}
+
+\begin{problem}
+Suppose that the citizens of the city of Chicago, while celebrating New Year's Eve, were to become so confused that each person starting home is as likely to reach any one dwelling place as any other. Suppose also that the number of dwelling places is the same as the number of celebrants. What is the probability that at least one person will arrive at his/her own home?
+\end{problem}
+
+
+
+\newpage
+
+\section{Conditional Probabilities}
+\markboth{6. Conditional Probabilities}{6. Conditional Probabilities}
+
+In this section, we suppose that there is given a probability distribution $(R,P)$.
+
+\begin{theorem}
+Suppose that the set $A$ is a member of $R$, and that $P(A) > 0$. For each set $X$ in $R$, let $P_A(X)$ denote the number such that $P(A \cap X) = P_A(X) P(A)$. Then $(R,P_A)$ is a probability distribution; moreover, if $X$ is in $R$, then $P_A(X) = P_A(A \cap X)$.
+\end{theorem}
+
+\begin{definition}
+The statement that $(R,P_A)$ is a \emph{conditional probability distribution} from $(R,P)$ over the member $A$ of $R$ means that $(R,P_A)$ is a probability distribution such that if $X$ is in $R$, then
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item $P(A \cap X) = P_A(X) P(A)$; and
+    \item $P_A(X) = P_A(A \cap X)$.
+  \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+Suppose that $A$ is a member of $R$, and that each of $(R,P_A)$ and $(R,P'_A)$ is a conditional probability distribution from $(R,P)$ over $A$. If there is a set $X$ in $R$ such that $P_A(X) \neq P'_A(X)$, then $P(A) = 0$.
+\end{theorem}
+
+\begin{remark}
+It is often convenient to write $P(X|A)$ instead of $P_A(X)$, and to regard this number as the probability that an event is in the set $X$ if it is in $A$.
+\end{remark}
+
+\begin{theorem}
+Suppose that $(R,P_A)$ and $(R,P_B)$ are conditional probability distributions from $(R,P)$ over $A$ and $B$, respectively. Then
+  \begin{equation*}
+  P(B|A) P(A) = P(A|B) P(B)
+  \end{equation*}
+\end{theorem}
+
+\begin{theorem}
+Suppose that $A_1,A_2,\cdots,A_n$ is a collection of members of $R$ such that their union is $I$, and the common part of any two of them is $0$. Suppose also that if $k$ is one of the first $n$ positive integers, then $(R,P_{A_k})$ is a conditional probability distribution from $(R,P)$ over $A_k$. If $X$ is in $R$, then
+  \begin{equation*}
+  P(X) = \sum_{k=1}^{n} P(X|A_k) P(A_k)
+  \end{equation*}
+\end{theorem}
+
+\begin{theoremnamed}{Bayes' Theorem}
+Suppose that the sets $A_k$ and distributions $(R,P_{A_k})$ are as in the hypothesis of THeorem 6.4. If $X$ is in $R$ and $P(X) > 0$, then
+  \begin{equation*}
+  P(A_1|X) = \frac{P(X|A_1) P(A_1)}{\sum_{k=1}^{n} P(X|A_k) P(A_k)}
+  \end{equation*}
+\end{theoremnamed}
+
+\begin{theorem}
+Suppose that each of $A,B,C$ is in $R$, and $B$ is a subset of $A$, and $C$ is a subset of $B$, and $P(B) > 0$. If $X$ is in $R$, then
+  \begin{align*}
+  P(X|A) & \geq P(X|B) P(B|A) \\
+  P(C|A) & = P(C|B) P(B|A) \\
+  \end{align*}
+\end{theorem}
+
+\begin{definition}
+Suppose that $A$ is in $R$. The statement that $D$ is a \emph{subdivision} of $A$ in $R$ means that $D$ is a finite set of (one or more) members $A_1,A_2,\cdots,A_n$ of $R$, none of them the set $0$, whose union is $A$, such that $A_i \cap A_j = 0$ if $i$ and $j$ are two of the first $n$ positive integers.
+
+  The statement that $E$ is a \emph{refinement} of $D$ means that $E$ is a subdivision of $A$ in $R$ such that if $A_p$ is a member of $D$, then there is a subset of $E$ which is a subdivision of $A_p$ in $R$.
+\end{definition}
+
+\begin{notation}
+If $f$ is a set function whose range is $R$, and $A$ is in $R$, and $D$ is a subdivision $A_1,A_2,\cdots,A_n$ of $A$ in $R$, then
+  \begin{equation*}
+  S_D (f) = \sum_{k=1}^{n} f(A_k) P(A_k)
+  \end{equation*}
+\end{notation}
+
+\begin{definition}
+Suppose that $f$ is a set-function whose range is $R$, and that $A$ is in $R$. The statement that $\displaystyle \int_A f \ dP \ = c$, or that $c$ is the \emph{integral} of $f$ with respect to $P$ over $A$, means that $c$ is a number, and that if $e > 0$, then there is a subdivision $D$ of $A$ in $R$ such that $|S_E (f) - c| < e$ if $E$ is a refinement of $D$.
+\end{definition}
+
+\begin{definition}
+The statement that $f$ is \emph{quasi-continuous} over $R$ means that $f$ is a set function whose range is $R$, and that if $e > 0$, then there is a subdivision $D$ of $I$ in $R$, such that if $E$ is a refinement of $D$, and $p$ is a member of $D$, and $q$ is a subset of $p$ which is a member of $E$, then $|f(p) - f(q)| < e$.
+\end{definition}
+
+\begin{theorem}
+If $f$ is quasi-continuous over $R$, and $A$ is in $R$, then there is a number $c$ such that $\displaystyle \int_A f \ dP \ = c$.
+\end{theorem}
+
+\begin{theorem}
+Suppose that $X$ is a member of $R$; and that for each member $a$ of $R$, $(R,P_A)$ is a conditional probability distribution from $(R,P)$ over $a$ and $f(a) = P_a(X)$. If $IA$ is a member of $R$, and $f$ is quasi-continuous over $R$, then
+  \begin{equation*}
+  P(X \cap A) = \int_A f \ dP
+  \end{equation*}
+\end{theorem}
+
+\begin{remark}
+It is convenient upon occasion to write 
+  \begin{equation*}
+  \int_A P_a(X) \ dP(a)
+  \end{equation*}
+or 
+  \begin{equation*}
+  \int_A P(X|a) \ dP(a)
+  \end{equation*}
+for the integral $\displaystyle \int_A f \ dP$ in Theorem 6.8.
+\end{remark}
+
+\begin{problem}
+In a certain corporation, the proportions of employees in various classifications are as follows:
+
+  \begin{center}
+  \begin{tabular}{|l|r|}
+  \hline
+  Sales             & 1/2 \\
+  Main office       & 1/3 \\
+  Main office sales & 1/7 \\
+  \hline
+  \end{tabular}
+  \end{center}
+
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item An employee's name is taken at random from the company's payroll records, and it is observed that he is a main office employee. What is the probability that he is a member of the company's sales personnel?
+    \item An employee's name is taken at random, and it is observed that he is a sales employee. What is the probability that he is a main office employee?
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+A set of 12 cards has the following properties. 
+  \begin{itemize}
+    \item The number of cards not marked with spots is 2. 
+    \item The number with black spots is 7. 
+    \item The number with blue spots is 5.
+    \item The number with red spots is 3.
+    \item The number with black spots and blue spots is 3.
+    \item The number with red spots and black spots is 3.
+    \item The number with black spots, blue spots, and red spots is 3.
+  \end{itemize}
+  All 12 cards are put in a hat, and one card is withdrawn. If it has a red spot, what is the probability that it also has a blue spot?
+\end{problem}
+
+\begin{problem}
+A red die and a green die are thrown. If the score on the red die is an even integer, what is the probability that the total score for the pair of dice is divisible by $5$?
+\end{problem}
+
+\begin{problem}
+There are given three cards, one white on both sides, one red on both sides, and one white on one side and red on the other. A card is drawn and laid on a table. The visible side is white. What is the probability that the other side is also white?
+\end{problem}
+
+\begin{problem}
+In a sequence of games of jai-alai, $n$ players are to draw lots for positions in a line. The first game is between the two players at the head of the line. After each game, the loser goes to the foot of the line, and the winner plays the person then at the head of the line. If Mr. Blanco is one of the players, and if the players are equally skillful, what is the probability that Mr. Blanco will play in the $k$th game ($k=1,2,3,4,\cdots$)?
+\end{problem}
+
+\begin{problem}
+A bridge hand of $13$ cards is dealt to a player from a standard $52$-card deck.
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item If he has an ace, what is the probability that he has at least two aces?
+    \item If he has the ace of clubs, what is the probability that he has at least two aces?
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+In a certain game, $5$ pennies are tossed. If just $x$ of the pennies show ``heads'', then $x$ nickels are tossed. If just $y$ of the nickels show ``heads'', then $y$ dimes are tossed.
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item The number of heads on the toss of the nickels is $2$. What is the probability that the number of heads on the toss of the pennies was $2$?
+    \item The number of heads on the toss of the dimes is $2$. What is the probability that the number of heads on the toss of the pennies was $2$?
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+In a study of the durations of local telephone calls, just half of the calls terminate within the first $3$ minutes. It is assumed that if $\tau$ is the length of a call, and $t > 0$ and $t_1 > 0$, then
+  \begin{equation*}
+  P (\tau \leq t+t_1 \ | \ \tau > t) = P(\tau \leq t_1)
+  \end{equation*}
+  Suppose that $P(\tau \leq 0) = 0$. For each real number $t$, find $P(\tau \leq t)$
+\end{problem}
+
+\begin{problemnamed}{a simplication of a problem in genetics}
+A box contains a large number of marbles, of which $\frac{1}{3}$ are red and $\frac{2}{3}$ are green. Two marbles are put in container $A$, and two are put in container $B$. A marble is taken from container $A$, and another is taken from container $B$. It is found that both marbles are green. What is the probability that at least one of containers $A$ and $B$ contained two green marbles?
+\end{problemnamed}
+
+\begin{problem}
+On each of two dials, a spinner is mounted so that when it stops after a spin, it will point to a number in the interval $[0,1]$. If $[a,b]$ and $[c,d]$ are sub-intervals of $[0,1]$, and are of equal length, then the spinner is as likely to point to a number in $[c,d]$ as to a number in $[a,b]$. Let $x$ and $y$ denote the numbers indicated by the spinners on the first and second dials, respectively. 
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item If $x+y \leq 1$, what is the probability that $x \leq \frac{1}{3}$?
+    \item If $x - y \leq 1$, what is the probability that $x \leq \frac{1}{3}$?
+    \item If $x^2 + y^2 = \frac{1}{4}$, what is the probability that $x \leq \frac{1}{3}$?
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+In the game of craps, a player throws two dice. He wins under these conditions:
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item if his score on the first throw is $7$ or $11$; or 
+    \item if his score on the first throw is one of $4,5,6,8,9,10$, and if by further throws he gets this same score again before he gets a $7$.
+  \end{enumerate}
+Determine the following:
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item If the score on the first throw was $x$ ($x=4,5,6,7,8,9,10$), and if the player has made $k$ throws without winning or losing, what is the probability that he will win on the next throw? That he will eventually win?
+    \item What is the player's probability of winning? How could the rules of the game be revised to make the odds more nearly even?
+    \item If a player wins on the second throw, what is the probability that he won by throwing a $10$?
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+In a certain city, each block is square, and $\frac{1}{8}$ mile on each side. A man starts in the cetner of town, and walks $4$ blocks. Before walking each block, he selects a direction (north, east, west, or south) by lot. What is the probability that he is at his starting point after walking the fourth block?
+\end{problem}
+
+
+
+\newpage
+
+\section{Distribution Functions; Independence}
+\markboth{7. Distribution Functions; Independence}{7. Distribution Functions; Independence}
+
+\begin{definition} $\ $
+
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item Suppose that $\tau$ is a chance variable, and that $(R,P)$ is a probability distribution such that if $p$ is in $I$, then $\tau(P)$ is a real number, and such that if $t$ is a real number, then the set $(\tau \leq t)$ is a member of $R$. The statement that $F$ is the \emph{distribution function for $\tau$} means that $F$ is the function such that if $t$ is a real number, then $F(t) = P(\tau \leq t)$.
+    
+    \item Suppose that $\tau_1,\tau_2,\cdots,\tau_n$ is a sequence of chance variables, and $(R,P)$ is a probability distribution such that if $t_1,t_2,\cdots,t_n$ is an $n$-term real-number sequence, then each of the sets $(\tau_k \leq t_k)$, $k=1,2,\cdots,n$, is a member of $R$. The statement that $F$ is the \emph{distribution function for $\tau_1,\tau_2,\cdots,\tau_n$} means that $F$ is the function such that if $t_1,t_2,\cdots,t_n$ is an $n$-term real-number sequence, then 
+      \begin{equation*}
+      F (t_1,t_2,\cdots,t_n) = P (\tau_1 \leq t_1,\ \tau_2 \leq t_2,\ \cdots,\ \tau_n \leq t_n)
+      \end{equation*}
+
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+Suppose that $f$ is a function whose range contains an interval $[a,b]$, and that $t$ is a number between $a$ and $b$.
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item The statement that $f(t-) = c_1$ means that $c_1$ is a number, and that if $\epsilon > 0$, then there is an interval $[p,t]$ in $[a,b]$ such that $|f(s) - c_1| < \epsilon$ if $s$ is between $p$ and $t$.
+    \item The statement that $F(t+) = c_2$ means that $c_2$ is a number, and that if $\epsilon > 0$, then there is an interval $[t,q]$ in $[a,b]$ such that $f(s) - c_2 < \epsilon$ if $s$ is between $t$ and $q$.
+  \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+Suppose that $\tau$ is a chance variable, and that $F$ is the distribution function for $\tau$. Then each of the following statements is true.
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item $F$ is non-decreasing; i.e., if $t_1 < t_2$, then $F(t_1) \leq F(t_2)$.
+    \item If $t$ is a real number, then $0 \leq F(t) \leq 1$.
+    \item If $\epsilon > 0$, then there is a real number $x$ such that $F(x) < \epsilon$.
+    \item If $\epsilon > 0$, then there is a real number $y$ such that $F(y) > 1 - \epsilon$.
+    \item $F$ is continuous from the right; i.e., if $t$ is a real number, then $F(t+) = F(t)$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{remark}
+If $F$ is a distribution function, and $t$ is a real number, then $\delta F(t) = F(t) - F(t-)$.
+\end{remark}
+
+\begin{question}
+Suppose that $F$ is a function such that the statements (i) through (v) of Theorem 7.1 are true. Is there a chance variable $\tau$ such that $F$ is the distribution function for $\tau$?
+\end{question}
+
+\begin{theorem}
+If $\tau$ is a chance variable, and $F$ is the distribution function for $\tau$, and $t$ is a real number, then $\delta F(t) = P(\tau = t)$. Moreover, $\sum \delta F(t) \leq 1$.
+\end{theorem}
+
+\begin{definition}
+The statement that $F$ is a \emph{discrete distribution function} (or, the distribution function for a discrete distribution or for a discrete chance variable) means that $F$ is a distribution function such that $\sum \delta F(t) = 1$.
+\end{definition}
+
+\begin{question}
+Is there a discrete distribution function $F$ such that if $[a,b]$ is an interval, then there is in $[a,b]$ a number $t$ such that $\delta F(t) > 0$?
+\end{question}
+
+\begin{definition}
+Suppose that $n$ is an integer greater than $1$, and that $\tau_1,$ $\tau_2,$ $\cdots,$ $\tau_n$ is a sequence of chance variables with distribution function $F$. The statement that $\tau_1,\tau_2,\cdots,\tau_n$ are \emph{independently distributed} means that if $t_1,$ $t_2,$ $\cdots,$ $t_n$ is an $n$-term real-number sequence, then
+  \begin{equation*}
+  P (\tau_1 \leq t_1,\ \tau_2 \leq t_2,\ \cdots,\ \tau_n \leq t_n) = P (\tau_1 \leq t_1) \ P (\tau_2 \leq t_2) \ \cdots \ P (\tau_n \leq t_n)
+  \end{equation*}
+\end{definition}
+
+\begin{theorem}
+If $\tau_1,\tau_2,\cdots,\tau_n$ is a sequence of $n$ independently distributed chance variables, and $t_1,t_2,\cdots,t_n$ is an $n$-term real-number sequence, then
+  \begin{equation*}
+  P (\tau_1 = t_1,\ \tau_2 = t_2,\ \cdots,\ \tau_n = t_n) = P (\tau_1 = t_1) \ P (\tau_2 = t_2) \ \cdots \ P (\tau_n = t_n)
+  \end{equation*}
+\end{theorem}
+
+\begin{definition}
+The statement that $x_1,x_2,\cdots,x_n$ is a \emph{random sample} of size $n$ from the population $I$ means that
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item there is a probability distribution $(R,P)$ such that $I$ is the member of $R$ such that each member of $R$ is a subset of $I$; and
+    \item $x_1,x_2,\cdots,x_n$ is a sequence of independently distributed chance variables, each having range $I$, such that if $x$ is a real number, then
+      \begin{equation*}
+      P (x_1 \leq x) = P (x_2 \leq x) = \cdots = P (x_n \leq x)
+      \end{equation*}
+  \end{enumerate}
+\end{definition}
+
+\begin{problem}
+A pointer is mounted on a dial along whose edge there is a scale, on which an observer can read each of the numbers in the interval $0$ through $1$. The length of the scale is one meter; and if $0 \leq t \leq 1$, then the length of the part of the scale containing the numbers $0$ through $t$ is $t$ meters. The pointer is given a spin, and the number to which it points when it comes to rest is denoted by $\tau$. Construct a graph of the distribution function for the chance variable $\tau$.
+\end{problem}
+
+\begin{problem}
+A die is tossed, and the score is denoted by $\tau$. Construct a graph of the distribution function for the chance variable $\tau$.
+\end{problem}
+
+\begin{problem}
+There is given a coin on which the probability of heads is $p$ and the probability of tails is $q$, where $0 < p < 1$ and $p + q = 1$. A player is to toss the coin until he first throws heaads, and then stops. Let $\tau$ denote the number of times he throws tails. Make a graph of the distribution function for the chance variable $\tau$.
+\end{problem}
+
+\begin{problem}
+Let $\tau$ denote the number of heads on a throw of $4$ pennies. Sketch the graph of the distribution function for the chance variable $\tau$.
+\end{problem}
+
+\begin{problem}
+In the graph shown here, 
+  \begin{equation*}
+  P (\theta \leq t) = 
+    \begin{cases}
+         0      & \text{ if } t < - \frac{\pi}{2} \\
+    \frac{1}{2} & \text{ if } - \frac{\pi}{2} \leq t \leq \frac{\pi}{2} \\
+         1      & \text{ if } t > \frac{\pi}{2} \\
+    \end{cases}
+  \end{equation*}
+  Find the distribution function for $\xi$, and make a sketch of it.
+  
+  \begin{center}
+  %TeXCAD Picture [probability1.pic]. Options:
+  %\grade{\on}
+  %\emlines{\off}
+  %\epic{\off}
+  %\beziermacro{\on}
+  %\reduce{\on}
+  %\snapping{\off}
+  %\quality{8.00}
+  %\graddiff{0.01}
+  %\snapasp{1}
+  %\zoom{4.0000}
+  \unitlength 1mm % = 2.85pt
+  \linethickness{0.4pt}
+  \ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+  \begin{picture}(45,27)(0,0)
+  \put(3.25,10.25){\line(1,0){39.75}}
+  \put(24.5,6){\line(0,1){21}}
+  \put(24.75,24.5){\line(1,-1){20.25}}
+  \qbezier(27.5,21.75)(27,20.63)(24.5,21)
+  %\vector(27.05,21.51)(27.55,22.01)
+  \put(27.55,22.01){\vector(1,1){.07}}\multiput(27.05,21.51)(.033333,.033333){15}{\line(0,1){.1}}
+  %\end
+  \put(21.75,25){\makebox(0,0)[cc]{$1$}}
+  \put(27.5,16.5){\makebox(0,0)[cc]{$\theta$}}
+  \put(36.75,7.25){\makebox(0,0)[cc]{$\xi$}}
+  \put(24.5,24.75){\circle*{1}}
+  \put(38.75,10.25){\circle*{1}}
+  \end{picture}
+  \end{center}
+\end{problem}
+
+\begin{problem}
+The pointer in Problem 7.1 is given a spin; when it comes to rest, the number to which it points is $\tau_1$. It is given a second spin, and the number to which it points when it comes to rest is denoted by $\tau_2$. Sketch the graph of the distribution function for the sequence $\tau_1,\tau_2$ of chance variables. Are these two chance variables independently distributed?
+\end{problem}
+
+\begin{problem}
+A red die and a green die are thrown. The score on the red die is $\tau_1$, and the score on the green die is $\tau_2$. Sketch a graph of the distribution function for the sequence $\tau_1,\tau_2$ of chance variables. Are these two chance variables independently distributed?
+\end{problem}
+
+\begin{problem}
+A set of four nickels is tossed, and $\tau_1$ is the number of heads on the throw. If $\tau_1 = 0$, then $\tau_2 = 0$; if $\tau_1 > 0$, then $\tau_1$ dimes are thrown, and $\tau_2$ is the number of heads on the throw of the dimes. Find the distribution function for $\tau_1$, the distribution function for $\tau_2$, and the distribution function for the sequence $\tau_1,\tau_2$. Are $\tau_1$ and $\tau_2$ independently distributed?
+\end{problem}
+
+\begin{problem}
+Let $I$ denote the set of all tosses of three coins -- a penny, a nickel, and a dime. Can you give a sequence of three chance variables for this experiment, such that such that the members of each pair of chance variables are independently distributed, but the three chance variables are not independently distributed?
+\end{problem}
+
+\begin{problem}
+Suppose that $n_1$ is a positive integer and $n_2$ is a positive integer, and $n$ is a positive integer less than or equal to $n_1$. An urn contains just $n_1 + n_2$ marbles, of which $n_1$ are white and $n_2$ are red. A set of $n$ marbles is withdrawn from the urn. Let $\xi$ denote the total number of marbles withdrawn. Show that if $x$ is a positive integer, then
+
+  \begin{equation*}
+  P(\xi = x) \ = \ \frac{ \binom{n_1}{x} \binom{n_2}{n-x} }{ \binom{n_1+n_2}{n} } \ = \ \frac{ \binom{n}{x} \binom{n_1+n_2-n}{n_1-x} }{ \binom{n_1+n_2}{n_1} }
+  \end{equation*}
+
+  Such a distribution is said to be a \emph{hypergeometric distribution}.
+\end{problem}
+
+\begin{problem}
+Suppose that $n_1$ is a positive integer and $n_2$ is a positive integer, and $n$ is a positive integer less than or equal to $n_1$. An urn contains just $n_1 + n_2$ marbles, of which $n_1$ are white and $n_2$ are red. Marbles are withdrawn from the urn one by one, until just $n$ white marbles have been withdrawn, and then the drawing stops. Let $\xi$ denote the total number of marbles withdrawn. Show that if $x$ is a positive integer, then
+
+  \begin{equation*}
+  P(\xi = x) \ = \ \frac{n}{x} \cdot \frac{ \binom{n_1}{n} \binom{n_2}{x-n} }{ \binom{n_1+n_2}{x} } \ = \ \frac{ \binom{x-1}{n-1} \binom{n_1+n_2-x}{n_1-n} }{ \binom{n_1+n_2}{n_1} }
+  \end{equation*}
+
+  Such a distribution is said to be a \emph{hypergeometric waiting time distribution}.
+\end{problem}
+
+\begin{problem}
+Find the sum of each of the following series.
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item $\displaystyle \sum_{x=0}^{\infty} \binom{15}{x} \binom{20}{18-x}$
+    \item $\displaystyle \sum_{x=0}^{50} \binom{x}{14} \binom{50-x}{30}$
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+Suppose that $0 < p < 1$, and $p + q = 1$. In Problem 7.10, suppose that $n_1$ and $n_2$ are very large compared to $n$ and $x$, and that $\frac{n_1}{n_2} = \frac{p}{q}$. Show that
+  \begin{equation*}
+  P(\xi = 0) \doteq q^n
+  \end{equation*}
+and that
+  \begin{equation*}
+  \frac{P(\xi = x+1)}{P(\xi = x)} \ = \ \frac{n-x}{x+1} \cdot \frac{n_1 - x}{n_2 - n - x - 1} \ \doteq \ \frac{n-x}{x+1} \cdot \frac{p}{q}
+  \end{equation*}
+\end{problem}
+
+\begin{problem}
+Suppose that $0 < p < 1$, and $p + q = 1$. In Problem 7.11, suppose that $n_1$ and $n_2$ are very large compared to $n$ and $x$, and that $\frac{n_1}{n_2} = \frac{p}{q}$. Show that
+  \begin{equation*}
+  P(\xi = n) \doteq p^n
+  \end{equation*}
+and that if $x \geq 1$, then
+  \begin{equation*}
+  \frac{P(\xi = x+1)}{P(\xi = x)} \ = \ \frac{x}{x-n+1} \cdot \frac{n_2 - x}{n_1 + n_2 - x} \ \doteq \ \frac{x}{x-n+1} \cdot q
+  \end{equation*}
+\end{problem}
+
+
+
+\newpage
+
+\section{Expected Values}
+\markboth{8. Expected Values}{8. Expected Values}
+
+In this section, we suppose that $\tau$ is a chance variable with distribution function $F$.
+
+\begin{theorem}
+If $y$ is quasi-continuous, and $[a,b]$ is an interval, then there is a number $c$ such that
+  \begin{equation*}
+  \int_{a}^{b} y(t) \ dF(t) \ = c
+  \end{equation*}
+\end{theorem}
+
+\begin{definition}
+The statement that $\displaystyle \int_{-\infty}^{+\infty} y(t) \ dx(t) \ = c$ means that $c$ is a number, and that if $p > 0$, then there is an interval $[A,B]$ such that
+  \begin{equation*}
+  \left| \int_{a}^{b} y(t) \ dF(t) \ - c \right| < p \quad \text{ if } a \leq A \text{ and } b \geq B
+  \end{equation*}
+\end{definition}
+
+\begin{definition}
+Suppose that $y$ is a function whose range is the set of all real numbers. The statement that the \emph{expected value} of $y$ is $c$, or that $E(y) = c$, or that $E[y(\tau)] = c$, means that 
+  \begin{equation*}
+  \int_{-\infty}^{+\infty} y(t) \ dF(t) \ = c
+  \end{equation*}
+  
+  The number $E(\tau)$, if there is such a number, is said to be the \emph{mean} of $\tau$, and is denoted by $m$. The number $E[(\tau-m)^2]$, if there is such a number, is denoted by $\sigma^2$, and is said to be the variance of $\tau$. Its non-negative square root, $\sigma$, is the \emph{standard deviation} of $\tau$.
+\end{definition}
+
+\begin{theorem}
+Suppose that $E(y) = c$ and $E(y_1) = c_1$. Then each of the following statements is true:
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item $E(y+y_1) = E(y) + E(y_1)$;
+    \item if $k$ is a number, then $E(ky) = kE(y)$;
+    \item if $y(t) = 1$ for each real number $t$, then $E(y) = 1$; and
+    \item if $y(t) \geq 0$ for each real number $t$, then $E(y) \geq 0$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{corollary}{8.2a}
+If $E(y) = c$ and $M_1 \leq y(t) \leq M_2$ for each real number $t$, then $M_1 \leq E(y) \leq M_2$.
+\end{corollary}
+
+\begin{corollary}{8.2b}
+If $\tau$ has mean $m$ and variance $\sigma^2$, then $\sigma^2 = E(\tau^2) - m^2$.
+\end{corollary}
+
+\begin{theorem}
+Suppose that $\tau$ has mean $m$, and that $a$ is a number less than $m$, and that $P(\tau < a) = 0$. If $t > a$, then 
+  \begin{equation*}
+  P(\tau > t) \leq \frac{(m-a)}{(t-a)}
+  \end{equation*}
+\end{theorem}
+
+\begin{theorem}
+Suppose that $E(u^2)$, $E(v^2)$, and $E(uv)$ exist. Then 
+  \begin{equation*}
+  |E(uv)| \leq \sqrt{|E(u^2) E(v^2)|}
+  \end{equation*}
+\end{theorem}
+
+\begin{corollary}{8.4a}
+Suppose that $c$ is a real number, and that $\tau$ has mean $m$ and variance $\sigma^2$. Then
+  \begin{equation*}
+  \sqrt{E[(\tau-c)^2]} \geq \sigma \geq E(|\tau-m|)
+  \end{equation*}
+\end{corollary}
+
+\begin{theorem}
+Suppose that $v$ is quasi-continuous, $v(t-) = v(t)$ for each real number $t$, and $E(v) = c$. If $k > 0$, and $v(t) \geq 0$ for each real number $t$, then
+  \begin{equation*}
+  P[ v(\tau) > k] \leq \frac{E(v)}{k}
+  \end{equation*}
+\end{theorem}
+
+\begin{corollary}{8.5a}
+Suppose that $\tau$ has mean $m$ and variance $\sigma^2$. If $k > 0$, then
+  \begin{equation*}
+  P( |\tau-m| > k \sigma ) \leq \frac{1}{k^2}
+  \end{equation*}
+\end{corollary}
+
+\begin{problem}
+A player is to flip a penny and is to receive a prize of \$1 if he throws ``tails'', or \$2 if he throws ``heads''. How much should he pay for the privilege of playing this game?
+\end{problem}
+
+\begin{problem}
+A player is to flip a penny and a nickel, and is to receive a prize of \$1, \$2, or \$3, according to whether the number of heads is $0$, $1$, or $2$, respectively. How much should he pay for the privilege of playing this game?
+\end{problem}
+
+\begin{problem}
+There is given a coin on which the probability of heads is $p$ and the probability of tails is $p$, where $p+q=1$, and $0 < p < 1$. A player is to toss the coin until tails occurs, and must then stop. Suppose that $z$ is a real number, and that if the player gets to toss the coin just $x$ times, then he is to receive a prize of $z^x$ dollars if $z^x$ is positive, or to pay $|z^x|$ dollars to a banker if $z^x < 0$.
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item If $p = \frac{1}{2}$ and $z = \frac{1}{4}$, how much should he pay for the privilege of playing a game?
+    \item If $p = \frac{1}{2}$ and $z = 2$, how much should he pay for the privilege of playing a game?
+    \item For what real numbers $z$ is it possible to determine how much he should pay (or receive) for playing a game? For each such number $z$, what is the amount he should pay or receive?
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+What is the mean of the scores on throws of a die? The variance? The standard deviation? The expected value of the numerical values of the deviations of the scores from the mean?
+\end{problem}
+
+\begin{problem}
+Mr. A is going to visit a friend. The bus lets him off $\frac{1}{4}$ block from the west end of the block on which his friend lives, and on the side of the street where his friend's house is. It is so foggy that Mr. A can see only one house at a time. He does not know the number of the house, but he has a picture of it. Should he start walking east, or would it be better to start west?
+\end{problem}
+
+\begin{problem}
+Mr. B has parked his car a quarter of a mile from the north end of a smooth sandy private beach, which is one mile long. He walks to each end of the beach, and returns to his car, when he discovers that he has lost his keys. In searching for the keys, should he start north along the beach, or would it be better to start south?
+\end{problem}
+
+\begin{problem}
+Let $n$ denote a positive integer. Each of the first $n$ positive integers is written on a slip of paper, the $n$ slips of paper are put in a box and thoroughly mixed, and one slip is withdrawn. Let $\tau$ denote the number on the slip withdrawn. The chance variable $\tau$ is said to have a discrete rectangular distribution over the first $n$ positive integers, or a uniform distribution over the first $n$ positive integers. Find the mean and the variance.
+\end{problem}
+
+\begin{problem}
+A pointer is mounted on a dial so that if it is spun, then when it stops, it will point to a number in the interval $[0,1]$. Let $\tau$ denote the number indicated by the pointer after a spin, and suppose that if $0 \leq t \leq 1$, then $P (\tau < t) = t$. The chance variable $\tau$ is said to have a continuous rectangular distribution (or a uniform distribution) over the interval $[0,1]$. Find the mean and the variance.
+\end{problem}
+
+\begin{problem}
+A study of telephone conversations indicates that under the conditions of the study, the following statement is true:
+
+  If $x > 0$, $t > 0$, and $\tau$ is the length (minutes and fractions of minutes) that a conversation continues, then $P (\tau \leq t+c \ | \ \tau > c) = P (\tau \leq t)$. 
+  
+  If the mean of $\tau$ is $2.5$ minutes, what is the distribution function for $\tau$? What would be an appropriate name for such a distribution? For the distribution in Problem 8.3?
+\end{problem}
+
+\begin{problem}
+The policies issued by a certain life insurance company are for amounts of \$1,000 and over. The average amount of insurance per policy is \$6,000. How large a proportion of the policies issued by the company can be for amounts of \$10,000 or more?
+\end{problem}
+
+\begin{problem}
+Mr. A and Mr. B are to play a sequence of games, wagering specified amounts upon the various games. The amounts of the wagers are such that each game is fair; i.e., the expected value of each player's net gain or loss is zero for each game. Mr. A is willing to play as many games as Mr. B wishes. Mr. B secretly resolves to stop playing as soon as he loses a game. How does this decision affect his expected gain or loss for the sequence of games?
+\end{problem}
+
+\begin{problem}
+Mr. C is starting a new business. He decides that he will prepare a monthly profit and loss statement, and will continue in business as long as he makes profits, but will go out of business if in any month he loses money. Is this a wise decision?
+\end{problem}
+
+\begin{problem}
+The average annual income per capita in a certain city is \$2,000. 
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item How large a proportion of the population can have incomes greater than \$10,000? 
+    \item If the standard deviation in annual incomes is \$1,000, how large a proportion of the population can have annual incomes greater than \$10,000?
+    \item If the standard deviation in annual incomes is \$1,000, and 25\% of the persons in the city have annual incomes of \$1,500 or more, how large a proportion of the population can have incomes greater than \$10,000?
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+A penny is tossed 1,000 times. Give an estimate of the probability that ``heads'' occurs more than 550 times or less than 450 times.
+\end{problem}
+
+
+
+\newpage
+
+\section{Probability Generating Functions}
+\markboth{9. Probability Generating Functions}{9. Probability Generating Functions}
+
+In this section, we make use of a device which often simplifies problems in probability by enabling us to deal with a single function rather than a set of many probabilities as such.
+
+\begin{theorem}
+Suppose that $\tau$ is a discrete non-negative integer-valued chance variable, and that $P(\tau = t) = p_t$, $t=0,1,2,\cdots$. If $|z| \leq 1$, then the series $\displaystyle \sum_{t=0}^{\infty} p_t z^t$ converges.
+\end{theorem}
+
+\begin{theorem}
+Suppose that each of the series $\displaystyle \sum_{t=0}^{\infty} p_t z^t$ and $\displaystyle \sum_{t=0}^{\infty} r_t z^t$ converges, and has the value $f(z)$ if $|z| \leq c$, where $c > 0$. Then $P_t = r_t$, $t=0,1,2,\cdots$.
+\end{theorem}
+
+\begin{definition}
+Suppose that $\tau$ is a discrete non-negative integer-valued chance variable, and that $P(\tau = t) = p_t$, $t=0,1,2,\cdots$. The statement that $\wp$ is the \emph{probability generating function} for $\tau$ means that $\wp$ is the function such that $\displaystyle \wp (z) \sum_{t=0}^{\infty} p_t z^t$ for each number $z$ such that the series converges.
+\end{definition}
+
+\begin{theorem}
+Suppose that $\tau_1$ is a chance variable having probability generating function $\wp_1$, and that $\tau_2$ is a chance variable having probability generating function $\wp_2$. If $\tau_1$ and $\tau_2$ are independently distributed, and $\tau = \tau_1 + \tau_2$, then $\tau$ is a chance variable having probability generating function $\wp_1 \wp_2$.
+\end{theorem}
+
+\begin{corollary}{9.3a}
+Suppose that $\tau_1,\tau_2,\cdots,\tau_n$ is a sequence of independently distributed chance variables having probability generating functions $\wp_1,$ $\wp_2,$ $\cdots,$ $\wp_n$, respectively, and that $\tau = \tau_1 + \tau_2 + \cdots + \tau_n$. Then $\tau$ is a chance variable having probability generating function $\wp_1 \wp_2 \cdots \wp_n$.
+\end{corollary}
+
+\begin{theorem}
+Suppose that $\tau$ is a chance variable with probability generating function $\wp$ and distribution function $F$. If $|z| < 1$, then 
+  \begin{equation*}
+  \frac{\wp (z)}{1-z} = \sum_{t=0}^{\infty} F(t) z^t
+  \end{equation*}
+\end{theorem}
+
+\begin{theorem}
+Suppose that $\tau$ is a chance variable with probability generating function $\wp$. If $k$ is a positive integer, and $E[\tau^{(k)}]$ exists, and $\wp^{(k)}$ denotes the $k$th derivative of $\wp$, then
+  \begin{equation*}
+  \wp^{(k)} (1) = E[\tau^{(k)}]
+  \end{equation*}
+  In particular, if $E(\tau) = m$, then $\wp (1) = m$.
+\end{theorem}
+
+\begin{question}
+Suppose that $n$ independently distributed chance variables have probability generating functions $q_k + p_k z$, $k=1,2,3,\cdots,n$, and that $\tau_n$ is the sum of the $n$ chance variables. Find the mean and variance of $\tau_n$, supposing that $p)k + q_k = 1$, $k=1,2,\cdots,n$.
+\end{question}
+
+\begin{question}
+Suppose that $\wp_1,\wp_2,\wp_3,\cdots$ is a sequence of probability generating functions which converges to a function $\wp$. Is $\wp$ a probability generating function?
+\end{question}
+
+
+\newpage
+
+\subsection*{Probability Generating Functions for Various Distributions}
+
+$\ $
+
+Hypergeometric distribution
+
+\begin{equation*}
+\wp(z) = \sum_{x=0}^{\infty} \frac{ \binom{n}{x} \binom{n_1+n_2-n}{n_1-x} }{ \binom{n_1+n_2}{n_1} } \ z^x
+\end{equation*}
+
+\vspace{0.5cm}
+
+Hypergeometric waiting time distribution
+
+\begin{equation*}
+\wp(z) = \sum_{x=0}^{\infty} \frac{ \binom{x-1}{n-1} \binom{n_1+n_2-x}{n_1-n} }{ \binom{n_1+n_2}{n_1} } \ z^x
+\end{equation*}
+
+\vspace{0.5cm}
+
+Binomial (Bernoulli) distribution
+
+\begin{equation*}
+\wp(z) = (q + pz)^n
+\end{equation*}
+
+\vspace{0.5cm}
+
+Discrete exponential distribution
+
+\begin{equation*}
+\wp(z) = \frac{p}{1 - qz}
+\end{equation*}
+
+\vspace{0.5cm}
+
+Negative binomial distribution
+
+\begin{equation*}
+\wp(z) = \left( \frac{p}{1 - qz} \right) ^n
+\end{equation*}
+
+\vspace{0.5cm}
+
+Poisson distribution
+
+\begin{equation*}
+\wp(z) = e^{m(z-1)}
+\end{equation*}
+
+
+\newpage
+
+\subsection*{Project}
+
+\begin{problem}
+A set of $50$ dice is thrown. What is the expected number of sixes? What is the standard deviation?
+\end{problem}
+
+\begin{problem}
+A jar containes $100$ marbles, of which $30$ are white and $70$ are red. A set of $25$ marbles is removed from the jar. What is the expected value of the number of white marbles in the sample of $25$? What is the standard deviation? Find an approximation for the probability that the sample contains more than $15$ white marbles.
+\end{problem}
+
+\begin{problem}
+A pool contains $100$ goldfish, of which $30$ have black fins and $70$ do not. The fish enter a trap one by one, and the trap is closed as soon as the $20$th black-finned fish has entered. What is the expected value of the number of fish in the trap after it is closed? What is the standard deviation? Find an approximation for the probability that there will be more than $50$ fish in the trap after it is closed.
+\end{problem}
+
+\begin{problem}
+In a certain type of financial institution, past history indicates a rate of failure of $0.01$\% per year. An investor wishes to invest equal amounts of money in a sufficiently large number of such institutions so that there is at most one chance in a million that all of the institutions in which he invests will fail within a period of ten years. In how many institutions must he invest?
+\end{problem}
+
+\begin{problem}
+Mr. A and Mr. B are to play a sequence of games, each betting one dollar on each game until one or the other has no money left. They start with $x$ dollars and $y$ dollars, respectively, where $x$ is a positive integer and $y$ is a positive integer. In each game, the probability that $A$ wins is $p$, and the probability that $B$ wins is $q$, where $0 < p < 1$ and $p + q = 1$. What is the probability that $A$ will win all of $B$'s money?
+\end{problem}
+
+\begin{problem}
+At age 26, according to the Commissioners 1941 Standard Ordinary mortality table, the annual death rate is 2.99 per 1,000. A life insurance company insures 1,000 persons, each aged 26; for each policyholder, the amount of insurance is \$1,000. How much should the company charge each person in order for the probability to be at least $0.9$ that the premium income will be sufficient to meet the death claims for the year?
+\end{problem}
+
+\begin{problem}
+A manufacturer wishes to bid for the job of constructing 5 machines of unusual precision. He estimates that 20\% of the machines he constructions will meet specifications, and the other 80\% will be valueless. It will cost \$500 to construct each machine. He wants to base his bid on a cost figure which is just high enough so that the probability is $0.75$ that the cost figures will actually be sufficient to cover the cost of producing the 5 satisfactory machines. What cost figure should he use?
+\end{problem}
+
+\begin{problemnamed}{Bernoulli's Theorem}
+Let $\xi_n$ denote a chance variable with probability generating function $(q+pz)^n$, where $n$ is a positive integer, $0 < p < 1$, and $p + q = 1$, let $m_n$ denote the mean of the distribution. Then each of the following statements is true.
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item If $k > 0$, then $P(|\xi_n - m_n| < k) \to 0$ if $n \to +\infty$.
+    \item If $k > 0$, then $P \left( \frac{|\xi_n - m_n|}{n} < k \right) \to 0$ if $n \to +\infty$.
+  \end{enumerate}
+\end{problemnamed}
+
+
+\end{document}

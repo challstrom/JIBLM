@@ -1,0 +1,2795 @@
+
+\include{Roach}
+
+%                                  elementary-math-from-an-advanced-standpoint_roach
+%\documentclass[12pt]{amsart}
+%\documentclass{report}
+%\usepackage{amssymb,latexsym}
+%\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{graphics,graphicx}
+\setlength{\topmargin}{-10pt}
+\setlength{\voffset}{-40pt}
+\setlength{\textheight}{700pt}
+%\usepackage{amsscr}
+%\usepackage[amsscr]{eucal}
+
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}{Lemma}
+%\newtheorem{proposition}{Proposition}
+%\newtheorem{definition}{Definition}
+%\newtheorem{corollary}{Corollary}
+%\newtheorem{notation}{Notation}
+%\newtheorem{remark}{Remark}
+%\newtheorem{assertion}{Assertion}
+%\newtheorem{claim}{Claim}
+
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\p}[1]{\left(#1\right)}
+\newcommand{\tail}[1]{#1^{\p{N}}}
+\newcommand{\trunk}[1]{#1^{\left[N\right]}}
+\newcommand{\dg}{^{\circ}}
+\newcommand{\nl}{\newline}
+\newcommand{\fl}{\flushleft}
+%\newcommand{\tild}{\texttt{\symbol{126}}}
+\newcommand{\tild}{\sim}
+\newcommand{\up}{\wedge}
+\newcommand{\dn}{\lor}
+\newcommand{\lra}{\leftrightarrow}
+\newcommand{\ra}{\to}
+\newcommand{\qqu}{\qquad \qquad}
+\newcommand{\onto}{\dashv}
+\newcommand{\power}{\Pi}
+\newcommand{\univ}{\textbf{U}}
+\newcommand{\ns}{\emptyset}
+\newcommand{\of}{$(F, +, \cdot , <)\,$}
+\newcommand{\zp}{Z^{+}}
+\newcommand{\fld}{ $(F,+,\cdot)$}
+\newcommand{\po}[1]{\dfrac{\pi}{#1}}
+\newcommand{\lpo}[1]{\frac{\pi}{#1}}
+\newcommand{\q}{\indent}
+
+
+%\pagestyle{myheadings}
+%\thanks{I would like to thank Charles A. Coppin and William T. Mahavier for their help in the publishing of this book.  I would, also, like to give special thanks to Sam Creswell for doing the typesetting and preparing this book for publication.}
+\begin{document}
+%\acknowledgment{I would like to thank Charles A. Coppin and William T. Mahavier for their help in the publishing of this book.  I would, also, like to give special thanks to Sam Creswell for doing the typesetting and preparing this book for publication.}
+%\begin{center}
+%\begin{Huge}
+%Algebra and Trigonometry \\
+%from an \\
+%Advanced Standpoint \\
+%Here \\
+
+%\end{Huge}
+
+%$ $\\
+
+%$ $\\
+
+%\begin{Large}
+%by Everett D. Roach
+%\end{Large}
+%\end{center}
+
+%\vfill
+%Mathematics Department\\
+
+%University of Dallas\\
+
+%Irving, Texas\\
+\affiliation{
+Mathematics Department\\
+University of Dallas\\
+Irving, Texas 75060\\
+everett\_r@verizon.net}
+
+
+%e-mail : everett\_r@verizon.net\\
+
+%\copyright 1970 by Everett D. Roach
+%\newpage
+
+\title{Elementary Mathematics from an Advanced Standpoint}
+
+\author{Everett D. Roach}
+\maketitle
+\thispagestyle{empty}
+\vspace{3in}
+
+\begin{Large}
+\begin{center}
+To my wife, Irene
+\end{center}
+\end{Large}
+\newpage
+\thispagestyle{empty}
+\begin{large}
+
+\textbf{ Preface }\nl
+
+
+This book has been written for a two semester-hour course
+to precede calculus at the University of Dallas. I tried to make most of the material easy enough for the average students, but parts of it challenging enough for the brightest students.  The topics discussed have been taken from the areas of mathematical logic, modern algebra, and trigonometry.\nl
+
+There are two primary goals of this book.  The first is to introduce the undergraduate to the process of mathematical reasoning early in his college studies. The second is to develop the skills needed to understand calculus. It is recommended that the students try to prove the theorems for which the proofs are given before reading the proofs.  It is also recommended that to use the book as an algebra and trigonometry text one should start with Section 1.4 Sets and Relations.\nl
+
+%I would like to express my extreme appreciation to Francis L. Hardesty and Joseph R. L. Simkins, without whose help in editing and printing this book would not have been published.\nl
+
+%I would like to thank Charles A. Coppin and William T. Mahavier for their help in the publishing of this book.  I would, also, like to give special thanks to Sam Creswell for doing the typesetting and preparing this book for publication.\nl
+
+%\hfill E.D. Roach
+
+%\hfill Irving, Tex.
+%\vfill
+Acknowledgment for the 1970 printing of this book.\nl
+
+I would like to express my appreciation to Francis L. Hardesty and Joseph R. L. Simkins for the typing, editing and printing of this book.  Without their help this book would not have been published.\nl
+
+Acknowledgment to the 2013 online printing of this book.\nl
+
+Thanks go to Charles A. Coppin and William T. Mahavier for making all the arrangements necessary for the online publishing of this book and to James Harvey for helping with the proofreading.  I would, also, like to give special thanks to Sam Creswell for doing the typesetting, editing and preparing this book for publication.\nl
+
+\hfill E.D. Roach
+
+\hfill Irving, Tex.
+
+%\acknowledgment{I would like to thank Charles A. Coppin and William T. Mahavier for their help in the publishing of this book.  I would, also, like to give special thanks to Sam Creswell for doing the typesetting and preparing this book for publication.}
+\newpage
+\thispagestyle{empty}
+\begin{center}
+\textbf{Table of Contents}
+\end{center}
+
+$ $ \nl
+
+
+\fl \textbf{Chapter 1 Logic and Sets} \newline
+
+\fl 1.1 Truth Tables  \hfill 1 \newline
+1.2 Statement Calculus \hfill 4 \newline
+1.3 Predicate Calculus \hfill 11 \nl
+1.4 Sets and Relations \hfill 16 \nl
+1.5 Functions \hfill 19 \nl
+1.5 Algebra of Sets \hfill 21\nl
+
+\textbf{Chapter 2 Fields} \nl
+
+\fl 2.1 Properties of a Field \hfill 26 \nl
+2.2 Fractions  \hfill 30 \nl
+2.3 Exponents  \hfill 31 \nl
+
+
+\textbf{Chapter 3 Ordered Fields} \nl
+
+\flushleft 3.1 Inequalities \hfill 33\nl
+3.2 Intervals  \hfill 37 \nl
+3.3 Absolute Value \hfill 39\nl
+3.4 Mathematical Induction \hfill 44\nl
+3.5 Algebra of Functions \hfill 51\nl
+3.6 Inverse Functions \hfill 55\nl
+3.7 Arithmetic \hfill 57\nl
+3.8 The Binomial Theorem \hfill 58 \nl
+
+\textbf{Chapter 4 The Real Number System} \nl
+
+\flushleft 4.1 The Completeness Axiom \hfill 62\nl
+4.2 Logarithmic Functions \hfill 65\nl
+4.3 Exponential Functions \hfill 67\nl
+4.4 Radicals \hfill 69\nl
+4.5 Factoring \hfill 71\nl
+4.6 Polynomials \hfill 73\nl
+
+\textbf{Chapter 5 Trigonometry} \nl
+
+\fl 5.1 Six Fundamental Identities \hfill 78\nl
+5.2 The Sine and Cosine Addition Formulas \hfill 81\nl
+
+\newpage
+\thispagestyle{empty}
+
+\textbf{Chapter 5 Continued}\nl
+
+\fl 5.3 Applications of the Addition Formulas \hfill 83\nl
+5.4 The Double and Half-Angle Formulas \hfill 85\nl
+5.5 Finding the Value of a Trigonometric Function of a Number \hfill 88\nl
+5.6 The Sum, Difference, and Product of Sines and Cosines \hfill 91\nl
+5.7 Inverse Trigonometric Functions \hfill 95\nl
+
+\textbf{Chapter 6 Complex Numbers and Vector Spaces} \nl
+
+\fl 6.1 Complex Numbers \hfill 98\nl
+6.2 Generalized Exponents \hfill 101\nl
+6.3 Vector Spaces \hfill 104\nl
+6.4 Measure of an Angle \hfill 106\nl
+6.5 Triangles \hfill 108\nl
+6.6 Lines \hfill 110\nl
+6.7 Matrices \hfill 113  \nl
+6.8 Systems of Linear Equations \hfill 117\nl
+
+\newpage
+%\thispagestyle{}
+\setcounter{page}{1}
+\textbf{Chapter 1}\nl
+\lhead{Section 1.1}
+\fl \textbf{Logic and Sets} \nl
+%page1
+
+Mathematics is a study of axiom systems. It is an art in which statements called theorems are proven as a logical consequence of a set of assumptions called axioms. Since theorems are proved using logic~ it is useful to discuss symbolic logic first. In Section 1.1, we will introduce logical connectives intuitively using truth tables. \nl
+\fl \textbf{1.1 Truth Tables}\nl
+
+A definition is the naming of a concept.
+\fl \textbf{Definition 1.1.1.} A \textit{statement} is a group of words which is true or false but not both. \nl
+\fl \textbf{Definition 1.1.2.} If $p$ is a statement, then the \textit{negation} of $p$, denoted by $\tild p$, read ``not $p$", a statement which is true if and only if $p$ is false. \nl
+\fl \textbf{Definition 1.1.3.} If each of $p$ and $q$ is a statement, then the \textit{conjunction} of $p$ and $q$, denoted by $p$ $\wedge$ $q$, read ``$p$ and $q$", is a statement which is true if and only if $p$ is true and $q$ is true.\nl
+
+\fl \textbf{Definition 1.1.4.} If each of $p$ and $q$ is a statement, then the \textit{disjunction} of $p$ and $q$, denoted by $p$ $\dn$ $q$, read ``$p$ or $q$", is a statement which is true if and only if $p$ is true or $q$ is true or both. \nl
+
+%\fl \textbf{Definition 1.1.5.} If each of $p$ and $q$ is a statement, then the implication $p$ $\to$ $q$, read ``$p$ implies $q$", or ``if $p$, then $q$", is a statement which is true if and only if $( \tild  p) \dn q$ is true. \nl
+
+\fl \textbf{Definition 1.1.6.} If each of $p$ and $q$ is a statement, then the \textit{biconditional} $p$ $\leftrightarrow$ $q$, read ``$p$ if and only if $q$", or ``$p$ is equivalent to $q$", is a statement which is true if and only if $p$ and $q$ are both true or both false. \nl
+
+\fl \textbf{Definition 1.1.7.} The symbols $\tild ,\up, \dn, \to$ , and $\leftrightarrow$ are called \textit{connectives.} \nl
+
+\fl \textbf{Definition 1.1.8.} Statements which contain 2 or more connectives are called \textit{composite statements.} All other statements are called \textit{component statements.}
+
+\newpage
+%page2
+
+\fl \textbf{ Definition 1.1.9.} Suppose each of $p$ and $q$ is a statement. $\tild$ is called the \textit{main connective} of $\tild p$. If $*$ is one of the connectives $\up, \dn, \to  or \leftrightarrow$, then $*$ is called the main connective of $p* q$. \nl
+\fl \textbf{ Example 1.1.1.} Suppose each of $p$ and $q$ is a statement. \nl
+ 1) $\tild$ is the main connective of $\tild(p \dn q).$\nl
+ 2) $\up$ is the main connective of $( \tild P) \up ( \tild q)$.  \nl
+ 3) $\leftrightarrow$  is the main connective of $(p \up q) \leftrightarrow q$.  \nl
+
+\fl \textbf{Definition 1.1.10.} If $p$ is a statement which is contained in a statement $q$, then $p$ is called a \textit{substatement} of $q$. \nl
+
+\fl \textbf{Example 1.1.2.} The statements $p \dn q, p \ra q, (p \ra q) \up q$, and $(p \dn q) \lra ((p \ra q) \up q)$ are all substatements of $(p \dn q) \lra ((p \ra q) \up q)$ \nl
+
+\fl Definitions  1.1.2 -1.1.6 are summarized by the following table, called a truth table. \nl
+$ $ \nl
+\begin{center}
+\textbf{Table 1.1} \nl
+%P  q  t'Jp  r-pl\q  pvq  p-+q  -------~ p~qi
+$ $ \nl
+\begin{tabular}{ | l | c | c | c | c | c | c |}
+\hline
+$p$ & $q$ & $\tild$ $p$ & $p$ $\up$ $q$ & $p$ $\dn$ $q$ & $p$ $\ra$ $q$ & $p$ $\lra$ $q$ \\ \hline
+T & T & F & T & T & T & T\\ \hline
+T & F & F & F & T & F & F\\ \hline
+F & T & T & F & T & T & F\\ \hline
+F & F & T & F & F & T & T\\ \hline
+\end{tabular} \nl
+\end{center}
+$ $ \nl
+
+The heading of a truth table contains one or more composite statements with their component statements listed to their left. If there are $n$ component statements, there are $2^{n}$ ways of assinging truth values to the component statements. Each of these ways is called a truth case. There are $2^{n}$ rows in the body of the table, one row for each truth case. For each truth case, the truth value of each composite substatement appearing in the heading is placed below its main connective in the row containing that truth case. \nl
+
+For example, we have an $F$ in row 3 column 1 and a $T$ in row 3, column 2 of Table 1.2. This means that if $p$ is false and $q$ is true, then $(p \up q ) \ra (p \dn q)$ is true.
+
+
+\newpage
+%page3
+\begin{center}
+\textbf{Table 1.2}\nl
+\begin{tabular}{ | c | c | c | c | c | c | c |}
+\hline
+$p$ & $q$ & [($p$ $\up$ $q$)& $\ra$ & ($p$ $\dn$ $q$)] & $\lra$  & $\tild$ $p$ \\ \hline
+T & T & T & T & T & F & F\\ \hline
+T & F & F & T & T & F & F\\ \hline
+F & T & F & \textbf{T} & T & T & T\\ \hline
+F & F & F & T & F & T & T\\ \hline
+\end{tabular}\nl
+$ $\nl
+\end{center}
+
+\fl \textbf{Definition 1.1.11.} A \textit{tautology} is a composite statement which is true regardless of the truth value of its component statements, i.e., it is true in each truth case.
+From Table 1.2, we see that $(p \up q) \ra (p \dn q)$ is a tautology. \nl
+
+\fl \textbf{Exercises} \nl
+Denoting the statement ``It will rain." by ``$r$" and the statement ``I will wash my car." by ``$w$", express each of the following composite statements symbolically. \nl
+
+1. If I wash my car, it will rain. \nl
+
+2. I will wash my car or it will rain. \nl
+
+3. It will rain if and only if I wash my car. \nl
+
+4. If it rains, I will not wash my car. \nl
+
+5. It is not true that I will wash my car and it will rain. \nl
+
+6. I will wash my car and it will not rain. \nl
+
+
+Let ``s" stand for the statement ``I will study mathematics." and
+
+``$e$" stand for the statement ``I will enjoy mathematics.". Express each
+of the following symbolic statements in English. \nl
+\begin{tabular}{ l l}
+7. $s \ra e$ & 10. $\tild  (e \ra s)$ \\
+8. $s \up e$ & 11.  $s \lra e$ \\
+9. $\tild s \ra e$ & 12. $\tild s \up \tild e$ \\
+\end{tabular}\nl
+
+Which is the main connective in each of the following statements?  \nl
+
+13. $\tild (p\up q)$ \nl
+14. $p \ra (p \dn q)$ \nl
+15. $(p \ra q) \lra  ( \tild q \ra \tild p)$ \nl
+16. $(p \ra q) \up \tild q$ \nl
+17. $(p \lra \tild q) \dn (p \up q)$ \nl
+
+\newpage
+%page4
+\fl \textbf{Construct a truth table for each of the following statements.} \nl
+
+\fl 19. $[(p \up q) \dn p] \ra \tild q$ \nl
+
+\fl 20. $(p\up q) \dn ( \tild p \up \tild q)$ \nl
+
+\fl 21. $(\tild p \ra q) \dn (p \up q) $ \nl
+
+\fl \textbf{Prove that each of the following is a tautology.} \nl
+\fl 22. $\tild (p \up q) \lra ( \tild p \dn  \tild  q)$ \nl
+
+\fl 23. $r \up (p \dn q) \lra [(r \up p) \dn (r \up q)] $ \nl
+
+\fl 24. $(p \ra q) \lra ( \tild q \ra \tild p) $ \nl
+
+\lhead{Section 1.2}
+\fl \textbf{1.2 Statement Calculus} \nl
+
+In this section we will use the axiomatic method to formalize the
+concepts introduced in Section 1.1. That is, we will take some terms
+to be undefined. All other terms will be defined using the undefined
+terms. We then choose certain statements, which are usually intuitively
+obvious, as axioms. Other statements called theorems are proved as a
+logical consequence of the axioms. \nl
+
+There are two main reasons for using this approach. (1) The axioms
+are, in general, easier to work with than the definitions they come from,
+if there are any. (2) There are meanings which could be assigned to the
+undefined terms other than the obvious ones. This means that the results
+can be applied to more than one system. For example, the following
+axiom system could be used to design switching circuits. \nl
+
+There are many possible choices for the undefined terms. We will
+take $\tild , \dn$, and \textbf{statement} to be undefined. \nl
+
+\fl \textbf{Axiom 1.2.1.} If each of $p$ and $q$ is a statement, then $\tild p$, read
+``not $p$", and $p \dn q$, read ``$p$ or $q$", are statements. \nl
+
+\newpage
+%page5
+\fl \textbf{Definition 1.2.1.} Suppose each of $p$ and $q$ is a statement. \nl
+a) $p \up q$, read ``$p$ and $q$", stands for $\tild (\tild p \dn \tild q)$. \nl
+b) $p \ra q$, read ``$p$ implies $q$", stands for $(\tild p) \dn q$. \nl
+c) $p \lra q$, read ``$p$ is equivalent to $q$", stands for $(p \ra q) \up (q \ra p)$. \nl
+
+\fl \textbf{Axiom 1.2.2.} If each of $p, q$, and $r$ is a statement, then each of
+the following is an axiom. \nl
+a) $p \lra q$\nl
+b) $(p \dn q) \lra (q \dn p)$ \nl
+c) $[p \dn (q \dn r)]  \lra [(p \dn q) \dn r] $ \nl
+d) $[p \dn (q \up r)] \lra [(p \dn q) \up (p \dn r)]$ \nl
+%e) $(p \dn p) \lra p$ \nl
+e) $p \lra \tild \tild p$ \nl
+f) $(p \up q) \ra q $ \nl
+g) $p \ra (q \ra (p \up q))$ \nl
+
+\fl \textbf{Definition 1.2.2.} Suppose $p$ is a statement. $r$ is called the \textit{conclusion} of $p$ if and only if (1) there is a statement $s$ (called the \textit{hypothesis} of $p$) such that $p$ is $s$ $\ra$ $r$ or (2) $p$ is $r$, in which case $p$ has no hypothesis. \nl
+
+\fl \textbf{Definition 1.2.3.} A statement $p$ is called a \textit{theorem} if and only if there is a list of statements (called a \textit{proof} of $p$) such that the conclusion of $p$ is the last statement in the list and if $s$ is a statement in the list, then one of the following holds: \nl
+\fl J1. $s$ is the hypothesis of p. \nl
+\fl J2. $s$ is an axiom. \nl
+\fl J3. $s$ is a previously proved theorem. \nl
+\fl J4. $s$ is a statement resulting from the application of a definition to a
+preceding statement in the list. \nl
+
+\fl J5. (Modus Ponens) There is a statement $r$ such that $r$ and $r$ $\ra$ $s$ are preceding statements in the list. \nl
+
+\fl J6. (Equivalence) There exist statements $r, t$, and $q$ such that $r$ $\lra$ $t$ is a theorem or preceding statement in the list, $q$ is a preceding statement in the list, $r$ is a substatement of $q$, and $s$ is the result of re­placing $r$ in $q$ by $t$.\nl
+
+\newpage
+%page6
+
+We will use Hyp, Mp, and Eq to indicate the use of Jl, J5, and J6, respectively. We will also adopt the convention that $p, q, r,$ and $s$ stand for statements and that the operations are to be performed in the order $\tild, \up , \dn , \lra$ ,  unless otherwise indicated by parenthesis. The order of $\up$ and  $\dn$ will always be denoted by parenthesis. \nl
+
+For example $ \tild p \up q \ra p \lra p \ra \tild p \dn q$ means $[(( \tild p) \up q) \ra p] \lra p \ra ((\tild p) \dn q)]$. \nl
+
+\fl \textbf{Theorem 1.2.1.} If $p$ $\ra$ $q$ and $q$ $\ra$ p are theorems, then $p$ $\lra$ $q$ is a theorem. \nl
+\fl Proof. \nl
+\begin{tabular}{ l l }
+
+1. $p$ $\up$ $q$ & Theorem \\
+2. $q$ $\ra$ $p$ & Theorem \\
+3. $(p \ra q) \ra [(q \ra p) \ra ((p \ra q) \up (q \ra p))]$ & Ax 1.2.2(g) \\
+4. $(q \ra p) \ra ( (p \ra q)  \up (q \ra p))$ & MP 1,3 \\
+5. $(p \ra q) \up (q \ra p)$ & MP 2,4 \\
+6.  p $\lra$ q & Def 1.2.1(c) \\
+\end{tabular}
+\fl \textbf{Theorem 1.2.2} If $p$ and $q$ are theorems, then $p$ $\lra$ $q$ is a theorem. \nl
+ Proof. $p ,q$ and $q ,p$ are proofs of $p$ $\ra$ $q$ and $q$ $\ra$ $p$, respectively.
+ By Theorem 1.2.1, $p$ $\lra$ $q$ is a theorem. \nl
+
+\fl \textbf{Definition 1.2.4.} Let $t$ denote a theorem and $f$ denote $\tild t$. \nl
+
+\fl \textbf{Theorem 1.2.3.} If $p$ $\lra$ $t$ is a theorem, then $p$ is a theorem. Proof. \nl
+\begin{tabular}{l l}
+1. $p$ $\lra$ $t$ & Theorem  \\
+2. $(p$ $\ra$ $t$) $\up$ ($t$ $\ra$ $p$) & Def 1.2.1(c)\\
+3. $[(p \ra t) \up (t \ra p)] \ra ( t \ra p)$ & Ax 1.2.2(f)  \\
+4. $t \ra p$ & MP 2,3  \\
+5. $t$ & Theorem \\
+6. $p$ & MP4,5 \\
+\end{tabular}
+\fl \textbf{Theorem 1.2.4.} ($p$ $\up$ $q$) $\lra$ ($q$ $\up$ $p$). Proof.
+\begin{tabular}{l r l l l l}
+1.& $p \up q$  &$\lra p \up q$ &&&Ax 1.2.2(a)\\
+2.    &&$\lra \tild (\tild p \dn \tild q)$ &$ $&$ $& Def 1.2.1(a)\\
+3.    &&$\lra \tild (\tild q \dn \tild p)$ &$ $&$ $& Eq, Ax 1.2.2(b)\\
+4.     &$q \up \ p$ &$ $&$ $&& Def 1.2.1(a)\\
+\end{tabular}
+\newpage
+%page7
+\fl \textbf{Theorem 1.2.5.} If $p$ $\lra$ $q$ is a theorem, then $q$ $\lra$ $p$ is a theorem. Proof. \nl
+\begin{tabular}{ l l l l}
+1. $p \lra q$ &&&Theorem \\
+2. ($p$ $\ra$ $q$)  $\up$ ($q$ $\ra$ $p$) &$\quad $&$ $& Def 1.2.1(c) \\
+3. ($q$ $\ra$ $p$) $\up$  ($p$ $\ra$ $q$) &$ $&$ $& Th 1.2.4  \\
+4. $q$ $\lra p$  &$ $&$ $& Def 1.2.l(a) \\
+\end{tabular}\\
+
+\fl \textbf{Theorem 1.2.6.} Each of the following is a theorem. \nl
+SC1. $\tild (p$ $\dn$ $q$) $\lra (\tild$ $p$ $\up \tild q$) \nl
+SC2. $\tild(p \up q)$ $\lra$ $( \tild p \dn \tild q$) \nl
+SC3. $(p \up q) \lra (q \up p)$ \nl
+SC4. $[p \up(q  \up r)] \lra [ (p \up q) \up r]$ \nl
+SC5. $[p \up (q \dn r)] \lra (p \up q) \dn (p \up r)$ \nl
+SC6. $p \ra (p \up p)$ \nl
+SC7. a)$(p \up p) \lra p$ \qquad \qquad b)$(p \dn p) \lra p$ \nl
+%SC8. $\tild  f \lra t$ \nl
+SC8. $(p\up q) \ra p$ \nl
+\begin{tabular}{ l l}
+SC9. $\tild f \lra t$  & \\
+SC10. $p \ra p$&\\
+SC11. a) $\tild p \dn p$ & b) $\quad p\dn \tild p$  \\
+SC12. a) $(\tild p \up p) \lra f$ &b) $p\up \tild p \lra f$\\
+SC13. $p \ra (t \up p)$    &\\
+SC14. $a) (p \up t)  \lra p$ & $b)\quad (t \up p) \lra p$  \\
+SC15. $a) p \dn f \lra p$ & $b)\quad f \dn p \lra p$ \\
+SC16. $a) p \dn t$ & $b)\quad  t \dn p $ \\
+SC17. $a) (p \up f) \lra f$ & $b) \quad (f \up p) \lra f$ \\
+\end{tabular}\nl
+SC18. $[p \dn (q \up \tild p)] \lra (p \dn q)$ \nl
+SC19. $[p \up (q \dn \tild p)] \lra (p\up q)$ \nl
+SC20. $[p \dn (p \up q)] \lra p$  \nl
+SC21. $[p \up (p \dn q)] \lra p$ \nl
+SC22. $q \ra (p \ra q)$ \nl
+SC23. $\tild p \ra (p \ra q)$ \nl
+SC24. $p \ra (p \dn q)$ \nl
+SC25. $(p \up q) \ra (p \dn q)$ \nl
+SC26. $(p \ra q) \lra ( \tild q \ra \tild p)$ \nl
+SC27. $(p \ra q) \lra  [(p \up \tild q) \ra f]$ \nl
+SC28. $(p \ra q) \lra [(p \dn q) \lra q)]$ \nl
+\newpage
+%page8
+SC29. $(p \ra q) \lra [(p \up q) \lra p)]$  \nl
+SC30. $(p \lra q) \lra ( \tild p \lra \tild q)$ \nl
+SC3l. $[p \ra (q \ra r)] \lra [(p \up q) \ra r]$  \nl
+SC32. $[p \ra (q \ra r)] \lra [(q \ra p) \ra (q \ra r)]$ \nl
+SC33. $(p \ra q) \ra (p \up r \ra q  \up r)$\nl
+SC34  $(p \lra q) \ra (p \up r \ra q \up r)$\nl
+SC35. $(p \ra q) \ra (p \dn r \ra q \dn r)$\nl
+SC36. $(p \lra q) \ra (p \dn r \lra q \dn r)$\nl
+SC37. $(p \lra \tild p) \lra f$\nl
+SC38. $ (p\ra q)\lra (\tild p \dn q \lra t)  $\nl
+
+Proof of SC1. \nl
+\begin{tabular}{l l l }
+1. $\tild (p \dn q)$ &$\lra \tild (p \dn q)$ & \text{Ax 1.2.2(a)} \\
+2. &$\lra  \tild (\tild  \tild p \dn \tild \tild q)$ & \text{Eq, Ax 1.2.2(e)} \\
+3. &$\lra \tild p \up \tild q$ & \text{Def 1.2.1(a)}\\
+\end{tabular}\nl
+
+Proof of SC2. \nl
+\begin{tabular}{ l l l}
+1.  $\tild (p \up q)$ &$\lra \tild (p \up q)$ &Axiom 1.2.2(a)\\
+2.  &$\lra  \tild \tild  ( \tild p \dn \tild q)$  &\text{Def 1.2.1(a)}\\
+3.  &$\lra \tild p \dn \tild q$  &\text{Eq, Ax 1.2.2(e)} \\
+\end{tabular}\nl
+
+Proof of SC5. \nl
+\begin{tabular}{l l l}
+1. $[p \up (q \dn r) ]$&$\lra [p \up ( q \dn r)]$& Axiom 1.2 2(a) \\
+2. &$\lra \tild [\tild p \dn \tild (q \dn r)]$&Def 1.2.1(a)\\
+3. &$\lra \tild [\tild p \dn (\tild q \up \tild r)]$&Eq, SC1\\
+4. &$\lra \tild [(\tild p \dn \tild q) \up (\tild p \dn \tild r)]$&Eq, Ax 1.2.2(d)\\
+5. &$\lra \tild [\tild (p \up q)\up \tild (p \up r)]$&Eq, SC2\\
+6. &$\lra \tild \tild [(p \up q)\dn (p \up r)]$&Eq, SC1\\
+7. &$\lra (p \up q) \dn (p \up r)$&Eq, Ax 1.2.2(e)
+\end{tabular}\nl
+
+Proof of SC6. \nl
+1. $p$ \nl
+2. $p \ra (p \ra (p \up p))$\nl
+3. $p \ra (p \up p)$\nl
+4. $p \up p$\nl
+\newpage
+%page9
+
+
+Proof of SC7(a)\nl
+
+1. $p \ra (p \up p)$\nl
+2. $p \up p \ra p$\nl
+3. $(p \up p) \lra p$\nl
+
+Proof of SC7(b)\nl
+\begin{tabular}{l r l}
+1.&$(p \dn p)$&$\lra \tild \tild (p \dn p)$\\
+2.&&$\lra \tild (\tild p \up \tild p)$\\
+3.&&$\lra \tild (\tild p)$\\
+4.&&$\lra p$\\ 
+\end{tabular}\nl
+
+Proof of SC10. \nl
+1.  $p$\nl
+
+Proof of SC11(a) \nl
+1. $p \ra p$\nl
+2. $\tild p \dn p$\nl
+
+Proof of SC12(b) \nl
+
+\begin{tabular}{l r l}
+1.&$p \up \tild p $&$\lra p \up \tild p$\\
+2.&&$\lra \tild (\tild p \dn \tild \tild p)$\\
+3.&&$\lra \tild(\tild p \dn p)$\\
+4.&&$\lra \tild t$\\
+5.&&$\lra f$\\
+\end{tabular}\nl
+
+Proof of SC13 \nl
+
+1.  $t$\nl
+2.  $t \ra (p \ra (t \up p))$\nl
+3.  $p \ra (t \up p)$\nl
+
+
+Proof of SC14(b) \nl
+%Let $r$ stand for $(t \up p) \ra p$ and let $s$ stand for $p \ra (t \up p)$.\nl
+
+1.  $(t \up p) \ra p$\nl
+2.  $p \ra (t \up p)$\nl
+3.  $(t \up p ) \lra p $\nl
+
+\newpage
+%page10
+
+Proof of SC15(a)\nl
+\begin{tabular}{l r l}
+1.&  $p\dn f$ &$\lra p \dn f$\\
+2.&& $\lra \tild \tild p \dn f$\\
+3. && $\lra \tild \tild p \dn \tild t$\\
+4. &&$\lra \tild (\tild p \up t)$\\
+5. && $\lra \tild \tild p$\\
+6. && $\lra p$\\
+\end{tabular}\nl
+
+Proof of SC16(a)\nl
+\begin{tabular}{l r l}
+1.& $p\dn t$ &$\lra p \dn t$\\
+2. &&$\lra (p \dn t) \up t$\\
+3. &&$\lra (p \dn t) \up (p \dn \tild p$) \\
+4. &&$\lra p \dn (t \up \tild p)$\\
+5. &&$\lra p \dn \tild p$\\
+6. &&$\lra t$\\
+\end{tabular}\nl
+
+Proof of SC20 \nl
+\begin{tabular}{l r l}
+1.  &$[p \dn (p \up q)]$& $\lra [p \dn (p \up q)]$ \\
+2.	&&$\lra (p \up t) \dn (p \up q)$ \\
+3.  &&$\lra p \up (t \dn q)$\\
+4.  &&$\lra p \up t$\\
+5.  &&$\lra p$\\
+\end{tabular}\nl
+
+\textbf{Exercises}\nl
+
+Give justifications of each statement in the proofs of the following theorems.\nl
+
+\begin{tabular}{l l l}
+1. Theorem SC6& 2. Theorem SC7(b)&3. Theorem SC10\\
+4. Theorem SC11(a)&5. Theorem SC12(b) &6. Theorem SC13\\
+7. Theorem SC14(b)&8. Theorem SC15(a)&9. Theorem 16(a)\\
+&10. Theorem SC20 &\\
+&&\\
+11. Prove SC8&12. Prove SC17(a)&13. Prove SC18\\
+14. Prove SC19&15. Prove SC21&16. Prove SC22\\
+17. Prove SC23&18. Prove SC24&19. Prove SC25\\
+\end{tabular}\nl
+
+
+
+%\qquad Prove Theorems SC8, SC17(a), SC18, SC19, SC21, SC22, SC23, SC24, and SC25.\nl
+
+\newpage
+%page11
+\fl \textbf{1.3 Predicate Calculus}\nl
+
+\lhead{Section 1.3}
+We will begin by giving intuitive definitions of the concepts used in this section. A variable is a symbol which may stand for any object. A formula is a statement which involves at least one object or variable. For example, ``$x$ is the father of $y$" is a formula in which $x$ and $y$ are variables. A formula may be thought of as a collection of statements, one statement for each assignment of the variables to objects. In the above example, one such assignment would lead to the statement ``Tom is the father of John."\nl
+
+\fl \textbf{Definition 1.3.1.} If $p$ is a formula, $x$ is a variable, and $t$ is an object, then: \nl
+ a) $\forall x~ p$ means ``For each $x, p$." The symbol $\forall$ is called the \textit{universal quantifier.} \nl
+ b) $\exists x~ p$ means ``There exists an $x$ such that $p$." The symbol $\exists$ is called the \textit{existential quantifier.} \nl
+ c) $x$ is \textit{free} in $p$ if and only if the truth value of $p$ is not the same value for each object $x$. \nl
+ d) $p$ is \textit{true} if and only if $p$ is true regardless of which objects its variables stand for. \nl
+ e) $p(t/x)$ is the result of replacing each $x$ in $p$ by $t$. \nl
+
+Each theorem in this section can be proven from the preceding definitions. A much simpler approach would be to take $\tild ,\dn , \forall$ ,  \textbf{object}, \textbf{variable}, \textbf{formula}, and \textbf{free} as undefined and prove the results of this section from Axioms 1.3.1. and 1.3.2. We will use the latter approach. \nl
+
+\textbf{Axiom 1.3.1.} If each of $p$ and $q$ is a formula, each of $x$ and $y$ is a variable, and $t$ is an object, then: \nl
+ a) $\tild p, p$ $\dn$ $q$, and $p(t/x)$ are formulas. \nl
+ b) $\forall x~ p$ is a formula in which $x$ is not free. \nl
+ c) If $x$ is not free in $p$ and $q$, then $x$ is not free in  $\tild p, p$ $\dn$ $q$, and
+$\forall y ~p$.\nl
+
+\textbf{Definition 1.3.2.} Suppose each of $p, q$, and $x \in A$ is a formula, $x$ is a variable, and $t$ is an object.
+\newpage
+%page12
+a) $p \up q$, read ``$p$ and $q$", stands for $\tild(\tild p \dn \tild q$).\nl
+b) $p \ra q$, read ``$p$ implies $q$", stands for $(\tild p) \dn q$ \nl
+c) $p \lra q$, read ``$p$ is equivalent to $q$", stands for $(p \ra q) \up (q \ra p$). \nl
+d) $\exists x~p$  stands for $\tild \forall x \tild p$. \nl
+e) $\forall x \in A, p(x)$ is read ''for each $x$ in $A, p$ of $x$ and stands for $\forall x(x \in A \ra p)$. \nl
+f) $\exists x \in A \ni $p(x) is read ``there exists an $x$ in $A$ such that  $p$ of $x$" and stands for $\exists x(x \in A \up p)$. \nl
+
+\textbf{Axiom 1.3.2.} If each of $p,q$, and $r$ is a formula, and $t$ is an object, then each of the following is an axiom: \nl
+a) $p \lra p$ \nl
+b) $(p \dn q)$ $\lra$ $( q \dn p)$ \nl
+c) $[p\dn (q\dn r)] \lra [(p \dn q) \dn r] $\nl
+d) $[p \dn (q \up r)] \lra [(p \dn q) \up (p \dn r)]$ \nl
+e) $(p \dn p) \lra p$ \nl
+f) $p \lra \tild \tild p$ \nl
+g) $(p \up q) \ra q$ \nl
+h) $p \ra (q \ra (p \up q))$\nl
+i) $\forall x~ p \ra p(t/x)$ \nl
+\qqu $(\tild  p) (t/x) \lra \tild p(t/x)$ \nl
+\qqu $(p \dn q) (t/x) \lra p(t/x) \dn q(t/x)$ \nl
+j) $\forall x~ p \ra p$ \nl
+k) $\forall x(p \dn q)\lra (\forall x~ p) \dn q$, if $x$ is not free in $q$. \nl
+
+\textbf{Definition 1.3.3.} Suppose p is a formula. $r$ is called the \textit{conclusion} of $p$ if and only if (1) there is a formula $s$ (called the \textit{hypothesis} of $p$) such that $p$ is $s \ra r$, or (2) $p$ is $r$, in which case $p$ has no hypothesis. \nl
+
+\textbf{Definition 1.3.4.} A formula $p$ is called a \textit{theorem} if and only if there is a list of formulas (called a \textit{proof} of $p$) such that the conclusion of $p$ is the last formula in the list and if $s$ is a formula in the list, then one of the following holds: \nl
+J1. $s$ is the hypothesis of $p$. \nl
+J2. $s$ is an axiom. \nl
+J3. $s$ is a previously proven theorem. \nl
+J4. $s$ is a formula resulting from the application of a definition to a preceding formula in the list. \nl
+J5. (Modus Ponens) There is a formula $r$ such that $r$ and $r \ra s$ are pre­ceding formulas in the list. \nl
+\newpage
+%page13
+J6. (Equivalence) There exist formulas $r, t$, and $q$ such that $r \lra t$ is a
+theorem, $q$ is a preceding formula in the list, $r$ is a subformula of $q$,
+and $s$ is the result of replacing $r$ in $q$ by $t$.\nl
+J7. (Generalization) There is a preceding formula $r$ in the list such that $s$ is $\forall x~ r$ and $x$ is not free in the hypothesis of $p$. \nl
+
+\qqu Each axiom of the statement calculus is an axiom of the predicate calculus with the \textbf{word statement} replaced with the \textbf{word} \textbf{formula}. Therefore, each theorem of the statement calculus corresponds to a theorem in the predicate calculus. \nl
+
+\textbf{Theorem 1.3.1.} If ($p \up s$) $\ra$ $r$ and $p$ $\ra \exists$ $x ~s$ are theorems and $x$ is not free in $p$ or $r$, then $p \ra r$ is a theorem. \nl
+Proof \nl
+\begin{tabular}{ l l}
+1. $p$ & Hyp \\
+2. $p \ra \exists  x~ s$ & Theorem \\
+3. $\exists x~ s$ & MP 1,2 \\
+4. $p \up s \ra r$ & Theorem \\
+5. $p \ra(s \ra r )$ & Eq, SC 31 \\
+6. $s\ra r$ & MP 1,5 \\
+7. $\forall x (s \ra r$) & Gen \\
+8. $\forall x(\tild s\dn r)$ & Def 1.3.2(b) \\
+9. $\forall x( \tild  s\dn r) \ra ( \forall x \tild s) \dn r$ & Ax 1.3.2(j) \\
+10. ($\forall x \tild s) \dn r$ & MP 8,9  \\
+11. $(\tild  \tild  \forall x \tild s) \dn r$ & Ax 1.3.2(e) \\
+12. $(\tild \exists x~ s) \dn r$ & Def l.3.2(d) \\
+13. $\exists x~ s \ra r$ & Def 1.3.2(b) \\
+14. $r$ & MP3,13 \\
+\end{tabular}\nl
+
+In an application of Theorem 1.3.1, we begin by justifying $p$ with Hyp and proceed to prove $\exists x~ s$. Thus we have $p\ra \exists x~ s$. Then we write Th 1.3.1 for the justification of $s$ (to indicate that Th 1.3.1 will be applied) and proceed to prove $r$. Since both $p$ and $s$ are logical consequences of $p \up s$, we have in effect proved $p \up s \ra r$. If $x$ is not free in $p$ or $r$, we can conclude, from Theorem 1.3.1, that $p \ra r$. We will illustrate the procedure in the proof of PC11. \nl
+
+\textbf{Theorem 1.3.2.} If each of $p, q, x \in A$  ,and $r$ is a formula, each of $x$ and $y$ is a variable, and $t$ is an object or variable, then: \nl
+
+
+\newpage
+%page14
+\begin{tabular}{ l l}
+PC1. $\forall x~ p \ra p$ &\\
+PC2. a) $p(t/x) \ra \exists x~ p$   &b) $p \ra p$ \\
+PC3. $\forall x~ p \ra \exists x~ p$ &\\
+PC4. $\tild \forall $ x~ p $\lra \exists x \tild p$ &\\
+PC5. $\tild \exists x~ p \lra \forall x \tild p$ &\\
+PC6. $\tild \forall x \in A, p(x) \lra  \exists x \in A \ni \tild p(x)$&\\
+PC7. $\tild \exists x \in A \ni p(x) \lra \forall x \in A ~ \tild p(x)$ &\\
+PC8. $\forall x \forall y ~p \ra \forall y \forall x~ p$&\\
+PC9.  $\exists x \exists y ~p \ra \exists y \exists x ~p$&\\
+PC10. $\exists x \forall y~p \ra \forall y \exists x~ p$&\\
+PC11.  $\exists x [p \up q] \ra [ \exists x ~p \up \exists x~ q]$&\\
+PC12.  $\forall x ~p \dn \forall x ~q \ra \forall x [p \dn q]$&\\
+PC13.  $\forall x [p \up q] \lra [\forall x ~ p \up \forall x~ q]$ &\\
+PC14. $\exists x [p \dn q] \lra [\exists x ~ p \dn \exists x ~q]$& \\
+PC15. $\forall ~x[p \ra q] \ra [\forall x~p \ra \forall x ~q]$&\\
+PC16.  If $x$ is not free in $p$, then :&\\
+a) $p \lra \forall x~p$&\\
+b) $p \lra \exists x~p$&\\
+c) $\forall x[p \up q] \lra p \up \forall x~q$&\\
+d) $\forall x [p \dn q] \lra p \dn \forall x~q$&\\
+e) $\exists x [ p \up q] \lra p \up \exists x~q$&\\
+f) $\exists x[p\dn q] \lra p \dn \exists x~q$&\\
+\end{tabular}\nl
+
+%Proof of Theorem PC2(a).\nl
+%\begin{tabular}{ l l}
+%1. $\forall x \tild p \ra \tild p(t/x)$ & Ax 1.3.2(h)\\
+%2. $\tild \tild p(t/x) \ra \tild \forall x~\tild p$ & Eq, SC26  \\
+%3. $p(t/x) \ra \tild\exists x \tild p$ & Ax 1.3.2(e) \\
+%4. $p(t/x) \ra \exists x~p$ & Def 1.3.2(d) \\
+%\end{tabular}\nl
+
+Proof of PC3. \nl
+1. $\forall x~p$\nl
+2. $\forall x~p \ra p$\nl
+3. $p$\nl
+4. $p \ra \exists x~p$\nl
+5. $\exists x ~p$\nl
+
+\newpage
+%page 15
+Proof of PC4.\nl
+
+1.  $\tild \forall x~p \lra \tild \forall x~p$\nl
+2.  \qqu $\lra \tild \forall x \tild \tild p$\nl
+3.  \qqu $\lra \exists x \tild p$\nl
+
+Proof of PC8.\nl
+
+1. $\forall x\forall y ~p$\nl
+2. $\forall x\forall y ~p \ra \forall y~p$\nl
+3. $\forall y~p$\nl
+4. $\forall y~p \ra p$\nl
+5. $p$\nl
+6. $\forall x~p$\nl
+7. $\forall y \forall x ~p$\nl
+
+Proof of PC11. \nl
+\begin{tabular}{ l l}
+1. $\exists x~(p \up q)$ & Hyp \\
+2. $p \up q$ & Th1.3.1 \\
+3. $p$ & MP2, SC8 \\
+4. $\exists x~p$ & MP3, PC2(b)\\
+5. $q$ & MP2, Ax 1.3.2(f)\\
+6. $\exists x ~q$ & MP5,PC2(b) \\
+7. $\exists x~p \up \exists x~q$ & MP 4,6,Ax1.3.2(g)\\
+\end{tabular}\nl
+
+\textbf{Exercises.}\nl
+
+Justify each step in the proofs of Theorems \nl
+
+1. PC3\nl
+2. PC4\nl
+3. PC8\nl
+
+Prove each of the following theorems:\nl
+
+\begin{tabular}{l l}
+4. PC5  &12. PC15\\
+5. PC6 &13. PC16(a)\\
+6. PC7 &14. PC16(b)\\
+7. PC9 &15. PC16(c)\\
+8. PC10 &16.  PC16(d)\\
+9.  PC12 &17.  PC16(e)\\
+10.  PC13 &18. PC16(f)\\
+11. PC14 &\\
+\end{tabular}\nl
+%12. PC15 13. PC16(a) 14. PC16(b)
+%15. PC16(c) 16.  PC16(d) 17.  PC16(e) 18. PC16(f)
+
+\newpage
+%page16
+\textbf{1.4 Sets and Relations} \nl
+
+\lhead{Section 1.4}
+ During the last one hundred years the concepts of mathematics have been made more precise through the use of sets. In fact, every concept in mathematics can be expressed in terms of sets. We will consider a set to be a collection of objects. If $S$ is a set and $x$ is an object, then we will use $x \in S$ to denote the statement ``$x$ is an element of $S$" and use $x \notin S$ to denote  $\tild (x \in S)$. \nl
+
+To specify a set, we must tell which objects it contains. There are two commonly used ways of doing this. The first method of specifying a set is to list its objects within braces. For example, the \textbf{set} containing the objects 1, 2, and 3 is denoted by $\{1, 2, 3 \}$.  Three dots are sometimes used to denote missing elements. For example,
+$\{2, 4, 6, ...~ , 100\}$ denotes the set of all even positive integers less than or equal to 100, and $\{1, 3, 5, 7, ... \}$ denotes the set of all odd positive integers. \nl
+
+The second method is better suited for specifying large sets without a pattern. If $p(x)$ is a formula, it is customary in mathematics to use $\{x \mid p(x) \}$ to denote the set to which $x$ belongs if and only if $x$ is an object such that $p(x)$ is true. There are some formulas for which no such set exists. For example, if $A= \{x \mid x \notin A\}$, then $x \in A \lra x \notin A$.  By SC37, $x \in A \lra x \notin A$ is a false statement. Therefore, $A = \{x \mid x \notin A\}$ is not a set. To avoid this difficulty we introduce the following axiom. \nl
+
+\textbf{Axiom 1.4.1.} If $p(x)$ is a formula for which there is a set $B$ which contains all elements $x$ for which $p(x)$ is true, then there is a set (called the truth set of $p(x)$ and denoted by $\{ x \mid p(x)\}$ ) which contains exactly those elements for which $p(x)$ is true,
+i. e. $y \in \{x \mid p(x)\} \lra p(y).$\nl
+
+\textbf{Example 1.4.1.} Suppose $R$ denotes the set of all real numbers. Since ($x$ is an integer $\ra x \in R$),
+we have by Axiom 1.4.1, $x\in \{x \mid x \text{~is~ an ~integer}\} \lra x$ is an integer.
+In other words $\{x \mid x \text{~is~ an~ integer}\}$ denotes the set of all integers. \nl
+
+\textbf{Definition 1.4.1.} If each of $x$ and $y$ is an object, then $x = y$ means $x$ and $y$ are names for the same object. \nl
+
+\textbf{Definition 1.4.2.} The statement that a set $A$ is a \textit{subset} of a set $B$, written $A \subseteq B$, means that every element of $A$ is an element of $B$, i.e., $A \subseteq B \lra \forall x (x \in A \ra x \in B)$.\nl
+
+\newpage
+
+
+\textbf{Definition 1.4.3.} The statement that a set $A$ is a \textit{proper subset} of $B$, written $A\subset B$, means $A \subseteq  B$ and $A \neq B$.\nl
+
+\textbf{Definition 1.4.4.} If each of $A$ and $B$ is a set, then: \nl
+a) $A = B$ means $A \subseteq B$ and $B \subseteq A$, i.e., $A = B \lra  \forall x(x \in  A \lra x \in B)$.\nl
+b) $A \neq B$ means $\tild (A = B)$.\nl
+
+\textbf{Example 1.4.2.}
+
+1.  $\{1, 2\} \subset \{1, 2, 3\}$\nl
+
+2.  $\{1, 2, 2\}=\{1, 2\}$\nl
+
+3.  $\{1,2,3, ... \} \subseteq \{1,2,3, ... \}$\nl
+
+4.  $\{x \mid x > 2\} \subseteq \{x \mid x > 0\}$\nl
+
+
+\textbf{Definition 1.4.5.} If each of $a, b, c$ and $d$ is an object, then: \nl
+1) $\{\{a\},\{a,b \}\}$ is called an \textit{ordered pair} and denoted by $(a,b)$. If $(a,b)$ is an ordered pair, then $a$ is called its \textit{abscissa} and $b$ is called its \textit{ordinate.} \nl
+2) $((a,b),c)$ is denoted by $(a,b,c)$.\nl
+3) $((a,b,c),d)$ is denoted by $(a,b,c,d)$\nl
+
+\textbf{Theorem 1.4.1.} If each of $(a,b)$ and $(c,d)$ is an ordered pair, then $(a,b)=(c,d)$ if and only if $a =c$ and $b = d$.\nl
+
+\textbf{Definition 1.4.6.} If each of A and B is a set, then $\{(x,y)  \mid x \in A \text{~and~} y \in B\}$ is called the \textit{cartesian product} of A and B and denoted by $A \times  B$, i.e., $\forall x \forall y((x,y) \in A \times B \lra x \in A \up Y \in B)$.\nl
+
+\textbf{Example 1.4.3.} If $A= \{1,2\}$ and $B= \{3,4,5\}$, then $A \times B =\{(1,3), (1,4), (1,5), (2,3), (2,4), (2,5)\}$. \nl
+
+\textbf{Definition 1.4.7.} $\tild$ is said to be a \textit{binary relation} on a set $A$ if and only if $\tild \subseteq A \times A$. $\tild$ is said to be a binary relation if and only if $\tild$ is a binary relation on some set. We will write $x \tild y$ for $(x,y) \in \tild $. \nl
+
+\textbf{Example 1.4.4.} $\{(1,2), (3,1), (2,3)\}$ and $\{(1,1), (2,2)\}$ are binary relations on $\{1,2,3\}$.\nl
+
+\newpage
+%page18
+\textbf{Definition 1.4.8.} A binary relation $\tild$ on a set $A$ is said to be an
+\textit{equivalence relation} if and only if the following formulas are true. \nl
+ 1) If $x \in A$, then $x \tild x$. (reflexive)  \nl
+ 2) If $x,y \in A$ and $x \tild y$, then $y \tild x$. (symmetric) \nl
+ 3) If $x, y, z \in A, x \tild y$ and $ y \tild z$, then $x \tild z$ . (transitive) \nl
+
+\textbf{Theorem 1.4.2.} If $A$ is a set, then $=$ is an equivalence relation on $A$.\nl
+
+\textbf{Exercises} \nl
+1. If no set can contain itself, is $\{x \mid x \text{~is~ a~ set~}\}$ a set?  \nl
+2. If $A$ is a set, which of the following are true? \nl
+a) $\{1,2\} \subseteq \{1,2,3\}$ \nl
+b) $\{1,2\} \subset \{ 1,2,2\}$ \nl
+c) $\{(1,2)\} \subseteq \{1,2\} \times \{2,3\}$ \nl
+d) $A=\{x \mid x \in A\}$ \nl
+e) $\{\{1\}\} \subseteq \{1, 2, 3\}$ \nl
+f) $\{\{a\} \} = (a,a)$ \nl
+g) $A \in \{A\}$ \nl
+h) $a \in A \ra \{a\} \subseteq A$ \nl
+
+3. If $A= \{1,2,3\}$ and $B= \{0,1 \}$, find $A \times B$.  \nl
+
+4. 	Which of the following are binary relations on {1,2,3}? \nl
+
+a) $\{(1,2),(2,3)\}$ \nl
+b) $\{(1,3),(3,4),(2,1)\}$  \nl
+c) $\{(x,y) \mid x,y \in \{1,2,3\} \text{~and~} x=y\} $ \nl
+d) $\{(x,y) \mid  x \text{~ and~} y \text{~are ~numbers~ and ~}x < y\}$ \nl
+
+5. 	Which of the following are equivalence relations on {1,2,3}? \nl
+
+a) $\{(1,1) (2,2)\}$\nl
+b) $\{(1,1), (2,2), (3,3)\}$\nl
+c) $\{(1,1), (2,2), (3,3), (1,3)\}$\nl
+d) $\{(1,1), (2,2), (3,3), (1,3), (3,1)\}$\nl
+e) $\{(1,1), (2,2), (3,3), (1,2), (2,3). (2,1), (3,2)\}$\nl
+
+6.  If ``$p(x)$" stands for the formula ``$x$ likes calculus," express each of the following statements in English.\nl
+
+\begin{tabular}{l l}
+a) $p$(He) & c) $p$(John)\\
+b) $p$(She)& d) $p$(Everybody)\\
+\end{tabular}\nl
+
+7. If $S = \left\lbrace n \mid n \text{~is ~an ~integer ~greater ~than ~2} \right\rbrace,$ express each of the following statements in English.\nl
+
+\begin{tabular}{l l}
+a) $1 \in S$ & c) $k + 1 \in S$\\
+b) $k \in S$ & d) $h + k \in S$\\
+\end{tabular}\\
+\newpage
+%page19
+\textbf{1.5 Functions}\nl
+
+\lhead{Section 1.5}
+ Of all the sets we will study probably none is more important than those we call functions.\nl
+ 
+\textbf{Definition 1.5.1.} $f$ is said to be a \textit{function} if and only if $f$ is a set of ordered pairs such that no two pairs of $f$ have the same first term. \nl
+
+\textbf{Example 1.5.1.} $\{(1,2)\}, \{(1,2),(5,13),(3, 8)\}$, and $\{((1,1),2), ((1,2),3), ((2,1),3), ((2,2),4)\}$ are functions. $\{(1,2), (3,5), (1,-2)\}$ and $\{ 1, 2\}$ are not functions. \nl
+
+\textbf{Definition 1.5.2.} Suppose $f$ is a function. $\{x \mid \text{~there ~is ~a ~y~} \text{~such ~that~} (x,y) \in f\}$ is called the \textit{domain} of $f$ and denoted by $D_{f}$.  $\{y \mid \text {~there ~is ~an~} x \text{~such ~that~} (x,y) \in f\}$ is called the \textit{range} of $f$ and denoted by $R_{f}$. \nl
+
+\textbf{Example 1.5.2.} If f= $\{(1,2), (-3,1), (2,4), (3,6)\}$, then $D_{f}= \{1, -3, 2, 3\}$ and $R_{f}= \{2, 1, 4, 6\}$.  \nl
+
+\textbf{Definition 1.5.3.} If $f$ is a function and $x \in D_{f}$, then the only element $y$ such that $(x,y) \in f$ is called ``$f$ of $x$" and denoted by $f( x)$, i.e., $y = f(x) \lra (x,y) \in f.$ \nl
+
+\textbf{Example 1.5.3.} $f =\{(1,2), (-1,3), (2,-4) \}$, then $f( 1) =2, f( -1)=3$, and $f( 2)=-4$.\nl
+
+\textbf{Definition 1.5.4.} Suppose $A$ and $B$ are sets. The statement that $f$ is a function from $A~into~B$, written $f: A \ra B$, means $f$ is a function with domain $A$ and range a subset of $B$. The statement that $f$ is func­tion from $A~onto~B$, written $f:A \dashv B$, means $f:A \ra B$ and $B$ is the range of $f$.\nl
+
+\textbf{Example 1.5.4.} If $f= \{(1,2), (3,-1), (-1,1)\}$, then $f: \{1, 3, -1\} \ra \{ -1, 0, 1, 2\}$ and $f: \{1, 3, -1 \} \ra \{-1, 1, 2\}$  are true and $f : \{1, 0, -1, 3 \} \ra \{-1, 1, 2\}$ and $f : \{1, 3, -1\} \onto \{-1, 0,1, 2\}$ are false. \nl
+
+\textbf{Definition 1.5.5.} $\bigstar$ is said to be a \textit{binary operation} over a set $A$ if and only if $\bigstar$ is a function and the domain of $\bigstar$ contains $A \times A$. We will write $x \bigstar y$ for $\bigstar(x,y)$. \nl
+
+\textbf{Example 1.5.4.5} $\{((1,1)2),((1,2),3),((2,1),3),((2,2),4)\}$ is a binary operation over $\{1, 2\}$ .
+
+\newpage
+%page20
+
+\textbf{Exercises}\nl
+
+1. Which of the following are functions? \nl
+\indent a) $\{ 1, 2 \}$\nl
+\indent b) $\{(-1, 2), (-3, 4), (2, -1)\}$\nl
+\indent c) $\{(3, -1),(1, -4),(3,6) \}$\nl
+\indent d) $\{((1,2),3),(4,5)\}$\nl
+\indent e) $\{1, -2, (1,3)   \}$\nl
+
+2. Suppose $f= \{(-1,2), (0,-1), (1,3), (-2,-1)\}$. \nl
+a) Find $D_{f}$. \nl
+b) Find $R_{f}$. \nl
+c) Find $f(-1), f(0), f(1)$, and $f(-2)$ . \nl
+d) List the elements in $\{x \mid f(x)= -1\}$ and $\{x \mid f(x+2)=3\}$\nl
+
+3. Suppose $f = \{(x,y) \mid x \text{~is ~a number~ and~} y=x^{2}+2x-1\}$ . \nl
+a) Find $D_{f}$. \nl
+b) Find $R_{f}$. (Hint: $f(x)=(x+1)^{2} -2$) \nl
+c) Show that if $x$ and $h$ are numbers, then $[f(x+h)-f(x)]/h=2x + 2 + h$ \nl
+
+4. 	Which of the following are binary operations over {1, 2, 3} ?\nl
+a) $\{((1,1),2), ((1,2),3), ((1,3),4), ((2,1),3), ((2,2),4), ((2,3),5),$
+$((3,1),4),((3,2) 5)((2,1),3)\}$\nl
+b) $\{((1,2),3), ((2,1),3)\}$\nl
+c) $\{((x,y),z) \mid ~x~ \text{and} ~y~ \text{~are ~numbers~ and~} z = x \cdot y\}$ \nl
+
+5 .Suppose $A=\{1,2,3\}$ and $B=\{4,5,6\}$. For each of the following denitions of $f$ determine whether $f :A \ra B$ or $f :A \onto B$ is true.  \nl
+a) $f= \{(1,4), (2,6), (3,5)\}$\nl
+b) $f=\{ (1,5), (2,6), (3,5)\}$ \nl
+c) $f =\{(1,4), (2,3), (3,5)\}$\nl
+d) $f= \{(x,y) \mid x \in \{1,2, 3\} \text{~and~} y = x + 3\}$ \nl
+
+6. If $\bigstar$ is a binary operation over $\{1,2,3\}$ defined by the following table, find $a$ for each of the following. \nl
+
+
+%6.  If ``$p(x)$" stands for the formula ``$x$ likes calculus," express each of the following statements in English.\\
+
+%\begin{tabular}{l r}
+%a) $p$(He & c) $p$(John)\\
+%b) $p$(She) &d) $p$(Everybody)\\
+%\end{tabular}\\
+
+%7. If $S = \left\lbrace n \mid n \textbf{~is ~an ~integer ~greater ~than ~2} \right\rbrace,$ express each of the following statements in English.
+
+\begin{tabular}{| c | c | c | c |}
+\hline
+$\bigstar$ & 1 & 2 & 3\\ \hline
+1 & 2 & 3 & 1 \\ \hline
+2 & 3 & 1 & 2 \\ \hline
+3 & 1 & 2 & 3 \\ \hline
+\end{tabular} \nl
+
+a) $2\bigstar 3 = a$\nl
+b) $a\bigstar 2 = 2$\nl
+c) $\forall x \in  \{1,2,3\}, x\bigstar a = x $\nl
+d) $1\bigstar a = 3 $\nl
+e) $2\bigstar a = 3 $\nl
+f) $3\bigstar a = 3 $\nl
+
+\newpage
+%page21
+\textbf{1.6 Algebra of Sets}\nl
+
+\lhead{Section 1.6}
+The algebra of sets is very closely related to the statement calculus. In fact, by an appropriate substitution of symbols in each theorem in the statement calculus, we can obtain a theorem about sets. \nl
+
+\textbf{Definition 1.6.1.} If each of $A$ and $B$ is a set, then $\{x \mid  x \in A \up x \in B\}$ is called the \textit{intersection} of $A$ and $B$ and is denoted by $A \cap B$, i.e., $\forall x (x \in A \cap B) \lra x \in A \up x \in B)$ \nl
+
+\textbf{Example 1.6.1.} $\{1, 2, 3\} \cap \{2, 3, 4\} =\{2, 3\}$. \nl
+
+\textbf{Definition 1.6.2.} If each of $A$ and $B$ is a set, then $\{x \mid x \in A \dn  x \in B \}$ is called the \textit{union} of $A$ and $B$ and is denoted by $A \cup B$, i.e.   $\forall x (x \in (A \cup B) \lra x \in A \dn x \in B)$ \nl
+
+\textbf{Example 1.6.2.} $\{ 1, 2, 3\} \cup  \{2, 3, 4\} = \{ 1,2,3,4\}$.\nl
+
+\textbf{Definition 1.6.3.} If each of $A$ and $B$ is a set, then ·$\{x \mid x \in A \up x \notin B\}$ is called $A~minus~B$ and denoted by $A - B$, i.e., $\forall (x(x \in (A-B) \lra x \in A \up  x \notin B)$. \nl
+
+\textbf{Example 1.6.3.} $\{1, 2, 3\}-\{3, 4, 5\} = \{1, 2\}$. \nl
+
+\textbf{Definition 1.6.4.} The set which contains no elements is called the \textit{empty set} and denoted by $\emptyset$, i.e., $\forall x(x \notin \emptyset)$.\nl
+
+\textbf{Definition 1.6.5.} The nonempty set of all elements under consideration is called the \textit{universal set} and sometimes denoted by \textbf{U}, i. e., $\forall x(x \in \textbf{U}).$ \nl
+
+\textbf{Definition 1.6.6.} If \textbf{U} is a universal set and $A \subseteq \textbf{U}$, then $\textbf{U} - A$ is called the \textit{complement} of $A$ and denoted by $A^{'}$ . \nl
+
+\textbf{Definition 1.6.7.} Suppose $G$ is a collection of sets. $\{x \mid \text{~there ~is ~a ~}g \text{~in~} G \text{~such ~that~} x \in g\}$ is called the \textit{union} of $G$ and denoted by $\cup G$. \nl
+$\{x \mid \text {~for~ each~} ~g~ \text{~in~ }G, x \in g\}$ is called the \textit{intersection} of $G$ and denoted by
+$\cap G$. \nl
+
+\textbf{Definition 1.6.8.} If $A$ is a set, then $\{B \mid B \subseteq A\}$ is called the \textit{power set} of
+$A$ and is denoted by $\power A$, i.e., $ \forall B(B \in \power A \lra B \subseteq A)$. \nl
+
+\textbf{Example 1.6.4}. $ \power \{ 1, 2, 3\} = \{ \emptyset, \{ 1 \}, \{2\}, \{3\}, \{ 1, 2\}, \{1, 3\} , \{ 2, 3\}, \{1, 2, 3\} \}.$ \nl
+
+\newpage
+% p 22
+\textbf{Section 1.6} \nl
+
+If $p$ is a statement containing finitely many symbols and each symbol in $p$ denotes a subset of $\univ$ or is one of $=, \cup , \cap ,~ ', \emptyset , \text{~or~ } \univ $, then the truth or falsity of $p$ can be determined from S1 through S6. Any system having these properties is called a Boolean Algebra. \nl
+
+\textbf{Theorem 1.6.1.} If $\univ$ is a universal set and each of $A, B,$ and $C$ are subsets of $\univ$, then: \nl
+\begin{tabular}{l l}
+S1.  a) $A \cup B = B \cup A$ &  b) $A \cap B=B \cap A$ (Commutative Laws)\\
+S2.  a) $A \cup (B\cup C)=(A \cup B)\cup C$ & b) $A\cap (B\cap C)= (A\cap B)\cap C$ $(*)$ \\
+%( Associative Laws) \\
+S3. a) $A\cup (B\cap C)=(A\cup B)\cap (A\cup C)$ & b) $A\cap (B\cap C)=(A\cap B)\cup (A\cap C)$ $(*)$\\
+%(Distributive Laws) \\
+S4. a) $A \cup \emptyset = A$ & b) $A \cap \univ = A$
+(Identity elements) \\
+S5. a) $A \cup A^{'} = \univ$ & b) $A \cap A^{'} = \emptyset $
+(Complement)\\
+S6. $\univ \neq \emptyset $&\\
+\end{tabular}\nl
+$(*)$ Note that S2 is called the Associative Laws and S3 is called the Distributive Laws.\nl
+Proof of S3(a). Suppose $\univ$ is a universal set and $A, B$, and $C$ are subsets of $\univ$.\nl
+
+\begin{alignat}{2}
+A \cup (B \cap C) &= \{x \mid x \in A \dn x \in B \cap C\}\\
+&= \{x \mid x \in A \dn (x\in B \up x \in C\}\\
+&= \{x \mid (x \in A \dn x \in B) \up (x \in A \dn x \in C)\}\\
+&= \{x \mid x\in A \cup B \up x \in A \cup C\}\\
+&= (A \cup B) \cap (A \cup C)
+\notag
+\end{alignat}
+
+Proof of S4(b). Suppose $\univ$ is a universal set and $A \subseteq \univ$  \nl
+$\forall x(x \in A \ra x \in \univ )$ \nl
+$\forall x(x \in A \up x \in \univ  \lra x \in A)$ \nl
+$ A \cap \univ = A $ \nl
+
+Proof of S5(a). Suppose $\univ$ is a universal set and $A \subseteq \univ $. \nl
+$\forall x (x \in A \dn x \in A^{'}) $\nl
+$\forall x(x \in A \dn A{'})) $ \nl
+$\forall x(x \in \univ)$ \nl
+Therefore, \nl
+$A \cup A^{'} = \univ$ \nl
+
+\newpage
+%page 23
+
+%=$\{x \mid x \in A \dn (x \in \univ \up x \notin A) \}$ \nl
+%=$\{ x \mid (x \in A \dn x \in \univ ) \up (x \in A \dn x \notin A)\}$ \nl
+%=$\{x \mid x \in A \cup \univ \up t\}$ \nl
+%=$\{x \mid x \in \univ \up t\}$ \nl
+%=$\{x \mid x \in \univ \}$ \nl
+%=$\univ$ \nl
+
+\textbf{Theorem 1.6.2.} If $\univ$ is a universal set and $A, B,$ and $C$ are subsets of $\univ$, then: \nl
+
+S7. a) $A \cup A=A$ and b) $A \cap A =A $\nl
+S8. a) $A \cup \univ = \univ$ and b) $A \cap \emptyset = \emptyset$\nl
+S9. a) $A \cup (A \cap B) = A$ and b) $A \cap (A \cup B)=A$ \nl
+S10 a) $A \cup (B \cap A^{'})= A\cup B$ and b) $A \cap (B \cup A^{'}) =A \cap B$ \nl
+Proofs of S7(a) and S8(a). Suppose $\univ$ is a universal set and $A \subseteq \univ$.
+
+Proof of S7(a)\nl
+$A = A \cup \emptyset$\nl
+$ = A\cup (A\cap A^{'})$  \nl
+$ = (A\cup A) \cap (A \cup A^{'})$ \nl
+$ = (A \cup A) \cap \univ $ \nl
+$ = A \cup A$\nl
+
+ Proof of S8(a)\nl
+ $\univ = A \cup A^{'}  = (A \cup A) \cup A^{'}  = A \cup (A \cup A^{'}) =A \cup \univ $\nl
+
+\textbf{Theorem 1.6.3.} If $\univ$ is a universal set and $A$ and $B$ are subsets of $\univ$ such that $A \cup  B = \univ$ and $A \cap B = \emptyset$ , then $A^{'} = B$. \nl
+Proof. Suppose $\univ$ is a universal set, $A,B \subseteq \univ, A \cup B= \univ$, and $A \cap B = \emptyset $. $A^{'} = \univ \cap A^{'} = (A\cup B)\cap A^{'} =(A\cap A^{'}) \cup (B\cap A^{'})$
+$=\emptyset \cup(B \cap A^{'}) =(A \cap B) \cup(A^{'} \cap B) = (A\cup A^{'})\cap B = \univ \cap B = B $\nl
+
+\textbf{Theorem 1.6.4.} If $\univ$ is a universal set and $A$ and $B$ are subsets of $\univ$, then:\nl
+ S11. $(A^{'})^{'} = A $\nl
+ S12. a) $U^{'}= \emptyset$ \qqu b) $\emptyset ^{'} = \univ $ \nl
+ S13. a) $(A \cup B)^{'} = A^{'}\cap B^{'}$  \qqu b) $(A\cap B)^{'} = A^{'} \cup B^{'}$ \nl
+
+ Proof of S11. Suppose $\univ$ is a universal set and $A \subseteq \univ$. Since $A \cup A^{'} = \univ$ and $A \cap A^{'} = \emptyset $, we have $A^{'} \cup A = \univ$ and $A^{'} \cap A= \ns$. By Theorem 1.6.3, $(A^{'})^{'} = A$. \nl
+
+ Proof of S13(a). Suppose $\univ$ is a universal set and $A,B \subseteq  \univ$. $(A\cup B) \cap (A^{'} \cap B^{'}) =[A\cap (A^{'} \cap B^{'})] \cup [B \cap  (A^{'} \cap B^{'})] $
+
+\newpage
+%page 24
+$\qqu \qqu = [(A \cap A^{'}) \cap B^{'}] \cup [(B \cap B^{'}) \cap A^{'}]$ \\
+$\qqu \qqu =(\ns \cap B^{'}) \cup (\ns \cap A^{'})$\\
+$\qqu \qqu = \ns \up \ns = \ns$ \\
+
+$(A \cup B) \cup (A^{'}\cap B^{'}) = [(A \cup B) \cup A^{'}] \cap [(A \cup B) \cup B^{'}]$\\
+$\qqu \qqu \quad = [(A \cup A^{'}) \cup B] \cap  [A \cup (B\cup B{'})]$\\
+$\qqu \qqu \quad =(\univ \cup B)\cap (A \cup \univ)$ \\
+$\qqu \qqu \quad =\univ \cap \univ = \univ$ \\
+
+By Theorem 1.4.3, $(A \cup B)^{'}=A^{'} \cap B^{'}$\nl
+
+\textbf{Theorem 1.6.5.} If $\univ$ is a universal set and $A, B$ and $C$ are subsets of $\univ$, then: \nl
+\begin{tabular}{l l}
+S14. a) $A\subseteq B \lra A\cup B = B$&  b) $A \subseteq B \lra A \cap B = A$ \\
+S15. a) $A \subseteq B \lra A^{'} \cup B= \univ$ \qqu & b) $A \subseteq B \lra A\cup B^{'} = \ns$\\
+S16. a) $A\cap B \subseteq A$  & b) $A \subseteq A\cup B$ \\
+S17. a) $A\subseteq B \ra (A \cup C)\subseteq (B \cup C)$ & b) $A \subseteq B \ra (A\cap C) \subseteq (B \cap C)$\\
+\end{tabular}
+S18. $A\subseteq B \lra B^{'} \subseteq A^{'}$ \\
+S19. $\ns \subseteq A$ \nl
+
+Proof of S14(a). Suppose $\univ$ is a universal set and $A,B \subseteq \univ$. \nl
+
+\begin{tabular}{r l}
+$A \subseteq B$ &$\lra \forall x [x \in A \ra x \in B ]$ \\
+&$\lra \forall x [x \in A \dn x \in B \lra x \in B]$ \\
+&$\lra \forall x [ x \in (A \cup B) \lra x \in B]$\\
+&$\lra A \cup B = B$ \\
+\end{tabular}\\
+
+Proof of S14(b).  Suppose $\univ$ is a universal set and $A, B \subseteq \univ$.\nl
+\begin{tabular}{ r l}
+$A\subseteq B$ & $\lra \forall x[x\in A \ra x\in B]$ \\
+&$\lra \forall x [x\in A \up x\in B \lra x\in A]$ \\
+&$\lra \forall x[x\in A\cap B \lra x\in A] $    \\
+&$\lra A\cap B = A $ \\
+\end{tabular}\\
+
+By Theorem 1.2.1, $ a \subseteq b \lra A \cap B = A$.\nl
+
+$\qqu$ Proof of S15(a).  Suppose $\univ$ is a universal set and $A, B \subseteq \univ$.\nl
+\begin{tabular}{ r l}
+$A \subseteq B$ & $\lra \forall x[x\in A \ra x\in B]$\\
+&$\lra \forall x[x\in A{'} \dn x\in B \ra x \in \univ] $\\
+&$\lra \forall x[x\in A^{'}\cup B \lra x\in \univ]      $\\
+&$ \lra A^{'}\cup B = \univ $\\
+\end{tabular}\\
+
+By Theorem 1.2.1, $ A \subseteq B \lra A^{'}\cup B = \univ$
+\newpage
+%page25
+
+\textbf{Exercises}
+1. If $\univ = \{0, 1, 2,3,4,5,6,7, 8\}, A= \{1, 2,3,4 \}, B= \{3, 4,5, 6\},\text{~ and~} C= \{2, 3, 6, 7\}$, specify the elements in each of the following: \nl
+
+a) $A-B$\nl
+b) $A \cap B$\nl
+c) $(A \cup B)^{'}$\nl
+d) $A^{'} \cap B^{'}$\nl
+e) $B \cup C$\nl
+f) $A \cap C$\nl
+g) $A \cap (B \cup C)$\nl
+h) $(A \cap B) \cup (A\cap C)$\nl
+i) $A\cup (A \cap C)$\nl
+
+2. Prove Sl(a).\nl
+3. Prove S2(a).\nl
+4. Prove S3(b).\nl
+5. Prove S4(a).\nl
+6. Prove S5(b).\nl
+7. Prove S6(b).\nl
+8. Prove S7(b).\nl
+9. Prove S8(b).\nl
+10. Prove S9(a).\nl
+11. Prove S10(a).\nl
+12. Prove S12(a).\nl
+13. Prove S13(b). \nl
+14. Prove S15(b).\nl
+15. Prove S16(a). \nl
+
+\newpage
+%page26
+\textbf{Chapter 2} \nl
+
+\lhead{Section 2.1}
+\textbf{Fields}\nl
+
+In the physical sciences knowledge can be expanded by laboratory
+experiments. Since mathematics is a creation of the mind, the only way
+to extend the body of mathematical knowledge is by the process of reasoning. \nl
+
+One possible way of developing the number system would be to assume every statement that is intuitively obvious about numbers and proceed by the process of reasoning to arrive at statements which are not obvious. This process has two definite disadvantages. (1) The statements which are obvious to one person are not necessarily obvious to another.  (2) Eventually someone is going to prove a statement false which is obviously true. The reason for this is that intuition is not an accurate measure of the truth or falsity of a statement.
+This suggests another approach to the number system. By a careful choice of assumptions we can minimize the above mentioned drawbacks. The set of axioms we will use is that of a complete ordered field. These axioms are intuitively obvious to most people and no one has ever proven one of them false as a consequence of the others. This set of axioms does have the disadvantage of having to prove statements true which are intuitively obvious. But this objection is insignificant compared to the objections to the first method discussed.
+Fields are important since the real number system, the complex number system, and vector spaces are all defined in terms of fields. \nl
+
+\textbf{2.1 Properties of a Field} \nl
+
+\textbf{Definition 2.1.1.} $(F, +,\cdot)$ is called a \textit{field} if and only if $F$ is a nonempty set, $+$ is a binary operation over $F$ (called addition), and $\cdot$ a binary operation over $F$ (called multiplication), such that the following statements are true. \nl
+
+A1. If $x,y \in F$, then $(x+y) \in F$. (Closure)  \nl
+A2. If $x,y \in F$, then $x + y = y + x$. (Commutative Law) \nl
+A3. If $x,y,z \in F$, then $(x+y)+z=x+(y+z)$. (Associative Law) \nl
+ \newpage
+% page27
+
+A4. There is an element $0$ in $F$ (called the identity for $+$) such that if $x \in F$, then $x + 0 = x.$ \nl
+A5. If $x \in F$ , then there is an element $-x$ in $F$ (called the additive inverse
+of $x$) such that $x+(-x)=0.$ \nl
+
+M1. If $x,y \in F$, then $x\cdot y \in F$. (Closure) \nl
+M2. If $x,y \in F$ ,then $x \cdot y = y \cdot x$. (Commutative Law) \nl
+M3. If $x,y,z \in F$ , then $(x \cdot y)\cdot z = x \cdot(y\cdot z)$. (Associative Law)\nl
+M4. There is an element $1$ in $(F-\{ 0\})$, ( called the identity for $\cdot$ ), such that if $x \in F$, then $x\cdot 1 =x $.\nl
+M5.  If $x \in F$ and $x \neq 0$, then there is an element $x^{-1}$  in $F$ (called the multiplicative inverse of $x$) such that $x\cdot x^{-1} =1.$ \nl
+
+D.	If $x,y,z \in F$, then $x\cdot(y + z) =(x\cdot y)+(x\cdot z)$. (Distributive Law) \nl
+
+\textbf{Theorem 2.1.1.} If $(F,+ ,\cdot)$ is a field, then the following statements are true. \nl
+a) If $x \in F$, then $0 + x = x.$\nl
+b) If $x \in F$ ,then $(-x) + x = 0$. \nl
+c) If $x \in F$, then $1\cdot x=x.$\nl
+d) If $x \in F$ and $x \neq 0$, then $ x^{-1}\cdot x = 1.$ \nl
+e) If $x,y,z \in F$, then $(x+y)\cdot z=(x\cdot z) + (y\cdot z).$\nl
+
+\textbf{Theorem 2.1.2.} If $(F,+,\cdot)$ is a field, $x,y,z \in F$, and either $x + z = y + z$ or $z + x = z + y$, then $x = y.$ \nl
+Proof. Suppose $(F,+,\cdot)$ is a field, $x,y,z \in F$, and $x + z = y + z$. \nl
+\begin{tabular}{r l l}
+$(x+z)+(-z)$&$=(y+z)+(-z)$ & Def of =, A5 \\
+$x+(z+(-z))$&$=y+(z+(-z))$ & A3 \\
+$x+0$&$= y+0$ &A5 \\
+$x$& $= y$ & A4 \\
+\end{tabular}\\
+By a similar argument, we see that if $z + x = z + y$, then $x = y.$\nl
+
+\textbf{Theorem 2.1.3.} If $(F,+,\cdot)$ is a field, $x,y,z \in F, z\neq  0$, and either $x\cdot z=y\cdot z$
+or $z\cdot x = z\cdot y$ , then $x = y.$ \nl
+
+\textbf{Theorem 2.1.4.} If $(F,+,\cdot)$ is a field, $x, y \in F$, and $x + y = x$, then $y=0.$ \nl
+
+\textbf{Theorem 2.1.5.} If $(F,+,\cdot)$ is a field, $x,y \in F, x \neq 0$, and $x\cdot y = x$, then $y = 1.$ \nl
+
+\textbf{Theorem 2.1.6.} If $(F,+,\cdot)$ is a field, $x,y \in F$, and $x + y = 0$, then $y = -x$.\nl
+ Proof. Suppose $(F,+,\cdot)$ is a field, $x,y \in F$, and $x + y = 0$.
+ \begin{tabular}{r l l}
+ $x + (-x)$ &$= 0$ &A5  \\
+ $x + y $ & $= x + (-x)$ & Def of = \\
+ $y$ &$= -x$ & Th. 2.1.2\\
+\end{tabular}
+\newpage
+%page28
+\textbf{Theorem 2.1.7.} If $(F,+,\cdot)$ is a field and $x\in F$, then $x\cdot 0=0$ and $0\cdot x = 0$.\nl
+ Proof. Suppose $(F,+,\cdot)$ is a field and $x \in F.$ \nl
+
+\begin{tabular}{r l l l}
+$0 + 0$&= 0 &&A4\\
+$x\cdot (0 + 0)$&$=x\cdot 0$ &&Def of=\\
+$x\cdot 0 + x\cdot 0$&$=x\cdot 0 + 0$ &&D,A4\\
+$x\cdot 0$&$=0$ &&Th 2.1.2\\
+$0\cdot x $&$= 0$ && M2\\
+\end{tabular}\nl
+
+
+\textbf{Theorem 2.1.8.} If $(F,+,\cdot)$ is a field, $x,y \in F$, and $x\cdot y = 1$, then $y = x^{-1}$ \nl
+\textbf{Exercises}
+
+
+1. Prove Theorem 2.1.1.
+
+2. Prove Theorem 2.1.3.
+
+3. Prove Theorem 2.1.4.
+
+4. Prove Theorem 2.1.5.
+
+5. Prove Theorem 2.1.8.
+
+
+6. Prove that $(F,+,\cdot)$ is a field if $F = \{a,b\},a \neq b$,and $+$ and $\cdot$ are defined
+by the following tables.\nl
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+$+$&$a$&b\\\hline
+$a$&$a$&$b$\\\hline
+$b$&$b$&$a$\\\hline
+\end{tabular}
+$\qqu \qqu$
+\begin{tabular}{|c|c|c|}\hline
+$\cdot$&$a$&b\\\hline
+$a$&$a$&$a$\\\hline
+$b$&$a$&$b$\\\hline
+\end{tabular}\nl
+\end{center}
+
+
+\textbf{Theorem 2.1.9.} If $(F,+,\cdot )$ is a field and $x \in F$, then $-(-x) = x$.\nl
+ Proof. Suppose $(F,+,\cdot )$ is a field and $x \in F$.
+\begin{tabular}{r l l}
+$(-x) + x$& $= 0$ & Th 2.1.1 \\
+$x$& $= -(-x)$ & Th 2.1.6 \\
+\end{tabular} \nl
+
+\textbf{Theorem 2.1.10.} If $(F,+,\cdot)$ is a field, $x \in F$, and $x \neq 0$, then $(x^{-1})^{-1} = x.$ \nl
+
+\textbf{Theorem 2.1.11.} If $(F,+,\cdot )$ is a field, and $x,y \in F$, then $x\cdot (-y) = -(x\cdot y).$\nl Proof. Suppose $(F,+,\cdot )$ is a field and $x,y \in F.$\nl
+\begin{tabular}{r l l l}
+$x\cdot y + x\cdot (-y)$&$=x\cdot (y + (-y))$&&D \\
+&$=x\cdot 0$ &&A5\\
+&$=0$ &&Th 2.1.7 \\
+$x\cdot (-y)$&$=-(x\cdot y)$ &&Th 2.1.6
+\end{tabular}\nl
+
+
+\textbf{Theorem 2.1.12.} If $(F,+,\cdot )$ is a field and $x,y \in F$, then $(-x)\cdot y = -(x\cdot y)$ and $(-x)\cdot (-y) = x\cdot y.$
+
+\newpage
+%page29
+
+\textbf{Theorem 2.1.13.} If $(F,+,\cdot )$ is a field and $x \in F$, then $(-1)\cdot x = -x.$\nl
+
+\textbf{Theorem 2.1.14.} If $(F,+,\cdot )$ is a field, then $0 = -0.$\nl
+Proof. Suppose $(F,+,\cdot)$ is a field.
+
+\begin{tabular}{r l l l}
+$0 + 0$&$= 0$ &&A4\\
+$0$ &$=-0$&& Th 2.1.6\\
+\end{tabular}
+
+\textbf{Theorem 2.1.15.} If $(F,+,\cdot)$ is a field, then $1 = 1^{-1}.$\nl
+
+\textbf{Definition 2.1.2.} If $(F,+,\cdot )$ is a field and $x,y \in F$, let $x - y$ denote $x + (-y)$, and if $y \neq 0$, let $x\div y$ denote $x\cdot y^{-1}.$\nl
+Note: $x\cdot y^{-1}$ is also commonly denoted by $x/y$ and $\dfrac{x}{y}.$\nl
+
+\textbf{Example 2.1.1.} If $(F,+,\cdot)$ is a field and $a,b,c\in F$, then $c\cdot(a-b)=c\cdot a - c\cdot b.$\nl
+Proof. Suppose $(F,+,\cdot)$ is a field and $a,b,c \in F$.
+\begin{tabular}{r l l l}
+$c\cdot (a-b)$ &$=c\cdot (a+(-b))$ &&Def 2.1.2 \\
+&$=c\cdot a + c\cdot (-b)$&& D \\
+&$=c\cdot a + [-(c\cdot b)]$ &&Th 2.1.11 \\
+&$=c\cdot a - c\cdot b$ &&Def 2.1.2 \\
+\end{tabular}\nl
+
+
+\textbf{Exercises} Assuming $(F,+,\cdot)$ is a field, $a,b,x,y,z \in F$, prove each of the following. \nl
+1. If $a \neq 0$, then $-a \neq 0$.\nl
+2. If $x + y = z$, then $y = z - x.$\nl
+3. $a -0 = a.$\nl
+4. $0 - a = -a.$\nl
+5. $a \div 1 = a.$ \nl
+6. If $a \neq 0$, then $0 \div a =0.$\nl
+7. If $a \neq 0$, then $a \div a = 1.$\nl
+8. If $x\cdot y = z$, and $x \neq 0$, then $y =z\div x.$ \nl
+9. If $a\div b = 1$,then $a = b.$\nl
+10. If $a = b, a \neq 0$, and $b \neq 0$, then $1\div a = 1 \div b.$\nl
+11. If $a = -b,$ then $-a = b.$\nl
+12. If $a = 1\div b$, and $a\neq 0$, then $b = 1\div a.$\nl
+13. Theorem 2.1.10. \nl
+14. Theorem 2.1.12. \nl
+15. Theorem 2.1.13. \nl
+16. Theorem 2.1.15. \nl
+\newpage
+%page30
+\textbf{2.2 Fractions }\nl
+
+\lhead{Section 2.2}
+\textbf{Theorem 2.2.1.} If $(F,+,\cdot)$ is a field and $x,y \in F$, then $-(x+y) = -x - y$.\nl
+Proof. Suppose $(F,+,\cdot )$ is a field and $x,y\in F.$\nl
+\begin{tabular}{r l l l}
+$(x+y)+(-x-y)$& $=(x+y)+(-x+(-y))$ &&Def 2.1.2 \\
+&$=(x+y)+((-y)+(-x))$ &&A2 \\
+&$=[(x+y)+(-y)] +(-x)$ &&A3\\
+&$=[x+(y+(-y))] +(-x)$ &&A3\\
+&$=(x+0)+(-x)$&& A5\\
+&$=x+(-x)$&& A4\\
+&$=0$ && A5\\
+$-x - y$& $=-(x+y)$&& Th 2.1.6 \\
+\end{tabular}\nl
+
+\textbf{Theorem 2.2.2.} If $(F,+,\cdot)$ is a field, $x,y \in F, x \neq  0$, and $y \neq 0$ , then
+$(x\cdot y)^{-1} =x^{-1}\cdot y^{-1}.$\nl
+
+\textbf{Theorem 2.2.3.} If $(F,+,\cdot)$ is a field, $u,v,x,y\in F, u \neq 0$, and $v \neq 0$, then $(x\div u)\cdot (y \div v) =(x\cdot y) \div  (u\cdot v).$\nl
+Proof. Suppose $(F,+,\cdot)$ is a field, $u,v,x,y\in F, u \neq 0$, and $v \neq 0$.
+\begin{tabular}{r l l l}
+$(x\div u)\cdot(y\div v)$ & $=(x\cdot u^{-1})\cdot(y\cdot v^{-1})$ &&Def 2.1.2 \\
+&$=[(x\cdot u^{-1})\cdot y]\cdot v^{-1}$ &&M3\\
+&$=[x\cdot (u^{-1} y)]\cdot v^{-1}$ &&M3 \\
+&$=[x\cdot (y\cdot u^{-1})]\cdot v^{-1}$ &&M2\\
+&$=[(x\cdot y)\cdot u^{-1}]\cdot v^{-1}$ &&M3 \\
+&$=(x\cdot y)\cdot (u^{-1}\cdot v^{-1})$ &&M3 \\
+&$=(x\cdot y)\cdot (u\cdot v)^{-1}$ &&Th 2.2.2 \\
+&$=(x\cdot y)\div (u\cdot v)$ &&Def 2.1.2 \\
+\end{tabular}\nl
+
+\textbf{Theorem 2.2.4.} If $(F,+,\cdot)$ is a field, $x,y,z\in F, y \neq 0$, and $z \neq 0$, then $x \div y =(x\cdot z) \div (y\cdot z)$ and $x \div y =(z \cdot x) \div (z \cdot y).$ \nl
+
+\textbf{Theorem 2.2.5.} If $(F,+,\cdot)$ is a field, $x,y \in F, x \neq 0$, and $y \neq 0$, then $(x \div y)^{-1}= y\div x.$\nl
+
+\textbf{Theorem 2.2.6.} If $(F,+,\cdot)$ is a field, $u \in F$, and $v,x,y \in (F - \{0\})$, then
+$(u \div v) \div (x \div y) $
+$= (u \cdot y) \div  (v \cdot x).$ \nl
+
+\textbf{Theorem 2.2.7.} If $(F,+,\cdot)$ is a field, $u,v,x,y \in F, u \neq 0,$ and $v \neq 0$, then $(x\div u) + (y\div v) =(x \cdot v +u\cdot y)\div (u\cdot v)$ .\nl
+
+\newpage
+%page31
+\textbf{Exercises} \nl
+
+Assuming $(F,+,\cdot)$ is a field and $a,b,c,d \in F$, prove each of the following. \nl
+
+1. If $b \neq 0$, and $c\neq 0$ , then $a \div (b\div c) =(a\cdot c)\div b$. \nl
+
+2. If $b\neq 0$~ and $c \neq 0$, then $(a \div b)\div c =a\div (b\cdot c)$.\nl
+
+3. If $b\neq 0$, and $d\neq 0,$ then $(a\div b)=(c\div d)$ if and only if $a\cdot d=b\cdot c.$ \nl
+
+4. If $\neq 0$, and $b \neq 0$, then $(1\div a)+(1\div b)=(b + a)\div (a\cdot b)$. \nl
+
+5. If $a \neq 0$, and $b \neq 0$, then $1\div (a^{-1}\cdot b^{-1})= a\cdot b.$ \nl
+
+6. If  $a \neq 0$ and $b \neq 0$, then $(a + b)\div (a^{-1} + b^{-1}) = a\cdot b$. \nl
+
+7. If  $a \neq 0$ and $b \neq 0$, then $[(a^{-1} + b^{-1})\cdot (a+b)^{-1}] \div (a^{-1}\cdot b^{-1}) = 1$. \nl
+
+8. If   $a \neq 0$ and $b \neq 0$, then $[(a^{-1} + b^{-1}) \div (a^{-1} - b^{-1})]\cdot [( b- a)\div (a+b)] =1.$ \nl
+
+9. Theorem 2.2.2.
+
+10. Theorem 2.2.4.
+
+11. Theorem 2.2.5.
+
+12. Theorem 2.2.6.
+
+13. Theorem 2.2.7.\nl
+
+\textbf{2.3 Exponents}\nl
+
+\lhead{Section 2.3}
+\textbf{Theorem 2.3.1.} If $(F,+,\cdot )$ is a field, $x\in F$, and $x \neq 0$, then $(-x)^{-1} = -(x^{-1}).$\nl
+
+\textbf{Theorem 2.3.2.} If $(F,+,\cdot )$ is a field, $x,y\in F$, and $y \neq 0$, then $(-x)\div y =-(x\div y)$ and $x\div (-y) = -(x\div y).$\nl
+
+\textbf{Theorem.2.3.3.} If $(F,+,\cdot )$ is a field, $x,y \in F$, and $x\cdot y=0$, then $x =0$ or $y = 0.$\nl Proof. Suppose$ (F,+,\cdot)$ is a field, $x,y \in F$, and $x\cdot y = 0$.\nl
+ Suppose $y \neq 0.$\nl
+
+\begin{tabular}{r l l}
+$(x\cdot y)\cdot y^{-1}$ & $=0\cdot y^{-1}$ & Def of=, M5 \\
+$x\cdot (y\cdot y^{-1})$ &$= 0$ &M3, Th 2.1.7 \\
+$x\cdot 1$ &$= 0$ &M5 \\
+$x$&$=0$& M4 \\
+\end{tabular}
+\newpage
+%page32
+
+\textbf{Theorem 2.3.4.} If $(F,+,\cdot)$ is a field and $x,y\in F$, then $x = y$ if and only
+if $x - y = 0$.
+Proof. Suppose $(F,+,\cdot )$ is a field and $x,y\in F.$
+\begin{tabular}{r l l r l l}
+$x$ &$=y$ &Hyp &$x - y$ &$= 0$ &Hyp\\
+$x+(-y)$&$=y+(-y)$& Def of=,A5 &$x+(-y)$&$=y+(-y)$&Def 2.1.2,A5\\
+$x-y$&$=0$& Def 2.1.2,A5 &$x$&$=y$ & Th 2.1.2 \\
+\end{tabular}\nl
+
+\textbf{Definition 2.3.1.} If $(F,+,\cdot)$ is a field, let 2=1+1, 3=2+1, 4=3+1, 5=4+1, 6=5+1, 7=6+1,   8=7+1, 9=8+1, and 10=9+1.\nl
+
+\textbf{Definition 2.3.2.} If $(F,+,\cdot)$ is a field and $x\in F$, let $x^2$ denote $x\cdot x, x^{3}$ denote $x^{2}\cdot x,~x^{4}$ denote $x^{3}\cdot x$, and $x^{5}$ denote $x^{4}\cdot x.$\nl
+
+\textbf{Theorem 2.3.5.} If $(F,+,\cdot )$ is a field and $x,y \in F,$ then $(x-y)\cdot(x+y)=x^{2} - y^{2}.$ \nl
+
+\textbf{Theorem 2.3.6.} If $(F,+,\cdot )$ is a field and $x,y \in F$, then $x^{2} =y^{2}$ if and only if $x = y$ or $y = -x.$\nl
+Proof. Suppose $(F,+,\cdot )$ is a field and $x,y\in F.$\nl
+\begin{tabular}{r l l}
+$x^{2} =y^{2}$& $\lra x^{2} - y^{2} =0$ &Th 2.3.4 \\
+&$\lra(x-y).(x+y)=0$ & Th 2.3.5 \\
+&$\lra x-y=0$ or $x+y=0$ &Th 2.3.3, Th 2.1.7 \\
+&$\lra x=y$ or $y=-x$ & Th 2.3.4, Th 2.1.6, A5\\
+\end{tabular}\nl
+
+\textbf{Exercises}\nl
+
+ Assuming $(F,+,\cdot )$ is a field, prove each of the following.
+
+1. If $a,b \in F$, then $(a+b)^{2} = a^{2} + 2\cdot a\cdot b + b^{2}.$ \nl
+
+2. If $a,b,x \in F$, then $(x+a)\cdot (x+b) = x^{2} + (a+b)\cdot x + a\cdot b.$\nl
+
+3. $4=2^{2}.$\nl
+
+4. $(-1)^{-1} = -1. $\nl
+
+5. If $a\in F$, then $a^{4}=(a^{2})^{2}.$\nl
+
+6. 5=3+2.\nl
+
+7. If $a\in F$ and $a^{2} = 4$, then $a = 2$ or $a = -2.$\nl
+
+8. Theorem 2.3.1.\nl
+
+9. Theorem 2.3.2.\nl
+
+10. Theorem 2.3.5.\nl
+\newpage
+%page33
+
+\textbf{Chapter 3}\nl
+
+\lhead{Section 3.1}
+\textbf{Ordered Fields}\nl
+
+From problem 6 of Section 2.1, we see that a field can have as few as two elements in its basic set. This indicates that a field does not completely characterize the real number system. By adding an order relation to a field we insure the fact that its basic set contains infinitely many elements.\nl
+
+\textbf{3.1 Inequalities} \nl
+
+\textbf{Definition 3.1.1.} \of  is said to be an \textit{ordered field} if and only if $(F,+, \cdot)$ is a field, $<$, read ``is less than", is a binary relation on $F$, and the following properties are true. \nl
+
+O1. 	If $x,y \in F$, then exactly one of the following statements is true: $x < y, x = y, $ or $y < x.$ (Trichotomy Law) \nl
+
+O2. 	If $x,y,z \in F, x<y,$ and $ y < z,$ then $x < z.$ (Transitive Law) \nl
+
+O3. 	If $x,y,z \in  F$ and $x < y,$ then $x + z < y + z.$ \nl
+
+O4. 	If $x,y,z\in F, x < y$, and $0 < z,$ then $x\cdot z < y\cdot ·z.$\nl
+
+\textbf{Definition 3.1.2.} If \of is an ordered field, $x,y\in F$, then \nl
+a) $x > y,$ read ``$x$ is greater than $y$", means $y < x.$ \nl
+b) $y \geq x,$ read ``$y$ is greater than or equal to $x$", means $y > x$ or $y = x.$ \nl
+c) $x \leq y,$ read ``$x$ is less than or equal to $y$", means $x < y$ or $x = y$. \nl
+d) $x < y <z$ means $x < y$ and $y < z.$ \nl
+e) $x \leq y \leq z$ means $x\leq y$ and $y\leq z.$ \nl
+f) $x > y > z$ means $x > y$ and $y > z.$ \nl
+g) $x\geq y \geq z$ means $x \geq y$ and $y \geq z.$ \nl
+
+\textbf{Theorem 3.1.1.} If \of is an ordered field, $u,v,x,y\in F, u < v$ and $x < y,$ then $u + x < v + y.$ \nl
+
+\textbf{Theorem 3.1.2.} If \of is an ordered field and $x,y\in F$, then the following four statements are equivalent.\nl
+ a) $x < y$ \qquad b) $0 < y - x$ \qquad c) $x - y < 0$ \qquad d) $-y < -x$ \nl
+
+\textbf{Theorem 3.1.3.} If \of is an ordered field, $x,y,z\in F, x < y,$ and $z < 0$,~then $z\cdot x > z\cdot y$ and $x\cdot z > y\cdot z.$\nl
+Proof. Suppose \of is an ordered field, $x,y,z\in F, x < y,$ and $z < 0.$\nl
+
+\newpage
+
+\begin{tabular}{l l}
+$0 < y - x$& Th 3.1.2\\
+ $z\cdot (y - x) < 0\cdot (y - x)$&O4 \\
+ $z\cdot y - z\cdot x < 0$ &Ex 2.1.1, Th 2.1.7 \\
+ $z\cdot y <z \cdot x$& Th 3.1.2 \\
+ $z\cdot x > z\cdot y$&Def 3.1.2 \\
+ $x\cdot z > y\cdot z$ &M2 \\
+\end{tabular}\nl
+
+\textbf{Theorem 3.1.4.} If \of  is an ordered field, $x \in (F-\{0\})$, then $ 0 <x^{2}$. \nl
+ Proof. Suppose \of  is an ordered field, $x \in (F-\{0\})$.
+ By O1, we have $x < 0$ or $0 < x.$\nl
+
+\qqu  Case 1. $x < 0$ \nl
+\begin{tabular}{l l}
+$x\cdot x > 0\cdot x$ & Th 3.1.3\\
+$x^{2} > 0$&  Def 2.3.2, Th 2.1.7\\
+\end{tabular}\nl
+
+\qqu Case 2. $x > 0$\nl
+\begin{tabular}{l l}
+$x\cdot x >0\cdot x$& O4\\
+$x^{2} > 0$ &Def 2.3.2, Th 2.1.7\\
+\end{tabular}\nl
+
+\textbf{Theorem 3.1.5.} If \of is an ordered field, $u,v,x,y\in F, 0 \leq u < v,$ and $0\leq x < y,$ then $u\cdot x < v\cdot y.$\nl
+Proof. Suppose  \of is an ordered field, $u,v,x,y\in F, 0 \leq u < v,$ and $0\leq x < y,$\nl
+
+\begin{tabular}{l l}
+$0 < v$& O2\\
+$v\cdot x < v\cdot y$& O4,M2 \\
+\end{tabular}\nl
+
+Case 1. $(0 < x)$ \qqu Case 2. $(x = 0)$
+\begin{tabular}{l l l l l l}
+$u\cdot x <v\cdot x$ &O4& & & $u\cdot x = 0 =v\cdot x$& Th 2.1.7 \\
+$u\cdot x < v\cdot y$& O2 &&&$u\cdot x < v\cdot y$ &Def of= \\
+\end{tabular}\nl
+
+For the purposes of the examples and exercises, we will assume the results of Section 3.7. \nl
+
+\textbf{Example 3.1.1.} Assuming \of ~is an ordered field and $x\in F$, solve the inequality $5x - 2 < 3x + 4,$ i.e., find a simpler expression which is equivalent to the given expression. Solution.
+Suppose \of ~is an ordered field and $x\in F.$\nl
+
+$5x - 2 < 3x + 4$\nl
+$( 5x-2) + (-3x + 2) < (3x + 4) + (-3x+2)$ \nl
+$2x < 6$\nl
+$x < 3$\nl
+
+\newpage
+%page35
+
+\textbf{Exercises}\nl
+
+Assuming \of is an ordered field and $a,b,c,d\in F$, prove each of the following. \nl
+1. If $a < 0$, then $-a > 0$. \nl
+2. If $a > 0$, then $-a < 0$. \nl
+3. $a^{2} =0$ if and only if $a = 0$. \nl
+4. If $a\geq 0$ and $b\geq 0$, then $a\cdot b\geq 0$. \nl
+5. If $a\geq 0$ and $b\leq 0$, then $a\cdot b\leq 0.$ \nl
+6. If $a\leq b$ and $c\leq d,$ then $a\cdot c\leq b + d.$ \nl
+
+7. 	The following four statements are equivalent.\nl
+ a) $a\leq b$\qquad b) $a-b\leq 0$\qquad  c) $-b\leq -a$\qquad d) $0\leq b-a$\nl
+
+8. If $a\leq b$ and $c \geq 0,$ then $a\cdot c \leq b\cdot c.$\nl
+
+9. If $a\leq b$ and $c\leq 0$, then $a\cdot c\geq b\cdot c.$\nl
+
+10. Theorem 3.1.1. \nl
+
+11. Theorem 3.1.2. \nl
+
+Assuming \of  is an ordered field and $x\in F$, solve the following inequalities.\nl
+
+12. $4x - 1 < 2x + 3 $\nl
+13. $3x - 5 > 7x + 3$\nl
+14. $-3x +4 \leq 2x - 6$\nl
+
+
+Assuming \of is an ordered field, find the largest element $m$ of $F$ such that for each $x$ in $F$: \nl
+15. $m\leq x^{2} - 4x + 5$\nl
+
+16. $m\leq 2x^{2} + 4x - 3 $\nl
+
+
+\textbf{Theorem 3.1.6.} If \of  is an ordered field, then $0 < 1.$\nl
+ Proof. Suppose \of  is an ordered field. By M4 and O1,$1 < 0$ or $0 < 1.$ Suppose $1 < 0.$ By Th 3.1.3,we have $1·\cdot 1 >0\cdot 1.$ By M4 and Th 2.1.7, we get $1 > 0.$   This is a contradiction. Therefore, $1 > 0.$ \nl
+
+\textbf{Definition 3.1.3.} If \of  is an ordered field and $x,y\in F$, then\nl
+a) $x$ and $y$ are said to have the \textit{same sign} if and only if either ($x < 0$ and $y < 0$) or ($x > 0$ and
+$y > 0$).\nl
+b) $x$ and $y$ are said to have \textit{different signs} if and only if either ($x < 0$ and $y > 0$) or ($x > 0$ and $y < 0$).\nl
+
+\textbf{Theorem 3.1.7.} If \of  is an ordered field and $x,y\in F$, then
+
+\newpage
+%page36
+
+$x\cdot y > 0$ if and only if $x$ and $y$ have the same sign. $x\cdot y < 0$ if and only if $x$ and $y$ have different signs.\nl
+ Proof of (a). Suppose \of  is an ordered field and $x,y\in F.$ \nl
+\quad Suppose $x$ and $y$ have the same sign. Thus ($x > 0$ and $y > 0$) or ($x < 0$ and $y <0$ ). If $x > 0$ and $y > 0,$ then by O4 and Th2.1.7, we have $x\cdot y > 0.$ If $x < 0$ and $y < 0$, then, by Th 3.1.3 and Th 2.1.7 ,we have $x\cdot y > 0$. In either case $x\cdot y > 0.$\nl
+$ $\quad By a similar argument, we see that if $x$ and $y$ have different signs, then $x\cdot y < 0.$\nl
+$ $\quad Suppose $x\cdot y > 0.$ By Th 2.1.7 , we see that $x\neq 0 \neq y.$ Hence $x$ and $y$ have the same sign or different signs. If $x$ and $y$ have different signs, then $x\cdot y < 0.$ Therefore $x$ and $y$ have the same sign. \nl
+By a similar argument, we have that if $x\cdot y < 0,$ then $x$ and $y$ have different signs. \nl
+
+\textbf{Theorem 3.1.8.} If \of  is an ordered field and $x\in F$, then $x$ and $x^{-1}$ have the same sign. \nl
+
+\textbf{Theorem 3.1.9.} If \of  is an ordered field, $x,y\in F, x \geq 0,$ and $y\geq 0,$ then $x^{2} < y^{2}$ if and only if $x < y.$\nl
+ Proof. Suppose \of is an ordered field, $x,y\in F, x \geq 0,$ and $y\geq 0$\nl
+If $x < y,$ then, by Th 3.1.5, we have $x^{2} < y^{2}.$\nl
+Suppose $x^{2} <y^{2}.$ By O1, we have $x < y, x = y,$ or $y < x.$ If $y < x,$ then, by Th 3.1.5, we obtain $y^{2} < x^{2}$, which is a contradiction. If $x = y$, then $x^{2} = y^{2},$ which is also a contradiction. Therefore $x  < y.$ \nl
+
+\textbf{Example 3.1.2.} Assuming \of is an ordered field and $x\in F$, solve the inequality $x^{2} + 4x - 5< 0.$\nl Solution. Suppose \of is an ordered field and $x\in F$.\nl
+\begin{tabular}{l l}
+$x^{2} + 4x - 5 < 0$&\\
+&$\lra (x+5)\cdot(x-1) < 0$\\
+&$\lra (x+5 <0$ and $x-1>0)$ or $(x+5>0$ and $x-1 < 0)$\\
+&$\lra (x<-5$ and $x> 1)$ or $(x>-5$ and $x< 1)$\\
+&$\lra -5<x<1$\\
+\end{tabular}\nl
+
+\textbf{Example 3.1.3.} Assuming \of is an ordered field and $x\in F,$ solve the inequality $4\div(x-2) < 2.$\nl
+ Solution. Suppose \of is an ordered field and $x\in F,$
+
+\newpage
+%page37
+\begin{tabular}{l l}
+%$4\div(x-2) < 2$&\\
+$4\div(x-2) < 2$&$\lra 4\div (x-2) < 2$ and $(x-2>0$ or $x-2<0)$\\
+&$\lra (4 < 2\cdot (x-2)$ and $x - 2 >0)$ or $(4>2\cdot (x-2)$ and $x - 2 < 0)$\\
+&$(4 < 2x - 4$ and $x > 2)$ or $(4 > 2x - 4$ and $ x < 2)$\\
+&$(4 < x$ and $x > 2)$ or $(4 > x$ and $x < 2)$ \\
+&$\lra x > 4$ or $x < 2$\\
+\end{tabular}\nl
+
+\textbf{Exercises}\nl
+ Assuming \of is an ordered field, prove each of the following. \nl
+
+1. If $a\in F$ and $a > 1,$ then $a^{2} > a.$ \nl
+
+2. If $a\in F$ and $0 < a < 1$, then $a^{2} < a.$\nl
+
+3. If $a,b\in F$ and $a < b,$ then $a < (a+b)\div 2 < b.$ \nl
+
+4. Theorem 3.1.8. \nl
+
+Assuming \of  is an ordered field and $x\in F$, solve each of the following inequalities.
+
+5. $x^{2} -x - 12 > 0$\nl
+
+6. $x^{2} - 2x - 15 < 0$\nl
+
+7. $x^{2} > 0$\nl
+
+8. $-1 < 3x + 5 < 2 $\nl
+
+9. $2x - 3 < 4x + 5 <-3x + 2$\nl
+
+10. $x\div(x-1) > 0 $\nl
+
+11. $0 < 1\div  x^{2} < 9 $\nl
+
+12. $0 < 1\div(x-2) < 4$ \nl
+
+\lhead{Section 3.2}
+\textbf{3.2 Intervals }\nl
+
+\textbf{Definition 3.2.1.} Suppose \of is an ordered field, $a,b\in F$, and $a < b.$\nl
+ a) The \textit{open interval} from $a$ to $b$ is denoted by $(a,b)$ and defined by
+$(a,b)=\{ x \mid a < x < b \}.$\nl
+ b) The \textit{closed interval} from $a$ to $b$ is denoted by [$a,b$] and defined by
+$[a,b] =\{x \mid a \leq x \leq b \}.$ \nl
+c) There are two \textit{half-open intervals} from a to b denoted by $(a,b]$ and $[a,b)$ and defined by $(a,b] = \{x \mid a < x \leq b\}$ and $[a,b) = \{x \mid a \leq x < b\}.$\nl
+d) Each of the following sets are called \textit{infinite intervals.} \nl
+
+\newpage
+%page38
+\begin{tabular}{l l}
+$(a,\infty)= \{x \mid a < x\}$& $(-\infty,a)= \{x \mid x < a\}$ \\
+$[a,\infty) = \{x \mid a \leq x\}$& $(-\infty, a] = \{ x \mid x \leq a \}$ \\
+$(-\infty, \infty) = F$& \\
+\end{tabular}\nl
+
+\textbf{Example 3.2.1.} Assuming \of is an ordered field, express the truth set of $[9\div(x-2)] > 3$ in terms of intervals.\nl
+
+Solution. Suppose \of is an ordered field.\nl
+$ \{x \mid [9\div (x-2)] >3\}$ \nl
+$=\{x \mid 9\div (x-2)) > 3$ and $(x-2 > 0 $ or $x-2< 0)\}$ \nl
+$= \{(9\div (x-2)$ and $x - 2 > 0)$ or $(9 <3\cdot (x-2)$ and $x - 2 <0)\}$ \nl
+$= \{x \mid 9 > 3x-6$ and $x > 2)$ or $(9 < 3x - 6$ and $x < 2)\} $\nl
+$= \{x \mid (5 > x$ and $x > 2)$ or $(5 < x$ and $x < 2)\}$ \nl
+$=\{x \mid 2< x < 5\}$ \nl
+$=(2,5)$ \nl
+
+\textbf{Example 3.2.2.} Assuming \of  is an ordered field, express the truth set of $x^{2} -2x + 8 > 0$ in terms of intervals.\nl Solution  Suppose \of is an ordered field. \nl
+$\{x \mid x^{2} - 2x - 8 > 0 \}$ \nl
+$= \{x \mid (x - 4 > 0$ and $x + 2 > 0)$ or $(x - 4 < 0$ and $x + 2 < 0)\} $\nl
+$= \{x \mid (x > 4)$ and $x > -2)$ or $(x < 4$ and $x < -2)\} $\nl
+$= \{x \mid x > 4$ or $x < -2\} $\nl
+$=\{x \mid x > 4\} \cup \{x \mid x < -2\} $\nl
+$=(4,\infty) \cup (-\infty,-2) $\nl
+
+\textbf{Exercises}\nl
+
+ Assuming \of  is an ordered field, express each of the following in terms of intervals.
+
+1. $\{x \mid -2< x < 3\}$ \nl
+
+2. $\{x \mid x <1$ or $x > 2\}$ \nl
+
+3. $\{x\mid x < 2$ and $x\leq 4\}$ \nl
+
+4. $\{x \mid -5 < x$ and $x < 6\}$  \nl
+
+5. $\{x \mid x < 2$ or $x < 6\}$ \nl
+
+
+Assuming \of  is an ordered field, express each of the following as an interval. \nl
+
+6. $[2,5) \cap [3,10)$\nl
+
+7. $(0,6)\cap (1,4)$\nl
+
+8. $(-\infty,2] \cup (0,\infty) $
+
+\newpage
+%page39
+
+9. $(-\infty,1] \cup [0,3)$\nl
+
+10. $(-\infty,2)\cap(0,2]$ \nl
+
+11. $(-3,1)\cup[1,5]$ \nl
+
+
+Assuming \of  is an ordered field, express the truth set of each of the following in terms of intervals. \nl
+
+12. $[8\div(x-1)] < 4 $\nl
+
+13. $x^{2} + x - 6 < 0 $\nl
+
+14. $x^{2} + 3x - 10 > 0 $\nl
+
+15. $x^{2} < 4 $\nl
+
+16. $0 < [4\div (x-2)] < 1 $\nl
+
+17. $x^{2} > 1 $\nl
+
+
+\lhead{Section 3.3}
+\textbf{3.3 Absolute Value}\nl
+
+\textbf{Definition 3.3.1.} If \of  is an ordered field and $x\in F,$ then the \textit{absolute value} of $x$ is denoted by $\abs{x}$ and defined by \nl
+\begin{tabular}{l l}
+$\abs{x}$ &$=x$ if $x\geq 0$\\
+&$=-x$ if $x < 0$\\
+\end{tabular}\nl
+
+\textbf{Theorem 3.3.1.} If \of  is an ordered field and $a,x\in F,$ then\nl
+(1) $\abs{x} = a$ if and only if $a \geq 0$ and $(a = x$ or $a = -x)$ \nl
+and\nl
+(2) $\abs{x} \geq 0$ and $( \abs{x} = x$ or $\abs{x} = -x).$\nl
+Proof. Suppose \of is an ordered field and $a,x\in F$.\nl
+Proof of Assertion (1)
+\begin{tabular}{l l}
+$\abs{x}=a$& $\lra \abs{x}=a$ and $(x \geq 0$ or $x\leq 0)$\\
+&$\lra (\abs{x} = a$ and $x\geq 0)$ or $(\abs{x} = a$ and $x\leq 0) $\\
+&$\lra (x = a$ and $x\geq 0)$ or $(-x = a$ and $x\leq 0)$\\
+&$\lra  (x\geq 0$ and $x = a)$ or $(-x\geq 0$ and $-x = a)$\\
+&$\lra (a\geq 0$ and $a = x)$ or $(a \geq 0$ and $a = -x)$\\
+&$\lra a\geq 0$ and $(a = x$ or $a = -x)$\\
+\end{tabular}\nl
+Proof of Assertion (2)
+Since (1) holds for each number $a,$ it holds for $a=\abs{x}.$\nl
+Thus $\abs{x} = \abs{x} \lra  [\abs{x} \geq 0$ and  $(\abs{x} = x$ or $\abs{x} = -x)].$ Therefore \nl
+
+\newpage
+%page40
+
+
+$\abs{x} \geq 0$ and $(\abs{x} = x$ or $\abs{x} = -x)$\nl
+
+\textbf{Example 3.3.1.} Suppose \of is an ordered field and $x\in F.$ Solve the equation $\abs{x + 2}=3x - 6.$\nl
+Solution. Suppose \of is an ordered field and $x\in F.$ \nl
+$\abs{x + 2} = 3x - 6$\nl
+$\lra 3x-6 \geq 0$ and $(3x - 6 = x + 2$ or $3x - 6 = -(x+ 2))$\nl
+$\lra x\geq 2$ and $(x=4$ or $x=1)$\nl
+$\lra x=4$\nl
+
+\textbf{Theorem 3.3.2.} If \of is an ordered field, $a,x\in F$, and $a > 0$, then
+(1) $\abs{x} < a$ if and only if $-a < x < a$\nl
+and\nl
+(2) $\abs{x}\leq a$ if and only if$ -a \leq x \leq a.$\nl
+Proof of (1). Suppose \of is an ordered field, $a,x\in F.$\nl
+\begin{tabular}{l l}
+$\abs{x} < a$ &$\lra \abs{x}<a$ and $(0 \leq x$ or $x\leq 0)$\\
+&$\lra (\abs{x} < a$ and $0 \leq x)$ or $(\abs{x} < a$ and $x\leq 0)$\\
+&$\lra (x < a$ and $-x\leq 0$ and $0\leq x)$ or $(-x < a$ and $0\leq -x$ and $x\leq 0)$\\
+&$\lra (x<a$ and $-x < a$ and $0\leq x)$ or $(-x<a$ and $x<a$ and $x\leq 0)$\\
+&$\lra (x < a$ and $-x < a)$ and $(0\leq x$ or $x\leq 0)$\\
+&$\lra x < a$ and $x > -a$\\
+&$\lra -a < x < a$\\
+\end{tabular}\nl
+
+\textbf{Example 3.3.2.} Assuming \of is an ordered field, find the truth set of $\abs{3x - 1}\leq 2x + 6$ in terms of intervals. \nl
+Solution. Suppose \of is an ordered field.\nl
+$\{x \mid \abs{3x - 1}\leq 2x+6\}$\nl
+$=\{x \mid -(2x+6)\leq 3x-1 \leq 2x+6\}$\nl
+$= \{x \mid -2x-6\leq 3x-1$ and $3x-1\leq 2x+6\}$\nl
+$= \{x \mid -1\leq x$ and $x\leq 7\}$\nl
+$=[-1,7] $\nl
+
+\textbf{Theorem 3.3.3.} If \of is an ordered field and $a,x\in F,$ then \nl
+(1) $\abs{x} > a$ if and only if $x < -a$ or $a < x,$ and \nl
+(2) $\abs{x} \geq a$ if and only if  $x\leq -a$ or $a\leq x.$ \nl
+
+\textbf{Example 3.3.3.} Assuming \of is an ordered field, find the set of $\abs{3x - 1} > 2x + 6$ in terms of intervals. \nl
+
+\newpage
+%page41
+
+
+Solution.
+~$\{x\mid \abs{3x - 1} > 2x + 6\} $\nl
+$=\{x \mid -(3x-1) > 2x + 6$ or $3x - 1 > 2x + 6\}$\nl
+$=\{x \mid 3x - 1  < -2x - 6$ or $2x + 6 < 3x - 1\}$ \nl
+$=\{x\mid  x < - 1 $ or $7< x\}$\nl
+$=\{x \mid x < -1\}\cup \{x \mid 7 < x\} $\nl
+$=(-\infty,-1) \cup (7,\infty)$\nl
+
+\textbf{Theorem 3.3.4.} If \of is an ordered field and $x\in F,$ then $x\leq \abs{x}.$\nl
+
+\textbf{Theorem 3.3.5.} If \of is an ordered field and $x\in F,$ then $\abs{x}= \abs{-x}.$\nl
+
+\textbf{Theorem 3.3.6.} If \of  is an ordered field and $x \in F,$ then $-x \leq \abs{x}$ and $-\abs{x} \leq x$ and $-\abs{x} \leq x \leq \abs{x}.$\nl
+
+\textbf{Exercises}\nl
+
+Assuming  \of is an ordered field, find the truth set of each of the following in terms of intervals. \nl
+
+1. $\abs{2x - 3} < x $\nl
+2. $\abs{x + 2} \leq 3x - 6 $\nl
+3. $\abs{4x - 3} < 3x - 4 $\nl
+4. $\abs{4x - 1} - 5 < 3x$\nl
+5. $\abs{4x - 3} = 3x -4 $\nl
+6. $\abs{4x - 1} = 3x + 5$\nl
+7. $\abs{3x - 1} = 2x + 6$\nl
+8. $\abs{x + 2} > 3x - 6$ \nl
+9. $\abs{4x - 3} - 3x > -4$\nl
+10. $\abs{4x - 1} \geq 3x + 5$\nl
+
+Assuming \of is an ordered field and $x\in F,$ prove each of the following.\nl
+11. $\abs{3x - 1} < 2 \lra 1 < x < 5 $\nl
+12. $\abs{-2x + 5} <3  \lra  1 < x < 4$\nl
+13. Theorem 3.3.3(1). (Hint: Negate both sides of part(2) of Theorem 3.3.2) \nl
+
+14. Theorem 3.3.4. (Hint: Use Theorem 3.3.3) \nl
+
+15. Theorem 3.3.5. (Hint: Use Theorem 3.3.1) \nl
+
+16. Theorem 3.3.6. (Hint: Use Theorems 3.3.4 and 3.3.5) \nl
+
+\newpage
+%page42
+\textbf{Theorem 3.3.7.} If \of  is an ordered field and $x,y \in F,$ then $\abs{x} = \abs{y}$ if and only if $x = y$ or $x = -y.$\nl
+ Proof. Suppose \of  is an ordered field and $x,y \in F.$ \nl
+ \begin{tabular}{r l}
+$\abs{x} =\abs{y}$ &$\lra \abs{y} \geq 0$ and $(\abs{y} = x$ or $\abs{y}= -x)$\\
+&$\lra \abs{y} = x$ or $\abs{y} = -x$\\
+&$\lra [x \geq 0$ and $(x = y$ or $x = -y)]$ or $[-x\geq 0$ and $(-x = y$ or $-x = -y)]$\\
+&$\lra [x \geq 0$ and $(x=y$ or $x=-y)]$ or $[x\leq 0$ and $(x=y$ or $x=-y)] $\\
+&$\lra (x=y$ or $x=-y)$ and $(x \geq 0$ or $x \leq 0)$\\
+&$\lra x = y$ or $x = -y$\\
+\end{tabular}\nl
+
+\textbf{Example 3.3.4.} Assuming \of is an ordered field, find the truth set of $\abs{2x - 2} = \abs{x - 4}.$\nl
+Solution. Suppose \of is an ordered field. \nl
+$ $ $\{x \mid \abs{2x - 2} = \abs{x - 4} \}$ \nl
+$= \{x \mid 2x - 2 = x-4$ or $2x - 2= -x + 4 \}$\nl
+$= \{x \mid x=-2$ or $x = 2\}$\nl
+$=\{-2,2\}$\nl
+
+\textbf{Theorem 3.3.8.} If \of is an ordered field and $x,y\in F$, then $\abs{x + y} \leq \abs{x} + \abs{y}.$\nl
+Proof. Suppose \of is an ordered field and $x,y\in F.$ By Th 3.3.6, we have
+\begin{tabular}{l }
+$\,\,\,\,\,\,-\abs{x} \leq x \leq \abs{x}$ and \\
+$-\abs{y}\leq y \leq \abs{y}.$\\
+\end{tabular}\nl
+By adding these two inequalities, we get $-(\abs{x} + \abs{y}) \leq x+y \leq \abs{x} + \abs{y}.$ By Th 3.3~2 we obtain $\abs{x + y} \leq \abs{x} + \abs{y}.$\nl
+
+\textbf{Example 3.3.5.} Assuming \of is an ordered field and $x\in (2,4),$ find a number greater than $\abs{x^4 - 2x^{2} + 6x + 8}.$\nl
+Solution. Suppose \of is an ordered field and $x\in (2,4).$ Thus $2<x<4$ and $\abs{x} < 4.$\nl
+$\abs{x^4 - 2x^{2} + 6x + 8}.$\nl
+$\leq \abs{x^4} + \abs{-2x^{2}}+ \abs{6x} + \abs{8}$\nl
+$\leq x^4 + \abs{-2}x^{2} + 6\abs{x} +8 $\nl
+$<(4^{4})+2(4^{2}) + 6(4) + 8$ \nl
+=256 + 32 + 24 + 8 = 320 \nl
+
+\newpage
+%page43
+
+\textbf{Theorem 3.3.9.} If \of is an ordered field and $x,y\in F,$ then
+$\abs{x} - \abs{y} \leq \abs{x - y}$ and $\abs{\,\,\abs{x}- \abs{y}\,\, } \leq \abs{x - y}.$\nl
+
+\textbf{Theorem 3.3.10.} If \of is an ordered field and $x,y\in F,$ then
+$\abs{x}\cdot\abs{y} = \abs{x\cdot y}. $\nl
+Proof. Suppose  \of is an ordered field and $x,y\in F.$  Let $a=\abs{x}$ and $b=\abs{y}.$ By Th 3.3.1, we have $[a \geq 0$ and $(a = x$ or $a = -x)]$ and $[b \geq 0$ and $(b = y$ or $b = -y)].$ Therefore $a\cdot b  \geq 0$  and $(a\cdot b = x\cdot y$ or $a\cdot b = -(x\cdot y).$ Applying Th 3.3.1 again, we get $\abs{x\cdot y} = a\cdot b =\abs{x}\cdot \abs{y}.$\nl
+
+\textbf{Theorem 3.3.11.} If If \of is an ordered field and $x,y\in F,$ and $y\neq 0,$ then $\abs{x \div y} = \abs{x} \div \abs{y}.$\nl
+
+\textbf{Theorem 3.3.12.} If  \of is an ordered field and $x\in F$ then ${\abs{x}}^{2}  = x^{2}. $\nl
+
+\textbf{Exercises} \nl
+
+Assuming \of  is an ordered field, find the truth set of each of the following. \nl
+1. $ \abs{3x - 1} = \abs{-2x + 4} $\nl
+
+2. $\abs{4x - 8} = -\abs{3x}$ \nl
+
+3. $\abs{x} = \abs{y}  \lra x^{2}= y^{2}.$ \nl
+
+4. $ \abs{x - y} \leq \abs{x} + \abs{y}$ \nl
+
+5. $\abs{z - x} \leq \abs{z - y} + \abs{y - x}$\nl
+
+6. $\abs{x}= 0 \lra x=0$ (Hint: Use Theorem 3.3.1)\nl
+
+7. $x \in (a - c, a + c) \lra  \abs{x - a} < c $\nl
+
+8. $a-c < x < a + c \lra \abs{x - a} < c $\nl
+
+9. If $\abs{ x + y} < c,$ then $\abs{x} \leq \abs{y} + c.$\nl
+
+10. If $\abs{x} < \dfrac{c}{2}$ and $\abs{y} < \dfrac{c}{2},$ then $\abs{x + y} < c.$\nl
+
+11. If $\abs{x} < \dfrac{c}{\abs{a} + 1}$, then $\abs{ax} < c.$\nl
+
+12. Theorem 3.3.9. (Hint: Apply Theorem 3.3.8 to $y$ and $x -y$)
+
+13. Theorem 3.3.11.
+
+14. Theorem 3.3.12. (Hint: Use Theorems 2.3.6 and 3.3.1)
+
+\newpage
+
+%page44
+\lhead{Section 3.4}
+\textbf{3.4 Mathematical Induction}\nl
+
+\textbf{Definition 3.4.1.} If \of  is an ordered field, then a subset $S$ of $F$ is called an \textit{inductive set} if and only if (1) $1\in S$ and (2) $k\in S$ implies $k+1\in S.$\nl
+
+\textbf{Definition 3.4.2.} If \of  is an ordered field, let $Z^{+}$ denote $\{n \mid n$ belongs to every inductive subset of $F \}$. The elements of  $Z^{+}$ are called \textit{positive integers.} \nl
+
+\textbf{Theorem 3.4.1.} If \of  is an ordered field, then $Z^{+}$ is an inductive set.\nl
+Proof. Suppose \of is an ordered field. \nl
+
+(1) $1\in Z^{+}$ since 1 belongs to every inductive subset of $F.$\nl
+
+(2)\begin{tabular}{r l} 	
+$k\in Z^{+}$ &$\lra k$ belongs to every inductive subset of $F$\\
+&$\lra k+1$ belongs to every inductive subset of $F$ \\
+&$\lra k+1\in Z^{+} $\\
+\end{tabular}\nl
+
+\textbf{Theorem 3.4.2.} If \of is an ordered field and $S$ is an inductive subset of $Z^{+},$ then $S =Z^{+}.$\nl 
+Proof. Suppose \of is an ordered field and $S$ is an inductive subset of $Z^{+}.$
+
+\begin{tabular}{r l}
+$n \in Z^{+}$& $\ra n$ belongs to every inductive subset of $F$.\\
+&$\ra n\in S$\\
+\end{tabular}\\
+Thus $Z^{+} \subseteq S$ and $S \subseteq Z^{+}.$ Therefore $S = Z^{+}.$ \nl
+
+\textbf{Theorem 3.4.3.} If \of is an ordered field and $n\in Z^{+},$ then $n \geq 1.$\nl
+
+\textbf{Definition 3.4.3.} If \of is an ordered field and $a\in F,$ let $a^{0} = 1$ and for each $n\in Z^{+},$ let $a^{n} =a^{n-1}\cdot a.$\nl
+
+Note: For the remainder of this book, we will let $ab$ denote $a\cdot b.$\nl
+
+\textbf{Theorem 3.4.4.} If \of  is an ordered field, $a,b\in F, b \neq 0,$ and $n,m\in Z^{+}$, then \nl
+a) $a^{1} = a$ \nl
+b) $m + n \in Z^{+}$\nl
+c) $mn\in Z^{+} $\nl
+d) $m^{n}\in Z^{+} $\nl
+
+\newpage
+
+%page45
+
+e) $a^{m+n} = a^{m}a^{n}$\nl
+f) $(a^{m})^n = a^{mn} $\nl
+g) $(a^{n})\div (b^{n})=(a\div b)^{n}$\nl
+h) $a^{n} \div a^{m} = a^{n - m}$\nl
+Proof of (b). Suppose \of  is an ordered field and $ m \in\zp , m + n \in \zp $.  \nl
+Let $S = \{ n \mid n \in \zp$ and $ m + n \in \zp \}$.\nl
+\qqu Proof of Assertion (1)\nl
+$1 \in S$ since $1\in \zp$ and $m + 1\in \zp$\nl
+$\quad \quad$ Proof of Assertion (2)\nl
+\begin{tabular}{rl}
+$k \in S$&$\ra  k\in \zp $ and $m + k \in \zp$\\
+%&$\ra k \in \zp$ and $(m + k) + 1\in \zp$\\
+&$\ra k + 1 \in \zp$\\ %and $m+(k+1)\in \zp$\\
+&$\ra k+1\in S$\\
+\end{tabular}\\
+By Th 3.4.2, we have $S=\zp$ and for each $n\in \zp, m + n\in \zp .$\nl
+
+Proof of (f). Suppose \of is an ordered field, $a\in F,$ and $m\in \zp$. Let $S= \{n \mid n \in \zp $ and $(a^{m})^{n} = a^{mn}\}.$ \nl
+\qqu Proof of Assertion (1)\nl
+$1\in S$ since $1 \in \zp$ and $(a^{m})^{1} = a^{m} = a^{m1} $\nl
+\qqu Proof of Assertion (2)\nl
+\begin{tabular}{r l}
+$k \in S$&$\ra  k\in \zp $ and $(a^{m})^{k} = a^{mk}$\\
+%&$\ra k + 1\in \zp$ and $(m + k) + 1\in \zp$\\
+&$\ra k+1 \in \zp$ and $(a^{m})^{k+1} =  a^{m(k+1)}$\\
+&$\ra k+1\in S$\\
+\end{tabular}\\
+By Th 3.4.2 we have $S = \zp$ and for each $n \in \zp, (a^{m})^{n} = a^{mn}.$\nl
+
+\textbf{Theorem 3.4.5.} If \of is an ordered field and $n\in \zp$ then $n = 1$ or $n-1\in \zp$.\nl
+Proof. Suppose \of is an ordered field. Let $S=\{ n \mid n\in \zp$  and $(n=1$ or $n-1\in \zp)\}$\nl
+\qqu Proof of Assertion (1)\nl
+$1 \in S$ since $1 \in \zp$ and $(k =1$ or $k -1 \in \zp ).$\nl
+\qqu Proof of Assertion (2)\nl
+\begin{tabular}{rl}
+$k \in S$&$\ra k\in \zp$ and $k=1 $ or $k - 1 \in \zp$\\
+&$\ra k \in \zp$ and $(k - 1) + 1\in \zp$\\
+&$\ra k+1 \in \zp$ and $(k + 1) - 1 \in \zp$\\
+&$\ra k+1\in S$\\
+\end{tabular}\\
+
+By Th 3.4.2, we have $S = \zp$ and for each $n\in \zp, n = 1$ or $n - 1\in \zp .$\nl
+
+\textbf{Theorem 3.4.6.} If \of is an ordered field and $n \in \zp,$ then $\zp \cap (n, n+1) = \ns .$\nl
+Proof. Suppose \of is an ordered field. Let $S=\{n \mid n\in \zp$ and $\zp \cap (n,n+1)= \ns \}.$ \nl
+(1) Suppose there is an element $x$ in $\zp \cap (1,2).$ Thus $x\in \zp $ and $1 < x < 2.$\nl
+By Th 3.4.5,we have $x-1\in \zp$ and $x - 1 < 1.$ This contradiction proves $1\in S.$\nl
+
+\newpage
+
+%page46
+
+
+(2) Suppose $k\in S$ and $k+1\notin S$. Thus there is an element $x \in \zp \cap (k+1,k+2).$ Hence $x\in \zp$ and $k+1<x<k+2.$ Since 1 precedes every other element in $\zp , x\neq 1.$ By Th 3.4.5, we have $x-1\in \zp$ and $k < x-1 < k+1.$ There­fore $x-1\in \zp \cap (k,k+1).$ This contradiction proves $k\in S \ra k+1\in S.$ By Th 3.4.2, we have $S=\zp$ and for each $n\in \zp, \zp \cap (n,n+1) = \ns .$ \nl
+
+\textbf{Definition 3.4.4.} If \of is an ordered field, let $Z= \{n \mid n\in \zp, n =0,$ or $-n\in \zp \}.$ The elements of $Z$ are called \textit{integers.}\nl
+
+\textbf{Theorem 3.4.7}  If \of  is an ordered field and $x,y\in Z,$ then $xy\in Z.$\nl
+
+\textbf{Theorem 3.4.8.} If \of  is an ordered field and $n\in Z,$ then $n-1\in Z.$\nl
+
+\textbf{Theorem 3.4.9.} If \of  is an ordered field, $a\in Z,$ and $n\in \zp$, then $a - n\in Z.$\nl
+
+\textbf{Theorem 3.4.10.} If \of is an ordered field and $x,y\in Z,$ then $x+y\in Z$ and $x - y \in Z$.\nl
+
+\textbf{Theorem 3.4.11.}. If \of  is an ordered field, then every non-empty
+subset of $\zp$ has a least element.\nl
+ Proof. Suppose \of is an ordered field and $S$ is a non-empty subset of $\zp$ which does not have a least element. Since 1 precedes every positive integer, $S$ does not contain $1$. Let $M=\{n \mid n\in \zp $ and $n$ is less than every element in $S\}.$ Thus $1\in M.$ If $M$ is an inductive set, then $M = \zp$ and $S = \ns.$ Therefore there is an element $k$ in $M$ such that $k+1\in S.$ Since $S$ has no least element, there is an $h$ in $S$ such that $h < k+1$. Thus, $k < h < k + 1,$ since $k$ is less than every element of $S$. By Th 3.4.6, we have $h \notin \zp$ and $h \notin S$. This contradiction proves the theorem.\nl
+
+
+\textbf{Definition 3.4.5.} If \of  is an ordered field, then for each $a$ in $Z$, let $Z_{a} = \{n \mid n\in Z$ and $n \geq a\}.$\nl
+
+\textbf{Theorem 3.4.12.} If \of  is an ordered field, $a\in Z$ and $S$ is a subset of $Z_{a}$ such that (1) $a\in S$ and (2) $k\in S$ implies $k+1\in S,$ then $S =Z_{a}.$ \nl
+Proof. Suppose \of  is an ordered field, $a\in Z, S\subseteq Z_{a}, a\in S,$ and $k\in S$ implies $k+1\in S.$ Let $T =\{n \mid n\in \zp$ and $ n-1+a\in S\}.$\nl
+(1) $1\in T$ since $1\in \zp$ and $a\in S$\nl
+(2) $k\in T \ra k\in \zp $ and $k - 1 + a\in S $\nl
+
+
+\newpage
+
+
+%page47
+$\ra k\in\zp $ and $[k-1+ a] + 1 \in S$\nl
+$\ra k + \in \zp$ and $(k+1) - 1 + a\in S$\nl
+$\ra k+1\in T$\nl
+Therefore $T = \zp$ and for each $n\in \zp, n - 1 + a\in S.$ Suppose $x\in Z_{a}$.  Thus $x\geq a$ and $x \in Z.$ Let $n = x + 1 - a.$ Hence $n \geq 1$ and $n\in Z.$ Therefore $n\in \zp, n - 1 + a\in S,$ and $x\in S.$ Thus $Z_{a} \subseteq S$ and $S \subseteq Z_{a}.$ Therefore $S = Z_{a}.$\nl
+
+\textbf{Example 3.4.1.} If \of is an ordered field and $n\in Z_{2},$ then $2^{n}  > 2.$ \nl
+ Solution. Suppose \of is an ordered field. Let $S=\{n \mid n\in Z_{2}$ and $2^{n} >2\}.$\nl
+(1) $2\in S$ since $2\in Z_{2}$ and $2^{2} >2$\nl
+Proof of Assertion (2)\nl
+\begin{tabular}{r l}
+$k\in S$ & $\ra k\in Z_{2}$ and $2^{k} >2$\\
+&$\ra k+1\in Z_{2}$ and $2^{k+1} = 2^{k} \cdot 2 > 2\cdot 2 > 2 $\\
+&$\ra k+1\in S$\\
+\end{tabular}\\
+
+By Th 3.4.2, we have $S=Z_{2}$ and for each $n$ in $Z_{2}, 2^{n} > 2.$\nl
+
+\textbf{Theorem 3.4.13.} If \of  is an ordered field and $S$ is a subset of $\zp$ such that (1) $1\in S$ and (2) $Z^{n}_{1} \subseteq S$ implies $n+1\in S,$ then $S = \zp.$\nl
+
+\textbf{Definition 3.4.6.} If \of is an ordered field and $x,y\in Z$, then $y$ is said to be \textit{divisible} by $x$ if and only if $y / x \in Z.$\nl
+
+\textbf{Exercises}\nl
+Suppose \of  is an ordered field, $A =\{x \mid x\in \zp$ and $x > 0\},$\nl $B= \{x \mid x\in F$  and $x^{2}\geq  2x\},$ and $C =\{x \mid x\in F$ and $x^{2} \geq 1\}.$\nl
+1. State which of the sets $F, A, B,$ and $C$ are inductive. \nl
+
+2. State which of the sets $F, A, B,$ and $C$ contain $\zp .$\nl
+
+3. State which of the sets $F, A, B,$ and $C$ are equal to $\zp$. \nl
+Assuming  \of is an ordered field, prove each of the following.
+
+4. If $n\in Z_{3},$ then $2^{n} > 2n + 1. $\nl
+
+5. If $n\in Z_{5},$ then $2^{n} > n^{2}.$\nl
+
+6. If $n\in \zp,$ then $n^{2} + n$ is divisible by 2.\nl
+
+7. If $n\in \zp,$ then $n^{3}+ 2n$ is divisible by 3.\nl
+
+8. 	If $x,y\in F, n\in \zp,$ and $x > y,$ then $x^{n} - y^{n}$ is divisible by $x - y$\nl
+ (Hint: $x^{n+1} - y^{n+1} = x(x^{n} -y^{n} ) + y^{n}(x-y).) $\nl
+
+9. Theorem 3.4.3.
+
+10. Theorem 3.4.4(a).
+
+11. Theorem 3.4.4(c).
+
+12. Theorem 3.4.4(d).
+
+\newpage
+
+
+%page48
+13. Theorem 3.4.4(e).\nl
+
+14. Theorem 3.4.4(g).\nl
+
+15. Theorem 3.4.4(h).\nl
+
+16. If $a\in F, n\in \zp,$ and $ m = 2n + 1,$ then $a^{m} = -(-a)^{m}.$ \nl
+
+17. If $a\in F, n\in \zp$ ,and $m = 2n,$ then $a^{m} =(-a)^{m}.$ \nl
+
+
+\textbf{Definition 3.4.7.} If \of is an ordered field, $h,k\in Z,$ and $~h < k,$  let $Z^{k}_{n}$~ denote $\{n \mid n\in Z$ and  $h\leq n\leq k\}.$\nl
+
+\textbf{Definition 3.4.8.} A function $f$ is said to be \textit{one-to-one} if and only if no two ordered pairs of $f$
+have the same second term, i.e., $x,y\in D_{f} $ and $f(x)= f(y) $ imply $x=y.$\nl
+
+\textbf{Definition 3.4.9.} If \of  is an ordered field, then a set $A$ is said to have $n$ elements if and
+only if $n\in \zp$ and there is a one-to-one function from $Z^{n}_{1}$ onto $A.$\nl
+
+\textbf{Definition 3.4.10.} If \of is an ordered field, then a set $A$ is said to be \textit{finite} if and only if $A$
+is empty or there is an element $n$ in $\zp $ such that $A$ has $n$ elements. \nl
+
+\textbf{Definition 3.4.11.} If \of  is an ordered field, then a set $A$ is said to be \textit{infinite} if and only if
+$A$ is not finite. \nl
+
+\textbf{Definition 3.4.12.} If \of  is an ordered field, then $a$ is said to be an \textit{infinite sequence} of
+elements of a set $A$ if and only if $a : \zp \ra A.$ If $a$ is an infinite sequence, then $a(i)$ is denoted
+by $a_{i}$ for each $i$ in $\zp$ and $a$ is sometimes denoted by $a_{1}, a_{2}, a_{3},\, \dots \,\,\,.$\nl
+
+\textbf{Definition 3.4.13.} If \of  is an ordered field and $a$ is an infinite sequence of elements of
+$F,$ let  $\sum_{i=1}^{1}a_{i}$ denote $a_{1}$ and for each $n$ in $\zp$, let
+$\sum_{i=1}^{n+1}a_{i}$ denote $\left( \sum_{i=1}^{n}a_{i}\right) + a_{n+1} .$\nl
+
+\textbf{Definition 3.4.14.} If \of is an ordered field, $a : Z \ra F, k\in Z,$ and $n \in \zp$, let $\sum_{i=k+1}^{k+n}a_{i}$ denote $\sum_{i=1}^{n}a_{i+k}.$\nl
+
+\textbf{Example 3.4.2.} If \of is an ordered field, then
+
+\newpage
+%page49
+
+a) $\sum_{i=1}^{3}(i^{2} - 1) = (1^2 - 1) + (2^2 - 1) + (3^2 - 1) = 11$ \nl
+
+b)  $\sum_{i=3}^{5}(2i-3) = (2\cdot 3-3)+(2\cdot 4-3)+ (2\cdot 5 - 3) = 15 $\nl
+
+\textbf{Theorem 3.4.14.} If \of is an ordered field, $a$ and $b$ are infinite sequences of elements of $F, c\in F,$ and $n\in \zp,$ and $k \in Z_{1}^{n-1}$ then\nl
+
+a)  $c\sum_{i=1}^{n}a_{i} = \sum_{i=1}^{n}(c\cdot a_{i}) \hfill c)\sum_{i=1}^{n}a_{i} = \sum_{i=1}^{k}a_{i} +\sum_{i=k+1}^{n}a_{i}.$\nl
+
+b)  $\sum_{i=1}^{n}a_{i} + \sum_{i=1}^{n}b_{i} = \sum_{i=1}^{n}(a_{i} + b_{i})$\nl
+
+
+Proof of (a). Suppose \of  is an ordered field, a is an infinite sequence of elements of $F,$
+and, $c\in F.$ \nl
+Let $S= \{n \mid n\in \zp$ and $c\sum_{i=1}^{n}a_{i} = \sum_{i=1}^{n}(c\cdot a_{i})\}$\nl
+
+(1) $1\in S$ since $1\in \zp$ and $ca_{1} = ca_{1}.$\nl
+
+\begin{tabular}{r l}
+(2) $k\in s$&$\ra k\in \zp$ and $c\sum_{i=1}^{k}a_{i} = \sum_{i=1}^{k}(ca_{i})$\\
+&$\ra k\in \zp$ and $c\left(\sum_{i=1}^{k}a_{i}\right) + ca_{k+1} = \left(\sum_{i=1}^{k}(ca_{i})\right) + ca_{k+1}$\\
+&$\ra k\in \zp$ and $c\left(\sum_{i=1}^{k} a_{i}  \, + \, a_{k+1}\right) = \sum_{i=1}^{k+1}(ca_{i})$\\
+&$\ra k+ 1\in \zp$ and $c\sum_{i=1}^{k+1}a_{i} = \sum_{i=1}^{k+1}(ca_{i})$\\
+&$\ra k+1\in S$\\
+\end{tabular}\\
+By Th.3.4.2 we have $S = \zp$ and for each $n\in \zp ,$ $c\sum_{i=1}^{n}a_{i} = \sum_{i=1}^{n}(ca_{i}).$ \nl
+
+\textbf{Example 3.4.3.} Show that if \of is an ordered field and $n\in \zp,$ then $\sum_{i=1}^{n}(2i) = n(n+1).$\nl
+
+Solution. Suppose \of is an ordered field. \nl
+Let $S=\{ n \mid n\in \zp$ and $\sum_{i=1}^{n}(2i) = n(n+1) \}$
+
+\newpage
+%page50
+
+\begin{tabular}{r l}
+(1) $1\in S$& since $1\in \zp$ and $2\cdot 1 =1(1+1)$\\
+(2) $k\in S$&$\ra k\in \zp $ and $\sum_{i=1}^{k}(2i)=k(k+1) $\\
+&$\ra k\in \zp $ and $\sum_{i=1}^{k}(2i) + 2(k+1)= k(k+1)+2(k+1) $\\
+&$\ra k+1\in \zp$ and $ \sum_{i=1}^{k+1}(2i)=(k+1)(k+2)=(k+1)[(k+1)+1] $\\
+&$\ra k+1\in S$\\
+\end{tabular}
+
+
+By Th 3.4.2, we have $S = \zp$ and for each $n\in \zp,$ $ \sum_{i=1}^{n}(2i)=n(n+1).$\nl
+
+\textbf{Definition 3.4.15.} If \of is an ordered field. Let $Q$ denote $\{n \mid$ there exist elements $p$ and $q$ in $Z$ such that $q \neq 0$ and $n=p\div q\}$. The elements of $Q$ are called \textit{rational elements} of $F.$\nl
+
+\textbf{Theorem 3.4.15.} If \of is an ordered field, then $(Q,+,\cdot,<)$ is an ordered field.\nl
+
+\textbf{Theorem 3.4.16.} If \of  is an ordered field, $a$ is an infinite sequence of elements of $F,$ and $n\in \zp$, then the sum (product) of $a_{1} ,a_{2}, \,\, \dots , \,\, a_{n}$ is
+independent of the way in which the parentheses are placed.\nl
+
+\textbf{Theorem 3.4.17.} If \of is an ordered field, $a$ is an infinite sequence of elements of $F$, and $n\in \zp,$ then the sum (product) of $a_{1} ,a_{2}, \cdots ,a_{n} $ is independent of the order in which they are written. \nl
+
+\textbf{Exercises}\nl
+
+If \of is an ordered field, find the value of each of the following.\nl
+
+1. $\sum_{i=1}^{4}(i^{2} - 2)$\nl
+
+2. $\sum_{i=2}^{4}(i+1)\div i$\nl
+
+Show that if \of is an ordered field, $a$ is an infinite sequence of elements of $F,$ and $n\in \zp ,$ then each of the following are true.
+
+\newpage
+%page51
+\begin{large}
+$3.  \sum_{i=1}^{n} i = [n((n+1))]\div 2$\nl
+
+$4. \sum_{i=1}^{n} [i(i+1)]\div 2] = [n(n + 1)(n + 2)\div 6]$\nl
+
+$5.  \sum_{i=1}^{n} 1\div [i(i + 1) = n\div (n+1)$\nl
+
+$6.   \sum_{i=1}^{n} i^{2} =  [n(n+1)(2n+1)]\div 6 $\nl
+
+$7.   \sum_{i=1}^{n} (3i - 2) = [n(3n - 1)]\div 2 $\nl
+
+$8.   \abs{\sum_{i=1}^{n} a_{i}} \leq  \sum_{i=1}^{n}\abs{a_{i}}$\nl
+
+$9.$   If $x,y \in F$ and $0 < x < y$, then $x^{n} < y^{n}.$\nl
+
+$10.$ If $x,y \in F,$ then $\abs{x}^{n} = \abs{x^{n}}.$\nl
+
+$11.$ Show that if $x,y\in P$ and $x < y,$ then $x^{n} < y^{n}.$\nl
+
+$12.$ Prove 3.4.14(b).\nl
+
+$13.$ Prove 3.4.14(c).\nl
+\end{large}
+\vfill
+\textbf{3.5 Algebra of Functions}\nl
+
+\lhead{Section 3.5}
+\textbf{Definition 3.5.1.} If \of is an ordered field, $n\in \zp,$ and each of $f$ and $g$ is a function with range a subset of $F,$ then \nl
+
+a) The \textit{sum} of $f$ and $g$ is denoted by $f + g$ and defined by $f +g = \{ (x,y) \mid x\in D_{f}\cap D_{g}$ and $y= f(x) + g(x)\}.$\nl
+
+b) The \textit{negative} of $f$ is denoted by $-f$ and defined by $-f= \{(x,y) \mid x\in D_{f}$ and $y = -f(x)\}$.\nl
+
+c) The \textit{difference} of $f$ and $g$ is denoted by $f - g$ and defined by $f - g = f + (-g).$ \nl
+
+d) The \textit{product} of $f$ and $g$ is denoted by $f\cdot g$ and defined by $f\cdot g = \{(x,y) \mid x\in D_{f}\cap D_{g}$ and $y = f(x)\cdot g(x) \}. $\nl
+
+e) The \textit{reciprocal} of $f$ is denoted by $1 \div f$ and defined by $1\div f =\{ (x,y) \mid x\in D_{f}, f(x) \neq 0,$ and $y = 1\div f(x) \}.$ \nl
+
+f) The \textit{quotient} of $f$ by $g$ is denoted by $f\div g$ and defined by $f\div g =f\cdot (1 \div g).$ \nl
+
+\newpage
+%page52
+g) The $n^{th} power$ of $f$ is denoted by $f^{n}$ and defined by $f^{n} = \{(x,y) \mid x\in D_{f}$ and $y=(f(x))^{n}\}.$ \nl
+
+h) The \textit{composite} of $f$ by $g$ is denoted by $f\circ g$ and defined by $f\circ g = \{(x,y) \mid x\in D_{g}, g(x)\in D_{f},$ and $y = f(g(x)\}.$\nl
+
+i) The \textit{absolute value} of $f$ is denoted by $\abs{f}$ and defined by $\abs{f} =\{(x,y) \mid x\in D_{f}$ and $y= \abs{f}\}.$\nl
+
+
+\textbf{Example 3.5.1.} If \of is an ordered field, $f = \{(1,2), (2,-1), (3,4), (4,0) \}$ and
+$g =\{ (-1,3), (0,2), (1,0), (2,1), (3,-1) \},$ then \nl
+
+$ f + g = \{ (1,2), (2,0), (3,3) \}$\nl
+$-f = \{ (1,-2), (2,1), (3,-4), (4,0) \}$\nl
+$f - g = \{ (1,2), (2,-2), (3,5) \}$\nl
+$f\cdot g = \{(1,0), (2,-1), (3,-4) \}$\nl
+$1\div f =\{ (1,1/2), (2,-1), (3,1/4) \}$\nl
+$f\div g = \{ (2,-1), (3,-4) \}$\nl
+$f\circ g = \{(-1,4), (0,-1), (2,2)\}$\nl
+
+\textbf{Example 3.5.2.} If \of is an ordered field, $f = \{(x,y) \mid x\in [0,2]$ and $y =x^{2} - 1$ and $g =\{(x,y) \mid x\in [1,3]$ and $y = x^{2} - x \}$, then \nl
+
+$f + g = \{ (x,y) \mid x\in [1,2]$ and $y =2x^{2} - x - 1\}$\nl
+$-f = \{(x,y) \mid x\in [0,2]$ and $y = -x^{2}+1 \}$\nl
+$f - g = \{ (x,y) \mid x\in [1,2]$ and $y = x - 1\}$\nl
+$f\cdot g= \{ (x,y) \mid x\in [1,2]$ and $y = x^{4} -x^{3} -x^{2} +x \} $\nl
+$1\div f= \{ (x,y) \mid x\in ([ 0,2] -\{1\} )$ and $y= 1 \div (x^{2} - 1) \}$\nl
+$f\div g = \{(x,y) \mid x\in (1,2$] and $y = (x+1)\div x\}.$\nl
+
+
+
+\textbf{Theorem 3.5.1.} If \of is an ordered field, $n\in \zp,$ and each of $f$ and $g$ is a function with range a subset of $F$, then: \nl
+a) $D_{f+g} = D{f}\cap D_{g}$ and for each $x \in D_{f+g} , (f+g)(x)=f(x)+g(x).$\nl
+b) $D_{-f} = D_{f} $ and for each $x \in D_{f} , (-f)(x)=-f(x).$\nl
+c) $D_{f-g} = D_{f}\cap D_{g} $ and for each $x \in  D_{f-g}, (f-g)(x)=f(x)-g(x).$\nl
+d) $D_{f\cdot g} = D_{f}\cap D_{g}$ and for each $x$ in $D_{f\cdot g} , (f\cdot g)(x)=f(x)\cdot g(x).$\nl
+e) $D_{1/f} = \{x \mid x\in D_{f}$ and $f(x) \neq 0\} $ and for each $x \in D_{1/f}, (1 \div f)(x)= 1
+\div f(x)$\nl
+f) $D{f/g} = \{x \mid x\in D_{f}\cap D_{g}$  and $g(x)\neq 0\}$ and for each $x$ in $D_{f/g},
+(f/g)(x)=f(x)/g(x). $\nl
+g) $D_{f^{n}} =D_{f}$ and for each $x$ in $D_{f^{n}}, f^{n}(x)=(f(x))^{n}.$\nl
+
+\newpage
+%Page53
+
+h) $D_{f\circ g } = \{x \mid x\in  D_{g}$ and $g(x) \in D_{f}\}$ and for each $x$ in $D_{f\circ g} ,(f\circ g) (x) = f(g(x)).$ \nl
+
+i) $D_{\abs{f}} = D_{f}$ and for each $x$ in $D_{\abs{f}} , \abs{f}(x)=\abs{f(x)} .$\nl
+
+\textbf{Definition 3.5.2.} If $(F,+,\cdot)$ is a field and $c\in F,$ then $\{(x,y) \mid x\in F $ and $y = c\}$ is called a \textit{constant function} and denoted by $\underline{c}.$\nl
+
+\textbf{Theorem 3.5.2.} If \fld is a field and each of $f, g,$ and $h$ is a function whose range is a subset of $F,$ then\nl
+\begin{tabular}{l l l}
+a) & $f+g=g+f$ & e) $f\cdot g=g\cdot f$ \\
+b) &($f+g)+h=f+(g+h)$ &f) $(f\cdot g)\cdot h= f\cdot (g\cdot h$) \\
+c) &$f + \underline{0} =f$ &g) $f\cdot \underline{1}  = f$ \\
+d) &$f+(-f) = \underline{0}$ on $D_{f}$& h) $f\cdot (1\div f) =\underline{1}$ on $\{x \mid x\in D_{f}$and $f(x)\neq 0\}$ \\
+i) &$f\cdot (g+h)=f\cdot g + f\cdot h$&\\
+\end{tabular}\\
+
+
+Proof of (b) and (c). \fld is a field and each of $f, g,$ and $h$ is a function whose range is a subset of $F.$\nl
+    Proof of Assertion b)\nl
+\begin{tabular}{l l }
+$(f+g)+h$ &$= \{(x,y) \mid  x\in D_{f+g}\cap D_{h}$ and $y =(f+g)(x)+h(x) \}$\\
+&$=\{(x,y) \mid x\in (D_{f}\cap Dg)\cap D_{h}$ and $y=(f(x)+g(x))+h(x)\}$\\
+&$= \{(x,y) \mid x\in D_{f}\cap (D_{g}\cap D_{h})$ and $y = f(x)+(g(x)+h(x))\} $\\
+&$=\{(x,y) \mid x\in D_{f}\cap D_{g+h}$ and $y=f(x)+(g+h)(x) \}$\\
+&$=f+(g+h)$ \\
+\end{tabular}\\
+Proof of Assertion c) \nl
+\begin{tabular}{l l }
+$f + \underline{0}$ & $= \{(x,y) \mid x\in D_{f}\cap D_{\underline{0}}$ and $y=f(x) + \underline{0}(x) \} $\\
+&$= \{(x,y) \mid x\in D_{f}\cap F$ and $y= f(x) + 0\} $\\
+&$= \{(x,y) \mid x\in D_{f}$ and $y=f(x) \} $\\
+&$=f$ \\
+\end{tabular}\nl
+
+\textbf{Exercises}\nl
+
+1. 	If \fld is a field, $f =\{(-1,2), (0,3), (1,-4), (2,-2)\}$ and $g = \{ (0,2), (1,3), (2,-1), (3,1)\},$ find $f+g, -f, f-g, f\cdot g, 1\div f, f\div g,$ and $f\circ g.$\nl
+
+2. 	If \of is an ordered field, $f = \{(x,y) \mid x\in  [0,2]$ and $y = x - 1\},$ and $g= \{(x,y) \mid  x\in  [-1,1]$ and $y = x^{2} - 1,$ find $f+g, -f, f-g, f\cdot g, 1\div f,$ and $f\div g.$ \nl
+
+3. 	Prove Theorem 3.5.2. (a) and (d). \nl
+4. 	Prove Theorem 3.5.2. (e) and (f). \nl
+5. 	Prove Theorem 3.5.2. (g) and (h). \nl
+6. 	Prove Theorem 3.5.2. (i). \nl
+
+
+\textbf{Definition 3.5.3.} If \fld~is a field, $\{(x,y) \mid x\in F$ and $y = x\}$ is called the \textit{identity function} and denoted by $I.$\nl
+
+\newpage
+%Page54
+
+\textbf{Theorem 3.5.3}  If \of is an ordered field, $c \in F, n \in \zp$,  and each of $f, h $ and $h$ is a function whose range is a subset of $F$, then\nl
+a) $( f \pm g) \circ h = f\circ h \pm g\circ h$\nl
+b) $(f\cdot g)\circ h = (f\circ h)\cdot (g\circ h)$\nl
+c) $(f/g)\circ h = f\circ h/g\circ h$\nl
+d) $(f\circ g)\circ h = f\circ (g \circ h)$\nl
+e) $f^{n}\circ g = (f\circ g)^{n}$\nl
+f) $I\circ f = f\circ I = f$\nl
+g) $I^{n}\circ g = g^{n}$\nl
+h) $\underline{c}\circ f = \underline{c}$ on $D_{f}$\nl
+i) $f\circ \underline{c} = \underline{f(c)}$\nl
+
+Proof of (a).   Suppose \fld is a field, $c \in F$, and each of $f, g,$ and $h$ is a function whose range is a subset of $F$.\nl
+%\begin{small}
+
+$(f + g)\circ h$\nl
+$= \{ (x,y) \mid x \in D_{h}, h(x) \in D_{f+g},$ and $y = (f+g)(h(x))\}$\nl
+$= \{ (x,y) \mid x \in D_{h},h(x)\in D_{f}\cap D_{g}$ and $y = f(h(x)) + g(h(x))  \}$\nl
+$= \{ (x,y) \mid x\in D_{h}, h(x) \in D_{f}, h(x)\in D_{g},$ and $ y=(f\circ h)(x) + (g\circ h)(x)\}$\nl
+$= \{ (x,y) \mid (x\in D_{h}$ and  $h(x) \in D_{f})$ , $(x \in D_{h})$ and $(h(x) \in D_{g}),$ 
+ and $y = (f\circ h)(x) + (g\circ h)(x) \}$\nl
+$= \{ (x,y) \mid x\in D_{f\circ h}, x\in D_{g\circ h},$ and $y = (f\circ h)(x) + (g\circ h)(x) \}$\nl
+$= \{ (x,y) \mid x\in D_{f\circ h} \cap D_{g\circ h},$ and  $y = (f\circ h)(x) + (g\circ h)(x) \}$\nl
+$= f\circ h + g\circ h$\nl
+%\end{small}
+
+\textbf{Example 3.5.3}  If \of is an ordered field, $f = \{ (x,y) \mid x\in [-2, 4]$ and $y = x^{2} - 1 \}$, and
+$g = \{ (x,y) \mid x \in [0, 1) $ and $y = (x + 1)\div (x - 1)\}$, then \nl
+%\begin{small}
+$f\circ g$ \nl
+$= \{ (x, y) \mid x\in D_{g}, g(x) \in D_{f},$~and~$y = f(g(x)) \}$\nl
+$=\{ (x, y) \mid x\in [0,1) , (x+1)\div (x-1)  \in [-2, 4],\text{~and~}y = f((x+1)\div(x-1))\}$\nl
+$= \{ (x, y) \mid x\in [0, 1), -2\leq [(x+1)\div (x-1)]\leq 4$ and \nl
+$ $ \hfill $y = [(x+1)\div (x-1)]^{2}- 1\}$\nl
+$= \{ (x, y) \mid x\in [0, 1),-2x + 2 \geq x + 1, x+ 1 \geq 4x - 4,\text{ ~and~}y = (4x)\div (x-1)^{2} \}$\nl
+$= \{ (x, y) \mid 0 \leq x < 1, 1\div 3 \geq x, 5\div 3 \geq x\text{~and~} y = (4x)\div (x-1)^{2} \}$\nl
+$= \{ (x, y) \mid 0 \leq x \leq 1\div 3\text{~and~}y = (4x)\div (x-1)^{2} \}$\nl
+$= \{ (x, y) \mid x\in [0, 1/3]\text{~and~}y = (4x)\div (x-1)^{2} \}$\nl
+%\end{small}
+
+
+
+
+
+\newpage
+
+\textbf{Exercises}\nl
+
+Assuming \of is an ordered field, find $f\circ g$ for each of the following definitions of $f$ and $g$.\nl
+%page55
+\begin{tabular}{l l}
+1.& $f = \{ (x,y) \mid x\in [-1, 1] $ and $y = x^{2} - 3 \}$\\
+&$g= \{(x,y) \mid x\in [0,2]$ and $y = x -2\}$\\
+2.& $f= \{(x,y) \mid x\in F$ and $y =1\div (x^{2} + 1)\}$ \\
+&$g= \{(x,y) \mid x\in  [0,5]$ and $y = 2x - 1\}$\\
+3. &	$f = \{(x,y)\mid x\in F$ and $y =x^{2}-2x-1 \}$\\
+&$g =\{(x,y) \mid x\in [0,3]$ and $y = 2\}$\\
+
+4. &$f=\{(x,y) \mid x\in [0,2]$ and $y = 1\div (x+1)\} $\\
+&$g= \{(x,y) \mid x\in (1,2]$ and $y =1 \div (x-1)\}$\\
+
+5. 	&$f= \{(x,y) \mid x\in (1,2)$ and $y=(x^2 + 1)\div (x-1)\}$\\
+&$g= \{(x,y) \mid x\in (-\infty,3]$ and $y = x + 1\} $\\
+
+6.& 	Prove Theorem 3.5.3. (b) and (c) \\
+
+7.& 	Prove Theorem 3.5.3. (d) and (f) \\
+
+8.& 	Prove Theorem 3.5.3. (e) and (g) \\
+\end{tabular}\nl
+\vfill
+\textbf{3.6 Inverse Functions}\nl
+\lhead{Section 3.6}
+
+\textbf{Definition 3.6.1.} If $f$ is a one-to-one function, then $\{(x,y) \mid (y,x) \in f\}$ is called the \textit{inverse} of $f$ and denoted by $f^{-1}$ , i.e., $y= f^{-1}(x) \lra x =f(y).$\nl
+
+\textbf{Theorem 3.6.1.} If $f$ is a one-to-one function, then\nl
+a) $D_f  =R_{f^{-1}}$\nl
+b) $R_{f} =D_{f^{-1}} $\nl
+c) $f(f^{-1}(x)) = x$ for each $x$ in $D_{f^{-1}}$\nl
+d) $f^{-1}(f(x)) = x$ for each $x$ in $D_{f}$\nl
+Proof of (b) and (c).  Suppose $f$ is a one-to-one function. \nl
+b) Suppose $f$ is a one-to-one function and $x\in D_{f^{-1}}$. There exists a $y$ such that $(x,y)\in f^{-1}.$ Hence $(y,x)\in f.$ Thus $x\in R_{f}.$\nl
+c) Suppose $f$ is a one-to-one function and $x\in D_{f^{-1}}.$ There exists a $y$ such that $(x,y)\in f^{-1}.$  Hence $y = f^{-1}(x)$ and $x = f(y).$ Thus $f(f^{-1}(x))=x.$\nl
+
+\newpage
+%page56
+
+
+
+\textbf{Section 3.6 }\nl
+
+\textbf{Definition 3.6.2.} If \of  is an ordered field, $f$ is a function from a subset of $F$ into $F,$ and
+
+$A\subseteq D_{f},$ then $f$ is said to be \textit{increasing}  \underline{\textit{( decreasing )}} on $A$ if and only if for each $x$ and $y$ in $A,~x < y$ implies $f(x) < f(y)$ \underline{$(f(x) >f(y))$}. A function is said to be increasing if and only if it is increasing on its domain. \nl
+
+\textbf{Theorem 3.6.2.} If \of  is an ordered field and $f $ is an increasing
+\underline{(decreasing)} function from a subset of $F$ into $F$,  then $f^{-1}$ is increasing \underline{(decreasing)}. \nl
+
+Proof. Suppose \of is an ordered field and $f$ is an increasing function from a subset of $F$ into
+$F.$  Suppose  $x,y \in D_{f}, x<y,$ and $f^{-1}(x) \geq f^{-1}(y).$
+Since $f$ is increasing, we have $f( f^{-1}(x)) \geq f( f^{-1}(y) )$. Thus $x \geq y,$ which is
+a contradiction. \nl
+
+
+\textbf{Example 3.6.2.} Assuming \of  is an ordered field and $f$ is the function with domain $[1,2]$
+such that $f(x) =(1\div x)- 1$ for each $x$ in $[1,2],$ find $D_{f^{-1}}$ and an expression for $f^{-1}(x).$\nl Solution.  Suppose \of  is an ordered field and $f$ is the function with domain $[1,2]$ such that $f(x) =(1\div x)- 1$ for each $x$ in $[1,2].$ Since $f$ is de­creasing,  $R_{f} = [f(2) ,f(1)] = [-1/2, 0].$ Suppose $x \in D_{f^{-1}}.$  By Definition 3.6.1, $x = f(y).$  Thus\nl
+
+$x = 1/y -1$\nl
+$x + 1= 1/y$\nl
+$y = 1/(x + 1) $\nl
+$f^{-1}(x) = 1/(x + 1)$\nl
+
+\textbf{Exercises}\nl
+
+Assuming \of is an ordered field, find $D_{f^{-1}}$ and an expression for $f^{-1}(x)$ for each of the following definitions of $f.$\nl
+
+\begin{tabular}{l l}
+1. $f(x)=2x-3$ & $ D_{f} = [-1,2]$\\
+2. $f(x)=1 - 4x$& $ D_{f} = [0,2] $\\
+3. $f(x)=1\div(x-1)$& $ D_{f}=[-1,0]$ \\
+4. $f(x)=x\div (1-x)$ & $D_{f} =[2,4]$\\
+5. $f(x)=(x+1)\div(x-1)$ &  $D_{f} = [2,3] $\\
+%6. Which of the following are one-to-one functions? &  \\
+\end{tabular}\\
+~~6. Which of the following are one-to-one functions?
+\newpage
+
+%Page 57
+
+a) $\{(1,2), (2,4), (5,3), (3,1)\}$\nl
+b) $\{(1,3), (4,2), (1,5), (2,1)\}$\nl
+c) $\{((1,1),2), ((1,2),3), ((2,1),3), ((2,2),4)\}$\nl
+d) $\{((1,1),1), ((1,2),2), ((2,3),6)\}$\nl
+
+7. Assuming \of  is an ordered field, determine which of the following are one-to-one functions.\nl
+
+\begin{tabular}{l l}
+a) $f(x)=x^{2} - 2$& $D_{f} = [-1,1]$\\
+b) $f(x)=1\div(x+1)$ & $D_{f} = [1,3] $\\
+c) $f(x)=x^{2} + 4$ & $D_{f} = [0,2] $\\
+d) $f(x)=2x - 3$& $D_{f} = F$\\
+\end{tabular}\\
+$ $\nl
+
+8. Prove Theorem 3.6.1(a). \nl
+
+9. Prove Theorem 3.6.1(d). \nl
+
+\vfill
+
+\lhead{Section 3.7}
+\textbf{3.7 Arithmetic} \nl
+
+\textbf{Definition 3.7.1.} If \of  is an ordered field, $m,n\in Z, m\leq 0 \leq n,$  and $d : Z_{m}^{n} \ra Z^{9}_{0},  $ then $\sum_{i=m}^{n} d_{i}10^{i}$ will be denoted by setting the ordinates  of $d$ side by side in decreasing order of subscript with a period (called a decimal point) following $d_{0}.$\nl
+
+\textbf{Example 3.7.1.} If $d_{-1} = 5, d_{0} = 1, d_{1} = 7,$ and $d_{2} = 3,$ then 371.5 denotes
+\[
+\sum_{i=-1}^{2} d_{i}10^{i} =3\cdot 10^{2} + 7\cdot 10^{1} + 1\cdot 10^{0}+ 5\cdot 10^{-1}.
+\]
+
+\textbf{Theorem 3.7.1.} If \of  is an ordered field, then
+
+\newpage
+%Page58
+\begin{center}
+
+\qqu  Table 1\nl
+
+\begin{tabular}{|r| r| r| r| r| r| r| r| r| r| r |}\hline
++& 0&1& 2& 3& 4& 5& 6& 7& 8& 9  \\ \hline
+0& 0&1& 2& 3& 4& 5& 6& 7& 8& 9 \\ \hline
+1&1&2&3&4&5&6&7&8&9&10\\ \hline
+2&2&3&4&5&6&7&8&9&10&11 \\ \hline
+3&3&4&5&6&7&8&9&10&11&12 \\ \hline
+4&4&5&6&7&8&9&10&11&12&13  \\ \hline
+5&5&6&7&8&9&10&11&12&13&14 \\ \hline
+6&6&7&8&9&10&11&12&13&14&15 \\ \hline
+7&7&8&9&10&11&12&13&14&15&16 \\ \hline
+8&8&9&10&11&12&13&14&15&16&17 \\ \hline
+9&9&10&11&12&13&14&15&16&17&18 \\ \hline
+\end{tabular}\nl
+
+$ $\nl
+
+\qqu  Table 2\nl
+
+\begin{tabular}{|r| r| r| r| r| r| r| r| r| r| r |}\hline
+$\cdot$& 0&1&2&3&4&5&6&7&8&9 \\ \hline
+0&0&0&0&0&0&0&0&0&0&0 \\ \hline
+1&0&1&2&3&4&5&6&7&8&9 \\ \hline
+2&0&2&4&6&8&10&12&14&16&18 \\ \hline
+3&0&3&6&9&12&15&18&21&24&27 \\ \hline
+4&0&4&8&12&16&20&24&28&32&36 \\ \hline
+5&0&5&10&15&20&25&30&35&40&45 \\ \hline
+6&0&6&12&18&24&30&36&42&48&54 \\ \hline
+7&0&7&14&21&28&35&42&49&56&63 \\ \hline
+8&0&8&16&24&32&40&48&56&64&72 \\ \hline
+9&0&9&18&27&36&45&54&63&72&81 \\ \hline
+\end{tabular}\nl
+
+\end{center}
+
+Proof. Suppose \of is an ordered field. The procedure is to prove the entries in each table in row order. Suppose all the entries in Table 1 have been filled in up to but not including $4 + 5.$ Then
+$4 + 5 = 4 +(4+1) = (4+4) + 1 = 8 + 1 = 9.$ The table can, be completed in the same manner. \nl
+Suppose the entries in Table 2 have been filled in up to $3\cdot 6.$ Then\nl
+$3\cdot 6 =3\cdot(5+1) =3\cdot 5 + 3\cdot 1 = 15 + 3 = (10 + 5) + 3 = 10 + (5+3)= 10 + 8 = 18.$ \nl
+The table can be completed by continuing the process. \nl
+
+\textbf{Example 3.7.2.} Find $3 - 8.$ \nl
+Solution. Let $x = 8 -3.$ Thus $x + 3 = 8.$ By Table 1, we see that $x = 5.$ Hence $3 - 8 = -(8-3) = -5.$\nl
+
+\vfill
+\textbf{3.8 The Binomial Theorem}
+\lhead{Section 3.8}\nl
+
+\textbf{Definition 3.8.1.} If \of  is an ordered field and $a$ is an infinite
+sequence of elements of $F$, let $\prod_{i=1}^{1}a_{i}$ denote $a_{1}$ and for each $n$ in $\zp$,   \nl
+
+\newpage
+%page59 continue sentence from prior page
+
+let $\prod_{i=1}^{n+1} a_{i} $ denote $\left(\prod_{i=1}^{n}a_{i}\right)a_{n+1} .$ \nl
+
+\textbf{Definition 3.8.2.} If \of is an ordered field, then for each $n$ in $\zp, \prod_{i=1}^{n} i $ is called $n$ \textit{factorial} and is denoted by $n!.$  $0!$ is called $0$ factorial and is defined to be $1$. \nl
+
+\textbf{Definition 3.8.3.} If \of is an ordered field and $k \in Z_{0}^{n},$ let $\binom{n}{k} $ denote
+$n!\div[(n-k)!(k!)].$\nl
+
+\textbf{Theorem 3.8.1.}  If \of is an ordered field and $n\in \zp$, then\nl
+a) $(n+1)! = n!(n+1) $\nl
+
+b) $\binom{n}{0} = \binom{n}{n}$\nl
+
+c) $\binom{n}{1} = \binom{n}{n-1} = n$\nl
+
+\textbf{Theorem 3.8.2.}  If \of is an ordeed field , $n \in \zp,$ and $k\in Z_{1}^{n},$ then\nl
+\[
+\binom{n}{k} + \binom{n}{n-1} = \binom{n+1}{k}.
+\]
+Proof.\nl
+\begin{tabular}{r l}
+$\binom{n}{k}+\binom{n}{k-1}$&$=[n!\div((n-k)!k!)] + [n!\div((n-k+1)!(k-1)!)]$\\
+&$=[(n-k+1)n! +k(n!)]\div[(n-k+1)!k!]$\\
+&$=[n!(n+1)]\div[(n-k+1)!k!]$\\
+&$=\binom{n+1}{k}$\\
+\end{tabular}\\
+$ $\nl
+\textbf{Theorem 3.8.3.}  (The Binomial Theorem)  If \of is an ordered field, $a, b \in F,$ and $n\in \zp$, then
+\[
+\ (a + b)^{n} = \sum_{k=0}^{n}\binom{n}{k}a^{n-k}b^{k}.
+\]
+Proof.  Suppose \of is an ordered field and $a,b\in F.$\nl
+Let $S = \{ n \mid n\in \zp $ and  $(a + b)^{n} = \sum_{k=0}^{n}\binom{n}{k}a^{n-k}b^{k} \}$\nl
+(1) $1\in S$ since $1\in \zp$ and $(a+b)^{1} = a + b$\nl
+
+\begin{tabular}{r l}
+(2) $n\in S$&$\ra n\in \zp$ and $(a + b)^{n} = \sum_{k=0}^{n}\binom{n}{k}a^{n-k}b^{k} $\\
+&\\
+&$\ra n+1\in \zp$ and $(a+b)^{n+1} = (a+b)(a+b)^{n} $ \\
+&\\
+&$= a(a+b)^{n}  +b(a+b)^{n}$\\
+&\\
+&$= a\sum_{k=0}^{n}\binom{n}{k}a^{n-k}b^{k} +b\sum_{k=0}^{n}\binom{n}{k}a^{n-k}b^{k}$\\
+&\\
+&$=\sum_{k=0}^{n}\binom{n}{k}a^{n-k+1}b^{k} + \sum_{k=0}^{n}\binom{n}{k}a^{n-k}b^{k+1}$\\
+&\\
+&$= \sum_{k=0}^{n}\binom{n}{k}a^{n-k+1}b^{k} + \sum_{k=1}^{n+1}\binom{n}{k-1}a^{n-k+1}b^{k}$\\
+\end{tabular}
+
+\newpage
+%page60
+\begin{tabular}{r l}
+&$= a^{n+1} + \sum_{k=1}^{n} \binom{n}{k} a^{n-k+1}b^{k} + \sum_{k=1}^{n} \binom{n}{k-1} a^{n-k+1}b^{k} + b^{n+1}$\\
+&\\
+\hspace{20pt}& $= a^{n+1} + b^{n+1}+\sum_{k=1}^{n}\binom{n+1}{k}a^{n-k+1}b^{k}$\\
+&\\
+\hspace{20pt}&$= \sum_{k=0}^{n+1}\binom{n+1}{k}a^{(n+1) - k}b^{k}$\\
+&\\
+\hspace{20pt}&$\ra n+1 \in S$ \\
+&\\
+\end{tabular}\\
+
+By Th 3.4.2., we have $S = \zp$ and for each $n\in \zp,\, (a + b)^{n} = \sum_{k=0}^{n}\binom{n}{k}a^{n-k}b^{k}.$ \nl
+
+\textbf{Theorem 3.8.4.} If \of is an ordered field, $a,b\in F,$ and $n\in \zp,$ then (1) $a^{n}b^{0}$ is the first term in the binomial expansion of $(a+b)^n$ and
+(2) if $ca^{i}b^{j}$ is any term in the binomial expansion of $(a+b)^{n},$ then $((ci) \div (j+i))a^{i-1}b^{j+1}$ is the next term in the expansion.\nl
+ Proof. Suppose \of is an ordered field, $a,b\in F,$ and $n\in \zp.$ Each term in the binomial expansion of $(a+b)^{n}$ may be expressed as $\binom{n}{k}a^{n-k}b^{k}$ for some $k$ in $Z_{0}^{n}.$ By letting $c=  \binom{n}{k}, i = n - k,$ and $j = k,$we see that\nl 
+ $ca^{i}b^{j}= \binom{n}{k}a^{n-k}b^{k}.$  Therefore\nl
+\begin{tabular}{r l}
+&\\
+$((ci) \div (j+1))a^{i-1}b^{j+1}$&$=\binom{n}{k} ((n-k) \div (k+1))a^{n-k-1}b^{k+1}$\\
+&\\
+& $= [(n!(n-k))\div ((n-k)!k!(k+1))]a^{n-(k+l)}b^{k+1}$\\
+&\\
+& $=[n! \div((n-(k+1))!(k+1)!)]a^{n-(k+1)}b^{k+1} \text{~if~} k\in Z_{0}^{n-1}$\\
+&\\
+or&$= 0$ if $k = n,$ \\
+\end{tabular}\\
+ which is the next term in the expansion. \nl
+
+\textbf{Example 3.8.1.} Assuming \of is an ordered field and $x,y\in F,$ find the binomial expansion of
+$(2x-y^{2})^{4}.$  \nl
+ Solution. Suppose \of is an ordered field, and $x,y\in F.$ From Th 3.8.4, we see that \nl
+\begin{tabular}{r l}
+$(2x+(-y^{2}))^{4}$ & $=1\cdot(2x)^{4}(-y^{2})^{0} + [(1\cdot 4)\div 1](2x)^{3}(-y^{2})^{1}  + [(4.3)\div 2] (2x)^{2} (-y^{2})^{2}$\\
+&$+[(6\cdot 2)\div 3](2x)^{1} (-y^{2})^{3} + [(4\cdot 1)\div 4] (2x)^{0}(-y^{2})^{4} $\\
+&$=16x^{4} - 32x^{3}y^{2} + 24x^{2}y^{4} -8xy^{6} + y^{8}.$\\
+\end{tabular}\nl
+
+\textbf{Example 3.8.2.} Assuming \of is an ordered field and $x,y\in F,$ find the seventh term of $(2x - y^{-1})^{10}.$\nl
+ Solution. Suppose \of is an ordered field and $x,y\in F.$ The seventh term of $(2x - y^{-1})^{10}$ is
+ $\binom{10}{6}(2x)^{10-4}(-y^{-1})^{6}.$\nl
+\begin{tabular}{r l}
+$\binom{10}{6}(2x)^{10-4}(-y^{-1})^{6}$&$= (10!\div (4!6!))(2x)^{4}y^{-6}$\\
+&$= [(1\cdot 2\cdot 3\cdot 4\cdot 5\cdot 6\cdot 7\cdot 8\cdot 9\cdot 10)$\\
+&$ \div  (1\cdot 2\cdot 3\cdot 4\cdot 5\cdot 6\cdot 1\cdot 2\cdot 3\cdot 4)] 16x^{4}y^{-6}$\\
+&$=210(16)x^{4}y^{-6}$\\
+&$=3360x^{4}y^{-6}$\\
+\end{tabular}\\
+
+\newpage
+%page61
+
+
+\textbf{Exercises} \nl
+
+Assuming \of is an ordered field and $a,b,x,y\in F,$ find the binomial expansion of
+each of the following. \nl
+
+1. $(a+b)^{6}$ \nl
+
+2. $(2x-y)^{4}$ \nl
+
+3. $(x+y^{2})^{5}$ \nl
+
+4. $(x^{-1}+2{y})^{4}$ \nl
+
+
+5. $(x^{1/2} +y^{1/2})^{4}$ \nl
+
+6. $(x^{-2} - 2y)^{5}$\nl
+
+7. $(x^{3/4} - 2y^{-1})^{4}$ \nl
+
+Find the indicated term in the binomial expansion of each of the following. \nl
+
+8. Sixth term of $(2x - y^{-2})^{12} $\nl
+
+9. Ninth term of $(2 + (x\div 2))^{15}$\nl
+
+10. Fifth term of $(x + (1\div x))^{10}$\nl
+
+11. Seventh term of $(\sqrt{x} - (1\div 2\sqrt{x}))^{14}$\nl
+
+12. Prove Theorem 3.8.1. \nl
+
+\include{Chapters4-6B}
+
+\include{EndNotes2}
+
+\end{large}
+
+\end{document}
+
+

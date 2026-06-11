@@ -1,0 +1,12 @@
+\contentsline {section}{\numberline {1}Introduction}{1}
+\contentsline {subsection}{\numberline {1.1}Historical Background}{1}
+\contentsline {subsection}{\numberline {1.2}Defending Your Proof}{2}
+\contentsline {subsection}{\numberline {1.3}The Rules}{2}
+\contentsline {subsection}{\numberline {1.4}Words We Don't Use, and Things We Don't Do}{4}
+\contentsline {subsection}{\numberline {1.5}Words We Use, and Things We Do}{4}
+\contentsline {subsection}{\numberline {1.6}History of The Real Numbers}{5}
+\contentsline {section}{\numberline {2}The Real Numbers}{6}
+\contentsline {section}{\numberline {3}Differentiation}{15}
+\contentsline {section}{\numberline {4}Riemann Integration}{19}
+\contentsline {section}{\numberline {5}Sequences of Functions}{23}
+\contentsline {section}{\numberline {6}The Logarithm}{29}

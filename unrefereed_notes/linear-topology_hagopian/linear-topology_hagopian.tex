@@ -1,0 +1,214 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Linear Topology}
+\author{Chuck Hagopian}
+\date{}
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+
+\pagenumbering{arabic}
+
+\begin{description}
+  \item[Undefined Terms:] Point; Precedes
+
+      $x$ precedes $y$ : $x<y$
+  \item[Axiom I:] $S$ is a collection of points such that 
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item if $x$ and $y$ are distinct points, then either $x<y$ or $y<x$.
+      \item if $x<y$, then $x$ is not $y$.
+      \item if $x<y$ and $y<z$, then $x<z$.
+    \end{enumerate}
+  \item[Theorem 1:] If $x<y$, then $y$ does not precede $x$.
+  \item[Definition:] If $x$ is a point of the set $M$ such that no point of $M$ precedes $x$, then $x$ is called the \emph{first point} of $M$.
+
+     Define \emph{last point} similarly.
+  \item[Theorem 2:] No set has two first points.
+  \item[Theorem 3:] Every finite set has a first point and a last point.
+  \item[Theorem 4:] If $M$ is a set consisting of $n$ points, then these points can be named $a_{1}, a_{2}, \cdots a_{n}$ so that $a_{1} < a_{2} < a_{3} \cdots < a_{n}$.
+  \item[Definition:] If $x<z$ and $z<y$, then $z$ is said to be \emph{between} $x$ and $y$. The set of points between $x$ and $y$ is called a \emph{region} and will be referred to as the region $xy$.
+  \item[Axiom II:] $S$ has no first point and no last point.
+  \item[Theorem 5:] If $x$ is a point, then there is a region containing $x$.
+  \item[Question:] Is there a space differing from the $x$-axis in something other than size, that satisfies Axioms I and II? Ex: $\{ n| \text{ n is an integer}, \{ [0,z) | z \geq 0 \}$
+  \item[Definition:] A point $p$ is said to be a \emph{limit point} of the set $M$, provided each region containing $p$ contains a point of $M$ distinct from $p$.
+  \item[Theorem 6:] If the set $H$ is a subset of the set $K$ and $p$ is a limit point of $H$, then $p$ is a limit point of $K$.
+  \item[Theorem 7:] If the point $x$ is common to the regions $R_{1}$ and $R_{2}$, then some region is the common part of $R_{1}$ and $R_{2}$ and contains $x$.
+  \item[Theorem 8:] If the point $p$ is a limit point of the sum of the two sets $H$ and $K$, then $p$ is a limit point of at least one of the sets $H$ and $K$.
+  \item[Theorem 9:] If the point $p$ is a limit point of the sum of a finite number of point sets, then $p$ is a limit point of at least one of these sets.
+  \item[Definitions:] Two point sets are said to be \emph{mutually exclusive} if they have no point in common.
+
+     If $G$ is a collection of point sets such that each two of them are mutually exclusive, then the sets of $G$ are said to be mutually exclusive.
+  \item[Theorem 10:] If $x$ and $y$ are two points, then there exist two mutually exclusive regions, one containing $x$ and the other containing $y$.
+  \item[Theorem 11:] No finite point set has a limit point.
+  \item[Theorem 12:] If $p$ is a limit point of the point set $M$, then every region containing $p$ contains infinitely many points of $M$.
+  \item[Definition:] A sequence of points $p_{1}, p_{2}, p_{3}, \cdots$ is said to \emph{converge} to a point $p$ if for any region $R$ containing $p$, there is a positive integer $k$ such that if $n>k$, $pn$ lies in $R$.
+  \item[Theorem 13:] No sequence of points converges to two points.
+  \item[Theorem 14:] If $a$ is a sequence of points converging to a point $p$, then every subsequence of $a$ converges to $p$.
+  \item[Theorem 14.5:] If $\alpha$ is a sequence of distinct points which converges to a point $p$, and $\beta$ is a sequence of distinct points such that each point in $\beta$ is a point in $\alpha$, then $\beta$ converges to $p$.
+  \item[Theorem 15:] If $p_{1}, p_{2}, p_{3}, \cdots$ is a sequence of distinct points converging to the point $p$, then $p$ is the only limit point of the set $p_{1} + p_{2} + p_{3} + \cdots$.
+  \item[Theorem 16:] If $p_{1}, p_{2}, p_{3}, \cdots$ is a sequence of points converging to a point $p$, then some region contains the set $p + p_{1} + p_{2} + p_{3} + \cdots$.
+  \item[Definition:] A set is said to be \emph{closed} if it contains all its limit points.
+  \item[Notation:] If $H$ is a set, $\overline{H}$ denotes its closure (i.e. $H$ plus all limit points of $H$).
+  \item[Definition:] A set $H$ is said to be \emph{open} if for each point $x$ in $H$, there is a region containing $x$ and lying in $H$.
+  \item[Theorem 17:] If $H$ is a set, then $\overline{H}$ is closed.
+  \item[Theorem 18:] If $x$ is a point, then the set of all points which precede $x$ is an open set.
+  \item[Theorem 19:] Every region is an open set.
+  \item[Definition:] If $x$ and $y$ are two points, the set consisting of $x,y$ and all points between $x$ and $y$ is called the \emph{interval} $xy$.
+  \item[Theorem 20:] Every interval is closed.
+  \item[Theorem 21:] If the open set $M$ is a proper subset of $S$, then $S \notin M$ (points of $S$ which are not in $M$) is closed.
+  \item[Theorem 22:] If the closed set $M$ is a proper subset of $S$, then $S \notin M$ is open.
+  \item[Definition:] Let $G$ be a collection of sets. The set consisting of all points which are contained in at least one set of $G$ is called $G*$.
+  \item[Theorem 23:] If $G$ is a finite collection of closed sets, then $G*$ is closed.
+  \item[Theorem 24:] If $G$ is a collection of open sets, then $G*$ is open.
+  \item[Theorem 25:] If $G$ is a collection of closed sets having a common point, then $\cap G$ (the set of all points common to all sets of $G$) is closed.
+  \item[Theorem 26:] If $G$ is a finite collection of open sets, then $\cap G$ is open.
+  \item[Problem:] Give examples to show that Theorems 23 and 26 are false if the word `finite' is omitted.
+  \item[Definition:] Two sets are said to be \emph{mutually separated} if they have no point in common and neither of them contains a limit point of the other.
+  \item[Definition:] A point set is said to be \emph{connected} if it is not the sum of two mutually separated point sets.
+  \item[Theorem 27:] If $H$ and $K$ are two mutually separated point sets and $M$ is a connected subset of $H+K$, then $M$ is a subset of one of the sets $H$ and $K$.
+  \item[Theorem 28:] Every point is a connected set.
+  \item[Theorem 29:] If a finite point set $M$ contains more than one point, then $M$ is not connected.
+  \item[Theorem 30:] If $G$ is a collection of connected point sets having a common point, then $G*$ is connected.
+  \item[Theorem 30.5:] If $G$ is a collection of connected sets having a common point, then $\cap G$ is connected.
+  \item[Theorem 31:] If $M$ is a connected point set, then $\overline{M}$ is connected.
+  \item[Definition:] A point set is said to be \emph{nondegenerate} if it contains more than one point.
+  \item[Theorem 32:] If $M$ is a nondegenerate connected point set, then every point of $M$ is a limit point of $M$.
+  \item[Theorem 33:] If $x$ and $y$ are two points of a connected point set $M$, then the region $xy$ lies in $M$.
+  \item[Axiom III:] $S$ is connected.
+  \item[Theorem 34:] If $H$ and $K$ are two sets such that $H \cup K = S$, and every point of $H$ precedes every point of $K$, then either $H$ has a last point or $K$ has a first point, but not both.
+  \item[Theorem 35:] Every interval is connected.
+  \item[Theorem 36:] Every region is connected.
+  \item[Theorem 37:] No proper subset of $S$ is both open and closed.
+  \item[Theorem 38:] If $x$ and $y$ are two points, then there is a point between them.
+  \item[Question:] Does Theorem 34 => Axiom III? Same question for Theorems 35, 36, 37, and 38.
+  \item[Theorem 39:] Every point of a region $R$ is a limit point of $R$.
+  \item[Theorem 40:] Every point of an interval $I$ is a limit point of $I$.
+  \item[Theorem 41:] No region has a first point.
+  \item[Theorem 42:] $S$ contains infinitely many points, and each point of $S$ is a limit point of $S$.
+  \item[Definition:] A sequence of points is said to be \emph{bounded} if some region contains every point of this sequence.
+  \item[Definition:] A sequence of points $p_{1}, p_{2}, p_{3}, \cdots$ is said to be an \emph{increasing sequence} if for each positive integer $n$, $p_{n} < p_{n+1}$.
+  \item[Theorem 43:] Every bounded increasing sequence of points converges.
+  \item[Theorem 44:] If $a$ is a bounded sequence of points, then some subsequence of $a$ converges.
+  \item[Definition:] A point set is said to be \emph{bounded} if it lies in some region.
+  \item[Theorem 45:] Every bounded infinite point set has a limit point.
+  \item[Theorem 46:] Every closed and bounded point set contains a first point and a last point.
+  \item[Theorem 47:] If $M_{1}, M_{2}, M_{3} \cdots$ is a sequence of closed and bounded point sets such that for each $n$, $M_{n}$ contains $M_{n+1}$, then the sets $M_{1}, M_{2}, M_{3} \cdots$ have a point in common. Furthermore, the set of all points common to these sets is closed.
+  \item[Definition:] A collection $G$ of point sets is said to cover a point set $M$ if every point of $M$ lies in at least one set of $G$.
+  \item[Theorem 48:] If $ab$ is a region and $G$ is a collection of regions covering $\overline{ab}$, then some finite subcollection of $G$ covers $\overline{ab}$.
+  \item[Theorem 49:] Strengthen Theorem 48 by letting $G$ be a collection of open sets.
+  \item[Theorem 50:] If $G$ is a collection of open sets covering the closed and bounded point set $M$, then some finite subcollection of $G$ covers $M$.
+  \item[Definition:] A point set $M$ is said to be perfect if $M$ is closed and every point of $M$ is a limit point of $M$.
+  \item[Theorem 51:] No countable point set is perfect.
+  \item[Problem:] Show ``directly'' that the unit interval is an uncountable set.
+  \item[Theorem 52:] Every region is uncountable.
+  \item[Theorem 53:] Every uncountable set has a limit point.
+  \item[Definition:] A point set $H$ is said to be \emph{nowhere dense} in a point set $K$ if every region intersecting $K$ contains a region which intersects $K$ but not $H$.
+
+     Deny the above (i.e. state what would be meant by \emph{not nowhere dense}). Use this for a definition of \emph{dense at a point}.
+  \item[Question:] Can a set be perfect and nowhere dense?
+  \item[Theorem 54:] If $H$ is nowhere dense in $K$, and $T$ is a subset of $H$, then $T$ is nowhere dense in $K$.
+  \item[Theorem 55:] If $E_{1}$ and $E_{2}$ are nowhere dense in $M$, then $E_{1}+E_{2}$ is nowhere dense in $M$.
+  \item[Question:] Is there a 1-to-1 correspondence between the points of the unit interval and any uncountable subset of the unit interval?
+  \item[Theorem 56:] No region is the sum of a countable number of point sets that are nowhere dense in $S$.
+  \item[Theorem 57:] No closed point set $M$ is the sum of a countable number of closed point sets such that if $X$ is any one of them, every point of $X$ is a limit point of $M-X$.
+  \item[Theorem 58:] No closed point set $M$ is the sum of a countable number of point sets each nowhere dense in $M$.
+  \item[Definition:] A point set $H$ is said to be everywhere dense in a point set $K$ if $\overline{H}$ contains $K$.
+  \item[Theorem 59:] If the point set $H$ is everywhere dense in the point set $K$, then every region intersecting $K$ contains a point of $H$.
+  \item[Theorem 59.5:] There do not exist uncountably many mutually exclusive regions.
+  \item[Theorem 60:] If $E$ is nowhere dense in the closed set $M$, then $M-E$ is everywhere dense in $M$.
+  \item[Theorem 60.5:] There exists an increasing unbounded sequence.
+  \item[Question:] Is the converse of Theorem 60 true?
+  \item[Theorem 61:] The intersection of a countable collection of open dense (in $M$) subsets of a closed point set $M$ is dense in $M$.
+  \item[Theorem 61.5:] If $p$ is a point, there exists an increasing sequence converging to $p$.
+  \item[Definition:] If the point set $M$ contains a countable set which is everywhere dense in $M$, then $M$ is said to be \emph{separable}.
+  \item[Axiom IV:] $S$ is separable.
+  \item[Theorem 62:] If $p$ is a limit point of the point set $M$, there exists a sequence of points in $M$, there exists a sequence of points in $M$ converging to $p$.
+  \item[Theorem 63:] There exists a countable collection $F$ of regions such that if $R$ is a region and $p$ is a point of $R$, then some region of $F$ contains $p$ and lies in $R$.
+  \item[Theorem 64:] If $G$ is a collection of regions covering the point set $M$, then some countable subcollection of $G$ covers $M$.
+  \item[Theorem 65:] Every uncountable point set contains a limit point of itself.
+  \item[Question:] Is Theorem 63 equivalent to Axiom IV?
+  \item[Theorem 66:] Every point is separable.
+  \item[Theorem 67:] There does not exists a collection of mutually exclusive intervals covering space.
+  \item[Theorem 68:] Every closed uncountable set is the sum of a perfect set and a countable set.
+  \item[Theorem 69:] If $M$ is an uncountable point set, then $M$ is the sum of two sets $H$ and $K$ such that 
+    \begin{enumerate}[(1)]
+      \item $H$ is countable
+      \item every region intersecting $K$ contains uncountably many points of $M$.
+    \end{enumerate}
+  \item[Theorem 70:] If $M$ is a perfect set, then every region intersecting $M$ contains uncountable many points of $M$.
+  \item[Theorem 71:] If every infinite subset of a point set $M$ has a limit point in $M$, then $M$ is closed and bounded (converse of 45).
+  \item[Problem:] Find a space which satisfies Axioms I, II, and III, but not IV.
+  \item[Definition:] A \emph{transformation} $f$ of a point set $H$ onto a point set $K$ is a collection of ordered pairs of points such that
+    \begin{enumerate}[(1)]
+      \item each ordered pair in $f$ has a point of $H$ as its first element and a point of $K$ as its second element,
+      \item every point of $H$ is the first element of some ordered pair in $f$ and every point of $K$ is the second element of some ordered pair in $f$, and
+      \item no two ordered pairs in $f$ have the same first element.
+    \end{enumerate}
+  \item[Definitions and Notation:] In the following definitions, let $f$ be a transformation of a point set $H$ onto a point set $K$.
+
+     If $x$ is a point of $H$, then $f(x)$ denotes the second element of the ordered pair of $f$ that has $x$ as a first element.
+
+     If $H'$ is a subset of $H$, then $f(H')$ denotes the set of all points $f(x)$ such that $x$ is a point of $H'$.
+
+     If $y$ is a point of $H$, then $f^{-1}(y)$ denotes the set of all points $x$ in $H$ such that $f(x)=y$.
+
+     If $K'$ is a subset of $K$, then $f^{-1}(K')$ denotes the set of all points $x$ in $H$ such that $f(x)$ is a point of $K'$.
+
+     The transformation $f$ is said to be one-to-one if no two ordered pairs in $f$ have the same second element.
+
+     The transformation $f$ is said to be continuous if for any sequence $x_{1}$, $x_{2}$, $x_{3}$, $\cdots$ of points in $H$ converging to a point $x$ in $H$; the sequence $f(x_{1})$, $f(x_{2})$, $f(x_{3})$, $\cdots$ converges to $f(x)$.
+
+     If the transformation $f$ is one-to-one, then $f^{-1}$ denotes the collection of all ordered pairs $[y,f^{-1}(y)]$ such that $y$ is a point of $K$.
+
+     If the transformation $f$ is one-to-one and both $f$ and $f^{-1}$ are continuous, then $f$ is said to be a homeomorphism (topological transformation) of $H$ onto $K$, and $H$ and $K$ are said to be homeomorphic (topologically equivalent).
+
+     If $K$ is a subset of $K'$, the $f$ is said to be a transformation of $H$ into $K'$.
+  \item[Theorem 72:] If $f$ is a continuous transformation of an interval $H$ onto itself, then there is a point $x$ of $H$ such that $f(x)=x$.
+  \item[Theorem 73:] Let $f$ be a continuous transformation of a point set $H$ onto a point set $K$.
+    \begin{enumerate}[(1)]
+      \item If $H$ is closed and bounded, then $K$ is closed and bounded.
+      \item If $H$ is connected, then $K$ is connected.
+      \item If $H$ is an interval, then $K$ is either an interval or a point.
+    \end{enumerate}
+  \item[Definition:] A transformation $f$ of a space $S_{1}$ onto a space $S_{2}$ is said to \emph{preserve order} if for any two points $x$ and $y$ in $S_{1}$ such that $x<y$, then $f(x) < f(y)$ in $S_{2}$.
+
+     Define ``\emph{reverse order}'' similarly.
+  \item[Theorem 74:] If $S_{1}$ and $S_{2}$ are spaces satisfying Axioms 1, 2, 3, and 4, and $f$ is an order preserving (reversing) transformation of $S_{1}$ onto $S_{2}$, then $f$ is a homeomorphism.
+  \item[Theorem 75:] If $S_{1}$ and $S_{2}$ are spaces satisfying Axioms 1, 2, 3, and 4, and $f$ is a homeomorphism of $S_{1}$ onto $S_{2}$, then $f$ either preserves order or reverses order.
+  \item[Theorem 76:] Every two spaces satisfying Axioms 1, 2, 3, and 4 are homeomorphic.
+  \item[Axiom 2$'$:] $S$ is non-degenerate and has a first point and a last point.
+
+     Note: It should be observed here that with the previous definition of a region, the first (last) point of $S$ does not lie in a region. In addition to the sets previously defined as regions, consider the following sets as regions. For each point $p$ different from the first (last) point of $S$, let the set of all points that precede (follow) $p$ be a region.
+  \item[Theorem 77:] Every two spaces satisfying Axioms 1, 2$'$, 3, and 4 are homeomorphic.
+  \item[Axiom 2$''$:] $S$ has a first point and no last point, or $S$ has a last point and no first point.
+  \item[Theorem 78:] Every two spaces satisfying Axioms 1, 2$''$, 3, and 4 are homeomorphic.
+\end{description}
+
+\end{document}

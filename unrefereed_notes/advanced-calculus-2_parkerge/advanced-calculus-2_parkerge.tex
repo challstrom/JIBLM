@@ -1,0 +1,557 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Advanced Calculus II}
+\author{G. Edgar Parker}
+\date{ }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\section{Problems and Theorems Sequence}
+\markboth{1. Problems and Theorems Sequence}{1. Problems and Theorems Sequence}
+
+\pagenumbering{arabic}
+
+This course is a continuation of the study of the theory which supports elementary calculus. Its conduct will be student-oriented, in the sense that you will be asked to create solutions to problems, present your solutions for the scrutiny of the class, and to ``criticize'' the work of others when presented. You will need a copy of the notes from Advanced Calculus 1 for reference.
+
+
+\begin{description}
+
+  \item[Definition I:] Suppose that $X$ is a subset of $\Re$, and that $f$ is a function from $X$ into $\Re$. The statement that $f$ is \emph{uniformly continuous} on $X$ means that if $E > 0$, then there is a positive number, call such a number $M$, so that if $p$ and $q$ are elements of $X$ so that $p$ is an element of $\underline{(} q + -M, q + M \underline{)}$, then $f(p)$ is an element of $\underline{(} f(q) + -E, f(q) + E \underline{)}$.
+
+  \item[Problem I:] Suppose that $X$ is a subset of $\Re$, and that $f$ is a function from $X$ into $\Re$ that is uniformly continuous on $X$. Show that $f$ is continuous on $X$.
+
+  \item[Problem II:] Show that 
+    \begin{equation*}
+    \{ (x,y)\ :\ x > 0 \text{ and } y = \frac{1}{x} \}
+    \end{equation*}
+    is not uniformly continuous on 
+    \begin{equation*}
+    \{ x\ :\ x > 0 \}
+    \end{equation*}
+
+  \item[Problem III:] Suppose that $X$ is a subset of $\Re$, and that $f$ is a function from $X$ into $\Re$ so that $f$ has the property of Lipschitz. Show that $f$ is uniformly continuous on $X$.
+
+  \item[Problem IV:] Suppose that $f$ is a function from $[a,b]$ into $\Re$ so that $f$ is continuous on $[a,b]$. Show that $f$ is uniformly continuous on $[a,b]$.
+
+  \item[Problem V:] Suppose that $M$ is a subset of $\Re$ so that $M$ is bounded, and that $f$ is a function from $M$ into $\Re$ so that $f$ is uniformly continuous on $M$. Show that the range of $f$ is bounded.
+
+  \item[Problem VI:] Suppose that $f$ is a function from $\underline{(} a,b \underline{)}$ into $\Re$ so that $f$ is uniformly continuous on $\underline{(} a,b \underline{)}$. Show that there is a number, call such a number $p$, and a number, call such a number $q$, so that $f \cup \{ (a,p),(b,q) \}$ is continuous on $[a,b]$.
+
+  \item[Definition II (16):] Suppose that $A$ and $B$ are numbers so that $A < B$, and $n$ is a natural number. The statement that $P$ is a \emph{partition} of $[a,b]$ of size $n$ means that $P$ is a function from 
+    \begin{equation*}
+    \{ k\ :\ k \text{ is a natural number and } k \leq n \}
+    \end{equation*}
+    into $[A,B]$ so that
+    \begin{enumerate}[\hspace{1cm}(i.)]
+      \item $P(1) = A$ and $P(n) = B$; and
+      \item if $k$ is a natural number less than $n$, then $P(k) < P(k+1)$.
+    \end{enumerate}
+
+  \item[Definition III (17):] Suppose that $P$ is a partition of $[A,B]$ of size $n$. The statement that $Q$ is an \emph{interpolating sequence} for $P$ means that $Q$ is a function from 
+    \begin{equation*}
+    \{ k\ :\ k \text{ is a natural number and } k \leq n + -1 \}
+    \end{equation*}
+    into $[A,B]$ so that if $k$ is a natural number less than $n$, then $Q(k)$ is an element of $[P(k),P(k+1)]$.
+
+  \item[Definition IV (18):] Suppose that $P$ is a partition of $[A,B]$ of size $n$, that $Q$ is an interpolating sequence for $P$, and that $f$ is a function from $[A,B]$ into $\Re$. The \emph{Riemann sum} for $f$ by $P$ and $Q$ is 
+    \begin{equation*}
+    \sum_{k=1}^{n + -1} f(Q(k)) * ( P(k+1) + -P(k) )
+    \end{equation*}
+
+  \item[Notation:] $S_{f,P,Q}$ stands for ``the Riemann sum for $f$ by $P$ and $Q$''.
+
+  \item[Problem VII (38):] Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $f$ is continuous on $[A,B]$, and that $P$ is a partition of $[A,B]$ of size $n$. Show that 
+    \begin{align*}
+    \{ m\ :\ & \text{there is an interpolating sequence for $P$, call it $Q$, so that } \\ 
+             & m = S_{f,P,Q} \} 
+    \end{align*}
+    has a maximum and a minimum.
+
+  \item[Definition V:] Suppose that $n$ and $m$ are natural numbers, $P$ is a partition of $[a,b]$ of size $n$, and $P^*$ is a partition of $[a,b]$ of size $m$. The statement that $P^*$ \emph{refines} $P$ means that the range of $P$ is a subset of the range of $P^*$.
+
+  \item[Problem VIII:] Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $f$ is continuous on $[A,B]$, that $P$ is a partition of $[A,B]$ of size $n$, and $P^*$ is a partition of $[A,B]$ of size $m$, and that $P^*$ refines $P$. Suppose further that $Q$ is an interpolating sequence for $P$ so that $S_{f,P,Q}$ is the maximum of 
+    \begin{align*}
+    \{ m\ :\ & \text{there is an interpolating sequence for $P$, call it $q$, so that } \\
+             & m = S_{f,P,q} \} 
+    \end{align*}
+    and that $Q^*$ is an interpolating sequence for $P^*$ so that $S_{f,P^*,Q^*}$ is the maximum of 
+    \begin{align*}
+    \{ m\ :\ & \text{there is an interpolating sequence for $P^*$, call it $q$, so that } \\
+             & m = S_{f,P^*,q} \} 
+    \end{align*}
+    Show that $S_{f,P^*,Q^*} \leq S_{f,P,Q}$.
+
+  \item[Definition IV$'$:] The statement that $P$ is a \emph{partition} of $[A,B]$ means that there is a natural number, call such a natural number $n$, so that $P$ is a partition of $[A,B]$ of size $n$.
+
+  \item[Problem IX:] Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $f$ is continuous on $[A,B]$, and if $T$ is a partition of $[A,B]$, then 
+    \begin{align*}
+    \{ m\ :\ & \text{there is an interpolating sequence for $P$, call it $q$, so that } \\
+             & m = S_{f,T,q} \} 
+    \end{align*}
+    is bounded, and $E > 0$. Show that there is a partition of $[A,B]$, call such a partition $P$, so that 
+    \begin{align*}
+    \ & \text{lub} \{ m\ :\ \text{there is an interpolating sequence for $P$, call it $q$, so that } \\
+      & \quad m = S_{f,P,q} \} \\
+    + & -\text{glb} \{ m\ :\ \text{there is an interpolating sequence for $P$, call it $q$, so that } \\
+      & \quad m = S_{f,P,q} \} \\
+    < & E
+    \end{align*}
+
+  \item[Problem X:] Suppose that $P$ is a partition of $[A,B]$ of size $n$, and $P^*$ is a partition of $[A,B]$ of size $m$. Show that there is a partition of $[A,B]$, call such a partition $P\hat{\ }$, so that $P\hat{\ }$ refines $P$ and $P\hat{\ }$ refines $P^*$.
+
+  \item[Problem XI:] Suppose that $A$ and $B$ are numbers, $P$ is a partition of $[A,B]$, and $C$ is an element of $\underline{(} A,B \underline{)}$. Show that there is a partition of $[A,C]$, call it $P^*$, and a partition of $[C,D]$, call it $P\hat{\ }$, so that $R_{P^*} \cup R_{P\hat{\ }} = R_{P}$.
+
+  \item[Definition VI:] Suppose that $P$ is a partition of $[A,B]$ of size $n$. The \emph{mesh} of $P$ is 
+    \begin{align*}
+    \text{max} \{ x\ :\ & \text{there is a natural number less than $n$, call it $k$, so that } \\ 
+                        & x = P(k+1) + -P(k) \}
+    \end{align*}
+
+  \item[Notation:] $\text{mesh}P$ stands for ``the mesh of $P$''.
+
+  \item[Problem XII:] Suppose that $E > 0$, and $A$ and $B$ are numbers so that $A < B$. Show that there is a partition of $[A,B]$, call it $P$, so that $\text{mesh}P < E$.
+
+  \item[Definition VII:] Suppose that $f$ is a function from $[A,B]$ into $\Re$ and that $m$ is a number. The statement that $m$ \emph{is the integral} of $f$ on $[A,B]$ means that if $E > 0$, then there is a positive number, call it $M$, so that if $P$ is a partition of $[A,B]$ so that $\text{mesh}P < M$ and $Q$ is an interpolating sequence for $P$, then $S_{f,P,Q}$ is an element of $\underline{(} m + -E, \ m + E \underline{)}$. The statement that $f$ \emph{has an integral} on $[A,B]$ means that there is a number so that it is the integral of $f$ on $[A,B]$.
+
+  \item[Notation:] $\displaystyle{ \int_{[A,B]} f}$ stands for ``the integral of $f$ on $[A,B]$''.
+
+  \item[Problem XIII:] Suppose that each of $m$ and $b$ is a number, and that 
+    \begin{equation*}
+    L = \{ (x,y)\ :\ x \text{ is a number and } y = (m*x) + b \}
+    \end{equation*}
+    Show that 
+    \begin{equation*}
+    \int_{[0,3]} L = \left( \frac{9}{2} * m \right) + (3*b)
+    \end{equation*}
+
+  \item[Problem XIV:] Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $f$ has an integral on $[A,B]$ and that $C$ is an element of $\underline{(} A,B \underline{)}$. Show that $f$ has an integral on $[A,C]$.
+
+  \item[Problem XV:] Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $f$ has an integral on $[A,B]$ and that $C$ is an element of $\underline{(} A,B \underline{)}$. Show that $\displaystyle{ \int_{[A,B]} f = \int_{[A,C]} f \ + \ \int_{[C,B]} f}$.
+
+  \item[Problem XVI:] Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $f$ is continuous on $[A,B]$. Show that $f$ has an integral on $[A,B]$.
+
+  \item[Problem XVII (31):] Suppose that $t$ is a function from $[A,B]$ into 
+    \begin{equation*}
+    \{ m\ :\ \text{there are numbers, call them $a$ and $b$, so that } m = \underline{(} a,b \underline{)} \}
+    \end{equation*}
+    so that if $x$ is an element of $[A,B]$, then $x$ is an element of $t(x)$. Show that there is a natural number, call it $K$, and a function from 
+    \begin{equation*}
+    \{ x\ :\ x \text{ is a natural number and } x \leq K \}
+    \end{equation*}
+    into the range of $t$, call it $t'$, so that $[A,B] \subset \displaystyle{ \bigcup_{n \leq K} t'(n) }$. 
+
+  \item[Problem XVIII:] Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $\Re_{f}$ is not bounded. Show that $\{ x\ :\ $ there is a partition of $[A,B]$, call it $P$, and an interpolating sequence for $P$, call it $Q$, so that $x = S_{f,P,Q} \}$ is not bounded.
+
+  \item[Problem XIX:] Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $\Re_{f}$ is not bounded. Show that $f$ does not have an integral on $[A,B]$.
+
+  \item[Problem XX:] Suppose that $s$ is a sequence in $\Re$ so that if $E > 0$, then there is a natural number, call it $M$, so that if $j$ and $k$ are natural numbers greater than $M$, then $s(j)$ is an element of $\underline{(} s(k) + -E,\ s(k) + E \underline{)}$. Show that there is a number, call it $L$, so that if $E > 0$, then there is a natural number, call it $M$, so that if $n$ is a natural number greater than $M$, then $s(n)$ is an element of $\underline{(} L + -E,\ L + E \underline{)}$.
+
+  \item[Problem XXI:] Suppose that $A$ and $B$ are numbers, and $s$ is a sequence in $\{ f\ :\ f$ is a function from $[A,B]$ into $\Re \}$ so that if $x$ is an element of $[A,B]$, then if $E > 0$, then there is a natural number, call it $M$, so that if $j$ and $k$ are natural numbers greater than $M$, then $s(j)(x)$ is an element of $\underline{(} s(k)(x) + -E,\ s(k)(x) + E \underline{)}$. 
+  
+    Show that there is a function from $[A,B]$, call it $f$, so that if $x$ is an element of $[A,B]$ and $E > 0$, then there is a natural number, call it $M$, so that if $k$ is a natural number greater than $M$, then $s(k)(x)$ is an element of $\underline{(} f(x) + -E,\ f(x) + E \underline{)}$.
+
+  \item[Problem XXII:] Suppose that
+    \begin{align*}
+    \alpha = \{ f\ :\ & \text{there is a natural number, call it $n$, so that } \\
+                      & f = \{ (x,y)\ :\ x \text{ is an element of $[0,1]$ and } y = x^n \} \ \}
+    \end{align*}
+  
+    Show that that if $x$ is an element of $[0,1]$ and $E > 0$, then there is a natural number, call it $M$, so that if $j$ and $k$ are natural numbers greater than $M$, then $\alpha(j)(x)$ is an element of $\underline{(} \alpha(k)(x) + -E,\ \alpha(k)(x) + E \underline{)}$.
+
+  \item[Theorem IX$'$ (Dickson):] Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $f$ is uniformly continuous on $[A,B]$, and $E > 0$. Then there is a partition of $[A,B]$, call such a partition $P$, so that 
+    \begin{align*}
+    \ & \text{max} \{ m\ :\  \text{there is an interpolating sequence for $P$, call it $q$, so that } \\
+      & \quad m = S_{f,P,q} \} \\
+    + & -\text{min} \{ m\ :\ \text{there is an interpolating sequence for $P$, call it $q$, so that } \\
+      & \quad m = S_{f,P,q} \} \\
+    < & E
+    \end{align*}
+
+  \item[Problem XXIII (Bellino):] Suppose that $X$ is a set, that $f$ is a function from $X$ into $\Re$ so that $f$ is continuous on $X$, that $y$ is an element of the range of $f$, and $p$ is an element of $X$ so that $f(p) \neq y$. Show that there is a segment containing $p$, call such a segment $S$, so that if $q$ is an element of $S \cap X$, then $f(q) \neq y$.
+
+  \item[Problem XXIV (28):] Suppose that $t$ is a sequence in $[A,B]$ so that if $n$ and $k$ are natural numbers, then $t(n)$ is not $t(k)$. Show that there is an element of $[A,B]$, call it $p$, so that if $S$ is a segment so that $p$ is an element of $S$, then there is an element of $R_{t}$ which is an element of $S$ and is different than $p$.
+
+  \item[Definition VIII:] $D = \{ x\ :\ x$ is an element of $[0,1]$ and there is an odd integer, call it $k$, and a natural number, call it $n$, so that $x = \displaystyle{ \frac{k}{2^{n}} } \}$.
+
+  \item[Definition IX:] $RL = \{ (x,y)\ :\ x$ is an element of $[0,1]$; and if $x$ is an element of $D$ and $k$ is an odd natural number and $n$ is a natural number so that $x = \displaystyle{ \frac{k}{2^{n}} }$ , then $y = \displaystyle{ \frac{1}{2^{n}} }$, or if $x$ is not an element of $D$, then $y = 0 \}$.
+
+  \item[Problem XXV (option i):] Show that $\int_{[0,1]} RL = 0$.
+
+  \item[Problem XXV (option ii):] Show that $RL$ does not have an integral on $[0,1]$.
+
+  \item[Definition X (Enge):] Suppose $P$ is a partition of $[a,b]$ of size $n$. The \emph{mish} of $P$ is 
+    \begin{align*}
+    \text{min} \{ m\ :\ & \text{there is a natural number, call it $k$, so that } \\
+                        & m = P(k+1) + -P(k) \}
+    \end{align*}
+
+  \item[Problem XXVI:] Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $f$ is continuous on $[A,B]$; that 
+    \begin{align*}
+    g = \{ (x,y)\ :\ & x \text{ is an element of $[A,B]$; and if $x=A$, then $y=0$, } \\
+                     & \left. \text{ or if $x>A$, then } y = \int_{[A,x]} f \right\}
+    \end{align*}
+    and that $p$ is an element of $[A,B]$. Show that if $x$ is an element of $[A,B]$ and $x > p$, then $SAgp(x) = \displaystyle{ \frac{\int_{[x,p]} f}{x + -p} }$.
+
+  \item[Problem XXVII:] Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $f$ is continuous on $[A,B]$; that 
+    \begin{align*}
+    g = \{ (x,y)\ :\ & x \text{ is an element of $[A,B]$; and if $x=A$, then $y=0$, } \\
+                     & \left. \text{ or if $x>A$, then } y = \int_{[A,x]} f \right\}
+    \end{align*}
+    and that $p$ is an element of $[A,B]$. Show that $f(p)$ is the derivative of $g$ at $p$.
+
+  \item[Problem XXVIII:] Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $f$ is continuous on $[A,B]$; that 
+    \begin{align*}
+    g = \{ (x,y)\ :\ & x \text{ is an element of $[A,B]$; and if $x=B$, then $y=0$, } \\
+                     & \left. \text{ or if $x<B$, then } y = \int_{[x,B]} f \right\}
+    \end{align*}
+    and that $p$ is an element of $[A,B]$. Show that $-f(p)$ is the derivative of $g$ at $p$.
+
+  \item[Problem XXIX:] Suppose that $f$ is a function from $[p,q]$ so that $f'$ is continuous on $[p,q]$. Show that there is an element of $\underline{(} p,q \underline{)}$, call it $y$, so that $f'(y) = SAfq(p)$.
+
+  \item[Problem XXX:] Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $f$ is continuous on $[A,B]$; that 
+    \begin{align*}
+    g = \{ (x,y)\ :\ x & \text{ is an element of $[A,B]$; and if $x=A$, then $y=0$, } \\
+                       & \left. \text{ or if $x>A$, then } y = \int_{[A,x]} f \right\}
+    \end{align*}
+    and that $h$ is a function from $[A,B]$ into $\Re$ so that $h' = f$. Show that if $p$ is an element of $[A,B]$, then $h(p) + -g(p) = h(A) + -g(A)$. 
+
+  \item[Problem XXXI (Liacouris):] Suppose that $f$ is a function from $[A,B]$ in $\Re$ so that $f$ is continuous on $[A,B]$; that $E > 0$; and that if $x$ is an element of $[A,B]$, then $S_{x}$ is the segment so that 
+    \begin{enumerate}[\hspace{1cm}(i.)]
+      \item $x$ is an element of $S_{x}$;
+      \item if $y$ is an element of $S_{x} \cap [A,B]$, then $f(y)$ is an element of 
+        \begin{equation*}
+          \underline{(} f(x) + -E,\ f(x) + E \underline{)}
+        \end{equation*}
+      \item if $S$ is a segment so that $S_{x}$ is a subset of $S$, and there is an element of $[A,B] \cap S$ which is not an element of $S_{x}$, then there is an element of $[A,B] \cap S$, call it $y$, so that $f(y)$ is not an element of $\underline{(} f(x) + -E,\ f(x) + E \underline{)}$.
+    \end{enumerate}
+    Show that 
+      \begin{align*}
+      \{ (x,y)\ :\ & x \text{ is an element of } [A,B]; \text{ and if $S_{x}$ is a subset of $[A,B]$ } \\
+                   & \text{ and $S_{x} = \underline{(} p,q \underline{)}$, then } y = q + -p; \\
+                   & \text{ or if $A$ is an element of $S_{x}$ and $B$ is not an element of $S_{x}$ } \\
+                   & \text{ and $S_{x} = \underline{(} p,q \underline{)}$, then } y = q + -A; \\
+                   & \text{ or if $B$ is an element of $S_{x}$ and $A$ is not an element of $S_{x}$ } \\
+                   & \text{ and $S_{x} = \underline{(} p,q \underline{)}$, then } y = B + -p; \\
+                   & \text{ or if $[A,B]$ is a subset of $S_{x}$, then } y = B + -A \ \}
+      \end{align*}
+    is continuous on $[A,B]$. 
+
+  \item[Theorem PP1:] Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $f$ has an integral on $[A,B]$, and $P$ is a partition of $[A,B]$. Then 
+    \begin{align*}
+    \{ x\ :\ & \text{there is an interpolating sequence for $P$, call it $Q$, so that } \\
+             & x = S_{f,P,Q} \}
+    \end{align*}
+    is bounded.
+
+  \item[Theorem PP2:] Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $f$ has an integral on $[A,B]$, and $E > 0$. Then there is a partition of $[A,B]$, call it $P$, so that 
+    \begin{align*}
+    \ & \text{lub} \{ x\ :\  \text{there is an interpolating sequence for $P$, call it $Q$, so that } \\
+      & \quad x = S_{f,P,Q} \} \\ 
+    + & -\text{glb} \{ x\ :\ \text{there is an interpolating sequence for $P$, call it $Q$, so that } \\
+      & \quad x = S_{f,P,Q} \} \\
+    < & E
+    \end{align*}
+
+  \item[Theorem PP3:] Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $f$ has an integral on $[A,B]$, that $P$ is a partition of $[A,B]$, and that $P\hat{\ }$ is a partition of $[A,B]$ so that $P\hat{\ }$ refines $P$. Then 
+    \begin{align*}
+    \    & \text{lub} \{ x\ :\ \text{there is an interpolating sequence for $P\hat{\ }$, call it $Q$, so that } \\
+         & \quad x = S_{f,P\hat{\ },Q} \} \\
+    \leq & \text{lub} \{ x\ :\ \text{there is an interpolating sequence for $P$, call it $Q$, so that } \\
+         & \quad x = S_{f,P,Q} \}
+    \end{align*}
+    and 
+    \begin{align*}
+    \    & \text{glb} \{ x\ :\ \text{there is an interpolating sequence for $P\hat{\ }$, call it $Q$, so that } \\
+         & \quad x = S_{f,P\hat{\ },Q} \} \\
+    \geq & \text{glb} \{ x\ :\ \text{there is an interpolating sequence for $P$, call it $Q$, so that } \\
+         & \quad x = S_{f,P,Q} \}
+    \end{align*}
+
+  \item[Theorem PP4:] Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $f$ has an integral on $[A,B]$. Then there is a sequence in $\{ \ x\ :\ x$ is a partition of $[A,B] \}$, call it $s$, so that 
+    \begin{enumerate}[\hspace{1cm}(i.)]
+      \item if $n$ is a natural number, 
+        \begin{align*}
+        \ & \text{lub} \{ x\ :\ \text{ there is an interpolating sequence for $s(n)$, call it $Q$, } \\
+          & \quad \text{ so that } x = S_{f,s(n),Q} \} \\
+        + & -\text{glb} \{x\ :\ \text{there is an interpolating sequence for $s(n)$, call it $Q$, } \\
+          & \quad \text{ so that } x = S_{f,s(n),Q} \} \\
+        < & \frac{1}{n} &
+        \end{align*}
+        and
+      \item if $n$ is a natural number greater than $1$, then $s(n+1)$ refines $s(n)$; and
+      \item $\int_{[A,B]} f$ is the only number in 
+        \begin{align*}
+        \{ \ x\ :\ & \text{if $n$ is a natural number, then $x$ is an element of } \\
+                   & [ \ \text{glb} \{ x\ :\ \text{there is an interpolating sequence } \\
+                   & \text{ for $s(n)$, call it $Q$, so that } x = S_{f,s(n),Q} \}, \ \\
+                   & \text{lub} \{ x\ :\ \text{there is an interpolating sequence } \\
+                   & \text{ for $s(n)$, call it $Q$, so that } x = S_{f,s(n),Q} \} \ ] \ \}
+        \end{align*}
+    \end{enumerate}
+
+\end{description}
+
+
+
+\newpage
+
+\section{Final Examination}
+\markboth{2. Final Examination}{2. Final Examination}
+
+You may use your class notes for this examination, but should not consult any human sources other than your professor. In writing your solutions, remember that you will not be present to explain what you meant to say; be precise and be correct. Definitions and notations are those in the course notes. In making arguments, you may cite problems proven during the course, provided that their proofs do not depend on the problem being argued.
+
+\subsection*{Part I}
+
+\begin{itemize}
+
+  \item[1.] State and prove a theorem from this course.
+
+  \item[2.] Do one of the following problems. Your choice must be a different problem than the theorem you proved above.
+    \begin{enumerate}[\hspace{1cm}(a.)]
+
+      \item (Problem IV) Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $f$ is continuous on $[A,B]$. Show that $f$ is uniformly continuous on $[A,B]$.
+
+      \item Suppose that $f$ is a function from $\underline{(} a,b \underline{)}$ into $\Re$ so that $f$ is uniformly continuous on $\underline{(} a,b \underline{)}$. Show that there is a number, call such a number $p$, so that $f \cup \{ (a,p) \}$ is continuous on $[a,b \underline{)}$.
+
+      \item (Problem XVII) Suppose that $t$ is a function from $[A,B]$ into 
+        \begin{equation*}
+        \{ m\ :\ \text{there are numbers, call them $a$ and $b$, so that } m = \underline{(} a,b \underline{)} \}
+        \end{equation*}
+        so that if $x$ is an element of $[A,B]$, then $x$ is an element of $t(x)$. Show that there is a natural number, call it $K$, and a function from 
+        \begin{equation*}
+        \{ x\ :\ x \text{ is a natural number and } x \leq K \}
+        \end{equation*}
+        into the range of $t$, call it $t'$, so that $[A,B] \subset \displaystyle{ \bigcup_{n \leq K} t'(n) }$.
+
+      \item (Problem XXIV) Suppose that $t$ is a sequence in $[A,B]$ so that if $n$ and $k$ are natural numbers, then $t(n)$ is not $t(k)$. Show that there is an element of $[A,B]$, call it $p$, so that if $S$ is a segment so that $p$ is an element of $S$, then there is an element of $R_{t}$ which is an element of $S$ and is different than $p$.
+
+    \end{enumerate}
+
+  \item[3.] $\ $
+    \begin{enumerate}[\hspace{1cm}(a.)]
+
+      \item Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $f$ is continuous on $[A,B]$; that $P$ is a partition of $[A,B]$; and that $E > 0$. Show that there is a partition of $[A,B]$, call it $P\hat{\ }$, so that
+      
+        \begin{enumerate}[\hspace{1cm}(i.)]
+
+          \item
+            \begin{align*}
+                 \ & \max \{ x \ : \ \text{there is an interpolating sequence for $P\hat{\ }$, } 
+                \\ & \quad \text{call it $Q$, so that $x = S_{f, P\hat{\ }, Q}$} \}
+              \\ + & -\min \{ x \ : \ \text{there is an interpolating sequence for $P\hat{\ }$, } 
+                \\ & \quad \text{call it $Q$, so that $x = S_{f, P\hat{\ }, Q}$} \}
+              \\ < & E
+            \end{align*}
+            and
+          
+          \item 
+            \begin{align*}
+              [ \ & \min \{ x \ : \ \text{there is an interpolating sequence for $P\hat{\ }$, } 
+               \\ & \quad \text{call it $Q$, so that $x = S_{f, P\hat{\ }, Q}$} \},
+               \\ & \max \{ x \ : \ \text{there is an interpolating sequence for $P\hat{\ }$, } 
+               \\ & \quad \text{call it $Q$, so that $x = S_{f, P\hat{\ }, Q}$} \} \ ]
+               \\ \subset & \ \\
+              [ \ & \min \{ x \ : \ \text{there is an interpolating sequence for $P$, } 
+               \\ & \quad \text{call it $Q$, so that $x = S_{f, P, Q}$} \},
+               \\ & \max \{ x \ : \ \text{there is an interpolating sequence for $P$, } 
+               \\ & \quad \text{call it $Q$, so that $x = S_{f, P, Q}$} \} \ ]
+            \end{align*}
+          
+        \end{enumerate}
+        
+      \item Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $f$ is continuous on $[A,B]$; and that $s$ is a sequence in 
+        \begin{equation*}
+        \{ x\ :\ x \text{ is a partition of } [A,B] \}
+        \end{equation*}
+        so that if $n$ is a natural number, then all of the following are true:
+      
+        \begin{enumerate}[\hspace{1cm}(i.)]
+
+          \item if $n$ is a natural number, then 
+            \begin{align*}
+                 \ & \max \{ x \ : \ \text{there is an interpolating sequence for $s(n)$, } 
+                \\ & \quad \text{call it $Q$, so that $x = S_{f, s(n), Q}$} \}
+              \\ + & -\min \{ x \ : \ \text{there is an interpolating sequence for $s(n)$, } 
+                \\ & \quad \text{call it $Q$, so that $x = S_{f, s(n), Q}$} \}
+              \\ < & \frac{1}{n}
+            \end{align*}
+
+          \item 
+            \begin{align*}
+              [ \ & \min \{ x \ : \ \text{there is an interpolating sequence for $s(n+1)$, } 
+               \\ & \quad \text{call it $Q$, so that $x = S_{f, s(n+1), Q}$} \},
+               \\ & \max \{ x \ : \ \text{there is an interpolating sequence for $s(n+1)$, } 
+               \\ & \quad \text{call it $Q$, so that $x = S_{f, s(n+1), Q}$} \} \ ]
+               \\ \subset & \ \\
+              [ \ & \min \{ x \ : \ \text{there is an interpolating sequence for $s(n)$, } 
+               \\ & \quad \text{call it $Q$, so that $x = S_{f, s(n), Q}$} \},
+               \\ & \max \{ x \ : \ \text{there is an interpolating sequence for $s(n)$, } 
+               \\ & \quad \text{call it $Q$, so that $x = S_{f, s(n), Q}$} \} \ ]
+            \end{align*}
+
+          \item $m$ is the number so that if $n$ is a natural number, then $m$ is an element of 
+            \begin{align*}
+              [ \ & \min \{ x \ : \ \text{there is an interpolating sequence for $s(n)$, } 
+               \\ & \quad \text{call it $Q$, so that $x = S_{f, s(n), Q}$} \},
+               \\ & \max \{ x \ : \ \text{there is an interpolating sequence for $s(n)$, } 
+               \\ & \quad \text{call it $Q$, so that $x = S_{f, s(n), Q}$} \} \ ]
+            \end{align*}
+          
+        \end{enumerate}
+        
+        Show that if $m$ is not the integral of $f$ on $[A,B]$, then there is a positive number, call it $E$, so that if $M > 0$, then there is a partition of $[A,B]$, call it $P$, and an interpolating sequence for $P$, call it $Q$, so that $\text{mesh}P < M$ and $S_{f, P, Q}$ is not an element of $\underline{(} m + -E, \ m + E \underline{)}$.
+
+      \item Suppose that $m$ is defined as in I.3.b, that $m$ is not the integral of $f$ on $[A,B]$, and that $E$ is a positive number; so that if $M > 0$, then there is a partition of $[A,B]$, call it $P$, and an interpolating sequence for $P$, call it $Q$, so that $\text{mesh}P < M$ and $S_{f, P, Q}$ is not an element of $\underline{(} m + -E, \ m + E \underline{)}$.
+      
+        Show that there is a sequence in $\{ x\ :\ x$ is a partition of $[A,B] \}$, call it $t$, so that:
+
+        \begin{enumerate}[\hspace{1cm}(i.)]
+
+          \item there is an interpolating sequence for $t(n)$, call it $Q$, so that $S_{f, t(n), Q}$ is not an element of $\underline{(} m + -E, \ m + E \underline{)}$
+
+          \item if $n$ is a natural number, then 
+            \begin{align*}
+                 \ & \max \{ x \ : \ \text{there is an interpolating sequence for $t(n)$, } 
+                \\ & \quad \text{call it $Q$, so that $x = S_{f, t(n), Q}$} \}
+              \\ + & - \min \{ x \ : \ \text{there is an interpolating sequence for $t(n)$, } 
+                \\ & \quad \text{call it $Q$, so that $x = S_{f, t(n), Q}$} \}
+              \\ < & \frac{1}{n}
+            \end{align*}
+
+          \item 
+            \begin{align*}
+              [ \ & \min \{ x \ : \ \text{there is an interpolating sequence for $t(n+1)$, } 
+               \\ & \quad \text{call it $Q$, so that $x = S_{f, t(n+1), Q}$} \},
+               \\ & \max \{ x \ : \ \text{there is an interpolating sequence for $t(n+1)$, } 
+               \\ & \quad \text{call it $Q$, so that $x = S_{f, t(n+1), Q}$} \} \ ]
+               \\ \subset & \ \\
+              [ \ & \min \{ x \ : \ \text{there is an interpolating sequence for $t(n)$, } 
+               \\ & \quad \text{call it $Q$, so that $x = S_{f, t(n), Q}$} \},
+               \\ & \max \{ x \ : \ \text{there is an interpolating sequence for $t(n)$, } 
+               \\ & \quad \text{call it $Q$, so that $x = S_{f, t(n), Q}$} \} \ ]
+            \end{align*}
+          
+        \end{enumerate}
+
+      \item Suppose that $m$ is defined as in I.3.b, and $t$ is defined as in the conclusion of I.3.c. Show that there is a natural number, call it $k$, so that if $y$ is an element of 
+        \begin{align*}
+          [ \ & \min \{ x \ : \ \text{there is an interpolating sequence for $s(k)$,} 
+          \\ & \quad \text{call it $Q$, so that $x = S_{f, s(k), Q}$} \},
+          \\ & \max \{ x \ : \ \text{there is an interpolating sequence for $s(k)$, } 
+          \\ & \quad \text{call it $Q$, so that $x = S_{f, s(k), Q}$} \} \ ]
+        \end{align*}
+        then $y$ is not an element of
+        \begin{align*}
+          [ \ & \min \{ x \ : \ \text{there is an interpolating sequence for $t(k)$, } 
+          \\ & \quad \text{call it $Q$, so that $x = S_{f, t(k), Q}$} \},
+          \\ & \max \{ x \ : \ \text{there is an interpolating sequence for $t(n)$, } 
+          \\ & \quad \text{call it $Q$, so that $x = S_{f, t(n), Q}$} \} \ ]
+        \end{align*}
+
+      \item Suppose that $s$ is defined as in I.3.b, and $t$ is defined as in the conclusion of I.3.c. Show that if $n$ is a natural number, then there is a partition, call it $P$, so that $P$ refines $s(n)$ and $P$ refines $t(n)$.
+
+      \item Suppose that $f$ is a function from $[A,B]$ into $\Re$, so that $f$ is continuous on $[A,B]$. Show that $f$ has an integral on $[A,B]$.
+
+    \end{enumerate}
+
+\end{itemize}  
+
+\subsection*{Part II}
+
+\begin{itemize}
+
+  \item[1.] Suppose that $s$ is a sequence in $\Re$ so that if $E > 0$, then there is a natural number, call it $M$, so that if $j$ and $k$ are natural numbers greater than $M$, then $s(j)$ is an element of $\underline{(} s(k) + -E, \ s(k) + E \underline{)}$.
+  
+    Show that there is a number, call it $L$, so that if $E > 0$, then there is a natural number, call it $M$, so that if $n$ is a natural number greater than $M$, then $s(n)$ is an element of $\underline{(} L + -E, \ L + E \underline{)}$
+
+\hspace{0.5cm}
+
+  \item[2.] $\ $
+    \begin{enumerate}[\hspace{1cm}(a.)]
+
+      \item Suppose that 
+        \begin{align*}
+        \alpha = \{ \ & (n, \{ (x,y)\ : x \text{ is an element of $[0,1]$ and } & y = x^n \} ) \ : \ \\
+                      & n \text{ is a natural number } \} 
+        \end{align*}
+        Show that if $x$ is an element of $[0,1]$, then if $E > 0$, then there is a natural number, call it $n$, so that if $k$ is a natural number greater than $n$, then $\alpha(k)(x)$ is an element of $\underline{(} 0,E \underline{)}$.
+      
+      \item Suppose that $\beta$ is a sequence in 
+        \begin{align*}
+        \{ f \ : \ & f \text{ is a function from $[0,1]$ into $\Re$ so that $f$ is } \\
+                   & \text{ continuous on } [0,1] \}
+        \end{align*}
+        and $g$ is a function from $[0,1]$ into $\Re$; so that if $x$ is an element of $[0,1]$, then if $E > 0$, then there is a natural number, call it $n$, so that if $k$ is a natural number greater than $n$, then $\beta(k)(x)$ is an element of $\underline{(} g(k) + -E, \ g(k) + E \underline{)}$.
+      
+    \end{enumerate}
+
+  \item[3.] Suppose that $f$ is a function from $[A,B]$ into $\Re$ so that $f$ is continuous on $[A,B]$; and that 
+    \begin{align*}
+    g = \{ \ (x,y)\ :\ & x \text{ is an element of $[A,B]$; and if $x = A$, then $y = 0$; } \\
+                       & \text{ or if $x > A$, then } y = \int_{[A,x]} f \ \}
+    \end{align*}
+    and that $p$ is an element of $[A,B]$. Show that $f(p)$ is the derivative of $g$ at $p$.
+  
+\end{itemize}
+
+\subsection*{Part III}
+
+\begin{itemize}
+
+  \item[1.] Suppose that $X$ is a subset of $\Re$ so that $X$ is bounded; that $f$ is a function from $X$ into $\Re$ so that $f$ is uniformly continuous on $X$; and that $p$ is a number so that if $S$ is a segment of which $p$ is an element, then there is an element of $X$ which is an element of $S$. Show that there is a number, call it $y$, so that $f \cup \{ (p,y) \}$ is continuous at $p$.
+  
+  \item[2.] Suppose that that $f$ is a function from $\Re$ into $\Re$ so that $f$ has the property of Lipschitz; and that $M$ is a number so that if $x$ and $y$ are numbers, then $|f(x) + - f(y)| \ \leq \ M^* |x + -y|$; and that each of $g$ and $h$ is a function from $[A,B]$ into $\Re$ that is continuous on $[A,B]$.
+  
+    Show that
+    \begin{equation*}
+      \left| \int_{[A,B]} f \circ g \ + \ - \int_{[A,B]} f \circ h \right| 
+      \ \leq \ M^* \left| \int_{[A,B]} g \ + \ - \int_{[A,B]} h \right|
+    \end{equation*}
+  
+  \item[3.] Suppose that $n$ is a natural number; that $P = \{ \}$; and that $Q$ is the interpolating sequence for $P$ defined by ``if $k$ is a natural number less than $2^n + 1$, then $Q(k) = y$ means that $RL(y) = \max \{ RL(x)\ :\ x$ is an element of $[P(k), P(k+1)] \}$''.
+  
+    Show that if $P\hat{\ }$ is a partition of $[0,1]$ with mesh less than $\frac{1}{2^n}$ and $Q\hat{\ }$ is an interpolating sequence for $P\hat{\ }$, then $S_{ RL, P\hat{\ }, Q\hat{\ } } \leq S_{RL, P, Q}$.
+  
+\end{itemize}
+
+
+\end{document}

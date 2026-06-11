@@ -1,0 +1,1004 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+
+% special characters
+
+\def\str{\relbar \joinrel}
+
+\def\jb{\downarrow \! \!}
+
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+\title{Foundations Of Mathematics}
+\author{John A. Hildebrant}
+\date{\vspace{3cm}
+  Department of Mathematics
+  \\ Louisiana State University
+  \\ Baton Rouge, Louisiana 70803
+  }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+Typesetter's Note: Theorems and problems that are denoted by a number preceded by the letter A refer to material from the author's analysis sequence.
+
+\section{Sets and Relations}
+\markboth{1. Sets and Relations}{1. Sets and Relations}
+
+\pagenumbering{arabic}
+
+The word \emph{set} is assumed to be a primitive dictionary word. One synonym for this word is \emph{collection}. We hypothesize the existence of a set $\emptyset$ which contains no members, called the \emph{empty set}.
+
+The statement that $x$ is an element of a set $A$ (or $x$ is a member of $A$; or $x$ belongs to $A$) is written $x \in A$.
+
+To designate that $B$ is the set of all elements satisfying property $p$, we write: $B= \{ x: x \text{ has property } p \}$.
+
+To state that a set $A$ is a subset of a set $B$ (meaning that each member of $A$ is also a member of $B$), we write $A \subseteq B$.
+
+The statement $A=B$ means $A \subseteq B$ and $B \subseteq A$.
+
+If $A \subseteq B$ and $A \neq B$, then we write $A \subset B$ and say that $A$ is a \emph{proper subset} of $B$.
+
+If $A$ and $B$ are sets, we define the \emph{union} of $A$ and $B$:
+\begin{equation*}
+A \cup B = \{ x: x \in A \text{ or } x \in B \}
+\end{equation*}
+and define the \emph{intersection} of $A$ and $B$:
+\begin{equation*}
+A \cap B = \{ x: x \in A \text{ and } x \in B \}
+\end{equation*}
+
+If $A$ and $B$ have no elements in common, then we say that $A$ and $B$ are \emph{disjoint}, and write $A \cap B = \emptyset$.
+
+If $A \subseteq B$, then the \emph{complement} of $A$ in $B$ is:
+\begin{equation*}
+B \backslash A = \{ x: x \in B \text{ and } x \notin A \}
+\end{equation*}
+
+\begin{description}
+
+\item[1. DeMorgan's Laws:] If $A$ and $B$ are subsets of a set $X$, then
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $X \backslash (A \cup B) = (X \backslash A) \cap (X \backslash B)$; and
+    \item $X \backslash (A \cap B) = (X \backslash A) \cup (X \backslash B)$.
+  \end{enumerate}
+
+\item[2. Theorem:] Let $A$ and $B$ be subsets of a set $X$. These are equivalent:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $A \subseteq B$;
+    \item $A \cap B = A$;
+    \item $A \cup B = B$;
+    \item $X \backslash B \subseteq X \backslash A$;
+    \item $A \cap (X \backslash B) = \emptyset$; and
+    \item $B \cup (X\backslash A) = X$.
+  \end{enumerate}
+
+\end{description}
+
+If $A$ and $B$ are sets, then the \emph{product set} $A \times B$ consists of all ordered pairs $(a,b)$ such that $a \in A$ and $b \in B$, i.e.
+\begin{equation*}
+A \times B = \{ (a,b): a \in A, b \in B \}
+\end{equation*}
+
+A \emph{relation} on a set $A$ is a subset of $A \times A$.
+
+The \emph{diagonal relation} on a set $A$ is defined:
+\begin{equation*}
+\Delta_A = \{ (a,a): a \in A \}
+\end{equation*}
+
+If $R$ is a relation on a set $A$, then the \emph{converse} of $R$ is defined:
+\begin{equation*}
+R^{-1} = \{ (x,y): (y,x) \in R \}
+\end{equation*}
+
+If $R$ and $Q$ are relations on a set $A$, then the \emph{composition} of $R$ and $Q$ is defined:
+\begin{equation*}
+R \circ Q = \{ (x,y) \in A \times A: \text{ exists } z \in A \text{ such that } (x,z) \in R \text{ and } (z,y) \in Q \}
+\end{equation*}
+
+Let $A$ be a set, and let $R$ be a relation on A. We say that:
+\begin{itemize}
+  \item $R$ is \emph{reflexive} if $(a,a) \in R$ for each $a \in A$;
+  \item $R$ is \emph{symmetric} if whenever $(a,b) \in R$, then $(b,a) \in R$, for $a,b \in A$;
+  \item $R$ is \emph{antisymmetric} if whenever both $(a,b) \in R$ and $(b,a) \in R$, then $a=b$, for $a,b \in A$; and
+  \item $R$ is \emph{transitive} if whenever $(a,b) \in R$ and $(b,c) \in R$, then $(a,c) \in R$, for $a,b,c \in A$.
+\end{itemize}
+
+\begin{description}
+
+\item[3. Theorem:] Let $A$ be a set, and $R$ a relation on $A$. Then
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $R$ is reflexive if and only if $\Delta_A \subseteq R$;
+    \item $R$ is symmetric if and only if $R=R^{-1}$;
+    \item $R$ is antisymmetric if and only if $R \cap R^{-1} \subseteq \Delta_A$; and
+    \item $R$ is transitive if and only if $R \circ R \subseteq R$.
+  \end{enumerate}
+
+\end{description}
+
+If ${\cal A}$ is a collection of sets, then the \emph{union} of ${\cal A}$ is defined $\bigcup \{ A: A \in {\cal A} \} = \{ x: x \in A \text{ for some } A \in {\cal A} \}$, and the \emph{intersection} of ${\cal A}$ is defined $\bigcap \{ A: A \in {\cal A} \} = \{ x: x \in A \text{ for all } A \in {\cal A} \}$.
+
+A collection of sets ${\cal A}$ is said to be \emph{indexed} by $A$ provided that for each $\alpha \in A$, there is exactly one $X_\alpha \in {\cal A}$ such that ${\cal A} = \{ X_\alpha: \alpha \in A \}$. The union is denoted $\bigcup \limits_{\alpha \in A}^{} X_\alpha$, and the intersection is denoted $\bigcap \limits_{\alpha \in A}^{} X_\alpha$.
+
+As we will see (using the Axiom of Choice), each collection of sets is an indexed collection.
+
+\begin{description}
+
+\item[4. DeMorgan's Laws:] Let $\{ X_\alpha: \alpha \in A \}$ be a collection of subsets of a set $X$. Then
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $X \backslash \bigcup \limits_{\alpha \in A}^{} X_\alpha = \bigcap \limits_{\alpha \in A}^{} (X \backslash X_\alpha)$; and
+    \item $X \backslash \bigcap \limits_{\alpha \in A}^{} X_\alpha = \bigcup \limits_{\alpha \in A}^{} (X \backslash X_\alpha)$.
+  \end{enumerate}
+
+\end{description}
+
+A \emph{partition} of a set $X$ is a collection ${\cal A}$ of subsets of $X$ such that $X = \bigcup \{ A: A \in {\cal A} \}$, and if $A$ and $B$ are distinct members of ${\cal A}$, then $A \cap B = \emptyset$.
+
+A relation $R$ on a set $X$ is called an \emph{equivalence relation} provided $R$ is reflexive, symmetric, and transitive. The $R$-classes of $X$ are called \emph{equivalence classes}.
+
+\begin{description}
+
+\item[5. Theorem:] The classes of an equivalence relation on a set $X$ form a partition of $X$. Moreover, the elements of a partition of a set $X$ form the equivalence classes of a unique equivalence relation on $X$.
+
+\end{description}
+
+Let $\mathbb{N} = \{ 1,2,3,\cdots \}$ denote the set of all natural numbers.
+
+
+
+\section{The Peano Axioms}
+\markboth{2. The Peano Axioms}{2. The Peano Axioms}
+
+For each $x \in \mathbb{N}$, there is a unique element $x^\prime \in \mathbb{N}$ (called the \emph{successor} of $x$), such that:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item If $x^\prime = y^\prime$, then $x=y$;
+  \item There is an element of $\mathbb{N}$, which is denoted by $1$, such that for each $x \in \mathbb{N}$, $x^\prime \neq 1$; and
+  \item If $M$ is a set which contains $1$ and which contains $x^\prime$ whenever it contains $x$, then $M$ contains every element of $\mathbb{N}$.
+\end{enumerate}
+
+Axiom (c) is called \textbf{The Axiom of Finite Induction}.
+
+\begin{description}
+
+\item[6. Theorem:] If $x \in \mathbb{N}$ and $x \neq 1$, then there exists a unique $y \in \mathbb{N}$ such that $x = y^\prime$.
+
+\end{description}
+
+A \emph{function} is a triple $(A,B,f)$, where $A$ and $B$ are sets, and $f$ is a rule which assigns to each element $x$ of $A$ a unique element $f(x)$ of $B$. The notation $f: A \rightarrow B$ is frequently used to denote a function $(A,B,f)$, and if the sets $A$ and $B$ are understood, then $f$ is used to denote the function.
+
+The set $A$ is called the \emph{domain} of the function, and $B$ is called the \emph{codomain} of the function. For $x \in A$, we call $f(x)$ the \emph{image} or \emph{value} of $x$ under the function $f$. The set of all images of elements of $A$ is a subset of $B$ called the \emph{range} of $f$.
+
+If $x \neq y$ in $A$ implies that $f(x) \neq f(y)$, then $f$ is called a \emph{one-to-one} function. If the codomain $B$ is also the range of $f$, then $f$ is said to be an \emph{onto} function.
+
+A function which is both one-to-one and onto is called a \emph{bijection} of $A$ onto $B$.
+
+The function $1_A: A \rightarrow A$ defined by $1_A(x) = x$ for each $x \in A$, is called the \emph{identity function} on $A$.
+
+If $f: A \rightarrow B$ and $g: B \rightarrow C$ are functions, then the composition $g \circ f: A \rightarrow C$ is defined by $g \circ f (x) = g(f(x))$ for each $x \in A$.
+
+\begin{description}
+
+\item[7. Theorem:] Let $f: A \rightarrow B$ be a bijection. Then there is a unique function $g: B \rightarrow A$ such that $g \circ f = 1_A$ and $f \circ g = 1_B$.
+
+\end{description}
+
+The function $g$ in A1.8 is called the \emph{inverse} of $f$, and is denoted $f^{-1}$. Notice that it is a bijection from $B$ to $A$.
+
+If $f: A \rightarrow B$ is a function and $P \subseteq A$, then $f[P]= \{ f(x): x \in P \}$, and for $Q \subseteq B$, then $f^{-1}[Q]= \{ x \in A: f(x) \in Q \}$.
+
+\begin{description}
+
+\item[8. Theorem:] Let $f: X \rightarrow Y$ be a function, and let $A$ and $B$ be subsets of $X$. Then:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $f[A \cup B] = f[A] \cup f[B]$;
+    \item $f[A \cap B] \subseteq f[A] \cap f[B]$;
+    \item $f[A] \backslash f[B] \subseteq f[A \backslash B]$; and
+    \item if $A \subseteq B$, then $f[A] \subseteq f[B]$.
+  \end{enumerate}
+
+\item[9. Theorem:] Let $f: X \rightarrow Y$ be a function, and let $A$ and $B$ be subsets of $Y$. Then:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $f^{-1}[A \cup B] = f^{-1}[A] \cup f^{-1}[B]$;
+    \item $f^{-1}[A \cap B] = f^{-1}[A] \cap f^{-1}[B]$;
+    \item $f^{-1}[A \backslash B] = f^{-1}[A] \backslash f^{-1}[B]$; and
+    \item If $A \subseteq B$, then $f^{-1}[A] \subseteq f^{-1}[B]$.
+  \end{enumerate}
+
+\item[10. Theorem:] Let $f: X \rightarrow Y$ be a function, and let $\{ X_\alpha: \alpha \in A\}$ be a collection of subsets of $X$. Then
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $f[\bigcup \limits_{\alpha\in A}^{} X_\alpha] = \bigcup \limits_{\alpha \in A}^{} f[X_\alpha]$; and
+    \item $f[\bigcap \limits_{\alpha\in A}^{} X_\alpha] \subseteq \bigcap \limits_{\alpha \in A}^{} f[X_\alpha]$.
+  \end{enumerate}
+
+\item[11. Theorem:] Let $f: X \rightarrow Y$ be a function, and let $\{ Y_\beta: \beta \in B\}$ be a collection of subsets of $Y$. Then:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $f^{-1}[\bigcup \limits_{\beta\in B}^{} Y_\beta] = \bigcup \limits_{\beta \in B}^{} f^{-1}[Y_\beta]$; and
+    \item $f^{-1}[\bigcap \limits_{\beta\in B}^{} Y_\beta] = \bigcap \limits_{\beta \in B}^{} f^{-1}[Y_\beta]$.
+  \end{enumerate}
+
+\item[12. Theorem:] Let $f: X \rightarrow Y$ be a function, and let $B \subseteq Y$. Then $f^{-1}[Y \backslash B]$ $=$ $X \backslash f^{-1}[B]$.
+
+\item[13. Theorem:] There is a unique function $\theta: \mathbb{N} \times \mathbb{N} \rightarrow \mathbb{N}$ such that:
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item $\theta(x,1) = x^\prime$ for each $x \in \mathbb{N}$; and
+    \item $\theta(x,y^\prime) = \theta(x,y)^\prime$ for each $x,y \in \mathbb{N}$.
+  \end{enumerate}
+
+\end{description}
+
+The function $\theta$ in A1.15 is called \emph{addition} on $\mathbb{N}$. For $a,b \in \mathbb{N}$, we write $a+b = \theta(a,b)$.
+
+\begin{description}
+
+\item[14. Theorem:] If $a,b,c \in \mathbb{N}$, then:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $(a+b)+c = a+(b+c)$ (associative); and
+    \item $a+b = b+a$ (commutative).
+  \end{enumerate}
+
+\item[15. Theorem:] If $a,b,c \in \mathbb{N}$ such that $a+c = b+c$, then $a=b$ (cancellation).
+
+\end{description}
+
+
+
+\section{Order Relations}
+\markboth{3. Order Relations}{3. Order Relations}
+
+A relation $\leq$ on a set $X$ is called a \emph{quasi-order} (we write $x \leq y$ in place of $(x,y) \in \leq$), provided it is reflexive and transitive. If $\leq$ is a quasi-order on a set $X$, then $(X,\leq)$ is called a \emph{quasi-ordered set}.
+
+A quasi-order on a set $X$ is called a \emph{partial order}, provided it is anti-symmetric. In this case, $(X,\leq)$ is called a \emph{partially ordered set}.
+
+A partial order $\leq$ on a set $X$ is called a \emph{total order}, provided that for $x,y \in X$, either $x \leq y$ or $y \leq x$. In this case, $(X,\leq)$ is called a \emph{totally ordered set}.
+
+If $(X,\leq)$ is a quasi-ordered set, an element $m \in X$ is called a \emph{maximal element} of $X$, provided $m \leq x$ for $x \in X$ implies $m=x$.
+
+If $(X,\leq)$ is a quasi-ordered set and $A \subseteq X$, then $u \in X$ is called an \emph{upper bound} for $A$, provided $a \leq u$ for all $a \in A$.
+
+If $(X,\leq)$ is a quasi-ordered set and $C \subseteq X$, then $C$ is called a \emph{chain} in $X$, provided $(C \times C) \cap \leq$ is a total order on $C$.
+
+A chain $C$ in a quasi-ordered set $(X,\leq)$ is called a \emph{maximal chain}, provided $C$ is not properly contained in another chain in $X$; i.e., $C$ is maximal with respect to $\subseteq$ in the family of chains in $X$.
+
+If $(X,\leq)$ is a quasi-ordered set and $A \subseteq X$, an element $a \in A$ is called a \emph{first element} of $A$, provided $a \leq x$ for all $x \in A$.
+
+A quasi-order on a set $X$ is called a \emph{well-order}, provided that each non-empty subset of $X$ has a unique first element. In this case, $(X,\leq)$ is called a \emph{well-ordered set}.
+
+\begin{description}
+
+\item[16. Theorem:] Each well-ordered set is totally ordered.
+
+\end{description}
+
+Define $\leq$ on $\mathbb{N}$ by $a \leq b$ provided there exists $c \in \mathbb{N}$ such that $b=a+c$ or $b=a$.
+
+\begin{description}
+
+\item[17. Theorem:] The set $(\mathbb{N},\leq)$ is a well-ordered set.
+
+\item[18. Recursion Theorem:] Let ${\cal A}$ be a collection, $e \in {\cal A}$, and suppose that for each $n \in \mathbb{N}$, there exists $R_n: {\cal A} \rightarrow {\cal A}$. Then there exists $F: \mathbb{N} \rightarrow {\cal A}$ such that $F(1)=e$ and $F(n+1) = R_{n+1}[F(n)]$ for each $n \in \mathbb{N}$.
+
+\item[19. Example:] Let $X$ be a set, and let $f: X \rightarrow X$ be a function. We will use the Recursion Theorem to establish the existence of the $n$-fold composition of $f$ with itself.
+
+\end{description}
+
+Let ${\cal A}$ be the collection of all functions from $X$ into $X$, and define $R_n: {\cal A} \rightarrow {\cal A}$ by $R_n(g) = f \circ g$ for each $n \in \mathbb{N}$. Then, by the Recursion Theorem, there exists $F: \mathbb{N} \rightarrow {\cal A}$ such that $F(1)=f$ and $F(n+1) = R_{n+1}[F(n)] = f \circ F(n)$ for each $n \in \mathbb{N}$. Define $f^{(n)} = F(n)$ for each $n \in \mathbb{N}$.
+
+
+
+\section{The Axiom Of Choice}
+\markboth{4. The Axiom Of Choice}{4. The Axiom Of Choice}
+
+The \emph{Axiom of Choice} states: If ${\cal A}$ is a collection of non-empty sets, then there exists a function
+\begin{equation*}
+\phi: {\cal A} \rightarrow \bigcup \{ A: A \in {\cal A} \}
+\end{equation*}
+such that $\phi(A) \in A$ for each $A \in {\cal A}$. The function $\phi$ is called a \emph{choice function} for the collection ${\cal A}$.
+
+The \emph{Cartesian product} of a collection ${\cal A}$ of sets is the collection of all choice functions for ${\cal A}$. It is denoted $\prod \{ A: A \in {\cal A} \}$. For each $\phi$ in this product and each $A \in {\cal A}$, the value $\phi(A)$ is called the $A$ \emph{coordinate} of $\phi$. For each $B \in {\cal A}$, the function $\pi_B: \prod \{ A: A \in {\cal A} \} \rightarrow B$ defined by $\pi_B(\phi) = \phi(B)$ is called the $B$ \emph{projection}.
+
+If $(X,\leq)$ is a partially ordered set and $A \subseteq X$, then an element $b \in X$ is called a \emph{least upper bound} for $A$, provided $b$ is an upper bound for $A$ and $b \leq u$ for each upper bound $u$ of $A$. Note that if a least upper bound exists for a subset of a partially ordered set, then it is unique.
+
+If $(X,\leq)$ is a non-empty partially ordered set such that each totally ordered subset of $X$ has a least upper bound $b \in X$, and if $f: X \rightarrow X$ is a function such that $x \leq f(x)$ for all $x \in X$, then a subset $A$ of $X$ is said to be \emph{admissible} (with respect to $b$), provided:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $b \in A$;
+  \item $f[A] \subseteq A$; and
+  \item every least upper bound of a totally ordered subset of $A$ belongs to $A$.
+\end{enumerate}
+
+\begin{description}
+
+\item[20. Lemma:] Let $(X,\leq)$ be a non-empty partially ordered set such that each totally ordered subset of $X$ has a least upper bound, let $f: X \rightarrow X$ be a function such that $x \leq f(x)$ for each $x \in X$, let $b \in X$ , and let ${\cal A}$ be the family of all admissible subsets of $X$ (with respect to $b$). Then:
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item ${\cal A} \neq \emptyset$;
+    \item $({\cal A},\subseteq)$ is a partially ordered set with $M = \bigcap \{ A: A \in {\cal A} \}$ as a unique minimal element;
+    \item if $x \in M$, then $b \leq x$;
+    \item Let $P = \{ x \in M: \text{ if } y \in M \text{ and } y<x, \text{ then } f(y) \leq x \}$. Now if $x \in P$ and $z \in M$, then either $z \leq x$ or $f(x) \leq z$;
+    \item $P$ is an admissible subset of $M$, and hence $P=M$; and
+    \item $M$ is totally ordered.
+  \end{enumerate}
+
+\item[21. Lemma:] Let $(X,\leq)$ be a non-empty partially ordered set such that each totally ordered subset of $X$ has a least upper bound. If $f: X \rightarrow X$ is such that $x \leq f(x)$ for all $x \in X$, then there exists $p \in X$ such that $f(p)=p$.
+
+\item[22. Theorem:] Each of the following is equivalent to the Axiom of Choice:
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item \textbf{Kuratowski's Lemma}: Each chain in a partially ordered set is contained in a maximal chain.
+    \item \textbf{Hausdorff Maximal Principle}: Each partially ordered set contains a maximal chain.
+    \item \textbf{Zorn's Lemma}: If each chain in a partially ordered set $(X,\leq)$ has an upper bound, then $X$ has a maximal member.
+    \item \textbf{The Well-Ordering Principle}: Each set can be well-ordered.
+  \end{enumerate}
+
+\end{description}
+
+
+
+\section{Finite and Infinite Sets}
+\markboth{5. Finite and Infinite Sets}{5. Finite and Infinite Sets}
+
+A set $X$ is said to be \emph{infinite} provided there exists a proper subset $B \subset X$ and a one-to-one function $f: X \rightarrow B$ from $X$ onto $B$. Otherwise, we say that $X$ is \emph{finite}.
+
+For $n \in \mathbb{N}$, we use $\jb n$ to denote the set $\{ m \in \mathbb{N}: m \leq n \}$.
+
+\begin{description}
+
+\item[23. Lemma:] Let $X$ be a set. Then exactly one of the following holds:
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item There exists a one-to-one function $\phi: \jb n \rightarrow X$ of $\jb n$ onto $X$; or
+    \item There exists a one-to-one function $\psi: \mathbb{N} \rightarrow X$ of $\mathbb{N}$ into $X$.
+ \end{enumerate}
+
+\item[24. Theorem:] Let $X$ be a non-empty set. Then $X$ is finite if and only if there exists $n \in \mathbb{N}$ and a one-to-one onto function $f: X \rightarrow \jb n$.
+
+\end{description}
+
+A set $X$ is said to be \emph{denumerable} if there exists a one-to-one function $\phi: X \rightarrow \mathbb{N}$ from $X$ onto $\mathbb{N}$.
+
+A set $X$ is said to be \emph{countable} if it is either finite or denumerable. It is \emph{uncountable} otherwise.
+
+\begin{description}
+
+\item[25. Theorem:] A set $X$ is infinite if and only if $X$ contains a denumerable subset.
+
+\item[26. Theorem:] If the domain of a function is countable, then the range is also countable.
+
+\item[27. Theorem:] If ${\cal A}$ is a countable family of countable sets, then $\bigcup \{ A: A \in {\cal A} \}$ is countable.
+
+\end{description}
+
+The following Lemma will be useful in the proof of A4.7:
+
+\begin{description}
+
+\item[28. Lemma:] Let $\{ x_n \}$ be a sequence in $\mathbb{N}$. Then there exists an increasing sequence $\{ p_n \}$ such that $x_n < p_n$ for each $n \in \mathbb{N}$.
+
+\item[Proof:] We will apply the Recursion Theorem. Let $p_1 = x_1 + 1 = e$, and define $R_n: \mathbb{N} \rightarrow \mathbb{N}$ by $R_n(x) = x+x_n+1$. Then there exists a function $F: \mathbb{N} \rightarrow \mathbb{N}$ such that $F(1)=p_1$ and $F(n+1) = R_{n+1}[F(n)]$ for each $n \in \mathbb{N}$. Let $p_n=F(n)$ for each $n \in \mathbb{N}$. Then $p_{n+1} = F(n+1) = p_n+x_{n+1}+1$.
+
+\item[29. Theorem:] Let $D$ be a denumerable set, ${\cal F}$ the family of all finite subsets of $D$, and let ${\cal S}$ be the family of all subsets of $D$. Then ${\cal F}$ is denumerable and ${\cal S}$ is uncountable.
+
+\end{description}
+
+
+
+\section{Well-Ordered Sets}
+\markboth{6. Well-Ordered Sets}{6. Well-Ordered Sets}
+
+If $(X,\leq)$ is a well-ordered set and $a \in X$, then $x<a$ means that $x \leq a$ and $x \neq a$. The set $L(a) = \{ x \in X: x<a \}$ is called the \emph{initial interval} determined by $a$.
+
+If $(X,\leq)$ is a well-ordered set and $I \subseteq X$, then $I$ is said to be an \emph{ideal} of $X$, provided $L(a) \subseteq I$ for each $a \in I$.
+
+If $(X,\leq)$ is a well-ordered set, then $X$ and $\emptyset$ are ideals of $X$. Observe that $\emptyset$ is an initial interval determined by the first element of $X$, and $X$ is not an initial interval. Also, $L(a)$ is an ideal for each $a \in X$.
+
+If $(X,\leq)$ is a well-ordered set, then ${\cal I}(X)$ denotes the family of all ideals of $X$, and ${\cal J}(X)$ denotes the family of all initial intervals of $X$.
+
+\begin{description}
+
+\item[30. Theorem:] Let $(X,\leq)$ be a well-ordered set. Then:
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item The intersection of ideals of $X$ is an ideal of $X$;
+    \item The union of ideals of $X$ is an ideal of $X$; and
+    \item ${\cal J}(X) = {\cal I}(X) \backslash \{ X \}$.
+  \end{enumerate}
+
+\item[31. Theorem:] If $(X,\leq)$ is a well-ordered set, then $({\cal I}(X),\subseteq)$ is a well-ordered set.
+
+\end{description}
+
+If $(X,\leq)$ and $(X^\prime,\leq^\prime)$ are well-ordered sets, a function $f: X \rightarrow X^\prime$ is called a \emph{monomorphism}, provided $f$ is one-to-one and order-preserving; i.e., $x \leq y$ in $X$ implies that $f(x) \leq^\prime f(y)$ in $X^\prime$. If $f$ also maps $X$ onto $X^\prime$, then $f$ is called an \emph{isomorphism}.
+
+\begin{description}
+
+\item[32. Theorem:] If $(X,\leq)$ is a well-ordered set, then the function $a \mapsto L(a)$ of $(X,\leq)$ onto $({\cal J}(X),\subseteq)$ is an isomorphism.
+
+\item[33. Theorem:] Let $(X,\leq)$ be a well-ordered set, and let $\Sigma$ be a family of ideals of $X$ satisfying:
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item Any union of members of $\Sigma$ is a member of $\Sigma$; and
+    \item If $L(a) \in \Sigma$, then $L(a) \cup \{ a \} \in \Sigma$.
+    \item Then $\Sigma = {\cal I}(X)$ and, in particular, $X \in \Sigma$.
+  \end{enumerate}
+
+\item[34. Lemma:] Let $(X,\leq)$ and $(X^\prime,\leq^\prime)$ be well-ordered sets, and let $\phi: X \rightarrow X^\prime$ be an isomorphism of $X$ onto an ideal of $X^\prime$. Then any monomorphism $f: X \rightarrow X^\prime$ satisfies the condition that $\phi(x) \leq^\prime f(x)$ for each $x \in X$. In particular, there can be at most one isomorphism between an ideal of $X$ and an ideal of $X^\prime$.
+
+\item[35. Theorem:] Let $(X,\leq)$ and $(X^\prime,\leq^\prime)$ be well-ordered sets. Then exactly one of the following holds:
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item There is a unique isomorphism of $X$ onto $X^\prime$;
+    \item There is a unique isomorphism of $X$ onto an initial interval of $X^\prime$; and
+    \item There is a unique isomorphism of $X^\prime$ onto an initial interval of $X$.
+  \end{enumerate}
+
+\item[36. Corollary:] Let $(X,\leq)$ be a well-ordered set, and let $A \subseteq X$. Then $A$ is isomorphic to $X$ or to an initial interval of $X$.
+
+\item[37. Corollary:] Let $(X,\leq)$ be a well-ordered set. Then no initial interval of $X$ is isomorphic to $X$.
+
+\item[38. Corollary:] The class of all well-ordered sets is well-ordered, if we define $X \leq X^\prime$ to mean that $X$ is isomorphic to an ideal of $X^\prime$ (and $X=X^\prime$ means that $X$ is isomorphic to $X^\prime$).
+
+\item[39. Transfinite Induction:] Let $(X,\leq)$ be a well-ordered set, and let $A \subseteq X$. If $L(x) \subseteq A$ implies that $x \in A$ for each $x \in X$, then $A=X$.
+
+\end{description}
+
+Note that if $(\mathbb{N},\leq)$ is the positive integers with its usual order, then A39 is equivalent to what is usually referred to as \emph{strong finite induction}.
+
+
+
+\section{Quotient Sets and the Integers}
+\markboth{7. Quotient Sets and the Integers}{7. Quotient Sets and the Integers}
+
+\begin{description}
+
+\item[40. Theorem:] There is a unique function $\phi: \mathbb{N} \times \mathbb{N} \rightarrow \mathbb{N}$ such that:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $\phi(x,1)=x$ for each $x \in \mathbb{N}$; and
+    \item $\phi(x,y+1) = \phi(x,y)+x$ for each $x,y \in \mathbb{N}$.
+  \end{enumerate}
+
+\end{description}
+
+The function $\phi$ in A6.1 is called \emph{multiplication} on $\mathbb{N}$, and we write $xy$ for $\phi(x,y)$ for each $x,y \in \mathbb{N}$.
+
+\begin{description}
+
+\item[41. Theorem:] If $a,b,c \in \mathbb{N}$, then:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $(ab)c = a(bc)$ (associative);
+    \item $ab=ba$ (commutative);
+    \item $a(b+c) = ab+ac$ (distributive); and
+    \item If $ac=bc$, then $a=b$ (cancellation).
+  \end{enumerate}
+
+\end{description}
+
+If $X$ is a set and $\sigma$ is an equivalence relation on $X$, then $X \slash \sigma$ denotes the set of $\sigma$-classes of $X$. We call $X \slash \sigma$ the \emph{quotient set} of $X \text{ mod } \sigma$. Then function $\eta: X \rightarrow X \slash \sigma$, defined by letting $\eta(x)$ be the $\sigma$-class containing $x$ for each $x \in X$, is called the \emph{natural map}. Observe that for $x,y \in X$, $\eta(x)=\eta(y)$ if and only if $(x,y) \in \sigma$. Moreover, for each $x \in X$, $\eta^{-1}\eta(x) = \{ y \in X: (x,y) \in \sigma \}$ (the $\sigma$-class of $x$).
+
+Define a relation $\tau$ on $\mathbb{N} \times \mathbb{N}$ as follows:
+\begin{equation*}
+\tau = \{ ((a,b),(x,y)) \in (\mathbb{N} \times \mathbb{N}) \times (\mathbb{N} \times \mathbb{N}) : a+y=x+b \}
+\end{equation*}
+
+\begin{description}
+
+\item[42. Theorem:] The relation $\tau$ is an equivalence relation on $\mathbb{N} \times \mathbb{N}$.
+
+\end{description}
+
+Let $\mathbb{Z} = (\mathbb{N} \times \mathbb{N}) \slash \tau$, and let $\mu: \mathbb{N} \times \mathbb{N} \rightarrow \mathbb{Z}$ be the natural map.
+
+\begin{description}
+
+\item[43. Theorem:] The map $\beta: \mathbb{N} \rightarrow \mathbb{Z}$ defined by $\beta(x) = \mu((x+1,1))$ is a one-to-one function.
+
+\end{description}
+
+The set $\mathbb{Z}$ is called the \emph{integers}. In view of A6.4, we will identify $\mathbb{N}$ with its image under $\beta$ in $\mathbb{Z}$.
+
+\vspace{0.3cm}
+
+Let $\Delta=\{ (a,a): a \in \mathbb{N} \}$.
+
+\begin{description}
+
+\item[44. Theorem:] The set $\Delta$ is a $\tau$-class in $\mathbb{N} \times \mathbb{N}$.
+
+\end{description}
+
+The image $\mu[\Delta]$ in $\mathbb{Z}$ is called \emph{zero} and is denoted by $0$.
+
+\begin{description}
+
+\item[45. Lemma:] If $a,b,x \in \mathbb{N}$, then $\mu(a+x,b+x) = \mu(a,b)$.
+
+\end{description}
+
+We define \emph{addition} on $\mathbb{Z}$ by $\mu(a,b)+\mu(c,d)=\mu(a+c,b+d)$ for $a,b,c,d \in \mathbb{N}$.
+
+\begin{description}
+
+\item[46. Theorem:] Addition on $\mathbb{Z}$ is well-defined. Moreover, if $x,y,z \in \mathbb{Z}$, then:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $(x+y)+z=x+(y+z)$ (associative);
+    \item $x+y=y+x$ (commutative);
+    \item $x+z=y+z$ implies $x=y$ (cancellative); and
+    \item if $x,y \in \mathbb{N}$, then $x+y \in \mathbb{N}$.
+  \end{enumerate}
+
+\end{description}
+
+If $z=\mu(a,b)$ in $\mathbb{Z}$, then we write $-z=\mu(b,a)$. For $x,y \in \mathbb{Z}$, we write $x-y=x+(-y)$.
+
+\begin{description}
+
+\item[47. Theorem:] The set $\mathbb{Z} = \mathbb{N} \cup \{ 0 \} \cup \{ -n: n \in \mathbb{N} \}$, and these sets are disjoint.
+
+\item[48. Theorem:] If $x \in \mathbb{Z}$, then
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $x+0=x$; and
+    \item $x+(-x)=0$.
+  \end{enumerate}
+
+\item[Note:] $(\mathbb{Z},+)$ is an abelian group whose identity is $0$.
+
+\end{description}
+
+We define $\leq$ on $\mathbb{Z}$ by $x \leq y$, provided that either $x=y$ or $y-x \in \mathbb{N}$. We say that $z \in \mathbb{Z}$ is \emph{positive} provided $z \in \mathbb{N}$.
+
+\begin{description}
+
+\item[49. Theorem:] The relation $\leq$ is a total order on $\mathbb{Z}$. Moreover,
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $x \in \mathbb{Z}$ is positive if and only if $0<x$ ($0 \leq x$ and $x \neq 0$); and
+    \item If $x \leq y$ and $z \in \mathbb{Z}$, then $x+z \leq y+z$.
+  \end{enumerate}
+
+\end{description}
+
+We define \emph{multiplication} on $\mathbb{Z}$ by
+\begin{equation*}
+\mu(a,b) \cdot \mu(c,d) = \mu(ac+bd,bc+ad)
+\end{equation*}
+
+\begin{description}
+
+\item[50. Theorem:] Multiplication on $\mathbb{Z}$ is well-defined. Moreover, if $x,y,z \in \mathbb{Z}$, then:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $(xy)z=x(yz)$ (associative);
+    \item $xy=yx$ (commutative);
+    \item If $z \neq 0$ and $xz=yz$, then $x=y$ (cancellative);
+    \item $x \cdot 0=0$;
+    \item $x \cdot 1=x$; and
+    \item $x(y+z)=xy+xz$ (distributive).
+  \end{enumerate}
+
+\item[51. Theorem:] Let $x,y,z \in \mathbb{Z}$.
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item If $x \leq y$ and $0 \leq z$, then $xz \leq yz$; and
+    \item If $x \leq y$ and $z \leq 0$, then $yz \leq xz$.
+  \end{enumerate}
+
+\end{description}
+
+
+
+\section{The Real Numbers}
+\markboth{8. The Real Numbers}{8. The Real Numbers}
+
+Let $\mathbb{Z}_{*} = \mathbb{Z} \backslash \{ 0 \}$, and let $\sigma = \{ ((a,b),(x,y)) \in (\mathbb{Z} \times \mathbb{Z}_\ast) \times (\mathbb{Z} \times \mathbb{Z}_\ast): ay=bx \}$.
+
+\begin{description}
+
+\item[52. Theorem:] The relation $\sigma$ is an equivalence relation on $\mathbb{Z} \times \mathbb{Z}_{*}$.
+
+\item[Note:] $\ $
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $\sigma(0,1) = \sigma(0,x)$ for all $x \in \mathbb{Z}_{*}$;
+    \item If $\sigma(0,1) = \sigma(a,b)$, then $a=0$; and
+    \item If $x \neq 0$, then $\sigma(a,b) = \sigma(xa,xb)$.
+  \end{enumerate}
+
+\end{description}
+
+The quotient $\mathbb{Q} = (\mathbb{Z} \times \mathbb{Z}_{*}) \slash \sigma$ is called the \emph{set of rational numbers}. Let $\sigma[a,b]$ denote the $\sigma$-class of $(a,b) \in \mathbb{Z} \times \mathbb{Z}_{*}$.
+
+Define addition on $\mathbb{Q}$ by $\sigma[a,b]+\sigma[c,d]=\sigma[ad+bc,bd]$; and multiplication by $\sigma[a,b] \cdot \sigma[c,d] = \sigma[ac,bd]$.
+
+\begin{description}
+
+\item[53. Theorem:] Addition and multiplication are well-defined functions from $\mathbb{Q} \times \mathbb{Q}$ into $\mathbb{Q}$.
+
+\item[54. Theorem:] Addition and multiplication on $\mathbb{Q}$ are associative and commutative. Moreover, $1 = \sigma[1,1]$ is a multiplicative identity and $0 = \sigma[0,1]$ is an additive identity.
+
+\end{description}
+
+If $x \in \mathbb{Q}$, $x = \sigma[a,b]$, let $-x = \sigma[-a,b]$ ($=\sigma[a,-b]$), and if $x \neq 0$, let $x^{-1} = \sigma[b,a]$.
+
+\begin{description}
+
+\item[7.4. Theorem:] $\ $
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item If $x \in \mathbb{Q}$, then $x+(-x)=0$;
+    \item If $x \in \mathbb{Q}$, $x \neq 0$, then $x x^{-1}=1$;
+    \item If $x,y,z \in \mathbb{Q}$, then $x(y+z)=xy+xz$ (distributive); and
+    \item If $x \in \mathbb{Q}$, then $x \cdot 0 = 0$.
+  \end{enumerate}
+
+\end{description}
+
+For $p \in \mathbb{Q}$, define $0 \leq p$ provided either $p=0$ or $p=\sigma[a,b]$, where $0<a$ and $0<b$ in $\mathbb{Z}$. For $x,y \in \mathbb{Q}$, define $x \leq y$ if $0 \leq y-x$ ($=y+(-x)$).
+
+\begin{description}
+
+\item[55. Theorem:] If $x,y,z \in \mathbb{Q}$ with $x \leq y$, then
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item $x+z \leq y+z$;
+    \item if $0<z$, then $xz \leq yz$; and
+    \item if $z<0$, then $yz \leq xz$.
+  \end{enumerate}
+
+\end{description}
+
+We say that $x \in \mathbb{Q}$ is \emph{positive} if $0<x$, and \emph{negative} if $x<0$.
+
+\begin{description}
+
+\item[56. Theorem:] The relation $\leq$ is a total order on $\mathbb{Q}$.
+
+\item[57. Theorem:] The map $\psi: \mathbb{Z} \rightarrow \mathbb{Q}$ defined by $\psi(x) = \sigma[x,1]$ is a one-to-one map of $\mathbb{Z}$ into $\mathbb{Q}$ such that $\psi(x+y) = \psi(x)+\psi(y)$ and $\psi(xy) = \psi(x) \psi(y)$ for each $x,y \in \mathbb{Z}$.
+
+\end{description}
+
+We identify $\mathbb{Z}$ with its image under $\psi$ in $\mathbb{Q}$.
+
+For $x \in \mathbb{Q}$, define \emph{absolute value} of $x$:
+\begin{equation*}
+\vert x \vert = 
+\begin{cases}
+x & \text{if } 0 \leq x; \\
+-x & \text{if } x<0
+\end{cases}
+\end{equation*}
+
+\begin{description}
+
+\item[58. Theorem:] If $x,y,z \in \mathbb{Q}$, then $\vert x+y \vert \leq \vert x \vert + \vert y \vert$.
+
+\item[Note:] $(\mathbb{Q},+,\cdot,\leq)$ is an ordered field.
+
+\end{description}
+
+Let $\mathbb{Q}^\mathbb{N} = \{ f: \mathbb{N} \rightarrow \mathbb{Q} \}$; i.e., the set of all sequences in $\mathbb{Q}$. We will adopt the usual convention of writing $x_n=f(n)$, and say that $\{ x_n \}$ is a sequence.
+
+A sequence $\{ x_n \}$ is called a \emph{Cauchy sequence}, provided for each $\epsilon \in \mathbb{Q}$ such that $0 < \epsilon$, there exists $p \in \mathbb{N}$ such that $\vert x_n - x_m \vert < \epsilon$ when $p<n,m$. We denote by $\mathbb{Q}_\star^\mathbb{N}$ the set of all Cauchy sequences in $\mathbb{Q}$.
+
+Define $\rho=\{ (\{ x_n\},\{ y_n\}) \in \mathbb{Q}_\star^\mathbb{N} \times \mathbb{Q}_\star^\mathbb{N} : \text{ for each } 0<\epsilon \text{ in } \mathbb{Q}, \text{ there exists } p \in \mathbb{N} \text{ such that } \vert x_n - y_n \vert < \epsilon, \text{ when } p<n \}$.
+
+\begin{description}
+
+\item[Note:] Each Cauchy sequence $\{ x_n \}$ in $Q$ is bounded; i.e., there exists $r \in Q$ such that $\vert x_n \vert \leq r$ for all $n \in \mathbb{N}$.
+
+\item[59. Theorem:] The relation $\rho$ is an equivalence relation on $\mathbb{Q}_\star^\mathbb{N}$.
+
+\end{description}
+
+The quotient $\mathbb{R}=\mathbb{Q}_\star^\mathbb{N}\slash\rho$ is called the \emph{set of real numbers}. For a Cauchy sequence $\{ x_n \}$ in $\mathbb{Q}$, we let $\rho[x_n]$ denote the $\rho$-class of $\{ x_n \}$.
+
+Note that for $r \in \mathbb{Q}$, the sequence $\{ x_n \}$ such that $x_n=r$ for all $n \in \mathbb{N}$ is a Cauchy sequence (which we denote by $\{ r \}$).
+
+Define \emph{addition} on $\mathbb{R}$ by $\rho[x_n]+\rho[y_n] = \rho[x_n +y_n]$; and define \emph{multiplication} on $\mathbb{R}$ by $\rho[x_n]\cdot\rho[y_n] = \rho[x_ny_n]$.
+
+\begin{description}
+
+\item[60. Theorem:] Multiplication and addition are well-defined functions $\mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R}$.
+
+\item[61. Theorem:] Multiplication and addition on $\mathbb{R}$ are associative and commutative. Moreover, $1=\rho[1]$ is a multiplicative identity and $0=\rho[0]$ is an additive identity.
+
+\item[62. Lemma:] If $x \neq 0$ in $\mathbb{R}$, then there exists a Cauchy sequence $\{ x_n \}$ in $\mathbb{Q}$ such that $x=\rho[x_n]$ and $x_n \neq 0$ for all $n \in \mathbb{N}$.
+
+\end{description}
+
+If $x \in \mathbb{R}$, $x=\rho[x_n]$, define $-x=\rho[-x_n]$.
+
+If $x \in \mathbb{R}$ and $x \neq 0$, let $\{ x_n \}$ be a Cauchy sequence in $\mathbb{Q}$ such that $x_n \neq 0$ for all $n \in \mathbb{N}$, and define $x^{-1}=\rho[x_n^{-1}]$.
+
+\begin{description}
+
+\item[63. Theorem:] If $x \in \mathbb{R}$, then $-x$ is well-defined. Moreover; if $x \neq 0$, then $x^{-1}$ is well-defined.
+
+\item[64. Theorem:] Let $x,y,z \in \mathbb{R}$.
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item $x+(-x)=0$;
+    \item if $x \neq 0$, then $x x^{-1}=1$;
+    \item $x(y+z)=xy+xz$ (distributive); and
+    \item $x \cdot 0 = 0$.
+  \end{enumerate}
+
+\end{description}
+
+For $p \in \mathbb{R}$, define $0 \leq p$ provided there exists a Cauchy sequence $\{ x_n \}$ in $\mathbb{Q}$ such that $0 \leq x_n$ for all $n \in \mathbb{N}$ and $p= \rho[x_n]$. Define $0<p$ if $0 \leq p$ and $p \neq 0$. For $x,y \in \mathbb{R}$, define $x \leq y$ provided $0 \leq y-x$ ($=y+(-x)$).
+
+\begin{description}
+
+\item[65. Theorem:] If $x,y,z \in \mathbb{R}$ with $x \leq y$, then
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item $x+z \leq y+z$;
+    \item if $0<z$, then $xz \leq yz$; and
+    \item if $z<0$, then $yz \leq xz$.
+  \end{enumerate}
+
+\end{description}
+
+We say that $x \in \mathbb{R}$ is \emph{positive} if $0<x$, and \emph{negative} if $x<0$.
+
+\begin{description}
+
+\item[66. Theorem:] The relation $\leq$ is a total order on $\mathbb{R}$.
+
+\item[67. Theorem:] The map $\phi: \mathbb{Q} \rightarrow \mathbb{R}$ defined by $\phi(a)=\rho[a]$ is a one-to-one map of $\mathbb{Q}$ into $\mathbb{R}$ such that $\phi(a+b)=\phi(a)+\phi(b)$ and $\phi(ab)=\phi(a)\cdot\phi(b)$ for each $a,b \in \mathbb{Q}$.
+
+\end{description}
+
+We identify $\mathbb{Q}$ with its image under $\phi$ in $\mathbb{R}$.
+
+\begin{description}
+
+\item[Note:] $(\mathbb{R},+,\cdot,\leq)$ is an ordered field.
+
+\end{description}
+
+For $x \in \mathbb{R}$, define the \emph{absolute value} of $x$:
+\begin{equation*}
+\vert x \vert = 
+\begin{cases}
+x & \text{if } 0 \leq x; \\
+-x & \text{if } x<0
+\end{cases}
+\end{equation*}
+
+\begin{description}
+
+\item[A68. Theorem:] If $x,y \in \mathbb{R}$, then $\vert x+y \vert \leq \vert x \vert + \vert y \vert$.
+
+\item[A69. Theorem:] If $x<y$ in $\mathbb{R}$, then there exists $q \in \mathbb{Q}$ such that $x<q<y$.
+
+\end{description}
+
+A sequence $\{ x_n \}$ in $\mathbb{R}$ is called a \emph{Cauchy sequence} provided that for each $0 < \epsilon$ in $\mathbb{R}$, there exists $p \in \mathbb{N}$ such that $\vert x_n-x_m \vert < \epsilon$ when $p < n,m$.
+
+A sequence $\{ x_n \}$ in $\mathbb{R}$ is said to \emph{converge} to $x \in \mathbb{R}$ if for each $0 < \epsilon$ in $\mathbb{R}$, there exists $p \in \mathbb{N}$ such that $\vert x_n-x \vert < \epsilon$ when $p<n$.
+
+\begin{description}
+
+\item[A70. Archimedian Property:] If $r \in \mathbb{R}$, then there exists $n \in \mathbb{N}$ such that $r<n$.
+
+\item[A71. Completeness:] Each Cauchy sequence in $\mathbb{R}$ converges.
+
+\item[A72. Theorem:] Each subset of $\mathbb{R}$ which has an upper bound has a least upper bound.
+
+\item[A73. Theorem:] The set $\mathbb{Q}$ is denumerable.
+
+\item[A74. Theorem:] The set $\mathbb{R}$ is non-denumerable.
+
+\end{description}
+
+
+
+\section{Ordinal Numbers}
+\markboth{9. Ordinal Numbers}{9. Ordinal Numbers}
+
+An \emph{ordinal number} is a set $P$ satisfying:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item If $x \in P$ and $y \in P$, then either $x \in y$ or $y \in x$, or $x=y$; and
+  \item If $x \in y$ and $y \in P$, then $x \in P$.
+\end{enumerate}
+
+\begin{description}
+
+\item[75. Example:] $P = \{ \emptyset,\{\emptyset\} , \{ \emptyset,\{\emptyset\} \} \}$ is an ordinal number.
+
+\end{description}
+
+Some results from set theory are:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item \textbf{Axiom}: If $A$ is a set, then there exists $u \in A$ such that $u \cap A = \emptyset$.
+  \item \textbf{Theorem}: If $A$ is a set, then $A \notin A$.
+  \item \textbf{Theorem}: If $A$ and $B$ are sets, then either $A \notin B$ or $B \notin A$.
+\end{enumerate}
+
+Note that if $P$ is an ordinal number, then $\in$ is not a quasi-order on $P$, since $x \notin x$ for any $x \in P$.
+
+\begin{description}
+
+\item[76. Theorem:] Let $P$ be an ordinal number, and let $A$ be a non-empty subset of $P$. Then there is a unique $a \in A$ such that either $a \in x$ or $a=x$ for each $x \in A$.
+
+\end{description}
+
+The element $a$ in A8.1 is called the \emph{first element} of $A$.
+
+\begin{description}
+
+\item[77. Theorem:] If $P$ is an ordinal number, then $\emptyset$ is the first element of $P$.
+
+\item[78. Theorem:] If $P$ is an ordinal number and $x \in P$, then $x$ is an ordinal number.
+
+\item[79. Theorem:] If $P$ and $Q$ are distinct ordinal numbers, then $P \subset Q$ if and only if $P \in Q$.
+
+\item[80. Theorem:] Let $P$ and $Q$ be distinct ordinal numbers. Then either $P \subset Q$ or $Q \subset P$.
+
+\item[81. Theorem:] The class of all ordinal numbers is well-ordered by $\subseteq$.
+
+\item[82. Theorem:] If $\cal E$ is a class of ordinal numbers, then $\cal E$ is well-ordered by $\subseteq$, and in particular $\cal E$ has a first element.
+
+\item[83. Theorem:] The class of all ordinal numbers is not a set.
+
+\end{description}
+
+Let $\cal O$ denote the class of all ordinal numbers.
+
+\begin{description}
+
+\item[84. Theorem:] If $P$ is an ordinal number, then the set $L(P)$ of initial intervals determined by $P$ in $({\cal O},\subseteq)$ is $P$. In particular, $L(P)$ is a set.
+
+\item[85. Theorem:] If $E$ is a set of ordinal numbers, then $E$ has a least upper bound in $({\cal O},\subseteq)$.
+
+\item[86. Theorem:] If $(X,\leq)$ is a well-ordered set, then $(X,\leq)$ is isomorphic to $(P,\subseteq)$ for some unique ordinal number $P$.
+
+\end{description}
+
+In A86, we call $P$ the \emph{ordinal} of $(X,\leq)$, and denote $P= \text{ ord}(X,\leq)$.
+
+\begin{description}
+
+\item[87. Theorem:] Let $(X,\leq)$ be a well-ordered set, and suppose $m \notin X$. Then $(X \cup \{ m \},\leq)$ is well-ordered if $\leq$ is extended to $X \cup \{ m \}$ so that $x \leq m$ for all $x \in X \cup \{ m \}$. Moreover, \textbf{ ord } $(X \cup \{ m \},\leq) =  \textbf{ ord } (X,\leq) \cup \{ \textbf{ ord } (X,\leq) \}$.
+
+\item[88. Theorem:] If $P \in {\cal O}$, then $P \cup \{ P \}$ is the successor of $P$ in $({\cal O},\subseteq)$.
+
+\end{description}
+
+An ordinal $P \neq \emptyset$ is called a \emph{limit ordinal} provided $P$ has no predecessor in $({\cal O},\subseteq)$.
+
+Let $(\mathbb{N}^\star,\leq)$ denote the non-negative integers with the usual order. Let $\omega= \text{ ord } (\mathbb{N}^\star,\leq)$. Let $\overline n$ denote $(L(n),\leq)$ for each $n \in \mathbb{N}^\star$.
+
+For $n \in \mathbb{N}^\star$, we will use $\underline n$ to denote $\text{ ord } \overline n$.
+
+For sets $A$ and $B$, we use $A \dot{\cup} B$ to denote the disjoint union of $A$ and $B$.
+
+\begin{description}
+
+\item[89. Theorem:] Let $A$ and $B$ be ordinal numbers. Define $\leq$ on $A \dot{\cup} B$ as follows: for $x,y \in A \dot{\cup} B$,
+
+  $x \leq y$ if either $x$ and $y$ are both in $A$ or both in $B$ and $x \subseteq y$; and
+
+  $x<y$ if $x \in A$ and $y \in B$.
+
+  Then $(A\dot\cup B,\leq)$ is a well-ordered set.
+
+\end{description}
+
+If $A$ and $B$ are ordinal numbers, then the \emph{sum} of $A$ and $B$ is defined as $A+B = \text{ ord} (A \dot{\cup} B, \leq)$, where $(A \dot{\cup} B, \leq)$ is the well-ordered set of A8.1A7.
+
+\begin{description}
+
+\item[90. Theorem:] Let $A$ and $B$ be ordinal numbers. Define $\leq$ on $A \times B$: for $(a,b),(a^\prime,b^\prime) \in A \times B$, let $(a,b) \leq (a^\prime,b^\prime)$, provided that either $a \subset a^\prime$ or $a=a^\prime$ and $b \subseteq b^\prime$. Then $(A \times B,\leq)$ is a well-ordered set.
+
+\end{description}
+
+The order on $A \times B$ in A8.18 is called the \emph{lexicographic order}.
+
+If $A$ and $B$ are ordinal numbers, then the \emph{product} $BA$ is defined as $BA=\text{ ord } (A \times B, \leq)$ where $\leq$ is the lexicographic order on $A \times B$.
+
+
+
+\section{Cardinal Numbers}
+\markboth{10. Cardinal Numbers}{10. Cardinal Numbers}
+
+Two sets $X$ and $Y$ are said to be \emph{equipotent} if there is a one-to-one function from $X$ onto $Y$. Note that equipotence is an equivalence relation on the class of all sets. An equivalence class of this relation is called an \emph{equipotence class}.
+
+If $X$ is a set, then the family of all subsets of $X$ is denoted ${\cal P}(X)$ and the family of all functions from $X$ into $\{ 0,1 \}$ is denoted by $2^X$.
+
+\begin{description}
+
+\item[91. Theorem:] If $X$ is a set, then ${\cal P}(X)$ and $2^X$ are equipotent.
+
+\item[92. Theorem:] If $f: X \rightarrow Y$ is a function from $X$ onto $Y$, then $Y$ is equipotent to a subset of $X$.
+
+\end{description}
+
+If $X$ is a set, let ${\cal E}_X$ denote the equipotence class of $X$. Note that since $X$ can be well-ordered, ${\cal E}_X$ contains at least one ordinal number. The \emph{cardinal number} of $X$ is defined to be the first ordinal number in ${\cal E}_X$ (see A5.7) and is denoted $\sharp X$.
+
+\begin{description}
+
+\item[93. Theorem:] Let $X$ and $Y$ be sets. Then $X$ is equipotent to a subset of $Y$ if and only if $\sharp X \subseteq \sharp Y$. In particular, $X$ and $Y$ are equipotent if and only if $\sharp X = \sharp Y$.
+
+\item[94. The Schröder-Bernstein Theorem:] If $X$ and $Y$ are sets, and there exist one-to-one functions $f: X \rightarrow Y$ and $g: Y \rightarrow X$, then there exists a one-to-one function $h: X \rightarrow Y$ from $X$ onto $Y$.
+
+\item[95. Theorem:] If $X$ is a set, then $\sharp X \subset \sharp {\cal P}(X)$.
+
+\end{description}
+
+If $X$ is an infinite set, then $\sharp X$ is called a \emph{transfinite cardinal number}.
+
+\begin{description}
+
+\item[96. Theorem:] In the order $\subseteq$ on the class of all cardinal numbers, $\text{ord } \overline{0}$ is the smallest cardinal number, and $\aleph_0$ is the smallest transfinite cardinal number.
+
+\item[97. Theorem:] The class of all cardinal numbers is not a set.
+
+\end{description}
+
+We use $c$ to denote $\sharp \mathbb{R}$.
+
+\vspace{0.3cm}
+
+Observe that ${\cal P}(\mathbb{N})$ and $2^\mathbb{N}$ are equipotent (A91), and hence $\sharp {\cal P}(\mathbb{N}) = \sharp 2^\mathbb{N}$ (A94). Now $\sharp {\cal P}(\mathbb{N}) = \sharp \mathbb{R} =c$ (A98). In view of A9.9, we see that $\sharp \mathbb{N}$ is a proper subset of $\sharp {\cal P} (\mathbb{N})$, and we conclude that $\aleph_0$ is a proper subset of $c$. 
+
+\begin{description}
+
+\item[The Continuum Hypothesis:] If $k$ is a cardinal number and $\aleph_0 \subseteq k \subseteq c$, then either $k=\aleph_0$ or $k=c$; i.e., there is no cardinal number between $\aleph_0$ and $c$. 
+
+\item[The Generalized Continuum Hypothesis:] If $X$ is an infinite set and $k$ is a cardinal number such that $\sharp X \subseteq k \subseteq \sharp {\cal P}(X)$ (see A99), then either $k = \sharp X$ or $k = \sharp {\cal P}(X)$.
+
+\item[98. Theorem:] If $A = \sharp X$, then ${\underline 2}^A = \sharp {\cal P} (X)$. Moreover, $A \subset {\underline 2}^A$.
+
+\item[99. Theorem:] If $A$ is a transfinite cardinal number, then $A^2=A$.
+
+\item[100. Corollary:] Let $A$ and $B$ be non-empty cardinal numbers, at least one of which is transfinite. Then $AB=A+B= \text{max} \{ A,B \}$.
+
+\end{description}
+
+If $A$ is a transfinite cardinal number and $C_A = \{ C: C$  is a cardinal number and $C \subset A \}$, then the \emph{aleph index} of $A$ is $i(A)= \text{ ord } (C_A,\subseteq)$.
+
+\begin{description}
+
+\item[101. Theorem:] Let $A$ and $B$ be transfinite cardinal numbers. Then:
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item $A=B$ if and only if $i(A)=i(B)$;
+    \item $A \subseteq B$ if and only if $i(A) \subseteq i(B)$; and
+    \item $A \subset B$ if and only if $i(A) \subset i(B)$.
+  \end{enumerate}
+
+\item[102. Theorem:] If $B$ is an ordinal number, then there exists a unique transfinite cardinal number $A$ such that $B=i(A)$.
+
+\end{description}
+
+The cardinal number corresponding to an ordinal number $B$ in A9.12 is denoted $\aleph_B$.
+
+\begin{description}
+
+\item[103. Theorem:] If $B$ is an ordinal number and $A$ is a cardinal number such that $\aleph_B \subseteq A \subseteq \aleph_{B+1}$, then $A=\aleph_A$ or $A=\aleph_{A+1}$.
+
+\item[104. Theorem:] If $B$ is an ordinal number and $A$ is a non-empty cardinal number, then $\aleph_{B+1}^A = \aleph_B^A \aleph_{B+1}$.
+
+\end{description}
+
+
+\end{document}

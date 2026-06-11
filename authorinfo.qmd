@@ -10,7 +10,7 @@ Course Notes are freely downloadable, professionally refereed, classroom-tested 
 
 Instructors are encouraged to contact authors for guidance in the use of Course Notes.
 
-# Publication Requirements
+## Publication Requirements
 
 ### Abstract
 
@@ -72,7 +72,7 @@ Course Notes should be sent via email to the Course Notes Editor David Clark alo
 
 Do not modify **jiblm_cn.tex**. If you encounter any difficulties, please contact the Technical Editor Ted Mahavier for assistance.
 
-# Additional Information
+## Additional Information
 
 ### Joint Authorship
 

@@ -18,3 +18,5 @@ Instructors are encouraged to contact authors for guidance in the use of Modules
 {{< include modules.qmd >}}
 
 ## Unrefereed course notes
+
+[List of available materials](unrefereed_notes/unrefereed_notes.qmd)

@@ -1,0 +1,1772 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% special characters
+
+\newcommand\el{\mathcal L}
+\newcommand\Pc{\mathcal P}
+\newcommand\Sc{\mathcal S}
+\newcommand\A{\mathbf A}
+\newcommand\B{\mathbf B}
+\newcommand\C{\mathbf C}
+\newcommand\D{\mathbf D}
+\newcommand\fb{\mathbf f}
+\newcommand\M{\mathbf M}
+\newcommand\Pb{\mathbf P}
+\newcommand\Q{\mathbf Q}
+\newcommand\Sb{\mathbf S}
+\newcommand\T{\mathbf T}
+\newcommand\U{\mathbf U}
+\newcommand\W{\mathbf W}
+\newcommand\X{\mathbf X}
+\newcommand\Z{\mathbf Z}
+\newcommand{\0}{\mathbf 0}
+\newcommand{\1}{\mathbf 1}
+\newcommand\BZ{\mathbb Z^+}
+\newcommand\R{\mathbb R}
+\newcommand{\der}{\vartriangleright}
+\newcommand{\red}{\vartriangleleft}
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Foundations of Mathematics}
+\author{David M. Clark}
+\date{ }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+\section*{Acknowledgements}
+\addcontentsline{toc}{section}{\numberline{}Acknowledgements}
+\markboth{Acknowledgements}{Acknowledgements}
+
+\pagenumbering{roman}
+
+This guide was written under the auspices of SUNY New Paltz. The author gratefully acknowledges Mr. Harry Lucas and the Educational Advancement Foundation for their support in the preparation of the included graphics. He also wishes to acknowledge the hard work of the many SUNY New Paltz students whose efforts and feedback have led to the refined guide that is now before you.
+
+\begin{flushright}
+David M. Clark \\
+Department of Mathematics \\
+SUNY New Paltz \\
+New Paltz, New York 12561
+\end{flushright}
+
+
+
+\newpage
+
+\section*{Introduction}
+\addcontentsline{toc}{section}{\numberline{}Introduction}
+\markboth{Introduction}{Introduction}
+
+This discovery guide is designed for a beginning theorem-proving course for mathematics majors. While its primary goal is to develop a skill in problem-solving and theorem-proving, it simultaneously provides content knowledge of a range of topics that will be fundamental in subsequent mathematics courses.
+
+Chapter 1 introduces students to a more formal view of set theory than most have seen before. Proving the equivalence of Boolean expressions immerses them in propositional logic (``and'', ``or'', ``not'', and ``implies'') without explicitly saying so. The last problem set gives a list of assertions which they are either to prove, as before, or disprove via a counterexample. This exercise offers an opportunity to observe that real life rarely presents one with guaranteed true statements to prove.
+
+In Chapter 2, I introduce the general concept of functions. The thoughts that a function need not map $\R$ or $\R^2$ into $\R$, and that it need not even be given by a formula, are new to many students. Proving functions are one-to-one or onto becomes a valuable introduction to quantifiers, again without explicitly saying so.
+
+In Chapter 3, I have compromised axiomatic thoroughness to present a few important facts about the numbers. Many students come to me with a hearsay knowledge that rational numbers can either be defined as repeating decimals or quotients of integers. Amazingly, I have never met a student who had previously confronted the fact that this must imply the two notions can be proven to be equivalent! Problem 4 presents them with a real conundrum: how can we decide if a quotient repeats without actually computing it? Inevitably, some students initiate an amusing discussion when they respond to Problems 3 and 4 by picking up their calculators!
+
+It seems to me unfortunate that students are often taught to ``do induction proofs'' which are formally correct, although their authors have no understanding of why they prove anything. Chapter 4 attempts to avoid this problem by offering a broad range of applications of mathematical induction. The Tower of Hanoi puzzle, with $3$ posts and $n$ discs of increasing size, provides a excellent starting point. I normally bring in a model and work with them to construct an inductive proof that it is always possible to move $n$ discs from one peg to another. I then leave them to do Problems 7 and 8 on their own. The Fibonacci Sequence and the Ackermann Function offer other nice examples.
+
+I have heard debate among my colleagues as to whether propositional logic should be presented at the beginning of a course like this, and then applied to the above topics; or if the other topics should first be used to build up a working understanding of propositional logic, before it is studied formally. I have tried both approaches, and I am quite sold on the latter. Chapter 5 presents a complete set of rules for natural deduction which was given to me by Stanley Hayes. These rules simply formalize the way we use propositional connectives in ordinary arguments. At this point in the course, my students find the rules so natural that they are able to tell me what each one should be, as for example when I ask, ``How do we use an implication $a \to b$?'' ``How do we prove an implication $a \to b$?''
+
+I save the important topic of equivalence relations to the end, because I have found that it is only then that we have enough natural examples to bring the idea to life. Two Boolean expressions are equivalent if they always represent the same set; two high-school formulas are equivalent if they represent the same function; two propositional formulas are equivalent if each can be deduced from the other. Problems ask students to prove that a particular relation is reflexive, symmetric, and transitive, and then to give a meaningful description of the resulting partition.
+
+I offer these notes as a starting point for the instructor who would like to teach a discovery-based foundations course. This guide has evolved over many iterations, and now works well for most of the mathematics students at SUNY New Paltz, a moderately competitive 4-year state college. Depending on your audience, you may well need to modify them, either adding more material and more difficult problems, or skipping some of the material and filling in some easier problems. Regardless of your audience, you may choose to replace some parts of this guide with topics, examples, or problems that match your personal interests. I would certainly appreciate any corrections, comments, or ideas that you care to share.
+
+\begin{flushright}
+David Clark
+\\ August 2002
+\end{flushright}
+
+
+
+
+\newpage
+
+\section{Set Theory}
+\markboth{1. Set Theory}{1. Set Theory}
+
+\pagenumbering{arabic}
+
+
+By a \emph{set}, we mean a collection of objects taken from some fixed universe of objects that we will call $\U$. If $\A$ is a set, then for each object $x$ in $\U$, either
+\begin{equation*}
+x \in \A \text{ (read, ``$x$ is a member of $\A$'')}
+\end{equation*}
+or
+\begin{equation*}
+x \notin \A \text{ (read, ``$x$ is not a member of $\A$'')}
+\end{equation*}
+
+If $\A$ and $\B$ are sets,
+\begin{equation*}
+\A \subseteq \B \text{ (read, ``$\A$ is a subset of $\B$'')}
+\end{equation*}
+if each member of $\A$ is also a member of $\B$.
+
+Sets are assumed to satisfy two important principles that we will use frequently. In mathematics, sets are completely determined by their members:
+
+\begin{description}
+  \item[Set Equality Principle:] If $\A$ and $\B$ are sets that have the same members (that is, $\A \subseteq \B$ and $\B \subseteq \A$), then $\A = \B$ are the same set.
+\end{description}
+
+This notion of ``set'' does not always match the colloquial notion. For example, it might sometimes be the case that the students enrolled in Languages \& Machines are exactly the same students as are enrolled in Calculus 2. While this would be two different classes, it would be a single set of students.
+
+\begin{description}
+  \item[Set Specification Principle:] If $\Pb$ is a property that each object in $\U$ either has or does not have, then there is a set denoted by
+    \begin{equation*}
+    \{ x\ |\ x \in \U \text{ and } x \text{ has property } \Pb \}
+    \end{equation*}
+    whose members are exactly those objects in $\U$ having property $\Pb$.
+\end{description}
+
+\begin{equation*}
+\Sb = \{ (x,y)\ |\ x \text{ and } y \text{ are real numbers and } 2x + y^2 = 7 \}
+\end{equation*}
+for example, is the set of points on a parabola in the plane.
+
+Using these two simple axioms, we can build many special sets and prove a variety of interesting facts about them. For example, our original ``universe''
+\begin{equation*}
+\U = \{ x\ |\ x \in \U \text{ and } x = x \}
+\end{equation*}
+is a set, the \emph{universal set}, where we have taken the property $\Pb$ to be $x = x$, which is true of every $x$ in $\U$. At the other extreme,
+\begin{equation*}
+\emptyset = \{ x\ |\ x \in \U \text{ and } x \neq x \}
+\end{equation*}
+is called the \emph{empty set} since it has no members.
+
+We can construct new sets from old using the Set Specification Principle:
+\begin{equation*}
+\A \cap \B = \{ x\ |\ x \in \A \text{ and } x \in \B \}
+\end{equation*}
+is called the \emph{intersection} of $\A$ and $\B$;
+\begin{equation*}
+\A \cup \B = \{ x\ |\ x \in \A \text{ or } x \in \B \}
+\end{equation*}
+is called the \emph{union} of $\A$ and $\B$;
+\begin{equation*}
+\A \sim \B = \{ x\ |\ x \in A \text{ but } x \text{ is not in } \B \}
+\end{equation*}
+is called the \emph{difference} between $\A$ and $\B$;
+\begin{equation*}
+\sim \B = \U \sim \B = \{ x\ |\ x \in \U \text{ but } x \text{ is not in } \B \}
+\end{equation*}
+is called the \emph{complement} of $\B$ in $\U$.
+
+\unitlength 0.88mm
+\begin{picture}(120,30)(20,0)
+  \put(15,0){%A-int-B
+  \put(0,0){\line(1,0){30}} \put(0,20){\line(1,0){30}}
+  \put(0,0){\line(0,1){20}} \put(30,0){\line(0,1){20}}
+  \put(10,10){\circle{15}} \put(20,10){\circle{15}}
+  %
+  \put(9,9){A} \put(19,9){B}
+  %
+  \multiput(14,11)(1,0){3}{\circle*{.5}}
+  \multiput(14,12)(1,0){3}{\circle*{.5}}
+  \multiput(14,13)(1,0){3}{\circle*{.5}}
+  \multiput(15,14)(1,0){1}{\circle*{.5}}
+  \multiput(14,10)(1,0){4}{\circle*{.5}}
+  \multiput(14,9)(1,0){3}{\circle*{.5}}
+  \multiput(14,8)(1,0){3}{\circle*{.5}}
+  \multiput(14,7)(1,0){3}{\circle*{.5}}
+  \multiput(15,6)(1,0){1}{\circle*{.5}}
+  }
+
+  \put(50,0){%A-union-B
+  \put(0,0){\line(1,0){30}} \put(0,20){\line(1,0){30}}
+  \put(0,0){\line(0,1){20}} \put(30,0){\line(0,1){20}}
+  \put(10,10){\circle{15}} \put(20,10){\circle{15}}
+  %
+  \put(9,9){A} \put(19,9){B}
+  %
+  \multiput(4,11)(1,0){13}{\circle*{.5}}
+  \multiput(4,12)(1,0){13}{\circle*{.5}}
+  \multiput(4,13)(1,0){13}{\circle*{.5}}
+  \multiput(5,14)(1,0){11}{\circle*{.5}}
+  \multiput(6,15)(1,0){9}{\circle*{.5}}
+  \multiput(7,16)(1,0){7}{\circle*{.5}}
+  \multiput(10,17)(1,0){1}{\circle*{.5}}
+  \multiput(3,10)(1,0){14}{\circle*{.5}}
+  \multiput(4,9)(1,0){13}{\circle*{.5}}
+  \multiput(4,8)(1,0){13}{\circle*{.5}}
+  \multiput(4,7)(1,0){13}{\circle*{.5}}
+  \multiput(5,6)(1,0){11}{\circle*{.5}}
+  \multiput(6,5)(1,0){9}{\circle*{.5}}
+  \multiput(7,4)(1,0){7}{\circle*{.5}}
+  \multiput(10,3)(1,0){1}{\circle*{.5}}
+  \multiput(26,11)(-1,0){9}{\circle*{.5}}
+  \multiput(26,12)(-1,0){10}{\circle*{.5}}
+  \multiput(26,13)(-1,0){10}{\circle*{.5}}
+  \multiput(25,14)(-1,0){10}{\circle*{.5}}
+  \multiput(24,15)(-1,0){9}{\circle*{.5}}
+  \multiput(23,16)(-1,0){7}{\circle*{.5}}
+  \multiput(20,17)(-1,0){1}{\circle*{.5}}
+  \multiput(27,10)(-1,0){10}{\circle*{.5}}
+  \multiput(26,9)(-1,0){9}{\circle*{.5}}
+  \multiput(26,8)(-1,0){10}{\circle*{.5}}
+  \multiput(26,7)(-1,0){10}{\circle*{.5}}
+  \multiput(25,6)(-1,0){10}{\circle*{.5}}
+  \multiput(24,5)(-1,0){9}{\circle*{.5}}
+  \multiput(23,4)(-1,0){7}{\circle*{.5}}
+  \multiput(20,3)(-1,0){1}{\circle*{.5}}
+  }
+  
+  \put(85,0){
+  \put(0,0){\line(1,0){30}} \put(0,20){\line(1,0){30}}
+  \put(0,0){\line(0,1){20}} \put(30,0){\line(0,1){20}}
+  \put(10,10){\circle{15}} \put(20,10){\circle{15}}
+  %
+  \put(9,9){A} \put(19,9){B}
+  %
+  \multiput(4,11)(1,0){9}{\circle*{.5}}
+  \multiput(4,12)(1,0){10}{\circle*{.5}}
+  \multiput(4,13)(1,0){10}{\circle*{.5}}
+  \multiput(5,14)(1,0){10}{\circle*{.5}}
+  \multiput(6,15)(1,0){9}{\circle*{.5}}
+  \multiput(7,16)(1,0){7}{\circle*{.5}}
+  \multiput(10,17)(1,0){1}{\circle*{.5}}
+  \multiput(3,10)(1,0){10}{\circle*{.5}}
+  \multiput(4,9)(1,0){9}{\circle*{.5}}
+  \multiput(4,8)(1,0){10}{\circle*{.5}}
+  \multiput(4,7)(1,0){10}{\circle*{.5}}
+  \multiput(5,6)(1,0){10}{\circle*{.5}}
+  \multiput(6,5)(1,0){9}{\circle*{.5}}
+  \multiput(7,4)(1,0){7}{\circle*{.5}}
+  \multiput(10,3)(1,0){1}{\circle*{.5}}
+  }
+
+  \put(120,0){
+  \put(0,0){\line(1,0){30}} \put(0,20){\line(1,0){30}}
+  \put(0,0){\line(0,1){20}} \put(30,0){\line(0,1){20}}
+  \put(10,10){\circle{15}} \put(20,10){\circle{15}}
+  %
+  \put(9,9){A} \put(19,9){B}
+  %
+  \multiput(0,0)(1,0){30}{\circle*{.5}}
+  \multiput(0,1)(1,0){30}{\circle*{.5}}
+  \multiput(0,2)(1,0){30}{\circle*{.5}}
+  \multiput(0,3)(1,0){30}{\circle*{.5}}
+  \multiput(0,4)(1,0){17}{\circle*{.5}}
+  \multiput(0,5)(1,0){16}{\circle*{.5}}
+  \multiput(0,6)(1,0){15}{\circle*{.5}}
+  \multiput(0,7)(1,0){14}{\circle*{.5}}
+  \multiput(0,8)(1,0){14}{\circle*{.5}}
+  \multiput(0,9)(1,0){14}{\circle*{.5}}
+  \multiput(0,10)(1,0){14}{\circle*{.5}}
+  \multiput(0,11)(1,0){14}{\circle*{.5}}
+  \multiput(0,12)(1,0){14}{\circle*{.5}}
+  \multiput(0,13)(1,0){14}{\circle*{.5}}
+  \multiput(0,14)(1,0){15}{\circle*{.5}}
+  \multiput(0,15)(1,0){16}{\circle*{.5}}
+  \multiput(0,16)(1,0){17}{\circle*{.5}}
+  \multiput(0,17)(1,0){30}{\circle*{.5}}
+  \multiput(0,18)(1,0){30}{\circle*{.5}}
+  \multiput(0,19)(1,0){30}{\circle*{.5}}
+  \multiput(27,11)(1,0){3}{\circle*{.5}}
+  \multiput(27,12)(1,0){3}{\circle*{.5}}
+  \multiput(27,13)(1,0){3}{\circle*{.5}}
+  \multiput(26,14)(1,0){4}{\circle*{.5}}
+  \multiput(25,15)(1,0){5}{\circle*{.5}}
+  \multiput(24,16)(1,0){6}{\circle*{.5}}
+  \multiput(28,10)(1,0){2}{\circle*{.5}}
+  \multiput(27,9)(1,0){3}{\circle*{.5}}
+  \multiput(27,8)(1,0){3}{\circle*{.5}}
+  \multiput(27,7)(1,0){3}{\circle*{.5}}
+  \multiput(26,6)(1,0){4}{\circle*{.5}}
+  \multiput(25,5)(1,0){5}{\circle*{.5}}
+  \multiput(24,4)(1,0){6}{\circle*{.5}}
+  }
+\end{picture}
+\begin{equation*}
+\A \cap \B \qquad\qquad\qquad \A \cup \B \qquad\qquad\qquad \A \sim \B \qquad\qquad\qquad \sim \B
+\end{equation*}
+
+Often it turns out that different expressions represent the same set. For example, we can use the above definitions to prove the distributive property of intersection over union:
+
+\begin{description}
+  \item[Theorem:] For every choice of sets $\A$, $\B$, and $\C$,
+    \begin{equation*}
+    \A \cap (\B \cup \C) = (\A \cap \B) \cup (\A \cap \C)
+    \end{equation*}
+
+ \item[Proof:] Let $x \in \A \cap (\B \cup \C)$. Then $x \in \A$, and either $x \in \B$ or $x \in \C$.
+   \begin{description}
+     \item[Case 1:] $x \in \B$. Then $x \in \A \cap \B$, and therefore $x \in (\A \cap \B) \cup (\A \cap \C)$.
+     \item[Case 2:] $x \in \C$. Then $x \in \A \cap \C$, and therefore $x \in (\A \cap \B) \cup (\A \cap \C)$.
+   \end{description}
+   In both cases, we conclude that $x \in (\A \cap \B) \cup (\A \cap \C)$.
+
+   Let $x \in (\A \cap \B) \cup (\A \cap \C)$. Then either $x \in \A \cap \B$ or $x \in \A \cap \C$.
+   \begin{description}
+     \item[Case 1:] $x \in \A \cap \B$. Then $x \in \A$, and $x \in \B \cup \C$ since $x \in \B$. Thus $x \in \A \cap (\B \cup \C)$.
+     \item[Case 2:] $x \in \A \cap \C$. Then $x \in \A$, and $x \in \B \cup \C$ since $x \in \C$. Thus $x \in \A \cap (\B \cup \C)$.
+   \end{description}
+   In both cases, we conclude that $x \in \A \cap (\B \cup \C)$.
+
+   By the Set Equality Principle, $\A \cap (\B \cup \C) = (\A \cap \B) \cup (\A \cap \C)$.
+\end{description}
+
+\setlength{\unitlength}{1mm}
+\begin{picture}(100,30)(20,0)
+  \put(30,0){%A
+  \put(0,0){\line(1,0){30}} \put(0,30){\line(1,0){30}}
+  \put(0,0){\line(0,1){30}} \put(30,0){\line(0,1){30}}
+  \put(10,10){\circle{15}} \put(20,10){\circle{15}}
+  \put(15,20){\circle{15}}
+  %
+  \put(9,9){A} \put(19,9){B} \put(14,19){C}
+  %
+  \multiput(4,11)(1,0){13}{\circle*{.5}}
+  \multiput(4,12)(1,0){13}{\circle*{.5}}
+  \multiput(4,13)(1,0){13}{\circle*{.5}}
+  \multiput(5,14)(1,0){11}{\circle*{.5}}
+  \multiput(6,15)(1,0){9}{\circle*{.5}}
+  \multiput(7,16)(1,0){7}{\circle*{.5}}
+  \multiput(10,17)(1,0){1}{\circle*{.5}}
+  \multiput(3,10)(1,0){14}{\circle*{.5}}
+  \multiput(4,9)(1,0){13}{\circle*{.5}}
+  \multiput(4,8)(1,0){13}{\circle*{.5}}
+  \multiput(4,7)(1,0){13}{\circle*{.5}}
+  \multiput(5,6)(1,0){11}{\circle*{.5}}
+  \multiput(6,5)(1,0){9}{\circle*{.5}}
+  \multiput(7,4)(1,0){7}{\circle*{.5}}
+  \multiput(10,3)(1,0){1}{\circle*{.5}}
+  }
+
+  \put(65,0){%B-union-C
+  \put(0,0){\line(1,0){30}} \put(0,30){\line(1,0){30}}
+  \put(0,0){\line(0,1){30}} \put(30,0){\line(0,1){30}}
+  \put(10,10){\circle{15}} \put(20,10){\circle{15}}
+  \put(15,20){\circle{15}}
+  %
+  \put(9,9){A} \put(19,9){B} \put(14,19){C}
+  %
+  \multiput(14,11)(1,0){13}{\circle*{.5}}
+  \multiput(14,12)(1,0){13}{\circle*{.5}}
+  \multiput(14,13)(1,0){13}{\circle*{.5}}
+  \multiput(19,14)(1,0){7}{\circle*{.5}}
+  \multiput(20,15)(1,0){5}{\circle*{.5}}
+  \multiput(21,16)(1,0){3}{\circle*{.5}}
+  \multiput(13,10)(1,0){14}{\circle*{.5}}
+  \multiput(14,9)(1,0){13}{\circle*{.5}}
+  \multiput(14,8)(1,0){13}{\circle*{.5}}
+  \multiput(14,7)(1,0){13}{\circle*{.5}}
+  \multiput(15,6)(1,0){11}{\circle*{.5}}
+  \multiput(16,5)(1,0){9}{\circle*{.5}}
+  \multiput(17,4)(1,0){7}{\circle*{.5}}
+  \multiput(20,3)(1,0){1}{\circle*{.5}}
+  \multiput(9,21)(1,0){13}{\circle*{.5}}
+  \multiput(9,22)(1,0){13}{\circle*{.5}}
+  \multiput(9,23)(1,0){13}{\circle*{.5}}
+  \multiput(10,24)(1,0){11}{\circle*{.5}}
+  \multiput(11,25)(1,0){9}{\circle*{.5}}
+  \multiput(12,26)(1,0){7}{\circle*{.5}}
+  \multiput(15,27)(1,0){1}{\circle*{.5}}
+  \multiput(8,20)(1,0){14}{\circle*{.5}}
+  \multiput(9,19)(1,0){13}{\circle*{.5}}
+  \multiput(9,18)(1,0){13}{\circle*{.5}}
+  \multiput(9,17)(1,0){13}{\circle*{.5}}
+  \multiput(10,16)(1,0){11}{\circle*{.5}}
+  \multiput(11,15)(1,0){9}{\circle*{.5}}
+  \multiput(12,14)(1,0){7}{\circle*{.5}}
+  \multiput(15,13)(1,0){1}{\circle*{.5}}
+  }
+
+  \put(100,0){%A-int-(B-union-C)
+  \put(0,0){\line(1,0){30}} \put(0,30){\line(1,0){30}}
+  \put(0,0){\line(0,1){30}} \put(30,0){\line(0,1){30}}
+  \put(10,10){\circle{15}} \put(20,10){\circle{15}}
+  \put(15,20){\circle{15}}
+  %
+  \put(9,9){A} \put(19,9){B} \put(14,19){C}
+  %
+  \multiput(14,11)(1,0){4}{\circle*{.5}}
+  \multiput(14,12)(1,0){3}{\circle*{.5}}
+  \multiput(14,13)(1,0){3}{\circle*{.5}}
+  \multiput(15,14)(1,0){1}{\circle*{.5}}
+  \multiput(13,10)(1,0){5}{\circle*{.5}}
+  \multiput(14,9)(1,0){4}{\circle*{.5}}
+  \multiput(14,8)(1,0){3}{\circle*{.5}}
+  \multiput(14,7)(1,0){3}{\circle*{.5}}
+  \multiput(15,6)(1,0){1}{\circle*{.5}}
+  \multiput(9,17)(1,0){2}{\circle*{.5}}
+  \multiput(10,16)(1,0){4}{\circle*{.5}}
+  \multiput(11,15)(1,0){5}{\circle*{.5}}
+  \multiput(12,14)(1,0){4}{\circle*{.5}}
+  \multiput(15,13)(1,0){1}{\circle*{.5}}}
+\end{picture}
+\begin{equation*}
+\qquad\qquad\qquad \A \qquad\qquad\qquad\qquad \B \cup \C \qquad\qquad\quad\quad \A \cap (\B \cup \C)
+\end{equation*}
+
+
+\setlength{\unitlength}{1mm}
+\begin{picture}(100,30)(20,0)
+  \put(30,0){%A-int-B
+  \put(0,0){\line(1,0){30}} \put(0,30){\line(1,0){30}}
+  \put(0,0){\line(0,1){30}} \put(30,0){\line(0,1){30}}
+  \put(10,10){\circle{15}} \put(20,10){\circle{15}}
+  \put(15,20){\circle{15}}
+  %
+  \put(9,9){A} \put(19,9){B} \put(14,19){C}
+  %
+  \multiput(14,11)(1,0){3}{\circle*{.5}}
+  \multiput(14,12)(1,0){3}{\circle*{.5}}
+  \multiput(14,13)(1,0){3}{\circle*{.5}}
+  \multiput(15,14)(1,0){1}{\circle*{.5}}
+  \multiput(14,10)(1,0){4}{\circle*{.5}}
+  \multiput(14,9)(1,0){3}{\circle*{.5}}
+  \multiput(14,8)(1,0){3}{\circle*{.5}}
+  \multiput(14,7)(1,0){3}{\circle*{.5}}
+  \multiput(15,6)(1,0){1}{\circle*{.5}}}
+
+  \put(65,0){%A-int-C
+  \put(0,0){\line(1,0){30}} \put(0,30){\line(1,0){30}}
+  \put(0,0){\line(0,1){30}} \put(30,0){\line(0,1){30}}
+  \put(10,10){\circle{15}} \put(20,10){\circle{15}}
+  \put(15,20){\circle{15}}
+  %
+  \put(9,9){A} \put(19,9){B} \put(14,19){C}
+  %
+  \multiput(9,17)(1,0){2}{\circle*{.5}}
+  \multiput(10,16)(1,0){4}{\circle*{.5}}
+  \multiput(11,15)(1,0){5}{\circle*{.5}}
+  \multiput(12,14)(1,0){4}{\circle*{.5}}}
+
+  \put(100,0){%(A-int-B)-union-(A-int-C)
+  \put(0,0){\line(1,0){30}} \put(0,30){\line(1,0){30}}
+  \put(0,0){\line(0,1){30}} \put(30,0){\line(0,1){30}}
+  \put(10,10){\circle{15}} \put(20,10){\circle{15}}
+  \put(15,20){\circle{15}}
+  %
+  \put(9,9){A} \put(19,9){B} \put(14,19){C}
+  %
+  \multiput(14,11)(1,0){4}{\circle*{.5}}
+  \multiput(14,12)(1,0){3}{\circle*{.5}}
+  \multiput(14,13)(1,0){3}{\circle*{.5}}
+  \multiput(15,14)(1,0){1}{\circle*{.5}}
+  \multiput(13,10)(1,0){5}{\circle*{.5}}
+  \multiput(14,9)(1,0){4}{\circle*{.5}}
+  \multiput(14,8)(1,0){3}{\circle*{.5}}
+  \multiput(14,7)(1,0){3}{\circle*{.5}}
+  \multiput(15,6)(1,0){1}{\circle*{.5}}
+  \multiput(9,17)(1,0){2}{\circle*{.5}}
+  \multiput(10,16)(1,0){4}{\circle*{.5}}
+  \multiput(11,15)(1,0){5}{\circle*{.5}}
+  \multiput(12,14)(1,0){4}{\circle*{.5}}
+  \multiput(15,13)(1,0){1}{\circle*{.5}}}
+\end{picture}
+\begin{equation*}
+\qquad\qquad\qquad \A \cap \B \qquad\qquad\qquad\quad \A \cap \C \qquad\qquad\quad (\A \cap \B) \cup (\A \cap \C)
+\end{equation*}
+
+
+Since the above theorem does not involve more than three sets, we are able to use \emph{Venn Diagrams} to illustrate it. 
+
+
+\subsection*{Problems}
+
+Illustrate each of the following identities with Venn Diagrams, and then write down a proof similar to the one above.
+\begin{enumerate}
+  \item the Associative Laws:
+    \begin{align*}
+    \A \cap (\B \cap \C) & = (\A \cap \B) \cap \C \\
+    \A \cup (\B \cup \C) & = (\A \cup \B) \cup \C
+    \end{align*}
+
+  \item the Commutative Laws:
+    \begin{align*}
+    \A \cap \B & = \B \cap \A \\
+    \A \cup \B & = \B \cup \A
+    \end{align*}
+
+ \item the Distributive Laws:
+    \begin{align*}
+    \A \cup (\B \cap \C) & = (\A \cup \B) \cap (\A \cup \C) \\
+    \A \cap (\B \cup \C) & = (\A \cap \B) \cup (\A \cap \C)
+    \end{align*}
+
+ \item the Absorption Laws:
+    \begin{align*}
+    \A \cup (\A \cap \B) & = \A \\
+    \A \cap (\A \cup \B) & = \A
+    \end{align*}
+
+ \item the Identity Laws:
+    \begin{align*}
+    \A \cup \emptyset & = \A \\
+    \A \cap \U & = \A
+    \end{align*}
+
+ \item the Inverse Laws:
+    \begin{align*}
+    \A \cup \sim \A & = \U \\
+    \A \cap \sim \A & = \emptyset
+    \end{align*}
+
+ \item DeMorgan's Laws:
+    \begin{align*}
+    \sim(\A \cap \B) & = \sim\A \cup \sim \B \\
+    \sim(\A \cup \B) & = \sim\A \cap \sim \B
+    \end{align*}
+\end{enumerate}
+
+The \emph{symmetric difference} between sets $\A$ and $\B$ is defined by
+\begin{equation*}
+\A \oplus \B = (\A \cup \B) \sim (\A \cap \B)
+\end{equation*}
+
+\begin{center}
+\unitlength 1mm
+\begin{picture}(35,26)(0,-4)
+ \put(0,0){\line(1,0){30}}
+ \put(0,20){\line(1,0){30}}
+ \put(0,0){\line(0,1){20}}
+ \put(30,0){\line(0,1){20}}
+ \put(10,10){\circle{15}}
+ \put(20,10){\circle{15}}
+ %
+ \put(9,9){A}
+ \put(19,9){B}
+ %
+ \multiput(26,11)(-1,0){9}{\circle*{.5}}
+ \multiput(26,12)(-1,0){10}{\circle*{.5}}
+ \multiput(26,13)(-1,0){10}{\circle*{.5}}
+ \multiput(25,14)(-1,0){10}{\circle*{.5}}
+ \multiput(24,15)(-1,0){9}{\circle*{.5}}
+ \multiput(23,16)(-1,0){7}{\circle*{.5}}
+ \multiput(20,17)(-1,0){1}{\circle*{.5}}
+ %
+ \multiput(27,10)(-1,0){10}{\circle*{.5}}
+ %
+ \multiput(26,9)(-1,0){9}{\circle*{.5}}
+ \multiput(26,8)(-1,0){10}{\circle*{.5}}
+ \multiput(26,7)(-1,0){10}{\circle*{.5}}
+ \multiput(25,6)(-1,0){10}{\circle*{.5}}
+ \multiput(24,5)(-1,0){9}{\circle*{.5}}
+ \multiput(23,4)(-1,0){7}{\circle*{.5}}
+ \multiput(20,3)(-1,0){1}{\circle*{.5}}
+ %
+ \multiput(4,11)(1,0){9}{\circle*{.5}}
+ \multiput(4,12)(1,0){10}{\circle*{.5}}
+ \multiput(4,13)(1,0){10}{\circle*{.5}}
+ \multiput(5,14)(1,0){10}{\circle*{.5}}
+ \multiput(6,15)(1,0){9}{\circle*{.5}}
+ \multiput(7,16)(1,0){7}{\circle*{.5}}
+ \multiput(10,17)(1,0){1}{\circle*{.5}}
+ %
+ \multiput(3,10)(1,0){10}{\circle*{.5}}
+ %
+ \multiput(4,9)(1,0){9}{\circle*{.5}}
+ \multiput(4,8)(1,0){10}{\circle*{.5}}
+ \multiput(4,7)(1,0){10}{\circle*{.5}}
+ \multiput(5,6)(1,0){10}{\circle*{.5}}
+ \multiput(6,5)(1,0){9}{\circle*{.5}}
+ \multiput(7,4)(1,0){7}{\circle*{.5}}
+ \multiput(10,3)(1,0){1}{\circle*{.5}} 
+\end{picture}
+\end{center}
+
+\begin{description}
+ \item{8.} $\A \oplus \B = (\A \sim \B) \cup (\B \sim \A)$
+ \item{9.} $\A \oplus (\B \oplus \C) = (\A \oplus \B) \oplus \C$
+\end{description}
+
+\subsection*{ }
+
+Suppose we wanted to prove that $\oplus$ distributes over $\cup$:
+\begin{equation*}
+\A \oplus (\B \cup \C) = (\A \oplus \B) \cup (\A \oplus \C)
+\end{equation*}
+
+After a few tries, we might realize that it is not so easy. We might then try an example; say, let
+\begin{equation*}
+\A = \{0,1,2,3\} \qquad \B = \{2,3,4,5,6\} \qquad \C = \{2,3,6,7,8\}
+\end{equation*}
+
+If we compute both sets, we find that we get the same thing:
+\begin{equation*}
+\A \oplus (\B \cup \C) = \{0,1,4,5,6,7,8\} = (\A \oplus \B) \cup (\A \oplus \C)
+\end{equation*}
+
+Does this mean that $\A \oplus (\B \cup \C) = (\A \oplus \B) \cup (\A \oplus \C)$ is always true? No -- it just happens to work in that example. If we try
+\begin{equation*}
+\A = \{1,2,3\} \qquad \B = \{1,4,5\} \qquad \C = \{3,5,6\}
+\end{equation*}
+we get
+\begin{equation*}
+\A \oplus (\B \cup \C) = \{2,4,5,6\}
+\end{equation*}
+but
+\begin{equation*}
+(\A \oplus \B) \cup (\A \oplus \C) = \{1,2,3,4,5,6\}
+\end{equation*}
+
+This is what we call a \emph{counterexample}, as it shows us that the statement is not always true.
+
+
+\subsection*{Problems}
+
+For each of the following equalities, either prove that it is TRUE by proving that the sets always have the same elements, or show that it is FALSE by exhibiting a counterexample.
+\begin{description}
+  \item{10.} $\A \oplus (\B \cap \C) = (\A \oplus \B) \cap (\A \oplus \C)$
+  \item{11.} $\A \cap (\B \oplus \C) = (\A \cap \B) \oplus (\A \cap \C)$
+  \item{12.} $\sim (\A \oplus \B) = \sim \A \oplus \sim \B$
+  \item{13.} $\A \oplus \B = \sim \A \oplus \sim \B$
+  \item{14.} $\A \cup (\B \oplus \C) = (\A \cup \B) \oplus (\A \cup \C)$
+\end{description}
+
+
+
+
+\newpage
+
+\section{Functions}
+\markboth{2. Functions}{2. Functions}
+
+
+A \emph{function} is a rule $f$ that pairs each member $x$ of a set $\A$, with a member $f(x)$ of a set $\B$. In this case, $\A$ is called the \emph{domain} of $f$, and $\B$ is called the \emph{codomain} of $f$. We indicate this by writing
+\begin{equation*}
+f\ :\ \A \to \B
+\end{equation*}
+read, ``$f$ is a function from $\A$ to $\B$''. The element $f(x)$ is called the \emph{image} of $x$ under $f$. In order to specify a function $f$, then, we must do two things:
+\begin{itemize}
+  \item tell what the domain $\A$ and codomain $\B$ of $f$ are, and
+  \item tell how to find $f(x) \in \B$ when we are given $x \in \A$.
+\end{itemize}
+
+\begin{description}
+  \item[Example 1:] Note that if $x$ is a number other than $4$, then $3x-12 \neq 0$, so we can solve for the quotient $\frac{6x+1}{3x-12}$. Let $\A$ be the set of numbers other than $4$, and let $\B$ be the set of all numbers. We can then define a function $h$ with domain $\A$ and codomain $\B$ by taking the image $h(x) := \frac{2x+1}{3x-12}$ for each $x \in \A$. Thus $h\ :\ \A \to \B$.
+
+  \item[Example 2:] Imagine a set $\A$ of arrows stored in a quiver. Some distance away is a target, divided into concentric rings and a bull's eye. The set of rings and the bull's eye form a set $\B$. An archer defines a function $a\ :\ \A \to \B$ by shooting each arrow $x \in \A$ into the target, hitting a member $a(x) \in \B$. [We assume here that all of the arrows do hit the target!] The archer's function determines a score, and the highest-scoring archer wins the tournament.
+
+  \item[Example 3:] Let $\A$ be the set $\{1,2,3,\cdots,364,365\}$ of numbers representing the calendar days of next year, and let $\B$ be the set of positive integers. For each year $x \in \A$, define $c(x)$ to be the highest Celsius temperature that will be reached in New Paltz NY on day $x$. Then $c\ :\ \A \to \B$ is a function with domain $\A$ and codomain $\B$.
+\end{description}
+
+The first example $h$ is a traditional function, with domain and codomain consisting of numbers, and the rule given by a formula. Function $a$ helps to visualize a function, and illustrates the fact that neither the domain nor the codomain need to consist of numbers, and that the rule need not be given by a formula. The function $c$ is unusual in that, at this time, there is no reliable way to apply the rule to determine particular values $c(x)$. Yet $c$ is a perfectly good function, and its values will all be determined by the end of next year.
+
+Now consider two functions $f$ and $g$, both having domain and codomain the set $\R$ of all real numbers, where
+\begin{align*}
+f(x) & := \sin(2x) + \sin^2(x) + \cos^2(x) \\
+g(x) & := 2 \sin(x) \cos(x) + 1
+\end{align*}
+
+From trigonometry, we know that $f(x) = g(x)$ for all $x \in \R$, although the two functions are given by different rules. In this case, we say that $f = g$ are the same function. In general, functions $f$ and $g$ are the \emph{same function}, written $f = g$, if and only if the following two statements are true:
+\begin{itemize}
+  \item $f$ and $g$ have the same domain $\A$ and the same codomain $\B$, and
+  \item $f(x) = g(x)$ for each $x \in \A$.
+\end{itemize}
+
+If $f$ is a function from $\A$ to $\B$ and $\C \subseteq \A$, then the \emph{image} of $\C$ under $f$ is the set $f(\C) = \{ f(x) \in \B\ |\ x \in \C \}$.
+
+\begin{center}
+\unitlength 1mm
+\begin{picture}(60,30)(0,0)
+ %third box outer
+ \qbezier(30,15)(37.5,22.5)(45,30)
+ \qbezier(60,15)(52.5,22.5)(45,30)
+ \qbezier(45,0)(37.5,7.5)(30,15)
+ \qbezier(45,0)(52.5,7.5)(60,15)
+ \put(52,24){$B$}
+ %third box middle
+ \put(40,9){\line(0,1){12}}
+ \put(40,21){\line(1,0){10}}
+ \put(40,9){\line(1,0){10}}
+ \put(50,9){\line(0,1){12}}
+ \put(42,22){$f(A)$}
+ %third box inner
+ \put(43,13){\line(1,0){4}}
+ \put(43,17){\line(1,0){4}}
+ \put(43,13){\line(0,1){4}}
+ \put(47,13){\line(0,1){4}}
+ \qbezier(47,15)(49.5,10)(52,5)
+ \put(52,1){$f(C)$}
+ %second box outer
+ \put(0,3){\line(1,0){20}}
+ \put(0,3){\line(0,1){24}}
+ \put(0,27){\line(1,0){20}}
+ \put(20,3){\line(0,1){24}}
+ \put(0,28){$A$}
+ %second box inner
+ \put(6,11){\line(1,0){8}}
+ \put(6,19){\line(1,0){8}}
+ \put(6,11){\line(0,1){8}}
+ \put(14,11){\line(0,1){8}}
+ \put(8.5,13.5){$C$}
+ %first arrow
+ \put(20,18){\line(1,0){18}}
+ \put(36,17){$\blacktriangleright$}
+ \put(27,20){$f$}
+\end{picture}
+\end{center}
+
+The \emph{range} of $f$ is the image a $\A$ itself; that is, the set
+\begin{equation*}
+f(\A) = \{ f(x) \in \B\ |\ x \in \A \}
+\end{equation*}
+
+
+\subsection*{Problems}
+
+\begin{enumerate}
+  \item Let $f$ and $g$ be the functions with codomain $\R$ and domain all numbers for which the following rule is defined:
+    \begin{align*}
+    f(x) & := \frac{x^2-5x+6}{x-3} \\
+    g(x) & := x-2
+    \end{align*}
+    Is $f=g$? Explain.
+
+  \item Let $\Sc$ denote the set of all subsets a set $\U$, and choose two particular sets $\A,\B \in \Sc$. Define functions $f$ and $g$, both having domain and codomain $\Sc$, by
+    \begin{align*}
+    f(\X) & := \X \cap (\A \sim \B) \\ 
+    g(\X) & := (\X \cap \A) \sim (\X \cap \B)
+    \end{align*}
+    Is $f=g$? Explain.
+
+  \item For real valued functions $f\ :\ \R \to \R$ and $g\ :\ \R \to \R$, define a new function $f+g\ :\ \R \to \R$, called the \emph{sum} of $f$ and $g$, by the rule
+    \begin{equation*}
+    (f+g)(x) := f(x) + g(x) \text{ for } x \in \R
+    \end{equation*}
+    Prove that $f+g = g+f$; that is, addition of functions is commutative.
+
+  \item What is the range $h(\A)$ of the function $h$ in Example 1? [Define $\B := \{ x\ |\ 3 \neq x \in \R \}$ and prove that $h(\A) = \B$.]
+\end{enumerate}
+
+An important function $f$, given by $f(C) = 32 + \frac{9}{5} C$, converts Centigrade temperature to Fahrenheit temperature. This function has an ``inverse'', $c$, which does the reverse: $c(F) = \frac{5}{9} (F-32)$ converts Fahrenheit back to Centigrade. The domain of $f$ is $\A = \{ C\ |\ C \geq -273 \}$, and the domain of $c$ is $\B = \{ F\ |\ F \geq -460 \}$. These two functions are related by the equations
+\begin{align*}
+f(c(F)) & = F \\
+c(f(C)) & = C
+\end{align*}
+
+\begin{center}
+\unitlength 1mm
+\begin{picture}(120,20)(0,0)
+ \put(30,10){\line(1,0){90}} 
+ \multiput(45,10)(20,0){4}{\circle*{1}}
+ \put(30,10){\circle*{3}}
+ \put(77,10){\circle*{1}}
+ \multiput(115,5)(2.5,0){3}{\circle*{.5}}
+ \multiput(115,15)(2.5,0){3}{\circle*{.5}}
+ \put(10,10){$c \downarrow$}
+ \put(0,10){$f \uparrow$}
+ \put(18,4){$C$}
+ \put(18,13){$F$}
+ \put(26,4){$-273$}
+ \put(26,13){$-460$}
+ \put(41,4){$-200$}
+ \put(41,13){$-328$}
+ \put(61,4){$-100$}
+ \put(61,13){$-148$}
+ \put(75,4){$-40$}
+ \put(75,13){$-40$}
+ \put(84,4){$0$}
+ \put(83,13){$32$}
+ \put(101,4){$100$}
+ \put(101,13){$212$}
+\end{picture}
+\end{center}
+
+In general, we say that an \emph{inverse} for a function $f\ :\ \A \to \B$ is a function $g\ :\ \B \to \A$ such that
+\begin{equation*}
+f(g(y)) = y \text{ and } g(f(x)) = x
+\end{equation*}
+for all $x \in \A$ and all $y \in \B$.
+
+Now consider a different example. Let $\Pb$ denote the set of all people, and let $\W$ denote the set of all adult women. A natural function to talk about is the ``mother function''
+\begin{equation*}
+m\ :\ \Pb \to \W
+\end{equation*}
+where $m(x)$ is the mother of $x$. Can we define an inverse
+\begin{equation*}
+c\ :\ \W \to \Pb
+\end{equation*}
+for this function? It seems natural to take $c(y)$ to be the child of $y$; for then $m(c(y))$ is the mother of the child of $y$, which is $y$; and $c(m(x))$ is the child of the mother of $x$, which should be $x$.
+
+But there is a problem here. We can't define $c(y)$ to be the \emph{child of $y$} without knowing that $y$ has a child! In general, we say that a function $f\ :\ \A \to \B$ is \emph{surjective} (or \emph{onto}), or that $f$ is a \emph{surjection}, if
+\begin{equation*}
+\text{for each } y \in \B, \text{ there is an } x \in \A \text{ such that } f(x) = y
+\end{equation*}
+
+If the function $f$ has an inverse $g\ :\ \B \to \A$, then $f$ is certainly surjective: for any $y \in \B$, there is an $x \in \A$ such that $f(x) = y$. Namely, we take $x = g(y)$, as we then have $f(x) = f(g(y)) = y$. \emph{Thus a function must be surjective in order to have an inverse.} Since there are women $y \in \W$ that have no child $x \in \Pb$ (for which $m(x) = y$), the mother function $m$ is not surjective and therefore does not have an inverse.
+
+If we replace the set $\W$ of women with the set $\M$ of all mothers, then $m\ :\ \Pb \to \M$ is now surjective. However, there is another problem. We can't define $c(y)$ to be \emph{the} child of $y$ unless we are certain that $y$ has only one child! In general, we say that a function $f\ :\ \A \to \B$ is \emph{injective} (or \emph{one-to-one}), or that $f$ is an \emph{injection}, if two different members of $\A$ always have different images; that is
+\begin{equation*}
+u \neq v \text{ implies } f(u) \neq f(v)
+\end{equation*}
+for all $u,v \in \A$. To prove that a function is injective, we normally use the contrapositive
+\begin{equation*}
+f(u) = f(v) \text{ implies } u = v
+\end{equation*}
+to avoid negations. For example, if $f$ has an inverse $g\ :\ \B \to \A$, then $f$ is certainly injective: $f(u) = f(v)$ implies that $u = g(f(u)) = g(f(v)) = v$. \emph{Thus a function must be injective in order to have an inverse.} Since there are siblings $u \neq v$ in $\Pb$ who have the same mother $y \in \M$ (that is, $m(u) = m(v)$), the mother function $m$, even with codomain $\M$, is not injective and therefore still does not have an inverse.
+
+If $f\ :\ \A \to \B$ is both surjective and injective, we say that it is \emph{bijective}, and call it a \emph{bijection} from $\A$ to $\B$. The facts about inverses can now be summarized in the following theorem.
+
+\begin{description}
+  \item[Inverse Function Theorem:] Let $f\ :\ \A \to \B$ be a function.
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item If $f$ is not a bijection, then it does not have an inverse.
+      \item If $f$ is a bijection, then it has a unique inverse, denoted by $f^{-1}\ :\ \B \to \A$, and given by $f^{-1}(y) = x$, where $y \in \B$ and $x$ is the unique element of $\A$ such that $f(x) = y$.
+    \end{enumerate}
+\end{description}
+
+
+\subsection*{Problems}
+
+\begin{description}
+  \item{5.} Complete the proof of the Inverse Function Theorem (ii) by using the definitions to prove that the inverse of $f$ is unique; that is, if $g$ and $h$ are both inverses for $f$, then $g = h$.
+
+  \item{6.} Let $f\ :\ \R \to \R$ with $f(x) = 3x - 7$.
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item Prove that $f$ is surjective.
+      \item Prove that $f$ is injective.
+      \item Find a formula for $f^{-1}(y)$ using $x = f(f^{-1}(y)) = 3f^{-1}(y) - 7$.
+    \end{enumerate}
+
+  \item{7.} Show that every non-constant linear function $l(x) = mx+b$, with $m \neq 0$, is a bijection $l\ :\ \R \to \R$. Find a formula for $l^{-1}(y)$.
+
+  \item{8.} Notice that a function $f\ :\ \A \to \B$ is \emph{not injective} if there are distinct elements $u,v \in \A$ for which $f(u) = f(v)$. For each of the following functions, either prove that it is injective or prove that it is not.
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item $g(x) := x^4 - x +3$ where $g\ :\ \R \to \R$.
+      \item $h(x) := \frac{8x+3}{2x-7}$ where $h\ :\ \A \to \B$ with $\A := \{ x \in \R\ |\ x \neq \frac{2}{7} \}$ and $\B := \{ y \in \R\ |\ y \neq 4 \}$.
+    \end{enumerate}
+
+  \item{9.} Notice that a function $f\ :\ \A \to \B$ is \emph{not surjective} if its range is not all of $\B$; that is, if there is an element $y \in \B$ such that $f(x) \neq y$ for all $x \in \A$. For each of the following functions, either prove that it is surjective or prove that it is not.
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item $g(x) := x^4 - x +3$ from 8.
+      \item $h(x) := \frac{8x+3}{2x-7}$ from 8.
+    \end{enumerate}
+
+  \item{10.} If you did Problems 8. and 9. correctly, you will have established that $h$ is a bijection. Exhibit a formula for $h^{-1}(y)$, and demonstrate that it is the inverse of $h$.
+
+  \item{11.} $\A = \B = \{1,2,3,4,5,6,7,8,9\}$. Define $f\ :\ \A \to \B$ as follows. For each $x \in \A$, the value of $f(x)$ is written below $x$:
+    \begin{equation*}
+    1 \quad 2 \quad 3 \quad 4 \quad 5 \quad 6 \quad 7 \quad 8 \quad 9
+    \end{equation*}
+    \begin{equation*}
+    5 \quad 7 \quad 9 \quad 3 \quad 1 \quad 2 \quad 6 \quad 4 \quad 8
+    \end{equation*}
+    Is $f$ a surjection? an injection? a bijection?
+\end{description}
+
+Addition and multiplication can be used to combine any two numbers in order to get a new number. Similarly, intersection, union, difference, and symmetric difference can be used to combine two sets in order to form a new set. In the same spirit, there is a natural way to combine two functions to form a new function. Suppose that $g\ :\ \A \to \B$ and $f\ :\ \B \to \C$. We define the \emph{composition} of $f$ and $g$ to be the function
+\begin{equation*}
+f \circ g\ :\ \A \to \C \text{ where } (f \circ g)(x) = f(g(x))
+\end{equation*}
+
+\begin{center}
+\unitlength 1mm
+\begin{picture}(98,40)(-4,-8)
+ %third box outer
+ \qbezier(60,15)(67.5,22.5)(75,30)
+ \qbezier(90,15)(82.5,22.5)(75,30)
+ \qbezier(75,0)(67.5,7.5)(60,15)
+ \qbezier(75,0)(82.5,7.5)(90,15)
+ %third box middle
+ \put(70,9){\line(0,1){12}}
+ \put(70,21){\line(1,0){10}}
+ \put(70,9){\line(1,0){10}}
+ \put(80,9){\line(0,1){12}}
+ %third box inner
+ \put(73,13){\line(1,0){4}}
+ \put(73,17){\line(1,0){4}}
+ \put(73,13){\line(0,1){4}}
+ \put(77,13){\line(0,1){4}}
+ %second box outer
+ \put(30,3){\line(1,0){20}}
+ \put(30,3){\line(0,1){24}}
+ \put(30,27){\line(1,0){20}}
+ \put(50,3){\line(0,1){24}}
+ %second box inner
+ \put(36,11){\line(1,0){8}}
+ \put(36,19){\line(1,0){8}}
+ \put(36,11){\line(0,1){8}}
+ \put(44,11){\line(0,1){8}}
+ %first arrow
+ \put(50,18){\line(1,0){18}}
+ \put(66,17){$\blacktriangleright$}
+ \put(57,20){$f$}
+ %first box
+ \put(0,7){\line(1,0){16}}
+ \put(0,7){\line(0,1){16}}
+ \put(16,7){\line(0,1){16}}
+ \put(0,23){\line(1,0){16}}
+ %first arrow
+ \put(16,15){\line(1,0){18}}
+ \put(32,14){$\blacktriangleright$}
+ \put(22,17){g}
+ %lower arrow
+ \qbezier(14,6)(14,0)(30,0)
+ \put(30,0){\line(1,0){20}}
+ \qbezier(50,0)(53,0)(55,5)
+ \qbezier(55,5)(55,10)(61,10)
+ \put(60,9){$\blacktriangleright$}
+ \put(35,-4){$f \circ g$}
+\end{picture}
+\end{center}
+
+We refer to $+$, $\times$, $\cap$, $\cup$, $\oplus$, and $\circ$ as \emph{binary operations}.
+
+
+\subsection*{Problems}
+
+Consider the following four bijections from $\{1,2,3,4\}$ to itself:
+
+\begin{center}
+\begin{tabular}{||c||c|c|c|c||}
+\hline
+  f  &   i  &   p  &   q  &   r  \\ 
+\hline
+\hline
+  x  & 1234 & 1234 & 1234 & 1234 \\ 
+\hline
+f(x) & 1234 & 2134 & 1243 & 2143 \\ 
+\hline
+\end{tabular}
+\end{center}
+
+\begin{description}
+  \item{12.} Fill in the composition table for $\{i,p,q,r\}$.
+    \begin{center}
+    \begin{tabular}{||c||c|c|c|c||}
+    \hline
+    $\circ$ & \quad i \quad & \quad p \quad & \quad q \quad & \quad r \quad \\
+    \hline
+    \hline
+    i \quad &               &               &               &               \\ 
+    \hline
+    p \quad &               &               &               &               \\ 
+    \hline
+    q \quad &               &               &               & \quad p \quad \\ 
+    \hline
+    r \quad &               &               &               &               \\ 
+    \hline
+    \end{tabular}
+    \end{center}
+
+    For example, $q \circ r = p$, since we have $(q \circ r)(1) = q(r(1)) = q(2) = 2 = p(1)$, $(q \circ r)(2) = q(r(2)) = q(1) = 1 = p(2)$, $(q \circ r)(3) = q(r(3)) = q(4) = 3 = p(3)$, and $(q \circ r)(4) = q(r(4)) = q(3) = 4 = p(4)$. What is this inverse of each of these bijections?
+\end{description}
+
+
+Problems 13 and 14 below give two properties that may or may not hold for a particular binary operation. For each one, either prove that it is always true for composition or disprove it by finding a counterexample.
+
+\begin{description}
+  \item{13.} \textbf{Commutative Property}: If $f\ :\ \A \to \A$ and $g\ :\ \A \to \A$, then
+    \begin{equation*}
+    f \circ g = g \circ f
+    \end{equation*}
+    are always the same function from $\A$ to $\A$. - ???
+
+  \item{14.} \textbf{Associative Property}: Suppose that $f\ :\ \C \to \D$, that $g\ :\ \B \to \C$, and that $h\ :\ \A \to \B$. Then
+    \begin{equation*}
+    (f \circ g) \circ h = f \circ (g \circ h)
+    \end{equation*}
+    are always the same function from $\A$ to $\D$. - ???
+\end{description}
+
+$\ $
+
+\begin{description}
+  \item{15.} Show that the composition of injections is an injection. [Let $g\ :\ \B \to \C$ and $h\ :\ \A \to \B$ be injective functions. Show that $g \circ h\ :\ \A \to \C$ is injective as well.]
+
+  \item{16.} Show that the composition of surjective functions is surjective.
+
+  \item{17.} Let $\Sb_{\A}$ denote the set of all bijections from $\A$ to itself. According to Problems 15. and 16., $\circ$ is a binary operation on $\Sb_{\A}$; that is, $f \circ g \in \Sb_{\A}$ whenever $f$ and $g$ are in $\Sb_{\A}$. We define a special bijection $i_{\A}\ :\ \A \to \A$ called the \emph{identity function} on $\A$ as
+    \begin{equation*}
+    i_{\A}(x) = x \text{ for all } x \in \A
+    \end{equation*}
+
+    Show that $i_{\A}$ is an identity for $\Sb_{\A}$; that is,
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item $f \circ i_{\A} = f = i_{\A} \circ f$ and
+      \item $f \circ f^{-1} = i_{\A} = f^{-1} \circ f$
+    \end{enumerate}
+    for all $f \in \Sb_{\A}$. This shows that $i_{\A}$ serve as identity for composition in the same way that $0, 1, \emptyset$ work as identities for $+$, $\times$, and $\oplus$, respectively.
+
+  \item{18.} Consider the list below of all 6 different bijections from $\{0,1,2\}$ onto itself.
+
+    \begin{center}
+    \begin{tabular}{||c||c|c|c|c|c|c||}
+    \hline
+      f  &  i  &  p  &  q  &  f  &  g  &  h  \\ 
+    \hline
+    \hline
+      x  & 012 & 012 & 012 & 012 & 012 & 012 \\ 
+    \hline
+    f(x) & 012 & 120 & 201 & 021 & 210 & 102 \\ 
+    \hline
+    \end{tabular}
+    \end{center}
+
+    Make a composition table for these 6 bijections, illustrating problems 15., 16., and 17. above.
+
+  \item{Extra Credit:} $\circ$ is said to have the \emph{Left Cancellation Property} if for any functions $f\ :\ \B \to \C$, $g\ :\ \A \to \B$, and $h\ :\ \A \to \B$,
+    \begin{equation*}
+    f \circ g = f \circ h,\ \text{ implies }\ g = h
+    \end{equation*}
+    Find a counterexample to show that this is not always true. Then, prove that the Left Cancellation Property does hold whenever $f$ is one-to-one.
+
+\end{description}
+
+
+
+
+\newpage
+
+\section{Rationals, Irrationals, and Primes}
+\markboth{3. Rationals, Irrationals, and Primes}{3. Rationals, Irrationals, and Primes}
+
+
+An \emph{integer} is a whole number, positive, negative, or zero. We represent the set of integers as
+\begin{equation*}
+\Z = \{ \cdots, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, \cdots \}
+\end{equation*}
+
+A number is \emph{rational} if it can be expressed at the quotient of two integers. We denote the set of rational numbers by
+\begin{equation*}
+\Q = \{ \tfrac{m}{n}\ |\ m,n \in \Z \text{ and } n \neq 0 \}
+\end{equation*}
+
+The rational numbers consist of all integers, together with all integer multiples of $\frac{1}{2}$, together with all integer multiples of $\frac{1}{3}$, together with all integer multiples of $\frac{1}{4}$, etc. Looking at $\Q$ this way shows that the points on the number line representing the rational numbers form a dense subset of the number line itself. Here are some rational numbers.
+\begin{align*}
+-5 &= -5.0000000000000\cdots \\
+7 \tfrac{2}{3} &= \tfrac{23}{3} = 7.6666666666666\cdots \\
+3 \tfrac{3}{7} &= \tfrac{24}{7} = 3.428571428571428571\cdots
+\end{align*}
+Notice that each of these numbers, when written as a decimal, turns
+out to be a repeating decimal. We often write $3.\overline{428571}$ to indicate that the sequence $428571$ is repeated forever.
+
+
+\subsection*{Problems:}
+
+\begin{enumerate}
+  \item Is the repeating decimal $x = 0.77777777\overline{7}$ a rational number? [Compute $10x$. Then solve for $x$.]
+  \item Is the repeating decimal $y = 438.390390\overline{390}$ a rational number?
+  \item Show that the rational number $\frac{71}{23}$ is a repeating decimal.
+  \item If the rational number $\frac{29837741}{364589}$ is written as a decimal, will it repeat forever? [You will need to find a way to answer this question without actually doing it!]
+\end{enumerate}
+
+These problems suggest the following theorem.
+
+\begin{description}
+  \item[Theorem:] A number is rational if and only if when represented as a decimal, it repeats forever.
+\end{description}
+
+\begin{description}
+  \item{5.} Use this theorem to describe a specific number which is not rational.
+\end{description}
+
+Here is a different method that leads to more irrational numbers. Assume that $n$ is a positive integer. If we divide $n$ by $3$, the remainder will be either $0$ ($n$ is a multiple of $3$; that is, $n = 3k$), it will be $1$ ($n = 3k+1$), or it will be $2$ ($n = 3k+2$).
+\begin{description}
+  \item{6.} Show that if $n^2$ is a multiple of $3$, then $n$ must also be a multiple of $3$.
+\end{description}
+
+We will show that there is no rational number whose square is $3$. Suppose, by way of contradiction, that $r$ is a rational number and $r^2 = 3$. Write $r = \frac{a}{b}$ as a fraction in its lowest terms; that is, $a$ and $b$ are integers that have \emph{no common factor greater than $1$}.
+
+\begin{description}
+  \item{7.} Use 6. to obtain a contradiction by showing that in fact $3$ is a factor of both $a$ and $b$. This shows that $r^2$ is not $3$ for any rational number $r$.
+\end{description}
+
+\begin{description}
+  \item[Theorem:] $\sqrt{3}$ is irrational.
+\end{description}
+
+\begin{description}
+  \item{8.} Give a similar argument to show that $\sqrt{2}$ is irrational. [If we divide $n$ by $2$, the remainder will be either $0$ ($n$ is even; that is, $n = 2k$) or it will be $1$ ($n$ is odd; that is, $n = 2k+1$).] 
+  \item{9.} Show that $a \sqrt{3}$ is irrational for every rational number $a \neq 0$.
+\end{description}
+
+To say that a number is irrational means that it is not rational. In this chapter, we have seen that the way we prove something is \emph{not} true is to assume that it is true and show that this leads to a contradiction.
+
+
+
+
+\newpage
+
+\section{Induction and Recursion}
+\markboth{4. Induction and Recursion}{4. Induction and Recursion}
+
+
+In this chapter, we will study a method of proving what amounts to a denumerably infinite sequence of statements. We begin with several examples.
+
+\begin{description}
+
+  \item[Example 1:] Xeno and Yvonne are going to play a game; I will be the referee. The two players sit at a table facing each other. I pick two consecutive positive integers, and write one on Xeno's forehead and write the other on Yvonne's forehead. Each sees the other's number, but not his or her own.
+
+    For example, I might write $246$ on Xeno's forehead and $247$ on Yvonne's forehead. Xeno knows that his number must be either $246$ or $248$, but he doesn't know which. Yvonne knows that her number must be either $245$ or $247$, but she doesn't know which.
+
+    The game proceeds in rounds.
+
+    \emph{Round 1:} I say, ``Raise your hand if you know your number.''
+
+    If neither raise their hand, then Round 1 is over, and I announce that we will begin Round 2 as soon as both players say that they are ready.
+
+    \emph{Round 2:} I say, ``Raise your hand if you know your number.''
+
+    Again, if neither raise their hand, we go on:
+
+    \emph{Round 3:} I say, ``Raise your hand if you know your number.''
+
+    \emph{Round 4:} I say, ``Raise your hand if you know your number.''
+
+    ................ etc.
+
+    There are no conversations, no signals, no mirrors. The game continues until one player raises a hand and correctly reports his or her number.
+
+    Is it possible for either of the players to ever figure out their number? In fact, in the above example, after a large number of rounds Yvonne jumps up, waves her hand, and shouts, ``I know, I know! My number is 247!'' How does she know? How many rounds does it take her? [Reference: D.Clark, ``The Consecutive Integer Game'', \emph{Mathematics Magazine}, April 2002.]
+
+  \item[Example 2:] Let $\BZ = \{1,2,3,4,5,\cdots\}$ denote the set of positive integers. Our proof that there are infinitely many primes was done indirectly; that is, by showing we reach a contradiction if we assume that $\BZ$ contains only finitely many primes. A much more satisfying argument would be to give a particular method to generate one prime after another. For example, it has been suggested that
+    \begin{equation*}
+    p(n) = n^2 - n + 41 \text{ is prime for each } n \in \BZ
+    \end{equation*}
+    For example, $n = 1,2,3,4,5$ gives us, respectively, the primes $p(n) = 41, 43, 47, 53, 61$. Is it true that $p(n)$ is prime for every $n \in \BZ$?
+
+  \item[Example 3:] Consider the following computer algorithm:
+    \begin{align*}
+    \qquad \text{INPUT} \quad : & \quad n \in \BZ, \quad \text{A POSITIVE INTEGER} \\
+          \text{OUTPUT} \quad : & \quad a(n), \quad \text{A POSITIVE INTEGER} \\
+       \text{PROCEDURE} \quad : & \quad a = 2; \quad m = 1 \\
+                                & \quad \text{WHILE} \quad m < n \quad \text{DO:} \\
+                                & \quad \qquad m \Leftarrow m+1 \\
+                                & \quad \qquad a \Leftarrow 2a-1 \\
+                                & \quad \text{PRINT} \quad ``a(n) ='' a
+    \end{align*}
+
+    Computing by hand, we find that
+    \begin{equation*}
+    a(1) = 2, \quad a(2) = 3, \quad a(3) = 5, \quad a(4) = 9, \quad a(5) = 17
+    \end{equation*}
+
+    From these values, can you guess the value of $a(6)$ without computing it? You may discover that each of these numbers is one more than a power of $2$. The next such number, then, would be $2^5 + 1 = 33$. Cycling through the loop once more, we see that this is correct: $2 \times 17 - 1 = 33$. Thus
+    \begin{eqnarray*}
+    a(1) = 2^0 + 1, \quad a(2) = 2^1 + 1, \quad a(3) = 2^2 + 1, \\
+    a(4) = 2^3+1, \quad a(5) = 2^4+1
+    \end{eqnarray*}
+
+    This observation leads us to suspect that for every positive integer $n$, the statement
+    \begin{equation*}
+    S(n) := [a(n) = 2^{n-1} + 1]
+    \end{equation*}
+    is true. Read this carefully. It says that $S(n)$ is a certain statement; in this case, $S(n)$ is an equation.
+
+\end{description}
+
+The question is this: How can we ever know, convince ourselves, or convince anyone else, that infinitely many statements $S(1)$, $S(2)$, $S(3)$, $\cdots$ are all true? If we computed every value of $a(n)$ for $n$ going from one to a million, and verified that $a(n) = 2^{n-1} + 1$, we would still have no proof that the pattern would continue.
+
+There is a very nice solution to this problem which is often used in mathematics. We have checked that $S(1)$, $S(2)$, $S(3)$, $S(4)$, $S(5)$, and $S(6)$ are all true by direct computations. Suppose now $k$ is \emph{any} positive integer such that $S(k)$ is true. It might be that $k$ is $1$, $2$, $3$, $4$, $5$, or $6$; or $k$ might be some other number we haven't yet checked. What we know is that if we cycle through the loop $k$ times, the value of $a$ will be given by $a(k) = 2^{k-1} + 1$. If we want to compute the value of $a(k+1)$, we will cycle through the loop one more time, giving us
+\begin{equation*}
+a(k+1) = 2 (2^{k-1}+1) - 1 = 2^{k} + 2 - 1 = 2^{(k+1)-1} + 1
+\end{equation*}
+This tells us that $S(k+1)$ is also true.
+
+Putting together what we know, we have shown that
+\begin{enumerate}[\hspace{1cm}(1.)]
+  \item $S(1)$ is true; and
+  \item if $S(k)$ is true, then $S(k+1)$ is true.
+\end{enumerate}
+Without reference to our particular meaning of $S(n)$, it is easy to see from (1.) and (2.) that each of the statements
+\begin{equation*}
+S(1), S(2), S(3), S(4), S(5), S(6), S(7), S(8), \cdots
+\end{equation*}
+must be true; that is, $S(n)$ is true for every positive integer $n$. This observation is expressed as a fundamental principle of mathematics:
+
+\begin{description}
+  \item[Principle of Mathematical Induction:] Let $S(n)$ be a statement about an arbitrary positive integer $n$. If
+    \begin{enumerate}[\hspace{1cm}(1.)]
+      \item $S(1)$ is true, and
+      \item $S(k+1)$ is true whenever $S(k)$ is true,
+    \end{enumerate}
+    then $S(n)$ is true for all positive integers $n$.
+
+  \item[Proof:] Suppose that $S(n)$ is not true for every positive integer $n$. Then there is a least positive integer $m$ such that $S(m)$ is not true. Now $m$ could not be $1$, since by (1.), we know $S(1)$ is true. Thus $m > 1$, and therefore $k = m-1$ is a positive integer. Since $k < m$, we know that $S(k)$ is true. By (2.) we conclude that $S(k+1)$ is true. But $k+1=m$, so this contradicts the fact that $S(m)$ is not true.
+\end{description}
+
+
+\subsection*{Problems}
+
+Use the Principle of Mathematical Induction to verify that each of the following statements is true for all positive integers $n$.
+\begin{enumerate}
+  \item The sum of the first $n$ positive integers is $\frac{n(n+1)}{2}$.
+  \item The sum of the squares of the first $n$ positive integers is $\frac{n(n+1)(2n+1)}{6}$.
+  \item The sum of the first $n$ odd positive integers is $n^2$.
+  \item $\frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} + \cdots + \frac{1}{2^n} = 1 - \frac{1}{2^n}$.
+  \item $1 + 3 + 9 + 27 + \cdots + 3^n = \frac{(3^{n+1}-1)}{2}$.
+  \item $1 \times 2 + 2 \times 3 + 3 \times 4 + 4 \times 5 + \cdots + n \times (n+1) = \frac{n(n+1)(n+2)}{3}$.
+  \item In the Tower of Hanoi puzzle, it is possible to move $n$ discs in $2^n - 1$ moves.
+
+\begin{center}
+\unitlength 1mm
+\begin{picture}(72,16)(0,0)
+\put(0,0){\line(1,0){72}}
+\put(0,0){\line(0,1){1}}
+\put(0,1){\line(1,0){72}}
+\put(72,0){\line(0,1){1}}
+\put(15,4){\line(0,1){12}}
+\put(16,4){\line(0,1){12}}
+\put(15,16){\line(1,0){1}}
+\put(36,3){\line(0,1){13}}
+\put(37,3){\line(0,1){13}}
+\put(36,16){\line(1,0){1}}
+\put(57,2){\line(0,1){14}}
+\put(58,2){\line(0,1){14}}
+\put(57,16){\line(1,0){1}}
+%
+\put(15,2){\line(1,0){10}}
+\put(15,2){\line(-1,0){9}}
+\put(6,2){\line(0,-1){1}}
+\put(25,2){\line(0,-1){1}}
+%
+\put(15,3){\line(1,0){9}}
+\put(15,3){\line(-1,0){8}}
+\put(7,3){\line(0,-1){1}}
+\put(24,3){\line(0,-1){1}}
+%
+\put(15,4){\line(1,0){8}}
+\put(15,4){\line(-1,0){7}}
+\put(8,4){\line(0,-1){1}}
+\put(23,4){\line(0,-1){1}}
+%
+\put(57,2){\line(1,0){7}}
+\put(57,2){\line(-1,0){6}}
+\put(51,2){\line(0,-1){1}}
+\put(64,2){\line(0,-1){1}}
+%
+\put(36,2){\line(1,0){6}}
+\put(36,2){\line(-1,0){5}}
+\put(31,2){\line(0,-1){1}}
+\put(42,2){\line(0,-1){1}}
+%
+\put(36,3){\line(1,0){5}}
+\put(36,3){\line(-1,0){4}}
+\put(32,3){\line(0,-1){1}}
+\put(41,3){\line(0,-1){1}}
+\end{picture}
+\end{center}
+
+  \item In the Tower of Hanoi puzzle, it is not possible to move $n$ discs in fewer than $2^n - 1$ moves. [Hint: This problem becomes much easier if you restate $S(n)$ as ``If $n$ discs are moved from one peg to another, then at least $2^n-1$ moves must be made.'']
+\end{enumerate}
+
+\subsection*{ }
+
+In many cases, a stronger version of induction is useful.
+
+\begin{description}
+  \item[Principle of Strong Induction:] Let $S(n)$ be a statement about an arbitrary positive integer $n$. If
+    \begin{enumerate}[\hspace{1cm}(1.)]
+      \item $S(1)$ is true, and
+      \item $S(k+1)$ is true whenever $S(m)$ is true for $m = 1,2,3,\cdots,k$,
+    \end{enumerate}
+    then $S(n)$ is true for all positive integers $n$.
+\end{description}
+
+\subsection*{ }
+
+\begin{description}
+  \item{9.} Use Strong Induction to prove that every positive integer is either $1$, a prime, or a product of primes.
+\end{description}
+
+\subsection*{ }
+
+There are many commonly used functions $f$ with domain $\BZ$ that are not easily defined explicitly. Instead, we tell how to compute $f$ by what we call a recursive process. To do this, we choose a positive integer $b$ (often $b = 1$), and
+\begin{enumerate}[\hspace{1cm}(1.)]
+  \item give the values of $f(1), f(2), \cdots, f(b)$ explicitly; and then
+  \item tell how to compute the value of $f(k)$ for any $k > b$, using the previous values $f(1), f(2), f(3), \cdots, f(k-1)$.
+\end{enumerate}
+
+\subsection*{ }
+
+\begin{description}
+  \item{10.} Use Strong Induction to prove that (1.) and (2.) can be used to compute $f(n)$ for every positive integer $n$.
+\end{description}
+
+\subsection*{ }
+
+This is exactly what happens when you ask a program to do a recursive call. An advantage of recursively defined functions is that their properties can often be verified by inductive arguments. For example, define
+\begin{enumerate}[\hspace{1cm}(1.)]
+  \item $a(1) = 2$
+  \item $a(k+1) = 2a(k) - 1$
+\end{enumerate}
+
+Here we have taken $b = 1$. At the beginning of this chapter, we proved by induction that $a(n)$ is given explicitly as $a(n) = 2^{n-1} + 1$.
+
+\subsection*{ }
+
+\begin{description}
+  \item{11.} The \emph{Fibonacci Sequence} is obtained by taking $b = 2$, and defining
+    \begin{enumerate}[\hspace{1cm}(1.)]
+      \item $F(1) = 1$, $F(2) = 1$, and
+      \item $F(k+2) = F(k) + F(k+1)$ for $k \geq 1$.
+    \end{enumerate}
+    Compute $F(3)$ through $F(12)$. Use induction to prove that for all $n \geq 1$,
+    \begin{equation*}
+    F(1) + F(2) + F(3) + \cdots + F(n) + 1 = F(n+2)
+    \end{equation*}
+
+  \item{12.} Check that $F(3)$, $F(6)$, $F(9)$, and $F(12)$ are even. Then use induction to prove that $F(3n)$ is even for all $n \geq 1$.
+
+  \item{13.} The factorial function $n!$ is defined recursively by
+    \begin{enumerate}[\hspace{1cm}(1.)]
+      \item $0! = 1$, and
+      \item $(k+1)! = k!(k+1)$
+    \end{enumerate}
+    Use induction to prove that if $n \geq 5$, then $n!$ is a multiple of $5$.
+
+  \item{14.} Define a function $g$ recursively by
+    \begin{enumerate}[\hspace{1cm}(1.)]
+      \item $g(1) = 2$, and
+      \item $g(k+1) = 4g(k) - 5$.
+    \end{enumerate}
+    Compute $g(7)$. Use induction to prove that $g(n) > 2^n$ for all $n \geq 4$.
+\end{description}
+
+\subsection*{ }
+
+Recursively defined functions can sometimes grow surprisingly fast. As a result, one must be cautious about asking a computer to do recursions, since both time and memory are limited. Here is an example. We will recursively define a series of functions $A_1, A_2, A_3, \cdots$ as follows:
+\begin{enumerate}[\hspace{1cm}(1.)]
+  \item $A_1(n) = 2n$ for all $n$.
+  \item Now assume $A_k$ has been defined, and define $A_{k+1}$, itself by recursion, as follows:
+    \begin{description}
+      \item{(2.1)} $A_{k+1}(0) = 1$, and
+      \item{(2.2)} $A_{k+1}(m+1) = A_k(A_{k+1}(m))$.
+    \end{description}
+\end{enumerate}
+
+\subsection*{ }
+
+\begin{description}
+  \item{15.} Use this definition and induction to show that $A_2(n) = 2^n$ for all $n$.
+  \item{16.} Use this definition and induction to show that $A_n(1) = 2$ for all $n$.
+  \item{17.} Write down $A_3(5)$.
+  \item{18.} Describe $A_3(n)$.
+\end{description}
+
+The number $A_4(4)$ is so large that I would be happy to give an ``A'' in the course to anyone who can bring me a printout of its value (in normal decimal notation) by the end of the term. This illustrates the power of recursion.
+
+\begin{description}
+  \item{19.} As a continuation of the War on Terror, the President announced one day that the people of some distant country are all terrorists and that we need to kill them and steal their oil. Soon after an army captain received orders to deploy his soldiers over a designated area of that country, and to instruct them to shoot any resident who came into view.
+
+    Now the captain talked with other captains, and heard that among the new recruits, there are soldiers who for some strange reason don't buy into this mission. They are even known, in the heat of battle, to shoot their own captains and go AWOL. This worried him, so he devised the following plan.
+
+    He will deploy his soldiers, as ordered, but instruct them to situate themselves so that each one is nearest to exactly one other soldier. Each soldier will be ordered to watch that nearest soldier to him, and report any suspicious behavior to the captain.
+
+    Assuming the number of soldiers is odd, prove that there will be at least one soldier who won't be watched.
+\end{description}
+
+
+
+
+\newpage
+
+\section{Natural Deduction}
+\markboth{5. Natural Deduction}{5. Natural Deduction}
+
+
+In this chapter, we will reflect back on what we have learned from our previous work, in order to develop an understanding of the logical processes and principles that we use to construct a mathematical proof. What is required, for example, to prove
+\begin{equation*}
+(\A \cup \B) \cap \sim (\A \cap \B) \enspace \subseteq \enspace (\A \cap \sim \B) \cup (\B \cap \sim \A)
+\end{equation*}
+for any sets $\A$ and $\B$?
+
+From our definitions in the first chapter, this means that for any $x$ in the universal set $\U$,
+\begin{description}
+  \item[(*)] IF $x$ is in either $\A$ or $\B$ AND NOT in both $\A$ and $\B$, THEN either $x$ is in $\A$ AND NOT in $\B$, OR $x$ is in $\B$ AND NOT in $\A$.
+\end{description}
+
+What is significant here is the fact that we proved this statement without any knowledge as to whether or not $x$ is in $\A$ or in $\B$. The reason that we could do this is that its truth depends only on the meanings of the italicized words. To clarify this point, we introduce the following abbreviations. If $p$ and $q$ represent any (arbitrary) statements, then
+
+\begin{tabbing}
+\hspace*{1cm} \= \hspace{2.5cm} \= \hspace{1.2cm} \= \kill
+\> Conjunction: \> $p \land q$       \> will mean ``$p$ AND $q$ are both true.'' \\
+\ \\
+\> Disjunction: \> $p \lor q$        \> will mean ``Either $p$ OR $q$ is true.'' \\
+\ \\
+\> Negation:    \> $\lnot p$         \> will mean ``$p$ is NOT true.'' \\
+\ \\
+\> Implication: \> $p \Rightarrow q$ \> will mean ``IF $p$ is true, THEN $q$ is true.''
+\end{tabbing}
+
+Taking $p$ to be the statement ``$x \in \A$'' and $q$ the statement ``$x \in \B$'', for example, (*) amounts to the assertion that
+\begin{description}
+  \item[(*)] From $p \lor q$ and $\lnot (p \land q)$, we can conclude $(p \land \lnot q) \lor (q \land \lnot p)$.
+\end{description}
+
+Expressed in this form, we can see that (*) is certainly valid for any choice of $p$ and $q$: if one but not both of $p$ and $q$ are true, then surely one is true and the other is false!
+
+In this chapter, we will study rules that will allow us to derive such logical consequences. We will let $p,q,r,\cdots$ be \emph{primitive sentence symbols} which represent arbitrary sentences. Beginning with these symbols, we can use the \emph{logical connectives} $\land$, $\lor$, $\lnot$, and $\Rightarrow$ to construct \emph{compound sentences} such as $(p \land \lnot q) \lor (q \land \lnot p)$. More formally, compound sentences are defined recursively as follows:
+\begin{enumerate}[\hspace{1cm}(1.)]
+  \item Each of the following are compound sentences:
+    \begin{enumerate}[\hspace{1cm}(a.)]
+      \item the primitive sentence symbols $p,q,r,\cdots$;
+      \item $\0$, representing a statement that is always false; and
+      \item $\1$, representing a statement that is always true.
+    \end{enumerate}
+  \item If $a$ and $b$ are compound sentences, then $a \land b$, $a \lor b$, $\lnot a$, and $a \Rightarrow b$ are also compound sentences.
+\end{enumerate}
+
+Given a set $\{a,b,c,\cdots\}$ of compound sentences (called \emph{premises}) and a compound sentence $s$ (called the \emph{conclusion}), we write
+\begin{equation*}
+a,b,c,\cdots \enspace \der \enspace s
+\end{equation*}
+to mean that we can construct a sequence of compound sentences (called a \emph{derivation}) ending with $s$, according to the rules the we present in this chapter. The intuitive intention of these rules is to tell us when it is logically valid, within a mathematical argument, to conclude a particular statement. In most cases, the rule will depend upon certain other statements having already been entered. A number of the rules are named with either a ``$P$'' or a ``$U$''. Thus (CJP) is a rule telling how we can Prove a ConJunction, while (CJU) is a rule telling us how we can Use a ConJunction.
+
+\begin{description}
+  \item[Rule of Premises] $\ $
+    \begin{description}
+      \item[(P)] Any premise may be entered.
+    \end{description}
+\end{description}
+
+In order to prove a conjunction $a \land b$, we have seen that we need to prove both $a$ and $b$. In the other direction, we can use the conjunction $a \land b$, once we have it, to deduce either $a$ or $b$. We formalize these observations with the following rules.
+
+\begin{description}
+  \item[Rules of Conjunction] $\ $
+    \begin{description}
+      \item[(CJP)] If $a$ and $b$ have been entered, then $a \land b$ may be entered.
+      \item[(CJU)] If $a \land b$ has been entered, then either $a$ or $b$ may be entered.
+    \end{description}
+\end{description}
+
+Within a derivation, we often need to prove implications. We have seen that the proof of an implication $a \Rightarrow b$ is constructed by assuming $a$ and then deducing $b$. We will formally model this process within a derivation by creating a \emph{subderivation} that has $a$ as an added premise and has $b$ as a conclusion. Thus we will derive $a \Rightarrow b$ by making a subderivation, indented to the right, which begins with $a$ (as though we were fantasizing that $a$ were true) and ends with $b$. At that point, we can step out of the subderivation and write $a \Rightarrow b$ in the main derivation. The following rules allow us to do this, as well as to use an implication.
+
+\begin{description}
+  \item[Rule of Fantasy] $\ $
+    \begin{description}
+      \item[(F)] Any compound sentence may be entered (as though it were a premise) to begin an indented \emph{subderivation} or \emph{fantasy}.
+    \end{description}
+
+  \item[Rule of Reiteration] $\ $
+    \begin{description}
+      \item[(R)] A compound sentence in a larger (sub)derivation may be copied into a smaller subderivation.
+    \end{description}
+
+  \item[Rules of Implication] $\ $
+    \begin{description}
+      \item[(IP)] If a subderivation starts by fantasizing $a$ and reaches $b$, then we may terminate the subderivation and enter $a \Rightarrow b$.
+      \item[(IU)] (also called MP for Modus Ponens) If $a$ and $a \Rightarrow b$ have been entered, then $b$ may be entered.
+    \end{description}
+\end{description}
+
+More complex derivations will have subderivations within subderivations, and they are only meaningful if the indentations are done carefully.
+
+We will use these rules to prove theorems that will have the form
+\begin{equation*}
+a,b,c,\cdots \enspace \der \enspace s
+\end{equation*}
+The rule used to enter each statement in a derivation is always written on the right. Below is an example of a typical derivation using just these rules.
+
+In this context, there is a natural sense in which compound sentences $a$ and $b$ can be equivalent: $a$ is \emph{logically equivalent} to $b$ if $a \red \der b$; that is, each one is derivable from the other. It is easy to check that $\red \der$ is an equivalence relation. Of course, the meaning of $\red \der$ depends on the exact rules of derivation we adopt. The rules given in this chapter are in fact \emph{complete} in the sense that we can derive $a \red \der b$ whenever $a$ and $b$ have the same truth table. Thus $\red \der$ is the same as the equivalence relation discussed at the beginning of Chapter 5.
+
+Here is an example of a derivation.
+
+\begin{description}
+  \item[Theorem:] $[(p \land q) \Rightarrow r] \land t \enspace \der \enspace p \Rightarrow (q \Rightarrow r)$
+
+  \item[Proof:] $\ $
+
+    \begin{tabbing}
+    \hspace{1cm} \= \hspace{1cm} \= \hspace{1cm} \= \hspace{4cm} \= \kill
+    \> $[(p \land q) \Rightarrow r] \land t$ \>     \>                                       \> (P)   \\
+    \>                                       \> $p$ \>                                       \> (F)   \\
+    \>                                       \>     \> $q$                                   \> (F)   \\
+    \>                                       \>     \> $[(p \land q) \Rightarrow r] \land t$ \> (R)   \\
+    \>                                       \>     \> $(p \land q) \Rightarrow r$           \> (CJU) \\
+    \>                                       \>     \> $p$                                   \> (R)   \\
+    \>                                       \>     \> $p\land q$                            \> (CJP) \\
+    \>                                       \>     \> $r$                                   \> (MP)  \\
+    \>                                       \> $q \Rightarrow r$ \>                         \> (IP)  \\
+    \> $p \Rightarrow (q \Rightarrow r)$     \>     \>                                       \> (IP)
+    \end{tabbing}
+\end{description}
+
+
+\subsection*{Problems}
+
+Establish the following logical consequences by writing down a derivation.
+\begin{enumerate}
+  \item $p \land r$, $\lnot q \Rightarrow s$, $(r \land s) \Rightarrow \lnot t$, $p \land \lnot q \enspace \der \enspace \lnot t \land s$
+  \item $\lnot q \land s$, $p \land \lnot t$, $(\lnot t \land s) \Rightarrow u$, $(\lnot q \land p) \Rightarrow z \enspace \der \enspace u \land z$
+  \item $(p \land q) \land r \enspace \red \der \enspace p \land (q \land r)$ \hfill (associativity)
+  \item $p \Rightarrow q$, $q \Rightarrow r \enspace \der \enspace p \Rightarrow r$ \hfill (transitivity)
+  \item $p \Rightarrow q$, $p \Rightarrow (q \Rightarrow r) \enspace \der \enspace p \Rightarrow r$
+  \item $p \Rightarrow (q \Rightarrow r) \enspace \der \enspace q \Rightarrow (p \Rightarrow r)$
+  \item $\emptyset \enspace \der \enspace p \Rightarrow p$ \hfill (tautology)
+  \item $(p \Rightarrow q) \Rightarrow r \enspace \der \enspace p \Rightarrow (q \Rightarrow r)$ \hfill (partial associativity)
+  \item $p \Rightarrow q$, $r \Rightarrow s \enspace \der \enspace (p \land r) \Rightarrow (q \land s)$
+\end{enumerate}
+
+\subsection*{ }
+
+\begin{description}
+  \item[Rules of Disjunction] $\ $
+    \begin{description}
+      \item[(DP)] If either $a$ or $b$ has been entered, then $a \lor b$ can be entered.
+      \item[(DU)] (Rule of Cases) If $a \lor b$, $a \Rightarrow c$, and $b \Rightarrow c$ have all been entered, then $c$ can be entered.
+    \end{description}
+\end{description}
+
+\subsection*{ }
+
+\begin{description}
+  \item{10.} $(p \lor q) \lor r \enspace \red \der \enspace p \lor (q \lor r)$ \hfill (associativity)
+  \item{11.} $(p \lor q) \Rightarrow r \enspace \red \der \enspace (p \Rightarrow r) \land (q \Rightarrow r)$
+  \item{12.} $p \Rightarrow q$, $r \Rightarrow s \enspace \der \enspace (p \lor r) \Rightarrow (q \lor s)$
+  \item{13.} $p \land (q \lor r) \enspace \red \der \enspace (p \land q) \lor (p \land r)$ \hfill (distributivity)
+  \item{14.} $p \lor (q \land r) \enspace \red \der \enspace (p \lor q) \land (p \lor r)$ \hfill (distributivity)
+\end{description}
+
+\subsection*{ }
+
+A \emph{contradiction} is a statement of the form $b \land \lnot b$. We will use the false statement symbol $\0$ to represent an arbitrary contradiction, and the symbol $\1$ to represent a statement that is always true.
+
+\begin{description}
+  \item[Rules of $\0$ and $\1$] $\ $
+    \begin{description}
+      \item[(R0)] $\0$ can be entered if $b \land \lnot b$ has appeared, and $b \land \lnot b$ can be entered if $\0$ has appeared.
+      \item[(R1)] $\1$ can be entered.
+    \end{description}
+\end{description}
+
+We have learned from experience that a negative statement, $\lnot a$, is proven by showing that $a$ leads to a contradiction; in other words, by proving $a \Rightarrow \0$. Similarly, if $\lnot a$ leads to a contradiction, then $a$ must be true.
+
+\begin{description}
+  \item[Rules of Negation] (Proofs by Contradiction)
+    \begin{description}
+      \item[(NP)] If $a \Rightarrow \0$ has been entered, then $\lnot a$ may be entered.
+      \item[(NU)] If $\lnot a \Rightarrow \0$ has been entered, then $a$ may be entered.
+    \end{description}
+\end{description}
+
+\subsection*{ }
+
+\begin{description}
+  \item{15.} $p \Rightarrow q \enspace \red \der \enspace \lnot q \Rightarrow \lnot p$ \hfill (contrapositive)
+  \item{16.} $\0 \enspace \der \enspace q$
+  \item{17.} $p \Rightarrow q$, $\lnot q \enspace \der \enspace \lnot p$ \hfill (modus talens)
+  \item{18.} $p \enspace \red \der \enspace \lnot \lnot p$ \hfill (double negation)
+  \item{19.} $p \Rightarrow \lnot q \enspace \red \der \enspace q \Rightarrow \lnot p$
+  \item{20.} $(p \land q) \Rightarrow r \enspace \red \der \enspace (p \land \lnot r) \Rightarrow \lnot q$
+  \item{21.} $\lnot p$, $p \lor q \enspace \der \enspace q$
+  \item{22.} $\lnot (p \lor q) \enspace \red \der \enspace \lnot p \land \lnot q$ \hfill (deMorgan's Law)
+  \item{23.} $\lnot (p \land q) \enspace \red \der \enspace \lnot p \lor \lnot q$ \hfill (deMorgan's Law)
+  \item{24.} $\1 \enspace \der \enspace p \lor \lnot p$ \hfill (tautology)
+  \item{25.} $\lnot (p \Rightarrow q) \enspace \red \der \enspace \lnot q \land p$
+  \item{26.} $p \Rightarrow q \enspace \red \der \enspace \lnot p \lor q$
+  \item{27.} $\emptyset \enspace \der \enspace (p \Rightarrow q) \lor (q \Rightarrow p)$ \hfill (tautology)
+  \item{28.} $p \lor q \enspace \der \enspace (p \land q) \lor (\lnot p \Rightarrow q)$
+  \item{29.} $a \Rightarrow (b \lor c)$, $b \Rightarrow \lnot a$, $d \Rightarrow \lnot c \enspace \der \enspace a \Rightarrow \lnot d$
+  \item{30.} $u \Rightarrow (\lor \Rightarrow w)$, $(w \land x) \Rightarrow y$, $\lnot z \Rightarrow (x \land \lnot y) \enspace \der \enspace u \Rightarrow (\lor \Rightarrow z)$
+  \item{31.} $(a \lor b) \Rightarrow (c \land d)$, $(d \lor e) \Rightarrow f \enspace \der \enspace a \Rightarrow f$
+  \item{32.} $s \Rightarrow (t \land u)$, $t \Rightarrow w$, $(x \Rightarrow \lnot y) \Rightarrow \lnot w$, $t \Rightarrow (s \land \lnot y) \enspace \der \enspace t \Rightarrow x$
+  \item{33.} $s \Rightarrow (p \Rightarrow q)$, $(p \land q) \Rightarrow (s \land r)$, $p \enspace \der \enspace (\lnot s \lor \lnot q) \Rightarrow (\lnot s \land \lnot q)$
+  \item{34.} $[g \Rightarrow (h \land i)] \land [j \Rightarrow (h \land k)]$, $[(l \Rightarrow \lnot g) \land m] \Rightarrow n$, $(m \Rightarrow n) \Rightarrow (l \land j) \enspace \der \enspace i \lor k$
+\end{description}
+
+Translate the following into symbolic statements, and then derive the desired conclusion from the premises.
+
+\begin{description}
+  \item{35.} If I go the my first class tomorrow, I must get up very early; and if I go the the party tonight, I will stay up late. If I stay up late and get up very early, then I will have to get along on only six hours of sleep. I cannot get along on only six hours of sleep. So I must either miss my first class tomorrow, or stay away from the party tonight.
+  \item{36.} If he signs the new bill, the President will antagonize labor; and if he antagonizes labor, he cannot be reelected. But if he vetos the bill, he will break with the majority of his own party. The President certainly cannot be reelected if he breaks with the majority of his own party. The President must be reelected, or his political career is finished. He must either sign the bill or veto it. So it looks as though the President's political career is finished.
+\end{description}
+
+
+
+
+\newpage
+
+\section{Equivalence Relations}
+\markboth{6. Equivalence Relations}{6. Equivalence Relations}
+
+
+In this chapter, we will examine what it means for two things to be, in some sense, ``equivalent''. This notion turns out to have important applications in mathematics and science. There are many occasions when we want to describe certain objects as being ``equivalent''. For example, two equations in variables $x$ and $y$ can be thought of as equivalent if they have the same sets of solutions. Thus $y = 3x + 4$ and $6x = 2y-8$ are equivalent. Two computer programs might be thought of as ``equivalent'' if they always produce the same output from the same input. In a different context, we might think of two compound sentences in propositional logic to be ``equivalent'' if they have the same truth tables. For example, the truth table below shows that every implication is equivalent to its contrapositive.
+\begin{center}
+\begin{tabular}{||c|c||c|c||}
+  \hline
+  $p$ & $q$ & $p \to q$ & $\lnot q \to \lnot p$ \\ 
+  \hline
+  0 & 0 & 1 & 1 \\ 
+  \hline
+  0 & 1 & 1 & 1 \\ 
+  \hline
+  1 & 0 & 0 & 0 \\ 
+  \hline
+  1 & 1 & 1 & 1 \\ 
+  \hline
+\end{tabular}
+
+$1$ is True; $0$ is False
+\end{center}
+
+The significance of truth table equivalence can be easily seen if we limit our attention to the set of compound sentences with a single variable $p$. There are still infinitely many different compound sentences that we can write down; for example,
+\begin{equation*}
+( (p \lor p) \land (\lnot p \implies (p \land p)) ) \implies ( (\lnot p \lor p) \land p )
+\end{equation*}
+But there are only four possible different truth tables, given by the four compound sentences $p$, $\lnot p$, $p \lor \lnot p$, and $p \land \lnot p$.
+\begin{center}
+\begin{tabular}{||c||c|c|c|c||}
+  \hline
+  $p$ & $p$ & $\lnot p$ & $p \lor \lnot p$ & $p \land \lnot p$ \\
+  \hline
+  0 & 0 & 1 & 1 & 0 \\ 
+  \hline
+  1 & 1 & 0 & 1 & 0 \\ 
+  \hline
+\end{tabular}
+\end{center}
+
+Thus every compound sentence with one variable $p$ is equivalent to one of these four.
+
+All of the above notions of ``equivalent'' have something in common. In each case, there is a set (equations, programs, compound propositional sentences) which is broken up into disjoint bunches so that two members are ``equivalent'' exactly when they are in the same bunch. This observation leads to the following definition. We say that a collection $\Pc$ of non-empty subsets of a set $\A$ is a \emph{partition} of $\A$ if each member of $\A$ is in exactly one member of $\Pc$; that is,
+\begin{enumerate}[\hspace{1cm}(1.)]
+  \item $\bigcup \Pc = \A$ (the union of all the sets in $\Pc$ is $\A$); and
+  \item $X \cap Y = \emptyset$ for every pair of distinct $X, Y \in \Pc$. (We say $X$ and $Y$ are \emph{disjoint}.)
+\end{enumerate}
+
+A partition of $\A$, which consists of a set of subsets of $\A$, is often a rather awkward thing to talk about. It is usually much more convenient to talk about the associated relation of being ``equivalent'' among certain members of $\A$. In order to discuss this idea, we define a \emph{binary relation} on a set $\A$ to be a subset $\equiv$ of $\A \times \A$. For $x,y \in \A$, we often write ``$x \equiv y$'' to mean that $(x,y) \in \equiv$. For example, the ``less than or equal to'' relation $\leq$ on the set $\R$ of real numbers is formally defined as
+\begin{equation*}
+\leq = \{ (x,y)\ |\ x \text{ is less than or equal to } y \}
+\end{equation*}
+We normally prefer to write ``$3 \leq 7$'' instead of the rather strange-looking, but formally correct, ``$(3,7) \in \leq$''.
+
+Associated with any partition $\Pc$ of $\A$ is a relation $\equiv_{\Pc}$ of ``equivalence'' on $\A$: elements $x$ and $y$ of $\A$ are ``equivalent''; that is, $x \equiv_{\Pc} y$, if $x$ and $y$ are in the same member of $\Pc$. A relation $\equiv_{\Pc}$ that arises out of a partition $\Pc$ in this way is called an \emph{equivalence relation} on $\A$. In this case, the member of $\Pc$ containing an element $x \in \A$ is called the \emph{equivalence class} of $x$.
+
+Consider, for example, the set $\A$ of children in the elementary schools. For certain purposes, it is helpful to think of two children as being equivalent if they were born in the same year. We then have one grade for each equivalence class. If Charlie is in the fourth grade, his equivalence class is the fourth grade class. Or we might think of two children as equivalent if they are working at the same grade level in mathematics. We could then partition the children into different math classes, each working at a different level. Alternately, we could think of two children as equivalent if they have the same favorite hobby, and then partition them into clubs that each consist of children with a particular hobby. But sometimes we just need to realize that each child is unique, and focus on the partition with a single child in each equivalence class. These are all different partitions, or equivalence relations, on the same set $\A$. There is no ``right'' meaning of equivalence; rather, each notion of equivalence is useful in a different context.
+
+We would like to determine when a binary relation $\equiv$ is the equivalence relation associated with some partition. For example, is the relation $\leq$ on the numbers an equivalence relation? It is easy to see that every equivalence relation on $\A$ must have three simple properties: a relation $\equiv$ on $\A$ is
+\begin{itemize}
+ \item \emph{reflexive} if $x \equiv x$ for any $x \in \A$;
+ \item \emph{symmetric} if $y \equiv x$ whenever $x \equiv y$;
+ \item \emph{transitive} if $x \equiv z$ whenever $x \equiv y$ and $y \equiv z$.
+\end{itemize}
+
+If $\equiv$ is the equivalence relation $\equiv_{\Pc}$ for some partition $\Pc$, then it will certainly have these properties. The relation $\leq$, for example, is clearly not symmetric since $4 \leq 9$ but $9 \nleq 4$. Thus $\leq$ is not an equivalence relation.
+
+Conveniently, it turns out that every binary relation $\equiv$ on $\A$ which has these three simple properties is the equivalence relation associated with some partition. To see this, we define -- for a binary relation $\equiv$ on $\A$, and an element $x \in \A$ -- the \emph{$\equiv$-class} of $x$ to be the set
+\begin{equation*}
+[x] = \{ y\ |\ y \in \A \text{ and } x \equiv y \}
+\end{equation*}
+
+\begin{center}
+\unitlength 1mm
+\begin{picture}(110,42)(-55,-20)
+\put(-50,-10){\line(0,1){30}}
+\put(-10,-10){\line(0,1){30}}
+\put(-50,-10){\line(1,0){40}}
+\put(-50,20){\line(1,0){40}}
+\qbezier[15](-40,10)(-32.5,10)(-25,10)
+\qbezier[15](-25,0)(-17.5,0)(-10,0)
+\qbezier[30](-40,-10)(-40,5)(-40,20)
+\qbezier[30](-25,-10)(-25,5)(-25,20)
+\put(50,-10){\line(0,1){9}}
+\put(50,1){\line(0,1){19}}
+\put(10,-10){\line(0,1){30}}
+\put(19,-10){\line(0,1){30}}
+\put(21,-10){\line(0,1){19}} 
+\put(21,11){\line(0,1){9}}
+\put(34,-10){\line(0,1){19}} 
+\put(34,11){\line(0,1){9}}
+\put(36,-10){\line(0,1){9}} 
+\put(36,1){\line(0,1){19}}
+\put(10,-10){\line(1,0){9}} 
+\put(21,-10){\line(1,0){13}}
+\put(36,-10){\line(1,0){14}}
+\put(10,20){\line(1,0){9}} 
+\put(21,20){\line(1,0){13}}
+\put(36,20){\line(1,0){14}}
+\put(21,11){\line(1,0){13}} 
+\put(21,9){\line(1,0){13}}
+\put(36,1){\line(1,0){14}} 
+\put(36,-1){\line(1,0){14}}
+\put(-30,-15){$\A$} 
+\put(30,-15){$\Pc$}
+\put(-5,0){$x \equiv y$} 
+\put(23,-5){$x$} 
+\put(30,5){$y$}
+\put(-37,-5){$x$} 
+\put(-30,5){$y$}
+\end{picture}
+\end{center}
+
+\begin{description}
+  \item[Equivalence Relation Theorem:] Let $\equiv$ be a binary relation on the set $\A$. If $\equiv$ is reflexive, symmetric, and transitive, then the set $\Pc$ of $\equiv$-classes is a partition of $\A$, and $\equiv$ is the equivalence relation $\equiv_{\Pc}$ associated with $\Pc$.
+
+  \item[Proof:] Suppose $\equiv$ is reflexive, symmetric, and transitive. To see that $\Pc$ is a partition, let $x \in \A$. We must show that $x$ is in exactly one $\equiv$-class. Since $\equiv$ is reflexive, $x \equiv x$; so $x \in [x]$ where $[x] \in \Pc$. Suppose $x \in [u]$ and $x \in [v]$. We must show that $[u] = [v]$. Let $z \in [u]$. Then $u \equiv z$ and $u \equiv x$. Since $\equiv$ is symmetric, $x \equiv u$. Since $\equiv$ is transitive, $x \equiv z$. Since $x \in [v]$, we have $v \equiv x$. Again applying transitivity, $v \equiv z$; and so $z \in [v]$. Thus $[u] \subseteq [v]$.
+\end{description}
+
+Some of the fundamental ideas studied in calculus illustrate the notions of recursion and equivalence. We define an \emph{algebraic expression} recursively as follows:
+\begin{enumerate}[\hspace{1cm}(1.)]
+  \item $a$, $x^a$, $b^x$, $\ln(x)$, $\sin(x)$, $\cos(x)$, $\arcsin(x)$, and $\arctan(x)$ are algebraic expressions for all real numbers $a$ and $b > 0$.
+  \item If $f(x)$ and $g(x)$ are algebraic expressions, then so are $f(x) + g(x)$, $f(x)g(x)$, $\frac{f(x)}{g(x)}$, and $f(g(x))$.
+\end{enumerate}
+
+Each algebraic expression $f(x)$ determines an \emph{elementary function} $\fb$, whose value $\fb (a)$ at a number $a$ is obtained by replacing $x$ with $a$ in $f(x)$. Two algebraic expressions are \emph{equivalent} if they determine the same function; that is, they give the same value for any number $a$. Thus an elementary function corresponds to an equivalence class of algebraic expressions. When we ``simplify'' an algebraic expression, we are finding a simpler algebraic expression in the same equivalence class.
+
+The rules for computing formulas for derivatives amount to a single recursive rule for obtaining an expression $f'(x)$ for the derivative of a function, from an algebraic expression $f(x)$ for the function:
+\begin{enumerate}[\hspace{1cm}(1.)]
+  \item $[a]' = 0$; $[x^a]' = ax^{a-1}$; $[b^x]' = b^x \ln(b)$; $\ln'(x) = \frac{1}{x}$; $\sin'(x) = \cos(x)$; $\arcsin'(x) = \frac{1}{\sqrt{1-x^2}}$; and $\arctan'(x) = \frac{1}{1 + x^2}$.
+  \item $\ $
+    \begin{align*}
+    [f(x)+g(x)]' &= f'(x) + g'(x); \\
+    [f(x) g(x)]' &= f'(x)g(x) + f(x)g'(x); \\
+    \left[ \frac{f(x)}{g(x)} \right]' &= \frac{f'(x)g(x) - f(x)g'(x)}{g(x)^2}; \\
+    [f(g(x))]' &= f'(g(x)) g'(x)
+    \end{align*}
+\end{enumerate}
+
+
+\subsection*{Problems}
+
+In the first four problems, verify that the relation is an equivalence relation, and then describe its equivalence classes, which should form a partition of $\A$.
+
+\begin{enumerate}
+  \item $\A$ is the set of points $(x,y)$ in the plane. $(x,y) \equiv (x',y')$ if $(x,y)$ and $(x',y')$ are the same distance from the origin.
+  \item $x \equiv y$ if $x$ and $y$ are integers and $x - y$ is a multiple of $3$.
+  \item $x \equiv y$ if $x$ and $y$ are integers and $x + y$ is even.
+  \item Let $\Sb = \{a,b,c,d,e,f,g,h\}$, let $\T = \{a,b,c\}$, and let $\A$ be the set of all ($2^8$) subsets of $\Sb$. For $X,Y \in \A$, we define $X \equiv Y$ if $X$ and $Y$ have the same intersection with $\T$.
+  \item Let $\A$ be the (infinite) set of all compound sentences in propositional logic that can be constructed using the sentence variables $p$ and $q$ and the connectives $\lnot$, $\land$, $\lor$, and $\to$. For $a,b \in A$, we say that $a \equiv b$ if $a$ and $b$ have the same truth table.
+    \begin{enumerate}[(a)]
+      \item Show that $\equiv$ is an equivalence relation.
+      \item List of as many non-equivalent compound sentences as you can.
+      \item How many different equivalence classes are there?
+    \end{enumerate}
+  \item Let $\A = \{0,1\}^5$ be the set of 32 different five-tuples of $0$s and $1$s; that is, all sequences $(a,b,c,d,e)$ where $a,b,c,d,e \in \{0,1\}$. For $x,y \in \A$, define $x \equiv y$ to mean that $x$ and $y$ have the same number of $1$s. Show that $\equiv$ is an equivalence relation, and write down all the members of each of the different $\equiv$-classes.
+  \item Suppose $\A = \{0,1\}^n$ is the set of all $n$-tuples of $0$s and $1$s. For $x,y \in \A$, again define $x \equiv y$ to mean that $x$ and $y$ have the same number of $1$s. How many different $\equiv$-classes does $\A$ have?
+  \item There is a standard and important notion of equivalence between sets. Let $\A$ denote the collection of all sets. For $X,Y \in \A$, we say that $X \equiv Y$ if there is a bijection $f\ :\ X \to Y$ from $X$ to $Y$. Thus finite sets $X$ and $Y$ are equivalent if and only if they have the same number of elements, but in general they need not be finite. Show that $\equiv$ is reflexive, symmetric, and transitive.
+\end{enumerate}
+
+
+\end{document}

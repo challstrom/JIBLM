@@ -1,0 +1,1008 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Advanced Calculus}
+\author{Robert M. Kauffman}
+\date{ }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+
+\section{Introduction}
+\markboth{1. Introduction}{1. Introduction}
+
+\pagenumbering{arabic}
+
+This course has two objectives. First, we must cover the major theorems of differential and integral calculus in two semesters, in such a fashion that the students in the class understand what they say and why they are true. Second, successful students will learn how to think logically -- as mathematicians do -- and present the results, defending your ideas when necessary, and also admitting mistakes when you have made one. This skill is useful in industry, and in every walk of life; for most of you, it may be more important than the subject. In the third quarter, we apply these theorems to the study of the elementary functions. For example, what is the definition of the function $f(x) = \cos(x)$? In our course, we are not allowed to use picture definitions, because ultimately you cannot justify calculus with pictures. Before we discuss the technical background or the rules for this course, let's set the stage.
+
+
+\subsection{Historical Background}
+
+Calculus had enormous success in explaining the physical world. As Alexander Pope wrote in the eighteenth century: ``God said, `Let Newton Be!' And all was light.'' People began to believe that they could \emph{understand} the natural world, by reasoning from first principles. They did not mean that they had memorized a whole bunch of rules. They meant that there were only a very few basic things which needed to be understood, and everything else would follow. One person could understand almost \emph{everything}, if that person could understand the basic things and think well enough.
+
+However, nagging doubts crept in. The method of proceeding from basic principles to specific applications is called \emph{deduction}. All the deductions were based upon mathematics of a very sophisticated sort. Was the mathematics \emph{itself} deductive, or was it just a bunch of arbitrary rules? If the latter is true, it meant that people had been fooling themselves. In fact, these deductions about the world would have no validity. Each person, each culture, would have its own ``truth''. There would be no way to decide who was right and who was wrong. Even experiments would not be adequate, because these are only used to test \emph{theories}. Theories are deductive structures based upon fundamental principles. What if the very tool needed for these deductions -- mathematics -- was not itself deductive?
+
+These doubts got more and more pervasive, because people discovered contradictions in the mathematics they were using. One person would say a series converged, and another would say it diverged. Nobody knew who was right. The commonly repeated (in physics texts) statement that Lagrange proved the stability of the solar system is an example. His proof is wrong. All the series diverge. Nobody knows to this day whether the solar system is actually stable, at all.
+
+The model for mathematics was Euclidean geometry, which when studied properly, deduces everything from general principles. However, nobody had ever reduced calculus to such a basis. A crisis was at hand.
+
+What we study in this course is the solution: we reduce calculus to a few basic ideas, and deduce everything else logically. This is a procedure which when applied properly, will always tell you (or more properly, a group of people) what is true, what is not, and what is unknown. Knowing this procedure is the difference between mathematicians and everybody else. You are going to become mathematicians. Let's begin!
+
+
+\subsection{Defending Your Proof}
+
+One of the most important things this course will teach you is how to be assertive without being foolish. It is foolish to defend ideas which are wrong. It is also foolish to fail to defend ideas which are correct. It is perfectly okay to have made a mistake; we all do. But how do we recognize one? We are going to learn a process of analysis which will help us decide what is right and what is not. Here is the process.
+
+We should all ask questions of each proof, whenever there is anything we do not understand. In addition, I will often ask questions even when I do understand the proof. Sometimes, I will ask them in such a way that you may believe that I am suggesting the proof is wrong. Your job is just to either a) answer the question, or b) decide you cannot answer it and sit down. You should try to anticipate questions in your preparation.
+
+To question someone is not to challenge them personally. None of us should challenge each other personally. But to question someone is to try to find out what they are saying, and to get them to explain their ideas in detail.
+
+So in order to get credit for a problem, you must be able to answer all questions, and to teach the other people in the group how your proof goes. I encourage people other than me to ask questions. Asking good questions is one of the skills the course teaches. Answering them is another. We \emph{always} question authority here. You should question me, just as I will question you. The questions and answers need to be according to a procedure, however, so that we don't get chaotic.
+
+
+\subsection{The Rules}
+
+\begin{enumerate}[1.]
+
+  \item Your grade is detemined by your total points, and nothing else. One problem is worth one point, unless I state that it is worth two points.
+
+  \item Proofs must be your own, done without help. You will be carefully questioned on your presentations. If you have found it in a book, it will probably be based on another set of definitions and theorems; you won't succeed this way. Besides, it is cheating. If you should somehow manage to get away with looking things up, you must be pretty good -- good enough to do it on your own. Then the person you will have cheated is yourself; the confidence and insight you could have gained, you did not. \emph{This course can give you the confidence to stand on your own feet and defend your ideas, but only if you follow the rules.}
+
+  \item I will call for volunteers on each problem, selecting the three students with the fewest total points, except for the exception given below. Students who are selected will write their proofs on the board, up to three at a time. The class will look at them as they are being written, perhaps copying some down. Then students will go through their proofs, one at a time, answering questions from the class and from me about each step. Each person who gets the proof right (this means explaining it to the satisfaction of everyone present) gets a point.
+
+  \item You have one minute to answer a question about the proof. If you cannot answer after this time, you must sit down. (Of course, your answer may take more than a minute, but you cannot improvise for more than a minute. One mistake and you must sit down.) This means that you should have written out all proofs beforehand, in great detail, and you must try to anticipate any difficulties. I will not help you do this during my office hours. I will help you analyze any proofs which have been given already in class, and I will help you to understand the definitions and statements of theorems.
+
+  \item Any student who has not recited on a given day is chosen ahead of any student who has. (This is the exception mentioned above.)
+
+  \item Any student who has not recited in either the current class or the preceding class is chosen ahead of any student who has.
+
+  \item There is no penalty for an incorrect recitation, except that you may not be able to recite again that day or the next, because of the previous rules.
+
+  \item I expect more in terms of clear proofs from students taking the course at the 500 (graduate) level than I do of students taking the course at the 400 (undergraduate) level. This will be enforced in the sense that students with unclear proofs will be asked to sit down sooner.
+
+  \item The class should gradually learn to analyze the correctness of proofs, without depending on me. This is part of the grade, in the following way. It influences where I set the total points necessary for a given grade. So in a class which is constantly demonstrating its abilities, I may set the point total for a grade of A or B lower than for a class which just sits there and waits for me to analyze all the proofs. For this reason, and because if more people are reciting it is harder to get points, I cannot say now what total leads to which grade. I can sort of tell you how you are doing as we go along. \emph{You are not competing with each other, but with the hundreds of other students I have taught in this course.}
+
+  \item Finally, this is not a rule, but advice: try to learn to analyze arguments objectively, and leave your ego out of it. Don't be too quick to think you are wrong, and don't be unable to see when you have made a mistake. There is such a thing as objective truth, independent of who we are. Try to find out what it is. One way to do this is to learn to question your own proofs, and then to answer these questions.
+
+\end{enumerate}
+
+
+\subsection{Words We Don't Use, and Things We Don't Do}
+
+\begin{itemize}
+
+  \item We don't present vague arguments. Wrong arguments can be discussed, but students with vague and unclear arguments will be asked to sit down.
+
+  \item We don't use the word ``obvious''.
+
+  \item We don't use, or think, the word ``stupid''.
+
+  \item We don't attack people personally.
+
+  \item We don't try to intimidate people who ask questions of our arguments.
+
+  \item We don't get mad; or if we do, we try to get over it fast.
+
+  \item We don't try to put up proofs we have not written down.
+
+  \item We don't get too upset with ourselves, or each other, when a mistake is made. Mistakes will be made, by everybody.
+
+  \item We don't let arguments go by which we don't understand.
+
+  \item We don't use concepts we have not defined.
+
+  \item We don't use proofs we got out of books, or work together (in this course).
+
+\end{itemize}
+
+
+\subsection{Words We Use, and Things We Do}
+
+\begin{itemize}
+
+  \item We prepare our arguments in advance, so as to be as clear as possible.
+
+  \item We try to learn from our mistakes.
+
+  \item We ask questions in the form ``Could you explain why step 5 follows from step 4?''
+
+  \item We let people answer the questions we have asked.
+
+  \item We let people know when we think they have done something clever.
+
+  \item We write our arguments in a step-by-step way, to make it possible for others to analyze them.
+
+  \item When we use an earlier result, we cite it specifically. For example, ``By Theorem 29, we see that $\ldots$''
+
+  \item If we want to introduce a new concept, we give a rigorous definition, in the style of this course.
+
+\end{itemize}
+
+
+\subsection{History of The Real Numbers}
+
+Calculus demands a set of numbers with the property that it is closed under limits. You are taught in elementary calculus that an irrational number, like $\sqrt{2}$, can be a limit of rational numbers. There is a huge problem with this. Basic number theory can be used to show that there is no rational number $x$ such that
+\begin{equation*}
+x^{2}=2
+\end{equation*}
+However, is there a \emph{number} $x$ such that $x^{2}=2$? If so, the word \emph{number} must be defined.
+
+This problem stopped the rigorous development of calculus for a couple thousand years. We solve it now.
+
+
+
+\newpage
+
+\section{The Real Numbers}
+\markboth{2. The Real Numbers}{2. The Real Numbers}
+
+\begin{description}
+
+  \item[Definition 1:] The \emph{integers} are the counting numbers (postive whole numbers), and their negatives, and also $0$. The \emph{rational numbers} are those numbers of the form $\frac{a}{b}$, where $a$ and $b$ are integers and $b \neq 0$.
+
+  \item[] Obvious fact, which we do not prove: The sum, product, and quotient (if the denominator is non-zero) of two rational numbers, is another rational number. In this course, we take the basic arithmetic of rational numbers as being known, as well as manipulations with inequalities involving rational numbers.
+
+  \item[Definition 2:] A non-empty set $S$ of rational numbers is said to have a \emph{rational upper bound} $M$, where $M$ is a rational number, if every element of $S$ is less than or equal to $M$.
+
+  \item[Theorem 3:] (Prove, or else give an example where the statement is not true, therefore disproving this theorem.) If $M$ is a rational upper bound of a set $S$ of rational numbers, then $M \in S$. 
+
+  \item[Definition 4:] A set of $S$ of rational numbers is said to have a \emph{rational lower bound} $L$, where $L$ is a rational number, such that every element of $S$ is bigger than or equal to $L$.
+
+  \item[Theorem 5:] (Prove or Disprove.) Suppose that $S$ is a set of rational numbers with a rational upper bound. Let $U$ be the set of rational upper bounds of $S$. Then $U$ has a rational lower bound.
+
+  \item[Definition 6:] A counting number (positive integer) $a$ is said to be \emph{even} if $a = 2b$, where $b$ is a counting number. Similarly, $a$ is said to be \emph{odd} if it is of the form $a = 2b-1$, where $b$ is a counting number.
+
+  \item[Axiom:] (This is not proved. It is part of the definition of whole numbers. It is called the \emph{induction axiom}.) If $S$ is any non-empty set of counting numbers, then there exists a rational lower bound $M_{0}$ such that $M_{0} \in S$.
+
+  \item[Theorem 7:] Given any rational number $a$, there exists a positive integer (also called a \emph{counting number}) $N$ such that $N > a$. 
+
+  \item[Hint on proof:] Consider the set of all $n$ such that there exists a positive integer $m$ such that there is no counting number greater than $\frac{m}{n}$. If this set is nonempty, there must be a least element; call it $N$. Then for some $M$, there is no counting number greater than $\frac{M}{N}$. But there is a counting number greater than $\frac{M}{N-1}$. (Could $N$ be $1$?)
+
+  \item[Theorem 8:] Any counting number is either of the form $2n-1$ where $n$ is a counting number, or of the form $2n$ where again $n$ is a counting number. 
+
+  \item[Hint on proof:] Consider the set of all counting numbers which are not of this form. If this set is nonempty, there must be a least element $\ldots$
+
+  \item[Lemma 9:] $\left\{ r\ :\ \frac{m}{2r} \text{ not a whole number} \right\}$ has a least element.
+
+  \item[Theorem 10:] There is no positive rational number $x$ such that $x^{2} = 2$.
+
+  \item[Hint on the proof:] Suppose there were. Then $x = \frac{m}{n}$, where $m$ and $n$ are counting numbers. We may assume that $m$ and $n$ have no common factors. The set of all counting numbers $r$ such that $\frac{m}{2^{r}}$ is not a whole number must have a least element; call it $j$. Thus $m = 2^{j-1}b$, where $b$ is an odd number. This leads to a contradiction. (The counting numbers are $1, 2, \cdots$, but $0$ is not a counting number.)
+
+  \item[Question:] Can this be done without assuming $m$ and $n$ are in lowest terms?
+
+  \item[Theorem 11:] (Prove or disprove. Remember that any assertion you make in a disproof must also be proved.) Suppose that $S$ is a set of rational numbers with a rational upper bound. Let $U$ be the set of rational upper bounds of $S$. Then there is some element of $U \cap S$.
+
+  \item[Definition 12:] Suppose that $S$ is a set of rational numbers with a rational upper bound. Let $U$ be the set of rational upper bounds of $S$. A \emph{rational least upper bound} of $S$ is an element $a$ of $U$ such that $a \leq x$ for all $x \in U$.
+
+  \item[Theorem 13:] (Prove or disprove.) Any set of rational numbers which has a rational upper bound also has a rational least upper bound. 
+
+  \item[Definition 14:] A \emph{sequence of rational numbers} is a set $S$ of ordered pairs $\{ (n, a_{n}) \}$, where every counting number $n$ is the first element of one and only one ordered pair of $S$, and where $a_{n}$ is a rational number for each $n$.
+
+  \item[Definition 15:] A sequence of rational numbers is said to be a \emph{Cauchy sequence} if the following is true: 
+    \begin{quote}
+    For every counting number $r$, there is a counting number $N$ such that $|a_{n}-a_{m}| < \frac{1}{r}$ for all $n,m > N$.
+    \end{quote}
+
+  \item[Definition 16:] A sequence of rational numbers is said to \emph{converge to a rational number} $a$ if the following is true: 
+    \begin{quote}
+    For every counting number $m$, there is a counting number $N$ such that $|a_{n}-a| < \frac{1}{m}$ for all $n > N$.
+    \end{quote}
+
+  \item[Example 17:] (Prove this.) $\left\{ \left( n, \frac{1}{n} \right) \right\}$ is a Cauchy sequence. 
+
+  \item[Theorem 18:] If a sequence of rational numbers converges to a rational number, then the sequence is a Cauchy sequence. 
+
+  \item[Example 19:] (Prove this.) The sequence $\left\{ \left( n, \frac{1}{n} \right) \right\}$ converges to $0$. 
+
+  \item[Example 20:] (Prove this.) The sequence $\left\{ \left( n, \frac{1}{n^{2}} \right) \right\}$ converges to $0$.
+
+  \item[Example 21:] (Prove this.) The sequence $\left\{ \left( n, \frac{1}{n^{2}} + \frac{1}{n} \right) \right\}$ is a Cauchy sequence. Eslami proved that sum of convergent sequences is convergent.
+
+  \item[Definition 22:] The \emph{sum} of two sequences $\{ (n, a_{n}) \}$ and $\{ (n, b_{n}) \}$ of rational numbers is the sequence $\{ (n, a_{n} + b_{n}) \}$. The \emph{product} of the sequences is the sequence $\{ (n, a_{n} b_{n}) \}$.
+
+  \item[Theorem 23:] The sum of two Cauchy sequences of rational numbers is another Cauchy sequence of rational numbers.
+
+  \item[Definition 24:] A set of rational numbers is said to be \emph{bounded} if it has a rational upper bound and a rational lower bound.
+
+  \item[Definition 25:] The \emph{range} of a sequence $\{ (n, a_{n}) \}$ of rational numbers is $\{ a_{n} \}$. (Notice the difference between a sequence and its range.)
+
+  \item[Definition 26:] Let $X$ and $Y$ be sets. A \emph{function} $f$ with domain $X$ and range contained in $Y$ is a set of ordered pairs $(x,y)$ with the following properties:
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item $x \in X$, $y \in Y$;
+      \item for any $x \in X$, there exists an ordered pair in $f$ with first element $x$;
+      \item if $(x,y)$ and $(x,z)$ are elements of $f$, then $y=z$.
+    \end{enumerate}
+
+  \item[Definition 27:] A function $f$ is said to be \emph{one-to-one} if it has the property that if $(x_{1}, y_{1})$ and $(x_{2}, y_{2})$ are ordered pairs of $f$, and $x_{1} \neq x_{2}$, then $y_{1} \neq y_{2}$.
+
+  \item[Definition 28:] The \emph{range} of a function $f$ is $\{ y\ :\ \exists x \in \text{ domain } (f)\ :\ (x,y) \in f \}$.
+
+  \item[Definition 29:] A set $S$ is said to be \emph{finite} if it is the range of a one-to-one function with domain of the set of all counting numbers less than or equal to $N$. It is said to be \emph{infinite} if it is not finite. $N$ is called the \emph{cardinality} of this finite set.
+
+  \item[Lemma 30:] If $S$ has cardinality $N$ and cardinality $M$, then there exists a 1-to-1 function from $\{ n \in \mathcal{N}\ :\ n \leq N \}$ with range $\{ n \in \mathcal{N}\ :\ n \leq M \}$. Eslami defined composition of functions, and proved that if $f$ is 1-to-1 with domain $A$ and range $S$, then $f^{-1}$, which he defined, has domain $S$ and range $A$. He proved that a composition of functions is a function, and composition of 1-to-1 functions is 1-to-1.
+
+  \item[Lemma 31:] Suppose that $\mathcal{N}_{n}= \{ n \in \mathcal{N}\ :\ n \leq N \}$. Suppose that $n>1$. Let $S$ be a subset of $\mathcal{N}_{n}$ formed by removing one element. Then there is a 1-to-1 function from $\mathcal{N}_{n}$ with range $S$. 
+
+  \item[Theorem 32:] (open) If a set $S$ has cardinality $N$ and also cardinality $M$, then $N = M$.
+
+  \item[Lemma 33:] If a finite set is removed from a finite set, the resulting set is finite. Eslami, mid-proof: has already proved that if you take one element out of a set with cardinality $N$, the resulting set is finite, with cardinality $N-1$. He must produce an induction proof here, however. 
+
+  \item[Theorem 34:] Any subset of a finite set is finite. (Note that this is not immediate from the preceding.) 
+
+  \item[Corollary 35:] Let $S$ be a finite set. Let $V$ be a subset of $S$. Then
+    \begin{equation*}
+    \text{Card} (V) + \text{Card} (S \backslash V) = \text{Card} (S)
+    \end{equation*}
+    (This may have already been proved by the time it comes up.)
+
+  \item[Theorem 36:] If $S$ is the range of a function with domain a finite set, then $S$ is finite. 
+
+  \item[Theorem 37 (the pigeonhole principle):] Suppose that $S$ has cardinality $N$, and $W$ has cardinality $M$. Suppose that $N > M$. Then there does not exist a 1-to-1 function with domain $S$ and range contained in $M$. 
+
+  \item[Theorem 38:] Any finite set of rational numbers is bounded, and has a biggest and least element. (This must be proved. No informal arguments accepted.) 
+
+  \item[Theorem 39:] The range of any Cauchy sequence of rational numbers is bound-ed. 
+
+  \item[Theorem 40:] The product of two Cauchy sequences of rational numbers is another Cauchy sequence of rational numbers. 
+
+  \item[Definition 41:] Let $S_{1} = \{ (n, a_{n}) \}$ and $S_{2} = \{ (n, b_{n}) \}$ be two sequences of rational numbers. The \emph{intertwining sequence} of the pair $(S_{1}, S_{2})$ is the set of ordered pairs $\{ (2n, b_{n}) \} \cup \{ (2n-1, a_{n}) \}$.
+
+  \item[Theorem 42:] Let $S_{1}$ and $S_{2}$ be two Cauchy sequences of rational numbers. Then the intertwining sequence of $(S_{1}, S_{2})$ is a Cauchy sequence if and only if the intertwining sequence of $(S_{2}, S_{1})$ is a Cauchy sequence. 
+
+  \item[Theorem 43:] Let $S_{1}$ and $S_{2}$ be two sequences of rational numbers such that $S_{1}$ converges to the rational number $a$, and $S_{2}$ converges to the rational number $b$. Suppose $a = b$. Then the intertwining sequence $(S_{1}, S_{2})$ is a Cauchy sequence. 
+
+  \item[Theorem 44:] Let $S_{1}$ and $S_{2}$ be two sequences of rational numbers such that $S_{1}$ converges to the rational number $a$, and $S_{2}$ converges to the rational number $b$. Suppose that the intertwining sequence $(S_{1}, S_{2})$ is a Cauchy sequence. Then $a = b$. 
+
+  \item[Definition 45:] Let $S_{1}$ and $S_{2}$ be Cauchy sequences of rational numbers such that the intertwining sequence of $(S_{1}, S_{2})$ is a Cauchy sequence. Then we say that $S_{1}$ is \emph{equivalent} to $S_{2}$; we write the statement that $S_{1}$ is equivalent to $S_{2}$ as $S_{1} \equiv S_{2}$.
+
+  \item[Theorem 46:] Let $S$ be a Cauchy sequence of rational numbers. Then $S \equiv S$.
+
+  \item[Theorem 47:] Suppose that $S_{1}$ and $S_{2}$ are Cauchy sequences of rational numbers which converge to the same rational number $a$. Then $S_{1} \equiv S_{2}$.
+
+  \item[Theorem 48:] Suppose that $S_{1}$ and $S_{2}$ are Cauchy sequences of rational numbers such that $S_{1}$ converges to the rational number $a$, and $S_{2}$ converges to the rational number $b$. Suppose that $S_{1} \equiv S_{2}$. Then $a = b$.
+
+  \item[Theorem 49:] Let $S_{1}$ and $S_{2}$ be Cauchy sequences of rational numbers. Suppose $S_{1} \equiv S_{2}$. Then $S_{2} \equiv S_{1}$.
+
+  \item[Theorem 50:] Let $S_{1}$, $S_{2}$, and $S_{3}$ be Cauchy sequences of rational numbers. Suppose $S_{1} \equiv S_{2}$ and $S_{2} \equiv S_{3}$. Then $S_{1} \equiv S_{3}$. 
+
+  \item[Definition 51:] Let $S$ be a Cauchy sequence of rational numbers. The \emph{equivalence class} of $S$, written $[S]$, is the set of all Cauchy sequences of rational numbers which are equivalent to $S$.
+
+  \item[Theorem 52:] Let $S_{1}$ and $S_{2}$ be Cauchy sequences of rational numbers. Suppose $S_{3} \equiv S_{1}$ and $S_{4} \equiv S_{2}$. Then (each part worth one point):
+    \begin{enumerate}
+      \item If $S_{1} + S_{2}$ is the sum of the sequence $S_{1}$ and the sequence $S_{2}$, then $(S_{3} + S_{4}) \equiv (S_{1} + S_{2})$. 
+      \item If $S_{1} \cdot S_{2}$ is the product of the sequence $S_{1}$ and the sequence $S_{2}$, then $S_{1} \cdot S_{2} \equiv S_{3} \cdot S_{4}$. 
+    \end{enumerate}
+
+  \item[Definition 53:] A \emph{real number} is $[S]$, where $S$ is a Cauchy sequence of rational numbers. Thus a real number is an equivalence class of Cauchy sequences of rational numbers.
+
+  \item[Theorem 54:] Let $x$ be a rational number. Then $[ \{ (n,x) \} ] = \{ S\ :\ S \rightarrow x \}$. ($S \rightarrow x$ means $S$ converges to $x$). 
+
+  \item[Definition 55:] If $S$ and $T$ are Cauchy sequences of rational numbers, then $[S] + [T] = [S+T]$. Also $[S] [T] = [ST]$. Note that this definition has a problem. The problem is, suppose that for example, $S_{1} \equiv S_{2}$ and $T_{1} \equiv T_{2}$. Is $S_{1} + T_{1} \equiv S_{2} + T_{2}$? If not, the above definition does not make sense.
+
+  \item[Theorem 56:] The above definition of addition of real numbers makes sense: it does not depend upon which sequence out of $[S]$ or which sequence out of $[T]$ you pick, but only on $[S]$ and $[T]$. 
+
+  \item[Theorem 57:] The above definition of multiplication of real numbers makes sense.
+
+  \item[Theorem 58:] Let $a,b,c$ be real numbers. Then
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item $ab=ba$; 
+      \item $a(bc) = (ab)c$; 
+      \item $a(b+c) = ab+ac$; 
+      \item $a+b = b+a$; 
+      \item $a+(b+c) = (a+b)+c$. 
+    \end{enumerate}
+
+  \item[Theorem 59:] (One point each.) Let $x$ be a rational number. Let $\phi(x) = \{ S\ :\ S \rightarrow x \}$. Then $\phi(x)$ is a real number for each $x$, and:
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item if $\phi(x) = \phi(y)$, then $x=y$;
+      \item for any two rational numbers $a$ and $b$, then $\varphi(a+b) = \varphi(a) + \varphi(b)$;
+      \item for any two rational numbers $a$ and $b$, $\varphi(ab) = \varphi(a) \cdot \varphi(b)$.
+    \end{enumerate}
+
+  \item[Theorem 60:] Suppose that $S = \{ n, s_{n} \}$, $T = \{ n, t_{n} \}$ are Cauchy sequences of rational numbers such that there exists an $N > 0$ with $s_{n} = t_{n}$ for all $n > N$. Then $S \equiv T$.
+
+  \item[Theorem 61:] Suppose that $S$ is a Cauchy sequence of rational numbers, such that $S$ is not equivalent to the sequence $\{ (n,0) \}$. Then there exists a sequence $T = \{ (n, t_{n}) \}$ of rational numbers such that $t_{n} \neq 0$ for all $n$ (in other words, there is no $n$ such that $t_{n} = 0$), and such that $S \equiv T$. 
+
+  \item[Theorem 62:] Suppose that $T = \{ (n, t_{n}) \}$ is a sequence of rational numbers such that $T$ is not equivalent to the sequence $\{ (n,0) \}$, and such that $t_{n} \neq 0$ for all $n$. Then there exists a real number $S$ such that $[S] [T] = \phi(1)$. 
+
+  \item[Theorem 63:] Let $a$ be a real number such that $a \neq \phi(0)$. Then there exists another real number $b$ such that $ab = \phi(1)$. 
+
+  \item[Theorem 64:] Let $a$ be a real number such that $a \neq \phi(0)$. Suppose that $b$ is a real number such that $ab = \phi(0)$. Then $b = \phi(0)$.
+
+  \item[Definition 65:] A real number $a$ is said to be \emph{non-negative} if $a=[S]$, where $S$ is a Cauchy sequence of non-negative rational numbers. $a$ is said to be \emph{positive} if $a$ is non-negative and $a \neq [\phi(0)]$. $a$ is said to be \emph{negative} if it is not non-negative.
+
+  \item[Theorem 66:] If $a = \frac{m}{n}$ is one of our original rational numbers, and $a > 0$, then $\phi(a)$ is positive. 
+
+  \item[Theorem 67:] If $a$ is a real number and $a$ is positive, then $\phi(-1) a$ is negative. 
+
+  \item[Definition 68:] We say that $a > b$, where $a$ and $b$ are real numbers, if $a-b$ is positive. We define $-a$ to be $\phi(-1) a$, so $a-b$ is defined to be $a + (-b)$.
+
+  \item[Theorem 69:] If $a > b$, then $-b > -a$.
+
+  \item[Definition 70:] Let $a$ be a real number. If $a \geq \phi(0)$, then we define $|a| = a$. If $a$ is negative, we define $|a| = -a$.
+
+  \item[Theorem 71:] (One point each.) The following are true: 
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item The sum of a positive real number and a non-negative real number is positive. 
+      \item If $a$ is negative, $-a$ is positive. 
+      \item If $a$ is negative, and $a = [S]$, then if $S = \{ (n, a_{n}) \}$, there exist counting numbers $N,r > 0$ such that $a_{n} < \frac{-1}{r}$ for all $n > N$.
+      \item If $a$ is positive, then there exists a sequence $S$, and a positive integer $r$, such that $a = [S]$, $S = \{ n, a_{n} \}$, and $a_{n} > \frac{1}{r}$ for all $n$.
+      \item The sum of two non-negative real numbers is non-negative.
+      \item If $a$ is positive, then $a > \phi(0)$.
+      \item If $a \geq b$ and $c \geq d$, then $a+c \geq b+d$.
+      \item If $a > b$ and $c \geq d$, then $a+b > c+d$.
+      \item $|x| \geq -|x|$.
+      \item $x \geq -|x|$.
+      \item $|x| + |y| \geq |x+y|$.
+\end{enumerate}
+
+  \item[Theorem 72:] Let $a,b,c$ be real numbers. Then $|a-b| + |b-c| \geq |a-c|$.
+
+  \item[Theorem 73:] Suppose that $a$ and $b$ are real numbers such that $a \geq \phi(0)$, $b \geq \phi(0)$. Then $ab \geq \phi(0)$.
+
+  \item[Theorem 74:] If $a,b$ are real numbers such that $a > \phi(0)$, $b > \phi(0)$, then $ab > \phi(0)$.
+
+  \item[Definition 75:] A \emph{sequence of real numbers} is a function with domain of the counting numbers and range contained in the real numbers.
+
+  \item[Definition 76:] Let $S = \{ (n, a_{n}) \}$ be a sequence of real numbers. $S$ is said to \emph{converge} to a real number $a$ if the following is true: 
+    \begin{quote}
+    For any positive integer $m$, there is a positive integer $N$ such that $|a_{n}-a| < \phi \left( \frac{1}{m} \right)$ for all $n > N$.
+    \end{quote}
+
+  \item[Theorem 77:] Suppose that $S$ is a Cauchy sequence of rational numbers which converges to the rational number $a$. Then $\phi(S)$ converges to $\phi(a)$, where $\phi(S) = \{ ( n, \phi(a_{n}) ) \}$. 
+
+  \item[Theorem 78:] Let $a$ be a real number. Then there exists a sequence of elements of the range of $\phi$ which converges to $a$. 
+
+  \item[Lemma 79:] Suppose that $a$ is a real number. Then there exists a positive integer $n$ such that $\phi(n) > a$. 
+
+  \item[Lemma 80:] Suppose that $a$ is a real number such that $\phi(0) \leq a < \phi \left( \frac{1}{m} \right)$ for all positive integers $m$. Then $a = \phi(0)$. 
+
+  \item[Theorem 81:] Suppose that $S$ is a sequence of real numbers, such that $S$ converges to $a$, and also $S$ converges to $b$. Then $a=b$. 
+
+  \item[Theorem 82:] If $a$ and $b$ are real numbers such that $b > a$, then there is an element $c$ of the range of $\phi$ such that $b > c > a$. 
+
+  \item[Definition 83:] A sequence of real numbers is said to be a \emph{Cauchy sequence} if the following is true: 
+    \begin{quote}
+    For any positive integer $r$, there is a positive integer $N$ such that $|a_{n}-a_{m}| < \phi \left( \frac{1}{r} \right)$ whenever both $n$ and $m$ are greater than $N$.
+    \end{quote}
+
+  \item[Definition 84:] A sequence $\{ a_{n} \}$ of real numbers is said to be \emph{bounded} if there exists a positive integer $M$ such that $\phi(-M) \leq a_{n} \leq \phi(M)$ for all $n$.
+
+  \item[Lemma 85:] Any Cauchy sequence of real numbers is bounded. 
+
+  \item[Theorem 86:] Suppose that a sequence $S$ of real numbers converges to a real number $a$. Then $S$ is a Cauchy sequence.
+
+  \item[Definition 87:] Let $S = \{ (n, a_{n}) \}$ be a sequence of real numbers. A \emph{subsequence} of $S$ is a sequence $T$, formed as follows:
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item find a function $\theta$ with domain the counting numbers and range contained in the counting numbers, such that $\theta(n) > \theta(m)$ whenever $n > m$;
+      \item $T = \{ (m, a_{\theta(m)} ) \}$.
+    \end{enumerate}
+
+  \item[Note:] To specify a subsequence, you must specify $\theta$.
+
+  \item[Exercise 88:] Find a subsequence of the sequence $\left\{ \left( n, \frac{1}{n} \right) \right\}$ which has range the same as the sequence $\left\{ \left( n, \frac{1}{n^{2}} \right) \right\}$.
+
+  \item[Exercise 89:] $\theta (n) \geq n$. 
+
+  \item[Theorem 90:] (Prove or disprove.) Suppose that a sequence $S$ of real numbers has a subsequence which converges to the real number $a$. Then $S$ converges to $a$.
+
+  \item[Theorem 91:] Suppose a Cauchy sequence $S$ of real numbers has a subsequence $T$ such that $T$ converges to the real number $a$. Then $S$ converges to $a$. 
+
+  \item[Lemma 92:] Let $\{ (n, a_{n}) \}$ be a Cauchy sequence of rational numbers. Then there exists a real number $a$ such that $( n, \phi (a_{n}) )$ converges to $a$. 
+
+  \item[Lemma 93:] If $\{ (n, a_{n}) \}$ converges to $a$, and $\{ (n, b_{n}) \}$ converges to $a$, and $a_{n} \leq c_{n} \leq b_{n}$, then $\{ (n, c_{n}) \}$ converges to $a$.
+
+  \item[Theorem 94 (the completeness theorem):] Suppose that $S$ is a Cauchy sequence of real numbers. Then there is a real number $a$ such that $S$ converges to $a$.
+
+  \item[Definition 95:] Let $S$ be a set of real numbers. An \emph{upper bound} of $S$ is a real number $b$ such that $b \geq x$ for any $x \in S$. A \emph{lower bound} of $S$ is a real number $c$ such that $c \leq x$ for any $x \in S$.
+
+  \item[Theorem 96:] Suppose that $S$ is a sequence of real numbers such that the range of $S$ has an upper bound and a lower bound. Then $S$ is bounded. 
+
+  \item[Definition 97:] Suppose that $S = \{ (n, a_{n}) \}$ is a sequence of real numbers, such that for each positive integer $n$, $a_{n+1} \geq a_{n}$. Then $S$ is said to be \emph{non-decreasing}.
+
+  \item[Lemma 98:] If a sequence of real numbers converges to a real number $a$, then any subsequence also converges to $a$. 
+
+  \item[Exercise 99:] For any positive integer $i$, $\frac{1}{2^{i}} \leq \frac{1}{i}$. 
+
+  \item[Exercise 100:] The sequence $\left\{ \left( i, \phi \left( \frac{1}{2^{i}} \right) \right) \right\}$ converges to $\phi(0)$. 
+
+  \item[Theorem 101:] Suppose that $S = \left\{ \left( n, a_{n} \right) \right\}$ is a non-decreasing sequence of real numbers. Suppose that in addition, $\{ a_{n} \}$ has an upper bound. Then there is a real number $a$ such that $S$ converges to $a$. 
+
+  \item[Definition 102:] A \emph{lower bound} of a set $S$ of real numbers is a real number $a$ such that $a \leq s$ for all $s \in S$.
+
+  \item[Definition 103:] Let $S$ be a set of real numbers with an upper bound. Let $U$ be the set of upper bounds of $S$. A \emph{least upper bound} of $S$ is an element $u$ of $U$ which is also a lower bound of $U$. Let $L$ be the set of lower bounds of $S$. A \emph{greatest lower bound} of $S$ is an element of $L$ which is also an upper bound of $L$.
+
+  \item[Theorem 104:] (Prove or disprove.) If $x$ and $y$ are both greatest lower bounds of the same set $S$ of real numbers, then $x = y$.
+
+  \item[Theorem 105:] (Prove or disprove.) If a set $S$ of real numbers has a greatest lower bound $x$, then $x \in S$. 
+
+  \item[Theorem 106:] Any set of real numbers which has an upper bound also has a least upper bound.
+
+  \item[Theorem 107:] Any set of real numbers which has a lower bound also has a greatest lower bound. 
+
+  \item[Lemma 108:] If $a_{n} > 0$, and $a_{n}^{2}$ is Cauchy, then $a_{n}$ is Cauchy.
+
+  \item[Theorem 109:] There is a real number $x$ such that $x^{2} = 2$.
+
+  \item[Definition 110:] A real number is said to be \emph{irrational} if it is not in the range of $\phi$. A real number is said to be \emph{rational} if it is in the range of $\phi$.
+
+  \item[Theorem 111:] Let $a$ be a rational real number. Then there is a sequence of irrational numbers converging to $a$. 
+
+\end{description}
+
+
+
+\newpage
+
+\section{Differentiation}
+\markboth{3. Differentiation}{3. Differentiation}
+
+\begin{description}
+
+  \item[Definition 112:] Let $S$ be a subset of the set of real numbers (from now on we denote the real numbers by $\Re$). Let $f$ be a function with domain $S$ and range contained in $\Re$. $f$ is said to be \emph{continuous} at a point $p \in S$ if the following is true: 
+    \begin{quote}
+    For any sequence $Q = \{ (n, a_{n}) \}$ with range contained in $S$, such that $Q$ converges to $p$, then the sequence $f(Q)$ converges to $f(p)$, where the sequence $f(Q)$ is defined to be $\{ (n, f(a_{n}) ) \}$.
+    \end{quote}
+
+  \item[Example 113:] (Prove or disprove.) Let the function $f$ be defined by: the domain $D(f)$ of $f$ is $\{ x \in \Re\ :\ 0 < x < 1 \}$, and
+    \begin{equation*}
+    f = \{ (x, 2x)\ :\ x \in D(f) \}
+    \end{equation*}
+    Then $f$ is continuous at all points $p \in D(f)$. 
+
+  \item[Example 114:] Let the domain of $f$ be $(0,2)$. Let
+    \begin{equation*}
+    f = \{ (x, 2x)\ :\ x \in (0,1) \} \cup \{ (x,1)\ :\ x \in [1,2] \}
+    \end{equation*}
+    What is the set of all $x$ such that $f$ is continuous at $x?$ Prove your assertions. 
+
+  \item[Theorem 115:] Let $n$ be a positive integer. Let $f(x) = x^{n}$ for any $x$ in the domain of $f$, which is an arbitrary subset $S$ of the real numbers. Then $f$ is continuous at any point $p \in S$.
+
+  \item[Theorem 116:] Suppose $f$ and $g$ are with domains $S_{f}$ and $S_{g}$ contained in the real numbers. Suppose $p \in S_{1} \cap S_{2}$, and $f$ and $g$ are continuous at $p$. Define $fg$ by setting the domain of $fg$ to be $S_{1} \cap S_{2}$, and setting $fg(x) = f(x) g(x) $ for all $x \in S_{1} \cap S_{2}$. Then $fg$ is continuous at $p$. 
+
+  \item[Theorem 117:] Suppose that $f$ and $g$ are two functions with the same domain $S \subset \Re$. Define $f+g$ by $f+g = \{ (x, ( f(x)+g(x) ) )\ :\ x \in S \}$. Suppose that $f$ and $g$ are continuous at $p \in S$. Then $f+g$ is continuous at $p$.
+
+  \item[Definition 118:] Suppose that $f$ is a function with domain $\xi$ containing
+    \begin{equation*}
+    \{ x \in \Re\ :\ a < x < b \} = (a,b)
+    \end{equation*}
+    and range contained in $\Re$, and that $a < x_{0} < b$. Define a new function $D_{x_{0}}(f)$ by:
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item the domain of $D_{x_{0}} (f) = \{ x \in \xi\ :\ x \neq x_{0} \}$;
+      \item for any $x$ in its domain, $D_{x_{0}} (f) (x) = \frac{f(x)-f(x_{0})}{x-x_{0}}$.
+    \end{enumerate}
+
+  \item[Definition 119:] A function $f$ with domain $\xi$ containing some interval $(a,b)$ and range contained in $\Re$ is said to be \emph{differentiable} at $x_{0} \in (a,b)$ if there exists a function $D_{a,b,x_{0}}* (f)$ with domain $\xi$ and range contained in $\Re$ such that $D_{x_{0}}* (f)$ is continuous at $x_{0}$ and $D_{x_{0}}^{\ast}(f) (x) = D_{x_{0}}(f) (x)$ for all $x \in (a,b)$ such that $x \neq x_{0}$.
+
+  \item[Theorem 120:] Suppose that the domain of $f$ contains $(a,b)$, and $f$ is differentiable at $x_{0}$. Suppose that $g_{f}$ is any function with domain containing any interval $(c,d)$, where $c$ and $d$ are real numbers such that $c < x_{0} < d$, such that $g_{f}$ is continuous at $x_{0}$ and such that $g_{f}(x) = D_{x_{0}}(f) (x)$ for all $x \in (a,b) \cap (c,d)$ such that $x \neq x_{0}$. Then $g_{f} (x_{0}) = D_{x_{0}}* (f) (x_{0})$.
+
+  \item[Theorem 121:] Suppose that $f$ and $g$ are two functions with domains containing an interval $(a,b)$ such that $x_{0} \in (a,b)$. Suppose $f(x) = g(x)$ for every $x \in (a,b)$. Suppose that $f$ is differentiable at $x_{0}$. Then $g$ is differentiable at $x_{0}$, and $f' (x_{0}) = g' (x_{0})$. 
+
+  \item[Definition 122:] Suppose that $f$ is a function with domain containing $(a,b)$ and $x_{0} \in (a,b)$. We define the \emph{derivative} $f' (x_{0})$ of $f$ at $x_{0}$ to be $D_{a,b,x_{0}}* (f) (x_{0})$. Note that the preceding lemma shows that differentiability and the value of $f' (x_{0})$ depends only on $f$ and $x_{0}$, not $(a,b)$.
+
+  \item[Example 123:] Define $f$ by $f(x) = 2x$ for all $x \in \Re$. Show that $f$ is differentiable at $3$, and $f'(3) = ?$. 
+
+  \item[Example 124:] Define $f$ by $f(x) = x^{2}$ for all $x \in \Re$. Show that $f$ is differentiable at $4$, and $f'(4) = ?$. 
+
+  \item[Definition 125:] Suppose that $f$ is a function with domain $S \subset \Re$, and $g$ is a function with domain $T \subset \Re$. Suppose that the range of $f$ and the range of $g$ are contained in $\Re$. Then $f+g$ is the function with domain $S \cap T$, such that
+    \begin{equation*}
+    f+g = \{ (x, f(x)+g(x) )\ :\ x \in S \cap T \}
+    \end{equation*}
+    and $fg$ is the function with domain $S \cap T$ such that
+    \begin{equation*}
+    fg = \{ (x, f(x) g(x) )\ :\ x \in S \cap T \}
+    \end{equation*}
+
+  \item[Theorem 126:] Suppose $f$ and $g$ are differentiable at $p$. Then $f+g$ is differentiable at $p$, and
+    \begin{equation*}
+    (f+g)' (p) = f' (p) + g' (p)
+    \end{equation*}
+
+  \item[Theorem 127:] Suppose $f$ is differentiable at $p$. Then $f$ is continuous at $p$. 
+
+  \item[Theorem 128:] Suppose that $f$ and $g$ are differentiable at $p$. Then $fg$ is differentiable at $p$, and $(fg)' (p) = ?$
+
+  \item[Example 129:] (Prove.) Let $f = \{ (x, |x|)\ :\ x \in (-1,1) \}$. Then $f$ is not differentiable at $0$. 
+
+  \item[Theorem 130:] (Prove or disprove.) If $f$ is continuous at $p$, then $f$ is differentiable at $p$.
+
+  \item[Definition 131:] A set of real numbers is \emph{bounded} if it has both an upper bound and a lower bound.
+
+  \item[Theorem 132:] Let $S = \{ (n, a_{n}) \}$ be a bounded sequence of real numbers. Let $U_{N} = \text{lub} ( \{ a_{n}\ :\ n \geq N\} )$. Then the sequence $\{ (N, U_{N}) \}$ converges to some point $U(S) \in \Re$. ($U(S)$ is called $\lim \sup \{ (n, a_{n}) \}$). 
+
+  \item[Remark 133:] The same proof shows the following; we skip the proof.
+
+  \item[Theorem 134:] (Skip the proof.) Let $S = \{ (n, a_{n}) \}$ be a bounded sequence of real numbers. Let $L_{N} = \text{glb} ( \{ a_{n}\ :\ n \geq N \} )$. Then the sequence $\{ (N, L_{N}) \}$ is converges to some point $L(S) \in \Re$. ($L(S)$ is called $\lim \in f \{ (n, a_{n}) \}$.)
+
+  \item[Theorem 135:] Suppose $S$ converges to $a$. Then $L(S) = U(S) = a$. 
+
+  \item[Theorem 136:] Suppose $S$ is a bounded sequence of real numbers such that $L(S) = U(S) = a$. Then $S$ converges to $a$.
+
+  \item[Theorem 137:] Suppose $S$ is a bounded sequence of real numbers. Then there is a subsequence of $S$ which converges to $L(S)$, and another subsequence of $S$ which converges to $U(S)$. 
+
+  \item[Definition 138:] A set $S$ of real numbers is \emph{closed} if the following is true: 
+    \begin{quote}
+    Any Cauchy sequence of real numbers with range contained in $S$ converges to an element of $S$.
+    \end{quote}
+
+  \item[Theorem 139:] Let $a$ and $b$ be real numbers with $a < b$. Let $[a,b]$ be defined to be $\{ x\ :\ a \leq x \leq b \}$. Then $[a,b]$ is closed and bounded. 
+
+  \item[Theorem 140:] Suppose $S$ is a closed, bounded set of real numbers. Then any sequence of real numbers with range contained in $S$ has a subsequence which converges to an element of $S$. 
+
+  \item[Definition 141:] A set $S$ of real numbers is said to be \emph{compact} if it has the property that any sequence of real numbers with range contained in $S$ has a subsequence which converges to an element of $S$.
+
+  \item[Theorem 142:] Suppose that $S$ is compact. Then $S$ is bounded. 
+
+  \item[Theorem 143:] Suppose that $S$ is compact. Then $S$ is closed. 
+
+  \item[Theorem 144:] Suppose that $S$ is compact. Let $f$ be a function with domain $S$ and range contained in $\Re$. Suppose that $f$ is continuous at each point $p \in S$. Then $\{ f(x)\ :\ x \in S \}$ is a compact subset of $\Re$. 
+
+  \item[Theorem 145:] (Prove or disprove.) Every finite set of real numbers is compact. 
+
+  \item[Theorem 146:] Let $S$ be a closed subset of $\Re$. Then if $S$ is bounded above (or in other words has an upper bound), the least upper bound of $S$ is an element of $S$. Also, if $S$ is bounded below, the greatest lower bound of $S$ is an element of $S$. 
+
+  \item[Theorem 147:] Let $S$ be a compact subset of $\Re$. Let $f$ be a function with domain $S$ and range contained in $\Re$. Suppose that $f$ is continuous at each point $p \in S$. Then there exists a point $x_{1}$ of $S$ such that $f(x_{1})$ is the least upper bound of $\{ f(x)\ :\ x \in S \}$, and a point $x_{2}$ of $S$ such that $f(x_{2})$ is the greatest lower bound of $\{ f(x)\ :\ x \in S \}$. 
+
+  \item[Theorem 148:] Suppose that $f$ is a function with domain $[a,b]$ where $a$ and $b$ are real numbers, and range contained in the real numbers. Suppose that $f$ is continuous at every point of $[a,b]$. Suppose that $f$ is differentiable at every point of $(a,b)$. Suppose that $f(a) = f(b) = 0$. Then there exists a point $p \in (a,b)$ such that $f' (p) = 0$. 
+
+  \item[Theorem 149:] Suppose that $f$ is a function with domain $[a,b]$, where $a$ and $b$ are real numbers, and range contained in the real numbers. Suppose that $f$ is continuous at every point of $[a,b]$. Suppose that $f$ is differentiable at every point of $(a,b)$. Then there exists a point $p \in (a,b)$ such that $f' (p) = \frac{f(b)-f(a)}{b-a}$.
+
+  \item[Theorem 150:] Suppose $f$ is a function with domain $[a,b]$ where $a$ and $b$ are real numbers, and range contained in the real numbers. Suppose $f$ is continuous at every point of $[a,b]$, and differentiable at every point of $(a,b)$. Suppose $f' (x) = 0$ for all $x \in (a,b)$. Then there is a real number $c$ such that $f(x) = c$ for all $x \in [a,b]$.
+
+  \item[Lemma 151:] Let $f(x) = c$ for all $x \in (a,b)$. Let $x_{0} \in (a,b)$. Then $f$ is differentiable at $x_{0}$ and $f' (x_{0}) = ?$.
+
+  \item[Theorem 152:] Suppose that $f$ and $g$ are functions with domain $[a,b]$, where $a$ and $b$ are real numbers, and that each function has range contained in the real numbers. Suppose that $f$ and $g$ are each differentiable at every point of $(a,b)$, and continuous at every point of $[a,b]$. Suppose that $f' (x) = g' (x)$ for every $x \in (a,b)$. Then there is a real number $c$ such that $f(x) = g(x) + c$ for every $x \in [a,b]$. 
+
+\end{description}
+
+
+
+\newpage
+
+\section{Riemann Integration}
+\markboth{4. Riemann Integration}{4. Riemann Integration}
+
+\begin{description}
+
+  \item[Definition 153:] Suppose that $f$ is a function with domain containing $[a,b]$, and that the range of $f$ is a bounded subset of $\Re$. Let $P$ be a \emph{partition} of $[a,b]$; in other words, $P$ is a set of points $\{ x_{i} \} _{i=0}^{N}$ with $x_{0}=a$, $x_{N}=b$, and $x_{i+1} > x_{i}$ for all $i$ such that $0 \leq i \leq N-1$. Then we define the \emph{lower sum} of $f$ over $P$, denoted by $LS(f,P)$, by
+    \begin{equation*}
+    LS(f,P) = \sum_{i=1}^{N} L_{i} (x_{i} - x_{i-1})
+    \end{equation*}
+    where $L_{i}$ is the greatest lower bound of $\{ f(x)\ :\ x_{i-1} \leq x \leq x_{i} \}$. Similarly, we define the \emph{upper sum} of $f$ over $P$, denoted by $US(f,P)$ by
+    \begin{equation*}
+    US(f,P) = \sum_{i=1}^{N} U_{i} (x_{i} - x_{i-1})
+    \end{equation*}
+    where $U_{i}$ is the least upper bound of $\{ f(x)\ :\ x_{i-1} \leq x \leq x_{i} \}$.
+
+  \item[Theorem 154:] Suppose that $f$ is a function with domain containing $[a,b]$, and that the range of $f$ is a bounded subset of $\Re$. Suppose $P$ and $Q$ are partitions of $[a,b]$. Then
+    \begin{equation*}
+    US(f,P) \geq LS(f,Q)
+    \end{equation*}
+
+  \item[Theorem 155:] Suppose that $f$ is a function with domain containing $[a,b]$, and that the range of $f$ is a bounded subset of $\Re$. Then $\{ US(f,P)\ :\ P$ is a partition of $[a,b] \}$ has a lower bound, and $\{ LS(f,P)\ :\ P$ is a partition of $[a,b] \}$ has an upper bound. 
+
+  \item[Definition 156:] Suppose that $f$ is a function with domain containing $[a,b]$, and that the range of $f$ is a bounded subset of $\Re$. The \emph{upper Darboux integral} $U(f,a,b)$ is defined by
+    \begin{equation*}
+    U(f,a,b) = \text{glb} \{ U(f,P) \}
+    \end{equation*}
+    where $\text{glb}$ means \emph{greatest lower bound}. Similarly, the \emph{lower Darboux integral} $L(f,a,b)$ is defined by
+    \begin{equation*}
+    L(f,a,b) = \text{lub} \{ LS(f,P)\ :\ P \text{ is a partition of } [a,b] \}
+    \end{equation*}
+
+  \item[Theorem 157:] Suppose that $f$ is a function with domain containing $[a,b]$, and that the range of $f$ is a bounded subset of $\Re$. Then
+    \begin{equation*}
+    U(f,a,b) \geq L(f,a,b)
+    \end{equation*}
+
+  \item[Definition 158:] Suppose that $f$ is a function with domain containing $[a,b]$, and that the range of $f$ is a bounded subset of $\Re$. $f$ is said to be \emph{Darboux integrable} over $[a,b]$ if
+    \begin{equation*}
+    U(f,a,b) = L(f,a,b)
+    \end{equation*}
+    If $f$ is Darboux integrable over $[a,b]$, then $U(f,a,b)$ is called the Darboux integral of $f$ over $[a,b]$, and we write
+    \begin{equation*}
+    U(f,a,b) = \in t_{a}^{b} f(x) dx
+    \end{equation*}
+
+  \item[Example 159:] (Prove.) Let $f$ be defined by setting the domain of $f$ to be $[0,1]$, and setting $f(x)=1$ for $x > \frac{1}{2}$, and $f(x)=0$ for $x \leq \frac{1}{2}$. Then $f$ is Darboux integrable over $[0,1]$ and
+    \begin{equation*}
+    \in t_{0}^{1} f(x) dx = \frac{1}{2}
+    \end{equation*}
+
+  \item[Example 160:] (Prove.) Let $f$ be defined by setting the domain of $f$ to be $[0,1]$, and by defining $f(x) = 0$ for $x$ rational, and $f(x) =1$ for $x$ irrational. Then $f$ is not Darboux integrable over $[0,1]$.
+
+  \item[Example 161:] Let $f$ be defined by setting the domain of $f$ to be $[0,1]$, and by defining $f(x) = x$ for all $x \in [0,1]$. Then $f$ is Darboux integrable, and $\in t_{0}^{1}f(x) dx = ?$.
+
+  \item[Definition 162:] Suppose that $f$ has domain a subset $S$ of $\Re$ and range contained in $\Re$. Suppose that $f$ is continuous at every point $p \in D$. Then $f$ is said to be \emph{uniformly continuous} if the following is true: 
+    \begin{quote}
+    For every real number $\varepsilon > 0$, there exists another real number $\delta > 0$ such that $|f(x)-f(y)| < \varepsilon$ for all $x,y \in S$ such that $|x-y| < \delta$.
+    \end{quote}
+
+  \item[Theorem 163:] Suppose that $f$ has domain a subset $S$ of $\Re$ and range contained in $\Re$. Suppose $S$ is bounded, and that $f$ is uniformly continuous. Then $\{ f(x)\ :\ x \in S \}$ is a bounded set. 
+
+  \item[Theorem 164:] Suppose $f$ has domain $[a,b]$ and range contained in $\Re$. Suppose that $f$ is uniformly continuous. Then $f$ is Darboux integrable over $[a,b]$. 
+
+  \item[Definition 165:] Let $f$ be a function with domain $D(f) \subset \Re$ and range contained in $\Re$. $f$ is said to have the \emph{$\varepsilon-\delta$ property} at the point $p \in D(f)$ if the following is true:
+    \begin{quote}
+    For every real number $\varepsilon > 0$, there exists another real number $\delta > 0$ such that $|f(x)-f(p)| < \varepsilon$ whenever $|x-p| < \delta$.
+    \end{quote}
+
+  \item[Theorem 166:] If $f$ has the $\varepsilon-\delta$ property at $p$, then $f$ is continuous at $p$. 
+
+  \item[Theorem 167:] If $f$ is continuous at $p$, then $f$ has the $\varepsilon-\delta$ property at $p$. 
+
+  \item[Theorem 168:] Suppose that $f$ has domain a subset $S$ of $\Re$ and range contained in $\Re$. Suppose that $S$ is compact, and that $f$ is continuous at every point of $S$. Then $f$ is uniformly continuous. 
+
+  \item[Theorem 169:] Suppose $f$ has domain $[a,b]$ and range contained in $\Re$. Suppose that $f$ is continuous at every point of $[a,b]$. Then $f$ is Darboux integrable over $[a,b]$. 
+
+  \item[Theorem 170:] Suppose that $f$ is a function with range contained in a bounded subset of $\Re$, and with domain containing $[a,b]$. Suppose $a < c < b$, and that $f$ is Darboux integrable over $[a,c]$ and $[c,b]$. Then $f$ is Darboux integrable over $[a,b]$, and $\in t_{a}^{c} f(x) dx + \in t_{c}^{b} f(x) dx = \in t_{a}^{b} f(x) dx$. 
+
+  \item[Theorem 171:] Let $c$ be a real number. Suppose that $f$ is Darboux integrable over $a,b$. Then $cf$ is Darboux integrable over $[a,b]$, and $\in t_{a}^{b}(cf) (x) dx = c \in t_{a}^{b} f(x) dx$. 
+
+  \item[Theorem 172:] Suppose that $f_{1}$ and $f_{2}$ are Darboux integrable over $[a,b]$. Then $f_{1} + f_{2}$ is Darboux integrable over $[a,b]$, and $\in t_{a}^{b} (f_{1} + f_{2}) (x) dx = \in t_{a}^{b} f_{1}(x) dx + \in t_{a}^{b} f_{2}(x) dx$. 
+
+  \item[Lemma 173:] Suppose that $P_{n}$ is the equally spaced partition of $[a,b]$ with $n$ intervals. Suppose that $f$ is a bounded function with domain $[a,b]$ and range contained in $\Re$. Then the sequence $US (f, P_{n})$ converges to $U (f, a, b)$, and $LS (f, P_{n})$ converges to $L (f, a, b)$. 
+
+  \item[Theorem 174:] Suppose that $f$ is Darboux integrable over $[a,b]$. Then $|f|$ is also Darboux integrable over $[a,b]$, and $\in t_{a}^{b} f(x) dx \leq \in t_{a}^{b} |f(x)| dx$. 
+
+  \item[Theorem 175:] Let $f$ be a bounded function with domain containing $[a,b]$. Then $f$ is Darboux integrable over $[a,b]$ if and only if the following is true:
+    \begin{equation*}
+    \forall \varepsilon > 0 \exists P \ni US(f,P) -LS(f,P) < \varepsilon
+    \end{equation*}
+
+  \item[Theorem 176:] Suppose $f$ has domain containing $[a,b]$ and range contained in $\Re$. Suppose that $f$ is Darboux integrable over $[a,b]$. Let $c$ and $d$ be elements of $[a,b]$ with $c < d$. Then $f$ is Darboux integrable over $[c,d]$. 
+
+  \item[Lemma 177:] Let $f$ be any bounded function on $[a,b]$. Let $c \in (a,b)$. Then
+    \begin{align*}
+    U(f,a,c) + U(f,c,b) & = U(f,a,b) \\
+    L(f,a,c) + L(f,c,b) & = L(f,a,b)
+    \end{align*}
+
+  \item[Definition 178:] Define
+    \begin{equation*}
+    \in t_{a}^{a} f(S) ds = 0
+    \end{equation*}
+    for any function $f$ such that $a$ is in its domain.
+
+  \item[Theorem 179:] Suppose that $f$ is Darboux integrable over $[a,b]$, and $L \leq f(x) \leq M$ for all $x \in [a,b]$. Then $L(b-a) \leq \in t_{a}^{b} f(x) dx \leq M (b-a)$.
+
+  \item[Theorem 180:] Suppose that $f$ is Darboux integrable over $[a,b]$. For any $x \in [a,b]$, define $F(x) = \in t_{a}^{x} f(s) ds$. Then $F$ is continuous at every point of $[a,b]$. 
+
+  \item[Theorem 181:] Suppose $f$ has domain $[a,b]$ and range contained in $\Re$. Suppose that $f$ is continuous at every point of $[a,b]$. For any $x \in [a,b]$, define $F(x) = \in t_{a}^{x} f(S) ds$. Then $F$ is differentiable at every point $x$ of $(a,b)$, and $F' (x) = f(x)$. 
+
+  \item[Theorem 182:] Suppose $f$ has domain $[a,b]$ and range contained in $\Re$. Suppose that $f$ is continuous at every point of $[a,b]$. Suppose that the function $G$ has the following properties:
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item $G$ is continuous at every point of $[a,b]$;
+      \item $G$ is differentiable at every point of $(a,b)$;
+      \item $G' (x) = f(x)$ at every point $x \in (a,b)$.
+    \end{enumerate}
+    Then the following is true:
+    \begin{equation*}
+      \in t_{a}^{b} f(x) dx = G(b) -G(a)
+    \end{equation*}
+
+  \item[Lemma 183:] The following is true:
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item The derivative of a constant function is zero at any point;
+      \item The derivative of the function $f(x) = x$ is $1$ at any point.
+    \end{enumerate}
+
+  \item[Lemma 184:] For any $i > 1$, such that $i$ is a positive integer, the derivative of $f(x) = x^{i}$ is $ix^{i-1}$ at any point.
+
+  \item[Corollary 185:] Let
+    \begin{equation*}
+      P(x) = \sum_{0}^{N} a_{i}x^{i}
+    \end{equation*}
+    be a polynomial, such that each $i$ is a non-negative integer. Then
+    \begin{equation*}
+      \in t_{a}^{b} P(x) = \sum \frac{a_{i}}{i+1} ( b^{i+1} - a^{i+1} )
+    \end{equation*}
+
+\end{description}
+
+
+
+\newpage
+
+\section{Sequences of Functions}
+\markboth{5. Sequences of Functions}{5. Sequences of Functions}
+
+\begin{description}
+
+  \item[Definition 186:] Suppose that $\{ f_{n} \}$ is a sequence of functions with domain of a subset $S$ of $\Re$ and range contained in $\Re$. $\{ f_{n} \}$ is said to \emph{converge pointwise} to a function $f$ if for every $x \in S$, the sequence $\{ f_{n}(x) \}$ of real numbers converges to $f(x)$.
+
+  \item[Lemma 187:] If $x \in (0,1)$, and $x^{n} \rightarrow \ell$, then $x \ell = \ell$.
+
+  \item[Example 188:] Let
+    \begin{equation*}
+      I = [0,1]
+    \end{equation*}
+    Let
+    \begin{equation*}
+      f_{n}(x) = x^{n}
+    \end{equation*}
+    Calculate the pointwise limit of the sequence, and prove it. 
+
+  \item[Theorem 189:] (Prove or disprove.) Let $S$ be a compact set. Suppose that $\{ f_{n} \}$ is a sequence of continuous functions which converges pointwise to $f$. Then $f$ is continuous. 
+
+  \item[Remark 190:] How do we tell when a function is continuous? One crucial property which $f$ must have is given below.
+
+  \item[Theorem 191:] Let $f$ be a continuous function with domain containing $[a,b]$ and range contained in $\Re$. Suppose that $f(b) > c > f(a)$. Then there exists an element $x \in [a,b]$ such that $f(x) = c$. 
+
+  \item[Theorem 192:] Suppose that $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Suppose $f' (x) > 0$ for all $x \in (a,b)$. Then for any $x,y \in [a,b]$ with $y > x$,
+    \begin{equation*}
+    f(y) > f(x)
+    \end{equation*}
+
+  \item[Corollary 193:] Let $r > 0$. Let $N$ be a positive integer. There exists a unique positive real number $b$ such that $b^{N} = r$. 
+
+  \item[Example 194:] Give an example of a function $f$ which is Darboux integrable over $[-1,1]$, and which has the property that if
+    \begin{equation*}
+    F(x) = \in t_{-1}^{x} f(S) ds
+    \end{equation*}
+    then $F$ is not differentiable at $0$. 
+
+  \item[Corollary 195:] Let $f$ be Darboux integrable on $[a,x]$ for all $x \in [b,c]$. Suppose $f(z) \geq 0$ for all $z$. Let
+    \begin{equation*}
+      F(S) = \in t_{a}^{s} f(z) dz
+    \end{equation*}
+    Then
+    \begin{enumerate}
+      \item $F(c) \geq F(b)$; 
+      \item For all $y$ such that
+        \begin{equation*}
+          F(b) \leq y \leq F(c)
+        \end{equation*}
+        there exists an $x \in [b,c]$ such that
+        \begin{equation*}
+          \in t_{a}^{x} f(z) dz = y
+        \end{equation*}
+    \end{enumerate}
+
+  \item[Definition 196:] Suppose that $\{ f_{n} \}$ is a sequence of functions with domain of a subset $S$ of $\Re$, and range contained in $\Re$. $\{ f_{n} \}$ is said to be \emph{uniformly Cauchy} if for every $\varepsilon > 0$, there exists an $N$ such that for all $x \in S$,
+    \begin{equation*}
+    |f_{n}(x) - f_{m}(x)| < \varepsilon \text{ for all } m,n > N
+    \end{equation*}
+
+  \item[Theorem 197:] Any uniformly Cauchy sequence is pointwise convergent to a function $f$ with domain $S$ and range contained in $\Re$. 
+
+  \item[Definition 198:] Suppose that $\{ f_{n} \}$ is a sequence of functions with domain of a subset $S$ of $\Re$, and range contained in $\Re$. $\{ f_{n} \}$ is said to be \emph{uniformly convergent} to a function $f$ with domain $S$ and range contained in $\Re$ if for every $\varepsilon > 0$, there exists an $N$ such that
+    \begin{equation*}
+    |f_{n}(x) - f(x)| < \varepsilon \text{ for all } n > N \text{, and for all } x \in S
+    \end{equation*}
+
+  \item[Theorem 199:] If $\{ f_{n} \}$ is a uniformly Cauchy sequence of functions with domain $S$ and range contained in $\Re$, and $f$ is the pointwise limit of the sequence $\{ f_{n} \}$, then $\{ f_{n} \}$ is uniformly convergent to $f$. 
+
+  \item[Theorem 200:] If $\{ f_{n} \}$ is a uniformly Cauchy sequence of continuous functions with domain $S$ and range contained in $\Re$, and $f$ is the pointwise limit of the sequence $\{ f_{n} \}$, then $f$ is continuous. 
+
+  \item[Theorem 201:] (Prove or disprove.) Suppose that $f_{n}$ is a sequence of functions defined on $[a,b]$, such that each $f_{n}$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Suppose $f_{n}$ converges pointwise to $f$. Then $f_{n}$ converges uniformly to $f$. 
+
+  \item[Theorem 202:] If $\{ f_{n} \}$ is a uniformly Cauchy sequence of Darboux integrable functions with domain $[a,b]$ and range contained in $\Re$, and $f$ is the pointwise limit of the sequence $\{ f_{n} \}$, then
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item $f$ is Darboux integrable;
+      \item $\in t_{a}^{b} f_{n}(x) dx$ converges to $\in t_{a}^{b} f(x) dx$. 
+    \end{enumerate}
+
+  \item[Lemma 203:] If $f$ is differentiable on $(a,b)$ and $(b,c)$, and there exist continuous functions $F_{1}$ and $F_{2}$ on $(a,c)$ such that $F_{1}$ agrees with $f$ on $(a,b)$ and $(b,c)$, and $F_{2}$ agrees with $f'$ on $(a,b)$ and $(b,c)$, then $F_{1}$ is differentiable on $(a,c)$ and $F_{1}' = F_{2}$. 
+
+  \item[Lemma 204:] Suppose that $g$ is differentiable at all points of its domain, and that $f$ is differentiable at all points of the range of $g$. Then $f \circ g$ is differentiable at all points of the domain of $g$, and
+    \begin{equation*}
+    (f \circ g)' (x) = f' (g(x)) g' (x)
+    \end{equation*}
+
+  \item[Lemma 205:] Let
+    \begin{equation*}
+    f(x) = \sqrt{x}
+    \end{equation*}
+    with domain $\{ x\ :\ x \geq 0 \}$. Then $f$ is continuous. Also, $f$ is differentiable at all, $x > 0$.
+
+  \item[Lemma 206:] Let $f(x) = \frac{1}{x}$. Then $f$ is continuous at any positive real number.
+
+  \item[Theorem 207:] (Prove or disprove.) Suppose that a sequence of continuous functions with domain $[a,b]$, such that each $f_{n}$ is differentiable at every point of $(a,b)$, converges uniformly on $[a,b]$ to a function $f$. Then $f$ is differentiable at any point of $(a,b)$.
+
+  \item[Theorem 208:] Suppose that a sequence of continuous functions $f_{n}$ with domain $[a,b]$, such that each $f_{n}$ is differentiable on $(a,b)$, has the property that $f_{n}' (x) = g_{n} (x)$ for every $x \in (a,b)$, where $g_{n}$ is continuous on $[a,b]$, and where the sequence $g_{n}$ is uniformly Cauchy on $[a,b]$. Suppose that there is some $x \in [a,b]$ such that $f_{n} (x)$ is a Cauchy sequence of real numbers. Then
+    \begin{enumerate}[\hspace{1cm}1.]
+      \item the sequence $f_{n}$ is uniformly Cauchy on $[a,b]$;
+      \item the sequence $f_{n}$ converges uniformly to a function $f$ on $[a,b]$, such that $f$ is continuous at each point of $[a,b]$ and differentiable at any point of $(a,b)$; and such that at any point $x$ of $(a,b)$, the sequence of real numbers $f_{n} (x)$ converges to $f(x)$. (In short, the limit is differentiable, and the derivative of the limit is the limit of the derivatives.)
+    \end{enumerate}
+
+  \item[Definition 209:] Let $\{ (n, a_{n}) \}$ be a sequence of real numbers, and let $S = \{ (n, S_{N}) \}$ be the sequence such that $\displaystyle S_{N} = \sum_{i=1}^{N} a_{i}$. If the sequence $S$ converges to $L$, we say that the \emph{series} $\displaystyle \sum_{i=1}^{\infty} a_{i}$ \emph{converges}, and its limit is $L$.
+
+  \item[Theorem 210:] Suppose that each $a_{i}$ is non-negative, and $S$ is bounded. Then $\displaystyle \sum_{i=1}^{\infty} a_{i}$ converges.
+
+  \item[Definition 211:] We say that $\displaystyle \sum_{i=1}^{\infty} a_{i}$ \emph{converges absolutely} if $\displaystyle \sum_{i=1}^{\infty} |a_{i}|$ converges.
+
+  \item[Theorem 212:] If $\displaystyle \sum_{i=1}^{\infty} a_{i}$ converges absolutely, then $\displaystyle \sum_{i=1}^{\infty} a_{i}$ converges. 
+
+  \item[Theorem 213:] Suppose that $|a_{i}| \leq b_{i}$ for every $i$, and $\displaystyle \sum_{i=1}^{\infty} b_{i}$ converges. Then $\displaystyle \sum_{i=1}^{\infty} a_{i}$ converges. 
+
+  \item[Theorem 214:] Suppose there exists a number $a \in [0,1)$ such that $|a_{i}| \leq a^{i}$. Then $\displaystyle \sum_{i=1}^{\infty}a_{i}$ converges.
+
+  \item[Theorem 215 (ratio test):] Suppose that each $a_{n} > 0$ and
+    \begin{equation*}
+    \lim_{n \rightarrow \infty} \sup \left( \frac{a_{n+1}}{a_{n}} \right) = r < 1
+    \end{equation*}
+    Then $\displaystyle \sum_{i=1}^{\infty} a_{i}$ converges.
+
+  \item[Theorem 216:] $\displaystyle \sum_{i=1}^{\infty} \frac{1}{i}$ does not converge.
+
+  \item[Theorem 217:] (Prove or disprove.) Suppose that $\displaystyle \sum_{i=1}^{\infty} a_{i}$ converges absolutely. Define
+    \begin{align*}
+      \sum_{i=1, i \text{ odd} }^{\infty} a_{i} & = \lim_{n \rightarrow \infty} \sum_{j=1}^{n} a_{2j-1} \\
+      \sum_{i=1, i \text{ even} }^{\infty} a_{i} & = \lim_{n \rightarrow \infty} \sum_{j=1}^{n} a_{2j}
+    \end{align*}
+    Then
+    \begin{equation*}
+      \sum_{i=1, i \text{ odd} }^{\infty} a_{i} + \sum_{i=1, i \text{ even} }^{\infty} a_{i} = \sum_{i=1}^{\infty} a_{i}
+    \end{equation*}
+
+  \item[Theorem 218:] Let $\{ (i, a_{i}) \}$ be non-increasing and converging to zero. Then $\displaystyle \sum_{i=1}^{\infty} (-1)^{i} a_{i}$ converges.
+
+  \item[Theorem 219:] (Prove or disprove.) Theorem 217 is true with only the assumption of convergence instead of absolute convergence.
+
+  \item[Theorem 220 (M test):] Suppose that $M \in [0,1)$, and $(i, f_{i})$ is a sequence of continuous functions with domain $D$ contained in the real numbers and range contained in the real numbers. Suppose there exists a $K > 0$ such that for all $x \in D$, $|f_{i}(x)| \leq KM^{i}$. Then
+    \begin{enumerate}
+      \item for each $x$, $\displaystyle \sum_{i=1}^{\infty} f_{i}(x)$ converges; 
+      \item if $\displaystyle S_{N}(x) = \sum_{i=1}^{N} f_{i}(x)$, $S_{N}$ converges uniformly to $F$, where $\displaystyle F(x) = \sum_{i=1}^{\infty} f_{i}(x)$;
+      \item $F$ is a continous function with domain $D$ and range contained in the real numbers.
+    \end{enumerate}
+
+  \item[Theorem 221:] Let $\displaystyle g(x) = 1 + \sum_{i=1}^{\infty} \frac{x^{i}}{i!}$. Then $g$ is a continuous function with domain of the real numbers and range contained in the real numbers. 
+
+  \item[Theorem 222:] Let $g$ be as in the preceding theorem. Then $g$ is differentiable at all real $x$, and $g' (x) = g(x)$.
+
+  \item[Theorem 223:] If $f$ is differentiable at all $x \in \Re$, and $f'$ is continuous, and there exists a real number $k$ such that $f' (x) = kf(x)$ for all $x$, $f(0) = 0$, then $f(x) = 0$ for all $x \neq 0$. 
+
+  \item[Hint:] Let $c = \text{lub} \{ z\ :\ f(x)=0 \forall x \leq z \}$. Then $f(c) = f' (c) =0$. Let $y > c$. $m = \text{lub} \{ |f(x)|\ :\ x \in [c,y] \}$. Then $|f(y)| \leq km |y-c|$. By some mystical series of inequalities, this gives the result that $z = \infty$. A similar argument for negative $z$ completes the proof.
+
+  \item[Theorem 224:] Let $g$ be as above. Let $c$ be any non-zero real number. Let $r(x) = g(x+c)$. Then $r$ is differentiable at all $x$, and $r' = r$. Furthermore, $r(0) = g(c)$. 
+
+  \item[Theorem 225:] $r(x) = g(c) g(x)$ for all $x$, so in particular, $g(a+b) = g(a) g(b)$. 
+
+  \item[Definition 226:] We define $e = g(1)$. It is clear that $e > 0$, from the power series.
+
+  \item[Definition 227:] We define $e^{x}$ to be $g(x)$ for all $x$.
+
+  \item[Theorem 228:] $e^{n}$ is the $n$th power of the number $e$ defined above, for any positive integer $n$, so the above definition agrees with the usual one for positive integers. 
+
+  \item[Theorem 229:] $(e^{-x})' = -e^{-x}$ for all $x$.
+
+  \item[Theorem 230:] $e^{-x} = \frac{1}{e^{x}}$ for all $x$. In particular, $e^{x}$ is always positive. 
+
+  \item[Theorem 231:] $(e^{x/n})^{n} = e^{x}$ for all $x$, for any positive integer $n$. 
+
+  \item[Theorem 232:] Suppose that $f$ is a function on the real numbers, with range contained in the real numbers, such that
+    \begin{equation*}
+    f(x+y) = f(x) f(y)
+    \end{equation*}
+    for all real numbers $x$ and $y$. Suppose $f$ is differentiable at $0$ and
+    \begin{equation*}
+    f(0) =1
+    \end{equation*}
+    Then
+    \begin{equation*}
+    f(x) =e^{x}
+    \end{equation*}
+
+  \item[Remark 233:] We have just seen that the exponential function could be defined by its power series, which in turn could be defined by the differential equation
+    \begin{equation*}
+    f' = f
+    \end{equation*}
+
+  \item[Exercise 234:] Derive from the differential equation
+    \begin{equation*}
+    f'' = -f
+    \end{equation*}
+    a power series for $\sin (x)$ and $\cos (x)$. 
+
+  \item[Theorem 235:] The above power series converge uniformly on any interval $[a,b]$, and thus the uniform limits satisfy the differential equation of the previous exercise. 
+
+  \item[Definition 236:] We define $\sin (x)$ and $\cos (x)$ to be the uniform limits of the above power series.
+
+  \item[Theorem 237:]
+    \begin{equation*}
+    (\sin(x))^{2} + (\cos(x))^{2} = 1
+    \end{equation*}
+
+  \item[Theorem 238:] There exists a least $x > 0$ such that $\sin (x) = 0$.
+
+  \item[Definition 239:] We define the number $\pi$ to be the number $x$ defined above.
+
+  \item[Theorem 240:] If $f$ and $g$ both solve the equation
+    \begin{equation*}
+    Y'' = -Y
+    \end{equation*}
+    on an open interval $(a,b)$, and if $f(x_{0}) = g(x_{0})$ and $f' (x_{0}) = g' (x_{0})$, then
+    \begin{equation*}
+    f(x) = g(x)
+    \end{equation*}
+    for all $x \in (a,b)$.
+
+  \item[Theorem 241:]
+    \begin{equation*}
+    \sin (x + 2\pi) = \sin (x)
+    \end{equation*}
+    for all $x$.
+
+\end{description}
+
+
+
+\newpage
+
+\section{The Logarithm}
+\markboth{6. The Logarithm}{6. The Logarithm}
+
+\begin{description}
+
+  \item[Lemma 242:] Let $f(x) = e^{x}$. Then $f$ has the property that there exists a function $h$ with domain $(0, \infty)$ such that $h(f(x)) = x$ for all $x$.
+
+  \item[Definition 243:] The function $h$ of the preceding lemma is called $\ln(x)$.
+
+  \item[Theorem 244:]
+    \begin{equation*}
+    \ln (ab) = \ln a + \ln b
+    \end{equation*}
+
+  \item[Theorem 245:] The function $\ln$ is differentiable at every positive $x$, and
+    \begin{equation*}
+    (\ln)' (x) = \frac{1}{x}
+    \end{equation*}
+
+  \item[Definition 246:] Let $y$ be any real number. Let $x$ be any positive real number. We define:
+    \begin{equation*}
+    x^{y} = e^{y \ln x}
+    \end{equation*}
+
+  \item[Theorem 247:] This definition agrees with the previous definition for all rational $y$.
+
+  \item[Theorem 248:] $x^{y}$ is differentiable (with respect to $x$) at every positive $x$, and
+    \begin{equation*}
+    (x^{y})' = yx^{y-1}
+    \end{equation*}
+
+  \item[Theorem 249:] $y^{x}$ is differentiable with respect to $x$ at any positive $x$, and
+    \begin{equation*}
+    (y^{x})' = (\ln y) y^{x}
+    \end{equation*}
+
+\end{description}
+
+
+\end{document}

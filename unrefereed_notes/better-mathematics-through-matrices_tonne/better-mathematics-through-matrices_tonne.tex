@@ -1,0 +1,2576 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Better Mathematics Through Matrices}
+\author{Philip C. Tonne}
+\date{ }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+
+\section{Introduction}
+\markboth{1. Introduction}{1. Introduction}
+
+I wrote this book for you, to give you a means to develop your thinking. The subject is rich but simple: just a little algebra is needed. The heart of this book is a series of problems designed to engage your deductive skills, and stimulate your ability to find patterns and make generalizations. The goal is to improve your ability to reason; the vehicle is the study of matrices. (Matrices are part of every branch of mathematics, and are a frequent tool in, for example, economics, sociology, and physics -- wherever data is organized.)
+
+As with any exercise, you benefit from it only if you do it yourself. Some problems are challenging. This is by design, to give you an opportunity to expand your abilities. You will find it necessary to dedicate a certain amount of time per week to this endeavor. If you commit some time and effort to this project, this book will help you to think better, to organize your thoughts, and to find mathematical computations a more natural part of everyday life. I am excited that you have chosen to do this with me.
+
+At the end of this book, there are hints and answers for problems. I have also included my address in case you want me to look at some of your work and send you my comments. When asking me to look at your work, please enclose \$10 to cover my time and expenses. Your comments on this book are welcome free of charge.
+
+Work hard, and keep an open mind; look for simple ways to do things. If some problem causes difficulty, go on to other problems. Remember to come back to the difficult problem occasionally. Be reluctant to look at the hints and answers until you have done your best on a problem. Then compare your work with the hints and answers. They are there for you to use when you truly need help, and also to expand your vision.
+
+Please feel free at any time to make up your own problems and work on them. If this book does not provide enough numerical problems, make up more, solve them, and check your answers. If you think you see some pattern emerging, try to prove it. These activities can be much more rewarding than just doing the problems in order as they appear in the book.
+
+\begin{flushright}
+Professor Philip Tonne
+\\ 1946 Edinburgh Terrace NE
+\\ Atlanta, Georgia 30307-1114
+\end{flushright}
+
+
+\newpage
+
+Following is a brief summary of algebra. One of the purposes of this book is to see how a system of matrices compares with the ordinary number system. In particular, we will investigate the properties of matrices corresponding to the properties listed in items (a) through (j) in the next subsection.
+
+For review, there are some sample problems in the second subsection. This subsection provides a brief summary of the basics of solving equations. If you are confident in solving equations, you may quickly skim that subsection.
+
+
+\subsection{Algebra}
+
+``$2$ times $3$'' is written $2 \cdot 3$.
+
+\begin{align*}
+2 \cdot 3 & = 3 \cdot 2
+2 \cdot 4 & = 4 \cdot 2
+2 \cdot 5 & = 5 \cdot 2
+\end{align*}
+
+The power of mathematics is in a letter representing a number. The idea we illustrate above can be stated: If $x$ is a number, then $2 \cdot x = x \cdot 2$. More generally, if $x$ and $y$ are numbers, then $y \cdot x = x \cdot y$. We can omit the dot and write
+\begin{align*}
+yx & = xy; \\
+2x & = x \cdot 2
+\end{align*}
+($x2$ might be confused with $x^2$, which is $x \cdot x$.)
+
+The rest of this subsection is quite technical. You may just read it lightly.
+
+The fundamental assumptions which we make about numbers are:
+
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item adding two numbers or multiplying two numbers produces a number;
+  \item there is a relation on numbers where a number $x$ might be less than a number $y$; this is written $x<y$ or $y>x$;
+  \item if each of $x$, $y$, and $z$ is a number, then
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item $x+(y+z) = (x+y)+z$;
+      \item the number zero has the property that $0+x = x$;
+      \item $-x$ is a number, and $x + (-x) = 0$;
+      \item $x+y = y+x$;
+      \item $x(yz) = (xy)z$;
+      \item the number 1 has the property that $1 \cdot x = x$;
+      \item if $x \neq 0$ ($x$ is not zero), then $1/x$ (or $\frac{1}{x}$) is a number, and $x \cdot \frac{1}{x} = 1$ (from this, it follows that if $xy = 0$, then one of $x$ and $y$ is zero);
+      \item $xy = yx$;
+      \item the number 1 is not the number zero;
+      \item $x(y+z) = xy+xz$;
+      \item if $x$ is not $y$ ($x \neq y$), then either $x<y$ or $y<x$;
+      \item if $x<y$ and $y<z$, then $x<z$;
+      \item if $x<y$, then $x+z<y+z$;
+      \item if $x<y$ and $z>0$, then $xz<yz$;
+      \item if $S$ is a set of numbers and there is a number which is not less than any member of $S$, then there is a least number which is not less than any member of $S$;
+      \item the number 1 is a counting number, and if $x<1$, then $x$ is not a counting number; if $y$ is a counting number, then $y+1$ is a counting number; and if $y<z$ and $z<y+1$, then $z$ is not a counting number.
+    \end{enumerate}
+\end{enumerate}
+
+The last two ``axioms'', (o) and (p), are included for mathematical completeness. They are not necessary for our present study. Also, we do very little with the ``less than'' relation.
+
+
+\subsection{Sample Problems}
+
+\begin{description}
+
+  \item[Sample Problem 1:] Find a number $x$ such that $3x = 6$. 
+
+    Here we multiply both sides by $\frac{1}{3}$, and find that
+    \begin{align*}
+    x & = \frac{1}{3} \cdot (3x) = \frac{1}{3} \cdot (6) = 2 \\
+    x & = 2
+    \end{align*}
+    Check:
+    \begin{equation*}
+    3x = 3 \cdot 2 = 6
+    \end{equation*}
+
+  \item[Sample Problem 2:] Find a number $x$ such that $5x + 4 = 6 - 3x$.
+
+    First we write
+    \begin{align*}
+    5x + 3x & = 6 - 4; \\
+    8x & = 2; \\
+    x & = \frac{2}{8} = \frac{1}{4}
+    \end{align*}
+    Check:
+    \begin{align*}
+    5x + 4 & = 5 \cdot \left( \frac{1}{4} \right) + 4 = \frac{5}{4} + \frac{16}{4} = \frac{21}{4} \\
+    6 - 3x & = 6 - 3 \cdot \left( \frac{1}{4} \right) = \frac{24}{4} - \frac{3}{4} = \frac{21}{4}
+    \end{align*}
+
+  \item[Sample Problem 3:] Find numbers $x$ and $y$ such that $x + y = 6$.
+
+    Here, $x=1$, $y=5$ is one solution. Another solution is $x=2$, $y=4$. There are many solutions. We may say that the set of all number pairs $(x,y)$ where $y = 6-x$ is the set of all solutions to the equation $x+y = 6$. Also, we may say that the set of all number pairs of the form $(x,6-x)$, where $x$ can be any number, is the set of all solutions.
+
+  \item[Sample Problem 4:] Find numbers $x$ and $y$ such that $x+y = 6$ and $x-y = 4$.
+    \begin{equation*}
+    \left.
+    \begin{tabular}{rrrc}
+       x + y & = &  6 & \\
+       x - y & = &  4 & \\ 
+      \cline{1-3}
+      2x + 0 & = & 10 & (Adding the above.)
+    \end{tabular}
+    \right\}
+    \ x = 5;\ y = 1
+    \end{equation*}
+    Check: 
+    \begin{align*}
+    x + y & = 5 + 1 = 6; \\
+    x - y & = 5 - 1 = 4
+    \end{align*}
+
+    It is good practice, and often necessary, to check answers. It is also quite satisfying.
+
+  \item[Sample Problem 5:] Find numbers $x$ and $y$ such that $3x + 4y = 7$ and $6x - 5y = 4$.
+
+    Rewrite the first equation; then subtract the second: 
+    \begin{equation*}
+    \left.
+    \begin{tabular}{rrr}
+      6x + 8y & = & 14 \\
+      6x - 5y & = &  4 \\
+      \cline{1-3}
+      13y & = & 10
+    \end{tabular} 
+    \right\}
+    \ y = \frac{10}{13}
+    \end{equation*}
+    Put $y$ back into one of the original equations, and solve for $x$. Then check your answers by substituting in the original equations.
+
+    Alternatively, to find $x$, we could multiply the first equation by $5$ and the second by $4$:
+    \begin{equation*}
+    \left.
+    \begin{tabular}{lrr}
+      15x + 20y & = & 35 \\
+      24x - 20y & = & 16 \\ 
+      \cline{1-3}
+      39x & = & 51
+    \end{tabular} 
+    \right\}
+    \ x = \frac{51}{39} = \frac{17}{13}.
+    \end{equation*}
+    We verify our answers:
+    \begin{equation*}
+    3x + 4y = 3 \cdot \frac{17}{13} + 4 \cdot \frac{10}{13} = \frac{51}{13} + \frac{40}{13} = \frac{91}{13} = 7
+    \end{equation*}
+    and
+    \begin{equation*}
+    6x - 5y = 6 \cdot \frac{17}{13} - 5 \cdot \frac{10}{13} = \frac{102}{13} - \frac{50}{13} = \frac{52}{13} = 4
+    \end{equation*}
+    There is plenty of room for error in this computation. Checking the answers is not only psychologically rewarding, but also a practical and logical necessity.
+
+  \item[Sample Problem 6:] Find numbers $x$ and $y$ such that both $x+y = 6$ and $x+y = 7$. 
+
+    Since $6$ is not $7$, no solution to this problem is possible.
+
+  \item[Sample Problem 7:] Find numbers $x$ and $y$ such that $3x + 4y = 7$ and $9x + 12y = 8$. 
+
+    This is also impossible; we realize that the second equation says that $3x + 4y = \frac{8}{3}$, and $\frac{8}{3}$ is not $7$.
+
+  \item[Sample Problem 8:] Find a number $x$ such that $x^2 = 4$. 
+
+    Here, $2$ and $-2$ are the answers.
+
+  \item[Sample Problem 9:] Find a number $x$ such that $x^2 = -9$. 
+
+    Here, there is no such number $x$.
+
+\end{description}
+
+
+\subsection{Quadratic Formula}
+
+If $ax^2 + bx + c = 0$, then if $b^2 - 4ac$ is not negative,
+\begin{equation*}
+x = \frac{ -b \pm \sqrt{b^2 - 4ac} }{2a}
+\end{equation*}
+We include this formula for your reference, but we will seldom need it in this course.
+
+
+
+
+\newpage
+
+\section{Multiplication of Matrices} 
+\markboth{2. Multiplication of Matrices}{2. Multiplication of Matrices}
+
+$\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$ is a matrix. It is a two-by-two ($2 \times 2$) matrix. This matrix has two rows (across) and two columns (down). Matrices (the plural of matrix) provide an excellent setting for our endeavor, because they are useful and interesting but we need not know very much mathematics to work with them. However, they will provide the practice and challenge we seek.
+
+The product of $\begin{bmatrix} 1 & 2 \\ 3 &4 \end{bmatrix}$ and $\begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix}$ is
+\begin{equation*}
+\begin{bmatrix} 
+  1 \cdot 5+2 \cdot 7 & \ 1 \cdot 6+2 \cdot 8 \\ 
+  3 \cdot 5+4 \cdot 7 & \ 3 \cdot 6+4 \cdot 8 
+\end{bmatrix}
+= \begin{bmatrix} 19 & 22 \\ 43 & 50 \end{bmatrix} 
+\end{equation*}
+
+The product of $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$ and $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ is
+\begin{equation*}
+\begin{bmatrix}
+  a \cdot w+b \cdot y & \ a \cdot x+b \cdot z \\
+  c \cdot w+d \cdot y & \ c \cdot x+d \cdot z 
+\end{bmatrix}
+\end{equation*}
+We write this as follows:
+\begin{equation*}
+\begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} w & x \\ y & z \end{bmatrix}
+= \begin{bmatrix} aw+by & ax+bz \\ cw+dy & cx+dz \end{bmatrix}
+\end{equation*}
+
+Addition of matrices is the way it ought to be:
+\begin{equation*}
+\begin{bmatrix} a & b \\ c & d \end{bmatrix} + \begin{bmatrix} w & x \\ y & z \end{bmatrix}
+= \begin{bmatrix} a+w & b+x \\ c+y & d+z \end{bmatrix}
+\end{equation*}
+
+(To multiply in the same manner would render the subject quite uninteresting.) If we add two matrices, we get a matrix. If we multiply two matrices, we get a matrix.
+
+\begin{description}
+
+  \item[1.] $\ $
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item Multiply these matrices: $\left( \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}  \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix} \right)  \begin{bmatrix} 9 & 0 \\ 1 & 2 \end{bmatrix}$.
+      \item Multiply these matrices: $\begin{bmatrix} 1 & 2 \\ 3 &4 \end{bmatrix}  \left( \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix}  \begin{bmatrix} 9 & 0 \\ 1 & 2 \end{bmatrix} \right)$. 
+    \end{enumerate}
+
+  \item[2.] Write down some pairs of matrices and multiply them. 
+
+  \item[3.] Multiply these matrices: $\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}  \begin{bmatrix} w & x \\ y & z \end{bmatrix}$. 
+
+  \item[4.] Cube the matrix $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$. ($M^3 = M \cdot M \cdot M$.)
+
+  \item[5.] Find, either by guessing or by solving equations, a $2 \times 2$ matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ such that 
+    \begin{equation*}
+    \begin{bmatrix} w & x \\ y & z \end{bmatrix}  \begin{bmatrix} w & x \\ y & z \end{bmatrix}  =  \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}
+    \end{equation*}
+    That is, find a square root for the matrix $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$.
+
+  \item[6.] Is there a formula for the powers $(1, 2, 3, 4, \cdots)$ of $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$? 
+
+  \item[7.] Find, perhaps by guessing, a $2 \times 2$ matrix whose cube is the matrix $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$. 
+
+  \item[8.] Is there a formula for the powers $(1, 2, 3, 4, \cdots)$ of $\begin{bmatrix} 1 & -3 \\ -2 & 6 \end{bmatrix}$?
+
+  \item[9.] Can you find a matrix whose cube is $\begin{bmatrix} 1 & -3 \\ -2 & 6 \end{bmatrix}$? 
+
+  \item[10.] Can you find a matrix whose cube is $\begin{bmatrix} 1 & 6 \\ 0 & 1 \end{bmatrix}$? 
+
+  \item[11.] Is there a $2 \times 2$ matrix which multiplies like the number \emph{one}? In other words, find a $2 \times 2$ matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ such that, for each $2 \times 2$ matrix $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$,
+    \begin{equation*}
+    \begin{bmatrix} a & b \\ c & d \end{bmatrix}  \begin{bmatrix} w & x \\ y & z \end{bmatrix}  =  \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+    \end{equation*}
+
+  \item[12.] Is there a formula for the powers $(1, 2, 3, 4, \cdots)$ of $\begin{bmatrix} 1 & -3 \\ -3 & 9 \end{bmatrix}$? 
+
+  \item[13.] Is there a formula for the powers of $\begin{bmatrix} 1 & b \\ c & d \end{bmatrix}$ if $d = bc$?
+
+  \item[14.] Is there a formula for the powers of $\begin{bmatrix} 1 & b \\ 0 & d \end{bmatrix}$? 
+
+  \item[15.] Find a $2 \times 2$ matrix $M$ such that $M^2 = M$. 
+
+  \item[16.] Find a $2 \times 2$ matrix $M$ such that $M^2 = -M$. 
+
+  \item[17.] Let $M$ be the matrix $\begin{bmatrix} a & b \\ b & a \end{bmatrix}$. Let $N$ be the matrix $\begin{bmatrix} c & d \\ d & c \end{bmatrix}$. Show that both $M+N$ and $MN$ are similar in form to the original matrices.
+
+  \item[18.] Let $M$ be the matrix $\begin{bmatrix} a & b \\ 0 & a \end{bmatrix}$. Let $N$ be the matrix $\begin{bmatrix} c & d \\ 0 & c \end{bmatrix}$. Show that both $M+N$ and $MN$ are similar in form to the original matrices.
+
+  \item[19.] Let $M$ be the matrix $\begin{bmatrix} a & b \\ 0 & d \end{bmatrix}$. Let $N$ be the matrix $\begin{bmatrix} e & f \\ 0 & h \end{bmatrix}$. Show that both $M+N$ and $MN$ are similar in form to the original matrices.
+
+  \item[] If Problem 11 has eluded you thus far, try again.
+
+\end{description}
+
+
+
+
+\newpage
+
+\section{Solving Equations}
+\markboth{3. Solving Equations}{3. Solving Equations}
+
+\begin{description}
+
+  \item[20.] Multiply $\begin{bmatrix} 1 & 2 \\ 3 & 11 \end{bmatrix}$ times $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$. 
+
+  \item[21.] Find a $2 \times 2$ matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ such that
+    \begin{equation*}
+    \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix} \begin{bmatrix} w & x \\ y & z \end{bmatrix}
+    = \begin{bmatrix} 1 & 2 \\ 3 & 11 \end{bmatrix} 
+    \end{equation*}
+
+  \item[22.] Find a $2 \times 2$ matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ such that
+    \begin{equation*}
+    \begin{bmatrix} 1 & 2 \\ 3 & 11 \end{bmatrix} \begin{bmatrix} w & x \\ y & z \end{bmatrix}
+    = \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}
+    \end{equation*}
+
+  \item[23.] Find a $2 \times 2$ matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ such that
+    \begin{equation*}
+    \begin{bmatrix} 3 & 4 \\ 2 & 5 \end{bmatrix} \begin{bmatrix} w & x \\ y & z \end{bmatrix}
+    = \begin{bmatrix} 1 & -3 \\ -2 & 6 \end{bmatrix}
+    \end{equation*}
+
+  \item[24.] Find a $2 \times 2$ matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ such that
+    \begin{equation*}
+    \begin{bmatrix} 1 & -3 \\ -2 & 6 \end{bmatrix} \begin{bmatrix} w & x \\ y & z \end{bmatrix}
+    = \begin{bmatrix} 3 & 4 \\ 2 & 5 \end{bmatrix}
+    \end{equation*}
+
+  \item[25.] Can you change the matrix after the equal sign Problem 24 such that there is a matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ that works?
+
+  \item[26.] Can you change the first matrix in Problem 24 and still have no solution to the equation? 
+
+  \item[27.] By solving equations, find a $2 \times 2$ matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ such that 
+    \begin{equation*}
+    \begin{bmatrix} w & x \\ y & z \end{bmatrix}  \begin{bmatrix} w & x \\ y & z \end{bmatrix}  =  \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}
+    \end{equation*}
+
+  \item[28.] By solving equations, find a $2 \times 2$ matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ whose cube is the matrix $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$. 
+
+\end{description}
+
+Please feel free at any time to make up your own problems and work on them. If I'm not giving you enough numerical problems, make up some more, solve them, and check your answers. On the other hand, if you see some pattern emerging, see if you can prove that your pattern is correct. These activities can be much more rewarding than just doing the next problem.
+
+
+
+
+\newpage
+
+\section{The Matrix System}
+\markboth{4. The Matrix System}{4. The Matrix System}
+
+In this section, we ask how much our system of matrices behaves like the number system. We listed the fundamental properties of the number system in the introduction. You might want to look at (a) through (j) in the Algebra Review. This section addresses the question: What are the corresponding properties of matrices?
+
+\begin{description}
+
+  \item[29.] Is there a $2 \times 2$ matrix which is like the number zero? In other words, find a $2 \times 2$ matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ such that for each $2 \times 2$ matrix $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$,
+    \begin{equation*}
+    \begin{bmatrix} a & b \\ c & d \end{bmatrix} + \begin{bmatrix} w & x \\ y & z \end{bmatrix}
+    = \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+    \end{equation*}
+
+  \item[] The problem above corresponds to property (b) in the Algebra Review. Properties (a), (c), and (d) refer only to addition, so they carry directly over to our matrix setting. Thus we turn to those properties which pertain to multiplication.
+
+  \item[30.] \emph{(Property f):} Is there a $2 \times 2$ matrix which is like the number $1$? In other words, find a $2 \times 2$ matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ such that for each $2 \times 2$ matrix $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$,
+    \begin{equation*}
+    \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} w & x \\ y & z \end{bmatrix}
+    = \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+    \end{equation*}
+
+  \item[31.] \emph{(Property j):} Can you show that if each of $A$, $B$, and $C$ is a $2 \times 2$ matrix, then
+    \begin{equation*}
+    A(B+C) = AB+AC ?
+    \end{equation*}
+    (Here you want to use twelve letters.) 
+
+  \item[32.] \emph{(Property h):} Can you show that if each of $A$ and $B$ is a $2 \times 2$ matrix, then $AB = BA$? 
+
+  \item[33.] \emph{(Property e):} Can you show that if each of $A$, $B$, and $C$ is a $2 \times 2$ matrix, then 
+    \begin{equation*}
+    A(BC) = (AB)C ?
+    \end{equation*}
+
+  \item[34.] \emph{(Property g):} Can you show that if the product of the matrices $A$ and $B$ is the zero matrix $\begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}$, then either $A$ is the zero matrix or $B$ is the zero matrix?
+
+  \item[35.] Is $\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$ the only answer for Problem 30? Call this answer $I$. Then for each $2 \times 2$ matrix $A$,
+    \begin{equation*}
+    IA = A = AI
+    \end{equation*}
+    Suppose that $J$ also is a $2 \times 2$ matrix, such that if $A$ is a $2 \times 2$ matrix, then
+    \begin{equation*}
+    JA = A = AJ
+    \end{equation*}
+    Can we show that $I = J$? 
+
+\end{description}
+
+The matrix $\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$ is called the $2 \times 2$ \emph{identity} matrix.
+
+We have seen that matrices behave somewhat like numbers. Matrices fail to have the \emph{commutative} property ($xy = yx$) (see Problem 32). Also, in the system of $2 \times 2$ matrices, there are \emph{divisors of zero}: we can have two non-zero matrices whose product is the zero matrix (see Problem 34).
+
+We take up the notion of reciprocals (property g) in the next section. With matrices, it is customary to use the word \emph{inverse} instead of \emph{reciprocal}.
+
+
+
+
+\newpage
+
+\section{Inverses}
+\markboth{5. Inverses}{5. Inverses}
+
+\begin{description}
+
+  \item[36.] Find a $2 \times 2$ matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ such that
+    \begin{equation*}
+    \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix} \begin{bmatrix} w & x \\ y & z \end{bmatrix} 
+    = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}
+    \end{equation*}
+
+  \item[37.] Find a $2 \times 2$ matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ such that
+    \begin{equation*}
+    \begin{bmatrix} w & x \\ y & z \end{bmatrix} \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix} 
+    = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}
+    \end{equation*}
+
+  \item[38.] Find a $2 \times 2$ matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ such that
+    \begin{equation*}
+    \begin{bmatrix} 1 & 2 \\ 3&11 \end{bmatrix} \begin{bmatrix} w & x \\ y & z \end{bmatrix} 
+    = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}
+    \end{equation*}
+
+  \item[39.] Find a $2 \times 2$ matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ such that
+    \begin{equation*}
+    \begin{bmatrix} w & x \\ y & z \end{bmatrix} \begin{bmatrix} 1 & 2 \\ 3 & 11 \end{bmatrix} 
+    = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}
+    \end{equation*}
+
+  \item[40.] Find a $2 \times 2$ matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ such that
+    \begin{equation*}
+    \begin{bmatrix} 3 & 4 \\ 2 & 5 \end{bmatrix} \begin{bmatrix} w & x \\ y & z \end{bmatrix} 
+    = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}
+    \end{equation*}
+
+  \item[41.] Find a $2 \times 2$ matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ such that
+    \begin{equation*}
+    \begin{bmatrix} w & x \\ y & z \end{bmatrix} \begin{bmatrix} 3 & 4 \\ 2 & 5 \end{bmatrix} 
+    = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}.
+    \end{equation*}
+
+  \item[42.] Find a $2 \times 2$ matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ such that
+    \begin{equation*}
+    \begin{bmatrix} 1 & -3 \\ -2 & 6 \end{bmatrix} \begin{bmatrix} w & x \\ y & z \end{bmatrix} 
+    = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}
+    \end{equation*}
+
+  \item[43.] Find a $2 \times 2$ matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ such that
+    \begin{equation*}
+    \begin{bmatrix} w & x \\ y & z \end{bmatrix} \begin{bmatrix} 1&-3\\ -2&6 \end{bmatrix} 
+    = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}
+    \end{equation*}
+
+  \item[] If you see some pattern emerging, write this down in the form of a problem, and see if you can prove that you are right.
+
+  \item[] In the first three pairs of problems in this section, we started with a matrix $A$, and found a matrix $B$ such that $AB = I$ and $BA = I$. Here $I$ represents the \emph{identity} matrix, which acts like the number one; that is, $I = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$. In this case, we say that $B$ is the inverse of $A$. We could use the term ``reciprocal'', but we wish to remember that we are not in the number system where we can write $\frac{C}{A}$. It is customary to write the inverse of $A$ as $A^{-1}$. Instead of $\frac{C}{A}$, we must write either $CA^{-1}$ or $A^{-1}C$, because these products might be different.
+
+  \item[] Let $A$ be the matrix $\begin{bmatrix} 3 & 4 \\ 2 & 5 \end{bmatrix}$. In Problems 40 and 41, we saw that $A^{-1} = \begin{bmatrix} 5/7 & -4/7 \\ -2/7 & 3/7 \end{bmatrix}$. Let $K$ be the matrix $\begin{bmatrix} 1 & -3 \\ -2 & 6 \end{bmatrix}$.
+
+  \item[] Now Problem 23 reads: Find a matrix $X$ such that $AX = K$. This is like the first sample problem in the introductory section, isn't it? Multiply both sides (on the left) by $A^{-1}$:
+    \begin{align*}
+    A^{-1}AX & = A^{-1}K \\ 
+          IX & = A^{-1}K \\ 
+           X & = A^{-1}K
+    \end{align*}
+    Multiply $A^{-1}$ by $K$ to obtain the answer to Problem 23.
+
+  \item[44.] Suppose that each of $A$ and $B$ is a $2 \times 2$ matrix, and $AB = I$. Is it true that $BA = I$? (Unless we know this, we must continue to test our alleged inverse on both sides.) 
+
+  \item[45.] Are there matrices which are their own inverses? 
+
+  \item[46.] Find the inverse of $\begin{bmatrix} 1 & 3 \\ 3 & 7 \end{bmatrix}$. 
+
+  \item[47.] Find the inverse of $\begin{bmatrix} 1 & -3 \\ -2 & 11 \end{bmatrix}$. 
+
+  \item[48.] Show that if $d \neq bc$, then $\begin{bmatrix} 1 & b \\ c & d \end{bmatrix}$ has an inverse. 
+
+  \item[49.] Show that $\begin{bmatrix} 1 & b \\ c & bc \end{bmatrix}$ has no inverse. 
+
+  \item[50.] Write the inverse of $\begin{bmatrix} 3 & b \\ c & d \end{bmatrix}$ when it has one. 
+
+  \item[51.] When does $\begin{bmatrix} 3 & b \\ c & d \end{bmatrix}$ fail to have an inverse? 
+
+  \item[52.] Write the inverse of $\begin{bmatrix} 0 & b \\ c & d \end{bmatrix}$ when it has one. 
+
+  \item[53.] When does $\begin{bmatrix} 0 & b \\ c & d \end{bmatrix}$ fail to have an inverse? 
+
+  \item[54.] Show that $\begin{bmatrix} a & b \\ ma & mb \end{bmatrix}$ has no inverse. 
+
+  \item[55.] Show that $\begin{bmatrix} a & ma \\ c & mc \end{bmatrix}$ has no inverse. 
+
+  \item[56.] Show that if $ad - bc = 0$, then $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$ has no inverse.
+
+  \item[57.] Write the inverse of $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$ when it has one. 
+
+  \item[] Now you can do Problem 44.
+
+\end{description}
+
+
+
+
+\newpage
+
+\section{Miscellaneous Problems}
+\markboth{6. Miscellaneous Problems}{6. Miscellaneous Problems}
+
+I hope that you have enjoyed the first four sections. In this section, we investige several different kinds of problems. These problems will motivate the subsequent sections.
+
+These problems might be more thought-provoking than earlier problems. In each problem, ask yourself whether you have found all the answers. It is possible that you find some of these problems difficult. You need not quit. Even if you have serious trouble here, you can go on and benefit from the subsequent sections. For this section, do what is reasonable for you. Try not to expect either too much or too little from yourself.
+
+In Problems 56 and 57, we saw that the number $ad-bc$ \emph{determines} when the matrix $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$ has an inverse. There is no inverse when $ad-bc = 0$. When $ad-bc \neq 0$, there is an inverse.
+
+This number $ad-bc$ is called the \emph{determinant} of $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$.
+
+\begin{description}
+
+  \item[58.] What is the determinant of $\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$? Does this matrix have an inverse? 
+
+  \item[59.] What is the determinant of $\begin{bmatrix} 2 & 3 \\ 3 & 7 \end{bmatrix}$? Does this matrix have an inverse?
+
+  \item[60.] What is the product of $\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$ and $\begin{bmatrix} 2 & 3 \\ 3 & 7 \end{bmatrix}$? What is the determinant of that product? What do you guess from these calculations? 
+
+  \item[61.] Show that the determinant of $\begin{bmatrix} a & b \\ c & d \end{bmatrix}  \begin{bmatrix} w & x \\ y & z \end{bmatrix}$ is $(ad-bc)(wz-xy)$. 
+
+  \item[] This says that for $2 \times 2$ matrices, the determinant of the product of two matrices is the product of the individual determinants.
+
+  \item[] The following problem shows that if the determinant is zero, then the matrix fails to have an inverse.
+
+  \item[62.] Suppose that $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$, and that $ad - bc = 0$, and that $A$ has an inverse $A^{-1}$. Find a contradiction. 
+
+  \item[63.] What is the determinant of the matrix in Problem 54?
+
+  \item[64.] What is the determinant of the matrix in Problem 55?
+
+  \item[65.] We have a matrix which acts like the number $1$. How many square roots can you find for that matrix? In other words, how many matrices $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ can you find such that 
+    \begin{equation*}
+    \begin{bmatrix} w & x \\ y & z \end{bmatrix} \begin{bmatrix} w & x \\ y & z \end{bmatrix}
+    = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} ?
+    \end{equation*}
+
+  \item[66.] Is $\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$ the only answer for Problem 11? Call this answer $I$. Then for each $2 \times 2$ matrix $A$, 
+    \begin{equation*}
+    IA = A = AI
+    \end{equation*}
+    Suppose that $J$ is a $2 \times 2$ matrix such that if $A$ is a $2 \times 2$ matrix, then 
+    \begin{equation*}
+    JA = A = AJ
+    \end{equation*}
+    Show that $I = J$. 
+
+  \item[67.] How many square roots can you find for the zero matrix? 
+
+  \item[68.] How many matrices $M$ can you find where $M^2 = M$? Can you find three? 
+
+  \item[69.] How many matrices $M$ can you find where $M^2 = -M$? Can you find three? 
+
+  \item[70.] Solve equations to find all the answers for Problem 67.
+
+  \item[71.] Solve equations to find all the answers for Problem 68.
+
+  \item[72.] Solve equations to find all the answers for Problem 69.
+
+  \item[73.] Find a square root for the matrix $\begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}$.
+
+  \item[74.] Find a square root for the matrix $\begin{bmatrix} 4 & 5 \\ 0 & 9 \end{bmatrix}$.
+
+  \item[75.] Find a square root for the matrix $\begin{bmatrix} 7 & 10 \\ 15 & 22 \end{bmatrix}$.
+
+  \item[76.] Does every $2 \times 2$ matrix have a square root?
+
+  \item[77.] Does every $2 \times 2$ matrix have a cube root?
+
+  \item[78.] Can you multiply these two matrices?
+    \begin{equation*}
+    \begin{bmatrix} 1 & 2 & 5 \\ 3 & 4 & 7 \\ 1 & 2 & 1 \end{bmatrix}  \begin{bmatrix} 6 & 9 & 10 \\ 2 & 1 & 2 \\ 1 & -1 & -1 \end{bmatrix}
+    \end{equation*}
+
+  \item[79.] Is there a $3 \times 3$ matrix which is like the number $1$?
+
+\end{description}
+
+
+
+
+\newpage
+
+\section{Commuting Matrices}
+\markboth{7. Commuting Matrices}{7. Commuting Matrices}
+
+\begin{description}
+
+  \item[80.] How many matrices $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ can you find such that
+    \begin{equation*}
+    \begin{bmatrix} w & x \\ y & z \end{bmatrix} \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}
+    = \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix} \begin{bmatrix} w & x \\ y & z \end{bmatrix} ?
+    \end{equation*}
+
+  \item[] A matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ as above is said to \emph{commute} with the matrix $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$; the product one way is the same as the product the other way.
+
+  \item[81.] Find a matrix which does not commute with the matrix $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$.
+
+  \item[82.] Find all matrices $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ such that
+    \begin{equation*}
+    \begin{bmatrix} w & x \\ y & z \end{bmatrix} \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}
+    = \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix} \begin{bmatrix} w & x \\ y & z \end{bmatrix}
+    \end{equation*}
+    That is, find all matrices which commute with $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$.
+
+  \item[] Let $A$ be the matrix $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$. Let $R$ be a square root of $A$ (that is, $R$ is a $2 \times 2$ matrix such that $R^2 = A$). Then
+    \begin{equation*}
+    RA = R \cdot R^2 = R \cdot R \cdot R = R^2 \cdot R = AR
+    \end{equation*}
+
+  \item[] In summary, $RA = AR$; $R$ \emph{commutes} with $A$. That is, each square root of $A$ must commute with $A$. Thus, using the results of the preceding problem, Problem 5 is simplified to the following.
+
+  \item[83.] Find a $2 \times 2$ matrix $\begin{bmatrix} w & x \\ 0 & w \end{bmatrix}$ such that
+    \begin{equation*}
+    \begin{bmatrix} w & x \\ 0 & w \end{bmatrix} \begin{bmatrix} w & x \\ 0 & w \end{bmatrix}
+    = \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}
+    \end{equation*}
+
+  \item[84.] Use Problem 82 to find a cube root for $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$. That is, use the fact that the cube root must commute with the original matrix: it must be of the form $\begin{bmatrix} w & x \\ 0 & w \end{bmatrix}$.
+
+  \item[85.] Find all matrices $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ such that
+    \begin{equation*}
+    \begin{bmatrix} w & x \\ y & z \end{bmatrix} \begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix}
+    = \begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix} \begin{bmatrix} w & x \\ y & z \end{bmatrix}
+    \end{equation*}
+
+  \item[86.] How many matrices $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ can you find such that
+    \begin{equation*}
+    \begin{bmatrix} w & x \\ y & z \end{bmatrix} \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+    = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} w & x \\ y & z \end{bmatrix}
+    \end{equation*}
+    for \emph{every} matrix $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$? (You have to write $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ first. Then I write $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$, and your matrix has to work.) 
+
+  \item[87.] Find all matrices $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ such that
+    \begin{equation*}
+    \begin{bmatrix} w & x \\ y & z \end{bmatrix} \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+    = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} w & x \\ y & z \end{bmatrix}
+    \end{equation*}
+    for \emph{every} matrix $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$.
+
+  \item[88.] How much work is it to find all $3 \times 3$ matrices which commute with every $3 \times 3$ matrix?
+
+  \item[89.] Find all matrices which commute with $\begin{bmatrix} 1 & 2 \\ 0 & 4 \end{bmatrix}$.
+
+  \item[90.] Find all matrices which commute with $\begin{bmatrix} 1 & 2 \\ 0 & 1 \end{bmatrix}$.
+
+  \item[91.] Show that if $AB = BA$, then $A^3 B = BA^3$.
+
+  \item[92.] Find all matrices which commute with $\begin{bmatrix} 1 & -3 \\ -2 & 6 \end{bmatrix}$.
+
+  \item[93.] Find all matrices which commute with $\begin{bmatrix} 5 & 2 \\ 3 & 4 \end{bmatrix}$.
+
+  \item[94.] Given a single matrix $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$, find all matrices which commute with it. Your answer will have the letters $a$, $b$, $c$, and $d$ in it.
+
+  \item[95.] Show that the inverse $\begin{bmatrix} 4/14 & -2/14 \\ -3/14 & 5/14 \end{bmatrix}$ of the matrix $\begin{bmatrix} 5 & 2 \\ 3 & 4 \end{bmatrix}$ is of the form $\begin{bmatrix} w & x \\ \frac{3x}{2} & w-\frac{x}{2} \end{bmatrix}$. (See Problem 93.)
+
+  \item[96.] Show that the matrix $\begin{bmatrix} 5 & 2 \\ 3 & 4 \end{bmatrix}$ itself is of the form $\begin{bmatrix} w & x \\ \frac{3x}{2} & w-\frac{x}{2} \end{bmatrix}$.
+
+  \item[97.] Show that the square of $\begin{bmatrix} 5 & 2 \\ 3 & 4 \end{bmatrix}$ is of the form $\begin{bmatrix} w & x \\ \frac{3x}{2} & w-\frac{x}{2} \end{bmatrix}$.
+
+  \item[98.] Show that $\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$ is of the form $\begin{bmatrix} w & x \\ \frac{3x}{2} & w-\frac{x}{2} \end{bmatrix}$.
+
+  \item[99.] Let $A$ be $\begin{bmatrix} 5 & 2 \\ 3 & 4 \end{bmatrix}$. Show that $A + A^2$ is of the form $\begin{bmatrix} w & x \\ \frac{3x}{2} & w-\frac{x}{2} \end{bmatrix}$.
+
+  \item[100.] Show that if each of $A$, $B$, and $C$ is a $2 \times 2$ matrix, and $AB = BA$ and $AC = CA$ and $D = B + C$, then
+    \begin{equation*}
+    AD = DA
+    \end{equation*}
+
+  \item[101.] Show that if each of $A$, $B$, and $C$ is a $2 \times 2$ matrix, and $AB = BA$ and $AC = CA$ and $D = BC$, then
+    \begin{equation*}
+    AD = DA
+    \end{equation*}
+
+  \item[] If $p$ is a number, then by $p \begin{bmatrix} q & r \\ s & t \end{bmatrix}$, we mean $\begin{bmatrix} pq & pr \\ ps & pt \end{bmatrix}$.
+
+  \item[102.] Show that if $p$ is a number, then $pI$ commutes with $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$.
+
+  \item[103.] Let $A$ be $\begin{bmatrix} 5 & 2 \\ 3 & 4 \end{bmatrix}$, as in several earlier problems. Suppose that each of $p$ and $q$ is a number. Show that $pI + qA$ commutes with $A$.
+
+  \item[104.] Let $A$ be $\begin{bmatrix} 5 & 2 \\ 3 & 4 \end{bmatrix}$, as in several earlier problems. Suppose that each of $p$ and $q$ is a number. Show that $pI + qA$ is of the form $\begin{bmatrix} w & x \\ \frac{3x}{2} & w-\frac{x}{2} \end{bmatrix}$. (Write $w$ and $x$ in terms of $p$ and $q$.)
+
+\end{description}
+
+You have done a hundred problems. Congratulations!
+
+
+
+
+\newpage
+
+\section{Matrix Polynomials}
+\markboth{8. Matrix Polynomials}{8. Matrix Polynomials}
+
+\begin{description}
+
+  \item[105.] Let $A$ be $\begin{bmatrix} 5 & 2 \\ 3 & 4 \end{bmatrix}$.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item Find numbers $p$ and $q$ such that $A^2 = pA+qI$ ($I$ is the identity matrix).
+      \item Find numbers $p$ and $q$ such that $A^3 = pA+qI$.
+      \item Find numbers $p$ and $q$ such that $A^4 = pA+qI$.
+    \end{enumerate}
+
+  \item[106.] Let $A$ be $\begin{bmatrix} 1 & 2 \\ 0 & 1 \end{bmatrix}$.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item Find numbers $p$ and $q$ such that $A^2 = pA+qI$.
+      \item Find numbers $p$ and $q$ such that $A^3 = pA+qI$.
+      \item Find numbers $p$ and $q$ such that $A^4 = pA+qI$.
+    \end{enumerate}
+
+  \item[107.] Let $A$ be $\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item Find numbers $p$ and $q$ such that $A^2 = pA+qI$.
+      \item Find numbers $p$ and $q$ such that $A^3 = pA+qI$.
+      \item Find numbers $p$ and $q$ such that $A^4 = pA+qI$.
+    \end{enumerate}
+
+  \item[108.] Let $A$ be $\begin{bmatrix} 1 & 2 \\ 3 & 11 \end{bmatrix}$. Guess numbers $p$ and $q$ such that $A^2 = pA+qI$.
+
+  \item[109.] Let $A$ be $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item Guess numbers $p$ and $q$ such that $A^2 = pA+qI$.
+      \item Show that your guess is correct.
+    \end{enumerate}
+
+  \item[] The preceding problem finds numbers $p$ and $q$ such that $A^2 = pA+qI$ or $A^2 - pA - qI = [0]$. (Here [0] stands for the zero matrix.) In different terms, we have shown that each $2 \times 2$ matrix satisfies a polynomial of degree $2$. Here the polynomial is $P(x) = x^2 - px - q$. The word \emph{satisfies} means that the matrix makes the polynomial zero. In Problem 108, we see that if $A$ is $\begin{bmatrix} 1 & 2 \\ 3 & 11 \end{bmatrix}$, then $A$ satisfies the polynomial $P(x) = x^2 - 12x + 5$. This means that $P(A) = A^2 - 12A + 5I = [0]$.
+
+  \item[] If you wish, you may wonder about the situation for $3 \times 3$ matrices now.
+
+  \item[110.] Let $A$ be $\begin{bmatrix} 1 & 2 \\ 0 & 1 \end{bmatrix}$. Problem 106 says that
+    \begin{align*}
+    A^2 & = 2A-I, \\
+    A^3 & = 3A-2I, \\
+    A^4 & = 4A-3I.
+    \end{align*}
+    What should $A^5$ be?
+
+    What should $A^n$ be?
+
+  \item[111.] Let $A$ be a matrix such that $A^2 = 2A-I$. Suppose that $k$ is a counting number such that $A^k = kA - (k-1)I$. Show that $A^{k+1} = (k+1)A - kI$.
+
+  \item[112.] Let $A$ be $\begin{bmatrix} 1 & 2 \\ 0 & 1 \end{bmatrix}$, such that $A^2 = 2A-I$. Is it true that if $n$ is a counting number, then $A^n = nA - (n-1)I$?
+
+  \item[113.] Let $A$ be $\begin{bmatrix} 1 & 2 \\ 0 & 1 \end{bmatrix}$. Does the formula obtained above hold if $n$ is $1$? if $n$ is $0$ (here $A^0$ should mean the identity matrix $I$)? if $n$ is $-1$ (do we get the inverse of $A$)? if $n$ is $\frac{1}{2}$ (do we get a square root of $A$)?
+
+  \item[114.] Let $A$ be $\begin{bmatrix} 2 & 3 \\ 0 & 1 \end{bmatrix}$. Proceed as in Problems 106, 110, 111, and 112, and obtain a formula for the powers of $A$.
+
+  \item[115.] Let $A$ be $\begin{bmatrix} 2 & 3 \\ 0 & 1 \end{bmatrix}$, as above. Does the formula obtained in the last problem hold if $n$ is $1$? if $n$ is $0$? if $n$ is $-1$? if $n$ is $\frac{1}{2}$?
+
+  \item[] Let $A$ be $\begin{bmatrix} 1 & 2 \\ 1 & 1 \end{bmatrix}$. Can we obtain a formula for the powers of $A$? I believe there is one, but it seems to be out of my reach.
+
+  \item[116.] Let $A$ be $\begin{bmatrix} 1 & 2 \\ 1 & 1 \end{bmatrix}$, as above. Many matrices (perhaps all the powers of $A$) can be written in the form $pA+qI$. Can \emph{every} $2 \times 2$ matrix be written in this form?
+
+  \item[117.] Let $A$ be a $2 \times 2$ matrix such that $A^2 = 2A - 3I$.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item Show that $A$ has an inverse.
+      \item Write a specific matrix $A$ such that $A^2 = 2A - 3I$.
+    \end{enumerate}
+
+  \item[118.] Let $A$ be $\begin{bmatrix} 5 & 2 \\ 3 & 4 \end{bmatrix}$, as in many earlier problems. Suppose that each of $w$ and $x$ is a number. Show that $\begin{bmatrix} w & x \\ \frac{3x}{2} & w-\frac{x}{2} \end{bmatrix}$ is of the form $pA+qI$. (Write $p$ and $q$ in terms of $w$ and $x$.)
+
+  \item[] From this last problem and Problem 104, we see that the only matrices which commute with $\begin{bmatrix} 5 & 2 \\ 3 & 4 \end{bmatrix}$ are those of the form $pA+qI$, where $A$ is $\begin{bmatrix} 5 & 2 \\ 3 & 4 \end{bmatrix}$, itself.
+
+  \item[119.] Let $A$ be $\begin{bmatrix} 1 & -3 \\ -2 & 6 \end{bmatrix}$. According to the method used in ths section, find a formula for the powers of $A$.
+
+  \item[120.] Let $A$ be $\begin{bmatrix} 1 & 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 1 \end{bmatrix}$. Find numbers $p$ and $q$ such that $A^2 = pA + qI$. ($I$ is the $3 \times 3$ identity matrix. See Problem 79.)
+
+  \item[121.] Let $A$ be $\begin{bmatrix} 1 & 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 1 \end{bmatrix}$. Find numbers $p$, $q$, and $r$ such that $A^3 = pA^2 + qA + rI$.
+
+  \item[122.] Let $A$ be $\begin{bmatrix} 1 & 2 & 5 \\ 3 & 4 & 7 \\ 1 & 2 & 1 \end{bmatrix}$. Find numbers $p$, $q$, and $r$ such that $A^3 = pA^2 + qA + rI$.
+
+  \item[] Now, perhaps, it seems that if $A$ is a $3 \times 3$ matrix, then its third power can be written in terms of the three lesser powers:
+    \begin{equation*}
+    A^3 = pA^2 + qA + rI
+    \end{equation*}
+
+  \item[] It is not easy to do this using nine letters in $A$. However, when we did Problem 109, the coefficient $q$ of $I$ was the determinant of $A$. So it seems that if we did this general problem for $3 \times 3$ matrices, then we would find the general determinant for $3 \times 3$ matrices. It is easy to guess $p$, I think. You might try this problem now. It sure would make work on the inverses of $3 \times 3$ matrices easier if we knew their determinants.
+
+  \item[] We have done enough now to suspect that if $A$ is a $4 \times 4$ matrix, then its fourth power can be written in terms of the four lesser powers (including $A^0$, which is the $4 \times 4$ identity matrix). You might try this for your favorite $4 \times 4$ matrix.
+
+  \item[123.] Let $A$ be a $2 \times 2$ matrix such that $A^2 = 4A - 3I$. With the goal in mind of determining numbers $p_n$ and $q_n$ such that for each counting number $n$,
+    \begin{equation*}
+    A^n = p_n A + q_n I
+    \end{equation*}
+    compute at least six powers of $A$ in terms of $A$ and $I$. Write out the string of coefficients of $A$ in these, and the string of coefficients of $I$. Find a pattern.
+
+  \item[124.] Use what we have learned to write, in terms of $A$ and $I$, the square root of a $2 \times 2$ matrix $A$ such that $A^2 = 4A - 3I$. Show that your answer works.
+
+  \item[] Care to try the cube root? This would be a little more difficult, but obtaining the inverse this way shouldn't be hard.
+
+  \item[125.] Is there a $2 \times 2$ matrix $M$ such that $M^2$ is not the zero matrix but $M^3$ is the zero matrix?
+
+  \item[126.] Is there a $3 \times 3$ matrix $M$ such that $M^2$ is not the zero matrix but $M^3$ is the zero matrix?
+
+\end{description}
+
+We sure have come a long way together. I hope you are profiting from our journey.
+
+
+
+
+\newpage
+
+\section{Complex Numbers}
+\markboth{9. Complex Numbers}{9. Complex Numbers}
+
+We have not mentioned complex numbers thus far. Indeed, we have not allowed them. We said that there is no number whose square is $-9$.
+
+We might have guessed that $\begin{bmatrix} -1 & 0 \\ 0 & -1 \end{bmatrix}$ is a matrix which has no square root. If so, we were frustrated in our attempt to show that there is no square root. There was good reason for this frustration.
+
+\begin{description}
+
+  \item[127.] Find a square root for $\begin{bmatrix} -1 & 0 \\ 0 & -1 \end{bmatrix}$.
+
+  \item[] Take either your simplest answer for Problem 127, or else take $\begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}$, and denote that matrix by the letter $i$. I have $I = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$, and $i = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}$. Either your choice or mine for $i$ yields $i^2 = -I$.
+
+    Complex numbers are usually written $a+bi$. So we will write $aI+bi$ ($i$ as above, or else your choice), and we will have a system of matrices which, we hope, behaves the way complex numbers are supposed to behave. This system consists of all matrices of the form $\begin{bmatrix} a & -b \\ b & a \end{bmatrix}$ (my form). Now you don't have to use your ``imagination'' to know that there are complex numbers. Our matrices are ``real'', not ``imaginary''.
+
+  \item[128.] Let $M$ be $aI+bi$, and let $N$ be $cI+di$.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item Show that $MN$ is of the same form.
+      \item Show that $MN = NM$.
+    \end{enumerate}
+
+  \item[129.] Show that if $aI+bi$ is not the zero matrix, then it has an inverse.
+
+  \item[130.] Find a square root for $\begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}$.
+
+  \item[131.] Find a square root for $aI+bi$. (Here we suppose that $b \neq 0$.)
+
+  \item[132.] Find all square roots of $-I$.
+
+  \item[133.] Show that if $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ commutes with $\begin{bmatrix} 2 & -3 \\ 3 & 2 \end{bmatrix}$, then $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ is a complex number, in the sense that $z = w$ and $x = -y$.
+
+\end{description}
+
+
+
+
+\newpage
+
+\section{Similarity}
+\markboth{10. Similarity}{10. Similarity}
+
+\begin{description}
+
+  \item[134.] Find a matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$, which has an inverse, such that
+    \begin{equation*}
+      \begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}  \begin{bmatrix} w & x \\ y & z \end{bmatrix}
+      = \begin{bmatrix} w & x \\ y & z \end{bmatrix}  \begin{bmatrix} 0 & 0 \\ 1 & 0 \end{bmatrix}
+    \end{equation*}
+
+  \item[135.] Find a matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$, which has an inverse, such that
+    \begin{equation*}
+      \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}  \begin{bmatrix} w & x \\ y & z \end{bmatrix}
+      = \begin{bmatrix} w & x \\ y & z \end{bmatrix}  \begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}
+    \end{equation*}
+
+  \item[136.] Find a matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$, which has an inverse, such that
+    \begin{equation*}
+      \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}  \begin{bmatrix} w & x \\ y & z \end{bmatrix}
+      = \begin{bmatrix} w & x \\ y & z \end{bmatrix}  \begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}
+    \end{equation*}
+
+  \item[] A matrix $A$ is said to be \emph{similar} to a matrix $B$ provided that there is a matrix $M$, having an inverse, such that
+    \begin{equation*}
+    AM = MB
+    \end{equation*}
+    (alternatively, $B = M^{-1}AM$).
+
+    The use of the word \emph{similar} for this purpose is bothersome to some people. We hope that you agree that there is some ``similarity'' between the given matrices of Problem 134, and also some between the matrices given in Problem 135. Perhaps you will also agree that there is an essential difference between the matrices given in Problem 136. In any event, we will use the word \emph{similar} as in the last paragraph. This is standard in mathematics.
+
+  \item[137.] Show that if $A$ and $B$ are $2 \times 2$ matrices which are similar, then the determinant of $A$ is the same as the determinant of $B$.
+
+  \item[138.] Find a matrix which is similar to $\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$.
+
+  \item[139.] Which matrices are similar to the identity matrix?
+
+  \item[140.] The matrix $\begin{bmatrix} 2 & 3 \\ -\frac{5}{3} & -2 \end{bmatrix}$ is a matrix whose square is $-I$ (Problem 132). Is this matrix similar to $\begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}$?
+
+  \item[141.] Show that if $A$ is $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$, and $B$ is $\begin{bmatrix} p & q \\ r & s \end{bmatrix}$, and $B = M^{-1}AM$, then 
+    \begin{equation*}
+    p+s = a+d
+    \end{equation*}
+
+  \item[142.] Is the matrix $\begin{bmatrix} 1 & 2 \\ 3 & 5 \end{bmatrix}$ similar to a matrix of the form $\begin{bmatrix} p & q \\ r & p \end{bmatrix}$?
+
+  \item[143.] Is every matrix $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$ similar to a matrix of the form $\begin{bmatrix} p & q \\ r & p \end{bmatrix}$?
+
+  \item[144.] Show that if $A$ is similar to $B$, then $A^2$ is similar to $B^2$.
+
+  \item[145.] Show that if $A$ is similar to $B$, and $R^2 = A$, then $B$ has a square root.
+
+  \item[146.] Show that if $A$ is similar to $B$ and $R^3 = A$, then $B$ has a cube root.
+
+\end{description}
+
+
+
+
+\newpage
+
+\section{Square Roots}
+\markboth{11. Square Roots}{11. Square Roots}
+
+We tried to get the square root of $\begin{bmatrix} 7 & 10 \\ 15 & 22 \end{bmatrix}$ in Problem 75. Even though we knew that this matrix was the square of $\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$, we found the square root difficult to solve for. In our solution, the determinant was crucial.
+
+We have found square root $s$ of the zero matrix (Problem 70). Let us resume our study of square root $s$ by looking at nonzero matrices with determinant zero.
+
+Our goal in this section is to find out exactly which $2 \times 2$ matrices have square root $s$.
+
+The equations for the square root of $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$ are
+\begin{align*} 
+w^2 + xy & = a \\
+(w+z) x  & = b \\
+y (w+z)  & = c \\
+xy + z^2 & = d \\
+\end{align*}
+
+\begin{description}
+
+  \item[147.] Under what condition on the numbers $a$ and $c$ does $\begin{bmatrix} a & 0 \\ c & 0 \end{bmatrix}$ have a square root?
+
+  \item[148.] Under what condition on the numbers $b$ and $d$ does $\begin{bmatrix} 0 & b \\ 0 & d \end{bmatrix}$ have a square root?
+
+  \item[] Now we wish to discover when $\begin{bmatrix} a & d \\ a & d \end{bmatrix}$ has a square root.
+
+  \item[149.] Does $\begin{bmatrix} 2 & 3 \\ 2 & 3 \end{bmatrix}$ have a square root?
+
+  \item[150.] Does $\begin{bmatrix} 2 & -3 \\ 2 & -3 \end{bmatrix}$ have a square root?
+
+  \item[151.] Does $\begin{bmatrix} -2 & 3 \\ -2 & 3 \end{bmatrix}$ have a square root?
+
+  \item[] Can you say what condition on $a$ and $d$ will make $\begin{bmatrix} a & d \\ a & d \end{bmatrix}$ have a square root?
+
+  \item[152.] Show that if $\begin{bmatrix} a & d \\ a & d \end{bmatrix}$ has a square root, then $a+d \geq 0$.
+
+  \item[153.] Show that if $a+d > 0$, then $\begin{bmatrix} a & d \\ a & d \end{bmatrix}$ has a square root.
+
+  \item[154.] Show that if $a+mb > 0$, then $\begin{bmatrix} a & b \\ ma & mb \end{bmatrix}$ has a square root.
+
+  \item[155.] Show that if $a+d > 0$ and $ad-bc = 0$, then $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$ has a square root.
+
+  \item[] At this point, we might wonder whether $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$ has a square root whenever $a+d > 0$. Can you think of a problem we have done which will settle this matter for us?
+
+  \item[] The matrix $\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$ has a negative determinant, so it has no square root even though $1+4 > 0$. Also, Problem 127 tells us of a matrix $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$, having a square root, where $a+d = -2$. The determinant is $1$.
+
+  \item[156.] Does $\begin{bmatrix} -1 & 0 \\ 0 & -2 \end{bmatrix}$ have a square root?
+
+  \item[157.] When does $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$ have a square root?
+
+  \item[] The results of the preceeding problem fulfill the mathematical goal I had in writing this book. We know precisely which $2 \times 2$ matrices have square root $s$.
+
+  \item[158.] When does $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$ have a fourth root?
+
+\end{description}
+
+If you have made it this far, you are ready for serious college math. I only wish I could tell you that they will proceed at a reasonable speed.
+
+
+
+
+\newpage
+
+\section{Cube Roots}
+\markboth{12. Cube Roots}{12. Cube Roots}
+
+Does every $2 \times 2$ matrix have a cube root? We have already asked this question in Problem 77. In case you still would like to work some more on this question, we warn you that we give the answer away in the next problem.
+
+Since we did so well with matrices with determinant zero in the last section, we will begin there, and we will use the last section as an outline. Let us see how far we can go toward seeing which $2 \times 2$ matrices have cube root $s$.
+
+The equations for the cube root of $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$ are
+\begin{align*} 
+     w^3 + 2wxy + xyz & = a \\
+x(w^2 + xy + wz +z^2) & = b \\
+y(w^2 + xy + wz +z^2) & = c \\
+     wxy + 2xyz + z^3 & = d
+\end{align*}
+
+\begin{description}
+
+  \item[159.] Under what condition on the numbers $a$ and $c$ does $\begin{bmatrix} a & 0 \\ c & 0 \end{bmatrix}$ have a cube root?
+
+  \item[160.] Under what condition on the numbers $b$ and $d$ does $\begin{bmatrix} 0 & b \\ 0 & d \end{bmatrix}$ have a cube root?
+
+  \item[161.] Under what condition on the numbers $a$, $b$, and $m$ does $\begin{bmatrix} a & b \\ ma & mb \end{bmatrix}$ have a cube root?
+
+  \item[162.] Under what condition on the numbers $a$, $b$, and $d$ does $\begin{bmatrix} a & b \\ 0 & d \end{bmatrix}$ have a cube root?
+
+  \item[163.] Cube $\begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix}$.
+
+  \item[164.] Show that if $\begin{bmatrix} w & x \\ y & z \end{bmatrix}^3  =  \begin{bmatrix} 14 & 13 \\ 13 & 14 \end{bmatrix}$, then $x=y$ and $z=w$.
+
+  \item[165.] Show that if $\begin{bmatrix} w & x \\ y & z \end{bmatrix}^3  =  \begin{bmatrix} 14 & 13\\ 13 & 14 \end{bmatrix}$, then $(w+x)^3 = 27$.
+
+  \item[166.] Show that if $\begin{bmatrix} w & x \\ y & z \end{bmatrix}^3  =  \begin{bmatrix} 14 & 13 \\ 13 & 14 \end{bmatrix}$, then $4w^3 - 18w^2 + 27w - 14 = 0$ and $4x^3 - 18x^2 + 27x - 13 = 0$.
+
+\end{description}
+
+We can see that $w=2$ and $x=1$ satisfy the equations above, but this is not really `solving' the equations. If we were to find the cube root of $\begin{bmatrix} 14 & 13 \\ 13 & 14 \end{bmatrix}$ honestly -- that is, without already knowing the answer from Problem 163 -- we would have to really solve one of the cubic equations in the problem above. Thus we can see that if the problem were any harder, we would be in serious trouble.
+
+The problem of determining which $2 \times 2$ matrices have cube root $s$ can be finished. We have made a start. To finish, we would have to do some fancy algebra and know something about cubics, or else we would need to devise a different approach to the problem. Similarity is a valuable tool here.
+
+
+
+
+\newpage
+
+\section{Inverses For $3 \times 3$ Matrices}
+\markboth{13. Inverses For $3 \times 3$ Matrices}{13. Inverses For $3 \times 3$ Matrices}
+
+As we worked through this book, we have been working toward independence. I hope that you now feel some confidence in your abilities. As I end my part of your journey, I will give just a little direction for your next few steps.
+
+In attacking the general problem of finding inverses for $3 \times 3$ matrices, there are two activities possible. The easier of these is finding classes of $3 \times 3$ matrices which have no inverse. In Section 5, we found $2 \times 2$ matrices which did not have inverses, and that can be a guide here.
+
+The second activity is that of finding a general inverse for a $3 \times 3$ matrix. I will suggest four ways to attack this problem.
+\begin{enumerate}[\hspace{0.5cm}(I)]
+  \item The quickest, and perhaps the hardest, way is just to attack the problem head-on and solve the general equations. Once you have done three equations, the other six should not be too bad. We have
+    \begin{equation*}
+      \begin{bmatrix} a & b &c \\ d & e & f \\ g &h & i \end{bmatrix}
+      \begin{bmatrix} r & s & t \\ u & v & w \\ x & y & z \end{bmatrix}
+      = \begin{bmatrix} 1 & 0 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 1 \end{bmatrix}
+    \end{equation*}
+    Solve for the letters in the second matrix.
+  \item A second method is to start with easy matrices and find their inverses. In the end, we hope to guess a general formula. An intermediate step in this process might be to find the inverse of $\begin{bmatrix} a & b & c \\ 0 & e & f \\ 0 & 0 & i \end{bmatrix}$.
+  \item Let $A$ be $\begin{bmatrix} a & b & c \\ d & e & f \\ g & h & i \end{bmatrix}$. In Section 8, we began the problem of finding numbers $p$, $q$, and $r$, such that $A^3 = pA^2 + qA + rI$. We had a guess for $p$, and thought that $r$ might be the determinant of $A$. If we finish this problem, we will have the determinant of $A$, and this should be a help toward the general inverse. Problem 117 shows how to find $A^{-1}$ if $r \neq 0$.
+  \item We might try some systematic guessing in the second matrix, such that we have a product like
+    \begin{equation*}
+      \begin{bmatrix} a & b & c \\ d & e & f \\ g & h & i \end{bmatrix}
+      \begin{bmatrix} r & s & t \\ u & v & w \\ x & y & z \end{bmatrix}
+      = \begin{bmatrix} k & 0 & 0 \\ 0 & k & 0 \\ 0 & 0 & k \end{bmatrix}
+    \end{equation*}
+    Then if we divide the second matrix by $k$, it should be the inverse of the first matrix.
+\end{enumerate}
+
+Knowing how to get the inverse for a $3 \times 3$ matrix makes the problem of finding an inverse for a $4 \times 4$ identity matrix feasible. We recommend approach IV for $4 \times 4$ matrices (we need to study the numerators in our $3 \times 3$ inverse).
+
+\vspace{1cm}
+
+Thanks for going through this with me. I believe that you are now ready for the kind of thinking that majoring in mathematics or computer science demands.
+
+
+
+
+\newpage
+
+\section{Hints}
+\markboth{14. Hints}{14. Hints}
+
+\subsection*{Section 2: Multiplication of Matrices}
+
+\begin{description}
+
+  \item[1.] Be neat. Be orderly. Be patient. We multiply inside the parentheses first. 
+
+  \item[2.] Do some. You will learn something.
+
+  \item[3.] Keep the letters. 
+
+  \item[4.] $M^3 = M \cdot M \cdot M$. Compute
+    \begin{equation*}
+      \left( 
+      \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}
+      \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix} 
+      \right)
+      \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}
+    \end{equation*}
+
+  \item[5.] Guess. 
+
+  \item[6.] Compute several powers. 
+
+  \item[7.] Does the formula for the last problem help?
+
+  \item[8.] Compute several powers. 
+
+  \item[9.] Does the formula for the last problem help?
+
+  \item[10.] You can guess this. 
+
+  \item[11.] Guess. Try various numbers for $w$, $x$, $y$, and $z$.
+
+  \item[12.] Compute several powers.
+
+  \item[13.] This is like Problems 8 and 12.
+
+  \item[14.] Write some powers. 
+
+  \item[15.] You can guess some.
+
+  \item[16.] You can guess some.
+
+  \item[17.] $M + N = \begin{bmatrix} a+c & b+d \\ b+d & a+c \end{bmatrix}$
+
+  \item[18.] $M + N = \begin{bmatrix} a+c & b+d \\ 0 & a+c \end{bmatrix}$
+
+\end{description}
+
+
+\subsection*{Section 3: Solving Equations}
+
+\begin{description}
+
+  \item[20.] Keep the letters.
+
+  \item[21.] $\ $
+    \begin{align*} 
+    w+y & = 1 \\
+    x+z & = 2 \\ 
+      y & = 3 \\
+      z & = 11
+    \end{align*}
+
+  \item[22.] Here again we have two equations with $w$ and $y$, and two with $x$ and $z$: 
+    \begin{align*}
+     w +  2y & = 1 \\ 
+    3w + 11y & = 0
+    \end{align*}
+    Rewrite the first equation, and subtract the second:
+    \begin{equation*}
+      \left.
+      \begin{tabular}{rrr}
+        3w +  6y & = & 3 \\
+        3w + 11y & = & 0 \\ 
+        \cline{1-3}
+             -5y & = & 3
+      \end{tabular} 
+      \right\}
+      \ y = - \frac{3}{5}
+    \end{equation*}
+    Put $y$ back into one of the original equations, and solve for $w$. Then check. Treat $x$ and $z$ similarly. 
+
+  \item[23.] Solve equations and check your answer.
+
+  \item[24.] Solve equations and get a headache.
+
+  \item[27.] $\ $
+    \begin{align*}
+    w^2 + xy & = 1 \\
+     (w+z) x & = 1 \\
+     y (w+z) & = 0 \\
+    xy + z^2 & = 1
+    \end{align*}
+
+  \item[28.] Note that the second and third equations still factor, and that the complicated factor appears in both.
+
+\end{description}
+
+
+\subsection*{Section 4: The Matrix System}
+
+\begin{description}
+
+  \item[29.] You guessed it! 
+
+  \item[30.] You can guess this. 
+
+  \item[31.] Be neat. Be orderly. Be patient. Add first, and compute
+    \begin{equation*}
+      \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+      \left( \begin{bmatrix} e & f \\ g & h \end{bmatrix} 
+      + \begin{bmatrix} i & j \\ k & \ell \end{bmatrix} \right)
+    \end{equation*}
+    Do the two multiplications, then add:
+    \begin{equation*}
+      \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+      \begin{bmatrix} e & f \\ g & h \end{bmatrix} +
+      \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+      \begin{bmatrix} i & j \\ k & \ell \end{bmatrix}
+    \end{equation*}
+
+  \item[32.] How are you doing? If you cannot do this problem, there is a fundamental question: Whose fault is this? (This is a multiple-choice question.) Pick A or B: (A) Yours. (B) The problem's.
+
+  \item[33.] We hope that this is like Problem 31. Use twelve letters again. 
+
+  \item[34.] As in Hint 32, this is a multiple choice question. Do you pick $A$ or $B$ this time? 
+
+  \item[35.] This problem is easy if you look at it right.
+
+\end{description}
+
+
+\subsection*{Section 5: Inverses}
+
+\begin{description}
+
+  \item[36.] Solve equations or guess. 
+
+  \item[37.] Solve equations or guess. 
+
+  \item[38.] Solve equations. 
+
+  \item[39.] Guess or solve equations. 
+
+  \item[40.] Guess or solve equations. 
+
+  \item[41.] Guess or solve equations. 
+
+  \item[42.] Does this remind you of Problem 24? 
+
+  \item[44.] This problem is hard. 
+
+  \item[45.] You can guess a couple. 
+
+  \item[46.] Check that the inverse works on both sides. 
+
+  \item[47.] Check both sides. 
+
+  \item[48.] $ \begin{bmatrix} 1 & b \\ c & d \end{bmatrix}  \begin{bmatrix} w & x \\ y & z \end{bmatrix}  =  \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$.
+    \begin{align*} 
+     w + by & = 1 \\
+     x + bz & = 0 \\ 
+    cw + dy & = 0 \\
+    cx + dz & = 1 
+    \end{align*}
+    Multiply the first equation by $c$, and subtract the third:
+    \begin{equation*}
+      \left.
+      \begin{tabular}{rrr}
+        cx + cby & = & c \\
+        cx - dy  & = & 0 \\ 
+        \cline{1-3}
+        (cb-d) y & = & c
+      \end{tabular} 
+      \right\}
+      \ y = \frac{c}{cb-d};\ \ y = \frac{-c}{d-bc}
+    \end{equation*}
+
+  \item[49.] We hope that this is no harder than Problem 42. 
+
+  \item[50.] Does Problem 48 help here? 
+
+  \item[51.] The last problem should tell you this. 
+
+  \item[52.] This is easier. A few examples should tell you how to do this problem and the next. 
+
+  \item[54.] $\begin{bmatrix} a & b \\ am & bm \end{bmatrix}  \begin{bmatrix} w & x \\ y & z \end{bmatrix}  =  \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$. This produces contradictory equations.
+
+  \item[55.] Have you been checking your inverses on both sides? 
+
+  \item[56.] Can you survive these equations? 
+
+  \item[57.] Do the earlier inverses in this section tell you the general answer? Alternatively, can you solve the equations, keeping $a$, $b$, $c$, and $d$, and using those earlier problems as a guide?
+
+\end{description}
+
+
+\subsection*{Section 6: Miscellaneous Problems}
+
+\begin{description}
+
+  \item[58.] $1 \cdot 4-2 \cdot 3$
+
+  \item[59.] $14 - 9$.
+
+  \item[60.] $\begin{bmatrix} 8 & 17 \\ 18 & 37 \end{bmatrix}$. The answers to the preceding problems were $-2$ and $5$.
+
+  \item[61.] Compute the determinant of 
+    \begin{equation*}
+    \begin{bmatrix} aw+by & ax+bz \\ cw+dy & cx+dz \end{bmatrix}
+    \end{equation*}
+
+  \item[62.] Let $x$ be the determinant of $A$. Let $y$ be the determinant of $A^{-1}$.
+
+  \item[65.] This is the same as asking that $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ be its own inverse. There are four equations:
+    \begin{align*}
+    w^2 + xy & = 1 \\
+     (w+z) x & = 0 \\ 
+     y (w+z) & = 0 \\
+    xy + z^2 & = 1
+    \end{align*}
+    We can do the two cases suggested by Problem 61, or else the following two cases:
+    \begin{enumerate}[\hspace{1cm}(I)]
+      \item $w+z = 0$
+      \item $w+z \neq 0$
+    \end{enumerate}
+    Get two sheets of paper and do these separately.
+
+  \item[66.] This problem is about $I$ and $J$. Which matrix do \emph{you} pick for $A$ in each equation?
+
+  \item[67.] You can find more than just the zero matrix itself. 
+
+  \item[68.] Can you find ten? 
+
+  \item[69.] Can you find ten? 
+
+  \item[70.] As in Problem 65, we have four equations. Which two cases will you consider? Does it help to realize that the determinant of the square root must be zero? $wz -xy = 0$. 
+
+  \item[71.] Here our equations are:
+    \begin{align*}
+    w^2 + xy & = w \\
+     (w+z) x & = x \\ 
+     y (w+z) & = y \\
+    xy + z^2 & = z
+    \end{align*}
+    Again $w+z$ appears to be important.
+    \begin{enumerate}[\hspace{1cm}(I)]
+      \item $w+z = 1$
+      \item $w+z \neq 1$
+    \end{enumerate}
+
+  \item[72.] How do your ten answers for Problem 69 compare with those for Problem 68?
+
+  \item[73.] $\ $
+    \begin{align*} 
+    w^2 + xy & = 0 \\
+     (w+z) x & = 1 \\ 
+     y (w+z) & = -1 \\
+    xy + z^2 & = 0
+    \end{align*}
+    Where do we start? 
+
+  \item[74.] $\ $
+    \begin{align*} 
+    w^2 + xy & = 4 \\
+     (w+z) x & = 5 \\ 
+     y (w+z) & = 0 \\
+    xy + z^2 & = 9
+    \end{align*}
+
+  \item[75.] $\begin{bmatrix} w & x \\ y & z \end{bmatrix}^2  =  \begin{bmatrix} 7 & 10 \\ 15 & 22 \end{bmatrix}$.
+    \begin{align*} 
+    w^2 + xy & =  7 \\
+     (w+z) x & = 10 \\ 
+     y (w+z) & = 15 \\
+    xy + z^2 & = 22
+    \end{align*}
+    Can you guess where the matrix $\begin{bmatrix} 7 & 10 \\ 15 & 22 \end{bmatrix}$ comes from? It is the square of $\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$.
+
+    So the equations above have a solution. Now let us forget that there is a solution, and try to solve the equations. Can you?
+
+    I couldn't either, without using the fact that the determinant of the product is the product of the determinants:
+    \begin{equation*}
+    (wz - xy)^2 = 4
+    \end{equation*}
+    So $wz - xy = 2$ or $-2$.
+
+  \item[76.] This problem is interesting because of the matrices which students choose as candidates for having no square root. Which matrices have you chosen? As we have seen, even when there is a square root (as in the previous problem), it can be difficult to find; so as a practical matter, we need to choose simple matrices.
+
+  \item[77.] Here the determinant doesn't let us out, since each number has a cube root. 
+
+    Does each matrix with determinant zero have a cube root?
+
+  \item[78.] You can.
+
+  \item[79.] Yes.
+
+\end{description}
+
+
+\subsection*{Section 7: Commuting Matrices}
+
+\begin{description}
+
+  \item[80.] You might have written the zero matrix and the identity matrix. You can write some more.
+
+  \item[81.] Almost any guess will do.
+
+  \item[82.] You get four easy (and redundant) equations.
+
+  \item[83.] $w^2 = 1$. $2wx = 1$.
+
+  \item[84.] $w^3 = 1$. $3wx = 1$.
+
+  \item[85.] $\ $
+    \begin{align*} 
+    w + x & = w + y \\
+    w + x & = x + z \\ 
+    y + z & = w + y \\
+    y + z & = x + z
+    \end{align*}
+
+  \item[86.] You know some. Can you produce three?
+
+  \item[87.] Here, you need to be choosy. If a matrix commutes with every matrix, then in particular, it commutes with the matrices $\cdots$ and $\cdots$. 
+
+  \item[88.] Problems 82 and 85 were enough to do the $2 \times 2$ case. How many specific matrices do you think that you will need to do the $3 \times 3$ case?
+
+    This is more work, but no harder than the $2 \times 2$ case. (When I ask you about inverses for $3 \times 3$ matrices, it \emph{will} be a harder problem.) 
+
+  \item[89.] $\ $
+    \begin{align*}
+          w & = w + 2y \\
+    2w + 4x & = x + 2z \\ 
+          y & = 4y \\
+    2y + 4z & = 4z
+    \end{align*}
+
+  \item[90.] This matrix is the square of the matrix in Problem 82.
+
+  \item[91.] $A^3 B = AAAB = AABA = ?$
+
+  \item[92.] $\ $
+    \begin{align*}
+      w - 2x & =   w - 3y \\
+    -3w + 6x & =   x - 3z \\
+      y - 2z & = -2w + 6y \\
+    -3y + 6z & = -2x + 6z
+    \end{align*}
+
+  \item[93.] Here again you get four equations.
+
+  \item[94.] We can solve equations, holding on to $a$, $b$, $c$, and $d$.
+
+    Or we could look at the answers to the two preceding problems. Then $\begin{bmatrix} w & x \\ \frac{cx}{b} & \end{bmatrix}$ might seem like a good way to begin. The last corner wants to be $w - \frac{(\ \ )x}{b}$.
+
+  \item[95.] $w = \frac{4}{14}$. $x = \frac{-2}{14}$.
+
+  \item[100.] $AD = A(B+C) = AB + AC = ?$ 
+
+  \item[101.] $AD = ?$ 
+
+  \item[102.] $\begin{bmatrix} p & 0 \\ 0 & p \end{bmatrix}  \begin{bmatrix} a & b \\ c & d \end{bmatrix}  =  \begin{bmatrix} a & b \\ c & d \end{bmatrix}  \begin{bmatrix} p & 0 \\ 0 & p \end{bmatrix}$
+
+  \item[103.] $(pI+qA)A = pIA+qIAA = ?$
+
+  \item[104.] $pI+qA =  \begin{bmatrix} p+5q & 2q \\ 3q & p+4q \end{bmatrix}  =  \begin{bmatrix} w & x \\ \frac{3}{2}x & w-\frac{x}{2} \end{bmatrix}$
+
+\end{description}
+
+
+\subsection*{Section 8: Matrix Polynomials}
+
+\begin{description}
+
+  \item[105.] $\ $
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item $\begin{bmatrix} 31 & 18 \\ 27 &22 \end{bmatrix}  =  p \begin{bmatrix} 5 & 2 \\ 3 & 4 \end{bmatrix}  +  q \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$.
+      \item $A^3 = A^2 A = ?$
+      \item $A^4 = A^3 A = ?$
+    \end{enumerate}
+
+  \item[106.] $\ $
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item $\begin{bmatrix} 1 & 4 \\ 0 & 1 \end{bmatrix}  =  p \begin{bmatrix} 1 & 2 \\ 0 & 1 \end{bmatrix}  +  q \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$.
+      \item $A^3 = A^2 A = ?$
+      \item $A^4 = A^3 A = ?$
+    \end{enumerate}
+
+  \item[109.] $\ $
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item When $A$ is $\begin{bmatrix} 5 & 2 \\ 3 & 4 \end{bmatrix}$, $A^2 = 9A - 14I$.
+      \item When $A$ is $\begin{bmatrix} 1 & 2 \\ 0 & 1 \end{bmatrix}$, $A^2 = 2A - I$.
+      \item When $A$ is $\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$, $A^2 = 5A + 2I$.
+      \item When $A$ is $\begin{bmatrix} 1 & 2 \\ 3 & 11 \end{bmatrix}$, $A^2 = 12A - 5I$.
+    \end{enumerate}
+    Use your guess and compute both sides.
+
+    Alternatively, you may square $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$ and solve for $p$ and $q$.
+
+  \item[111.] $A^{k+1} = A^k A = ?$
+
+  \item[112.] Perhaps there are two aspects to this problem. 
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item How certain are you that the formula is correct?
+      \item Have we done enough to \emph{prove} that the formula is correct?
+    \end{enumerate}
+
+  \item[113.] If $n$ is $1$, 
+    \begin{equation*}
+    nA-(n-1)I = A-0I = A = A^1
+    \end{equation*}
+    If $n$ is $0$,
+    \begin{equation*}
+    nA-(n-1)I = 0A-(-1)I = I = A^0
+    \end{equation*}
+    If $n$ is $-1$,
+    \begin{equation*}
+    nA-(n-1)I = -A+2I
+    \end{equation*}
+    If $n$ is $\frac{1}{2}$,
+    \begin{equation*}
+    nA-(n-1)I = \frac{1}{2} A+ \frac{1}{2} I
+    \end{equation*}
+
+  \item[114.] $1, 3, 7, 15, 31$. Is there a pattern?
+
+    These are coefficients, $p$ of $A$ in the $pA+qI$ forms of the first five powers of $A$. Where do the coefficients of $I$ come from?
+
+  \item[115.] $\ $
+    \begin{enumerate}[\hspace{1cm}(I)]
+      \item Yes.
+      \item Yes.
+      \item If the formula holds where it isn't supposed to hold, then
+        \begin{equation*}
+        A^{-1} = (2^{-1}-1)A - 2(2^{-2}-1)I
+        \end{equation*}
+        Does this check?
+      \item Let $B$ be $(2^{1/2}-1)A - 2(2^{-1/2}-1)I$. Is $B^2$ equal to $A$?
+    \end{enumerate}
+
+  \item[116.] Is it likely that any old $2 \times 2$ matrix will work?
+
+  \item[117.] $\ $
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item Multiply our given equation on both sides by the alleged $A^{-1}$, and solve for $A^{-1}$.
+      \item The quantity $a+d$ should be $2$, and the determinant should be $3$.
+    \end{enumerate}
+
+  \item[118.] $pA + qI = \begin{bmatrix} 5p+q & 2p \\ 3p & 4p+q \end{bmatrix}  =  \begin{bmatrix} w & x \\ \frac{3x}{2} & w-\frac{x}{2} \end{bmatrix}$
+
+  \item[119.] $A^2 = 7A$
+
+  \item[120.] $\begin{bmatrix} 1 & 2 & 3 \\ 0 & 1 & 2 \\ 0 & 0 & 1 \end{bmatrix}  =  \begin{bmatrix} p & p & p \\ 0 & p & p \\ 0 & 0 & p \end{bmatrix}  +  \begin{bmatrix} q & 0 & 0 \\ 0 & q & 0 \\ 0 & 0 & q \end{bmatrix}$
+
+  \item[121.] $\begin{bmatrix} 1 & 3 & 6 \\ 0 & 1 & 3 \\ 0 & 0 & 1 \end{bmatrix}  =  \begin{bmatrix} p & 2p & 3p \\ 0 & 1p & 2p \\ 0 & 0 & p \end{bmatrix}  +  \begin{bmatrix} q & q & q \\ 0 & q & q \\ 0 & 0 & q \end{bmatrix}  +  \begin{bmatrix} r & 0 & 0 \\ 0 & r & 0 \\ 0 & 0 & r \end{bmatrix}$
+
+  \item[122.] Be neat. Be orderly. Be patient.
+
+    $A^2 = \begin{bmatrix} 12 & 20 & 24 \\ 22 & 36 & 50 \\ 8 & 12 & 20 \end{bmatrix}$.
+
+    $A^3 = \begin{bmatrix} 96 & 152 & 224 \\ 180 & 288 & 412 \\ 64 & 104 & 144 \end{bmatrix}$.
+
+  \item[123.] $4, 13, 40, 121$. Obscure. How about $8, 26, 80, 242$?
+
+  \item[124.] Let $B$ be $A^{1/2}$, according to the formula which works for counting numbers:
+    \begin{equation*}
+    B = \frac{\sqrt{3}-1}{2} A - \frac{\sqrt{3}-3}{2} I
+    \end{equation*}
+
+  \item[125.] Since $M^3 = 0$, then $\det M = 0$.
+
+  \item[126.] Look at Problem 121, and watch the numbers ``move out'' in $A$, $A^2$, $A^3$.
+
+\end{description}
+
+
+\subsection*{Section 9: Complex Numbers}
+
+\begin{description}
+
+  \item[127.] $\ $
+    \begin{align*} 
+    w^2 + xy & = -1 \\
+     (w+z) x & = 0 \\ 
+     y (w+z) & = 0 \\
+    xy + z^2 & = -1
+    \end{align*}
+
+  \item[128.] $M = \begin{bmatrix} a & -b \\ b & a \end{bmatrix}$.
+
+  \item[129.] Find the inverse of $\begin{bmatrix} a & -b \\ b & a \end{bmatrix}$.
+
+  \item[130.] $\ $
+    \begin{align*}
+    w^2 + xy & = 0 \\
+     (w+z) x & = -1 \\ 
+     y (w+z) & = 1 \\
+    xy + z^2 & = 0
+    \end{align*}
+    So
+    \begin{align*}
+    z^2 & = w^2; \\
+    w^2 - z^2 & = 0; \\
+    w+z & \neq 0,
+    \end{align*}
+    so $w-z=0$: $w=z$. Also, $y=-x$, such that $w^2 - x^2 = 0$.
+
+  \item[131.] The last problem is a guide.
+
+  \item[132.] The equations are in Hint 127. Note that $x$ cannot be zero.
+
+  \item[133.] $\begin{bmatrix} w & x \\ y & z \end{bmatrix}  \begin{bmatrix} 2 & -3 \\ 3 & 2 \end{bmatrix}  =  \begin{bmatrix} 2 & -3 \\ 3 & 2 \end{bmatrix}  \begin{bmatrix} w & x \\ y & z \end{bmatrix}$.
+
+\end{description}
+
+
+\subsection*{Section 10: Similarity}
+
+\begin{description}
+
+  \item[134.] It's easy to find a matrix which works, but we are required to find one with an inverse. We need just one, so you may guess. However, a general answer is acceptable.
+
+  \item[137.] Let $p$ be $\det A$. Let $q$ be $\det B$. Let $r$ be $\det M$.
+
+  \item[138.] Let $M$ be your favorite matrix with an inverse.
+
+  \item[139.] Not many.
+
+  \item[140.] We are back to equations. There are several matrices which work for $M$.
+
+  \item[141.] Let $M$ be $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$, and suppose that $D = \det M$. This makes $M^{-1}$ equal $\frac{1}{D}  \begin{bmatrix} z & -x \\ -y & w \end{bmatrix}$.
+
+  \item[142.] There are two ways to attack this.
+    \begin{enumerate}[\hspace{1cm}(I)]
+      \item $\ $
+        \begin{align*} 
+           w + 2y & = pw + rx \\
+           x + 2z & = wq + xp \\
+          3w + 5y & = yp + zr \\
+          3x + 5z & = qy + pz
+        \end{align*}
+        This looks foreboding. But the last problem says that $2p = 6$, and Problem 137 says that $p^2 - qr = -1$, such that $qr = 10$.
+      \item We try to fix
+        \begin{equation*}
+          \frac{1}{wz-xy}
+          \begin{bmatrix} z & -x \\ -y & w \end{bmatrix}
+          \begin{bmatrix} 1 & 2 \\ 3 & 5 \end{bmatrix}
+          \begin{bmatrix} w & x \\ y & z \end{bmatrix}
+        \end{equation*}
+        such that the upper left corner equals the lower right corner.
+    \end{enumerate}
+
+  \item[143.] Do we need to do a few more problems like the last one, or are we ready to use the last one as a prototype?
+    \begin{enumerate}[\hspace{1cm}(I)]
+      \item If we follow our work above closely, we can try to show that $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$ is similar to $\begin{bmatrix} \frac{a+d}{2} & 1 \\ r & \frac{a+d}{2} \end{bmatrix}$, where $r = \left[ \frac{a-d}{2} \right] ^2 + bc$.
+      \item $zaw - xcw + zby - xdy = -yax + wcx - ybz + wdz$.
+    \end{enumerate}
+
+  \item[144.] $B = M^{-1} AM$.
+
+  \item[145.] Try $S = M^{-1} RM$.
+
+  \item[146.] Try $S = M^{-1} RM$.
+
+\end{description}
+
+
+\subsection*{Section 11: Square Roots}
+
+\begin{description}
+
+  \item[147.] The determinant $wz-xy$ of the square root is zero. So the first equation becomes $w(w+z) = a$, and the last equation becomes $z(w+z) = 0$.
+
+  \item[149.] Let $p$ denote $w+z$. Then, since the determinant of the square root is zero, the square root $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ must be $\begin{bmatrix} 2/p & 3/p \\ 2/p & 3/p \end{bmatrix}$.
+
+  \item[150.] Let $p$ denote $w+z$.
+
+  \item[151.] Let $p$ denote $w+z$.
+
+  \item[152.] Let $p$ denote $w+z$.
+
+  \item[153.] Let $p$ be $\sqrt{a+d}$.
+
+  \item[154.] Let $p$ be $\sqrt{a+mb}$.
+
+  \item[155.] This problem, in essence, is to show that $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$ is either of the form $\begin{bmatrix} a & b \\ ma & mb \end{bmatrix}$, in which case you have already done it; or else of the form $\begin{bmatrix} 0 & 0 \\ c & d \end{bmatrix}$, and you can do it just as you did Problem 148.
+
+  \item[156.] Here the determinant is not zero, so we are back to the equations
+    \begin{align*}
+    w^2 + xy & = -1 \\
+     (w+z) x & =  0 \\
+     y (w+z) & =  0 \\
+    xy + z^2 & = -2
+    \end{align*}
+    Neither $x$ nor $y$ can be zero.
+
+  \item[157.] In Problem 76, we saw that $ad-bc$ cannot be negative. So that is one condition for $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$ to have a square root.
+
+    Here, we no longer know that the determinant of the square root is zero. Let us write $wz-xy$ as $D$. Then the equation $w^2 + xy = a$ becomes $w^2 + wz - D = a$ or $w(w + z) = D + a$. Let $p$ denote $w+z$.
+
+  \item[158.] If $R$ is a fourth root, then $R^2$ is a square root. So we know that if there is a fourth root, then
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $ad-bc \geq 0$; and
+      \item either 
+        \begin{enumerate}[\hspace{1cm}(a)]
+          \item $a + d + 2\sqrt{ad-bc} > 0$, or 
+          \item $a=d$ and $b=c=0$.
+        \end{enumerate}
+    \end{enumerate}
+    It would be nice if each matrix with a square root also had a fourth root. Suppose that $D = \sqrt{ad-bc}$ and $p = \sqrt{a+d+2D}$. Suppose that $p > 0$, and that
+    \begin{equation*}
+      M = \begin{bmatrix} w & x \\ y & z \end{bmatrix}
+      = \frac{1}{p} \begin{bmatrix} D+a & b \\ c & D+d \end{bmatrix}
+    \end{equation*}
+    Does $M$ have a square root?
+
+\end{description}
+
+
+\subsection*{Section 12: Cube Roots}
+
+\begin{description}
+
+  \item[159.] If $c = 0$, then there is a cube root. If $c \neq 0$, then $x = 0$.
+
+  \item[160.] If $b = 0$, then $\begin{bmatrix} 0 & 0 \\ 0 & d^{1/3} \end{bmatrix}$ is a cube root. If $b \neq 0$, then $y = 0$.
+
+  \item[161.] See Problem 9.
+
+  \item[162.] It seems prudent to make $y$ be zero.
+
+  \item[164.] $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ must commute with $\begin{bmatrix} 14 & 13 \\ 13 & 14 \end{bmatrix}$.
+
+  \item[165.] $y = x$. $z = w$. $27 = 13 + 14$.
+
+  \item[166.] Since $(w+x)^3 = 27$, then $w+x = 3$.
+
+\end{description}
+
+
+
+
+\newpage
+
+\section{Answers}
+\markboth{15. Answers}{15. Answers}
+
+I have tried to make the answers accurate. I hope you have your own opinion before you look here. If we get the same answer, that should help your confidence. If we get different answers and your answer works, that should help your confidence even more. If my answer is correct and yours is not, then please have the humility to resolve to be more persistent and orderly. Everyone makes mistakes.
+
+
+\subsection*{Section 2: Multiplication of Matrices}
+
+\begin{description}
+
+  \item[1.] $\begin{bmatrix} 193 & 44 \\ 437 & 100 \end{bmatrix}$
+
+  \item[2.] Write down the things you learned, and also the things you guess to be true. 
+
+  \item[3.] $\begin{bmatrix} w+2y & x+2z \\ 3w+4y & 3x+4z \end{bmatrix}$
+
+  \item[4.] $\begin{bmatrix} 1 & 3 \\ 0 & 1 \end{bmatrix}$
+
+  \item[5.] We come back to this later.
+
+  \item[6.] $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}^n = \begin{bmatrix} 1 & n \\ 0 & 1 \end{bmatrix}$
+
+  \item[7.] Does the formula above help? (We want the $\frac{1}{3}$ power. Check your guess by cubing it.) 
+
+  \item[8.] $\begin{bmatrix} 1 & -3 \\ -2 & 6 \end{bmatrix}^n = 7^{n-1} \begin{bmatrix} 1 & -3 \\ -2 & 6 \end{bmatrix}$
+
+  \item[9.] $7^{-2/3} \begin{bmatrix} 1 & -3 \\ -2 & 6 \end{bmatrix}$
+
+  \item[10.] $\begin{bmatrix} 1 & 2 \\ 0 & 1 \end{bmatrix}$
+
+  \item[11.] Guess again. We come back to this.
+
+  \item[12.] $10^{n-1} \begin{bmatrix} 1 & -3 \\ -3 & 9 \end{bmatrix}$
+
+  \item[13.] $(1+d)^{n-1} \begin{bmatrix} 1 & b \\ c & d \end{bmatrix}$. Under what conditions (on $d$) can you write a formula for the powers of the matrix $\begin{bmatrix} a & b \\ c &d \end{bmatrix}$?
+
+  \item[14.] $\begin{bmatrix} 1^n & b\frac{d^n-1}{d-1} \\ 0 & d^n \end{bmatrix}$. You saw some pattern in the upper right corner. It is not to be expected that you saw this terse way to express that pattern.
+
+  \item[15.] We will find all of these later.
+
+  \item[16.] We will find all of these later. 
+
+    Do you have any comment about the answers you already have for these last two problems?
+
+  \item[17.] $MN = \begin{bmatrix} ac+bd & ad+bc \\ bc+ad & bd+ac \end{bmatrix}$. (The opposite corners are equal.)
+
+  \item[18.] $MN = \begin{bmatrix} ac & ad+bc \\ 0 & ac \end{bmatrix}$
+
+\end{description}
+
+
+\subsection*{Section 3: Solving Equations}
+
+\begin{description}
+
+  \item[20.] $\begin{bmatrix} w+2y & x+2z \\ 3w+11y & 3x+11z \end{bmatrix}$
+
+  \item[21.] $w=-2$; $x=-9$. 
+
+    Check:
+    \begin{equation*}
+      \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}
+      \begin{bmatrix} -2 & -9 \\ 3 & 11 \end{bmatrix} 
+      = \begin{bmatrix} 1 & 2 \\ 3 & 11 \end{bmatrix}
+    \end{equation*}
+
+  \item[22.] $\begin{bmatrix} 11/5 & 9/5 \\ -3/5 & -2/5 \end{bmatrix}$. Check it.
+
+  \item[23.] $\begin{bmatrix} 13/7 & -39/7 \\ -8/7 & 24/7 \end{bmatrix}$. Check it.
+
+  \item[24.] $\ $
+    \begin{align*}
+    w - 3y & = 3 \\
+    -2w + 6y & = 2
+    \end{align*}
+    The first equation says that $-2w + 6y = -6$, contradicting the second. There is no solution.
+
+  \item[27.] The second equation says that $w+z$ is not zero. Thus the third equation tells us that $y = 0$. Then $w^2 = 1$ and $z^2 = 1$, but $w$ and $z$ have to have the same sign such that $w+z$ is not zero. Check $\begin{bmatrix} 1 & 1/2 \\ 0 & 1 \end{bmatrix}$ and $\begin{bmatrix} -1 & -1/2 \\ 0 & -1 \end{bmatrix}$ by squaring. Do you really need to check them both?
+
+  \item[28.] As above, $y = 0$. $w^3 = 1$. $w = 1$. $z^3 = 1$. $z = 1$. $x = \frac{1}{3}$. 
+
+    Cube $\begin{bmatrix} 1 & 1/3 \\ 0 & 1 \end{bmatrix}$ to check your answer.
+
+\end{description}
+
+
+\subsection*{Section 4: The Matrix System}
+
+\begin{description}
+
+  \item[29.] $\begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}$
+
+  \item[30.] We tell the answer in Problem 35, so see if you can find it before that.
+
+  \item[31.] The two sides come out equal.
+
+  \item[32.] I hope you picked $B$. You can write down two matrices where the product one way differs from the product the other way.
+
+  \item[33.] The two sides come out equal.
+
+  \item[34.] I hope you picked $B$. Then you can write two non-zero matrices whose product is the zero matrix.
+
+  \item[35.] You have two equations: $IA = A = AI$ and $JA = A = AJ$. What you pick for $A$ in each is critical. We will come back to this in Section 5.
+
+\end{description}
+
+
+\subsection*{Section 5: Inverses}
+
+\begin{description}
+
+  \item[36.] $\begin{bmatrix} 1 & -1 \\ 0 & 1 \end{bmatrix}$
+
+  \item[37.] $\begin{bmatrix} 1 & -1 \\ 0 & 1 \end{bmatrix}$
+
+  \item[38.] $\begin{bmatrix} 11/5 & -2/5 \\ -3/5 & 1/5 \end{bmatrix}$
+
+  \item[39.] $\begin{bmatrix} 11/5 & -2/5 \\ -3/5 & 1/5 \end{bmatrix}$
+
+  \item[40.] $\begin{bmatrix} 5/7 & -4/7 \\ -2/7 & 3/7 \end{bmatrix}$
+
+  \item[41.] $\begin{bmatrix} 5/7 & -4/7 \\ -2/7 & 3/7 \end{bmatrix}$
+
+  \item[42.] There is no answer. 
+
+  \item[43.] There is no answer. The matrix $\begin{bmatrix} 1 & -3 \\ -2 & 6 \end{bmatrix}$ seems to be fully defective.
+
+  \item[44.] You will know how to do this when you finish this section.
+
+  \item[45.] The first problem in the next section is to find all of these. 
+
+  \item[46.] $\ $
+    \begin{align*}
+      \begin{bmatrix} 1 & 3 \\ 3 & 7 \end{bmatrix}
+        \begin{bmatrix} -7/2 & 3/2 \\ 3/2 & -1/2 \end{bmatrix}
+        & = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}. \\
+      \begin{bmatrix} -7/2 & 3/2 \\ 3/2 & -1/2 \end{bmatrix}
+        \begin{bmatrix} 1 & 3 \\ 3 & 7 \end{bmatrix} 
+        & = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}.
+    \end{align*}
+
+  \item[47.] $\begin{bmatrix} 11/5 & 3/5 \\ 2/5 & 1/5 \end{bmatrix}$ is the inverse of $\begin{bmatrix} 1 & -3 \\ -2 & 11 \end{bmatrix}$.
+
+    Can you write the inverse of $\begin{bmatrix} 1 & b \\ c & d \end{bmatrix}$ ? 
+
+  \item[48.] $\begin{bmatrix} \frac{d}{d-bc} & \frac{-b}{d-bc} \\ \frac{-c}{d-bc} & \frac{1}{d-bc} \end{bmatrix}$
+
+  \item[49.] $w + by = 1$, but $cw + bcy = 0$; that is, $c(w+by) = 0$. So $c=0$. But $cx + bcz = 1$.
+
+  \item[51.] When $d = \frac{bc}{3}$. The demonstration of this is as in Problem 49. 
+
+  \item[52.] $\begin{bmatrix} -\frac{d}{bc} & \frac{1}{c} \\ \frac{1}{b} & 0 \end{bmatrix}$
+
+  \item[53.] When $b=0$ or $c=0$. Do both cases.
+
+  \item[54.] $aw + by = 1$ (first equation)
+
+    $amw +bmy = 0$ (second equation)
+
+    $m(aw +by) = 0$; $m=0$, but
+
+    $am +bmz = 1$ (last equation).
+
+  \item[55.] $\begin{bmatrix} w & x \\ y & z \end{bmatrix}  \begin{bmatrix} a & ma \\ c & mc \end{bmatrix}  =  \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$
+
+    The equations are contradictory.
+
+  \item[56.] We will learn more about this later. 
+
+  \item[57.] $\begin{bmatrix} \frac{d}{ad-bc} & \frac{-b}{ad-bc} \\ \frac{-c}{ad-bc} & \frac{a}{ad-bc} \end{bmatrix}$
+
+\end{description}
+
+
+\subsection*{Section 6: Miscellaneous Problems}
+
+\begin{description}
+
+  \item[58.] $-2$ is the determinant; so the matrix has an inverse. The formula in Problem 57 gives the inverse.
+
+  \item[59.] The determinant is $5$, so the matrix has an inverse.
+
+  \item[61.] Multiply $(ad-bc) (wz-xy)$ out. It should be the same as the determinant of the matrix in the hint.
+
+  \item[62.] $AA^{-1} = I$. So $xy = 1$, and $x$ cannot be zero.
+
+  \item[63.] $0$.
+
+  \item[64.] $0$.
+
+  \item[65.] $\ $
+    \begin{enumerate}[\hspace{1cm}(I)]
+      \item Suppose that $w = -z$. Then
+        \begin{align*}
+          z^2 & = 1-xy; \\ 
+          xy & = 1-z^2; \\ 
+          y & = \frac{1-z^2}{x}
+        \end{align*}
+        You can square $\begin{bmatrix} -z & x \\ \frac{1-z^2}{x} & z \end{bmatrix}$. The result is $\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$.
+      \item On the other hand, suppose that $w+z \neq 0$. Then $x=0$ and $y=0$, and $w^2 = 1$ and $z^2 = 1$. This seems to give four more answers.
+    \end{enumerate}
+
+  \item[66.] $IA = A = AI$ for each matrix $A$. Let $A$ be $J$. (If it's true for \emph{each}, then I get to pick.) $IJ = J = JI$. $JA = A = AJ$. I'll pick $I$ for $A$ here. Then $JI = I = IJ$. We conclude that $I = J$. 
+
+  \item[70.] $\ $
+    \begin{enumerate}[\hspace{1cm}(I)]
+      \item Suppose that $w+z \neq 0$. Then $x=0$ and $y=0$, and $w^2 = 0$ and $z^2 = 0$, and the zero matrix is the only answer along this path.
+
+      \item Suppose that $w+z = 0$. Then $z = -w$ and $w^2 + xy = 0$.
+
+        If $x \neq 0$, then $y = -\frac{w^2}{x}$ and $\begin{bmatrix} w & x \\ -\frac{w^2}{x} & -w \end{bmatrix}$ is a matrix whose square is the zero matrix.
+
+        If $x=0$, then $w=0$ and $\begin{bmatrix} 0 & 0 \\ y & 0 \end{bmatrix}$ is a matrix whose square is the zero matrix. 
+    \end{enumerate}
+
+  \item[71.] $\ $
+    \begin{enumerate}[\hspace{1cm}(I)]
+      \item Suppose that $w+z = 1$.
+
+        If $x \neq 0$, then $y = -\frac{w(1-w)}{x}$, and $\begin{bmatrix} w & x \\ \frac{w(1-w)}{x} & 1-w \end{bmatrix}$ is a matrix which is its own square. Check it!
+
+        If $x=0$, then $w^2 = w$, $w^2-w = 0$, and $w$ is $0$ or $1$. Similarly, $z$ is $0$ or $1$. This gives four answers, two of which are appropriate here and two which are appropriate below:
+        $\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$, $\begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}$, $\begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}$, $\begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}$.
+
+      \item Suppose that $w+z \neq 1$. Then $x=0$ and $y=0$ and $w^2 = w$ and $z^2 = z$.
+    \end{enumerate}
+
+  \item[72.] If $A$ is a matrix which is its own square ($A^2=A$) and $B=-A$, then $B^2 = (-A)^2 = A^2 = A = -B$, so the negative of each solution to the previous problem is a solution to this problem. Also, the negative of each solution to this problem is a solution to the previous problem.
+
+  \item[73.] $y = -x$. So $w^2 - x^2 = 0$ and $z^2 - x^2 = 0$. Thus $w^2 - z^2 = 0$ and $(w+z)(w-z) = 0$. $w+z \neq 0$, so $w-z = 0$; $w=z$.
+    \begin{align*}
+    2wx & = 1 \\
+    x & = \frac{1}{2w} \\
+    w^2 - \left( \frac{1}{2w} \right)^2 & = 0 \\
+    w^4 - \frac{1}{4} & = 0 \\
+    w^4 & = \frac{1}{4} \\
+    w^2 & = \frac{1}{2}\ \ \left( -\frac{1}{2} \text{ cannot be a square} \right) \\
+    w & = \frac{1}{\sqrt{2}} \text{ or } w = -\frac{1}{\sqrt{2}}
+    \end{align*}
+    Check one of the answers.
+
+  \item[74.] $\ $
+    \begin{align*}
+    w^2 + xy & = 4 \\
+     (w+z) x & = 5 \\ 
+     y (w+z) & = 0 \\
+    xy + z^2 & = 9
+    \end{align*}
+    Thus $w+z \neq 0$, so $y=0$, and there are four answers.
+
+  \item[75.] From the middle equations, we see that $y = \frac{3x}{2}$. Thus we can rewrite the first and last equations:
+    \begin{align*}
+    2w^2 + 3x^2 & = 14 \\
+    \text{ and } & \\
+    3x^2 + 2z^2 & = 44
+    \end{align*}
+    So
+    \begin{align*}
+    w^2 - z^2 & = -15 \\
+    \text{ or } & \\
+    (w+z) (w-z) = -15
+    \end{align*}
+    Since $(w+z)y = 15$, then
+    \begin{equation*}
+    y = -(w-z) = z - w
+    \end{equation*}
+    All this seems to going somewhere, but I cannot finish without some outside help.
+
+    If we use determinants to say that $wz - xy = -2$, then $xy = wz + 2$ and $w^2 + wz + 2 = 7$.
+    \begin{align*}
+         w^2 + wz & = 5 \\
+          w (w+z) & = 5 \\
+      (w-z) (w+z) & = -15 \\
+    \frac{w}{w-z} & = -\frac{5}{15}
+    \end{align*}
+    So
+    \begin{align*}
+    z & = 4w \\
+    w^2 - (4w)^2 & = -15 \\
+    w^2 & = 1
+    \end{align*}
+    and we get two answers.
+
+    (Had we chosen $wz-xy=2$, we would have two other unexpected answers. If you work this out -- not impossible, but quite a challenge -- you should be ready for the section concerning square roots of matrices.)
+
+    The point of this problem was to show that a square root problem (having an answer) can be quite difficult -- impossible, it seems -- if we don't get some help from determinants.
+
+  \item[76.] We hope that you chose $\begin{bmatrix} -1 & 0 \\ 0 & -1 \end{bmatrix}$. The number $-1$ has no square root, so this matrix (which is like $-1$) should have no square root. However, it does. We will make this the object of study in another section.
+
+    If you chose $\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}$ or $\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$, you were successful in showing that your choice has no square root.
+
+    Indeed, if you choose any matrix $A$ whose determinant is negative, then that matrix cannot have a square root $R$; for if $R$ were a square root of $A$, then the square of the determinant of $R$ must be the negative number which is the determinant of $A$.
+    \begin{equation*}
+    0 \leq (\det R)^2 = \det A < 0
+    \end{equation*}
+    Does every matrix whose determinant is not negative have a square root?
+
+  \item[77.] Maybe we can put this off till later.
+
+  \item[78.] $\ $
+    \begin{equation*}
+      \begin{bmatrix}
+      1 \cdot 6+2 \cdot 2+5 \cdot 1 & 1 \cdot 9+2 \cdot 1+5 \cdot (-1) & 1 \cdot 10+2 \cdot 2+5 \cdot (-1) \\
+      3 \cdot 6+4 \cdot 2+7 \cdot 1 & 3 \cdot 9+4 \cdot 1+7 \cdot (-1) & 3 \cdot 10+4 \cdot 2+7 \cdot (-1) \\
+      1 \cdot 6+2 \cdot 2+1 \cdot 1 & 1 \cdot 9+2 \cdot 1+1 \cdot (-1) & 1 \cdot 10+2 \cdot 2+1 \cdot (-1)
+      \end{bmatrix}
+    \end{equation*}
+    \begin{equation*}
+    = \begin{bmatrix} 15 & 6 & 9 \\ 33 & 24 & 31 \\ 11 & 10 & 13 \end{bmatrix}
+    \end{equation*}
+
+  \item[79.] $\begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}$. Our argument from Problem 35 says that this is the only answer for this problem.
+
+    You can also write a $4 \times 4$ identity matrix.
+
+\end{description}
+
+
+\subsection*{Section 7: Commuting Matrices}
+
+\begin{description}
+
+  \item[80.] Did you write the matrix $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$ itself? The inverse also must commute. You can write even more.
+
+  \item[81.] $\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$
+
+  \item[82.] $\ $
+    \begin{align*}
+        w & = w + y \\
+    w + x & = x + z \\ 
+        y & = y \\
+    y + z & = z
+    \end{align*}
+    So $y = 0$ and $w = z$.
+
+    The matrices which commute with $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$ are those of the form $\begin{bmatrix} w & x \\ 0 & w \end{bmatrix}$.
+
+  \item[83.] The square roots of $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$ are $\begin{bmatrix} 1 & \frac{1}{2} \\ 0 & 1 \end{bmatrix}$ and its negative.
+
+  \item[84.] $\begin{bmatrix} 1 & \frac{1}{3} \\ 0 & 1 \end{bmatrix}$
+
+  \item[85.] $\begin{bmatrix} w & x \\ x & w \end{bmatrix}$.
+
+    $\begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix}  +  \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$ is of this form.
+
+  \item[86.] You probably wrote the zero matrix and the identity matrix. You can write several more.
+
+  \item[87.] $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ commutes with $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$ and $\begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix}$. So it must be of the form $\begin{bmatrix} w & x \\ 0 & w \end{bmatrix}$, and also of the form $\begin{bmatrix} w & x \\ x & w \end{bmatrix}$. 
+
+    Conclusion? $x$ must be $0$. Perhaps you had guessed that $\begin{bmatrix} w & 0 \\ 0 & w \end{bmatrix}$ always works. Now you know that nothing else always works.
+
+  \item[88.] If we pick $\begin{bmatrix} 1 & 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 1 \end{bmatrix}$ and $\begin{bmatrix} 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{bmatrix}$, we can do it. Be neat!
+
+    It is easier if we pick $\begin{bmatrix} 1 & 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 1 \end{bmatrix}$ and $\begin{bmatrix} 1 & 1 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}$. It is surprising that we don't need three matrices. I wonder what the ``easiest'' pair to pick might be. More zeros make the equations easier. You can also do the $4 \times 4$ case. (Really!) (Right now!)
+
+  \item[89.] $\begin{bmatrix} w & \frac{2}{3}(z-w) \\ 0 & z \end{bmatrix}$ or $\begin{bmatrix} w & x \\ 0 & w+\frac{3}{2}x \end{bmatrix}$. Check both forms.
+
+  \item[90.] $\begin{bmatrix} w & x \\ 0 & w \end{bmatrix}$
+
+  \item[91.] $AABA = ABAA = BAAA = BA^3$
+
+  \item[92.] $\begin{bmatrix} w & x \\ \frac{2}{3}x & w-\frac{5}{3}x \end{bmatrix}$. There are other ways to write this. Check yours. Check mine.
+
+  \item[93.] $\begin{bmatrix} w & x \\ \frac{3}{2}x & w-\frac{x}{2} \end{bmatrix}$. It's fun to check these.
+
+  \item[94.] $z = w-\frac{(a-d)x}{b}$.  Check it.
+
+    Of course, if $b=0$, then we need to begin again. Suppose that $b=0$.
+
+    If $a=d$ and $c \neq 0$, then $z=w$ and $x=0$.
+
+    If $a=d$ and $b=c=0$, then any matrix $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ works.
+
+    If $a \neq d$ while $b=0$, then $x=0$ and $y = \frac{c(w-z)}{a-d}$.
+
+  \item[100.] $\ $
+    \begin{align*}
+    AB + AC & = BA + CA \\
+            & = (B+C)A = DA
+    \end{align*}
+
+  \item[101.] $ABC = ?$
+
+  \item[103.] $\ $
+    \begin{align*}
+    pIA + qIAA & = A(pI) + A(qI)A \\
+               & = A[pI+(qI)A] = A(pI+qA)
+    \end{align*}
+
+  \item[104.] $\ $
+    \begin{align*}
+    w & = p + 5q \\
+    x & = 2q
+    \end{align*}
+    Check: 
+    \begin{align*}
+    \frac{3x}{2} & = 3q \\
+    w-\frac{x}{2} & = p + 5q - q = p + 4q
+    \end{align*}
+
+\end{description}
+
+
+\subsection*{Section 8: Matrix Polynomials}
+
+\begin{description}
+
+  \item[105.] $\ $
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item $A^2 = 9A - 14I$
+      \item $\ $
+        \begin{align*}
+        A^3 & = (9A - 14I) A = 9A^2 - 14A \\ 
+            & = 9 (9A - 14I) - 14A = 67A - 126I
+        \end{align*}
+      \item $\ $
+        \begin{align*}
+        A^4 & = (67A - 126I) A = 67A^2 - 126A \\ 
+            & = 67 (9A - 14I) - 126A = 477A - 938I
+        \end{align*}
+    \end{enumerate}
+
+  \item[106.] $2A-I$, $3A-2I$, $4A-3I$.
+
+  \item[107.] $\ $
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item $A^2 = 5A+ 2I$
+      \item $\ $
+        \begin{align*}
+        A^3 & = A^2A = (5A + 2I) A = 5A^2 + 2A \\ 
+            & = 5 (5A + 2I) + 2A = 27A + 10I
+        \end{align*}
+      \item $A^4 = 145A +54I$
+    \end{enumerate}
+
+  \item[108.] $A^2 = 12A - 5I$.
+
+  \item[109.] $\ $
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item $12 = 1+11$. $p = a+d$. $q$ is the negative of the determinant.
+      \item $(a+d) \begin{bmatrix} a & b \\ c & d \end{bmatrix}  -  (ad-bc) \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$  and  $\begin{bmatrix} a & b \\ c & d \end{bmatrix}^2$ work out to the same thing.
+    \end{enumerate}
+
+  \item[110.] $5A-4I$. $nA-(n-1)I$.
+
+  \item[111.] $\ $
+    \begin{align*}
+    A^{k+1} & = A^k A = ( kA - (k-1)I ) A \\ 
+            & = kA^2 - (k-1)A = k(2A-I) - (k-1)A \\
+            & = 2kA-kI - (k-1)A= (k+1)A - kI
+    \end{align*}
+
+  \item[112.] We have seen that this formula is correct for the first few counting numbers. Problem 111 says that once the formula is true for one counting number, it is true for the next. Can we be stopped now? NO! The trait is inherited. Each counting number passes it on to its successor. (To justify all this from the axioms in the introduction, we need part (p).)
+
+  \item[113.] Given: $A^2 = 2A-I$.
+
+    So if $n = -1$,
+    \begin{equation*}
+    (-A+2I)A = -A^2+2I = -(2A-I)+2A = I
+    \end{equation*}
+    and $-A+2I$ is the inverse of $A$. Here $A$ and $-A+2I$ commute, so we have checked both sides.
+
+    If $n = \frac{1}{2}$, then
+    \begin{align*}
+    \left( \frac{1}{2} A + \frac{1}{2} I \right) ^2 & = \frac{1}{4} (A+I)^2 \\
+       & = \frac{1}{4} (A^2 + 2A + I) = \frac{1}{4} (4A) \\
+       & = A
+    \end{align*}
+
+  \item[114.] $1, 3, 7, 15, 31$. $2, 4, 8, 16, 32$.
+
+    The coefficient of $I$ in each line seems to be twice the preceding coefficient of $A$, which is $2^{n-1} - 1$. $A^n$ should be 
+    \begin{equation*}
+    (2^n - 1)A - 2(2^{n-1}-1)I
+    \end{equation*}
+
+    Suppose that $k$ is a counting number such that $A^k = (2^k-1)A - 2(2^{k-1}-1)I$. We wish to show that
+    \begin{equation*}
+    A^{k+1} = (2^{k+1}-1)A - 2(2^k-1)I
+    \end{equation*}
+    Work this out if you can. The exponents are not too bad. Read below if you must.
+
+    \begin{align*}
+    A^{k+1} & = A^k A = (2^k-1)A^2 - 2(2^{k-1}-1)A \\
+            & = (2^k-1) (3A-2I) - (2^k-2)A \\
+            & = (3 \cdot 2^k-3 - 2^k+2)A - 2(2^k-1)I \\
+            & = (2 \cdot 2^k-1)A - 2(2^k-1)I \\
+            & = (2^{k+1}-1)A - 2(2^k-1)I
+    \end{align*}
+    Now, since this formula works for the first counting numbers, it always works.
+
+  \item[115.] $\ $
+    \begin{align*}
+    (2^1 - 1)A - 2(2^0 - 1)I & = 1A + 0I = A = A^1 \\
+    (2^0 - 1)A - 2(2^{-1}-1)I & = 0A + 1I = I = A^0
+    \end{align*}
+    Our alleged inverse equals
+    \begin{align*}
+    (2^{-1}-1)A - 2(2^{-2}-1)I & = \left( \frac{1}{2} - 1 \right) A - 2 \left( \frac{1}{4} - 1 \right) I \\
+                               & = \left( -\frac{1}{2} \right) A - 2 \left( -\frac{3}{4} \right) I = \left( -\frac{1}{2} \right) A + \frac{3}{2} I \\ 
+                               & = \left( -\frac{1}{2} \right)  \begin{bmatrix} 2 & 3 \\ 0 & 1 \end{bmatrix}  +  \frac{3}{2}  \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \\
+                               & = \begin{bmatrix} \frac{1}{2} & -\frac{3}{2} \\ 0 & 1 \end{bmatrix}
+    \end{align*}
+    Is it really the inverse?
+    \begin{align*}
+    B^2 & = (2^{1/2}-1)^2 A^2 - 2(2^{1/2}-1) \cdot 2 \cdot (2^{-1/2}-1)A + 4(2^{-1/2}-1)^2 I \\
+        & = (2 - 2 \cdot 2^{1/2} + 1)A^2 - 4(1 - 2^{1/2} - 2^{-1/2} + 1)A + 4(2^{-1} - 2 \cdot 2^{-1/2} + 1)I \\
+        & = (3 - 2^{3/2})A^2 - 4(2 - 2^{1/2} - 2^{-1/2})A + 4 \left( \frac{3}{2} - 2^{1/2} \right) I \\
+        & = (3 - 2^{3/2}) (3A - 2I) - 4(2 - 2^{1/2} - 2^{-1/2})A + 4 \left( \frac{3}{2} - 2^{1/2} \right) I \\
+        & = (9 - 3 \cdot 2^{3/2} - 8 + 4 \cdot 2^{1/2} + 4 \cdot 2^{-1/2})A + (-6 + 2 \cdot 2^{3/2} + 6 - 4 \cdot 2^{1/2})I \\ 
+        & = A
+    \end{align*}
+
+  \item[116.] I bet that $\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$ doesn't work.
+
+  \item[117.] $\ $
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item $\ $
+        \begin{align*}
+        A^2 & = 2A - 3I \\
+        A & = A^{-1} A^2 = 2I - 3A^{-1} \\
+        3A^{-1} & = 2I - A \\
+        A^{-1} & = \frac{1}{3} (2I - A) \\
+        A^{-1} A & = \frac{1}{3} (2A - A^2) = \frac{1}{3} (3I) = I
+        \end{align*}
+        $A A^{-1}$ is the same thing. Our alleged inverse works.
+      \item $\begin{bmatrix} -10 & -1 \\ 123 & 12 \end{bmatrix}$. You picked this one, didn't you?
+    \end{enumerate}
+
+  \item[118.] $\ $
+    \begin{align*}
+         p & = \frac{x}{2} \\
+    4p + q & = w - \frac{x}{2} \\
+    2x + q & = w - \frac{x}{2} \\
+         q & = w - \frac{5x}{2}
+    \end{align*}
+    Check: 
+    \begin{align*}
+    5p + q & = \frac{5x}{2} + w - \frac{5x}{2} = w; \\
+    3p & = \frac{3x}{2}
+    \end{align*}
+
+  \item[119.] $A^{k+1} = A^k A = 7^{k-1} AA = 7^{k-1} \cdot A^2 = 7^k A$. (See Problem 8.)
+
+  \item[120.] $p$ must be both $2$ and $3$, so this problem cannot be done; there is no answer.
+
+    We found something (Problem 109) that worked for $2 \times 2$ matrices. What can we do for $3 \times 3$ matrices?
+
+  \item[121.] $\ $
+    \begin{align*}
+    3p + q & = 6; \\
+    2p + q & = 3. \\ 
+    p & = 3; \\ 
+    q & = -3. \\
+    p + q + r & = 1; \\ 
+    r & = 1
+    \end{align*}
+    These check in all equations.
+
+  \item[122.] $\ $
+    \begin{align*}
+     96 & = 12p + q + r \\
+    180 & = 22p + 3q \\
+     64 & = 8p + q \\
+    192 & = 24p + 3q \\
+     12 & = 2p \\
+      p & = 6 \\
+      q & = 16 \\
+      r & = 8
+    \end{align*}
+    (Had you guessed that $p$ would be $6$?)
+
+    We need to check our values for $p$, $q$, and $r$ in all nine equations.
+
+  \item[123.] These are $3^2 - 1$, $3^3 - 1$, $3^4 - 1$, etc. Our guess is that
+    \begin{equation*}
+    A^n = \frac{3^n-1}{2} A - \frac{3^n-3}{2} I
+    \end{equation*}
+    We finish as in Problem 114.
+
+  \item[124.] Compute $B^2$. After half a dozen lines of careful algebra, you will have $A$.
+
+  \item[125.] Let $M$ be $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$. Then according to Problem 109, $M^2 = (w+z)M$. Thus $M^3 = (w+z)^2 M$. Since $M^3 = 0$, and $M$ is not the zero matrix (else $M^2 = 0$), then $w+z = 0$, but this makes $M^2$ equal the zero matrix also.
+
+  \item[126.] The diagonal elements $\begin{bmatrix} p & & \\ & q & \\ & & r \end{bmatrix}$ keep the higher powers from becomming the zero matrix as things ``move out''. Try replacing these three central numbers with zeros.
+
+\end{description}
+
+
+\subsection*{Section 9: Complex Numbers}
+
+\begin{description}
+
+  \item[127.] You may solve the equations in the hint and be done with Problem 132. Otherwise, you may make some judicious choices for $w$, $x$, $y$, and $z$ to get a specific answer.
+
+  \item[128.] 
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item $\ $
+        \begin{align*}
+        (aI+bi)(cI+di) & = aI(cI+di)+ bi(cI+di) \\
+                       & = acI + adi + bci + bdi^2 \\
+                       & = acI + (ad+bc)i - bdI \\
+                       & = (ac-bd)I + (ad+bc)i 
+        \end{align*}
+      \item Since $i$ and $I$ commute, then $M$ and $N$ commute, as we can see in computations similar to those above. Perhaps it is more satisfying to multiply $\begin{bmatrix} a & -b \\ b & a \end{bmatrix}$ $\begin{bmatrix} c & -d \\ d & c \end{bmatrix}$ and $\begin{bmatrix} c & -d \\ d & c \end{bmatrix}$ $\begin{bmatrix} a & -b \\ b & a \end{bmatrix}$.
+    \end{enumerate}
+
+  \item[129.] Problem 57 says that the answer is $\begin{bmatrix} \frac{a}{a^2 + b^2} & \frac{b}{a^2 + b^2}  \\  \frac{-b}{a^2 + b^2} & \frac{a}{a^2 + b^2} \end{bmatrix}$. Should we check this? (Note that it is of the form $cI+di$.)
+
+    You might just say that $a^2 + b^2$ is the determinant of the matrix, and this is not zero unless the matrix is the zero matrix. However, this might be less interesting.
+
+  \item[130.] If we assume that $w-x = 0$, we run into a dead end. However, if we assume that $w+x = 0$, we find two answers, one of which is $\begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{-1}{\sqrt{2}}  \\  \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{bmatrix}$. Note that this is of the form of the matrices which we are calling complex numbers.
+
+  \item[131.] Our equations come down to
+    \begin{equation*}
+      w^2 - \frac{b^2}{4w^2} = a
+    \end{equation*}
+    or
+    \begin{equation*}
+      4({w^2})^2 - 4aw^2 - b^2 = 0
+    \end{equation*}
+    By the quadratic formula, we have
+    \begin{align*}
+      w^2 & = \frac{ 4a \pm \sqrt{16a^2 + 16b^2} }{2 \cdot 4} \\
+      w^2 & = \frac{a}{2} \pm \frac{1}{2} \sqrt{a^2 + b^2}
+    \end{align*}
+    Since $b \neq 0$, we must choose
+    \begin{equation*}
+      w^2 = \frac{a}{2} + \frac{1}{2} \sqrt{a^2 + b^2}
+    \end{equation*}
+    lest $w^2$ be negative. This gives two choices for $w$. Let us pick
+    \begin{equation*}
+      w = \sqrt{ \frac{a}{2} + \frac{1}{2} \sqrt{a^2 + b^2} }
+    \end{equation*}
+    We have
+    \begin{align*}
+      z & = w \\
+      x & = \frac{-b}{2w} \\
+      y & = -x
+    \end{align*}
+    Our answer is in the complex number form. Can you write our answer and square it? It takes some diligence to come out with $\begin{bmatrix} a & -b \\ b & a \end{bmatrix}$.
+
+  \item[132.] Answer: $\begin{bmatrix} w & x \\ \frac{-1-w^2}{x} & -w \end{bmatrix}$. You might have picked any one of these to call $i$ at the beginning of this section.
+
+  \item[133.] 
+    \begin{align*}
+     2w + 3x & = 2w - 3y: \ y = -x \\
+    -3w + 2x & = 2x - 3z: \ z = w
+    \end{align*}
+
+\end{description}
+
+
+\subsection*{Section 10: Similarity}
+
+\begin{description}
+
+  \item[134.] Any matrix $\begin{bmatrix} w & x \\ x & 0 \end{bmatrix}$ where $x \neq 0$. (If $x \neq 0$, then the determinant is not zero.)
+
+  \item[135.] Any matrix $\begin{bmatrix} 0 & x \\ y & 0 \end{bmatrix}$ where $xy \neq 0$.
+
+  \item[136.] Here both $w$ and $x$ must be zero, so that $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ cannot have an inverse.
+
+  \item[137.] $pr = rq$ and $r \neq 0$.
+
+  \item[138.] If your matrix $M$ doesn't commute with $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$, then $M^{-1} AM$ is a different matrix, which is similar to $\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$.
+
+  \item[139.] Only the identity matrix is similar to the identity matrix. $M^{-1} IM = I$.
+
+  \item[140.] $\ $
+    \begin{align*}
+        2w + 3y       & =  x \\
+        2x + 3z       & = -w \\
+    -\frac{5}{3} w-2y & =  z \\
+    -\frac{5}{3} x-2z & = -y
+    \end{align*}
+    If we pick $w=1$ and $z=1$, then $M$ is $\begin{bmatrix} 1 & -2 \\ -\frac{4}{3} & 1 \end{bmatrix}$.
+
+  \item[141.] Remember that $wz - xy = D$. When we add the first and last entries in $M^{-1} AM$, we get $\frac{1}{D} ( zaw-xdy-xya+wdz )$, which is $a+d$. (Right?)
+
+  \item[142.] $\ $
+    \begin{enumerate}[\hspace{1cm}(I)]
+      \item Since $qr = 10$, we might be tempted to gamble and say $q = 1$ and $r = 10$. Our gamble wins if $\begin{bmatrix} 1 & 2 \\ 3 & 5 \end{bmatrix}$ is similar to $\begin{bmatrix} 3 & 1 \\ 10 & 3 \end{bmatrix}$. You know how to show that this really is so.
+      \item We need $zw - 3xw + 2zy -5xy = -xy + 3wx - 2yz + 5wz$, or
+        \begin{equation*}
+        4yz = 4wz + 6wx + 4xy
+        \end{equation*}
+        (It's hard to get away from guessing in this business.) Let's make $w$ equal to $2$.
+        \begin{equation*}
+        yz = 2z + 3x + 2xy
+        \end{equation*}
+        Now, for convenience, make $y$ equal to $2$. This makes $x$ equal to $0$, and we may take $z$ to be $1$. $wz-xy=2$. Our arbitrary choices lead us, accidentally, to the same answer as in part I.
+    \end{enumerate}
+
+  \item[143.] $\ $
+    \begin{enumerate}[\hspace{1cm}(I)]
+
+      \item $w=b$, $z=1$, $x=0$, and $y = \frac{d-a}{2}$. There are other guesses. It takes some effort to show that this guess works if $b \neq 0$.
+
+        If $b=0$, try $x=1$, $w = \frac{a-d}{2}$, $y=0$, and $z=\frac{2c}{a-d}$. This works if $a \neq d$ and $c \neq 0$. If $a=d$, we didn't even need to start the problem.
+
+        If $a \neq d$ and $c=0$, try $x=z=1$ and $w = \frac{a-d}{2}$ and $y = \frac{d-a}{2}$.
+
+      \item $(a-d)zw + 2byz = (d-a)xy + 2cwx$. If $b \neq 0$, let's make $w$ equal to $b$ again. Try $y = \frac{d-a}{2}$, $x=0$, and $z=1$. This works.
+
+        If $b = 0$, let us make $y=0$, $w=1$, $z=1$, and $x = \frac{a-d}{2c}$. This works unless $c=0$, but the case where $b=c=0$ is not hard.
+
+    \end{enumerate}
+
+  \item[144.] $\ $
+    \begin{align*}
+    B^2 & = (M^{-1}AM) (M^{-1}AM) \\ 
+        & = M^{-1}AAM = M^{-1}A^2M
+    \end{align*}
+
+  \item[145.] $\ $
+    \begin{align*}
+    S^2 & = (M^{-1}RM) (M^{-1}RM) \\ 
+        & = M^{-1}R^2M = M^{-1}AM = B
+    \end{align*}
+
+  \item[146.] This works just as above.
+
+\end{description}
+
+
+\subsection*{Section 11: Square Roots}
+
+\begin{description}
+
+  \item[147.] If we add these equations, we get $(w+z)^2 = a$. Thus, $a \geq 0$. If $a = 0$, then $c$ must also be zero if our matrix is to have a square root, and we already know about square roots of the zero matrix. If $a>0$, one square root is $\begin{bmatrix} \sqrt{a} & 0 \\ \frac{c}{\sqrt{a}} & 0 \end{bmatrix}$ or $\frac{1}{\sqrt{a}}  \begin{bmatrix} a & 0 \\ c & 0 \end{bmatrix}$. Note that there is no square root if $a = 0$ and $c \neq 0$.
+
+  \item[148.] $\frac{1}{\sqrt{d}} \begin{bmatrix} 0 & b \\ 0 & d \end{bmatrix}$. If $d = 0$ and $b \neq 0$, then there is no square root.
+
+  \item[149.]
+    \begin{equation*}
+    \begin{bmatrix} 2/p & 3/p \\ 2/p & 3/p \end{bmatrix} ^2
+    = \frac{1}{p^2}
+    \begin{bmatrix} 10 & 15 \\ 10 & 15 \end{bmatrix}
+    =
+    \begin{bmatrix} 2 & 3 \\ 2 & 3 \end{bmatrix}
+    \end{equation*}
+    \begin{equation*}
+    p = \pm \sqrt{5}
+    \end{equation*}
+
+  \item[150.] $\frac{-2}{p^2} = 2$. There is no square root.
+
+  \item[151.] Here $p^2 = 1$, and there is a square root.
+
+  \item[152.] Here $p^2$ has to be $a+d$, so $a+d \geq 0$.
+
+  \item[153.] $\begin{bmatrix} a/p & d/p \\ a/p & d/p \end{bmatrix}$. (If $a+d=0$, there is no square root unless $\begin{bmatrix} a & d \\ a & d \end{bmatrix}$ is the zero matrix.)
+
+  \item[154.] $\begin{bmatrix} a/p & b/p \\ ma/p & mb/p \end{bmatrix}$. (If $a+mb=0$, there is no square root unless $\begin{bmatrix} a & b \\ ma & mb \end{bmatrix}$ is the zero matrix.)
+
+  \item[156.] Since $x \neq 0$, it follows that $z = -w$; but then $-1 = -2$.
+
+  \item[157.] Our candidate for square root is
+    \begin{equation*}
+    \frac{1}{p} \begin{bmatrix} D+a & b \\ c & D+d \end{bmatrix}
+    \end{equation*}
+
+    If we square this, we see that $p^2$ must be $a + d + 2D$ or $a + d + 2\sqrt{ad-bc}$.
+
+    If $a + d + 2\sqrt{ad-bc} >0$, then our candidate wins.
+
+    If $a + d + 2\sqrt{ad-bc} = 0$, then
+    \begin{align*}
+    a + d & = w^2 + 2xy + z^2 \\ 
+    a + d & = w^2 + 2wz - 2D + z^2 \\
+        0 & = a + d + 2D = (w+z)^2 \\
+        w & = -z \\ 
+        b & = c = 0 \\
+        a & = w^2 + xy = z^2 + xy = d
+    \end{align*}
+
+    Problems 65, 67, and 132 tell us that such matrices have square root $s$.
+
+    In summary, the matrix $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$ has a square root if:
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item its determinant is not negative; and
+      \item either 
+        \begin{enumerate}[\hspace{1cm}(a)]
+          \item $a + d + 2\sqrt{ad-bc} > 0$; or 
+          \item $a = d$ and $b = c = 0$.
+        \end{enumerate}
+    \end{enumerate}
+
+  \item[158.] $\ $
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item If $p>0$, then 
+        \begin{align*}
+        wz-xy & = \frac{(D+a)(D+d)}{p^2} - \frac{bc}{p^2} \\
+              & = \frac{D^2 + (a+d)D + ad - bc}{p^2} = \frac{(a+d+2D)D}{p^2} = D \geq 0
+        \end{align*}
+      \item $\ $
+        \begin{enumerate}[\hspace{1cm}(a)]
+          \item If $p>0$, then $w + z + 2 \sqrt{wz-xy} = p + 2\sqrt{D} > 0$, and according to the previous problem, the square root has a square root.
+          \item If $a=d$ and $b=c=0$, then we can choose $\begin{bmatrix} w & x \\ y & z \end{bmatrix}$ equal to either $\sqrt{a}I$ or $\sqrt{-a}i$ (if $a<0$). Problems 65 and 130 give square root $s$ for these, and thus fourth roots for the original matrix.
+        \end{enumerate}
+    \end{enumerate}
+
+\end{description}
+
+
+\subsection*{Section 12: Cube Roots}
+
+\begin{description}
+
+  \item[159.] If $c \neq 0$ and $a \neq 0$, then $x=0$, $z=0$, $w = a^{1/3}$, and $y = ca^{-2/3}$. There is no cube root if $a=0$ and $c \neq 0$.
+
+  \item[160.] If $b \neq 0$, then $y=0$, $w=0$, $z = d^{1/3}$, and $x = bd^{-2/3}$; unless $d=0$, in which case there is no cube root.
+
+  \item[161.] The formula for the powers is $(a+mb)^{n-1}  \begin{bmatrix} a & b \\ ma & mb \end{bmatrix}$. If we make $n$ equal to $\frac{1}{3}$, then we get a cube root, provided that $a+mb \neq 0$. If $a+mb=0$ and $b \neq 0$, then $\begin{bmatrix} a & b \\ ma & mb \end{bmatrix}$ has no cube root, but is similar to $\begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}$, which has no cube root.
+
+  \item[162.] $\begin{bmatrix} a^{1/3} & x \\ 0 & d^{1/3} \end{bmatrix}$. $x$ has to be $\frac{b}{ a^{2/3} + a^{1/3} d^{1/3} + d^{2/3} }$. One of $a$ and $d$ must be different from zero.
+
+  \item[165.] If we add $w^3 + 3wx^2 = 14$ and $3xw^2 + x^3 = 13$, we get $(w+x)^3 = 27$.
+
+  \item[166.] If we substitute $3-w$ for $x$ in $w^3 + 3wx^2 = 14$, and $3-x$ for $w$ in $3xw^2 + x^3 = 13$, then we obtain the required equations.
+
+\end{description}
+
+
+
+\end{document}

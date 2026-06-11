@@ -1,0 +1,721 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+
+% special characters
+
+\def\plim{\lim\limits_{\leftarrow}^{}}
+\def\dlim{\lim\limits_{ \rightarrow}^{}}
+
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+\title{Alexander-Wallace-Spanier Cohomology}
+\author{John A. Hildebrant}
+\date{\vspace{3cm}
+ Department of Mathematics
+ \\ Louisiana State University
+ \\ Baton Rouge, Louisiana 70803
+ }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+
+
+Source material was provided by Professor D. R. Brown.
+
+
+
+\section{Algebraic Preliminaries}
+\markboth{1. Algebraic Preliminaries}{1. Algebraic Preliminaries}
+
+\pagenumbering{arabic}
+
+The following preliminaries concern \emph{Abelian groups}:
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item If $G$ is a group, and $H \subseteq G$, then $H$ is a \emph{subgroup} of $G$ if $H+H \subseteq H$ and $H \subseteq -H$. If $A$ and $B$ are subgroups of an Abelian group $G$, then $A+B$ is also one.
+  \item If $G$ and $H$ are groups, if $f: G \longrightarrow H$, and if $f(a+b)=f(a)+f(b)$ for all $a,b \in G$, then $f$ is a \emph{homomorphism} of $G$ into $H$. The image of a subgroup of $G$ is a subgroup of $H$. If $f$ is also one-to-one and onto, then $f$ is an \emph{isomorphism}, and $G$ and $H$ are \emph{isomorphic}, to be written $G \cong H$. The \emph{kernel} of $f$, $\text{Kern}(f) = \{ x \in G: f(x)=0 \}$, is a (normal) subgroup of $G$.
+  \item Let $G$ be an Abelian group, and $H$ a subgroup of $G$. Sets of the form $a+H$ for $a \in G$ are called \emph{cosets} of $G \text{ mod } H$. The collection $\{ a+H: a \in G \}$ is an Abelian group under the operation $(a+H) \oplus (b+H)=(a+b)+H$, and is called the \emph{factor group} of $G \text{ mod } H$, to be written $G/H$. Define $\phi: G \longrightarrow G/H$ by $\phi (a)=(a+H)$. The function $\phi$ is a homomorphism of $G$ onto $G/H$, called the \emph{natural} homomorphism.
+  \item If $G$ and $H$ are Abelian groups, and $f$ is a homomorphism of $G$ onto $H$, then there is a subgroup $N$ of $G$ such that $G/N \cong H$. This is the \emph{Fundamental homomorphism theorem}.
+  \item Suppose $A \buildrel ^f \over \longrightarrow B \buildrel ^g \over \longrightarrow C$, and let $h=g\circ f$. Assume $A,B,C$ are Abelian groups, and $f,g$ are homomorphisms. Then:
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item $h$ is a homomorphism; and
+      \item if $h$ is an isomorphism onto $C$, then $g$ is onto, $f$ is one-to-one, and $B \cong f(A) \oplus {\text Kern}(g)$.
+    \end{enumerate}
+  \item Suppose $G_1,G_2,H_1,H_2$ are (Abelian) groups; $\alpha,\beta, f$ are homomorphisms with $\alpha$ onto, and with $f(\text{ Kern}(\alpha)) \subseteq \text{ Kern}(\beta)$. Then there is a unique homomorphism $f^*: G_1 \longrightarrow H_1$ such that $f^* \circ \alpha = \beta \circ f$. Moreover,
+    \begin{equation*}
+    f^*(G_1)=\beta (f(G_2)+\text{ Kern}(\beta)) \cong \left\{ \frac{ (f(G_2)+\text{ Kern}(\beta)) }{ \text{ Kern}(\beta) } \right\}
+    \end{equation*}
+    and
+    \begin{equation*}
+    \text{Kern}(f^*)= \alpha \{ f^{-1}(\text{Kern}(\beta)) \} \cong \left\{ \frac{ f^{-1}(\text{ Kern}(\beta)) }{ \text{Kern}(\alpha) } \right\}
+    \end{equation*}
+    This is the \emph{Induced homomorphism theorem}.
+
+    The following diagram represents the situation:
+    \begin{gather*}
+    G_1 \xrightarrow{f^*} H_1 \\
+    \alpha\uparrow \quad\quad\quad \uparrow\beta \\
+    G_2 \xrightarrow{\ f \ } H_2
+    \end{gather*}
+
+  \item Let $\{ G_i \}_{i=1}^k$ be a sequence of Abelian groups, and $\{ h_i \} _{i=1}^k$ be a sequence of homomorphisms satisfying:
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item $k$ is either a positive integer or $\infty$;
+      \item for each $i$, $h_i: G_i \longrightarrow G_{i+1}$;
+      \item $h_1$ is an isomorphism (not necessarily onto);
+      \item for each $i$, $h_i(G_i)= \text{ Kern}(h_{i+1})$;
+      \item if $k \neq \infty$, then $h_{k-1}$ is onto.
+    \end{enumerate}
+  \item The sequence $(G_i,h_i)$ is called an \emph{exact sequence}. Note that (d) implies that $h_{i+1} \circ h_i=0$, for all $i$.
+  \item Let $f: G \longrightarrow H$ be a homomorphism of Abelian groups.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item if $H_1$ and $H_2$ are subgroups of $H$ and if $f \ f^{-1}(H_1)=H_1$, then $f^{-1}(H_1+H_2)= f^{-1}(H_1)+f^{-1}(H_2)$;
+      \item if $G_1 \subseteq G$ and $H_1 \subseteq H$ are subgroups, then $f^{-1}(f(G_1)+H_1)=G_1+f^{-1}(H_1)$;
+      \item if $G_1 \subseteq G$, $H_1 \subseteq H$ are subgroups, and if $H_1 \subseteq f(G)$, then $f(G_1+f^{-1}(H_1))=f(G_1)+H_1$.
+    \end{enumerate}
+  \item If $A,B,C$ are subgroups of an Abelian group $G$ such that $A \subseteq C$, then $A+(B \cap C)=(A+B) \cap C$. This is \emph{Dedekind's Modular Law}.
+\end{enumerate}
+
+
+
+\section{Cohomology Groups}
+\markboth{2. Cohomology Groups}{2. Cohomology Groups}
+
+\begin{description}
+
+\item[Notation:] Let $X^n=$ Cartesian product of $n$ copies of $X$. The \emph{diagonal} of $X^n$, $\Delta (X^n)= \{ (x_i) \in X^n: x_i=x_j, i,j=1,2, \cdots, n \}$.
+
+\end{description} 
+
+Let $X$ be a topological space, and let $G$ be a non-trivial Abelian group. For $p \geq 0$, let 
+\begin{equation*}
+C^p(X,G)=C^p(X)= \{ f \vert f: X^{p+1} \longrightarrow G \}
+\end{equation*}
+
+For $\Phi,\Psi \in C^p(X)$, define $\Phi + \Psi \in C^p(X)$ by
+\begin{equation*}
+(\Phi + \Psi)(x_0, \cdots, x_p) = \Phi (x_0, \cdots, x_p) + \Psi (x_0,\cdots, x_p)
+\end{equation*}
+
+Define $0 \in C^p(X)$ by $0(x_0,\cdots,x_p)=0$, where $0$ is the group identity in $G$, and define $-\Phi \in C^p(X)$ by $(-\Phi)(x_0,\cdots,x_p)=-(\Phi (x_0,\cdots,x_p))$.
+
+With these definitions, $C^p(X)$ is an Abelian group, called the \emph{group of cochains} of $X$ of dimension $p$, or simply the group of $p$-cochains of $X$.
+
+Define $\bar{\delta}_p: C^p(X) \longrightarrow C^{p+1}(X)$ as follows: for $\Phi \in C^p(X)$, let 
+\begin{equation*}
+\bar{\delta}_p(\Phi)(x_0,\cdots,x_{p+1})= \sum_{i=0}^{p+1}(-1)^i \Phi (x_0,\cdots,\hat{x_i},\cdots,x_{p+1})
+\end{equation*}
+where the notation $\hat{x_i}$ means ``delete $x_i$''.
+
+\begin{description}
+
+\item[Lemma:] The function $\bar{\delta}_p$ is a homomorphism.
+
+\item[Lemma:] $\bar{\delta}_{p+1} \bar{\delta}_p = 0$.
+
+\item[Notation:] If ${\cal U} \subseteq 2^X$, let ${\cal U}^n= \{ x \in X^n : x \in U^n$ for some $U \in {\cal U} \}$.
+
+\item[Definition:] For $A \subseteq X, p \geq 0$, define $C^p(X,A)$ by $\Phi \in C^p(X,A)$, provided 
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item $\Phi \in C^p(X)$; 
+    \item there exists an open cover {\cal U} of $A$ by sets open in $X$ such that $\Phi$ restricted to $U^{p+1} \cap A^{p+1}=0$, for each $U \in {\cal U}$. 
+  \end{enumerate}
+  Equivalent to statement (ii) is the statement (ii a): $\Phi$ must vanish on a relative product neighborhood of $\Delta (A^{p+1})$. This set is a subgroup of $C^p(X)$, called the \emph{subgroup} of $p$-cochains of $X \text{ mod } A$.
+
+\item[Lemma:] Let $B \subseteq A \subseteq X$. Then
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item $C^p(X,A)$ is a subgroup of $C^p(X,B)$ is a subgroup of $C^p(X)$;
+    \item $\bar{\delta} (C^p(X,A) \subseteq C^{p+1}(X,A)$.
+  \end{enumerate}
+
+\item[Definitions:] $Z^p(X,A) = C^p(X,A) \cap \bar{\delta}^{-1}C^{p+1}(X,X)$, which is the \emph{subgroup of $p$-cocycles} of $X \text{ mod } A$. $B^0(X,A)=0$; for $p \geq 0$, let $B^p(X,A) = \bar{\delta} C^{p-1}(X,A)+C^p(X,X)$, which is the \emph{subgroup of bounding cocycles of dimension $p$}.
+
+\item[Lemma:] $B^p(X,A) \subseteq Z^p(X,A)$.
+
+\item[Definition:] $H^p(X,A) = \frac{Z^p(X,A)}{B^p(X,A)}$ is the \emph{$p$th cohomology group} of $X \text{ mod } A$. If $A$ is null, the second factor is suppressed to yield $H^p(X)$.
+
+\item[Observe:] $H^p(X,X) = 0,p \geq 0$.
+
+\end{description}
+
+
+
+\section{Homomorphisms Induced by Continuous Functions}
+\markboth{3. Homomorphisms}{3. Homomorphisms}
+
+\begin{description}
+
+\item[Notation:] If $C \subseteq A \subseteq X$, $D \subseteq B \subseteq Y$, $X \xrightarrow{\ f \ } Y$, $f(A) \subseteq B$, $f(C) \subseteq D$, then these facts will be indicated by either $f: (X,A,C) \longrightarrow (Y,B,D)$, or $(X,A,C) \xrightarrow{\ f \ } (Y,B,D)$. Any of these arguments may be ignored to produce maps on pairs instead of triples.
+
+\item[Lemma:] Let $X,Y$ be topological spaces, $f: X \longrightarrow Y$. Define $f^{\#}: C^p(Y) \longrightarrow C^p(X)$ by $f^{\#} \Phi(x_0,\cdots,x_p) = \Phi(f(x_0),\cdots,f(x_p))$.
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item $f^{\#}$ is a homomorphism;
+    \item $f^{\#} \circ \bar{\delta} = \bar{\delta} \circ f^{\#}$;
+    \item if $f: (X,A) \rightarrow (Y,B)$, and if $f$ is continuous, then $f^{\#}(C^p(Y,B)) \subseteq C^p(X,A)$;
+    \item with the same conditions as (c), $f^{\#}(Z^p(Y,B)) \subseteq Z^p(X,A)$;
+    \item with the same conditions as (c), $f^{\#}(B^p(Y,B)) \subseteq B^p(X,A)$;
+    \item with the same conditions as (c), the homomorphism $f^{\#}$ induces a unique homomorphism $f^*: H^p(Y,B) \rightarrow H^p(X,A)$.
+  \end{enumerate}
+
+\end{description}
+
+
+
+\section{The Basic Theorems}
+\markboth{4. The Basic Theorems}{4. The Basic Theorems}
+
+\begin{description}
+
+\item[Theorem 1:] Let $(X,A) \xrightarrow{\ f \ } (X,A)$ be the identity map. Then $f^*$ is the identity isomorphism on $H^p(X,A)$.
+
+\item[Theorem 2:] If $(X,A) \xrightarrow{\ f \ } (Y,B) \xrightarrow{\ g \ } (Z,C)$, with $f,g$ continuous, then $(g \circ f)^* = f^* \circ g^*$.
+
+\item[Corollary:] If $(X,A) \xrightarrow{\ f \ } (Y,B)$ is a homeomorphism with the property that $f(A)=B$, then $f^*: H^p(Y,B) \longrightarrow H^p(X,A)$ is an \emph{onto isomorphism}.
+
+\item[Definition:] Let $B \subseteq A \subseteq X$. Define $\delta: H^p(A,B) \longrightarrow H^{p+1}(X,A)$, to be called the \emph{coboundary operator}, as follows: let $i: A \rightarrow X$ be the inclusion map of $A$ into $X$. Let $\beta: Z^p(A,B) \longrightarrow H^p(A,B)$, $\gamma: Z^{p+1}(X,A) \longrightarrow H^{p+1}(X,A)$ be the natural homomorphisms, and let $\bar{\delta}: C^p(X) \longrightarrow C^{p+1}$ $(X)$. Define $\delta(h) = \gamma \circ \bar{\delta} (\phi)$, where $\phi \in i^{\# -1} \beta^{-1}(h)$.
+
+\item[Lemma:] The map $\delta$ is a well defined homomorphism.
+
+\item[Theorem 3:] Let $f: (X,A,B) \longrightarrow (X',A',B')$ be continuous, and let $f_1$ be the restriction of $f$ to $(X,A)$, $f_3$ be the restriction of $f$ to $(A,B)$. Then $\delta \circ f_3^* = f_1^* \circ \delta$, as indicated in the following diagram:
+  \begin{gather*}
+  H^p(A,B) \xrightarrow{\ \delta \ } H^{p+1}(X,A) \\
+  f_3^* \uparrow \quad\quad\quad\quad\quad \uparrow f_1^* \\
+  H^p(A',B') \xrightarrow{\ \delta \ } H^{p+1}(X',A')
+  \end{gather*}
+
+\item[Theorem 4:] Suppose $A \subseteq X$. Let $j$ be the inclusion map of $(X,\emptyset)$ into $(X,A)$, and let $i$ be the inclusion map of $A$ into $X$. The following sequence is exact:
+
+\end{description}
+
+  \begin{equation*}
+  H^0(X,A) \xrightarrow{j^*} H^0(X) \xrightarrow{i^*} H^0(A) \xrightarrow{\ \delta \ } H^1(X,A) \xrightarrow{j^*} H^1(X) \xrightarrow{i^*} H^1(A) \xrightarrow{\ \delta \ } \cdots
+  \end{equation*}
+
+\begin{description}
+
+\item[Problems:] $\ $
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item Prove $H^0( \{ \text{pt} \} ) \cong G$, and $H^p( \{ \text{pt} \} ) = 0$, $p>0$.
+    \item Prove the following in Theorem 4:
+      \begin{enumerate}[\hspace{1cm}(1)]
+        \item Image $j^* \subseteq \text{ Kern}(i^*)$;
+        \item Image $i^* \subseteq \text{ Kern}(\delta)$;
+        \item Image $\delta \subseteq \text{ Kern}(j^*)$;
+        \item at the zero level, $j^*$ is one-to-one.
+      \end{enumerate}
+  \end{enumerate}
+
+\item[Corollary 1:] If $H^p(X,A)=0$, $p \geq 0$, then $i^*$ is an isomorphism of $H^P(X)$ onto $H^p(A)$.
+
+\item[Definition:] A subset $A \subseteq X$ is a \emph{retract} of $X$ provided there exists a continuous function $r: X \longrightarrow A$ such that $r(a)=a$ for all $a \in A$.
+
+\item[Corollary 2:] If $A$ is a retract of $X$, then $H^p(X) \cong H^p(A) \oplus H^p(X,A)$.
+
+\item[Theorem 4A:] Let $B \subseteq A \subseteq X$, let $m: (A,B) \longrightarrow (X,B)$, $n: (X,B) \longrightarrow (X,A)$ be inclusions, and let $\tilde \delta = \delta \circ j^*$, where $j^*: H^p(A,B) \longrightarrow H^p(A)$, and $\delta: H^p(A) \longrightarrow H^{p+1}(X,A)$. Then the following sequence is exact: $H^0(X,A) \xrightarrow{\ n^* \ } H^0(X,B) \xrightarrow{\ m^* \ } H^0(A,B) \xrightarrow{\ \tilde\delta \ } H^1(X,A) \xrightarrow{\ n^* \ } H^1(X,B) \xrightarrow{\ m^* \ } H^1(A,B) \xrightarrow{\ \tilde{\delta} \ } \cdots$.
+
+\item[Definition:] Where $f,g: X \longrightarrow Y$, define $D: C^p(Y) \longrightarrow C^{p+1}(X)$ by
+  \begin{equation*}
+  D \phi (x_0,\cdots,x_{p-1}) = \sum_{i=0}^{p-1} (-1)^i \phi ( g(x_0),\cdots,g(x_i),f(x_i),\cdots,f(x_{p-1}))
+  \end{equation*}
+
+  The cochain $D\phi$ is called the \emph{deformation cochain} of $\phi$ with respect to $f$ and $g$.
+
+\item[Lemma:] Let $f,g,\phi$ as defined above. If $p=0$, then $D \bar{\delta} \phi = f^{\#} \phi - g^{\#} \phi$; if $p>0$, then $D \bar{\delta} \phi + \bar{\delta} D \phi = f^{\#} \phi - g^{\#} \phi$.
+
+\item[Sketch of proof:] The case $p=0$ is immediate. For $p>0$, express 
+  \begin{equation*}
+  D \bar{\delta} \phi(x_0,\cdots,x_p)
+  \end{equation*}
+  as
+  \begin{equation*}
+  \sum_{p=0}^p(-1)^i \left[ \sum_{j=0}^{p+1}(-1)^j \phi (h_0^i,\cdots,\hat{h}_j^i,\cdots,h_{p+1}^i) \right]
+  \end{equation*}
+  where $h_j^i= g(x_j)$, $j \leq i$, $h_j^i=f(x_{j-1})$, $j>i$. 
+
+  Similarly, express $\bar{\delta} D\phi (x_0,\cdots,x_p)$ as
+  \begin{equation*}
+  \sum_{j=0}^p(-1)^j \left[ \sum_{i=0}^{p-1}(-1)^i \phi (g(y_0^j),\cdots,g(y_i^j),f(y_i^j),\cdots,f(y_{p-1}^j)) \right]
+  \end{equation*}
+  where $y_i^j=x_i$ and $i<j$, $y_i^j=x_{i+1}$, $i \geq j$. Now pair terms.
+
+\item[The Fundamental Lemma of Spanier:] Let $f,g: (X,A) \longrightarrow (Y,B)$, where $f,g$ are not necessarily continuous. Let $\phi \in Z^p(Y,B)$. Suppose there exists ${\cal V}$, an open cover of $Y$ such that $\bar{\delta} \phi (V^{p+2}) = 0$ and $\phi(V^{p+1} \cap B^{p+1}) = 0$ for all $V \in {\cal V}$. Suppose also there exists an open cover ${\cal U}$ of $X$ such that for each $U \in {\cal U}$, there exists $V \in {\cal V}$ such that $f(U) \cup g(U) \subseteq V$. Then 
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $f^{\#}\phi, g^{\#}\phi \in Z^p(X,A)$; and 
+    \item $f^{\#}\phi - g^{\#}\phi \in B^p(X,A)$.
+  \end{enumerate}
+
+\item[Notation:] Let $\pi: (X \times T, A \times T) \longrightarrow (Y,B)$. For $t \in T$, define $\hat{t}: (X,A) \longrightarrow (Y,B)$ by $\hat{t}(x) = \pi ((x,t))$. Note that $\hat{t}$ is continuous if $\pi$ is; hence there exists $\hat{t}^*: H^p(Y,B) \rightarrow H^p(X,A)$.
+
+\item[Lemma:] Let $X$ be a compact space, let $B \subseteq Y$ be closed, let $h \in H^p(Y,B)$, $t \in T$. Then there exists an open set $O$ in $T$, with $t \in O$, such that $s \in O$ implies $\hat{s}^*(h) = \hat{t}^*(h)$. If, moreover, $T$ is connected, then for each $s,t \in T$, $\hat{s}^* = \hat{t}^*$.
+
+\item[Theorem 5 (Generalized Homotopy Theorem):] Let $T$ be connected, and $f,g: (X,A) \longrightarrow (Y,B)$ continuous functions, with $X$ compact and $B$ closed in $Y$. If $h: (X \times T, A \times T) \longrightarrow (Y,B)$ exists such that for some pair of elements $t_1,t_2 \in T, h(x,t_1) = f(x),h(x,t_2) = g(x)$ for all $x \in X$, and if $h$ is continuous, then $f^* = g^*$.
+
+\item[Definition:] Let $I$ be the unit real number interval. If $f,g: (X,A) \longrightarrow (Y,B)$, then $f,g$ are \emph{homotopic} if there exists $\pi: (X \times I, A \times I) \longrightarrow (Y,B)$, continuous, such that $\pi (x,1) = f(x)$, $\pi(x,0) = g(x)$, for all $x \in X$.
+
+\item[Corollary:] If $X$ is compact, $B$ closed, $f,g: (X,A) \longrightarrow (Y,B)$, where $f,g$ are continuous and homotopic, then $f^* = g^*$. This is the ordinary \emph{Homotopy Theorem}.
+
+\item[Definitions:] A continuous function $f: X \rightarrow Y$ is \emph{null-homotopic} if $f$ is homotopic to a constant map. A space $X$ is \emph{contractible} if the identity map on $X$ is null-homotopic. A subset $A$ of $X$ is a \emph{deformation retract} of $X$, if there exists a retraction $r$ of $X$ onto $A$ such that $i \circ r$ is homotopic to the identity map on $X$, where $i$ is the inclusion of $A$ into $X$.
+
+\item[Corollary:] If $A$ is a deformation retract of $X$, and if $X$ is compact, then $i^*$ is an isomorphism onto in all dimensions, where $i$ is, as usual, the inclusion of $A$ into $X$.
+
+\item[Corollary:] If $X$ is compact and contractible, then $X$ has the groups of a point; that is, the groups of a singleton set.
+
+\item[Theorem 6 (Excision Theorem):] Let $A \subseteq X$. Let $U$ be an open set in $X$ with $\overline U \subseteq A^{\circ}$. Let $j: (X \backslash U, A \backslash U) \longrightarrow (X,A)$ be the inclusion map. Then $j^*$ is an isomorphism in all dimensions.
+
+\item[Theorem 6A (Alternate Form):] If $X = A^{\circ} \cup B^{\circ}$ where $A,B$ are closed subsets of $X$, and if $j: (B,A \cap B) \longrightarrow (X,A)$ is the inclusion map, then $j^*$ is an isomorphism in all dimensions.
+
+\item[Corollary:] If $X = A \cup B$, and $A \vert B$, then $H^p(X) \cong H^p(A) \oplus H^p(B)$.
+
+\item[Theorem 7 (Dimension Theorem):] If card $X = 1$, then $H^0(X) \cong G$, where $G$ is the coefficient group, while $H^p(X)=0$ when $p>0$.
+
+\end{description}
+
+
+
+\section{Reduced Groups in Dimension Zero}
+\markboth{5. Reduced Groups in Dim. Zero}{5. Reduced Groups in Dim. Zero}
+
+\begin{description}
+
+\item[Definitions:] Let $A \subseteq X$. Let $0$ represent a one-point space, and fix $a \in A$. Let $f_a: (0,0) \rightarrow (X,A)$, $g_a: 0 \rightarrow X$, $h_a: 0 \rightarrow A$, each be defined by sending $0$ to $a$; and let $f: (X,A) \rightarrow (0,0)$, $g: X \rightarrow 0$, $h: A \rightarrow 0$, each be defined in the only way possible. Note that $f,g,h$ are onto, while $f_a,g_a,h_a$ are one-to-one. Define
+  \begin{equation*}
+  \widetilde{H^0}(X) = \frac{H^0(X)}{g^*(H^0(0))} \quad\quad \widetilde{H^0}(A) = \frac{H^0(A)}{h^*(H^0(0))}.
+  \end{equation*}
+
+  Consider the diagram:
+  \begin{gather*}
+  H^0(0,0) \xrightarrow{\ j^* \ } H^0(0) \xrightarrow{\ i^* \ } H^0(0)  \xrightarrow{\ \delta \ } H^1(0,0) \\
+  f^* \downarrow \uparrow f_a^* \quad \quad g^* \downarrow \uparrow g_a^* \quad \quad h^* \downarrow \uparrow h_a^* \quad \quad f^* \downarrow \uparrow f_a^* \\
+  H^0(X,A) \xrightarrow{\ j^* \ } H^0(X) \xrightarrow{\ i^* \ } H^0(A) \xrightarrow{\ \delta \ } H^1(X,A) \\
+  \vert \vert \quad\quad\quad\quad \downarrow \alpha \quad\quad\quad\quad \downarrow \beta \quad\quad\quad\quad \vert \vert \\
+  H^0(X,A)  \xrightarrow{\ \hat{j}^* \ } \widetilde{H^0}(X) \xrightarrow{\ \hat{i}^* \ } \widetilde{H^0}(A)  \xrightarrow{\ \hat{\delta} \ } H^1(X,A)
+  \end{gather*}
+
+  Here, $\hat{j}^*, \hat{i}^*, \hat{\delta}^*$ are induced.
+
+\item[Theorem 8:] The bottom line of the above diagram is an exact sequence, including the fact that image $(\hat{\delta}) = \text{ kernel}(j^*)$ within $H^1(X,A)$.
+
+\item[Theorem 9:] These are equivalent:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $X$ is a connected space;
+    \item the homomorphism $g^*$ is surjective;
+    \item $\widetilde{H^0}(X)=0$.
+  \end{enumerate}
+
+\end{description}
+
+
+
+\section{Fully Normal Spaces}
+\markboth{6. Fully Normal Spaces}{6. Fully Normal Spaces}
+
+\begin{description}
+
+\item[Definition:] Let $X$ be a space. Suppose ${\cal U}$ and ${\cal V}$ are collections of non-empty subsets of $X$. Then ${\cal V}$ \emph{refines} ${\cal U}$ , written ${\cal V} \prec {\cal U}$, provided for each $V \in {\cal V}$, there exists $U \in {\cal U}$ such that $V \subseteq U$.
+
+\item[Notation:] If ${\cal U}$ is an open cover of $X$, and $U_0 \in {\cal U}$, let $U_0^* = \cup \{ U \in {\cal U} \vert U \cap U_0 \neq \emptyset \}$. Let ${\cal U}^* = \{ U^* \vert U \in {\cal U} \}$.
+
+\item[Definition:] A space $X$ is \emph{fully normal}, provided for each  open cover ${\cal U}$ of $X$, there exists an open cover ${\cal V}$ of $X$ such that ${\cal V}^* \prec {\cal U}$.
+
+\item[Theorem 10:] A compact Hausdorff space is fully normal.
+
+\item[Theorem 11:] A closed subset of a fully normal space is fully normal as a subspace.
+
+\item[Theorem 12:] A fully normal space is normal.
+
+\item[Remarks:] For Hausdorff spaces, full normality is equivalent to paracompactness (A. H. Stone). It follows that metric spaces and locally compact Hausdorff topological groups are fully normal, although it is easier to prove these facts directly than to prove the equivalence of Stone.
+
+\end{description}
+
+
+
+\section{Inverse Limits and the Continuity Theorem}
+\markboth{7. Inverse Limits, Continuity Thm}{7. Inverse Limits, Continuity Thm}
+
+\begin{description}
+
+\item[Definition:] Let $(G_{\alpha}, h_{\alpha}^{\beta}, \text{D})$ be a \emph{directed system} of Abelian groups and homomorphisms. That is, $\text{D}$ is a directed set with direction $\succ$, so that if $\alpha,\beta \in \text{D}$, then there exist $\gamma \in \text{D}$ such that $\gamma \succ \alpha, \gamma \succ \beta$. Moreover, if $\beta \succ \alpha$, then $h_{\alpha}^{\beta}: G_{\alpha} \longrightarrow G_{\beta}$ is a homomorphism of groups, satisfying if $\gamma \succ \beta \succ \alpha$, then $h_{\alpha}^{\gamma} = h_{\beta}^{\gamma} \circ h_{\alpha}^{\beta}$.
+
+  The \emph{direct limit} of this system is a group $G$ constructed in the following manner: let $H= \cup \{ G_{\alpha} \vert \alpha \in \text{D} \}$, where this union is the disjoint union. Define an equivalence relation $\sim$ on $H$ by: if $g_{\alpha} \in G_{\alpha} \subseteq H$ and $g_{\beta} \in G_{\beta} \subseteq H$, then $g_{\alpha}\sim g_{\beta}$ if there exists $\gamma \in \text{D}$, $\gamma \succ \alpha,\beta$ such that $h_{\alpha}^{\gamma} (g_{\alpha}) = h_{\beta}^{\gamma} (g_{\beta})$. Set $G$ equal to the family of equivalence classes of $H$ under $\sim: G = H/\sim$. Define an operation + on $G$ by $[g_{\alpha}]+[g_{\beta}]=[h_{\alpha}^{\gamma} (g_{\alpha})+h_{\beta}^{\gamma}(g_{\beta})]$, where $\gamma$ is any member of $\text{D}$ such that $\gamma \succ \alpha,\beta$, where $[g]$ is the equivalence class of $g$ in $H/\sim$, and where the second $+$ is the group operation present in $G_{\gamma}$. It follows that $+$ so defined is well defined and $(G,+)$ becomes an Abelian group under this operation, $G = \dlim (G_{\alpha}, h_{\alpha}^{\beta}, \text{D})$.
+
+\item[Definition:] Let $(X_{\alpha},f_{\alpha}^{\beta},\text{D})$ be an \emph{inverse system} of topological spaces and continuous functions. That is, $\text{D}$ is a directed set with direction $\succ$, so that if $\alpha,\beta \in \text{D}$, then there exist $\gamma \in \text{D}$ such that $\gamma \succ \alpha, \gamma \succ \beta$. Moreover, if $\beta \succ \alpha$, then $f_{\alpha}^{\beta}: X_{\beta} \longrightarrow X_{\alpha}$ is a continuous function satisfying if $\gamma \succ \beta \succ \alpha$, then $f_{\alpha}^{\gamma} = f_{\alpha}^{\beta} \circ f_{\beta}^{\gamma}$.
+
+  The \emph{inverse limit} of this system is a space $X$ constructed in the following manner: let $\widehat{X}= \prod \{ X_{\alpha} \vert \alpha \in \text{D} \}$, where $\prod$ represents the Cartesian product. Define $X \subseteq \widehat{X}$ by: $X= \{ x \in \widehat{X} \vert$ if $\beta \succ \alpha$ then $f_{\alpha}^{\beta} \circ \pi_{\beta}(x) = \pi_{\alpha}(x) \}$, where $\pi_{\alpha}: \widehat{X} \longrightarrow X_{\alpha}$ is projection into the $\alpha$th coordinate of $\widehat{X}$. The notation here is $X = \plim (X_{\alpha}, f_{\alpha}^{\beta}, \text{D})$.
+
+\item[Theorem 13:] Let $(X_{\alpha}, f_{\alpha}^{\beta}, \text{D})$ be an inverse system of non-empty compact Hausdorff spaces, $X = \plim (X_{\alpha}, f_{\alpha}^{\beta}, \text{D})$. Then $X$ is a \emph{non-empty} compact Hausdorff space.
+
+\item[Lemma:] Again, let $(X_{\alpha}, f_{\alpha}^{\beta}, \text{D})$ be an inverse system of compact Hausdorff spaces, $X = \plim (X_{\alpha}, f_{\alpha}^{\beta}, \text{D})$. For each $\alpha \in \text{D}$, let $A_\alpha$ be a closed subset of $X_{\alpha}$. Assume $\beta \succ \alpha$ in $\text{D}$ implies $f_{\alpha}^{\beta}(A_{\beta}) \subseteq A_{\alpha}$. Let $(A_{\alpha}, f_{\alpha}^{\beta}, \text{D})$ be the evident inverse system of compact Hausdorff spaces, where the restriction of $f_{\alpha}^{\beta}$ has retained the same name, and let $A = \plim (A_{\alpha}, f_{\alpha}^{\beta}, \text{D})$. Then a homeomorphic copy of $A$ lives in $X$ in an obvious manner, and the meaning of the notation $((X_{\alpha}, A_{\alpha}), f_{\alpha}^{\beta}, \text{D})$ is an inverse system of compact Hausdorff pairs, $(X,A) = \plim ((X_{\alpha}, A_{\alpha}), f_{\alpha}^{\beta}, \text{D})$ should be clear.
+
+\item[Lemma:] Let $((X_{\alpha}, A_{\alpha}), f_{\alpha}^{\beta}, \text{D})$ be an inverse system of compact Hausdorff pairs, $(X,A) = \plim ((X_{\alpha}, A_{\alpha}), f_{\alpha}^{\beta}, \text{D})$. Fix $\alpha \in \text{D}$, and let ${\cal U}_{\alpha}$ be an open cover of $X_{\alpha}$, ${\cal U}$ be an open cover of $X$. Then there exists $\gamma \in \text{D}$ such that $\gamma \succ \alpha$, there exists ${\cal V}_{\gamma}$, an open cover of $X_{\gamma}$, and there exist $f: (X_{\gamma}, A_{\gamma}) \longrightarrow (X,A)$, not necessarily continuous, such that:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item if $V \in {\cal V}_{\gamma}$, then $f(V) \subseteq U$ for some $U \in {\cal U}$;
+    \item if $V \in {\cal V}_{\gamma}$, then $V \cup\pi_{\gamma} (f(V)) \subseteq (f_{\alpha}^{\gamma})^{-1}(U_{\alpha} )$ for some $U_{\alpha} \in {\cal U}_{\alpha}$;
+    \item if $\pi(V') \in {\cal V}_{\gamma}$, then $V' \cup f\pi_{\gamma} (V') \subseteq U$, for some $U \in {\cal U}$.
+  \end{enumerate}
+
+\item[Theorem 14 (Continuity Theorem):] Let $((X_{\alpha}, A_{\alpha}), f_{\alpha}^{\beta}, \text{D})$ be an inverse system of compact Hausdorff pairs, $(X,A) = \plim ((X_{\alpha}, A_{\alpha}), f_{\alpha}^{\beta}, \text{D})$. For any positive integer $p$, let $H^p[X,A]$ be the direct limit of the directed system $(H^p(X_{\alpha}, A_{\alpha}), f_{\alpha}^{\beta*}, \text{D})$ ; $H^p[X,A] = \dlim (H^p(X_{\alpha},A_{\alpha}), f_{\alpha}^{\beta}, \text{D})$. Define $\Pi^*: H^p[X,A] \longrightarrow H^p(X,A)$ by $\Pi^*([h_{\alpha}]) = \pi_{\alpha}^*(h_{\alpha})$, where $\pi_{\alpha}$ is the (restricted) projection of $X$ into $X_{\alpha}$. Then $\Pi^*$ is a (surjective) isomorphism.
+
+\item[Remark:] Any two cohomology theories which satisfy Theorems 1 - 7 and Theorem 14 must agree on compact pairs. See Eilenberg and Steenrod, \emph{Foundations of Algebraic Topology}, Princeton, 1952.
+
+\end{description}
+
+
+
+\section{Strong Excision Theorems, Extension, Reduction}
+\markboth{8. Strong Excision Theorems, etc}{8. Strong Excision Theorems, etc}
+
+\begin{description}
+
+\item[Theorem 15 (Strong Excision):] Let $A$ be a closed subset of a fully normal space $X$, and let $j$ be the inclusion map of the pair $(X \setminus A^o, A \setminus A^o)$ into $(X,A)$. Then $j^*$ is an isomorphism in each dimension.
+
+\item[Theorem 15A (equivalent to 15):] Let $A$ and $B$ be closed subsets whose union is the fully normal space $X$. Let $j$ be the inclusion map of the pair $(A, A \cap B)$ into $(X,B)$. Then $j^*$ is an isomorphism in each dimension.
+
+\item[Remark:] If $X$ is compact Hausdorff, then Theorems 15 and 15A follow from the continuity theorem above (Theorem 14). In the generality stated, they are corollaries to the \emph{Map Excision Theorem}, which will follow shortly.
+
+\item[Modification Lemma:] Let $A$ and $B$ be closed subsets of a fully normal space $X$, and let ${\cal U}$ be an open cover of $X$. Then there exists $f: X \longrightarrow X$, not necessarily continuous; there exists ${\cal V}$, an open cover of $X$; and there exists an open set $P$, with $A \subseteq P$, such that:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item the restriction of $f$ to $(X \setminus \overline{P}) \cup A$ is the identity function, $f(\overline{P} \cap B) \subseteq A \cap B$, and $f(\overline{P} \setminus A) \subseteq A$;
+    \item if $V \in {\cal V}$, then there exists $U \in {\cal U}$ such that $f(V) \subseteq \overline{P} \subseteq U$.
+  \end{enumerate}
+
+\item[Theorem 16 (Extension):] Let $A$ and $B$ be closed subsets of a fully normal space $X$. Let $h \in H^p(A,A \cap B)$. Then there exists an open set $N$, with $A \subseteq N$, and there exists $e \in H^p(\overline{N}, \overline{N} \cap B)$ such that $i^*(e)=h$, where $i$ is the inclusion map of $(A, A \cap B)$ into $(\overline{N}, \overline{N} \cap B)$.
+
+\item[Theorem 17 (Reduction):] Let $A,B,X$ as in Theorem 16, and let $j$ be the inclusion map of $(A, A \cap B)$ into $(X,B)$. Let $h \in H^p(X,B)$ such that $j^*(h)=0$. Then there exists $N$, an open set containing $A$, such that $k^*(h)=0$, where $k$ is the inclusion map of $(\overline{N}, \overline{N} \cap B)$ into $(X,B)$.
+
+\item[Remark:] Theorems 16 and 17 follow from Theorem 14 if $X$ is a compact Hausdorff space.
+
+\item[Application 1:] Let $X$ be compact Hausdorff, and let $f$ be a continuous map of $X$ into itself. Let $f^n$ denote the composition of $f$ with itself to a total of $n$ factors. Let $A= \cap \{ f^n(X) \vert n = 1,2,\cdots \}$, and let $g: (X,A) \longrightarrow (X,A)$ by $g(x)=f(x)$. Let $h \in H^p(X,A)$. Then there exists $n$ such that $(g^n)^*(h)=0$.
+
+\item[Application 2:] Let $X$ be compact Hausdorff, and let ${\cal F}$ be a descending family of closed subsets of $X$. Let $A = \cap {\cal F}$. If there exists $n$ such that $H^n(F)=0$ for all $F \in {\cal F}$, then $H^n(A)=0$.
+
+\item[Definition:] Let $h \in H^p(X,A)$, $h \neq 0$. If there exists $F$, a closed subset of $X$, such that $i^*(h) \neq 0$, where $i: (F, F \cap A) \rightarrow (X,A)$ is inclusion, but $i_G^*(h)=0$ for every proper closed set $G \subseteq F$, where $i_G: (G, G \cap A) \rightarrow (X,A)$, then $F$ is called a \emph{floor} for $h$.
+
+\item[Application 3:] Let $A$ be a closed subset of $X$, a compact Hausdorff space; let $h \neq 0$, $h \in H^p(X,A)$. Then there exists a floor for $h$.
+
+\item[Definition:] Let $A$ be a closed subset of $X$. Let $h \in H^p(X,A) \setminus i^*(H^p(X))$, where $i: A \rightarrow X$ is inclusion. Suppose there exists a closed set $R$ in $X$ such that $h \notin i_R^*(H^p(R \cup A))$, where $i_R: A \rightarrow R \cup A$ is again inclusion, and suppose that $R$ is minimal (closed) with respect to this property. Then $R$ is called a \emph{roof} for $h$.
+
+\item[Application 4:] If $X$ is a compact Hausdorff space and $A \subseteq X$ is a closed set, and if $h \in H^p(A) \setminus i^*(H^p(X))$, where $i: A \rightarrow X$ is inclusion, then there exists a roof for $h$.
+
+\end{description}
+
+
+
+\section{The Map Excision Theorem}
+\markboth{8. The Map Excision Theorem}{8. The Map Excision Theorem}
+
+\begin{description}
+
+\item[Lemma (Expansion):] Let $X$ be a fully normal space, and $A = \overline{A} \subseteq X$. Let $e \in H^p(X,A)$. Then there exists an open set $M$ such that $A \subseteq M$, and there exists $h \in H^p(X,\overline{M})$ such that $j^*(h)=e$, where $j$ is the inclusion map of $(X,A)$ into $(X,\overline{M})$.
+
+\item[Lemma 9.2:] Let $A \subseteq M \subseteq X$, where $A$ is closed, $M$ is open, and $X$ is fully normal. Let $j$ be as above in the Expansion lemma, and let $e \in H^p(X, \overline{M})$ such that $i^*(e)=0$. Then there exists an open set $N$ such that $A \subseteq N$, $\overline{N} \subseteq M$, and such that $k^*(e)=0$ where $k$ is the inclusion map of $(X, \overline{N})$ into $(X, \overline{M})$.
+
+\item[Lemma 9.3:] Let $X$ and $Y$ be fully normal spaces, $A = \overline{A} \subseteq X$, $B = \overline{B} \subseteq Y$. Let $f: (X,A) \longrightarrow (Y,B)$ be a closed map, and let $f_o$ be the restriction of $f$ to $X \setminus A$. Assume $f_o$ is a homeomorphism onto $Y \setminus B$. Then:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item if $A \subseteq M_1 \cap M_2$, then $f^{-1} \circ f(M_1) = M_1$ and $f(M_1 \setminus M_2) = f(M_1) \setminus f(M_2) = B \cup f(M_1) \setminus B \cup f(M_2)$;
+    \item if $A \subseteq M$, and $M$ is open, then $f(M) \cup B$ is open in $Y$;
+    \item if $B \subseteq N$, then $f^{-1}(\overline{N}) = \overline{ f^{-1}(N) }$ and $N = B \cup f \circ f^{-1}(N)$.
+  \end{enumerate}
+
+\item[Lemma 9.4:] Let $X$, $A$, $Y$, $B$, $f$, $f_o$ be as in Lemma 9.3, and let $M$ be an open set in $X$ with $A \subseteq M$. Define $g: (X, \overline{M}) \longrightarrow (Y, B \cup f(\overline{M}))$ by $g(x)=f(x)$. Then $g^*$ is an isomorphism in every dimension.
+
+\item[Theorem 18 (Map Excision):] Again, let $X$, $A$, $Y$, $B$, $f$, $f_o$ be as in Lemma 9.3. Then $f^*$ is an isomorphism in all dimensions.
+
+\item[Corollary:] If $X$ is a compact Hausdorff space, and $A$ is a closed subset of $X$, then $H^p(X,A) \cong H^p(X/A,[A]) \cong \widetilde{H}^p(X/A)$.
+
+\item[Corollary:] The strong excision theorem (in both forms) above is now valid for fully normal spaces.
+
+\end{description}
+
+
+
+\section{The Mayer-Vietoris Theorem}
+\markboth{10. The Mayer-Vietoris Theorem}{10. The Mayer-Vietoris Theorem}
+
+\begin{description}
+
+\item[Lemma (X-Lemma):] Suppose $L_1$, $L_2$, $M_1$, $M_2$, $M$ are Abelian groups; $\alpha_1$, $\alpha_2$, $\beta_1$, $\beta_2$ are homomorphisms satisfying $\text{Im}(\alpha_i) = \text{Kern}(\beta_i)$, $i=1,2$. Suppose $\beta_2 \circ \alpha_1$ and $\beta_1 \circ \alpha_2$ are (surjective) isomorphisms, all of the above holding in the following diagram:
+  \begin{gather*}
+  L_1 \quad\quad\quad\quad\quad\quad L_2 \\
+  \searrow \alpha_1 \quad \alpha_2 \swarrow \\
+  M \\
+  \swarrow \beta_2 \quad \beta_1 \searrow \\
+  M_1 \quad\quad\quad\quad\quad\quad M_2
+  \end{gather*}
+
+  Then:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $M = \text{ Im}(\alpha_1) \oplus \text{ Im}(\alpha_2) = \text{ Kern}(\beta_1) \oplus \text{ Kern}(\beta_2)$;
+    \item the restriction of $\beta_1$ to $\text{ Kern}(\beta_2)$ is an isomorphism (onto); and the restriction of $\beta_2$ to $\text{Kern}(\beta_1)$ is an isomorphism (onto);
+    \item if $x \in \text{ Im}(\alpha_1)$, then $x = \alpha_1 \circ (\beta_2 \circ \alpha_1)^{-1} \circ \beta_2(x)$;
+    \item if $g \in M$, then $g = \alpha_1 \circ (\beta_2 \circ \alpha_1)^{-1} \circ \beta_2(g) + \alpha_2 \circ (\beta_1 \circ \alpha_2)^{-1} \circ \beta_1(g)$.
+  \end{enumerate}
+
+\item[Theorem 19 (Mayer-Vietoris):] Let $X$ be a fully normal space, $X = X_1 \cup X_2$, where $X_1$ and $X_2$ are closed subsets of $X$. Let $A = X_1 \cap X_2$. Then there exists an exact sequence:
+  \begin{equation*}
+  \cdots \longrightarrow H^q(X) \xrightarrow{\ J_o \ } H^q(X_1) \oplus H^q(X_2) \xrightarrow{\ I_o \ } H^q(A) \xrightarrow{\Delta_o} H^{q+1}(X) \longrightarrow \cdots
+  \end{equation*}
+  where the maps $I_o$, $J_o$, $\Delta_o$ are defined by the following inclusion and other homomorphisms.
+
+\end{description}
+
+Let $p_i: X_i \rightarrow X$ ,$l_i: A \rightarrow X_i$, $n_i: (X,\emptyset) \rightarrow (X,X_i)$, $k_i: (X_i,A) \rightarrow (X,X_j)$, $i=1,2$ where, in the latter map, $j = i + 1 (\text{mod} 2)$. Note that both $k_1$ and $k_2$ are isomorphisms by the strong excision theorem.
+
+Let $j_i: (X,A) \rightarrow (X,X_i)$, $\tilde{i}_i: (X_2,A) \rightarrow (X,A)$, and let $\tilde{\delta}_i: H^q(A) \rightarrow H^{q+1} (X_i,A)$ be the appropriate coboundary operators. Then:
+\begin{align*}
+J_o & = (p_1^*,p_2^*) \\
+I_o & = l_1^*-l_2^* \\
+\Delta_o & = -n_1^* \circ (k_2^*)^{-1} \circ \tilde{\delta}_2=n_2^* \circ (k_1^*)^{-1} \circ \tilde{\delta}_1
+\end{align*}
+The latter equality must be established, evidently.
+
+\begin{description}
+
+\item[Theorem 20:] Let $X$ be fully normal, $h \in H^p(X)$, $A = \overline{A} \subseteq X$. Suppose that $g \in H^p(A) \setminus i^*(H^p(X))$, where $i: A \rightarrow X$ is inclusion. Let $F$ be a floor for $h$, and let $R$ be a roof with respect to $A$. Then:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item if $p>0$, then $F$ is connected;
+    \item $R = \overline{R \setminus A}$ and $R \setminus A$ is connected.
+  \end{enumerate}
+
+\item[Definition:] A continuum $X$ is \emph{unicoherent} provided that whenever $X = A \cup B$, where $A,B$ are subcontinua, then $A \cap B$ is connected. A continuum is \emph{hereditarily unicoherent} if each of its subcontinua is unicoherent. It may easily be seen that, if $X$ is hereditarily unicoherent, then the minimal subcontinuum between any pair of its points is unique.
+
+\item[Application:] Let $X$ be a continuum with $H^1(X)=0$. Then $X$ is unicoherent.
+
+\item[Definition:] A space $X$ has \emph{codimension} $\leq 1$ provided the inclusion homomorphism $i^*: H^1(X) \rightarrow H^1(A)$ is surjective for every closed set $A \subseteq X$.
+
+\item[Application:] If $X$ is a continuum satisfying $H^1(X)=0$ and codimension $X \leq 1$, then $X$ is hereditarily unicoherent.
+
+\end{description}
+
+
+
+\section{Codimension}
+\markboth{11. Codimension}{11. Codimension}
+
+This material is from the Tulane University Dissertation of Haskell Cohen, a student of A. D. Wallace. It is in the Duke Mathematics Journal, 21 (1954), p. 209-224, entitled \emph{A Cohomological Definition of Dimension for Locally Compact Hausdorff spaces}. Many of the results below hold in this level of generality, but we will assume all spaces to be compact Hausdorff.
+
+\begin{description}
+
+\item[Definition:] A compact Hausdorff space $X$ has \emph{codimension} $\leq n$ provided, for every closed set $A \subseteq X, i^*: H^n(X) \longrightarrow H^n(A)$ is onto, where $i$ is the inclusion map of $X$ into $A$. The space $X$ has codimension $= n$ if it has codimension $\leq n$, but does not have codimension $\leq n-1$. Codimension will be abbreviated to $\text{cd}$.
+
+\item[Lemma:] If $X$ is compact Hausdorff, and if $Y$ is a closed subset of $X$, then $\text{cd}(X) \leq n$ implies $\text{cd}(Y) \leq n$.
+
+\item[Theorem 21:] Again with $X$ compact Hausdorff, if $\text{cd}(X) \leq n$, then 
+  \begin{equation*}
+  H^{n+1}(X) = 0
+  \end{equation*}
+
+\item[Corollary:] With hypotheses as in the theorem above, $H^{n+k}(X)=0$, for each positive integer $k$.
+
+\item[Theorem 22:] $\text{cd}(X) \leq n$ if and only if $H^{n+1}(X,A)=0$ for each closed $A \subseteq X$.
+
+\item[Corollary:] If $A \subseteq B \subseteq X$, then $\text{cd}(X/B) \leq \text{cd}(X/A)$.
+
+\item[Theorem 23:] $\text{cd}(X) = \text{max}(\text{cd}(A), \text{cd}(X/A))$ for any $A = \overline{A} \subseteq X$.
+
+\item[Theorem 24 (Sum Theorem):] If $X = \cup \{ C_i \vert i \in \omega \}$, and if $\text{cd}(C_i) \leq n,i \in \omega$, then $\text{cd}(X) \leq n$.
+
+\item[Lemma:] If $A,B$ are closed subsets of $X$, and if $\text{cd}(A) \leq n$, then the inclusion homomorphism from $H^{n+1}(A \cup B)$ to $H^{n+1}(A)$ is onto.
+
+\item[Theorem 25:] $cd(X)=0$ if and only if $X$ is totally disconnected.
+
+\item[Definition:] $\text{ind}(X)=-1$ if and only if $X$ is null. $\text{ind}(X)\leq 0$ at $x \in X$ provided $x$ has small neighborhoods $V$ such that $\text{ind}(F(V))=-1$, where $F(V)$ is the boundary of $V$. $\text{ind}(X) \leq 0$ if $\text{ind}(X) \leq 0$ at each $x \in X$. The definition for $\text{ind}(X) \leq n$ at $x$ and $\text{ind}(X) \leq n$ now proceeds inductively. Finally, $\text{ind}(X)=n$ if $\text{ind}(X) \leq n$ and $\text{ind}(X) \not \leq n-1$. $\text{ind}(X)$ is the \emph{inductive dimension} of $X$.
+
+\item[Theorem 26:] $\text{cd}(X) \leq \text{ind}(X)$.
+
+\item[Corollary:] $\text{ind}(X)=1$ implies $\text{cd}(X)=1$.
+
+\item[Theorem 27:] $\text{cd}(X \times Y) \leq \text{cd}(X) + \text{ind}(Y)$.
+
+\item[Corollary:] If $\text{cd}(X)=0, \text{cd}(Y)=1$, then $\text{cd}(X \times Y)=1$.
+
+\end{description}
+
+Other facts about codimension include:
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item $\text{ind}(X)=n$, $\text{cd}(Y)=1$ imply $\text{cd}(X \times Y)=n+1$.
+  \item $\text{cd}(X) \leq \text{cov}(X)$, where $\text{cov}(X)$ is the Lebesgue dimension. 
+  \item If $Z$ = integers under addition, and $G$ is any coefficient group, then $\text{cd}(X;G) \leq \text{cd}(X;Z)$.
+\end{enumerate}
+
+
+
+\section{Marginal, Peripheral, and Inner Points}
+\markboth{12. Marginal, Periph., Inner Pts}{12. Marginal, Periph., Inner Pts}
+
+\begin{description}
+
+\item[Definition:] A point $x \in X$ is \emph{marginal} if for any open set $U$ containing $x$, there exists an open set $V$ with $x \in V \subseteq U$, such that $H^n(X, X \setminus V) = 0$ for all $n$. A point $x$ is \emph{peripheral} if for any open set $U$ with $x \in U$, there exists an open set $V$ with $x \in V \subseteq U$, such that $i^*: H^n(X, X \setminus V) \longrightarrow H^n(X, X \setminus U)$ is the zero homomorphism for all $n$. A point which is not peripheral is said to be \emph{inner}, whereas non-marginal points are merely called that.
+
+\item[Theorem 28:] If $X$ is a regular space, then these are equivalent:
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item $x$ is marginal in $X$;
+  \item $x$ is marginal in each of its neighborhoods;
+  \item $x$ has small neighborhoods $V$ such that the inclusion homomorphism $i^*: H^n(X) \longrightarrow H^n(X \setminus V)$ is an isomorphism for all $n$.
+\end{enumerate}
+
+\item[Theorem 29:] If $X$ is a regular space, then these are equivalent:
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item $x$ is peripheral in $X$;
+  \item $x$ is peripheral in each of its neighborhoods;
+  \item if $x \in U$, an open set, then there exists an open set $V$ with $x \in V \subseteq U$ such that the inclusion homomorphism $i^*: H^n (X) \longrightarrow H^n (X \setminus V)$ is injective for all $n$; and, for all $n$, the image of $H^n (X \setminus V)$ in the group $H^n (X \setminus U)$ is contained in the image of $H^n (X)$ in that group (under the appropriate inclusion homomorphisms).
+\end{enumerate}
+
+\item[Definition:] An open set $U$ \emph{surrounds} $x$ if for any open set $V$ such that $x \in V \subseteq U$, it follows that in some dimension $n$, the inclusion homomorphism from $H^n (X, X \setminus V)$ to $H^n (X, X \setminus U)$ is non-trivial.
+
+\item[Theorem 30:] If $X$ is a regular space, then these are equivalent:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $x$ is inner in $X$;
+    \item some open set $U$ surrounds $x$;
+    \item $x$ is inner in some neighborhood of itself.
+  \end{enumerate}
+
+\item[Corollary:] If $x \in V \subseteq U$, and if $U,V$ are open sets, and if $U$ surrounds $x$, then $V$ surrounds $x$.
+
+\item[Theorem 31:] If $x$ is marginal, then $x$ is peripheral.
+
+\item[Note:] The converse of Theorem 31 is false; a counter example may be constructed by gluing together a countable family of ``French Horns'' (the quotient of a two-cell obtained by identifying one interior point together with one boundary point).
+
+\item[Definition:] A point $p$ is \emph{labil} provided that for each open set $U$ containing $p$, there exists a map $F: X \times [0,1] \longrightarrow X$ such that:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $F(x,0)=x$, all $x$;
+    \item $F(x,t)=x$, all $x \in X \setminus U$, $t \in [0,1]$;
+    \item $F(x,t) \in U$, all $x \in U$, $t \in [0,1]$;
+    \item $F(x,1) \neq p$, all $x \in X$.
+  \end{enumerate}
+
+  A non-labil point is called \emph{stable}.
+
+\item[Theorem 32:] If $X$ is a locally compact Hausdorff space, and if $p$ is labil, then $p$ is peripheral.
+
+\item[Definition:] For any space $X$, the \emph{cone} over $X$, written $C(X)$, is the quotient space $X \times [0,1] / X \times \{ 1 \}$. The \emph{vertex} of $C(X)$ is the point $X \times \{ 1 \}$.
+
+\item[Theorem 33:] If $p$ is the vertex of $C(X)$, then $p$ is marginal if and only if $X$ is acyclic; that is, $\widetilde{H}^n(X)=0$ for all $n$.
+
+\item[Fact (C. Kuperberg):] If $X$ is compact Hausdorff, then the vertex of $C(X)$ is labil if and only if $X$ is contractible.
+
+\item[Example:] Take any acyclic, non-contractible continuum $X$ (e.g., $\sin(1/x)$ with limit line). Then $C(X)$ has a marginal but stable vertex.
+
+\item[Definition:] Let $A$ be a closed subset of $X$, and let $G$ be a proper subgroup of $H^n(A)$. A \emph{$G$-roof} is a closed subset $R$ containing $A$ satisfying:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item if $i: A \rightarrow X$ is inclusion, then $i^*(H^n(R)) \subseteq G$;
+    \item if $S$ is a closed proper subset of $R$ containing $A$, and $j$ is the inclusion map of $A$ into $S$, then $j^*(H^n(S)) \not\subseteq G$.
+  \end{enumerate}
+
+\item[Theorem 34:] If $X$ is a compact Hausdorff space, and if $G=i^*(H^n(X)) \subset H^n(A)$, then there exists a $G$-roof in $X$.
+
+\item[Theorem 35:] If $X$ is a compact Hausdorff space, and if $R_1$ and $R_2$ are distinct $G$-roofs where $G \subseteq H^n(A)$, then $H^{n+1} (R_1 \cup R_2) \neq 0$.
+
+\item[Theorem 36:] Let $X$ be a compact Hausdorff space, $A = \overline{A} \subseteq X$, let $G$ be a proper subgroup of $H^n(A)$, and let $R$ be a $G$-roof. Let $U$ be an $R$-open subset of $R \setminus A$, and let $i$ be the inclusion map of $\overline{U} \setminus U$ into $\overline{U}$. If $K=i^*(H^n(\overline{U}))$, then $K$ is a proper subgroup of $H^n(\overline{U} \setminus U))$, and $\overline{U}$ is a $K$-roof.
+
+\item[Theorem 37:] Let $X$ be a compact Hausdorff space, and assume $\text{cd}(X)=n$.  If $A = \overline{A} \subseteq X$, and $K$ is a proper subgroup of $H^{n-1}(A)$, and if $R$ is a $K$-roof, then any $x \in R \setminus A$ is an inner point of $X$.
+
+\item[Note:] This guarantees that a compact Hausdorff space of finite codimension has inner points. The Hilbert cube (the countable product of unit intervals) is an example of a continuum which has no inner points.
+
+\item[Definition:] A point is a \emph{generalized cut point} of a space if it has small neighborhoods which separate the space.
+
+\item[Theorem 38:] If $p$ is a generalized cut point of a compact Hausdorff space, then $p$ is an inner point.
+
+\end{description}
+
+
+
+\section{Map Addition Theorem}
+\markboth{13. Map Addition Theorem}{13. Map Addition Theorem}
+
+\begin{description}
+
+\item[Theorem 39:] Let $X = X_1 \cup X_2$ be a fully normal space, where $X_1$ and $X_2$ are closed subsets, and let $A = X_1 \cap X_2$. If $f,f_1,f_2$ are continuous pair maps from $(X,A)$ to $(Y,B)$ that satisfy $f$ and $f_1$ agree on $X_1$, $f$ and $f_2$ agree on $X_2$, $f_1 (X_2) \cup f_2 (X_1) \subseteq B$; then $f_1^* + f_2^* = f^*$ in every dimension.
+
+\item[Corollary:] If also $j^*$ is an isomorphism, where $j$ is the inclusion of $(Y,\emptyset)$ into $(Y,B)$, then the same decomposition of $f^*$ is obtained if $f,f_1,f_2$ are regarded as maps of $X$ into $Y$ instead of pair maps.
+
+\item[Application:] Let $f$ be the squaring map on the unit circle $S^1$ of complex numbers. Then $f^*(h)=2h$ for all $h \in H^1(S^1)$.
+
+\item[Application:] If $P^2$ is the projective plane, and $G$ represents the coefficient group, then $H^1(P^2)$ is isomorphic to $\{ g \in G \vert 2g = 0 \}$, and $H^2(P^2)$ is isomorphic to $G/2G$, where $2G$ is the subgroup of squares in $G$.
+
+\end{description}
+
+
+
+\section{Acyclicity}
+\markboth{14. Acyclicity}{14. Acyclicity}
+
+\begin{description}
+
+\item[Definition:] A connected space $X$ is \emph{acyclic} provided $H^n(X)=0$ for all $n \geq 1$.
+
+\item[Theorem 40 (Wallace's Acyclicity Theorem):] Let $X$ and $Y$ be compact Hausdorff spaces, and let $M$ be a function on the closed sets in $X$ to the closed sets in $Y$ satisfying:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $M$ distributes over finite unions;
+    \item if $x \in X$, and $V$ is an open set in $Y$ with $M(x) \subseteq V$, then there exists an open set $U$ such that $x \in U$ and $M(\overline U) \subseteq V$;
+    \item for any two closed sets $A_1$ and $A_2$ in $X$, there exists a closed set $A_3$ in $X$ such that $M(A_1) \cap M(A_2) = M(A_3)$;
+    \item for any two closed sets $A_1$ and $A_2$ in $X$, $M(A_1) \cap M(A_2)$ is connected;
+    \item for all $p$, $\widetilde{H}^p(M(x))=0$.
+  \end{enumerate}
+  Then, for any $A=\overline A \subseteq X$, and for any $p$, ${\widetilde H}^p(M(A))=0$.
+
+\end{description}
+
+
+
+\section{Vietoris Mapping Theorem}
+\markboth{15. Vietoris Mapping Theorem}{15. Vietoris Mapping Theorem}
+
+\begin{description}
+
+\item[Notation:] If $f: X \rightarrow Y$, and $y \in Y$, $D \subseteq Y$, then $f_y$ will connote the restriction of $f$ to the set $f^{-1}(y)$, while $f_D$ will represent the restriction of $f$ to the set $f^{-1}(D)$.
+
+\item[Theorem 41 (Lawson):] Let $f,X,Y,R$ satisfy:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $X,Y$ compact Hausdorff, $f: X \rightarrow Y$, $f$ continuous;
+    \item $R$ is a closed relation on $Y$;
+    \item for $A,B$ closed in $Y$, there exists $C$ closed in $Y$ such that $L(A) \cap L(B) = L(C)$, where $L(A) = \{ y \in Y \vert (y,a) \in R$ for some $a \in A \}$; 
+    \item for all $y \in Y$, $f_y^*: \widetilde{H}^p(L(y)) \rightarrow \widetilde{H}^p( f^{-1}(L(y)) )$ is an isomorphism, $p=0,1,\cdots,n$.
+  \end{enumerate}
+  Then, for any closed $D \subseteq Y$, the induced homomorphism
+  \begin{equation*}
+  f_D^*: \widetilde{H}^p(L(D)) \rightarrow \widetilde{H}^p(f^{-1}(L(D)))
+  \end{equation*}
+  is an isomorphism for $p=0,1,\cdots,n$, and $f_D^*$ is injective in dimension $n+1$.
+
+\item[Theorem 42 (Classical Vietoris-Begle Mapping Theorem):] Let $X$, $Y$, $f$, be as in part (1) of Theorem 41. Suppose for all $y \in Y$, $f_y^*: \widetilde{H}^p(y) \rightarrow \widetilde{H}^p(f^{-1}(y))$ is an isomorphism, $p=0,1,\cdots,n$. Then, for any closed $D \subseteq Y$, the induced homomorphism $f_D^*: \widetilde{H}^p(D) \rightarrow \widetilde{H}^p(f^{-1}(D))$ is an isomorphism for $p=0,1,\cdots,n$, and $f_D^*$ is injective in dimension $n+1$.
+
+\item[Remark:] In the forms given, both Theorem 40 and Theorem 42 follow from Theorem 41. Both are too important to be listed merely as corollaries, however. Basically, what Theorem 42 tells is that if $f$ does not shrink any ``holes'' to points (and if $f$ is a monotone map), then $X$ and $f(X)$ have the same cohomology structure. Moreover, even if such shrinking does occur, up to the lowest dimension in which this happens, these two spaces have the same cohomology. Clearly, one may assume $f$ is surjective in these latter two theorems.
+
+\end{description}
+
+
+\end{document}

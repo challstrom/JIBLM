@@ -1,0 +1,17 @@
+\contentsline {section}{\hbox to\@tempdima {\hfil }Introduction: Some Comments About This Course}{i}
+\contentsline {section}{\numberline {1}Sums and Scalar Products}{1}
+\contentsline {section}{\numberline {2}Matrix Products}{1}
+\contentsline {section}{\numberline {3}Transpose of a Matrix}{3}
+\contentsline {section}{\numberline {4}Singular and Non-Singular Matrices}{3}
+\contentsline {section}{\numberline {5}Partitions}{4}
+\contentsline {section}{\hbox to\@tempdima {5b\hfil }Direct Sums}{5}
+\contentsline {section}{\numberline {6}Elementary Matrices}{6}
+\contentsline {section}{\numberline {7}Equivalence}{6}
+\contentsline {section}{\numberline {8}Canonical Matrices}{8}
+\contentsline {section}{\numberline {9}Linear Independence}{9}
+\contentsline {section}{\numberline {10}Vector Spaces}{9}
+\contentsline {section}{\numberline {11}Linear Transformations}{10}
+\contentsline {section}{\numberline {12}Congruence Transformations and Orthogonal Matrices}{11}
+\contentsline {section}{\numberline {13}Rotations and Reflections}{12}
+\contentsline {section}{\numberline {14}Permutations}{13}
+\contentsline {section}{\numberline {15}Determinants}{14}

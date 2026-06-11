@@ -1,0 +1,642 @@
+\include {jiblm}
+
+%\documentclass[reqno]{amsart}
+%\usepackage{amssymb,latexsym}
+%\usepackage{graphics}
+%\bibstyle{monthly}
+%\usepackage{amsmath}
+
+
+%\setlength{\topmargin}{25pt}    %these three were part of the original formatting
+%\setlength{\voffset}{-80pt}
+%\textheight = 690pt
+
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}{Lemma}
+%\newtheorem{proposition}{Proposition}
+%\newtheorem{definition}{Definition}
+%\newtheorem{corollary}{Corollary}
+%\newtheorem{notation}{Notation}
+%\newtheorem{remark}{Remark}
+%\newtheorem{assertion}{Assertion}
+%\newtheorem{claim}{Claim}
+
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\p}[1]{\left(#1\right)}
+\newcommand{\tail}[1]{#1^{\p{N}}}
+\newcommand{\trunk}[1]{#1^{\left[N\right]}}
+\newcommand{\lqu}[1]{\textquoteleft#1}
+\newcommand{\lquu}[1]{\textquotedblleft#1}
+\newcommand{\nl}{\newline}
+\newcommand{\np}{\newpage}
+\newcommand{\x}{\times}
+\newcommand{\bs}{\textbf{S}}
+\newcommand{\spr}{S^{\prime}}
+\newcommand{\om}{\omega}
+\newcommand{\Om}{\Omega}
+\newcommand{\ul}{\underline}
+\newcommand{\sumin}[2]{\sum_{#1\text{~in~}#2}}
+\newcommand{\svert}{S\hspace{-4pt}\vert}
+\newcommand{\cvert}{C\hspace{-5pt}\vert}
+
+\begin{document}
+%\authormasthead
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%REFORMATTED FOR JOURNAL-JULY 2014%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{center}
+%\begin{Huge}
+%
+%Complex Inner Product Spaces
+%
+%\end{Huge}
+%\begin{large}
+%
+%$ $
+%\newline
+%by\\
+%$ $\newline
+%Professor J. S. Mac Nerney\\
+%\end{large}
+%$ $\newline
+%The University of North Carolina \\
+%$ $\newline
+%and\\
+%$ $\newline
+%The University of Houston\\
+%
+%\end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\affiliation{
+The University of North Carolina \\
+and\\
+The University of Houston }
+\title{Complex Inner Product Spaces}
+\author{J. S. Mac Nerney}
+\maketitle
+\thispagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{3in}
+%\begin{Large}
+\begin{center}
+ These notes and the cited article were provided by \\  Professor Philip Walker \\  \emph{pwalker@math.uh.edu} \\ of the University of Houston. \\
+\vspace{0.5in}
+George Golightly, a student of Mac Nerney at the University of Houston, made essential contributions to this work through his thoughtful reviewing and editing.
+
+\end{center}
+%\end{Large}
+
+%  complex-inner-product-spaces_macnerney
+
+%It was the custom of Professor Mac Nerney, both at the University of North Carolina and the University of Houston, to offer his students, upon completion of his course on analytic functions, a further course.  Here you will find the two themes of this additional course, each dear to the heart of Mac Nerney,  Hellinger Integrals  and Kernels in Functional Hilbert Spaces.  The reader is invited to offer argument for the assertions that are true and counter-example to those that are not.
+
+
+
+\np
+\begin{center}
+\begin{large}
+Introduction
+\end{large}
+\end{center}
+
+It was the custom of Professor Mac Nerney, both at the University of North Carolina
+and the University of Houston,  to offer his students, upon completion of his course on
+analytic functions,  whose content may be found in [2], a further course.  The subject matter of this latter is somewhat hard to title, varying from time to time with the interests and inclinations both of teacher and student.  The title of this paper,  Complex Inner Product Spaces, must surely come as close as any to describing this subject matter.
+Here you will find the two themes, each dear to the heart of Mac Nerney,  Hellinger Integrals  and Kernels in Functional Hilbert Spaces.  Here, also, following the pattern of [2],  the reader is invited to offer argument for the assertions that are true and counter-example to those that are not. \nl
+$ $\nl
+$ $\indent \indent \indent \indent \indent \indent \indent \indent \indent \indent George Golightly
+\np
+\begin{center}
+\underline{Chapter 1}
+\end{center}
+
+Let $K$ be a function from $[0,1] \x [0, 1]$ such that $K(u, v) = \dfrac{u + v - \abs{u - v}}{2} - uv$ for each
+$\{u, v \}$ in $[0,1] \x [0, 1]$.\nl
+
+\underline{Theorem 1.1}  If each of $x$ and $y$ is a function from $[0, 1]$ to the number-plane and $x$ is continuous, then the following statements are equivalent.
+
+\begin{tabular}{r l}
+(1)& $x = -y^{(2)}$ and $y(0)= y(1)= 0$.\\
+(2)&$y(u) = \int_{0}^{1}~K[u,I]~x~dI$ for each $u$ in $[0, 1].$
+\end{tabular}\nl
+
+\underline{Theorem 1.2}  If each of $\{x_{1}, y_{1}\}$ and $\{x_{2}, y_{2}\}$ is an ordered pair of functions from $[0, 1]$ to the plane, each of $x_{1}$ and $x_{2}$ is continuous, and for each $u$ in $[0, 1]$\nl
+\[y_{1}(u) = \int_{0}^{1}K[u, I]~x_{1}~dI \text{~and~} y_{2}(u) = \int_{0}^{1}K[u, I]~x_{2}~dI,
+\]
+then
+\[\int_{0}^{1}y_{1}~x^{*}_{2}~dI = \int_{0}^{1}~x_{1}~y_{2}^{*}~dI.
+\]
+
+\underline{Theorem 1.3}   If $z$ is a complex number and $x$ is a continuous function from $[0, 1]$ to the plane which is not the constant $0$, then the following statements are equivalent.\nl
+
+\begin{tabular}{r l}
+(1)& $\int_{0}^{1}K[u, I]x dI = z x(u)$ for each $u$ in $[0, 1]$.\\
+(2)& There exists a positive integer $n$ and a point $c$ different from $0$ such that $x$\\
+& is the contraction to $[0, 1]$ of $c~S[n\pi I]$ and $z = 1/(n\pi)^{2}.$
+\end{tabular}
+
+Let $z, k, $ and $A$ be sequences such that for $n = 1, 2, \cdots  , z_{n} = 1/(\pi n)^{2}, k_{n}$ is the contraction to $[0, 1]$ of $2^{1/2}S[n\pi I],$ and $A_{n}$ is a function from $[0,1] \x [0, 1]$ such that $A_{n}(u, v) = \sum_{1}^{n}z_{p}k_{p}(u)k_{p}(v)^{*}$ ; let $K_{1}$ be $K$ minus the limit of the sequence $A$.\nl
+
+\underline{Theorem 1.4}  The sequence $A$ converges absolutely and uniformly on $[0,1] \x [0, 1]$ and, if $p$ and $q$ are positive integers, $\int_{0}^{1} \abs{k_{p}}^{2} dI = 1$ and $\int_{0}^{1}k_{p}k_q^{*}dI = 0.$\nl
+
+\underline{Theorem 1.5}  If $w$ is a complex number and $x$ is a continuous function from $[0, 1]$ to the plane such that $\int_{0}^{1} K_{1}[u, I]~x~dI = w~x(u)$ for each $u$ in $[0, 1],$ then \nl
+\begin{tabular}{r l}
+(1)& if $w \neq 0,$ then $\int_{0}^{1} x~k_{p}^{*}~dI = 0$ for $p = 1, 2, \cdots $, and \\
+(2)& if $x$ is not the constant $0,$ then $w = 0.$
+\end{tabular}
+
+\underline{Theorem 1.6}  Suppose $n$ is a positive integer, $\{t_{p}\}_{0}^{n+1}$ is an increasing number-sequence with $t_{0} = 0$ and $t_{n+1} = 1, \{c_{p}\}_{0}^{{n}}$ is a point sequence, and  $y = \sum_{1}^{n} K[I,t_{p}]c_{p}.$   If $p$ is a positive integer less than $n + 1$, then \nl
+\[
+c_{p} = \dfrac{y(t_{p}) - y(t_{p-1})}{t_{p} - t_{p-1}} - \dfrac{y(t_{p+1}) - y(t_{p})}{t_{p+1} - t_{p}}.
+\]
+
+\underline{Theorem 1.7}  If $b > 0$ and $x$ is a continuous function from $[0, 1]$ to the plane such that $x(0) = x(1) = 0,$ there exists a positive integer $n$ and  point-sequence $\{c_{p}\}_{0}^{n}$ such that $\abs{x(u) - \sum_{1}^{n} K(u,\dfrac{p}{n+1})c_{p}} < b$ for each $u$ in $[0,1].$  \nl
+
+\underline{Remark}  With the suppositions of Theorem 1.6, \nl
+\[
+\sum_{p,q = 0}^{n} K(t_{p},t_{q})c^{*}_{p}c_{q} = \sum_{p=0}^{n} \dfrac{\abs{y(t_{p+1}) - y(t_{p})}^{2}}{t_{p+1} - t_{p}}
+\]
+
+
+
+\np
+\begin{center}
+\underline{Chapter 2}
+\end{center}
+
+Let $K$ be a continuous function from $[0, 1] \x [0, 1]$ to the number-plane such that $K(u, v)^{*} = K(v,u)$ for each $\{u, v\}$ in $[0, 1] \x [0, 1], \mu $ be an increasing function from $[0, 1]$ to a set of numbers, and $H$ be the function to which $\{x, y\}$ belongs only in case each of $x$ and $y$ is a function from $[0, 1]$ to the number-plane and $x$ is continuous and $y(u) = \int_{0}^{1}K[u, I]~x~d\mu$ for each $u$ in $[0, 1];$ the statement that $y= Hx$ means that $\{x, y\}$ belongs to $H$.  \nl
+
+\underline{Theorem 2.1}  If each of $x_{1}$ and $x_{2}$ is a continuous function from $[0, 1]$ to the number-plane, then each of $Hx_{1}$ and $Hx_{2}$ is continuous and $\int_{0}^{1}(Hx_{1})~x_{2}^{*}~d\mu =\int_{0}^{1} x_{1}~(Hx_{2})^{*}~d\mu.$ \nl
+
+Let \bs~be the set of all continuous functions functions from $[0, 1]$ to the number-plane and $Q$ be a function from $\bs \x \bs$ such that $Q(x, y) = \int_{0}^{1}x~y^{*}~d\mu$ for each $\{x, y\}$ in $\bs \x \bs .$ \nl
+
+\underline{Theorem 2.2}  If each of $x$ and $y$ is in \bs, then \nl
+\[
+Q(Hx,y) = Q\left(H\dfrac{x+y}{2}, \dfrac{x+y}{2}\right) - Q\left(H\dfrac{x-y}{2},\dfrac{x-y}{2}\right) + iQ\left(H\dfrac{x+iy}{2},\dfrac{x+iy}{2}\right) - iQ\left(H\dfrac{x-iy}{2}, \dfrac{x-iy}{2}\right).
+\]
+
+
+\underline{Theorem 2.3}  If $Q(Hx,x) = 0$ for each $x$ in \bs~then, for each $x$ in $\bs, Hx$ is the constant $0$ on $[0, 1]:$  hence, in this case, $K$ is the constant $0$ on $[0,1] \x [0,1].$  \nl
+
+\underline{Theorem 2.4}  If each of $x$ and $y$ is in $\bs,$ then $Q(x - ry, x - ry) \geq 0$ for each number $r,$ and therefore $\abs{Q(x, y)}^{2} \leq Q(x, x)~Q(y, y).$ \nl
+
+
+
+\underline{Theorem 2.5}\nl
+\indent (1) There are numbers $N_{1}$ and $N_{2}$ such that if $\{x, y\}$ belongs to $H$ then
+$\abs{y(u)}^{2} \leq N_{1}~Q(x,x)$ for each $u$ in $[0,1]$ and $\abs{Q(Hx, x)} \leq N_{2}Q(x, x).$\nl
+\indent (2) For each positive number $c$ there is a positive number $b$
+such that, if $\{x, y\}$ is in $H$ and $Q(x, x) \leq 1$ and $[u, v]$ lies in $[0, 1]$
+and $v - u \leq b,$ then $\abs{y(v) - y(u)} \leq c.$
+
+
+Let $m$ and $M$ denote, respectively, the greatest lower bound and the least upper bound of the set to which $w$ belongs only in case there is an $x$ in \bs ~such that $Q(x,x) = 1, Q(Hx, x) = w.$ \nl
+
+\underline{Theorem 2.6}  If $z$ is a complex number and there is a member $x$ of $\bs$ which is not the constant $0$ on $[0, 1]$ and $Hx = zx,$ then $z$ is a number and $m \leq z \leq M.$ \nl
+
+\underline{Theorem 2.7}  If $\{x, y\}$ is in $\bs \x \bs, m~Q(x-ry,x-ry) \leq Q(H(x-ry),x-ry) \leq M~Q(x-ry,x-ry).$   Therefore
+\[
+\abs{MQ(x,y) - Q(Hx,y)}^{2} \leq \{MQ(x,x) - Q(Hx,x)\} \{MQ(y,y) - Q(Hy,y)\}
+\]
+and
+\[
+\abs{Q(Hx,y) - mQ(x,y)}^{2} \leq \{Q(Hx,x) - mQ(x,x)\} \{Q(Hy,y) - mQ(y,y)\}.
+\]
+
+\np
+
+\underline{Theorem 2.8}  Suppose $x$ is an infinite sequence with final set lying in $\bs$ such that the number-sequence $Q(Hx, x)$ has limit $M$ and, for each for each non-negative integer $p$, $Q(x_{p}, x_{p}) = 1.$\nl
+\indent (1) There is an infinite subsequence $\overline{x}$ of $x$ and a member $X$ of $\bs$ such that the function-sequence $H\overline{x}$ converges uniformly and has limit $X.$\nl
+\indent (2) For each nonnegative integer $p, \abs{Q(Hx_{p},x_{p})}^{2} \leq Q(Hx_{p}, Hx_{p})$ so that $Q(X,X)~\geq ~M^{2}$.\nl
+\indent (3) If $y$ is in $\bs$ then, for each nonnegative integer $p,$\nl
+\[
+\abs{MQ(Hx_{p}, y) - Q(HHx_{p},y)}^{2} \leq \{M - Q(Hx_{p},x_{p})\}  \{MQ(Hy,Hy) - Q(HHy, Hy)\}.
+\]
+\indent (4) $MQ(X,y) = Q(HX,y)$ for each $y$ in $\bs,$ so that $HX = MX.$ \nl
+
+\underline{Theorem 2.9}  There is a member $Y$ of $\bs$ such that $Q(Y, Y) \geq m^{2}$ and $HY = mY.$\nl
+
+\begin{center}
+The following corollaries apply to Chapter 1.
+\end{center}
+
+\underline{Corollary 1}  The function $K_{1}$ has only the value $0$.  What is the value of $\sum_{1}^{\infty} z_{p} ?$\nl
+
+\underline{Corollary 2}  If $x$ is a continuous function from $[0, 1]$ to the number-plane
+such that the function-sequence $\sum_{1}^{\infty} (\int_{0}^{1} x~k_{p}^{*}~dI)~k_{p}$ converges uniformly and has limit $y$ on $[0, 1],$ then $\int_{0}^{1} K[u, I]~\{x - y\}~dI = 0$ for each $u$ in $[0,1]$ and therefore $y = x.$\nl
+
+\underline{Corollary 3}  If $x$ is a continuous function from $[0, 1]$ to the number-plane such that $x(0) = x(1) = 0$ and $c > 0,$ there exists a positive integer $n$ and a point-sequence $\{B_{p}\}_{0}^{n}$ such that
+$\abs{x(u) - \sum_{0}^{n} B_{p}~S(p\pi u)} < c $ for each $u$ in $[0, 1].$\nl
+
+\underline{Corollary 4}  If $y$ is a continuous function from the number-interval $[a, b]$ to the number-plane and $c > 0,$ there exists a positive integer $n$ and a point-sequence $\{C_{p}\}_{0}^{n}$ such that $\abs{y(u) - \sum_{0}^{n} C_{p}~u^{p}} < c$ for each $u$ in $[a, b].$\nl
+
+\underline{Remark}  If $K_{2}$ is the function from $[0, 1] \x [0,1]$ defined by $K_{2}(u, v) = \mu \left(\dfrac{u + v - \abs{u - v}}{2}\right),$\nl$ \{t_{p}\}_{0}^{n}$ is an increasing number-sequence with $t_{0} = 0$ and $t_{n} = 1, \{c_{p}\}_{0}^{n}$ is a point-sequence and $y = \sum_{0}^{n}~K_{2}~[I, t_{p}]~c_{p},$ then
+\[
+\sum_{p,q=0}^{n}~K_{2}(t_{p},t_{q})~c_{p}^{*}~c_{q} = \abs{y(0)}^{2}~\mu(0) + \sum_{p=0}^{n} ~\dfrac{\abs{y(t_{p}) - y(t_{p-1})}^{2}}{\mu(t_{p}) - \mu(t_{p-1})}.
+\]
+
+
+
+\begin{center}
+\underline{Exempli~Gratia}
+\end{center}
+
+Let $\spr$ denote the set to which $x$ belongs only in case $x$ is an analytic function with initial set the unit disk $U$ and there is a number $b$ such that if $r$ is a number in $(0, 1)$, then $\int_{-\pi}^{\pi} \abs{x[rE[iI]]}^{2}dI < b.$    There is a function $Q$ from $\spr \x \spr$ to the number-plane such that, if $\{x,y\}$ is in $\spr \x \spr$ and $c > 0,$ there is a number $u$ in $(0, 1)$ such that if $r$ is a number in $(u, 1),$ then $\abs{Q(x,y) - \frac{1}{2\pi}\int_{-\pi}^{\pi}x[rE[iI]]~y[rE[iI]]^{*}~dI} < c;$ $Q$ has the property shown in Theorem 2.4.   The function $k,$ from $U \x U,$  defined by $k(s,t) = \dfrac{1}{1-t^{*}s},$ has the property that if $t$ is in $U,$ then $k[I,t]$ is in $\spr$ and $Q(x,k[I,t]) = x(t)$ for each $x$ in $\spr$.  \nl
+The subset $H$ of $\spr \x  \spr,$ to which $\{x,y\}$ belongs in case $y(0) = x(0)$ and for each $t$ in $U$ different from $0,$ $y(t) = \dfrac{1}{t}\underset{[0;1]}{\int} x,$ is a function from $\spr$ into $\spr$ such that\nl
+\indent (1) $Q(x,Hy) = Q(Hx,y)$ for each $\{x,y\}$ in $\spr \x \spr,$ and \nl
+\indent (2) if $x$ is an infinite sequence with final set lying in $\spr$ and, for each nonnegative integer $p, Q(x_{p},x_{p}) \leq 1,$ then there is a subsequence %
+ $\overline{x}$ of $x$ and a member  $X$ of $\spr$  such that the number-sequence $Q(X-H\overline{x},X-H\overline{x})$ has limit $0.$\np
+
+\begin{center}
+\underline{Chapter 3}
+\end{center}
+
+ Suppose $\Sigma$ is a \underline{linear family} of functions, in the sense that if each of $x$ and $y$ is in $\Sigma$ and $c$ is a complex number, then each of $x + y$ and $cx$ is in $\Sigma$ (with the tacit assumption that each two functions in $\Sigma$ have the same initial set).  Suppose $Q$ is a function from $\Sigma \x \Sigma$ to the plane such that\nl
+ \begin{tabular}{r l}
+(i)&$Q(x + y,z) = Q(x,z) + Q(y,z)$ for all $x, y,$ and $z$ in $\Sigma,$\\
+(ii)&$Q(cx,y) = cQ(x,y)$ for all $x$ and $y$ in $\Sigma$ and each complex number $c,$\\
+(iii)&$Q(x,y)^{*} = Q(y,x)$ for all $x$ and $y$ in $\Sigma,$ and \\
+(iv)&$Q(x,x) > 0$ for all $x$ in $\Sigma,$ other than $0.$
+ \end{tabular}\nl
+ Define $N(x)$ to be $Q(x,x)^{1/2}$ for each $x$ in $\Sigma,$ and suppose $H$ is a function from $\Sigma$ into $\Sigma$ such that\nl
+ \indent (1) $Q(x,Hy) = Q(Hx,y)$ for each $\{x,y\}$ in $\Sigma \x \Sigma,$ and \nl
+ \indent (2) if $u$ is an infinite sequence with final set lying in $\Sigma$ and the number-sequence $N(u)$ has bounded final set, then there is a subsequence $v$ of $u$ and a member $X$ of $\Sigma$ such that the number-sequence $N(X - Hv)$ has limit $0.$\nl
+
+\underline{Theorem 3.1}  If each of $x$ and $y$ is in $\Sigma$ then $\abs{Q(x,y)}^{2} \leq Q(x,x)Q(y,y)$ and $N(x + y) \leq N(x) + N(y);$  moreover, $H$ is \underline{linear} --- in the sense that if each of $\{x_{1},y_{1}\}$ and $\{x_{2},y_{2}\}$ is in $H$ and $c$ is a complex number, then each of $\{x_{1} + x_{2}, y_{1} +y_{2}\}$ and $\{cx_{1}, cy_{1}\}$ is in $H.$\nl
+
+\underline{Theorem 3.2}  There exists a number $b$ such that $N(Hx) \leq bN(x)$ for each $x$ in $\Sigma.$\nl
+
+\underline{Theorem 3.3}  If each of $x$ and $y$ is in $\Sigma$ then\nl
+\begin{small}
+\[
+Q(Hx,y) = Q\left(H\dfrac{x+y}{2},\dfrac{x+y}{2}\right)-Q\left(H\dfrac{x-y}{2},\dfrac{x-y}{2}\right)+iQ\left(H\dfrac{x+iy}{2},\dfrac{x+iy}{2}\right) -iQ\left(H\dfrac{x-iy}{2},\dfrac{x-iy}{2}\right)
+\]
+\end{small}
+
+\underline{Theorem 3.4}  If $b > 0,$ then each two of the following statements are equivalent:\nl
+\indent (1)\qquad $N(Hx) \leq bN(x)$ for each $x$ in $\Sigma.$\nl
+\indent (2)\qquad $\abs{Q(Hx,x)} \leq bQ(x,x)$ for each $x$ in $\Sigma.$\nl
+\indent (3)\qquad $\abs{Re~Q(Hx,y)} \leq bN(x)N(y)$ for each $\{x,y\}$ in $\Sigma \x \Sigma.$\nl
+\indent (4)\qquad $\abs{Q(Hx,y)} \leq bN(x)N(y)$ for each $\{x,y\}$ in $\Sigma \x \Sigma.$\nl
+
+Let $B$ denote the least nonnegative number $b$ such that if $x$ is in $\Sigma$ then $N(Hx) \leq bN(x).$\nl
+
+\underline{Theorem 3.5}  If $z$ is a complex number and there is a non-trivial member $u$ of $\Sigma$ such that
+$Hu = zu,$ then $z$ is a number and $\abs{z} \leq B.$ \nl
+
+\underline{Theorem 3.6}  If $z_{1}$ and $z_{2}$ are numbers, each of $u_{1}$ and $u_{2}$ is a non-trivial member of $\Sigma,$  and $Hu_{1} = z_{1}u_{1}$ and $Hu_{2} = z_{2}u_{2},$ then $Q(u_{1}, u_{2}) = 0.$ \nl
+
+\underline{Theorem 3.7}  Suppose $H \neq 0$ so that $B > 0.$  There is a number $z$ and a member $u$ of $\Sigma$ such that $\abs{z} = B$ and $N(u) = 1$ and $Hu = zu.$\nl
+
+\underline{Theorem 3.8}  Suppose $\{u_{j}\}_{0}^{n}$ is a sequence with final set lying in $\Sigma$ and if each of $j$ and $k$ is a nonnegative integer not greater than $n,$ then $N(u_{j}) = 1$ and $Q(u_{j},u_{k}) = 0$ unless $j = k,$ and $P$ is the function from $\Sigma$ defined by : $Px = \sum_{0}^{n} Q(x, u_{j})u_{j}$ for each $x$ in $\Sigma.$\nl
+\indent (1) $P$ has both the properties postulated for $H,$ and $P^{2} = P,$ \underline{i.}~\underline{e.}, if $x$ is in $\Sigma,$ then $PPx = Px.$\nl
+\indent (2) In order that $Q(y,u_{k}) = 0$ for each nonnegative integer $k$ not greater than $n,$ it is necessary and sufficient that there be a member $x$ of $\Sigma$ such that $y = x - Px.$\nl
+
+\underline{Theorem 3.9}  One of the following alternatives holds:\nl
+
+\indent (I)\qquad There is a number $z$ and a member $u$ of $\Sigma$ such that $N(u) = 1$ and if $x$ is in $\Sigma,$ then $Hx = zQ(x,u)u.$\nl
+
+\indent (II)\qquad There exist a positive integer $n$, a number-sequence $\{z_{j}\}_{0}^{n},$ and a sequence $\{u_{j}\}_{0}^{n}$ with final set lying in $\Sigma$ such that \nl
+(a) $\abs{z_{0}} = $l. u. b.~$N(Hx)$ for $x$ in $\Sigma$ such that $N(x) \leq 1, N(u_{0}) = 1,$ and $Hu_{0} = z_{0}u_{0}.$\nl
+(b) if $k$ is a nonnegative integer less than $n, \abs{z_{k+1}} = $l. u. b.~$N(H[x-\sum_{0}^{k}Q(x,u_{j})u_{j}])$ for $x$ in $\Sigma$ such that $N(x - \sum_{0}^{k}Q(x,u_{j})     ) \leq 1, Q(u_{k+1},u_{j}) = 0$ for each nonnegative integer $j$ not greater than $k, N(u_{k+1}) = 1,$ and $Hu_{k+1} = z_{k+1}u_{k+1},$ and\nl
+(c) if $x$ in in $\Sigma$ and $n$ is a nonnegative integer, then $Hx = \sum_{0}^{n}~z_{j}~Q(x,u_{j})u_{j}.$\nl
+
+\indent(III)\qquad There exists an infinite number-sequence $z$ with final set not containing $0$ and an infinite sequence $u$ with final set lying in $\Sigma$ such that\nl
+(a)\qquad$\abs{z_{0}} =$~l.u.b. $N(Hx)$ for $x$ in $\Sigma$ such that $N(x)\leq 1, N(u_{0}) = 1,$ and $Hu_{0} = z_{0}u_{0}.$\nl
+(b)\qquad if $k$ is a nonnegative integer, $\abs{z_{k+1}}$ = l.u.b. $N(H[x - \sum_{0}^{k}Q(x,u_{j})u_{j}])$ for $x$ in $\Sigma$ such that $N(x - \sum_{0}^{k}Q(x,u_{j})u_{j}) \leq 1,~Q(u_{k+1},u_{j}) = 0$ for each nonnegative integer $j$ not greater than $k,~N(u_{k+1}) = 1,$ and \nl
+(c)\qquad if $x$ is in $\Sigma$ and $n$ is a nonnegative integer, then\nl
+\[
+N(Hx - \sum_{0}^{n}z_{j}Q(x,u_{j})u_{j}) \leq \abs{z_{n+1}}N(x - \sum_{0}^{n}Q(x,u_{j})u_{j}).
+\]
+
+\underline{Theorem 3.10}  Supposing 3.9 (III), the following are true:\nl
+\indent (1) If $j$ and $k$ are nonnegative integers, then $N(Hu_{j} - Hu_{k})^{2} = z_{j}^{2} + z_{k}^{2}.$\nl
+\indent (2) The sequence $z$ has limit $0.$\nl
+
+\underline{Theorem 3.11}  Supposing 3.9 (III), there exist a reversible number-sequence $\lambda,$ such that $\abs{\lambda}$ is nonincreasing and has limit $0$, and an infinite sequence $P,$ each value of which is a function of the type introduced in Theorem 3.8, such that the following hold:\nl
+
+\indent (1)  If $j$ and $k$ are nonnegative integers, $Q(P_{j}x,P_{k}y) = 0$ for each $\{x,y\}$ in $\Sigma \x \Sigma.$\nl
+\indent (2)  If $j$ is a nonnegative integer, then $HP_{j}x = \lambda_{j}P_{j}x$ for each $x$ in $\Sigma.$\nl
+\indent (3)  For each nonnegative integer $n$ and each member $x$ of $\Sigma,$\nl
+\[
+N(Hx - \sum_{0}^{n}\lambda_{j}P_{j}x) \leq \abs{\lambda_{n+1}}N(x - \sum_{0}^{n}P_{j}x) \leq \abs{\lambda_{n+1}}N(x).
+\]
+
+The following corollaries apply to Chapter 2, with the identification of $\Sigma$ as the set $\bs$, as in that chapter, of all continuous functions from $[0,1]$ to the plane with, as there, for each $\{x,y\}$ in $\bs \x \bs,$\nl
+\[
+Q(x,y) = \int_{0}^{1}x~y^{*}~d\mu. % \text{~and~} N(x) = \{\int_{0}^{1}~\abs{x}^{2}\}^{1/2}.
+\]
+
+\underline{Corollary 1}  Alternatives (I) and (II) of Theorem 3.9 correspond to the form \nl
+\[
+K(s,t) = \sum_{0}^{n}z_{j}u_{j}(s)u_{j}(t)^{*}.
+\]
+
+With the supposition of alternative (III) in Theorem 3.9, we have the following:\nl
+
+\underline{Corollary 2}  Let $N_{1}$ be as indicated in Theorem 2.5(1).\nl
+
+\indent (1) If $c$ is an infinite point-sequence and $k$ and $n$ are nonnegative integers,\nl
+\[
+\abs{\sum_{k+1}^{k+n}z_{j}c_{j}u_{j}(t)}^{2} \leq N_{1}\sum_{k+1}^{k+n} \abs{c_{j}}^{2} \text{~for~all~} t \text{~in~} [0,1].
+\]
+
+\indent (2) If $x$ is in $\Sigma,$ then $\sum_{0}^{n}\abs{\int_{0}^{1}xu_{j}^{*} d\mu}^{2} \leq \int_{0}^{1}\abs{x}^{2} d\mu$ for each nonnegative $n.$\nl
+
+\indent (3) If $x$ is in $\Sigma,$ the function-sequence $\sum_{0}^{\infty}z_{j}Q(x,u_{j})u_{j}$ converges uniformly on $[0,1].$\nl
+
+\indent (4)  If $x$ is in $\Sigma$ then, for each nonnegative integer $n,$\nl
+\[
+\int_{0}^{1}\abs{Hx - \sum_{0}^{n}z_{j}Q(x,u_{j})u_{j}}^{2}d\mu \leq z_{n+1}^{2}\int_{0}^{1}\abs{x}^{2}d\mu,
+\]
+so that $\sum_{0}^{\infty}z_{j}Q(x,u_{j})u_{j}$ has limit $Hx$ on $[0,1].$\nl
+
+\underline{Corollary 3}  For each $\{x,y\}$ in $\Sigma \x \Sigma, \sum_{0}^{\infty}z_{j}Q(x,u_{j})Q(u_{j},y)$ has limit $\int_{0}^{1} (Hx)y^{*}d\mu.$\nl
+
+\underline{Corollary 4}  Let $K^{(2)}$ be the function from $[0,1] \x [0,1]$ defined by \nl
+\[
+K^{(2)}(s,t) = \int_{0}^{1}K[s,I]K[I,t]d\mu.
+\]
+
+\indent (1) If $t$ is in $[0,1], \sum_{0}^{\infty}z_{j}u_{j}(t)^{*}u_{j}$ has the limit $K^{(2)}[I,t]$ uniformly on $[0,1].$
+
+\indent (2) $\sum_{0}^{\infty} z_{j}^{2}\abs{u_{j}}^{2}$ has the limit $K^{(2)}[I,I]$ uniformly on $[0,1],$ so that $\sum_{0}^{\infty}~z_{j}^{2}$ is convergent, with limit $\int_{0}^{1} K^{(2)}[I,I]d\mu.$\nl
+
+\indent (3) If $x$ is in $\Sigma,$ then $\sum_{0}^{\infty}\abs{z_{j}Q(x,u_{j})u_{j}}$ converges uniformly on $[0,1].$\nl
+
+\indent (4) If $t$ is in $[0,1]$ and $\sum_{0}^{\infty}z_{j}u_{j}(t)^{*}u_{j}$ converges uniformly on $[0,1],$ then it has limit $K[I,t].$ \nl
+
+\underline{Remark}  There is the further result (Mercer's Theorem) regarding alternative (III), to the effect that if the sequence $z$ is positive, then $\sum_{0}^{\infty}z_{j}u_{j}(s)u_{j}(t)^{*}$ converges uniformly for $\{s,t\}$
+in $[0,1] \x [0,1]:$  hence, the following conditions are equivalent. \nl
+
+\indent (1) $Q(Hx,x) \geq 0$ for each $x$ in $\Sigma.$\nl
+
+\indent (2) The sequence $\lambda$ is nonnegative.\nl
+
+\indent (3) $\sum_{p,q=0}^{n}K(t_{p},t_{q})c_{p}^{*}c_q \geq 0$ for each sequence $\{t_{p}\}_{0}^{n}$ with final set lying in $[0,1]$ and each complex number-sequence $\{c_{p}\}_{0}^{n}.$\nl
+
+\underline{Definition} If $\Sigma$ is a linear family of functions, a function $Q$ from $\Sigma \x \Sigma$ to the plane with properties (i), (ii), (iii), and (iv) from the beginning paragraph of this chapter is an \underline{inner product for} $\Sigma,$ the ordered pair $\{\Sigma,Q\}$ is an \underline{inner product space}, and the function $N$ from $\Sigma$ to the numbers such that if $x$ is in $\Sigma$ then $N(x) = Q(x,x)^{1/2}$ is the \underline{norm} (for $\Sigma$) \underline{corresponding to} $Q.$\np
+
+\begin{center}
+\underline{Chapter 4}
+\end{center}
+
+\underline{Project 4.1}  (Euclidian Spaces)  Let $P$ be a positive integer, $\Pi$ the set of all integers in $[0, P], S$ the set of all functions from $\Pi$ to the number-plane, and $Q$ be a function from from $S \x S$ such that if $\{x,y\}$ is in $S \x S$ then $Q(x,y) = \sum_{s\text{~in~} \Pi}x(s)y(s)^{*}.$  The inner product space $\{S,Q\}$ is \underline{complete}:  If $N$ is the norm corresponding to $Q$ then each sequence (with final set lying in $S$) which converges with respect to $N$ has a limit with respect to $N$.  Suppose $K$ is a function from $\Pi \x \Pi$ to the number-plane such that $K(s,t)^{*} = K(t,s)$ for each $\{s,t\}$ in $\Pi \x \Pi$ and let $H$ be the function from $S$ to $S$ to which $\{x,y\}$ belongs only in case $y(t) = Q(x,K[I,t])$ for each $t$ in $\Pi.$  Theorem 3.9 is applicable here.\nl
+
+\underline{Project 4.2}  Suppose $R$ is a collection of subsets of the set $\Om;$  two members of $R$ \underline{overlap} in case their common part includes a member of $R.$  Let $D$ be the collection of all finite subsets $M$ of $R$ such that no two members of $M$ overlap and $M^{*}$ is in $R:$ a \ul{partitioning} of the member $A$ of $R$ is a member $M$ of $D$ such that $M^{*} = A,$ and a \ul{refinement} of such an $M$ is a partitioning $N$ of $A$ each member of which is a subset of a member of $M.$  \ul{Suppose} that, for each two members $A$ and $B$ of $R,$\nl
+(1) there is a partitioning $M$ of $B,$ each member of which either lies in in $A$ or does not overlap $A,$ such that if $B$ overlaps $A$ then the common part of $A$ and $B$ is the star of the subset of $M$ to which $G$ belongs only in case $G$ lies in $A,$ and \nl
+(2) there is a member of $D$ which includes a partitioning of $A$ and a partitioning of $B.$  Suppose, finally, that $\om$ is a function from $R$ to the nonnegative numbers and that $\om$ is \ul{additive,} that is, if $M$ is in $D$ then $\om(M^{*}) = \sum_{G \text{~in~}M}\om(G).$  Let $S$ be the set to which $x$ belongs only in case $x$ is a function from $R$ to the number-plane, $x$ is additive, if $A$ is in $R$ and $\om(A) = 0$ then $x(A) = 0,$ there is a number $b$ such that if $M$ is in $D$ then $\sum_{G\text{~in~}M}\dfrac{\abs{x(G)}^{2}}{\om(G)} \leq b$ ---  here, we adopt  the convention that if $\om(G) = 0$ then $\dfrac{\abs{x(G)}^{2}}{\om(G)}$ denotes the number $0.$   If $x$ is in $S$ and $\int_{R}\dfrac{\abs{x}^{2}}{\om}$ denotes the least number $b$ such that if $M$ is in $D$ then  $\sum_{G\text{~in~}M}\dfrac{\abs{x(G)}^{2}}{\om(G)} \leq b,$ then for each positive number $c$ there exists a member $M$ of $D$ such that if $N$ is a member of $D$ which includes a refinement of $M$ then $\int_{R}\dfrac{\abs{x}^{2}}{\om} -c < \sum_{H\text{~in~}N}\dfrac{\abs{x(H)}^{2}}{\om(H)}.$  There is an inner product $Q$ for $S$ such that if $\{x,y\}$ is in $S \x S$ then $Q(x,y) = \int_{R}\dfrac{x~y{*}}{\om},$  that is, if $\{x,y\}$ is in $S \x S$ and $c > 0,$ there is a member $M$ of $D$ such that if $N$ is a member of $D$ which includes a refinement of $M$ then $\abs{Q(x,y) - \sum_{H\text{~in~}N} \dfrac{x(H)y(H)^{*}}{\om(H)} } < c $ --- with the obvious convention (as before) if $\om(H) = 0.$\nl
+There is a function $K$ from $R \x R$ to the numbers such that, for each $\{s,t\}$ in $R \x R,$ if $s$ does not overlap $t$ then $K(s,t) = 0$ but if $s$ overlaps $t$ and $M$ is a partitioning of $s,$ each member of which lies in $t$ or does not overlap $t,$ such that the common part of $s$ and $t$ is the star of the subset $N$ of $M$ to which $H$ belongs only in case $H$ lies in $t,$ then $K(s,t) = \sum_{H\text{~in~}N}\om(H).$   If $t$ is in $R$ then the function $K[\cdot,t],$ to which $\{s,p\}$ belongs only in case $s$ is in $R$ and $p = K(s,t),$ belongs to $S$ and $Q(x,K[\cdot,t]) = x(t)$ for each member $x$ of $S.$   The inner product space $\{S,Q\}$ is complete.\nl
+
+\ul{Project 4.3}  As an instance of the space $\{S,Q\}$ of Project 4.2, let $R$ be the collection of all finite subsets of $\Om$ and, for each $G$ in $R, \om(G)$ be $1$ in case $G$ is degenerate but $\om(G)$ be the number of members of $G$ otherwise.   For each function $x$ from $\Om$ to the number-plane, let $dx$ be a function from $R$ such that if $H$ is in $R$ then $dx(H) = \sumin{~t}{H} x(t).$   Let $S_{1}$ be the set to which $x$ belongs only in case $x$ is a function from $\Om$ to the plane such there is a number $b$ such that, if $F$ is a finite subset of $\Om, \sumin{~t}{F}\abs{x(t)}^{2} \leq b.$  The inner product $Q_{1},$ such that if $\{x,y\}$ is in $S_{1} \x S_{1}$ then $Q_{1}(x,y) = Q(dx,dy),$ has the following characterization:  if $\{x,y\}$ is in $S_{1} \x S_{1}$ and $c > 0,$ there is a finite subset $F$ of $\Om$ such that $\abs{Q_{1}(x,y) - \sumin{~s}{G}x(s)y(s)^{*}} < c$ for each finite subset $G$ of $\Om$ which includes $F.$  The space $\{S_{1},Q_{1}\}$ is sometimes denoted by $\ell^{2}(\Om);$  if $\Om$ is the set of all nonnegative integers, the customary notation is simply $\ell^{2},$ called (complex) \ul{Hilbert Space}.\nl
+
+The notation $\sumin{~s}{\Om}x(s)y(s)^{*}$ is understood to mean $Q_{1}(x,y)$ for each $\{x,y\}$ in $S_{1} \x S_{1}.$  The \ul{Kronecker's function} $\delta$ (for $\Om$) is defined on $\Om\x \Om$ in such a way that $\delta(s,t)$ is 1 or 0 according as $s$ is $t$ or $s$ is not $t.$\nl
+
+\ul{Project 4.4}  (Hellinger integrals)  As another instance of the space $\{S,Q\}$ of Project 4.2, let $\Om$
+be the number interval $[A,B]$ and $R$ be the collection of all subintervals of $\Om.$ For each function $x$ from $\Om$ to the plane let $dx$ be the function from $R$ such that if $[a,b]$ is in $R$ then $dx([a,b]) = x(b) - x(a).$  Suppose $\mu$ is a nondecreasing non-constant function from $\Om$ to the numbers, and let $\om = d\mu.$\nl
+
+If each of $x$ and $y$ is a function from $[A,B]$ to the plane such that $\{dx,dy\}$ is in $S \x S,$ then each of $x$ and $y$ is \ul{Hellinger} \ul{integrable} from $A$ to $B$ and $Q(dx,dy)$ is customarily denoted by
+$\int\limits_{A}^{B}\dfrac{dx~dy^{*}}{d\mu}.$\nl
+
+If $S_{1}$ is a linear family of functions $x$ from $[A,B]$ to the plane such that
+(1) $dx$ is in $S$ and
+(2) $dx$ is the constant function $0$ on $R$ only in case $x$ is the constant $0$ on $[A,B],$ then there is an inner product $Q_{1}$ for $S_{1}$ such that $Q_{1}(x,y) = Q(dx,dy)$ for $\{x,y\}$ in $S_{1} \x S_{1}.$\nl
+
+An example of $S_{1}$ such that $\{S_{1},Q_{1}\}$ is complete arises in the context of Chapter 1.   However, we will not pursue it here. Rather, we will present the following example.  Suppose that $\lambda$ is a continuous function from $[A,B]$ to the numbers such that $\lambda(A) \neq \lambda(B),$  and let $S_{1}$ be the set of all $x$ from $[A,B]$ to the plane such that $dx$ is in $S$ and $\int_{A}^{B} x~d\lambda = 0, ~Q_{1}$ defined as above.\nl
+
+Let $C = \int_{A}^{B}~\dfrac{d\lambda[A,I]}{d\lambda(A,B)}\dfrac{d\lambda[I,B]}{d\lambda(A,B)}d\mu$ and $K_{1}$ a function from $[A,B] \x [A,B]$ such that $K_{1}(s,t)$ is\nl
+\[
+\int_{A}^{s}\dfrac{d\lambda [A,I]}{d\lambda(A,B)}d\mu + \int_{t}^{B}\dfrac{d\lambda [I,B]}{d\lambda(A,B)}d\mu - ~C
+\]
+or
+\[
+\int_{A}^{t}\dfrac{d\lambda [A,I]}{d\lambda(A,B)}d\mu + \int_{s}^{B}\dfrac{d\lambda [I,B]}{d\lambda(A,B)}d\mu - ~C
+\]
+according as $s \leq t$ or $t \leq s,$ for each $\{s,t\}$ in $[A,B] \x [A,B].$  If $T$ is in $[A,B]$ then $K_{1}[I,t]$ is in $S_{1}$ and $Q_{1}(x,K_{1}[I,t]) = x(t)$ for each member $x$ of $S_{1};~\{S_{1},Q_{1}\}$ is complete.\np
+
+
+
+
+\ul{Project 4.5}  (the Hardy class $H^{2})$   Let $S$ be the set to which $x$ belongs only in case $x$ an analytic function from $U$ to the plane and there is a number $b$ such that if $r$ is in $(0,1)$ then $\int_{-\pi}^{\pi}\abs{x[rE[iI]]}^{2}~dI < b,$ and for each $\{x,y\}$ in $S \x S$ let $h_{x,y}$ be the function from $(0,1)$ defined by $h_{x,y}(r) = \int_{-\pi}^{\pi}~x[rE[iI]]~y[rE[iI]]^{*}~dI.$  We have the inner product $Q_{1}$ for $S$ defined by $Q_{1}(x,y) = \dfrac{1}{2\pi}(h_{x,y})(1-)~\{=~\underset{\substack{ r\rightarrow 1 \\ r < 1}}{lim}~h_{x,y}(r)\},$ the function $K$ from $U \x U$ defined by $K(s,t) = \dfrac{1}{1 - st^{*}},$ and the function $H$  from $S$ to $S$ to which $\{x,y\}$ belongs only in case $y(0)= x(0)$ and $(Iy)^{\prime} = x$  [see the terminal example in Chapter 2].\nl
+
+There is an inner product $Q_{2}$ for $S$ defined by $Q_{2}(x,y) = \dfrac{1}{\pi}~\int_{0+}^{1-}~I~h_{x,y}~dI,$ that is, if $\{x,y\}$ is in $S \x S$ and $c > 0,$ there is an interval $[v,V]$ lying in $(0,1)$ such that if $[r,R]$ lies in $(0,1)$ and includes $[v,V]$ then $\abs{Q_{2}(x,y) - \dfrac{1}{\pi}~\int_{r}^{R}~I~h_{x,y}~dI} < c;$ $Q_{2}(x,y) = Q_{1}(Hx,y)$ for each $\{x,y\}$ in $S \x S.$  \nl
+
+Elementary calculus considerations suggest the notation $Q_{2}(x,y) = \dfrac{1}{\pi} \underset{U}{\iint}x~y^{*},$ whence we have the formula $Hx(t) = ~ \dfrac{1}{\pi} \underset{U}{\iint}~K[t,I] x$ for each $\{t,x\}$ in $U \x S;$  one might note that for $0 < r < R < 1$ and $L(r) \leq s \leq L(r),$ the integral-transformation formulas\nl
+
+\[
+\int_{r}^{R}~I~h_{x,y}~dI = \int_{L(r)}^{L(R)}~E~h_{x,y}[E]~dE = \int_{L(r)}^{L(R)}~E^{2}~h_{x,y}[E]~dI,
+\]
+\[
+E(s)^{2}h_{x,y}(E(s))   =  \int_{-\pi}^{\pi}~\abs{E[s+iI]}^{2}~x[E[s+iI]]~y[E[s+iI]]^{*}~dI
+\]
+\[
+\qquad\qquad\quad = \int_{-\pi}^{\pi}~\{(x[E]E^{\prime})(y[E]E^{\prime})^{*}\}~[s+iI] dI, \text{~~and ~~}
+\]
+
+\[
+\underset{E([L(r),L(R)] \x [-\pi,\pi])}{\iint}xy^{*} = \underset{E([L(r),L(R)] \x [-\pi,\pi])}{\iint}(x[E]E^{\prime})(y[E]E^{\prime})^{*}.
+\]
+
+The inner product space $\{S,Q_{1}\}$ is complete, but $\{S,Q_{2}\}$ is not complete.\nl
+
+\ul{Project 4.6}  (Fourier series)  In the space $\{S_{1},Q_{1}\}$ of Project 4.4, let $S_{2}$ be the subset of $S_{1}$ to which $x$ belongs only in case $x(A) = x(B)$ and let $Q_{2}$ be the contraction of $Q_{1}$ to $S_{2}\x S_{2}.$  The member $x$ of $S_{1}$ belongs to $S_{2}$ only in case $Q_{1}(x,K_{1}[I,B] - K_{1}[I,A]) = 0;$~$Q_{1}(K_{1}[I,B] - K_{1}[I,A]~,~K_{1}[I,B]-K_{1}[I,A] ) = d\mu(A,B).$ \nl
+
+Let $K_{2}$ be the function from $[A,B] \x [A,B]$ such that
+\[
+K_{2}(s,t) = K_{1}(s,t) - \dfrac{1}{d\mu(A,B)}\{K_{1}(s,B) - K_{1}(s,A)\}\{K_{1}(B,t)- K_{1}(A,t)\}
+\]
+
+for each $\{s,t\}$ in $[A,B] \x [A,B];$  if $t$ is in $[A,B]$ then $K_{2}[I,t]$ is in $S_{2}$ and $Q_{2}(x,K_{2}[I,t]) = x(t)$ for each member $x$ of $S_{2}.$  Assume, now, the special case that $\lambda = \mu = I$ and $B = -A = \pi.$  If $\{s,t\}$ is in $[-\pi, \pi] \x [-\pi, \pi],$ then $K_{2}(s,t) = \dfrac{\pi}{6} + \dfrac{1}{4\pi}(s-t)^{2} - \dfrac{1}{2}\abs{s-t}.$\nl
+
+Let $H$ be the function defined as follows:  If $x$ is a continuous function from $[-\pi,\pi]$ to the plane and $\int_{-\pi}^{\pi}~x~dI = 0,$ then $Hx$ is a function from $[-\pi,\pi]$ such that $Hx(t) = \int_{-\pi}^{\pi} K_{2}[t,I]~x~dI$ for each $t$ in $[-\pi, \pi].$   If $x$ is in the initial set of $H$ then, for each number $t$ in $[-\pi,\pi],~H(x)^{\prime} = - \dfrac{1}{2\pi}~\int_{-\pi}^{\pi}~I~x~dI - \int_{-\pi}^{t}~x~dI, Hx$ belongs to $S_{2},$ and if $y$ belongs to $S_{2}$ then $Q_{2}(Hx,y) = \int_{-\pi}^{\pi}~x~y^{*}~dI.$ \nl
+
+If $x$ is in the initial set of $H$ then $Hx$ is the only function $y$ from $[-\pi,\pi]$ to the plane such that $x = -y^{(2)}, y(-\pi) = y(\pi), y^{\prime}(-\pi) = y^{\prime}(\pi),$ and $\int_{-\pi}^{\pi}~y~dI = 0.$   If $z$ is a complex number and $u$ is a nontrivial member of $S_{2}$ such that $Hu = zu$ then there exists a positive integer $n$ and an ordered point-pair $\{h,k\}$ such that $z = (1/n)^{2}$ and $u = hE[-inI] + kE[inI].$  With $S$ identified as the initial set of $H$ and $Q$ defined by $Q(x,y) = \int_{-\pi}^{\pi}~x~y^{*}~dI$ for each $\{x,y\}$ in $S \x S,$ Theorem 3.11 applies where for each positive integer $n, \lambda_{n-1} = (1/n)^{2}$ and $P_{n-1}$ is the function from $S$ to $S$ such that \nl
+
+\[
+P_{n-1}~x(t) = \dfrac{1}{2\pi}~Q(x,E[-inI])E(-int) + \dfrac{1}{2\pi}Q(x,E[inI])E(int)
+\]
+for each for each $x$ in $S$ and $t$ in $[-\pi,\pi].$  Adopting the convention that $\svert$ and $\cvert$ denote the sine and cosine respectively, the following is also a formula for $P_{n-1}.$\nl
+
+\[
+P_{n-1}~x(t) = \dfrac{1}{\pi}Q(x,\svert[nI])\svert(nt) + \dfrac{1}{\pi}Q(x,\cvert[nI])\cvert(nt).
+\]
+
+If $x$ is a function from $[-\pi,\pi]$ to the plane such that $\int_{-\pi}^{\pi}~x~dI$ exists, the Fourier series of $x$ is the infinite sequence $F$ such that, for each nonnegative integer $n, F_{n}$ is a function from $[-\pi,\pi]$ to the plane  and $F_{0}$ is the constant $\dfrac{1}{2\pi}\int_{-\pi}^{\pi}~x~dI$ and if $n > 0$ and $t$ is in $[-\pi,\pi]$ then\nl
+
+
+\[
+F_{n}(t) = \sum_{p=1}^{n}~\dfrac{1}{2\pi}E(ipt)\int_{-\pi}^{\pi}~x~E[-ipI]~dI
+\]
+\[
+= \dfrac{1}{2\pi}\int_{-\pi}^{\pi}~x~dI + \sum_{p=1}^{n}\dfrac{1}{\pi}\{\svert(pt)\int_{-\pi}^{\pi}~x~  \svert[pI]~dI~ + \cvert(pt)\int_{-\pi}^{\pi}~x~ \cvert[pI]~dI\}.
+\]
+
+\ul{Project 4.7}  (the Riemann mappings)  Let $\Om$ be a region in the plane and $S_{\Om}$ be the set to which $x$ belongs only in case $x$ is an analytic function with initial set $\Om$ and $\underset{\Om}{\iint}~\abs{x}^{2}$ exists.  There is an inner product $Q_{\Om}$ for $S_{\Om}$ such that $Q_{\Om} = \underset{\Om}{\iint}~x~y^{*}$ for each $\{x,y\}$ in $S_{\Om} \x S_{\Om}.$  Suppose $f$ is a reversible analytic function from $\Om$ onto $D,$ and let $\{S_{D}, Q_{D}\}$ be the corresponding inner product for $D.$  The function $V,$ to which $\{x,X\}$ belongs only in case $x$ is in $S_{\Om}$ and $X =(f^{-1})^{\prime}\cdot x[f^{-1}],$ has the property that if $\{x,X\}$ belongs to it then $x = f^{\prime}\cdot X[f]; V$ is an \ul{isomorphism from} $\{S_{\Om}, Q_{\Om}\}$ \ul{onto} $\{S_{D},Q_{D}\},$that is, $V$ is a reversible linear function from $S_{\Om}$ onto $S_{D}$ such that $Q_{D}(Vx,Vy) = Q_{\Om}(x,y)$ for each $\{x,y\}$ in $S_{\Om} \x S_{\Om}.$\nl
+
+Suppose $K_{D}$ is a function from $D \x D$ such that if $t$ is in $D$ then $K_{D}[I,t]$ is in $S_{D}$ and $Q_{D}(X,K_{D}[I,t]) = X(t)$ for each $X$ in $S_{D},$ and $\{A,B\}$ is a member of $\Om \x D$ at which $f$ has slope 1:  $V^{-1}K_{D}[I,B]$ is that member $h$ of $S_{\Om}$ such that $Q_{\Om}(x,h) = x(A)$ for each $x$ in $S_{\Om}.$  Suppose $B = 0$ and $D$ is the disk $D_{b}(0),$ so that the region $\Om$ is simple:  $K_{D}(s,t) =$ $ \dfrac{1}{\pi}~\{\dfrac{b}{b^{2} - s~t^{*}}\}^{2}$ for each $\{s,t\}$ in $D \x D;$ $V^{-1}K_{D}[I,0] = f^{\prime}/\pi b^{2};$  if $x$ is in $S_{\Om}$ and $x(A) = 1,$ then $Q_{\Om}(x,x) = Q_{\Om}(x - f^{\prime},~x - f^{\prime}) + \pi b^{2};$  if $g$ is a reversible analytic function with initial set $\Om$ and slope 1 at $\{A,0\}$ and the area of $g(\Om)$ exists, then the area of $g(\Om)$ exceeds the area $\pi b^{2}$ of $f(\Om)$ unless $g$ is $f.$\np
+
+%
+%PRODUCTS OF KERNEL SYSTEMS
+%\end{center}
+
+
+%Suppose $\{S,Q\}$ is a complete inner product space, and each of $\{K_{a}, E, S_{a},Q_{a}\}$ and $\{K_{b}, E, S_{b},Q_{b}\}$ is an $\{S,Q\}$-kernel system.  Let $Q_{\x}$ be the inner product for $S \x S$ given by
+%\[
+%Q_{\x}(\{x,y\},\{X,Y\}) = Q(x,X) + Q(y,Y).
+%\]
+%It seems appropriate to compare and contrast the interpretations of $S_{a} \x S_{b}$ as a collection of functions from $E \x E$ to $S \x S,$ and to this end, we let $T_{\x}$ denote the algebra of continuous linear transformations in the space $\{S \x S, Q_{\x}\}.$  Let $K_{0}$ and $K_{1}$ be the functions into $T_{\x},$ from $E \x E$ and $(E \x E)\x(E \x E)$ respectively, given by
+%\[
+%K_{0}(u,s)\{x,y\} = \{K_{a}(u,s)x,K_{b}(u,s)y\}
+%\]
+%and
+%\[
+%K_{1}(\{u,v\},\{s,t\})\{x,y\} = \{K_{a}(u,s)x,K_{b}(v,t)y\}.
+%\]
+
+%We state the following theorem, which is Theorem 3.4 on page 261 of [1], where the proof may also be found.
+
+%\ul{Theorem A}  Suppose $\{K_{1},E_{1}, S_{1},Q_{1}\}$ and $\{K_{2},E_{2}, S_{2},Q_{2}\}$ are kernel systems such that $E_{1}$ is a proper subset of $E_{2}$ and $K_{1}$ is a contraction to $K_{2}$ of $E_{1} \x E_{1},$ and let $L$ be defined by the equation $L(s,t) = K_{2}(s,t)$ for  $s,t$ in $E_{1} \x E_{2}.$   Then $L$ satisfies the condition (ii) of Theorem 3.1 of [1] with $N = 1,$ and the element $\{T_{21}, L, T_{12}\}$ of the class $A_{12}$ has the following properties: \nl
+
+%\indent (i) The Transformation $T_{12}T_{21}$ is the identity in $B[S_{1}, Q_{1}].$\nl
+%\indent (ii) The space $S_{1}$ is the image of $S_{2}$ under $T_{12},$ that is, the set of contractions to %$E_{1}$ of the functions in $S_{2}.$\nl
+%\indent(iii) The transformation $T_{21}T_{12}$ is a projection in $B[S_{2},Q_{2}],$ with image $S_{3}$ such that the orthogonal complement of $S_{3}$ in $\{S_{2},Q_{2}\}$ is the set of all $f$ in $S_{2}$ such that $f(t) = 0$ for all $t$ in $E_{1}.$\nl
+%\indent(iv) If $Q_{3}$ is the contraction of $Q_{2}$ to $S_{3} \x S_{3},$ then $T_{21}$ is an isomorphism from %the space $\{S_{1}, Q_{1}\}$ onto $\{S_{3}, Q_{3}\},$ and  its inverse is the contraction of $T_{12}$ to $S_{3}.$\nl
+%\indent (v) If $f$ is in $S_{2},$ then $Q_{1}(T_{12}f,T_{12}f) \leq Q_{2}(f,f),$ where ``{=}'' holds only in case $f$ belongs to $S_{3}.$ \nl
+
+
+%\ul{Theorem.}  If $\{\{x_{p},y_{p}\}\}_{0}^{n} $ is an $S \x S$ sequence and $\{\{s_{p},t_{p}\}\}_{0}^{n} $ an $E \x E$ sequence,
+%\[
+%\sum_{i,j}Q_{\x}(\{x_{i},y_{i}\},K_{0}(s_{i},s_{j})\{x_{j},y_{j}\}) = %\sum_{i,j}Q(x_{i},K_{a}(s_{i},s_{j})x_{j}) + \sum_{i,j}Q(y_{i},K_{b}(s_{i},s_{j})y_{j})\text{~and}
+%\]
+
+%\[
+%\sum_{i,j}Q_{\x}(\{x_{i},y_{i}\},K_{1}(\{s_{i},t_{i}\},\{s_{j},t_{j}\})\{(x_{j},y_{j})\})
+%\]
+%\[
+%= \sum_{i,j}Q(x_{i},K_{a}(s_{i},s_{j})x_{j}) +  \sum_{i,j}Q(y_{i},K_{b}(t_{i},t_{j})y_{j}).
+%\]
+
+%Let $\{S_{0},Q_{0}\}$ and $\{S_{1},Q_{1}\}$ be the complete inner product spaces of functions, from $E$ and $E \x E$ respectively, into $S \x S$ in which $K_{0}$ and $K_{1}$ are the $\{S \x S,Q_{\x}\}$-kernels, let $D$ be the diagonal in $E \x E$ and $K_{2}$ be the contraction of $K_{1}$ to $D \x D,$ and let $\{S_{2},Q_{2}\}$ be the complete inner product space of functions from $D$ to $S \x S$ in which $K_{2}$ is the $\{S \x S,Q_{\x}\}$-kernel.  If $\{u,s\}$ is in $E \x E$ then $K_{0}(u,s)= K_{1}(\{u,u\}\{s,s\}) = K_{2}(\{u,u\}\{s,s\})$ since $\{\{u,u\}\{s,s\}\}$ is in $D \x D:$  hence, in the sense in which $E$ is usually identified with $D, \{S_{0},Q_{0}\}$ is clearly isomorphic with $\{S_{2},Q_{2}\}.$\nl
+
+%We state the following theorem, which is Theorem 3.4 on page 261 of [1], where the proof may also be found.
+
+%\ul{Theorem A}  Suppose $\{K_{1},E_{1}, S_{1},Q_{1}\}$ and $\{K_{2},E_{2}, S_{2},Q_{2}\}$ are kernel systems %such that $E_{1}$ is a proper subset of $E_{2}$ and $K_{1}$ is a contraction to $K_{2}$ of $E_{1} \x E_{1},$ %and let $L$ be defined by the equation $L(s,t) = K_{2}(s,t)$ for  $s,t$ in $E_{1} \x E_{2}.$   Then $L$ %satisfies the condition (ii) of Theorem 3.1 of [1] with $N = 1,$ and the element $\{T_{21}, L, T_{12}\}$ of the %class $A_{12}$ has the following properties: \nl
+
+%\indent (i) The Transformation $T_{12}T_{21}$ is the identity in $B[S_{1}, Q_{1}].$\nl
+%\indent (ii) The space $S_{1}$ is the image of $S_{2}$ under $T_{12},$ that is, the set of contractions to %$E_{1}$ of the functions in $S_{2}.$\nl
+%\indent(iii) The transformation $T_{21}T_{12}$ is a projection in $B[S_{2},Q_{2}],$ with image $S_{3}$ such %that the orthogonal complement of $S_{3}$ in $\{S_{2},Q_{2}\}$ is the set of all $f$ in $S_{2}$ such that $f(t) %= 0$ for all $t$ in $E_{1}.$\nl
+%\indent(iv) If $Q_{3}$ is the contraction of $Q_{2}$ to $S_{3} \x S_{3},$ then $T_{21}$ is an isomorphism from %the space $\{S_{1}, Q_{1}\}$ onto $\{S_{3}, Q_{3}\},$ and  its inverse is the contraction of $T_{12}$ to %$S_{3}.$\nl
+%\indent (v) If $f$ is in $S_{2},$ then $Q_{1}(T_{12}f,T_{12}f) \leq Q_{2}(f,f),$ where ``{=}'' holds only in %case $f$ belongs to $S_{3}.$ \nl
+
+
+
+%  By Theorem A, $S_{2}$ is the set of contractions to $D$ of members of $S_{1}$ and, if $S_{3}$ is the $Q_{1}$-orthogonal complement of in $S_{1}$ of the subset of $S_{1}$ to which $h$ belongs only in case $h$ is zero on $D,$ the contraction map is an isomorphism from $\{S_{3},Q_{1}\}$ onto $\{S_{2},Q_{2}.\}$\nl
+
+%\ul{Theorem.}  $S_{2}$ is the set to which $h$ belongs only in case there is a member $f$ of $S_{a}$ and a member $g$ of $S_{b}$ such that if $\{s,t\}$ is in $E \x E$ then $h(s,t) = \{f(s),g(t)\}.$  It follows that if the member $h$ of $S_{1}$ is zero on $D$ then $h$ is zero on $E \x E;$  hence $S_{3}$ is $S_{1}$ and, therefore, $\{S_{0},Q_{0}\}$ is seen to be isomorphic with $\{S_{1},Q_{1}\}.$\np
+
+\begin{center}
+\underline{Chapter 5}
+\end{center}
+\begin{center}
+\begin{large}
+Elementary Arithmetic of Kernel Systems
+\end{large}
+\end{center}
+The following three results are abstracted from Part III,  subtitled  The Linear Span of a Family of Functional
+Hilbert Spaces, of [1], in particular Theorems 2, 3, and the corollary to the latter theorem.\nl
+
+A \underline{kernel-system} is a sequence $\{K,R, S,Q\},$ such that $\{S,Q\}$ is a complete inner product space of functions from $R$ to the plane and $K$ is a function from $R\x R$ to the plane such that for $t$ in $R,~K(\cdot ,t)$ is in $S$ and, for each $f$ in $S,~Q(f,~K(\cdot ,t)) = f(t).$\nl
+
+Terminology.  In a kernel-system, $\{K,R , S,Q\},$ the function $K$ is the \underline{evaluation kernel} (or reproducing kernel, or kernel function, or kernel) in the space $\{S, Q\}$ and the functions of the form $\sum_{t \in M}K(\cdot ,t)x(t)$ (for functions $x$ from finite subsets $M$ of $R$ to the plane) are called \underline{K-polygons}.  The latter terminology seems appropriate from the observation that, for $K(s,t) = 1 + \inf\{s,t\}$ on $[0,1]\x [0,1],$ each function $f$ on $[0,1],$ polygonal in the usual sense, may be represented in this form :  one has \nl
+\[
+f = \sum\limits_{0}^{n}K(\cdot , u_{p})x_{p} \text{~for~some~increasing~number-sequence,}
+\]
+\[
+\{u_{p}\}_{0}^{n}\text{~with~}u_{0} = 0\text{~and~}u_{n} = 1, f(u_{0}) =  \sum\limits_{0}^{n}~x_{p},\nl
+\]
+\[
+\text{~and~}f(u_{j}) - f(u_{j - 1}) = (u_{j} - u_{j-1})\sum\limits_{j}^{n}x_{p} \qquad(j = 1, \dots ,n).
+\]
+\underline{Theorem 5.1}  If $R$ is a set and $K$ is a function from $R\x R$ to the plane then, in order that there should exist a complete inner product space $\{S,Q\}$ of functions from $R$ to the plane such that if $t$ is in $R$ then $K(\cdot ,t)$ is in $S$ and, for $f$ in $S, Q(f,K(\cdot ,t)) = f(t),$ it is necessary and sufficient that, for each function $x$ from a finite subset $M$ of $R$ to the plane,\nl
+\[
+\sum\limits_{\{s,t\}~\in~M\x M}x(s)[K(s,t)x(t)]^{*} \geq 0;
+\]
+in case this latter condition is satisfied, there is only one such complete space $\{S, Q\}$: a function $f$ from $R$ to the plane belongs to $S$ only in case there is a nonnegative $\beta$ such that, for each function $x$ from a finite subset $M$ of $R$ to the plane\nl
+\[
+\abs{~\sum\limits_{t \in M}f(t)x(t)^{*}}^{2} \leq \beta \left(\sum\limits_{\{s,t\} ~\in ~M\x M}x(s)[K(s,t)x(t)]^{*}\right),
+\]
+in which case $Q(f,f)$ is the least such number $\beta .$\nl
+
+\underline{Theorem 5.2}  If $\{K_{1},R,S_{1},Q_{1}\}$ and $\{K_{2},R,S_{2},Q_{2}\}$ are kernel systems, then\nl
+(1)  $S_{1}$ is a subset of $S_{2}$ only in case there is a nonnegative number $\beta$ such that for each function $x$ from a finite set subset $M$ of $R$ to the plane\nl
+\[
+\sum\limits_{\{s,t\}~ \in ~M\x M}x(s)[K_{1}(s,t)x(t)]^{*} \leq \beta\left(\sum\limits_{\{s,t\}~ \in ~M\x M}x(s)[K_{2}(s,t)x(t)]^{*}\right),
+\]
+and in this case the least such $\beta$ is the least nonnegative number $\gamma$ such that \nl
+\[
+Q_{2}(f, f) \leq \gamma Q_{1}(f,f)\text{~for~each~}f \text{~in~}S_{1}.
+\]
+(2) There is a kernel system $\{K_{3},R,S_{3},Q_{3}\}$ such that $K_{3} = K_{1} + K_{2},~S_{3}$ denotes the linear span $S_{1} \overset{.}{+} S_{2}$ of $S_{1}$ and $S_{2},$ and for $\sigma \in S_{3},~Q_{3}(\sigma, \sigma)$ is the minimum value of $Q_{1}(\sigma_{1},\sigma_{1}) +  Q_{2}(\sigma_{2}, \sigma_{2})$ for all $\sigma_{1} \in S_{1}$
+ and $\sigma_{2} \in S_{2}$ with $\sigma = \sigma_{1} + \sigma_{2}.$\nl
+(3) There is a kernel system $\{K_{4}, R, S_{4}, Q_{4}\}$ such that $S_{4}$ is the common part\nl $S_{1}\cap S_{2},~Q_{4} = Q_{1} + Q_{2},$ and (with $Q_{3}$ as in (2))\nl
+\[
+K_{4}(s,t) = Q_{3}(K_{1}(\cdot, s), K_{2}(\cdot, t)) =
+\]
+\[
+\dfrac{1}{4}\{(K_{1} + K_{2})(s,t) - Q_{3}((K_{1} - K_{2})(\cdot,s),(K_{1} - K_{2})(\cdot,t)) \}
+\]\nl
+for $\{s,t\} \in R\x R.$\nl
+
+Terminology. If each of $\{K_{1},R,S_{1},Q_{1}\}$ and $\{K_{2},R,S_{2},Q_{2}\}$ is a kernel system, the \underline{parallel~sum} of $K_{1}$ and $K_{2},~K_{1}:K_{2},$ is the function $K_{4}$ described in Theorem 5.2(3), so that $\{K_{4},R,S_{4},Q_{4}\} = \{K_{1}:K_{2},R,S_{1}\cap S_{2},Q_{1}+Q_{2}   \}.$\nl
+
+\underline{Corollary to Theorem 5.2.}  If each of $K_{1}, K_{2}, K_{3},$ and $K_{4}$ is an evaluation kernel in a complete inner product space of functions from $R$ to the plane then so is the function
+$(K_{1} + K_{3}):(K_{2} + K_{4}) - (K_{1}:K_{2} + K_{3}:K_{4}).$\nl
+
+\begin{large}
+\begin{center}
+Concluding Remarks
+\end{center}
+\end{large}
+
+The reader may find several examples of such kernel-functions K
+from the earlier Chapters, 1-4, of this project.  Professor Mac Nerney develops
+the idea of a kernel-space in considerably greater generality.  The values of S are
+taken to be in a complete complex inner product space Y and the values of K to be
+in the space L(Y) of bounded linear transformations on Y.  As an historical note,
+ the simplified version of Theorem 2 [1],  offered here  as Theorem 5.1
+(Y the plane so that L(Y) is also), has its origin in the first half of the
+Twentieth Century in the works of E. H. Moore, S. Bergman, and N. Aronszajn.
+Further historical detail may be developed by perusal of the References in [1].
+
+
+
+\begin{large}
+\begin{center}
+LITERATURE~~CITED
+\end{center}
+\end{large}
+%	\bibitem{JSM60}
+[1]\qquad J. S. Mac Nerney,
+\textit{Finitely Additive Set Functions,}
+Houston J. of Mathematics, supplement, \textit{iii} (1980), Part III pp. 1--67,~MR0621386~(83c:46001)\nl
+%\textbf{We need to find a way to access this electronically.}\nl
+[2]\qquad J. S. Mac Nerney,
+\textit{Introduction to Analytic Functions,}
+Univ. of Houston, (1968).  This work is available on-line at\nl
+\texttt{jiblm.org/guides/index.aspx?category=mathnerdscollection}
+
+
+
+%\begin{thebibliography}{9}
+%	\bibitem{JSM60}
+%		J. S. Mac Nerney,
+%		\emph{Hellinger Integrals in Inner Product Spaces,}
+%		J. Elisha Mitchell Sci. Soc. \textbf{76} (1960), 252--273.
+%\end{thebibliography}
+\end{document}
+
+MacNerney, J. S. Finitely additive set functions. Houston J. Math. 1980, suppl., iii, 1--125. MR0621386 (83c:46001) Add to clipboard 

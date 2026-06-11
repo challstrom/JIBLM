@@ -1,0 +1,626 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+
+% special characters
+
+\newcommand{\powerset}[1]{\mathcal{P}(#1)}
+\newcommand{\setnat}{ {\bf N} }
+\newcommand{\setint}{ {\bf Z} }
+\newcommand{\setreal}{ {\bf R} }
+\newcommand{\divides}{\mid}
+\newcommand{\notdivides}{\, / \hspace{-.1in}\mid }
+
+
+% JDLM headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright \headerAuthor} \cfoot{} \rfoot{ - MathNerds Course Guide Collection - www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Foundations}
+\author{James P. Ochoa}
+\date{ }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+
+\section*{Theorem Sequence}
+\markboth{Theorem Sequence}{Theorem Sequence}
+
+\pagenumbering{arabic}
+
+\begin{description}
+
+  \item[] We begin with some formal rules of logic. A statement is a sentence which, in a given context, is either true or false.
+
+  \item[Logic Rule 1:] No unstated assumption may be used in a proof.
+
+  \item[Logic Rule 2:] Let $p$ and $q$ be statements. If the compound statement ``$p$ and not $q$'' implies a contradiction, then the statement ``If $p$, then $q$'' is true.
+
+  \item[] We may use Logic Rule 2 to prove the statement in the following example.
+
+  \item[Example 3:] Let $n$ be a positive integer. If $9$ divides $n$, then $3$ divides $n$.
+
+  \item[Proof:] Suppose that $9$ divides $n$ and $3$ does not divide $n$. Since $3$ does not divide $n$, neither does $3^{2}$. Since $3^{2}=9$, it follows that $9$ cannot divide $n$. This is a contradiction, since $9$ divides $n$. Therefore, if $9$ divides $n$, then $3$ divides $n$.
+
+  \item[Logic Rule 4:] Let $p$ be a statement. The negation of the statement ``Not $p$'' means the same as $p$.
+
+  \item[Logic Rule 5:] Let $p$ and $q$ be statements. The negation of the statement ``If $p$, then $q$'' means the same as ``$p$ and not $q$''.
+
+  \item[Logic Rule 6:] Let $p$ and $q$ be statements. The negation of the statement ``$p$ and $q$'' means the same as ``Not $p$ or not $q$''. The negation of the statement ``$p$ or $q$'' means the same as ``Not $p$ and not $q$''.
+
+     Let $p(x)$ be a sentence about $x$ (in this case, $x$ is called a variable). We say that $z$ is in the domain of $p$ if the sentence $p(z)$ is a statement. For example, let $p(x)$ be the sentence ``$x+3=7$''. Then $6$ is in the domain of $p$, since $p(6)$ is the (false) statement ``$6+3=7$''. On the other hand, $w$ is not in the domain of $p$, since we cannot in the current context determine whether ``$w+3=7$'' is true or false.
+
+     Let $p(x)$ be a sentence about $x$. The sentence ``For all $x$, $p(x)$'' is a statement. The expression ``for all'' is called the universal quantifier. It is understood that the phrase ``for all $x$'' refers only to $x$ in the domain of $p(x).$ 
+
+  \item[Logic Rule 7:] Let $p(x)$ be a sentence about $x$. The negation of the statement ``For all $x$, $p(x)$'' means the same as ``There exists an $x$ such that not $p(x)$''.
+
+  \item[Logic Rule 8:] Let $p(x)$ be a sentence about $x$. The negation of the statement ``There exists an $x$ such that $p(x)$'' means the same as ``For all $x$, not $p(x)$''.
+
+  \item[Logic Rule 9:] Let $p$ and $q$ be statements. Suppose the statements ``If $p$, then $q$'' and $p$ are steps in a proof. Then $q$ is a valid step.
+
+  \item[Logic Rule 10:] Let $p$, $q$, and $r$ be statements. The following are all true statements:
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item If $p$, then $p$ or $q$.
+
+         If $q$, then $p$ or $q$.
+      \item If $p$ and $q$, then $p$.
+
+         If $p$ and $q$, then $q$.
+      \item If ``Not $q$'' implies ``Not $p$'', then $p$ implies $q$.
+
+         If $p$ implies $q$, then ``Not $q$'' implies ``Not $p$''.
+      \item If $p$ implies $q$ and $q$ implies $r$, then $p$ implies $r$.
+    \end{enumerate}
+
+  \item[Logic Rule 11:] For every statement $p$, either $p$ or ``Not $p$'' is true.
+
+  \item[Logic Rule 12:] Let $p$, $q$, and $r$ be statements. Let $1$ denote a true statement, and let $0$ denote a false statement. Then:
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item The statement ``$p$ and $q$'' means the same as ``$q$ and $p$'',
+      \item The statement ``$p$ or $q$'' means the same as ``$q$ or $p$'',
+      \item The statement ``$p$ and $q$; and $r$'' means the same as ``$p$; and $q$ and $r$'',
+      \item The statement ``$p$ or $q$; or $r$'' means the same as ``$p$; or $q$ or $r$'',
+      \item The statement ``$p$ and $q$; or $r$'' means the same as ``$p$ or $r$; and $q$ or $r$'',
+      \item The statement ``$p$ or $q$; and $r$'' means the same as ``$p$ and $r$; or $q$ and $r$'',
+      \item The statement ``$p$ or $0$'' means the same as ``$p$'',
+      \item The statement ``$p$ and $0$'' is false,
+      \item The statement ``$p$ or $1$'' is true,
+      \item The statement ``$p$ and $1$'' means the same as ``$p$'',
+      \item The statement ``$p$ or not $p$'' is true, and
+      \item The statement ``$p$ and not $p$'' is false.
+    \end{enumerate}
+
+  \item[] The following will remain undefined: \emph{set}, \emph{is a member of}, \emph{collection}, \emph{a sentence about}, \emph{statement}, \emph{natural number}, and \emph{integer}.
+
+  \item[] Let $A$ be a set. If $x$ is a member of $A$, we write $x \in A$. If $x$ is not a member of $A$, we write $x \notin A$.
+
+  \item[Definition 13:] Let $A$ and $B$ be sets. We say that $A$ is a \emph{subset} of $B$, and write $A \subseteq B$, if the following statement is true:
+    \begin{quote}
+    If $x \in A$, then $x \in B$.
+    \end{quote}
+    For example, let $A=\{ 1,3,5\}$ and let $B=\{ 1,2,3,4,5 \}$. Then $A \subseteq B$.
+
+    Let $S$ be a set, and let $p(x)$ be a sentence about members $x$ of $S$. We write $\{ x \ \vert \ p(x) \}$ to denote the collection of all $x \in S$ such that $p(x)$ is a true statement. In this case, $p(x)$ is called a \emph{condition}.
+
+  \item[Axiom 14:] Let $S$ be a set, and let $p(x)$ be a sentence about members $x$ of $S$. Then $\{ x \ \vert \ p(x) \}$ is a subset of $S$.
+
+  \item[Definition 15:] Let $A$ and $B$ be sets. We say that $A$ and $B$ are equal, and write $A=B$, if $A \subseteq B$ and $B \subseteq A$.
+
+     For example, let $A=\{ 2,4,6,8\}$ and let $B=\{ 8,6,4,2\}$. Then $A$ and $B$ are equal.
+
+     We write $\setnat$ to denote the set of natural numbers.
+
+     We write $\setint$ to denote the set of integers.
+
+  \item[Axiom 16:] The set of natural numbers is a subset of the set of integers.
+
+     The empty set ($\emptyset$) is the set with no members.
+
+  \item[Proposition 17:] Let $S$ be a set. Then $\emptyset \subseteq S$, and $S \subseteq S$.
+
+  \item[Definition 18:] Let $S$ be a set. The power set of $S$, $\powerset{S}$, is the collection of all subsets of $S$. In this context, the set $S$ is called the \emph{universal set}.
+
+  \item[Axiom 19:] Let $S$ be a set. Then $\powerset{S}$ is a set.
+
+  \item[Problem 20:] Let $S = \{ 2,3,4 \}$. List the members of $\powerset{S}$.
+
+  \item[Definition 21:] Let $S$ be a set. Let $A$ and $B$ be subsets of $S$.
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item The intersection of $A$ and $B$ is the set
+        \begin{equation*}
+        A \bigcap B = \{ x \ \vert \ x \in A \text{ and } x \in B \}
+        \end{equation*}
+      \item The union of $A$ and $B$ is the set
+        \begin{equation*}
+        A \bigcup B = \{ x \ \vert \ x \in A \text{ or } x \in B \}
+        \end{equation*}
+      \item The complement of $A$ is the set
+        \begin{equation*}
+        \complement A = \{ x \ \vert \ x \in S \text{ and } x \notin A \}
+        \end{equation*}
+    \end{enumerate}
+
+  \item[Proposition 22:] Let $S$ be a set. Let $A$ and $B$ be subsets of $S$. Then $A \bigcap B$, $A \bigcup B$, and $\complement A$ are all subsets of $S$.
+
+  \item[Proposition 23:] Let $A$ and $B$ be sets. Then $A \bigcap B$ is a subset of $A$.
+
+  \item[Proof:] Let $x$ be a member of $A \bigcap B$. Then $x \in A$ and $x \in B$. In particular, $x \in A$. It follows that if $x \in A \bigcap B$, then $x \in A$. Therefore, $A \bigcap B \subseteq A$.
+
+  \item[Proposition 24:] Let $A$ and $B$ be sets. Then $A$ is a subset of $A \bigcup B$.
+
+  \item[Proposition 25:] Let $A$, $B$, and $C$ be sets. If $A \subseteq B$ and $B \subseteq C$, then $A \subseteq C$.
+
+  \item[Proposition 26 (Commutative Property):] Let $S$ be a set and let $A$ and $B$ be subsets of $S$. Then
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $A \bigcup B = B \bigcup A$ and
+      \item $A \bigcap B = B \bigcap A$.
+    \end{enumerate}
+
+  \item[Proposition 27 (Associative Property):] Let $S$ be a set, and let $A$, $B$, and $C$ be subsets of $S$. Then
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $(A \bigcap B) \bigcap C = A \bigcap (B \bigcap C)$ and
+      \item $(A \bigcup B) \bigcup C = A \bigcup (B \bigcup C)$.
+    \end{enumerate}
+
+  \item[Proposition 28 (Distributive Property):] Let $S$ be a set. Let $A$, $B$, and $C$ be subsets of $S$. Then
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $(A \bigcap B) \bigcup C = (A \bigcup C) \bigcap (B \bigcup C)$ and
+      \item $(A \bigcup B) \bigcap C = (A \bigcap C) \bigcup (B \bigcap C)$.
+    \end{enumerate}
+
+  \item[Proposition 29:] Let $S$ be a set, and let $A$ be a subset of $S$. Then
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $A \bigcup \emptyset = A$ and
+      \item $A \bigcap \emptyset = \emptyset$.
+    \end{enumerate}
+
+  \item[Proposition 30:] Let $S$ be a set, and let $A$ be a subset of $S$. Then
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $A \bigcup S = S$ and
+      \item $A \bigcap S = A$.
+    \end{enumerate}
+
+  \item[Proposition 31:] Let $S$ be a set, and let $A$ be a subset of $S$. Then
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $A \bigcup \complement A = S$ and
+      \item $A \bigcap \complement A = \emptyset$.
+    \end{enumerate}
+
+  \item[Proposition 32 (DeMorgan's Laws):] Let $S$ be a set, and let $A$ and $B$ be subsets of $S$. Then
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $\complement (A \bigcap B) = \complement A \bigcup \complement B$, and
+      \item $\complement (A \bigcup B) = \complement A \bigcap \complement B$.
+    \end{enumerate}
+
+  \item[Proposition 33:] Let $A$, $B$, and $C$ be sets such that $A=B$ and $B=C$. Then $A=C$.
+
+  \item[Logic Rule 34:] Let $p(x)$ be a sentence about $x$, and let $q$ be a statement. Then
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item The statement ``(there exists an $x$ such that $p(x)$) and $q$'' means the same as ``there exists an $x$ such that ($p(x)$ and $q$)''.
+      \item The statement ``(for all $x$, $p(x)$) or $q$'' means the same as ``for all $x$, ($p(x)$ or q)'' and
+    \end{enumerate}
+
+  \item[] Let $\Delta$ and $S$ be sets. For each $\delta$ in $\Delta$, suppose $A_{\delta}$ is a subset of $S$. We define the following sets:
+    \begin{equation*}
+    \bigcup_{\delta \in \Delta} A_{\delta} = \{ x \ \vert \ x \in S \text{ and there exists a } \delta \in \Delta \text{ such that } x \in A_{\delta} \}
+    \end{equation*}
+    and
+    \begin{equation*}
+    \bigcap_{\delta \in \Delta} A_{\delta} = \{ x \ \vert \ x \in S \text{, and for all } \delta \in \Delta \text{, } x \in A_{\delta} \}
+    \end{equation*}
+    Note that $\bigcup_{\delta \in \Delta} A_{\delta}$ and $\bigcap_{\delta \in \Delta} A_{\delta}$ are both subsets of $S$.
+
+  \item[Proposition 35 (Generalized Distributive Property for Sets)] $\ $ \\ \textbf{(Homework):} Let $\Delta$ and $S$ be sets. Let $B$ be a subset of $S$. For each $\delta$ in $\Delta$, suppose $A_{\delta}$ is a subset of $S$. Then
+    \begin{equation*}
+    (\bigcup_{\delta \in \Delta} A_{\delta}) \bigcap B = \bigcup_{\delta \in \Delta} (A_{\delta}\bigcap B)
+    \end{equation*}
+    and
+    \begin{equation*}
+    (\bigcap_{\delta \in \Delta} A_{\delta}) \bigcup B = \bigcap_{\delta \in \Delta} (A_{\delta}\bigcup B)
+    \end{equation*}
+
+  \item[Proposition 36 (Generalized DeMorgan's Laws for Sets)] $\ $ \\ \textbf{(Homework):} Let $\Delta$ and $S$ be sets. For each $\delta$ in $\Delta$, suppose $A_{\delta}$ is a subset of $S$. Then
+    \begin{equation*}
+    \complement (\bigcap_{\delta \in \Delta} A_{\delta}) = \bigcup_{\delta \in \Delta} (\complement A_{\delta})
+    \end{equation*}
+    and
+    \begin{equation*}
+    \complement (\bigcup_{\delta \in \Delta} A_{\delta}) = \bigcap_{\delta \in \Delta} (\complement A_{\delta})
+    \end{equation*}
+
+  \item[Axiom 37 (Equality Properties for Integers):] Let $a$, $b$, and $c$ be integers. Then
+    \begin{itemize}
+      \item \emph{Reflexive Property}: $a=a$;
+      \item \emph{Symmetric Property}: If $a=b$, then $b=a$; and
+      \item \emph{Transitive Property}: If $a=b$ and $b=c$, then $a=c$.
+    \end{itemize}
+
+  \item[Axiom 38 (Closure Property for Integers):] If $a$ and $b$ are integers, then so are $a+b$ and $ab$.
+
+  \item[Axiom 39 (Commutative Property for Integers):] If $a$ and $b$ are integers, then $a+b=b+a$ and $ab=ba$.
+
+  \item[Axiom 40 (Associative Property for Integers):] If $a$ and $b$ are integers, then $(a+b)+c=a+(b+c)$ and $(ab)c=a(bc)$.
+
+  \item[Axiom 41 (Distributive Property for Integers):] If $a$, $b$, and $c$ are integers, then $(a+b)c=ac+bc$.
+
+  \item[Axiom 42 (Identity Elements for Integers):] If $a$ is an integer, then $a+0=a$ and $A \times 1 = a$.
+
+  \item[Axiom 43 (Additive Inverse of Integers):] For each integer $a$, there exists an integer $b$ such that $a+b=0$.
+
+  \item[] The integer $b$ in Axiom 43 is called an \emph{additive inverse} of $a$.
+
+  \item[Axiom 44 (Equation Rules for Integers):] Let $a$, $b$, and $c$ be integers such that $a=b$. Then $a+c=b+c$ and $ac=bc$.
+
+  \item[Axiom 45 (Cancellation Law for Integers):] If $a$, $b$, and $c$ are integers such that $ac=bc$ and $c \neq 0$, then $a=b$.
+
+  \item[Proposition 46:] Let $a$, $b$, and $c$ be integers. Then $a(b+c)=ab+ac$.
+
+  \item[Proposition 47:] If $a$ is an integer, then $0a=0$.
+
+  \item[Proof:] Let $a$ be an integer. By the Identity Axiom, $0+0=0$. Thus, by the Equation Rules, $(0+0)a=0a$. Using the Distributive Property, $0a+0a=0a$. Let $b$ be an integer such that $0a+b=0$. Then $(0a+0a)+b=0a+b$. Using the Associative Property, $0a+(0a+b)=0a+b$. Thus $0a+0=0$; that is, $0a=0$.
+
+  \item[Proposition 48:] Let $a$, $b$, and $c$ be integers. If $a+b=0$ and $a+c=0$, then $b=c$.
+
+  \item[] Proposition 48 tells us that each integer has a unique additive inverse. Let $a$ an be integer. We will write $-a$ to denote the additive inverse of $a$. Thus $a+(-a)=0$.
+
+  \item[Definition 49:] Let $a$ and $b$ be integers. We define $a-b$ by
+    \begin{equation*}
+    a-b=a+(-b)
+    \end{equation*}
+
+  \item[Definition 50:] Let $a$ and $b$ be integers. We write $a<b$ if $b-a$ is a natural number. If $a<b$, we also write $b>a$. We also write $a \leq b$, or $b \geq a$, if either $a<b$ or $a=b$.
+
+  \item[Proposition 51:] Let $a$ be an integer. Then $a$ is a natural number if and only if $a>0$.
+
+  \item[Axiom 52 (Closure Property for Natural Numbers):] If $a$ and $b$ are natural numbers, then so are $a+b$ and $ab$.
+
+  \item[Axiom 53 (Trichotomy Law for Integers):] For every integer $a$, either $a>0$, $a=0$, or $a<0$.
+
+  \item[Axiom 54:] The integer $1$ is a natural number. Moreover, if $n$ is any natural number, then $1 \leq n$.
+
+  \item[Proposition 55:] The integer $0$ is its own additive inverse.
+
+  \item[Proposition 56:] Let $a$ be an integer. If $-a=a$, then $a=0$.
+
+  \item[Proposition 57:] Let $a$ be an integer. Then $-1a = -a$.
+
+  \item[Proposition 58:] Let $a$ be an integer. Then $-(-a) = a$.
+
+  \item[Proposition 59:] Let $a$ and $b$ be integers. Then $(-a)(-b) = ab$.
+
+  \item[Proposition 60:] Let $a$ and $b$ be integers. If $ab=0$, then $a=0$ or $b=0$.
+
+  \item[Proof:] Assume that $ab=0$. Either $a=0$ or $a \neq 0$. If $a=0$, we are done! Suppose that $a \neq 0$. Then $ab=0$ and $0=0a$. Thus, $ab=0a$; that is, $ba=0a$. By the Cancellation Law, we have $b=0$.
+
+  \item[Proposition 61:] Let $a$, $b$, and $c$ be integers. Suppose $a<b$ and $c>0$. Then $ac<bc$.
+
+  \item[Proposition 62:] Let $a$, $b$, and $c$ be integers. Suppose $a<b$ and $c<0$. Then $ac>bc$.
+
+  \item[Hint:] Show that $-c>0$.
+
+  \item[] A set of integers $A$ is said to have a least element $l$ if $l$ is a member of $A$, and for all $x$ in $A$, $l \leq x$.
+
+  \item[Axiom 63 (Well-ordering Property for Natural Numbers):] Every non-empty subset of the natural numbers has a least element.
+
+  \item[Theorem 64 (First Principle of Mathematical Induction):] Let $S$ be a subset $\setnat$ which satisfies the following two conditions:
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $1 \in S$; and
+      \item If $n \in S$, then $n+1 \in S$.
+    \end{enumerate}
+    Then $S = \setnat$.
+
+  \item[Hint:] Let $T$ be the set of natural numbers not in $S$. Either $T = \emptyset$ or $T \neq \emptyset$. If $T = \emptyset$, we are done!
+
+  \item[Theorem 65 (Second Principle of Mathematical Induction):] Let $S$ be a subset of $\setnat$ which satisfies the following two conditions:
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $1 \in S$; and
+      \item For each natural number $n$, if the set $\{ k \ \vert \ k \in \setnat \text{ and } k<n \} \subseteq S$, then $n \in S$.
+    \end{enumerate}
+    Then $S = \setnat$.
+
+  \item[Theorem 66:] For each natural number $n$, let $P(n)$ be a statement. Suppose the following two statements are true:
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $P(1)$ is a true statement; and
+      \item For each natural number $n$, $P(n)$ implies $P(n+1)$.
+    \end{enumerate}
+    Then $P(n)$ is true for all $n$.
+
+  \item[Theorem 67:] For each natural number $n$, let $P(n)$ be a statement. Suppose the following two statements are true:
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $P(1)$ is a true statement; and
+      \item For each natural number $n$, if $P(k)$ is true for every natural number $k<n$, then $P(n)$ is also true.
+    \end{enumerate}
+    Then $P(n)$ is true for all $n$.
+
+  \item[Problem 68:] Prove that for each natural number $n$,
+    \begin{equation*}
+    1+2+3 + \cdots + n = \frac{n(n+1)}{2}
+    \end{equation*}
+
+  \item[Problem 69:] Prove that for each natural number $n$,
+    \begin{equation*}
+    1^{2}+2^{2}+3^{2} + \cdots + n^{2} = \frac{n(n+1)(2n+1)}{6}
+    \end{equation*}
+
+  \item[Definition 70:] Let $a$, $b$, and $c$ be integers. We say that $a$ \emph{divides} $b$, and write $a \divides b$, if there is an integer $c$ such that $b=ac$. If $a$ does \emph{not divide} $b$, we write $a \notdivides b$.
+
+  \item[Proposition 71:] Let $a$, $b$, and $c$ be integers. If $a \divides b$ and $b \divides c$, then $a \divides c$.
+
+  \item[Proposition 72:] Let $a$, $b$, $c$, $m$, and $n$ be integers. If $c \divides a$ and $c \divides b$, then $c \divides (am+bn)$.
+
+  \item[Lemma 73:] Let $a$ and $b$ be integers such that $0 \leq a < b$. If $b \divides a$, then $a=0$.
+
+  \item[Theorem 74 (Division Algorithm):] Let $a$ and $b$ be integers such that $b>0$. Then there exist unique integers $q$ and $r$ such that $0 \leq r < b$ and $a=bq+r$.
+
+  \item[Hint:] You must show (1) that $q$ and $r$ exist, and (2) that $q$ and $r$ are unique. To prove part (1), let $S$ be the set of all nonnegative integers of the form $a-bk$, where $k$ is an integer. Show that $a \in S$ or $a-ab \in S$. Thus $S$ is not empty. Let $r$ be the least element of $S$. Continue $\cdots$. To prove part (2), suppose that $a=bq+r$, $a=b'+r'$, and $0 \leq r' \leq r < b$. Do some algebra.
+
+  \item[] Let $n$ be an integer. If $2 \divides n$, then we say $n$ is \emph{even}. If $2 \notdivides n$, then we say $n$ is \emph{odd}.
+
+  \item[Proposition 75:] Let $a$ and $b$ be integers with $b>0$. Let $a=bq+r$ such that $0 \leq r < b$. Then $b \divides a$ if, and only if, $r=0$.
+
+  \item[Theorem 76 (Recursion Principle):] Let $S$ be a set. For each natural number $n$, let $d_{n}$ be a member of $S$. Suppose the following two conditions are satisfied:
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $d_{1}$ is defined; and
+      \item for each natural number $n$, if $d_{n}$ is defined, then $d_{n+1}$ is also defined.
+    \end{enumerate}
+    Then $d_{n}$ is defined for each natural number $n$.
+
+  \item[Definition 77:] Let $n$ be a natural number. We define $0!$ and $n!$ by
+    \begin{equation*}
+    0!=1,
+    \end{equation*}
+    and
+    \begin{equation*}
+    n! = n(n-1)!
+    \end{equation*}
+
+  \item[Definition 78:] Let $p$ be a natural number such that $p> 1$. We say that $p$ is \emph{prime} if the only natural numbers which divide $p$ are $1$ and $p$. If $n$ is a natural number, $n>1$, and $n$ is not prime, then we say that $p$ is \emph{composite}.
+
+  \item[Proposition 79:] Every natural number greater than $1$ has a prime divisor.
+
+  \item[Hint:] Let $S$ be the set of natural numbers greater than $1$ which do not have a prime divisor. We want $S$ to be empty. Suppose $S$ is not empty $\ldots$
+
+  \item[Theorem 80:] For each natural number $n$, there is a prime $p$ such that $p \geq n$.
+
+  \item[] Theorem 80 asserts that there are infinitely many primes.
+
+  \item[Proposition 81 (Homework):] Let $n$ be a natural number. There are consecutive integers $m, m+1, m+2, \cdots, m+n-1$, none of which are prime.
+
+  \item[Conjecture 82:] Let $n$ be an even natural number greater than $2$. Then there exist primes $p$ and $q$ such that $n=p+q$.
+
+  \item[Definition 83:] Let $a$ and $b$ be integers such that $a \neq 0$ or $b \neq 0$. The greatest common divisor of $a$ and $b$, $\gcd (a,b)$, is defined to be that largest natural number $d$ such that $d \divides a$ and $d \divides b$. That is, if $d = \gcd(a,b)$, $l \divides a$, and $l \divides b$, then $l \leq d$. In addition, $\gcd (0,0)$ is defined to be $0$. Observe that $\gcd (a,b) = \gcd(b,a)$.
+
+  \item[Problem 84:] Calculate $\gcd (-48,36)$.
+
+  \item[Definition 85:] Two integers $a$ and $b$ are said to be \emph{relatively prime} if
+    \\ $\gcd (a,b)=1$.
+
+  \item[Proposition 86:] Let $a$, $b$, $d$, $m$, and $n$ be integers such that $d = \gcd (a,b)$, $a=dm$, and $b=dn$. If $d \neq 0$, then $\gcd (m,n) = 1$.
+
+  \item[Proposition 87:] Let $a$, $b$, and $c$ be integers. Then $\gcd (a+bc,b)= \gcd (a,b)$.
+
+  \item[Theorem 88:] Let $a$ and $b$ be integers such that $a \neq 0$. Let $d = \gcd (a,b)$. Then there exist integers $m$ and $n$ such that $d=ma+nb$.
+
+  \item[Hint:] Note that $d \neq 0$. Let $S = \{ xa+yb \ \vert \ x,y \in \setint \text{ and } ax+by > 0 \}$. Show that $S \neq \emptyset$. Let $l$ be the least member of $S$. Write $l=ma+nb$ where $m,n \in \setint$. Use the division algorithm to show that $l \divides a$. Similarly, $l \divides b$. This one may take some work.
+
+  \item[Proposition 89:] Let $a$, $b$, $d$, and $k$ be integers. Assume that $d = \gcd (a,b)$, $k \divides a$, and $k \divides b$. Then $k \divides d$.
+
+  \item[Theorem 90 (Euclid, c. 350 B.C.):] Let $a$, $b$, $q$, and $r$ be integers such that $0 \leq r < b$ and $a=bq+r$. Then
+    \begin{equation*}
+    \gcd (a,b) = \gcd (a,r)
+    \end{equation*}
+
+  \item[Problem 91 (Homework):] Find $\gcd (102,222)$ and $\gcd (20785,44350)$.
+
+  \item[Lemma 92:] Let $a$, $b$, and $c$ be natural numbers. If $\gcd (a,b) = 1$ and $a \divides bc$, then $a \divides c$.
+
+  \item[Lemma 93:] Suppose $p$ is prime, and $a_{1}, a_{2}, \cdots, a_{n}$ are all natural numbers. If $p \divides a_{1} a_{2} \cdots a_{n}$, then there is a integer $i$ such that $1 \leq i \leq n$ and $p \divides a_{i}$.
+
+  \item[Hint:] You will need to use Theorem 67 applied to $n$, the number of factors $a_{1}, a_{2}, \cdots, a_{n}$, and Lemma 93. Show things work for $n=1$ and $n=2$. Assume that for $2 < k < n$, if $p \divides a_{1}a_{2} \cdots a_{k}$, then there is a integer $i$ such that $1 \leq i \leq k$ and $p \divides a_{i}$. Prove that if $p \divides a_{1}a_{2} \cdots a_{n}$, then there is a integer $i$ such that $1 \leq i \leq n$ and $p \divides a_{i}$.
+
+  \item[] We've got the biggie coming up next time.
+
+  \item[Theorem 94 (Fundamental Theorem of Arithmetic):] Let $n$ be a natural number greater than $1$. There exist a unique natural number $k$ and unique primes $P_{1}, P_{2}, \cdots , P_{k}$ such that $P_{1} \leq P_{2} \leq \cdots \leq P_{k}$ and
+    \begin{equation*}
+    n=P_{1} P_{2}\ \cdots P_{k}
+    \end{equation*}
+
+  \item[] We will prove this one in class.
+
+  \item[] The factorization $n = P_{1} P_{2} \cdots P_{k}$ in the Fundamental Theorem is called the \emph{prime factorization} of $n$. Usually, we write the prime factorization of $n$ in the form
+    \begin{equation*}
+    n = \rho_{1}^{l_{1}} \rho_{2}^{l_{2}} \cdots \rho_{m}^{l_{m}}
+    \end{equation*}
+    where $m$ is a natural number, $l_{1}, l_{2}, \cdots , l_{m}$ are natural numbers, $\rho_{1},$ $\rho_{2},$ $\cdots,$ $\rho_{m}$ are primes, and $\rho_{1} < \rho_{2} < \cdots < \rho_{m}$.
+
+  \item[Problem 95:] Write the prime factorization of $15444$.
+
+  \item[Definition 96:] Let $A$ and $B$ be sets. We define the \emph{Cartesian Product} of $A$ and $B$, $A \times B$, to be the collection of all pairs $(a,b)$ such that $a$ is a member of $A$ and $b$ is a member of $B$. We call $(a,b)$ an \emph{ordered pair}.
+
+  \item[Axiom 97:] Let $A$ and $B$ be sets. Then $A \times B$ is a set.
+
+  \item[] In light of Axiom 97, we may write
+    \begin{equation*}
+    A \times B = \{ (a,b) \ \vert \ a \in A \text{ and } b \in B \}
+    \end{equation*}
+
+  \item[Axiom 98:] Let $A$ and $B$ be sets. Let $(a,b)$ and $(c,d)$ be members of $A \times B$. Then $(a,b)=(c,d)$ if and only if $a=c$ and $b=d$.
+
+  \item[Problem 99:] Let $A = \{ a,b,c,d,e \}$ and $B = \{ a,e,i,o,u \}$. List the members of $A \times B$.
+
+  \item[Definition 100:] Let $A$ and $B$ be sets. A subset $f$ of $A \times B$ is said to be a \emph{function} (or \emph{map}) from $A$ into $B$ if the following two conditions are satisfied:
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item For each $a \in A$, there exists $b \in B$ such that $(a,b) \in f$; and
+      \item For each $a \in A$ and for all $b_{1},b_{2} \in B$, if $(a,b_{1}) \in f$ and $(a,b_{2}) \in f$, then $b_{1} = b_{2}$.
+    \end{enumerate}
+    If $f$ is a function from $A$ into $B$, we write $f \ : \ A \rightarrow B$. The set $A$ is called the \emph{domain} of $f$. If $(a,b) \in f$, we write $b=f(a)$. The set
+    \begin{equation*}
+    \{ b \in B \ \vert \ \ \text{ there exists } a \in A \text{ such that } b=f(a) \}
+    \end{equation*}
+    is called the \emph{range} of $f$.
+
+  \item[Problem 101:] Let $A = \{ a,b,c,d,e \}$ and $B = \{ a,e,i,o,u \}$. 
+    \\ Let $f = \{ (a,i),(b,i),(c,a),(d,i),(e,e) \}$.
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item Is $f$ a function from $A$ into $B$?
+      \item Find the domain of $f$.
+      \item Find the range of $f$.
+      \item Find $f(d)$.
+    \end{enumerate}
+
+  \item[Problem 102:] Let $A = \{ a,b,c,d,e \}$ and $B = \{ a,e,i,o,u \}$. 
+
+     Let $f = \{ (a,e),(b,a),(c,o),(e,a) \}$. Is $f$ a function from $A$ into $B$? Explain your answer.
+
+  \item[Problem 103:] Let $A = \{ a,b,c,d,e \}$ and $B = \{ a,e,i,o,u \}$. 
+
+     Let $f = \{ (a,e),(b,a),(c,o),(c,a),(d,u),(e,a) \}$. Is $f$ a function from $A$ into $B$? Explain your answer.
+
+  \item[Problem 104:] Let $A = \{ a,b,c,d,e \}$ and $B = \{ a,e,i,o,u \}$. 
+
+     Let $f = \{ (a,a),(b,b),(c,c),(i,i),(d,d),(e,e) \}$. Is $f$ a function from $A$ into $B$? Explain your answer.
+
+  \item[Definition 105:] Let $f \ : \ A \rightarrow B$ be a function. $f$ is defined to be \emph{one-to-one} ($1-1$) if the following condition is satisfied:
+    \begin{quote}
+    For all $a_{1}$ and $a_{2}$ in $A$, and $b$ in $B$, if $(a_{1},b) \in f$ and $(a_{2},b) \in f$, then $a_{1}=a_{2}$.
+    \end{quote}
+
+  \item[Problem 106:] Let $A = \{ w,x,y,z \}$ and $B = \{ a,e,i,o,u \}$. Give examples of two functions from $A$ into $B$, one of which is $1-1$ and one that is not.
+
+  \item[Definition 107:] Let $f \ : \ A \rightarrow B$ be a function. $f$ is defined to be a function from $A$ onto $B$ if the following condition is satisfied:
+    \begin{quote}
+    For each $b$ in $B$, there is an $a$ in $A$ such that $(a,b) \in f$; that is, $b=f(a)$.
+    \end{quote}
+
+  \item[Problem 108:] Let $A = \{ u,v,w,x,y,z\}$ and $B = \{ a,e,i,o,u \}$. Give examples of two functions from $A$ into $B$ -- one of which is from $A$ onto $B$, and one that is not.
+
+  \item[Problem 109:] Let $A = \{ u,v,w,x,y,z \}$ and $B = \{ a,e,i,o,u \}$. Is there a $1-1$ function from $A$ into $B$? Explain your answer.
+
+  \item[Problem 110:] Let $A = \{ w,x,y,z \}$ and $B = \{ a,e,i,o,u \}$. Is there a function from $A$ onto $B$? Explain your answer.
+
+  \item[Problem 111:] Let $A = \{ a,b,c,d,e \}$ and $B = \{ a,e,i,o,u \}$. Find a $1-1$ function from $A$ onto $B$.
+
+  \item[Definition 112:] Let $g \ : \ A \rightarrow B$ and $f \ : \ B \rightarrow C$ be functions. We define the \emph{composition} of $f$ and $g$ ($f \circ g$) to be the set
+    \begin{eqnarray*}
+    \{ (a,c) \ \vert \ a \in A, \ c \in C, \text{ and there exists } b \in B \text{ such that } \\
+    (a,b) \in g \text{ and } (b,c) \in f \}
+    \end{eqnarray*}
+
+  \item[Proposition 113:] Let $g \ : \ A \rightarrow B$ and $f \ : \ B \rightarrow C$ be functions. Then $f \circ g$ is a function from $A$ into $C$.
+
+  \item[Proposition 114 (Homework):] Let $g \ : \ A \rightarrow B$ and $f \ : \ B \rightarrow C$ both be $1-1$ functions. Then $f \circ g$ is also a $1-1$ function.
+
+  \item[Proposition 115 (Homework):] Let $g \ : \ A \rightarrow B$ and $f \ : \ B \rightarrow C$ be functions from $A$ onto $B$ and from $B$ onto $C$ respectively. Then $f \circ g$ is a function from $A$ onto $C$.
+
+  \item[Definition 116:] Let $f \ : \ A \rightarrow B$ be a function. Define $f^{-1}$ by
+    \begin{equation*}
+    f^{-1} = \{ (b,a) \ \vert \ (a,b)\in f \}
+    \end{equation*}
+    The set $f^{-1}$ is called the \emph{inverse} of $f$.
+
+  \item[Proposition 117:] Let $f \ : \ A \rightarrow B$ be a $1-1$ function from $A$ onto $B$. Then $f^{-1}$ is a $1-1$ function from $B$ onto $A$.
+
+  \item[Hint:] You need to show that $f^{-1}$ is a function, $f^{-1}$ is $1-1$, and $f^{-1}$ is onto.
+
+  \item[Proposition 118 (Homework):] Let $f \ : \ A \rightarrow B$ be a $1-1$ function from $A$ onto $B$. Then $(f^{-1})^{-1} = f$.
+
+  \item[Proposition 119:] Let $f \ : \ A \rightarrow B$ and $g \ : \ A\rightarrow B$ be functions. Then $f=g$ if and only if for all $a$ in $A$, $f(a)=g(a)$.
+
+  \item[Proposition 120:] Let $h \ : \ A \rightarrow B$, $g \ : \ B \rightarrow C$, and $f \ : \ C \rightarrow D$ be functions. Then $f \circ (g \circ h) = (f \circ g) \circ h$.
+
+  \item[Definition 121:] Let $A$ and $B$ be sets, and let $n$ be natural number.
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item We say that $\vert A \vert \leq \vert B \vert$ if there is a $1-1$ function from $A$ into $B$.
+      \item We say that $\vert A \vert = \vert B \vert$ if $\vert A \vert \leq \vert B \vert$ and $\vert B \vert \leq \vert A \vert$.
+      \item We say that $\vert A \vert < \vert B \vert$ if $\vert A \vert \leq \vert B \vert$, but there is not a $1-1$ function from $B$ into $A$.
+      \item We say that $\vert A \vert = n$ if there is a $1-1$ function from $A$ onto the set
+        \begin{equation*}
+        \{ x \ \vert \ x \in \setnat \text{ and } x \leq n \}
+        \end{equation*}
+      \item We define $\vert \emptyset \vert$ by $\vert \emptyset \vert = 0$.
+    \end{enumerate}
+    The notation $\vert A \vert$ is called the \emph{cardinality} of $A$. Note that $\vert A \vert = \vert B \vert$ if and only if $\vert B \vert = \vert A \vert$. We say that $A$ is a \emph{finite set} if $\vert A \vert = n$. If $A$ is not finite, we say that $A$ is \emph{infinite}.
+
+  \item[] We will not prove the next theorem.
+
+  \item[Theorem 122 (The Schröder-Bernstein Theorem):] Let $A$ and $B$ be sets. Then $\vert A \vert = \vert B \vert$, if and only if there is a $1-1$ function from $A$ onto $B$.
+
+  \item[Proposition 123:] Let $A$ be a set. Then $\vert A \vert = \vert A \vert$.
+
+  \item[Proposition 124:] Let $A$, $B$, and $C$ be sets. If $\vert A \vert \leq \vert B \vert$ and $\vert B \vert \leq \vert C \vert$, then $\vert A \vert \leq \vert C \vert$. Moreover, if $\vert A \vert = \vert B \vert$ and $\vert B \vert = \vert C \vert$, then $\vert A \vert = \vert C \vert$.
+
+  \item[Definition 125:] Let $A$ be an infinite set. We say that $A$ is \emph{countable} if $\vert A \vert = \vert \setnat \vert$. If $A$ is not countable, we say that $A$ is \emph{uncountable}.
+
+  \item[Proposition 126:] The set $\setint$ is countable.
+
+  \item[Proposition 127:] The set $\setint \times \setint$ is countable.
+
+  \item[Proposition 128:] The set of even natural numbers ($2 \setnat$) is countable.
+
+  \item[Proposition 129:] Let $A$ be a countable set. Let $B$ be an infinite subset of $A$. Then $B$ is countable.
+
+  \item[Proof:] Write $A = \{ a_{1}, a_{2}, \cdots, a_{n}, \cdots \}$. Let $i_{1}$ be the least natural number such that $a_{i_{1}} \in B$. Let $i_{2}$ be the least natural number such that $a_{i_{2}} \in B \bigcap \complement \{ a_{i_{1}} \}$. Let $i_{3}$ be the least natural number such that $a_{i_{3}} \in B \bigcap \complement \{ a_{i_{1}}, a_{i_{2}} \}$. In general, let $i_{k}$ be the least natural number such that $a_{i_{k}} \in B \bigcap \complement \{ a_{i_{1}}, a_{i_{2}}, \cdots, a_{i_{k-1}} \}$. It follows that we may write $B = $ $\{a_{i_{1}},$ $a_{i_{2}},$ $\cdots,$ $a_{i_{k}},$ $\cdots \}$. Define $f\ : \ \setnat \rightarrow B$ by $f(k) = a_{i_{k}}$. Note that $f$ is a $1-1$ function from $\setnat$ onto $B$. Thus $\vert B \vert = \vert \setnat \vert$.
+
+  \item[Axiom 130 (Principle of Addition):] Let $A$ and $B$ be two sets such that $A \bigcap B = \emptyset$. Let $m$ and $n$ be natural numbers. If $\vert A \vert = m$ and $\vert B \vert = n$, then $\vert A \bigcup B \vert = m+n$.
+
+  \item[Axiom 131 (Principle of Multiplication):] Let $A$ and $B$ be sets. Let $m$ and $n$ be natural numbers. If $\vert A \vert =m$ and $\vert B \vert =n$, then $\vert A \times B \vert =mn$.
+
+  \item[Problem 132 (Homework):] Let $A = \{ a,b,c,d \}$ and $B = \{ e,f,g,h,i \}$. Find $\vert A \bigcup B \vert$.
+
+  \item[Problem 133 (Homework):] Let $A = \{ a,b,c,d \}$ and $B = \{ b,d,e,f \}$. Find $\vert A \bigcup B \vert$.
+
+  \item[Problem 134 (Homework):] Let $A=\{ a,b,c,d \}$ and $B=\{ e,f,g,h,i \}$. Find $\vert A \times B \vert$.
+
+  \item[Problem 135 (Homework):] Let $A = \{ a,b,c,d \}$ and $B = \{ b,d,e,f \}$. Find $\vert A \times B \vert$.
+
+  \item[Problem 136 (Homework):] Let $A$ be a set. Find $\vert A \times \emptyset \vert$.
+
+  \item[Definition 137:] Let $A$ be a set. A subset $R$ of $A \times A$ is said to be an \emph{equivalence relation} on $A$ if the following conditions are satisfied:
+    \begin{itemize}
+      \item \emph{Reflexive Property}: For each $a \in A$, $(a,a) \in R$;
+      \item \emph{Symmetric Property}: For all $a,b \in A$, if $(a,b) \in R$, then $(b,a) \in R$; and
+      \item \emph{Transitive Property}: For all $a,b,c \in A$, if $(a,b) \in R$ and $(b,c) \in R$, then $(a,c) \in R$.
+     \end{itemize}
+
+  \item[Problem 138:] Let $A = \{ a,b,c,d \}$. Let 
+    \begin{equation*}
+    R = \{ (a,a),(a,c),(a,d),(c,a),(c,c),(c,d),(d,a),(d,c),(d,d) \}
+    \end{equation*}
+    Is $R$ an equivalence relation on $A$?
+
+  \item[Problem 139:] Let $A = \{ a,b,c,d \}$. Give an example of a subset of $A \times A$ which satisfies the reflexive and symmetric properties, but is not an equivalence relation.
+
+  \item[Problem 140:] Let $A = \{ a,b,c,d \}$. Give an example of a subset of $A \times A$ which satisfies the symmetric and transitive properties, but is not an equivalence relation.
+
+  \item[Problem 141:] Let $A = \{ a,b,c,d \}$. Give an example of a subset of $A \times A$ which satisfies the reflexive and transitive properties, but is not an equivalence relation.
+
+  \item[Problem 142:] Let $A$ be a set. Let $R = A \times B$. Is $R$ an equivalence relation on $A$?
+
+\end{description}
+
+\end{document}
