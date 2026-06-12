@@ -1,30 +1,31 @@
-title,author,subject,pages,short_name
-Advanced Calculus,"Kauffman, Robert M.",calculus,31,advanced-calculus_kauffman
-Advanced Calculus I,"Parker, G. Edgar",calculus,23,advanced-calculus-1_parkerge
-Advanced Calculus II,"Parker, G. Edgar",calculus,16,advanced-calculus-2_parkerge
-Alexander-Wallace-Spanier Cohomology,"Hildebrant, John A.",topology,20,alexander-wallace-spanier-cohomology_hildebrant
-Analytic Functions,"Mac Nerny, J. S.",analysis,80,analytic_functions_macnernyj
-Better Mathematics Through Matrices,"Tonne, Phil C.",matrices,67,better-mathematics-through-matrices_tonne
-Complex Inner Product Spaces,"Mac Nerney, J. S.",miscellaneous,19,complex-inner-product-spaces_macnerney
-Elementary Mathematics from an Advanced Standpoint,"Roach, Everett D.",uncategorized,136,elementary-math-from-an-advanced-standpoint_roach
-First Graduate Course in Differential Equations,"Neuberger, John W.",differential equations,14,differential-equations-first-grad_neuberger
-Foundations,"Ochoa, James P.",foundations,16,foundations_ochoa
-Foundations of Euclidean Geometry,"Parker, G. Edgar",geometry,13,foundations-of-euclidean-geometry_parkerge
-Foundations of Mathematics,"Clark, David M.",foundations,36,foundations-of-mathematics_clarkdm
-Foundations of Mathematics,"Hildebrant, John A.",foundations,20,foundations-of-mathematics_hildebrant
-Geometry,"Ochoa, James P.",geometry,10,geometry_ochoa
-Graph Theory,"Benedict, James M.",graph theory,27,graph-theory_benedict
-Jordan Curve Theorem,"Mahavier, William S.",topology,5,jordan-curve-theorem_mahavierws
-Languages and Machines,"Clark, David M.",uncategorized,51,languages-and-machines_clarkdm
-Linear Topology,"Hagopian, Chuck",topology,9,linear-topology_hagopian
-Matrix Theory,"Whipple, Kenneth E.",matrices,23,matrix-theory_whipple
-Number Theory,"Whipple, Kenneth E.",number theory,26,number-theory_whipple
-Numerical Analysis: an Inquiry Based Approach,"Bjork, Andrew-David",uncategorized,16,numerical-analysis-inquiry_bjork
-Probability Theory,"Lane, Ralph E.",discrete math,42,probability-theory_lane
-Theory of Equations,"Creswell, Sam << Wall, H.S.",foundations,46,foundations-of-mathematics_cresswells
-Topology,"Bales, John W. << Fitzpatrick, Ben",topology,14,topology_fitzpatrick
-Topology,"Heath, Robert W.",topology,9,topology_heath
-Topology,"Grace, Ed",topology,10,topology_grace
-Topology,"Anderson, Stuart",topology,11,topology_anderson
-Trigonometry,"Reagh, Ed",trigonometry,167,trigonometry_reagh
-Vectors,"Whipple, Kenneth E.",geometry,15,vectors_whipple
+title,author,subject,pages,short_name,university,contact,abstract
+Advanced Calculus,"Kauffman, Robert M.",calculus,31,advanced-calculus_kauffman,University of Alabama at Birmingham,,"This course guide has two objectives. First, we cover the major theorems of differential and integral calculus in two semesters, in such a fashion that the students in the class understand what they say and why it is true. Second, successful students will learn how to think logically as mathematicians do, and present the results. We apply these calculus theorems to the study of the elementary functions."
+Advanced Calculus I,"Parker, G. Edgar",calculus,23,advanced-calculus-1_parker,James Madison University,,"Topics include the logic of quantification, and a theory of sets and ordered pairs. This material is presented with a sequence of problems and theorems, so that students can be given the responsibility for both discovering and understanding why the mathematics covered in this course guide is correct.
+"
+Advanced Calculus II,"Parker, G. Edgar",calculus,16,advanced-calculus-2_parker,James Madison University,,This student-oriented course is a continuation of the study of the theory which supports elementary calculus. You will need a copy of the author's Advanced Calculus 1 course guide for reference.
+Alexander-Wallace-Spanier Cohomology,"Hildebrant, John A.",topology,20,alexander-wallace-spanier-cohomology_hildebrant,Louisiana State University,deceased,"Topics include Abelian groups; cohomology groups; homomorphisms induced by continuous functions; reduced groups in dimension zero; fully normal spaces; inverse limits and the continuity theorem; strong excision theorems, extension, reduction; the map excision theorem; the Mayer-Vietoris theorem; codimension; marginal, peripheral, and inner points; the map addition theorem; acyclicity; and the Vietoris mapping theorem."
+Analytic Functions,"Mac Nerney, J. S.",analysis,80,analytic_functions_macnerney,,,
+Better Mathematics Through Matrices,"Tonne, Phil C.",matrices,67,better-mathematics-through-matrices_tonne,Emory University,,"Topics include multiplication of matrices, solving matrix equations, inverses of matrices, commuting matrices, matrix polynomials, complex numbers, matrix similarity, and square roots and cube roots of matrices. The heart of this guide is a series of problems designed to engage your deductive skills, and stimulate your ability to find patterns and make generalizations. The goal is to improve your ability to reason; the vehicle is the study of matrices. Matrices are part of every branch of mathematics, and are a frequent tool in, for example, economics, sociology, and physics -- wherever data is organized."
+Complex Inner Product Spaces,"Mac Nerney, J. S.",miscellaneous,19,complex-inner-product-spaces_macnerney,,,
+Elementary Mathematics from an Advanced Standpoint,"Roach, Everett D.",uncategorized,136,elementary-math-from-an-advanced-standpoint_roach,,,
+First Graduate Course in Differential Equations,"Neuberger, John W.",differential equations,14,differential-equations-first-grad_neuberger,,,
+Foundations,"Ochoa, James P.",foundations,16,foundations_ochoa,,,
+Foundations of Euclidean Geometry,"Parker, G. Edgar",geometry,13,foundations-of-euclidean-geometry_parker,,,
+Foundations of Mathematics,"Clark, David M.",foundations,36,foundations-of-mathematics_clarkdm,,,
+Foundations of Mathematics,"Hildebrant, John A.",foundations,20,foundations-of-mathematics_hildebrant,,,
+Geometry,"Ochoa, James P.",geometry,10,geometry_ochoa,,,
+Graph Theory,"Benedict, James M.",graph theory,27,graph-theory_benedict,,,
+Jordan Curve Theorem,"Mahavier, William S.",topology,5,jordan-curve-theorem_mahavierws,,,
+Languages and Machines,"Clark, David M.",uncategorized,51,languages-and-machines_clarkdm,,,
+Linear Topology,"Hagopian, Chuck",topology,9,linear-topology_hagopian,,,
+Matrix Theory,"Whipple, Kenneth E.",matrices,23,matrix-theory_whipple,,,
+Number Theory,"Whipple, Kenneth E.",number theory,26,number-theory_whipple,,,
+Numerical Analysis: an Inquiry Based Approach,"Bjork, Andrew-David",uncategorized,16,numerical-analysis-inquiry_bjork,,,
+Probability Theory,"Lane, Ralph E.",discrete math,42,probability-theory_lane,,,
+Theory of Equations,"Creswell, Sam << Wall, H.S.",foundations,46,foundations-of-mathematics_cresswell,,,
+Topology,"Bales, John W. << Fitzpatrick, Ben",topology,14,topology_fitzpatrick,,,
+Topology,"Heath, Robert W.",topology,9,topology_heath,,,
+Topology,"Grace, Ed",topology,10,topology_grace,,,
+Topology,"Anderson, Stuart",topology,11,topology_anderson,,,
+Trigonometry,"Reagh, Ed",trigonometry,167,trigonometry_reagh,,,
+Vectors,"Whipple, Kenneth E.",geometry,15,vectors_whipple,,,

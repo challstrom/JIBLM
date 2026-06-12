@@ -11,42 +11,31 @@ library(DT)
 
 These notes were obtained by one of the original editors prior to the inception of JIBLM. Many have been used for years, if not decades, and are excellent notes. JIBLM encourages instructors using these notes to modify them as needed to suit their own courses and then submit them to JIBLM for consideration as refereed publications. Special designations for authoring notes created by one individual and adapted to a course by a second are described in the Joint Authorship section of the Information for Authors of Course Notes.
 
-```{r}
-unref_files <- list.files() |>
-  str_subset("unref", negate = TRUE) |>
-  str_c(".pdf")
 
-unref_files <- tibble(unref_files)
-
-write_csv(unref_files, "unref_files.csv")
-```
 
 ```{r}
 #| include: false
 
 unref_materials <- read_csv("unrefereed_notes_list.csv") |>
-  mutate(volume = row_number() ) |>
-  mutate(title = str_glue("<a href=\"./{short_name}/{short_name}.pdf\">{title}</a>")) |>
-  relocate(volume, .before = title)
+  mutate(title = str_glue("<a href=\"./{short_name}/{short_name}.html\">{title}</a>")) |>
+  select(title, author, subject, pages) |>
+  rename(Title = title, Author = author, Subject = subject, Pages = pages)
+
 
 #  separate_wider_regex(Issue, patterns = c("No. ", v = "[0-9]+", " [(]", date = "[A-Za-z]+ [0-9]+", " [)]"))
 
   
 
-
-
 ```
 
 ```{r}
 #| echo: false
-unref_materials
 
-options(DT.options = list(order = list(1, 'asc')))
+options(DT.options = list(order = list( list(0, 'asc'), list(1, 'asc'))))
 
 #materials |>
 #  datatable(rownames = FALSE, style = 'bootstrap', class = "table-condensed table-striped", escape = FALSE)
 
 unref_materials |>
-  select(!pages) |>
   datatable(rownames = FALSE, style = 'bootstrap', class = "table-condensed table-striped", escape = FALSE)
 ```

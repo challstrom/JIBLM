@@ -3,14 +3,12 @@ title: "Modules"
 format: html
 ---
 
-
 ```{r}
 #| include: false
 
 library(tidyverse)
 library(DT)
 ```
-
 
 ```{r}
 #| include: false
@@ -21,7 +19,7 @@ modules <- read_csv("./modules.csv") |>
 
 
 modules <- modules |>
-  mutate( Title = paste0("<a href=\"./modules/M0", vol, ".pdf\" >", Title, "</a>" ))
+  mutate( Title = paste0("<a href=\"./M0", vol, "I.pdf\" >", Title, "</a>" ))
 
   
 #  separate_wider_regex(Issue, patterns = c("No. ", v = "[0-9]+", " [(]", date = "[A-Za-z]+ [0-9]+", " [)]"))

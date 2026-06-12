@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -191,34 +157,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>These notes were obtained by one of the original editors prior to the inception of JIBLM. Many have been used for years, if not decades, and are excellent notes. JIBLM encourages instructors using these notes to modify them as needed to suit their own courses and then submit them to JIBLM for consideration as refereed publications. Special designations for authoring notes created by one individual and adapted to a course by a second are described in the Joint Authorship section of the Information for Authors of Course Notes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>unref_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>() <span class="sc">|&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_subset</span>(<span class="st">"unref"</span>, <span class="at">negate =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_c</span>(<span class="st">".pdf"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>unref_files <span class="ot">&lt;-</span> <span class="fu">tibble</span>(unref_files)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(unref_files, <span class="st">"unref_files.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 29 × 6
-   volume title                                  author subject pages short_name
-    &lt;int&gt; &lt;glue&gt;                                 &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;     
- 1      1 &lt;a href="./advanced-calculus_kauffman… Kauff… calcul…    31 advanced-…
- 2      2 &lt;a href="./advanced-calculus-1_parker… Parke… calcul…    23 advanced-…
- 3      3 &lt;a href="./advanced-calculus-2_parker… Parke… calcul…    16 advanced-…
- 4      4 &lt;a href="./alexander-wallace-spanier-… Hilde… topolo…    20 alexander…
- 5      5 &lt;a href="./analytic_functions_macnern… Mac N… analys…    80 analytic_…
- 6      6 &lt;a href="./better-mathematics-through… Tonne… matric…    67 better-ma…
- 7      7 &lt;a href="./complex-inner-product-spac… Mac N… miscel…    19 complex-i…
- 8      8 &lt;a href="./elementary-math-from-an-ad… Roach… uncate…   136 elementar…
- 9      9 &lt;a href="./differential-equations-fir… Neube… differ…    14 different…
-10     10 &lt;a href="./foundations_ochoa/foundati… Ochoa… founda…    16 foundatio…
-# ℹ 19 more rows</code></pre>
-</div>
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-2c2aef3643d70235619d" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-2c2aef3643d70235619d">{"x":{"style":"bootstrap","filter":"none","vertical":false,"data":[[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29],["<a href=\"./advanced-calculus_kauffman/advanced-calculus_kauffman.pdf\">Advanced Calculus<\/a>","<a href=\"./advanced-calculus-1_parkerge/advanced-calculus-1_parkerge.pdf\">Advanced Calculus I<\/a>","<a href=\"./advanced-calculus-2_parkerge/advanced-calculus-2_parkerge.pdf\">Advanced Calculus II<\/a>","<a href=\"./alexander-wallace-spanier-cohomology_hildebrant/alexander-wallace-spanier-cohomology_hildebrant.pdf\">Alexander-Wallace-Spanier Cohomology<\/a>","<a href=\"./analytic_functions_macnernyj/analytic_functions_macnernyj.pdf\">Analytic Functions<\/a>","<a href=\"./better-mathematics-through-matrices_tonne/better-mathematics-through-matrices_tonne.pdf\">Better Mathematics Through Matrices<\/a>","<a href=\"./complex-inner-product-spaces_macnerney/complex-inner-product-spaces_macnerney.pdf\">Complex Inner Product Spaces<\/a>","<a href=\"./elementary-math-from-an-advanced-standpoint_roach/elementary-math-from-an-advanced-standpoint_roach.pdf\">Elementary Mathematics from an Advanced Standpoint<\/a>","<a href=\"./differential-equations-first-grad_neuberger/differential-equations-first-grad_neuberger.pdf\">First Graduate Course in Differential Equations<\/a>","<a href=\"./foundations_ochoa/foundations_ochoa.pdf\">Foundations<\/a>","<a href=\"./foundations-of-euclidean-geometry_parkerge/foundations-of-euclidean-geometry_parkerge.pdf\">Foundations of Euclidean Geometry<\/a>","<a href=\"./foundations-of-mathematics_clarkdm/foundations-of-mathematics_clarkdm.pdf\">Foundations of Mathematics<\/a>","<a href=\"./foundations-of-mathematics_hildebrant/foundations-of-mathematics_hildebrant.pdf\">Foundations of Mathematics<\/a>","<a href=\"./geometry_ochoa/geometry_ochoa.pdf\">Geometry<\/a>","<a href=\"./graph-theory_benedict/graph-theory_benedict.pdf\">Graph Theory<\/a>","<a href=\"./jordan-curve-theorem_mahavierws/jordan-curve-theorem_mahavierws.pdf\">Jordan Curve Theorem<\/a>","<a href=\"./languages-and-machines_clarkdm/languages-and-machines_clarkdm.pdf\">Languages and Machines<\/a>","<a href=\"./linear-topology_hagopian/linear-topology_hagopian.pdf\">Linear Topology<\/a>","<a href=\"./matrix-theory_whipple/matrix-theory_whipple.pdf\">Matrix Theory<\/a>","<a href=\"./number-theory_whipple/number-theory_whipple.pdf\">Number Theory<\/a>","<a href=\"./numerical-analysis-inquiry_bjork/numerical-analysis-inquiry_bjork.pdf\">Numerical Analysis: an Inquiry Based Approach<\/a>","<a href=\"./probability-theory_lane/probability-theory_lane.pdf\">Probability Theory<\/a>","<a href=\"./foundations-of-mathematics_cresswells/foundations-of-mathematics_cresswells.pdf\">Theory of Equations<\/a>","<a href=\"./topology_fitzpatrick/topology_fitzpatrick.pdf\">Topology<\/a>","<a href=\"./topology_heath/topology_heath.pdf\">Topology<\/a>","<a href=\"./topology_grace/topology_grace.pdf\">Topology<\/a>","<a href=\"./topology_anderson/topology_anderson.pdf\">Topology<\/a>","<a href=\"./trigonometry_reagh/trigonometry_reagh.pdf\">Trigonometry<\/a>","<a href=\"./vectors_whipple/vectors_whipple.pdf\">Vectors<\/a>"],["Kauffman, Robert M.","Parker, G. Edgar","Parker, G. Edgar","Hildebrant, John A.","Mac Nerny, J. S.","Tonne, Phil C.","Mac Nerney, J. S.","Roach, Everett D.","Neuberger, John W.","Ochoa, James P.","Parker, G. Edgar","Clark, David M.","Hildebrant, John A.","Ochoa, James P.","Benedict, James M.","Mahavier, William S.","Clark, David M.","Hagopian, Chuck","Whipple, Kenneth E.","Whipple, Kenneth E.","Bjork, Andrew-David","Lane, Ralph E.","Creswell, Sam << Wall, H.S.","Bales, John W. << Fitzpatrick, Ben","Heath, Robert W.","Grace, Ed","Anderson, Stuart","Reagh, Ed","Whipple, Kenneth E."],["calculus","calculus","calculus","topology","analysis","matrices","miscellaneous","uncategorized","differential equations","foundations","geometry","foundations","foundations","geometry","graph theory","topology","uncategorized","topology","matrices","number theory","uncategorized","discrete math","foundations","topology","topology","topology","topology","trigonometry","geometry"],["advanced-calculus_kauffman","advanced-calculus-1_parkerge","advanced-calculus-2_parkerge","alexander-wallace-spanier-cohomology_hildebrant","analytic_functions_macnernyj","better-mathematics-through-matrices_tonne","complex-inner-product-spaces_macnerney","elementary-math-from-an-advanced-standpoint_roach","differential-equations-first-grad_neuberger","foundations_ochoa","foundations-of-euclidean-geometry_parkerge","foundations-of-mathematics_clarkdm","foundations-of-mathematics_hildebrant","geometry_ochoa","graph-theory_benedict","jordan-curve-theorem_mahavierws","languages-and-machines_clarkdm","linear-topology_hagopian","matrix-theory_whipple","number-theory_whipple","numerical-analysis-inquiry_bjork","probability-theory_lane","foundations-of-mathematics_cresswells","topology_fitzpatrick","topology_heath","topology_grace","topology_anderson","trigonometry_reagh","vectors_whipple"]],"container":"<table class=\"table table-condensed table-striped\">\n  <thead>\n    <tr>\n      <th>volume<\/th>\n      <th>title<\/th>\n      <th>author<\/th>\n      <th>subject<\/th>\n      <th>short_name<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"order":[1,"asc"],"columnDefs":[{"className":"dt-right","targets":0},{"name":"volume","targets":0},{"name":"title","targets":1},{"name":"author","targets":2},{"name":"subject","targets":3},{"name":"short_name","targets":4}],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-8a7f75df7be58094d3dc" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-8a7f75df7be58094d3dc">{"x":{"style":"bootstrap","filter":"none","vertical":false,"data":[["<a href=\"./advanced-calculus_kauffman/advanced-calculus_kauffman.html\">Advanced Calculus<\/a>","<a href=\"./advanced-calculus-1_parker/advanced-calculus-1_parker.html\">Advanced Calculus I<\/a>","<a href=\"./advanced-calculus-2_parker/advanced-calculus-2_parker.html\">Advanced Calculus II<\/a>","<a href=\"./alexander-wallace-spanier-cohomology_hildebrant/alexander-wallace-spanier-cohomology_hildebrant.html\">Alexander-Wallace-Spanier Cohomology<\/a>","<a href=\"./analytic_functions_macnerney/analytic_functions_macnerney.html\">Analytic Functions<\/a>","<a href=\"./better-mathematics-through-matrices_tonne/better-mathematics-through-matrices_tonne.html\">Better Mathematics Through Matrices<\/a>","<a href=\"./complex-inner-product-spaces_macnerney/complex-inner-product-spaces_macnerney.html\">Complex Inner Product Spaces<\/a>","<a href=\"./elementary-math-from-an-advanced-standpoint_roach/elementary-math-from-an-advanced-standpoint_roach.html\">Elementary Mathematics from an Advanced Standpoint<\/a>","<a href=\"./differential-equations-first-grad_neuberger/differential-equations-first-grad_neuberger.html\">First Graduate Course in Differential Equations<\/a>","<a href=\"./foundations_ochoa/foundations_ochoa.html\">Foundations<\/a>","<a href=\"./foundations-of-euclidean-geometry_parker/foundations-of-euclidean-geometry_parker.html\">Foundations of Euclidean Geometry<\/a>","<a href=\"./foundations-of-mathematics_clarkdm/foundations-of-mathematics_clarkdm.html\">Foundations of Mathematics<\/a>","<a href=\"./foundations-of-mathematics_hildebrant/foundations-of-mathematics_hildebrant.html\">Foundations of Mathematics<\/a>","<a href=\"./geometry_ochoa/geometry_ochoa.html\">Geometry<\/a>","<a href=\"./graph-theory_benedict/graph-theory_benedict.html\">Graph Theory<\/a>","<a href=\"./jordan-curve-theorem_mahavierws/jordan-curve-theorem_mahavierws.html\">Jordan Curve Theorem<\/a>","<a href=\"./languages-and-machines_clarkdm/languages-and-machines_clarkdm.html\">Languages and Machines<\/a>","<a href=\"./linear-topology_hagopian/linear-topology_hagopian.html\">Linear Topology<\/a>","<a href=\"./matrix-theory_whipple/matrix-theory_whipple.html\">Matrix Theory<\/a>","<a href=\"./number-theory_whipple/number-theory_whipple.html\">Number Theory<\/a>","<a href=\"./numerical-analysis-inquiry_bjork/numerical-analysis-inquiry_bjork.html\">Numerical Analysis: an Inquiry Based Approach<\/a>","<a href=\"./probability-theory_lane/probability-theory_lane.html\">Probability Theory<\/a>","<a href=\"./foundations-of-mathematics_cresswell/foundations-of-mathematics_cresswell.html\">Theory of Equations<\/a>","<a href=\"./topology_fitzpatrick/topology_fitzpatrick.html\">Topology<\/a>","<a href=\"./topology_heath/topology_heath.html\">Topology<\/a>","<a href=\"./topology_grace/topology_grace.html\">Topology<\/a>","<a href=\"./topology_anderson/topology_anderson.html\">Topology<\/a>","<a href=\"./trigonometry_reagh/trigonometry_reagh.html\">Trigonometry<\/a>","<a href=\"./vectors_whipple/vectors_whipple.html\">Vectors<\/a>"],["Kauffman, Robert M.","Parker, G. Edgar","Parker, G. Edgar","Hildebrant, John A.","Mac Nerney, J. S.","Tonne, Phil C.","Mac Nerney, J. S.","Roach, Everett D.","Neuberger, John W.","Ochoa, James P.","Parker, G. Edgar","Clark, David M.","Hildebrant, John A.","Ochoa, James P.","Benedict, James M.","Mahavier, William S.","Clark, David M.","Hagopian, Chuck","Whipple, Kenneth E.","Whipple, Kenneth E.","Bjork, Andrew-David","Lane, Ralph E.","Creswell, Sam << Wall, H.S.","Bales, John W. << Fitzpatrick, Ben","Heath, Robert W.","Grace, Ed","Anderson, Stuart","Reagh, Ed","Whipple, Kenneth E."],["calculus","calculus","calculus","topology","analysis","matrices","miscellaneous","uncategorized","differential equations","foundations","geometry","foundations","foundations","geometry","graph theory","topology","uncategorized","topology","matrices","number theory","uncategorized","discrete math","foundations","topology","topology","topology","topology","trigonometry","geometry"],[31,23,16,20,80,67,19,136,14,16,13,36,20,10,27,5,51,9,23,26,16,42,46,14,9,10,11,167,15]],"container":"<table class=\"table table-condensed table-striped\">\n  <thead>\n    <tr>\n      <th>Title<\/th>\n      <th>Author<\/th>\n      <th>Subject<\/th>\n      <th>Pages<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"order":[[0,"asc"],[1,"asc"]],"columnDefs":[{"className":"dt-right","targets":3},{"name":"Title","targets":0},{"name":"Author","targets":1},{"name":"Subject","targets":2},{"name":"Pages","targets":3}],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 

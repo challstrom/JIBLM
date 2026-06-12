@@ -1,0 +1,30 @@
+---
+title: "Unrefereed Course Notes"
+---
+
+```{r}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+library(gt)
+
+note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
+
+note_data <- c("Advanced Calculus", "Kauffman, Robert M.", "calculus", "31", "University of Alabama at Birmingham", "", "This course guide has two objectives. First, we cover the major theorems of differential and integral calculus in two semesters, in such a fashion that the students in the class understand what they say and why it is true. Second, successful students will learn how to think logically as mathematicians do, and present the results. We apply these calculus theorems to the study of the elementary functions.")
+
+
+tibble(note_entries, note_data) |>
+  gt() |>
+  cols_align(align = "left") |>
+  tab_style(
+    style= cell_text(v_align = "top"),
+    locations = cells_body()
+  ) |>
+  tab_options( table.width = "80%", column_labels.hidden = TRUE)  
+
+
+```
+- [Download File](./advanced-calculus_kauffman.pdf)
+
+This course guide was donated to a collection originally gathered by MathNerds. The author retains copyright. You are free to use these materials for your classes. 

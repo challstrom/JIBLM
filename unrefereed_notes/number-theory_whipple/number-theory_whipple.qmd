@@ -1,0 +1,30 @@
+---
+title: "Unrefereed Course Notes"
+---
+
+```{r}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+library(gt)
+
+note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
+
+note_data <- c("Number Theory", "Whipple, Kenneth E.", "number theory", "26", "", "", "")
+
+
+tibble(note_entries, note_data) |>
+  gt() |>
+  cols_align(align = "left") |>
+  tab_style(
+    style= cell_text(v_align = "top"),
+    locations = cells_body()
+  ) |>
+  tab_options( table.width = "80%", column_labels.hidden = TRUE)  
+
+
+```
+- [Download File](./number-theory_whipple.pdf)
+
+This course guide was donated to a collection originally gathered by MathNerds. The author retains copyright. You are free to use these materials for your classes. 

@@ -15,8 +15,10 @@ Modules are intended:
 
 Instructors are encouraged to contact authors for guidance in the use of Modules.
 
-{{< include modules.qmd >}}
+[List of Available Modules](modules/modules.qmd)
 
-## Unrefereed course notes
+## Unrefereed Course Notes
+
+These notes were obtained by one of the original editors prior to the inception of JIBLM. Many have been used for years, if not decades, and are (in our opinion) excellent notes. JIBLM encourages instructors using these notes to modify them as needed to suit their own courses and then submit them to JIBLM for consideration as refereed publications. Special designations for authoring notes created by one individual and adapted to a course by a second are described in the Joint Authorship section of the Information for Authors of Course Notes.
 
 [List of available materials](unrefereed_notes/unrefereed_notes.qmd)
