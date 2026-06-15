@@ -2,16 +2,15 @@
 title: "Other Materials"
 ---
 
-
 ## Modules
 
 Modules are freely-downloadable, professionally-refereed, classroom-tested notes providing material for an inquiry-based unit on a specific topic. A Module will cover less than a full course. It might be as small as a single idea covered in one day, or as large as an independent topic spanning several weeks. A Module might be some portion of another course of study, but it must stand alone as a logically complete unit.
 
 Modules are intended:
 
-- for instructors to use as part of a course,
-- for instructors to modify for use as part of their course, or
-- for students to study a topic independently.
+-   for instructors to use as part of a course,
+-   for instructors to modify for use as part of their course, or
+-   for students to study a topic independently.
 
 Instructors are encouraged to contact authors for guidance in the use of Modules.
 
@@ -21,4 +20,4 @@ Instructors are encouraged to contact authors for guidance in the use of Modules
 
 These notes were obtained by one of the original editors prior to the inception of JIBLM. Many have been used for years, if not decades, and are (in our opinion) excellent notes. JIBLM encourages instructors using these notes to modify them as needed to suit their own courses and then submit them to JIBLM for consideration as refereed publications. Special designations for authoring notes created by one individual and adapted to a course by a second are described in the Joint Authorship section of the Information for Authors of Course Notes.
 
-[List of available materials](unrefereed_notes/unrefereed_notes.qmd)
+[List of Available Materials](unrefereed_notes/unrefereed_notes.qmd)

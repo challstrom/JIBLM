@@ -16,7 +16,6 @@ library(gt)
 
 ```
 
-
 # This code chunk reads the `unrefereed_notes_list.csv` datafile to get the names of the `.qmd` files.
 
 ```{r}
@@ -27,8 +26,6 @@ library(gt)
 unref_files <- read_csv("unrefereed_notes_list.csv")
 unref_files[is.na(unref_files)] <- ""
 ```
-
-
 
 ```{r}
 #| eval: true
@@ -43,9 +40,8 @@ for (i in 1:nrow(unref_files)) {
 
 ```
 
-
-
 Testing the table output...
+
 ```{r}
 #| echo: false
 
@@ -68,7 +64,6 @@ tibble(cn, output) |>
   tab_options( table.width = "80%", column_labels.hidden = TRUE)
 
 ```
-
 
 ## Template for `.qmd` files (copy above code to display tables)
 
@@ -136,4 +131,3 @@ walk2(qmd_block, output_files,
       \(content, path) writeLines(content, path))
 
 ```
-

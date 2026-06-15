@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Matrix Theory", "Whipple, Kenneth E.", "matrices", "23", "", "", "")
+note_data <- c("Matrix Theory", "Whipple, Kenneth E.", "matrices", "23", "Georgia State University", "", "These notes were used in a university junior-level course taught by the author using the Moore method. Since matrix theory is so important to many areas of mathematics, it is especially important that students gain a strong intuition in this subject. This material gives students an introduction to the rigors of proving statements without having to deal with abstract concepts. Since the arithmetic of matrices resembles the arithmetic of numbers, many plausible but false conjectures occur, thus emphasizing the importance of careful treatment of the subject matter.")
 
 
 tibble(note_entries, note_data) |>

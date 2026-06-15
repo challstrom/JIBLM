@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Geometry", "Ochoa, James P.", "geometry", "10", "", "", "")
+note_data <- c("Geometry", "Ochoa, James P.", "geometry", "10", "Hardin-Simmons University", "", "This guide provides a theorem sequence for an inquiry-based course in geometry, including such topics as points, lines, angles, betweenness, and congruence.")
 
 
 tibble(note_entries, note_data) |>

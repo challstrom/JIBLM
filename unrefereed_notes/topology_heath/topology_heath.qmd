@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Topology", "Heath, Robert W.", "topology", "9", "", "", "")
+note_data <- c("Topology", "Heath, Robert W.", "topology", "9", "University of Pittsburgh", "", "This course guide provides a sequence of definitions, propositions, examples, and problems, on topics of topology.")
 
 
 tibble(note_entries, note_data) |>

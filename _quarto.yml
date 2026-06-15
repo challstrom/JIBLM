@@ -4,6 +4,8 @@ project:
 
 website:
   title: "JIBLM"
+  favicon: favicon.png
+  page-navigation: true
   navbar:
     background:  "#0D530E"
     left:

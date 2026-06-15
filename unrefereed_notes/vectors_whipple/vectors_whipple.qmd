@@ -11,7 +11,8 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Vectors", "Whipple, Kenneth E.", "geometry", "15", "", "", "")
+note_data <- c("Vectors", "Whipple, Kenneth E.", "geometry", "15", "Georgia State University", "", "Topics include a solid geometry review, directed line segments, parallels, angles and perpendiculars, vectors normal to a plane, cross products, and distances.
+")
 
 
 tibble(note_entries, note_data) |>

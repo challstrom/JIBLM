@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Graph Theory", "Benedict, James M.", "graph theory", "27", "", "", "")
+note_data <- c("Graph Theory", "Benedict, James M.", "graph theory", "27", "Augusta State University", "jbenedic@aug.edu", "The discovery method, accredited to R. L. Moore, is the inspiration for the style of the presentation found within this text. The text is intended for undergraduates. It allows for a one-semester development of the most elementary yet universal concepts of Graph Theory. Topics include graph theoretic equality, degrees of vertices, subgraphs, complements of graphs, special subgraphs, the four-color theorem, planar graphs, the Petersen graph, and traceable graphs.")
 
 
 tibble(note_entries, note_data) |>

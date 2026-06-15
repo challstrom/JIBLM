@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Foundations of Mathematics", "Hildebrant, John A.", "foundations", "20", "", "", "")
+note_data <- c("Foundations of Mathematics", "Hildebrant, John A.", "foundations", "20", "Louisiana State University", "", "Topics include sets and relations, the Peano axioms, order relations, the axiom of choice, finite and infinite sets, well-ordered sets, quotient sets and the integers, the real numbers, ordinal numbers, and cardinal numbers.")
 
 
 tibble(note_entries, note_data) |>

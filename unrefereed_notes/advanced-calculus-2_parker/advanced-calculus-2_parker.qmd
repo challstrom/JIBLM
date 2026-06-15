@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Advanced Calculus II", "Parker, G. Edgar", "calculus", "16", "", "", "")
+note_data <- c("Advanced Calculus II", "Parker, G. Edgar", "calculus", "16", "James Madison University", "", "This student-oriented course is a continuation of the study of the theory which supports elementary calculus. You will need a copy of the author's Advanced Calculus 1 course guide for reference.")
 
 
 tibble(note_entries, note_data) |>

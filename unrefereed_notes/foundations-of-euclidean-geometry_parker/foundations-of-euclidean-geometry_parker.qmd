@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Foundations of Euclidean Geometry", "Parker, G. Edgar", "geometry", "13", "", "", "")
+note_data <- c("Foundations of Euclidean Geometry", "Parker, G. Edgar", "geometry", "13", "James Madison University", "", "The material in this course guide is presented with a sequence of problems and theorems, covering the logic of quantification, a theory of sets and ordered pairs, and the foundations of Euclidean geometry. Students will be responsible both for discovering and understanding why the mathematics covered in this course is correct.")
 
 
 tibble(note_entries, note_data) |>

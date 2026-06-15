@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Elementary Mathematics from an Advanced Standpoint", "Roach, Everett D.", "uncategorized", "136", "", "", "")
+note_data <- c("Elementary Mathematics from an Advanced Standpoint", "Roach, Everett D.", "uncategorized", "136", "University of Dallas", "", "This book has been written for a two semester-hour course to precede calculus at the University of Dallas. I tried to make most of the material easy enough for the average students, but parts of it challenging enough for the brightest students. The topics discussed have been taken from the areas of mathematical logic, modern algebra, and trigonometry. There are two primary goals of this book. The first is to introduce the undergraduate to the process of mathematical reasoning early in his college studies. The second is to develop the skills needed to understand calculus. It is recommended that the students try to prove the theorems for which the proofs are given before reading the proofs.")
 
 
 tibble(note_entries, note_data) |>

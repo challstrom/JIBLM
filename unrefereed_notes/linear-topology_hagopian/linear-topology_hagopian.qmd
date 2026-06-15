@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Linear Topology", "Hagopian, Chuck", "topology", "9", "", "", "")
+note_data <- c("Linear Topology", "Hagopian, Chuck", "topology", "9", "California State University at Sacramento", "", "This course guide provides a sequence of definitions, theorems, axioms, problems, and questions, on topics of linear topology.")
 
 
 tibble(note_entries, note_data) |>

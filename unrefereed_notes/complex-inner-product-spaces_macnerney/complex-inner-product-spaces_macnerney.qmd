@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Complex Inner Product Spaces", "Mac Nerney, J. S.", "miscellaneous", "19", "", "", "")
+note_data <- c("Complex Inner Product Spaces", "Mac Nerney, J. S.", "miscellaneous", "19", "University of North Carolina", "", "It was the custom of Professor Mac Nerney, both at the University of North Carolina and the University of Houston, to offer his students, upon completion of his course on analytic functions, a further course. Here you will find the two themes of this additional course, each dear to the heart of Mac Nerney, Hellinger Integrals and Kernels in Functional Hilbert Spaces. The reader is invited to offer argument for the assertions that are true and counter-example to those that are not.")
 
 
 tibble(note_entries, note_data) |>

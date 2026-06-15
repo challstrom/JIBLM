@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("First Graduate Course in Differential Equations", "Neuberger, John W.", "differential equations", "14", "", "", "")
+note_data <- c("First Graduate Course in Differential Equations", "Neuberger, John W.", "differential equations", "14", "University of North Texas", "", "This material is indicative of John Neuberger's typical first year graduate course in differential equations. It extends H. S. Wall's undergraduate differential equations course. The similarity of much of this material with Courant and Hilbert's 'Methods of Mathematical Physics' is no coincidence. Hilbert, Hellinger, and Courant were prominent figures in Göttingen's great period, where Wall was a visitor for a year.")
 
 
 tibble(note_entries, note_data) |>

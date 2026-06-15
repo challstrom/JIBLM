@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Probability Theory", "Lane, Ralph E.", "discrete math", "42", "", "", "")
+note_data <- c("Probability Theory", "Lane, Ralph E.", "discrete math", "42", "University of Texas at Austin", "", "Topics include integrals, events, set functions, probability distributions, permutations, combinations, conditional probabilities, distribution functions, independence, expected values, and probability generating functions.")
 
 
 tibble(note_entries, note_data) |>

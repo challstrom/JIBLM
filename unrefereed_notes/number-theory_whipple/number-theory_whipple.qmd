@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Number Theory", "Whipple, Kenneth E.", "number theory", "26", "", "", "")
+note_data <- c("Number Theory", "Whipple, Kenneth E.", "number theory", "26", "Georgia State University", "", "These notes cover topics usually found in an introductory course in number theory, including divisors, recursion, remainders, greatest common divisors, prime factors, congruence, the Chinese Remainder Theorem, Pythagorean triplets, using residue systems to solve modulo problems, quadratic residues and the Legendre function, reduced residue systems, integral powers, and the totient function.")
 
 
 tibble(note_entries, note_data) |>

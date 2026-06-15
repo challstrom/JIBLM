@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Theory of Equations", "Creswell, Sam << Wall, H.S.", "foundations", "46", "", "", "")
+note_data <- c("Theory of Equations", "Creswell, Sam << Wall, H.S.", "foundations", "46", "", "screswell@alamo.edu", "These notes constitute an introduction to the number system, plane geometry, polynomials, and location of roots. This sophomore level course was developed and taught by Dr. Wall in an effort to introduce students to axiomatic mathematics at an early stage of their mathematical development.")
 
 
 tibble(note_entries, note_data) |>

@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Alexander-Wallace-Spanier Cohomology", "Hildebrant, John A.", "topology", "20", "", "", "")
+note_data <- c("Alexander-Wallace-Spanier Cohomology", "Hildebrant, John A.", "topology", "20", "Louisiana State University", "deceased", "Topics include Abelian groups; cohomology groups; homomorphisms induced by continuous functions; reduced groups in dimension zero; fully normal spaces; inverse limits and the continuity theorem; strong excision theorems, extension, reduction; the map excision theorem; the Mayer-Vietoris theorem; codimension; marginal, peripheral, and inner points; the map addition theorem; acyclicity; and the Vietoris mapping theorem.")
 
 
 tibble(note_entries, note_data) |>

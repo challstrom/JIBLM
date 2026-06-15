@@ -11,7 +11,9 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Numerical Analysis: an Inquiry Based Approach", "Bjork, Andrew-David", "uncategorized", "16", "", "", "")
+note_data <- c("Numerical Analysis: an Inquiry Based Approach", "Bjork, Andrew-David", "uncategorized", "16", "Siena Heights University", "abjork@sienaheights.edu", "This set of notes was developed with the intent to help the students encounter various techniques from the field of numerical analysis. The primary goal is to have the students code computer programs that implement various classic algorithms from this discipline of mathematics. The author tried to keep the notes free from specific references to any particular software, though the course for which these notes were developed used Maple 17. I welcome all the feedback I can get on these notes so that I may improve them.
+Note: This issue has an associated file. Please refer to Numerical Analysis: an Inquiry Based Approach (Student) for a Student version of this issue.
+")
 
 
 tibble(note_entries, note_data) |>

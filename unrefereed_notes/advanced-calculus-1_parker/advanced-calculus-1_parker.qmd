@@ -11,7 +11,8 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Advanced Calculus I", "Parker, G. Edgar", "calculus", "23", "", "", "")
+note_data <- c("Advanced Calculus I", "Parker, G. Edgar", "calculus", "23", "James Madison University", "", "Topics include the logic of quantification, and a theory of sets and ordered pairs. This material is presented with a sequence of problems and theorems, so that students can be given the responsibility for both discovering and understanding why the mathematics covered in this course guide is correct.
+")
 
 
 tibble(note_entries, note_data) |>

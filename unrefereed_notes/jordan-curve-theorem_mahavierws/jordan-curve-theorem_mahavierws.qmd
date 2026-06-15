@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Jordan Curve Theorem", "Mahavier, William S.", "topology", "5", "", "", "")
+note_data <- c("Jordan Curve Theorem", "Mahavier, William S.", "topology", "5", "Emory University", "", "This theorem sequence on the Jordan Curve Theorem is probably best for students who have had at least an introduction to topology, and is certainly appropriate at the graduate level.")
 
 
 tibble(note_entries, note_data) |>

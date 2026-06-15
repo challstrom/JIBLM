@@ -1,11 +1,16 @@
 ---
-title: "Journal of Inquiry-Based Learning in Mathematics"
+title: ""
 toc: false
 ---
 
-::: {.mainpage}
+::: {.maintitle}
+
+Journal of Inquiry-Based Learning in Mathematics
+
+:::
 
 **JIBLM publishes freely downloadable, professionally refereed and classroom-tested course guides for full univerisity level inquiry-based mathematics courses.**
+
 
 Inquiry-based learning (IBL) refers to any pedagogy that utilizes presentations or student-centered activities to develop in students the confidence and ability to do mathematics on their own. Instructors typically supply students with carefully crafted activities or course notes consisting of a sequence of definitions, problems or theorems. Instructors then serve as mentors, listening to the students, reviewing their work, and giving them the minimal information they need to understand the concepts and carry out these tasks.
 
@@ -13,4 +18,3 @@ Instructors are encouraged to contact authors of Course Guides for assistance. A
 
 JIBLM was previously funded by MathNerds and the Educational Advancement Foundation, and is currently funded through private donations.
 
-:::

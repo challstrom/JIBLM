@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Topology", "Anderson, Stuart", "topology", "11", "", "", "")
+note_data <- c("Topology", "Anderson, Stuart", "topology", "11", "Texas A&M University at Commerce", "", "These are notes from a Texas-style topology course that James Ochoa took from Dr. Stuart Anderson at Texas A&M at Commerce.")
 
 
 tibble(note_entries, note_data) |>

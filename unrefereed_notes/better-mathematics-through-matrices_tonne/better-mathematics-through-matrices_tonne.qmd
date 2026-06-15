@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Better Mathematics Through Matrices", "Tonne, Phil C.", "matrices", "67", "", "", "")
+note_data <- c("Better Mathematics Through Matrices", "Tonne, Phil C.", "matrices", "67", "Emory University", "", "Topics include multiplication of matrices, solving matrix equations, inverses of matrices, commuting matrices, matrix polynomials, complex numbers, matrix similarity, and square roots and cube roots of matrices. The heart of this guide is a series of problems designed to engage your deductive skills, and stimulate your ability to find patterns and make generalizations. The goal is to improve your ability to reason; the vehicle is the study of matrices. Matrices are part of every branch of mathematics, and are a frequent tool in, for example, economics, sociology, and physics -- wherever data is organized.")
 
 
 tibble(note_entries, note_data) |>

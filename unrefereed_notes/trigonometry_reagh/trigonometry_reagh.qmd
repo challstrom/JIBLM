@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Trigonometry", "Reagh, Ed", "trigonometry", "167", "", "", "")
+note_data <- c("Trigonometry", "Reagh, Ed", "trigonometry", "167", "", "", "This course guide thoroughly covers all topics of trigonometry, at a level appropriate for high school students. Mr. Reagh worked as an actuary for Houston corporations, until retiring at age 45 to teach high school mathematics in a Houston suburb.")
 
 
 tibble(note_entries, note_data) |>

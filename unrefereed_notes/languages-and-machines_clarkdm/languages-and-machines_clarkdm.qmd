@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Languages and Machines", "Clark, David M.", "uncategorized", "51", "", "", "")
+note_data <- c("Languages and Machines", "Clark, David M.", "uncategorized", "51", "State University of New York at New Paltz", "", "This discovery-based course guide is primarily written for advanced undergraduate computer science and computer engineering students, who normally have no prior theorem-proving experience. In this course, students learn about some of the fundamental relationships between computing machines and the languages that they understand. Our goal in this course is to find ways to classify machines according to their complexity, and to understand the capabilities of machines in each complexity category. Topics include a review of tools from discrete mathematics, finite state automata and regular languages, and pushdown automata and context-free languages.")
 
 
 tibble(note_entries, note_data) |>

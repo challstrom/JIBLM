@@ -11,7 +11,8 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Foundations of Mathematics", "Clark, David M.", "foundations", "36", "", "", "")
+note_data <- c("Foundations of Mathematics", "Clark, David M.", "foundations", "36", "State University of New York at New Paltz", "", "This discovery guide is designed for a discovery-based foundations course for mathematics majors. While its primary goal is to develop a skill in problem-solving and theorem-proving, it simultaneously provides content knowledge of a range of topics that will be fundamental in subsequent mathematics courses. Topics include a formal view of set theory, propositional logic and Boolean expressions, functions, concepts of numbers, mathematical induction, natural deduction, and equivalence relations.
+")
 
 
 tibble(note_entries, note_data) |>

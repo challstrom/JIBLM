@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Foundations", "Ochoa, James P.", "foundations", "16", "", "", "")
+note_data <- c("Foundations", "Ochoa, James P.", "foundations", "16", "Hardin-Simmons University", "", "Topics include logic, sets, integer properties, induction, prime factorization, and principles of mathematical operations.")
 
 
 tibble(note_entries, note_data) |>
