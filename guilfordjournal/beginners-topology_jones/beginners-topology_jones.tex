@@ -1,0 +1,1875 @@
+\documentclass{book}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% Journal headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright Guilford College Journal of Undergraduate Mathematics} \cfoot{} \rfoot{ - at www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+
+\thispagestyle{empty}
+
+\title{Beginner's Topology}
+\author{F. Burton Jones}
+\date{\vspace{3cm}
+   \emph{Journal of Undergraduate Mathematics}\\
+   Department of Mathematics\\
+   Guilford College\\
+   Greensboro, North Carolina 27410}
+\maketitle
+
+
+\thispagestyle{empty}
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{\numberline{}Preface}
+\markboth{Preface}{Preface}
+
+\pagenumbering{roman}
+
+This little book contains the essentials of my course in topology of undergraduates, mostly from the first two years of college. Much of it is suitable for high school students, especially those who are willing to think and experiment. Mainly the course concerns the topology of the real line. However, in order to reduce the use of arithmetic (and algebra) to a purely descriptive role, I have constructed a concrete space in which points are maps from natural numbers to the natural numbers, i.e., sequences of positive integers. The lexicographic order is defined and the space of all such functions is given the order topology. All this is done slowly, introducing the student gradually to certain types of infinite processes. My experience over the past fifteen years is that in one semester, the material in Chapters I and II can usually be covered.
+
+I generally begin this course doing most most of the talking while trying to get the students involved as quickly as possible. As written, the text contains about what I do myself. The students fill in the gaps, prove the theorems, solve the exercises, and present these solutions (and some of the harder problems) themselves in class rather than listen to me! But some of the more reticent members of the class prefer to tell me (in class) how a proof goes and I will repeat it and write the necessary explanation on the blackboard. After a few weeks, this inefficient process is less frequently required.
+
+If the instructor does not care to proceed in this fashion, he can, of course, fill in the gaps himself using the usual lecture method. In fact, he can probably cover Chapter III (as well as the first two) in one semester without difficulty. However, it is my conviction that becoming a participant in the creative process does something for the student that is extremely worthwhile. 
+
+When I first experimented with this approach (the class was a freshman class composed almost entirely of non-mathematics and non-science majors), the students participated even in selecting nomenclature, e.g., calling the functions (from the natural numbers to the natural numbers) files. Almost a week was spent trying to obtain a definition of order so that the usual order properties of real numbers relative to addition and multiplication would hold true. They learned something about attempting to create the real numbers and the associated algebra. They also learned something about research. For although the project starts with successes and intuitive high hopes, it ultimately ends in failure, e.g., we do not quite get what we want algebraically. But we do get a beautiful approximation to the topology of the real line. Later on with maturity, the student, almost without giving it a thought, will realize what the relation really is.
+
+\begin{flushright}
+F. Burton Jones \\
+University of California, Riverside
+\end{flushright}
+
+
+
+
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{\numberline{}Introduction}
+\markboth{Introduction}{Introduction}
+
+
+We are going to make up a space very much like a straight line (or more accurately, like a half-line or ray) in order to start the study of topology in a concrete but unfamiliar situation. Our building blocks (or atoms) will be the natural numbers: 1, 2, 3, etc. While all of us have used these numbers from early childhood, so much so that we feel that we know all about them, it is nevertheless necessary for us to agree on some of their basic properties. We can add any two natural numbers; we can multiply any two; they have size, i.e, five is larger than two; we have symbols for them and names for them; and so on.
+
+More precisely, some of the properties or laws of natural numbers are as follows:
+
+\begin{description}
+
+\item[Addition Property:] If $a$ is a natural number and $b$ is also a natural number, then $a + b$ is a natural number.
+
+\item[Multiplication Property:] If $a$ is a natural number and $b$ is also, then $a \times b$ is a natural number.
+
+\item[The Order Properties:] $\ $
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item \emph{If $a$ and $b$ are different natural numbers, then either $a$ is larger than $b$ or $b$ is larger than $a$, but not both; and $a$ is neither larger nor smaller than itself.} (This is frequently called the law of trichotomy, because it says that only one of these can be true once you have fixed a number $a$ and a number $b$: $a$ is larger than $b$, or $b$ is larger than $a$, or $a$ is $b$).
+    \item \emph{If $a$, $b$, and $c$ are natural numbers such that $a$ is less than $b$ and $b$ is less than $c$, then $a$ must be less than $c$.} (This is usually called the transitive property or law of transitivity.)
+  \end{enumerate}
+
+\end{description}
+
+Of course, these properties are interconnected: \emph{if $a$, $b$, and $c$ are natural numbers and $a$ is less than $b$, then $a + c$ is less than $b + c$, and $a \times c$ is less than $b \times c$.}
+
+There are a great many more such properties that all of us know and use about natural numbers. We will not bother to continue this catalogue, with full confidence that we are essentially agreed on what they are, except for possibly one very important one.
+
+\begin{description}
+
+\item[The Induction Axiom:] If $W$ is a set \emph{(bunch or batch)} of natural numbers, there is a smallest number in $W$. \emph{(This property is sometimes called the well-ordering property, and says that the natural numbers are well-ordered.)}
+
+\end{description}
+
+It is this property that lets us name the natural numbers. Thus when $W$ is the set of all natural numbers, the \emph{Induction Axiom} says that there is a smallest number in $W$. And this is the number we call ``one''. Then when we let $W$ be the set of all the natural numbers except ``one'', the \emph{Induction Axiom} again tells us that this set too must contain a smallest number, and this is the number we call ``two''. So in this manner we can name the natural numbers so that we will all agree upon the names.
+
+\subsection*{Problems}
+\begin{enumerate}[\hspace{1cm}(1).]
+  \item If $a$ and $b$ are natural numbers and $a < b$, why is $a^2 < b^2$?
+  \item If $a$ and $b$ are even natural numbers (i.e., multiples of $2$) and $a < b$, show that $a < \frac{a}{2} + \frac{b}{2} < b$.
+  \item How is ``ten'' defined using the \emph{Induction Axiom}? ``eleven''?
+\end{enumerate}
+
+It is convenient to use a few of the ideas and some of the notation from the theory of sets. Some of these will be introduced now and others will be introduced as needed, but previous contact with set theory, while helpful, is not really necessary. A \emph{set} of numbers is just a batch or bunch of numbers. Or if one is thinking about geometry, a \emph{set} of points is just a batch or bunch of points. For instance, a lines is a set of points (or more briefly, a point set). In Cartesian geometry, the set of all lines through the origin is often called a ``family'' of lines or a ``collection'' of lines. Since each of these lines is itself already a set, this usage helps to avoid confusion.
+
+Now suppose that $A$ is a number set and that $B$ is a number set. By the \emph{union} of $A$ and $B$, we shall mean the number set consisting of all numbers in $A$ together with all numbers in $B$, and we shall denote the union of $A$ and $B$ by $A \cup B$ (read $A$ union $B$). That is, a number $x$ belongs to the set $A \cup B$ if and only if $x$ belongs to $A$ or $x$ belongs to $B$. (The union of $A$ and $B$ is sometimes called the logical sum of $A$ and $B$.) By the \emph{intersection} of $A$ and $B$, we shall mean the set of all numbers which are common to $A$ and $B$, and we denote this set by $A \cap B$ (read $A$ intersection $B$). By $A - B$ we shall mean the set of all numbers which belong to $A$ but not to $B$ ( so $B - A$ is the set of all numbers in $B$ which are not in $A$). We say that $A$ is a \emph{subset} of $B$ (abbreviated $A \subset B$) whenever each number in $A$ is also in $B$. We also say that $A$ \emph{contains} $B$ ($A \supset B $) whenever $B \subset A$.
+
+\subsection*{Problems}
+\begin{enumerate}[\hspace{1cm}(1).]
+  \item If $A$ and $B$ are number sets and $A$ and $B$ do not intersect (i.e., no number belongs to both of them), what is $A - B$? $(A - B) \cup B$? $(A - B) \cup A$?
+  \item Is $(A - B) \cup B$ ever just the set $A$? When?
+  \item Is $(A \cup B) - B$ ever just the set $A$? When?
+  \item Give examples illustrating $2$ and $3$.
+  \item If $N$ is the set of all natural numbers, is $(N - A) \cup (N - B) = N - (A \cap B)$? Ever? Always? When?
+  \item Is $(N - A) \cap (N - B) = N - (A \cup B)$? Ever? Always? When?
+\end{enumerate}
+
+
+
+
+\chapter{Constructing A Space}
+\markboth{1. Constructing A Space}{1. Constructing A Space}
+
+\pagenumbering{arabic}
+
+
+\section{Natural Numbers} 
+
+We began topology by constructing a space (somewhat like the line) with the help of the natural numbers: $1, 2, 3, \cdot \cdot \cdot$. We are familiar with the natural numbers (sometimes called whole numbers or counting numbers) and know their properties, but it may be well to recall again some of these so that we all know where we are starting from.
+
+The natural numbers have \emph{size}. We know that five is greater than two (abbreviated, $5 > 2$). In fact, size gives the natural numbers a natural order. This order is used in various ways. For example, it is used in the naming of the number. \emph{One} is the smallest of the natural numbers, \emph{two} is the next smallest, etc. Since each natural number has a next (larger) number, there is no largest natural number.
+
+The natural numbers can be added. One plus one is two, one plus two is three, so is two plus one, etc. But the addition is unique and definite and always with another natural number. This addition obeys certain of the laws of numbers: (a) it is associative, and (b) it is commutative. But of more interest to us, it is intimately connected with the order. We know that if $a$ and $b$ are different natural numbers, either $a > b$ or $b > a$, but never both. Whenever $b > a$ (i.e., $b$ follows $a$ in the natural order given by size), there is a natural number $n$ such that $a$ plus $n$ is $b$ (abbreviated, $a + n = b$). Conversely, if $a$, $b$, and $n$ are natural numbers and $a + n = b$, then $b > a$ (or equivalently, $a$ is less than $b$, abbreviated $a < b$). We even say not just that $b$ is larger than $a$, but $b$ is n \emph{more} than $a$.
+
+There is one property of the natural numbers previously mentioned in the introduction that we probably agree on (not much used in elementary courses) but which needs to be explicitly stated because it will be so necessary for our work. It is the \emph{induction} or \emph{well-ordered} property, which may be stated as follows:
+
+\begin{description}
+
+\item[The Well-Ordered Property:] If $W$ is a set of natural numbers, then $W$ contains a smallest number (i.e., there is a natural number $\bar{w}$ in $W$ such that if $w$ is any other number in $W$, then $w > \bar{w}$).
+
+\end{description}
+
+This principle tells us that the set of \emph{all} natural numbers contains a smallest number, namely, one (we have mentioned this previously). The set of all \emph{even} numbers contains a smallest number, namely, two. The set of all prime numbers $p$ such that $p$, $p + 2$, and $p + 4$ are all primes, has a smallest number. Can you find it? (One is not considered to be a prime, but any other natural number which is divisible only by itself and one is called a prime.) Sometimes one has great difficulty in ``finding'' the smallest in a given set of natural numbers, or in fact one may be unable to do so. But the induction principle tells us that regardless of our inability to ``find'' or ``identify'' it, the smallest number belonging to the given set really does exist.
+
+You probably have had some exposure to mathematical induction, quite possibly not very satisfying. For example, students in high school algebra are asked to prove that
+\begin{equation*}
+1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2}
+\end{equation*}
+by mathematical induction. Part of the trouble with this is that the student does not know what the problem is, because the number on the left-hand side has not been defined. This can be done as follows: 
+\begin{align*}        \  & 1 + 2 + 3 + \cdots + 1 = 1\\
+    \textnormal{and if } & 1 + 2 + 3 + \cdots + n = A\\
+      \textnormal{then } & 1 + 2 + 3 + \cdots + (n+1) = A + (n+1)
+\end{align*}
+
+Now with the induction principle, the left-hand side can be proved to be \emph{well-}defined (that is, make sense) in this manner:
+
+If for some natural number $n$, $1 + 2 + 3 + \cdots + n$ is not defined by the above statement, then let $W$ be the set of all such natural numbers. Now $w$ belongs to $W$ if it is a natural number for which $(1 + 2 + 3 + \cdots + w)$ is not a definite, natural number. But $W$ contains a smallest number. Let us call it $\bar{w}$. Now $\bar{w}$ is not \emph{one} because $(1 + 2 + 3 + \cdots + 1)$ is a definite number, namely, 1. So $\bar{w} > 1$; hence there is a natural number $\bar{n}$ such that $1 + \bar{n} = \bar{w}$. But if this is so, $\bar{n} + 1 = \bar{w}$, which makes $\bar{w} >\bar{n}$. Being smaller than $\bar{w}$ prevents $\bar{n}$ from belonging to $W$. So $1 + 2 + 3 + \cdots + \bar{n}$ is a definite natural number, say, $\bar{A}$. And then by our definition,
+\begin{equation*}
+    1 + 2 + 3 + \cdots + (\bar{n}+1) = \bar{A} + (\bar{n}+1)
+\end{equation*}
+So $1 + 2 + 3 + \cdots + \bar{w} = \bar{A} + (\bar{n}+1)$, which is a definite number after all. In this and other ways, the principle allows us to define things as well as prove things.
+
+While the set of all natural numbers has no largest number and the set of all even numbers has no largest number, certain sets do contain largest numbers. For instance, nine is the largest of the set of all natural numbers less than ten.
+
+\subsection*{Exercise 1}
+\begin{enumerate}[\hspace{1cm}{1}(a).]
+  \item Prove that if $b$ is a natural number greater than \emph{one} and $T$ is the set of all natural numbers less than $b$, then $T$ contains a largest number.
+  \item Suppose that $W$ is a set of natural numbers and $n$ is a natural number such that is $w$ belongs to $W$, then $n > w$. Prove that $W$ contains a largest number. (For the moment, let us work only with addition and only with natural numbers. You may need to prove that for natural numbers, $1 + p = b$ and $1 + q = b$ makes $p = q$. How do you do this? How can you prove that $p < q < p + 1$ is impossible?)
+\end{enumerate}
+
+\subsection*{Problems}
+\begin{enumerate}[\hspace{1cm}1.]
+  \item If $p$ is a natural number, then $p(p+1)$ is a multiple of $2$. (If this is not true, i.e., if there \emph{is} a natural number $w$ such that $w(w+1)$ is not a multiple of $2$, then there is a smallest such number $\bar{w}$. Could $\bar{w}$ be the number $1$? If not, $\bar{w} > 1$, and so for some natural number $n$, $1 + n = \bar{w}$ which makes $n < \bar{w}$. Now this makes $n(n+1)$ a multiple of $2$, say, $q \times 2$. What now?
+  \item If $n$ is any natural number, is $n^2 + n + 41$ a prime number? (A prime number is one which is not the product of two smaller natural numbers.)
+\end{enumerate}
+
+
+
+\section{Files} 
+
+Now we shall begin to construct our space. By a \emph{file} we shall mean a table of pairs of natural numbers such that every natural number appears one and only one time in the left-hand column. Examples:
+
+\begin{center}
+    \begin{tabular}{cccc}
+    A & B & C & D\\
+
+        \begin{tabular}{c|c}
+        1 & 5\\ \hline
+        2 & 4\\ \hline
+        3 & 3\\ \hline
+        4 & 2\\ \hline
+        5 & 1\\ \hline
+        6 & 1\\ \hline
+        7 & 1\\ \hline
+        \vdots & \vdots
+        \end{tabular}
+
+        &
+
+        \begin{tabular}{c|c}
+        1 & 2\\ \hline
+        2 & 4\\ \hline
+        3 & 6\\ \hline
+        4 & 8\\ \hline
+        5 & 10\\ \hline
+        6 & 12\\ \hline
+        7 & 14\\ \hline
+        \vdots & \vdots
+        \end{tabular}
+
+        &
+
+        \begin{tabular}{c|c}
+        1 & 1\\ \hline
+        2 & 2\\ \hline
+        3 & 1\\ \hline
+        4 & 2\\ \hline
+        5 & 1\\ \hline
+        6 & 2\\ \hline
+        7 & 1\\ \hline
+        \vdots & \vdots
+        \end{tabular}
+
+        &
+
+        \begin{tabular}{c|c}
+        1 & 8\\ \hline
+        2 & 8\\ \hline
+        3 & 8\\ \hline
+        4 & 8\\ \hline
+        5 & 8\\ \hline
+        6 & 8\\ \hline
+        7 & 8\\ \hline
+        \vdots & \vdots
+        \end{tabular}
+
+    \end{tabular}
+\end{center}
+
+(The three dots at the bottom of each column indicate that the table is completed in the manner implied by the pattern evident in the right-hand column, while the left-hand column is continued to contain all the natural numbers.) Actually, you recognize a file as a function from the natural numbers to the natural numbers. Hence, you already know how to add them. But do you know how to compare their sizes? Is $A$ greater than $B$? Is $B$ greater than $D$ or less than $D$?
+
+The way we shall define \emph{order} among files will make $A$ greater than $B$ because in the first row, $5 > 2$. This method of comparison also makes $D$ greater than $B$. Everyone would want $B$ to be greater than $C$. Consider these three files:
+
+\begin{center}
+    \begin{tabular}{c c c c c}
+    P & & Q & & R \\
+
+        \begin{tabular}{c|c}
+        1 & 1\\ \hline
+        2 & 1\\ \hline
+        3 & 2\\ \hline
+        4 & 3\\ \hline
+        5 & 4\\ \hline
+        6 & 5\\ \hline
+        \vdots & \vdots \\ \hline
+        n+1 & n\\ \hline
+        \vdots & \vdots
+        \end{tabular}
+
+        &   &
+
+        \begin{tabular}{c|c}
+        1 &  \\ \hline
+        2 &  \\ \hline
+        3 &  \\ \hline
+        4 &  \\ \hline
+        5 &  \\ \hline
+        6 &  \\ \hline
+        \vdots & \vdots
+        \end{tabular}
+
+        &    &
+
+        \begin{tabular}{c|c}
+        1 & 1\\ \hline
+        2 & 2\\ \hline
+        3 & 1\\ \hline
+        4 & 1\\ \hline
+        5 & 1\\ \hline
+        6 & 1\\ \hline
+        \vdots & \vdots
+        \end{tabular}
+
+    \end{tabular}
+\end{center}
+We will say that $P$ is less than $R$ because in the first row where they differ, $P$ is smaller than $R$ (i.e., $1 < 2$). Now can you find a file $Q$ such that $P < Q < R$? Can you find a file between
+
+\begin{center}
+    \begin{tabular}{cccc}
+
+        \begin{tabular}{c|c}
+        1 & 1\\ \hline
+        2 & 1\\ \hline
+        3 & 1\\ \hline
+        4 & 1\\ \hline
+        \vdots & \vdots
+        \end{tabular}
+
+        &
+        and
+        &
+
+        \begin{tabular}{c|c}
+        1 & 2\\ \hline
+        2 & 2\\ \hline
+        3 & 2\\ \hline
+        4 & 2\\ \hline
+        \vdots & \vdots
+        \end{tabular}
+
+        &
+        ?
+
+    \end{tabular}
+\end{center}
+
+(Remember, for natural numbers you cannot find a natural number between $1$ and $2$.)
+
+\subsection*{Problem}
+Find a file larger than 
+\begin{tabular}{c|c}
+1 & $n!$ \\ \hline
+2 & $(n+1)!$ \\ \hline
+3 & $(n+2)!$ \\ \hline
+\vdots & \vdots
+\end{tabular} 
+when $n$ is the smallest number greater than $10^{10^{10}}$.
+
+
+
+\section{More On Natural Numbers} 
+
+As mentioned in \S 1, we know that the natural numbers $1, 2, 3, \cdots$ have a natural order so that if $W$ is any set (batch, bunch, etc.) of natural numbers, then some \emph{one} number in $W$ is smaller than all other numbers in $W$. This property (usually referred to as the Induction Axiom or well-ordering principle) is not only useful in proofs, but also in definitions. For example, consider the following theorem:
+\begin{equation*}
+\textnormal{If } n \textnormal{ is a natural number, then } n + 1 \textnormal{ is the next natural number.}
+\end{equation*}
+What exactly does this mean? What do we mean by ``the next natural number''? We can say what we mean by using the Induction Axiom in the following simple way:
+
+Let $W$ be the set of all natural numbers which are larger than $n$. By the Induction Axiom, some one of them, say $\bar{w}$, is smaller than all other numbers in $W$. So by ``the next natural number'' (after $n$), we mean $\bar{w}$. In this way, we have used the Induction Axiom to define (or identify) a certain number by a property it possesses.
+
+Now, how do we prove the theorem (i.e., how do we prove that $n + 1$ is $\bar{w}$)? We know that $n + 1$ is larger than $n$ (``one larger'', we usually say). So $n + 1$ must belong to $W$. Hence if $n + 1$ is \emph{not} $\bar{w}$, it must be larger than $\bar{w}$. In this case, we have $n < \bar{w} < n + 1$ (remember, $\bar{w}$ belongs to $W$, as it is larger than $n$). Probably you have already proved in Exercise 1(b) that this cannot be. Hence $\bar{w}$ must be $n + 1$.
+
+But suppose you had not proved that
+\setcounter{equation}{-1}
+\begin{equation}
+n < \bar{w} < n + 1
+\end{equation}
+is impossible, how do you try to prove it? One approach is as follows:
+
+Since $n < \bar{w}$, this means there is a natural number $r$ such such that $n + r = \bar{w}$. Likewise $\bar{w} < n + 1$ means that there is a natural number $s$ such that $\bar{w} + s = n + 1$. Putting these together:
+\begin{alignat}{3}
+(n + r) + s &= n + 1\\
+n + (r + s) &= n + 1\\
+      r + s &= 1
+\end{alignat}
+
+(If we could cancel $n$ from both sides of (2)), which means that
+\begin{equation} r < 1 \end{equation}
+
+But (4) is impossible because $1$ is the smallest of all the natural numbers. Hence (0) cannot be. (Of course we know that (2) is true if (3) is, but how do we know that (3) is true if (2) is?)
+
+Maybe there is a simpler way to prove that (0) is impossible. Let us try to use a different approach, using the Induction Axiom in a more customary fashion.
+
+We wish to prove that if $n$ is a natural number, there is no natural number between $n$ and $n + 1$. Suppose that for some $n$ there is a natural number $t$ such that $n < t < n + 1$. This time, let $W$ be the set of all natural numbers $n$, and let $\bar{n}$ be the smallest number in $W$. That is, there is a natural number $\bar{t}$ such that
+\begin{equation}
+\bar{n} < \bar{t} < \bar{n} + 1
+\end{equation}
+
+Now if $\bar{n} > 1$, so is $\bar{t}$, and we subtract $1$ from both sides of each inequality and get
+\begin{equation*}
+\bar{n} - 1 < \bar{t} - 1 < \bar{n}
+\end{equation*}
+
+Since $(\bar{n} - 1) + 1 = \bar{n}$, $\bar{t} - 1$ is a natural number and $\bar{n} - 1 < \bar{n}$, this contradicts the definition of $\bar{n}$. So $\bar{n}$ must be $1$ ($\bar{n}$ cannot be less than $1$). Hence, (5) looks like this:
+\begin{equation}
+1 < \bar{t} < 1 + 1
+\end{equation}
+
+But $1 + 1$ is $2$ and $2$ is the smallest natural number greater than $1$. So no such number $\bar{t}$ can exist.
+
+(There is a much more direct proof of the theorem. Start by assuming $t$ is a natural number greater than $n$. Then there is a natural number $r$ such that $n + r = t$. Now argue cases: $r = 1$ and $r > 1$.)
+
+Perhaps this gives you an idea about how to prove Exercise 1(a).
+
+If we could subtract, we could do something like this:
+
+Since $b$ is larger than every $t$ in $T$, let $W$ be the set of all numbers $b - t$ (for $t$ in $T$). Of course, the smallest of these should give the largest in $T$ when subtracted from $b$. (Draw a picture of a line with $T$, $t$, and $b$ on it.) But since we have not yet justified subtraction, let us try the same thing in a different way.
+
+Let $W$ be the set of all numbers $w$ such that there is a number $t$ in $T$ such that $t + w = b$ (each number in $T$ produces such a number $w$). Now let $\bar{w}$ be the smallest number in $W$. Obviously $\bar{w} < b$. (Why?) So there is a number $x$ such that $\bar{w} + x = b$. Should not $x$ be the largest number in $W$?
+
+\subsection*{Exercise 2} Complete the above proof.
+
+
+
+\section{Comment About Files} 
+
+Since $2$ is the next natural number larger than $1$, isn't the file
+\begin{tabular}{c}
+    A \\
+    \begin{tabular}{c|c}
+        1 & 2\\ \hline
+        2 & 2\\ \hline
+        3 & 3\\ \hline
+        \vdots & \vdots
+    \end{tabular}
+\end{tabular}
+the next file larger than
+\begin{tabular}{c}
+    B \\
+    \begin{tabular}{c|c}
+        1 & 1\\ \hline
+        2 & 1\\ \hline
+        3 & 1\\ \hline
+        \vdots&\vdots
+    \end{tabular}
+\end{tabular}
+?  No, because
+\begin{tabular}{c}
+    \\
+    \begin{tabular}{c|c}
+        1 & 1\\ \hline
+        2 & 2\\ \hline
+        3 & 2\\ \hline
+        \vdots & \vdots
+    \end{tabular}
+\end{tabular}
+is between them. Think of several more files between A and B.
+
+\subsection*{Exercise 3} Prove that if A and B are files and A is less than B, then there is a file between them. (A and B are arbitrary in this exercise; so let A be
+\begin{tabular}{c|c}
+    1 & $a_1$\\ \hline
+    2 & $a_2$\\ \hline
+    3 & $a_3$\\ \hline
+    \vdots & \vdots
+\end{tabular}
+and B be
+\begin{tabular}{c|c}
+    1 & $b_1$\\ \hline
+    2 & $b_2$\\ \hline
+    3 & $b_3$\\ \hline
+    \vdots & \vdots
+\end{tabular}. 
+It may be useful to consider several more special cases before trying the general theorem.)
+
+\vspace{0.5cm}
+
+\subsection*{Exercise 4} Prove that if A is a file, there is a file B larger than A.
+
+\subsection*{Problems}
+\begin{enumerate}[\hspace{1cm}1.]
+
+\item Find a file between
+\begin{tabular}{c|c}
+    1 & 1\\ \hline
+    2 & 25\\ \hline
+    3 & 25\\ \hline
+    4 & 25\\ \hline
+    \vdots & \vdots
+\end{tabular}
+and
+\begin{tabular}{c|c}
+    1 & 1\\ \hline
+    2 & 26\\ \hline
+    3 & 1\\ \hline
+    4 & 1\\ \hline
+    \vdots & \vdots
+\end{tabular}
+
+\item Find a file between
+\begin{tabular}{c|c}
+    1 & 2\\ \hline
+    2 & 3\\ \hline
+    3 & 4\\ \hline
+    \vdots & \vdots
+\end{tabular}
+and
+\begin{tabular}{c|c}
+    1 & 3\\ \hline
+    2 & 4\\ \hline
+    3 & 5\\ \hline
+    \vdots & \vdots
+\end{tabular}
+
+\end{enumerate}
+
+
+
+\section{Formalism} 
+
+We have been working with the natural numbers in an intuitive way, hoping that we were all in agreement on their properties. It may be well at this point to formalize or axiomatize this procedure to some extent, so that we may be sure of agreement. Also by doing this we may help to make clear what is meant by a \emph{proof} of a proposition.
+
+\begin{description}
+
+\item[Axiom 0:] There exists a set $Z^+$ of elements called natural numbers.
+
+\end{description}
+
+Here we postulate the existence of a set, which in a sense amounts to a license to proceed to lay down other properties of the natural numbers. So far, any set would do for $Z^+$, because since we are starting from scratch we could call the elements of any set by whatever name we like. ($Z$ is used by mathematicians for the integers because it is the first letter of the German word \emph{zahlen}, which means ``to count''. $Z^+$ means the positive integers. All this makes no difference because we may give symbols any meaning we like. It simply helps one to remember later on what meaning we have given the symbol $Z^+$.)
+
+Now we must go on. We need an axiom which tells us that we can ``add'' natural numbers and what properties we want (as a minimum) ``addition'' to have.
+
+\begin{description}
+
+\item[Axiom A:] There exists a set $A$ of ordered triplets of natural numbers, such that
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item every ordered pair of natural numbers is the first pair of some triple in $A$ (i.e., if $x, y \in Z^+$, there is a natural number $z$ such that $(x,y,z)$ is in $A$) (The expression $x, y \in z^+$ means $x$ is an element of $Z^+$, and so is $y$.),
+    \item no ordered pair of natural numbers is the first pair of more than one triple in $A$ (i.e., if $(x,y,z)\in A$ and $(x,y,w)\in A$, then $z$ is $w$),
+    \item if $(x,y,z)$ is in $A$, so is $(y,x,z)$, and
+    \item if $a,b,c \in Z^+$, then $(a + b) + c = a + (b + c)$.
+  \end{enumerate}
+
+\end{description}
+
+Now, what does $a + b$ mean here? Actually, $A$ is just an ``addition'' table. So by $a + b$ we simply mean a number $s$ (guaranteed by (1)) so that $(a,b,s)$ is in $A$. Actually, (4) should be stated directly as a property of elements in $A$ in a manner similar to but more complicatedly than (3).
+
+\subsection*{Exercise 5.1} State (4) directly in terms of elements of $A$.
+
+\vspace{0.5cm}
+
+The student should recognize these properties: (1) one says roughly that any two natural numbers may be added and this addition always gives a natural number; (2) says that this addition is unique; (3) says that addition is commutative (or abelian); and (4) says that it is associative.
+
+We use words ``ordered pair'' and ``ordered triple'' without explanation. The student is familiar with them from graphing points in $x,y$-coordinate and $x,y,z$-coordinate geometry. But the student remembers that while the ordered pairs $(2,3)$ and $(3,2)$ are different, they actually are formed from the same pair. When is an ordered pair not formed from a pair?
+
+Having a set $A$ which allows us to add, we need one to specify the order or size of the natural numbers.
+
+\begin{description}
+
+\item[Axiom 0:] There exists a non-empty set $o$ of ordered pairs of natural numbers such that
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item every ordered pair $(x,y)$ of distinct natural numbers $x \neq y$ appears in $o$; or if not, $(y,x)$ is in $o$; but in no case are both $(x,y)$ and $(y,x)$ in $o$,
+    \item if $(x,y)$ and $(y,z)$ are in $o$, then $(x,z)$ is in $o$; and
+    \item if $(x,y)$ is in $o$ and $a$ is in $Z^+$, then $(x + a, y + a)$ is in $o$.
+  \end{enumerate}
+
+\end{description}
+
+We now define $a < b$ to mean that $(a,b)$ is in $o$, i.e., $o$ is made up of all those ordered pairs of natural numbers in which the first member is smaller than the second. Property (2) says that if $x < y$ and $y < z$, then $x < z$; and (3) says that if $x < y$, then $x + a < y + a$. So far, this is the only connection between the set $A$ and the set $o$.
+
+Finally, we must have the elements of $Z^+$ well-ordered.
+
+\begin{description}
+
+\item[Axiom I:] If $W$ is a non-empty subset of $Z^+$, there is a natural number $\bar{w}$ in $W$ such that if $w$ is any other number in $W (w \neq \bar{w})$, then $(\bar{w},w)$ is in $o$.
+
+\end{description}
+
+\subsection*{Exercise 5.2} Forgetting about the names, could there be a number $w$ larger that all the numbers $1, 2, 3, \cdots$ with $Z^+$ being the set $\{1,2,3, \cdots, w,w+1,w+2, \cdots, w+w, w+w+1, \cdots\}$ (with $A$ and $o$ appropriately defined)?
+
+Perhaps it might clarify the difference between triples and ordered triples to solve the following problem.
+
+\subsection*{Problem} How many ordered triples are there that can be chosen from the set of letters \{R, O, Y, G, B, I\}? How many ordered pairs? How many pairs? (Remember $(R,R)$ is an ordered pair of letters, but certainly not a pair of letters.)
+
+
+
+\section{More On Formalism}
+
+In the last section, we began to ``axiomatize'' the natural numbers. We stated axioms which say the sets $Z^+$, $A$, and $o$ exist and have certain properties. The set $A$, usually referred to as the addition table, tells us what $x + y$ means. That is, having postulated the existence of $A$, we define $x + y$ to be a number $z$ such that $(x,y,z)$ belongs to $A$. 
+
+The commutative law says that whenever $(x,y,z)$ and $(y,x,w)$ belong to $A$, then $z$ is $w$. Algebraic notation says this so economically (since $z$ is $x + y$ and $w$ is $y + x$): $x + y = y + x$. The associative law: $(x + y) + z = x + (y + z)$ in the set language says that if $(x,y,u)$, $(y,z,v)$, $(u,z,r)$, and $(x,v,s)$ all belong to $A$, then $r$ is $s$. 
+
+The language of sets attempts to make clear the algebraic shorthand that years of training have accustomed us to. But it also allows us to be somewhat less attached to these customs. We can ask questions which would otherwise seem to be heretical. 
+
+For example, leaving $Z^+$ and $A$ untouched, why couldn't $o$ be taken as follows: $2, 3, 4, \cdots, 1$, i.e., bridge order, so to speak, where the ``ace'' (=1) is larger than all other numbers? 
+
+(The student should understand this to imply that $(2,3)$, $(2,4)$, $(3,4)$, etc., are all in $o$ just as before, but those pairs involving $1$ have been reversed so that $(2,1)$, $(3,1)$, $(4,1)$, etc. belong to $o$.) 
+
+Of course, nothing can prevent one from doing this, but if this is done, the axioms are no longer true. Probably many things go wrong, but in particular, (3) of Axiom 0 fails because $2$ is less than $1$ but $2 + 1$ is \emph{not} less than $1 + 1$ $((2,1) \in o$ but $(3,2) \not\in o$.
+
+To get back to an earlier question: could $Z^+$ actually be enlarged by putting in a number $\infty$ which is to be larger than all the elements of the old set $Z^+$? One would have to enlarge $A$ and $o$, of course, after some pattern such as $1, 2, 3, \cdots, \infty, \infty + 1,  \infty + 2, \cdots$.
+
+If this could be done so as to keep the axioms true, we would be in deep trouble because then $1, 2, 3, \cdots$ would become a bounded subset of the new $Z^+$, and we certainly want a bounded subset of $Z^+$ to contain a largest element. Or to say this a different way, we want every bounded subset of $Z^+$ to be finite.
+
+There are various ways of defining this word ``finite''. We shall mean when we say that a set (of anything) is \emph{finite} that it is in one-to-one correspondence with a bounded subset of the natural numbers. 
+
+So it is essential that we know that $Z^+$ not be of the sort stated above: $\{1, 2, 3, \cdots$, $\infty, \infty + 1, \infty + 2, \cdots\}$. And as you have seen, one property of the natural numbers that we customarily use -- $x < y$ if and only if for some natural number $n$, $x + n = y$ -- would do, if it could somehow be proved from the axioms.
+
+Perhaps it would help to start with a definition of ``finite'' which did not refer to $Z^+$ at all, and then prove later that it meant the same as the above definition. 
+
+A \emph{finite} set is one which is not in one-to-one correspondence with a \emph{proper} subset of itself; that is, a subset that omits at least one element of the set. Our conventional $Z^+ (=\{1, 2, 3, \cdots\})$ is infinite because all of $Z^+$ may be placed into one-to-one correspondence with the set $\{2, 4, 6, \cdots\}$ of the even numbers, or with $\{1, 2, 3, 5, 6, 7, \cdots\}$, which omits $4$. 
+
+This definition is hard to use. So even if you cannot bridge the gap right now between the two, we shall use the first definition. 
+
+Furthermore, since it is not our purpose to formulate the foundations of arithmetic, we shall leave this development but at least try to use the properties of $Z^+$ with care. 
+
+(The reader may be intrigued with one rather startling fact: the addition table is completely determined, calling the smallest element of $Z^+$ ``one'', the next ``two'', etc. but the multiplication table (which includes the distributive law) is not. If $Z^+ (=\{1, 2, 3, \cdots\})$ were replaced by the subset $\{2, 4, 6, \cdots\}$ shows this. How?)
+
+
+
+\section{Files Again}
+
+Consider the files:
+\begin{tabular}{c}
+  a \\
+  \begin{tabular}{c|c}
+    1 & $a_1$\\ \hline
+    2 & $a_2$\\ \hline
+    3 & $a_3$\\ \hline
+    \vdots & \vdots
+  \end{tabular}
+\end{tabular}
+and
+\begin{tabular}{c}
+  b \\
+  \begin{tabular}{c|c}
+    1 & $b_1$\\ \hline
+    2 & $b_2$\\ \hline
+    3 & $b_3$\\ \hline
+    \vdots & \vdots
+  \end{tabular}
+\end{tabular}.
+By $a + b$, we shall mean the file
+\begin{tabular}{c|c}
+    1 & $a_1 + b_1$\\ \hline
+    2 & $a_2 + b_2$\\ \hline
+    3 & $a_3 + b_3$\\ \hline
+    \vdots & \vdots
+\end{tabular}
+$(=(a + b)_1)$, and by $a\times b$ we shall mean
+\begin{tabular}{c|c}
+    1 & $a_1 b_1$\\ \hline
+    2 & $a_2 b_2$\\ \hline
+    3 & $a_3 b_3$\\ \hline
+    \vdots & \vdots
+\end{tabular}
+$(=(a\times b)_1)$.
+We shall say that $a < b$ if and only if there exists a natural number $n$ such that $a_n < b_n$, but for $j < n$, $a_j = b_j$. (Remember that \emph{every} natural number appears in the left-hand column, but obviously what they are paired off with past $n$ makes no difference in this comparison.)
+
+\subsection*{Exercise 7.1} Check the commutative, associative, and distributive laws. Prove that the ``order'', $<$, is well-defined (or makes sense), i.e., if $a \neq b$, then either $a < b$ or $b < a$, but not both.
+
+\vspace{0.5cm}
+
+\subsection*{Problems}
+
+\begin{enumerate}[\hspace{1cm}1.]
+\item What is
+\begin{tabular}{cccc}
+    \begin{tabular}{c|c}
+    1 & 1\\ \hline
+    2 & 2\\ \hline
+    3 & 3\\ \hline
+    \vdots & \vdots
+    \end{tabular}
+    & $+$ &
+    \begin{tabular}{c|c}
+    1 & 2\\ \hline
+    2 & 2\\ \hline
+    3 & 2\\ \hline
+    \vdots & \vdots
+    \end{tabular}
+    & ?
+\end{tabular}
+
+\item Compute
+\begin{tabular}{cccc}
+    \begin{tabular}{c|c}
+    1 & 1\\ \hline
+    2 & 2\\ \hline
+    3 & 3\\ \hline
+    \vdots & \vdots
+    \end{tabular}
+    & $\times$ &
+    \begin{tabular}{c|c}
+    1 & 2\\ \hline
+    2 & 2\\ \hline
+    3 & 2\\ \hline
+    \vdots & \vdots
+    \end{tabular}
+    &
+\end{tabular}
+
+\item Is
+\begin{tabular}{cccc}
+    \begin{tabular}{c|c}
+    1 & 1\\ \hline
+    2 & 2\\ \hline
+    3 & 3\\ \hline
+    \vdots & \vdots
+    \end{tabular}
+    & $<$ &
+    \begin{tabular}{c|c}
+    1 & 2\\ \hline
+    2 & 2\\ \hline
+    3 & 2\\ \hline
+    \vdots & \vdots
+    \end{tabular}
+    & ?
+\end{tabular}
+
+\item If $a$ is a natural number, is \\
+\begin{tabular}{cccccccc}
+    \begin{tabular}{c|c}
+    1 & $a$\\ \hline
+    2 & $a$\\ \hline
+    3 & $a$\\ \hline
+    \vdots & \vdots
+    \end{tabular}
+    & $\times$ &
+    \begin{tabular}{c|c}
+    1 & 1\\ \hline
+    2 & 1\\ \hline
+    3 & 1\\ \hline
+    \vdots & \vdots
+    \end{tabular}
+    & $<$ &
+    \begin{tabular}{c|c}
+    1 & $a$\\ \hline
+    2 & $a$\\ \hline
+    3 & $a$\\ \hline
+    \vdots & \vdots
+    \end{tabular}
+    & $\times$ &
+    \begin{tabular}{c|c}
+    1 & 2\\ \hline
+    2 & 1\\ \hline
+    3 & 1\\ \hline
+    \vdots & \vdots
+    \end{tabular}
+    & ?
+\end{tabular}
+Why?
+
+\end{enumerate}
+
+
+
+\section{Order Proofs And Problems}
+
+It is difficult (if not impossible) to say exactly what one means by the question: \emph{is order} (among files) \emph{well-defined}? But certainly the following thoughts are involved.
+
+Suppose $A$ and $B$ are distinct files. Since a file is a set of ordered pairs, this mean that either $A$ contains an ordered pair not in $B$, or $B$ contains one not in $A$. (Actually both things must happen, due to the fact that for any given file, every natural number is the first member of one and only one ordered pair in the file.) 
+
+Suppose that $A$ contains an ordered pair not in $B$. This means there is a natural number $n$ such that $(n,a_n)$ belongs to $A$ but not to $B$, or in other words, there is a natural number $n$ such that $a_n$ is not $b_n$. 
+
+By the Induction Axiom, there is a smallest such $n$; call it $\bar{n}$. Hence, either $a_{\bar{n}} < b_{\bar{n}}$, or $b_{\bar{n}} < a_{\bar{n}}$, but not both, from Axiom 0. So in case $a_{\bar{n}} < b_{\bar{n}}$, $A$ would be less than $B$ because $a_j = b_j$ for $j < \bar{n}$, and in case $b_{\bar{n}} < a_{\bar{n}}$, $B$ would be less than $A$. So for any two (arbitrary) different files $A$ and $B$, either $A < B$ or $B < A$, and there is no ambiguity.
+
+Of course, if you have already proved that if $A < B$ and $B < C$ then $A$ must be less than $C$, it could not be that $A < B$ and $B < A$, because $A$ would then be less than $A$. This cannot happen no matter what file $A$ might be. Why?
+
+You probably have proved that if $A$, $B$, and $C$ are files with $A < B$ and $B < C$, then $A < C$ (i.e., transitivity) by considering three cases depending on the relative positions of the rows where the pairs $A,B$ and $B,C$ differ. 
+
+Think again about what we wish to prove. We want to find the first (i.e., smallest) natural number $n$ where $a_n$ is not $c_n$ (if there is any such number), and see whether $a_n < c_n$ or $c_n < a_n$, hoping that it will prove to be: $a_n < c_n$. 
+
+We know that $A$ differs from $B$. So it cannot be true for all $n$ that $a_n = b_n, a_n = c_n$ and $b_n = c_n$. So let $\bar{n}$ be the first (i.e., smallest) value of $n$ which makes one of the equalities false. Then if $j < \bar{n}$, $a_j = b_j = c_j$. 
+
+But we know that $a_{\bar{n}} \leqq b_{\bar{n}}$ because $A < B$ (why?), and $b_{\bar{n}} \leqq c_{\bar{n}}$ because $B < C$. Hence $a_{\bar{n}} < c_{\bar{n}}$ (why?); so by definition, $A < B$.
+
+The Induction Axiom, which is a proposition about order, is assumed to be true for natural numbers. Now that we have defined ``order'' for files, we can ask, is the Induction Axiom true for files? Does every set of files contain a smallest file? The set of all files does. What is the smallest file?
+
+\subsection*{Problem} 
+
+Suppose that $W$ is the set of all files greater than the file $A$, where $a_n = 4$ for all $n$. Does $W$ have a smallest file? If you assume that it does, can't you get a contradiction (the contradiction being that some other file in $W$ is even smaller)?
+
+Of course, there are a great many files in $W$ of this problem. Consider a simpler set of files. For each natural number $n$, let $F_n$ be the file such that $(f_n)j = 1$ for $j \neq n$ but $(f_n)n = 2$. That is, $F_1$ looks like this:
+\begin{tabular}{c|c}
+    1 & 2\\ \hline
+    2 & 1\\ \hline
+    3 & 1\\ \hline
+    \vdots & \vdots
+\end{tabular} 
+and $F_2$ like this:
+\begin{tabular}{c|c}
+    1 & 1\\ \hline
+    2 & 2\\ \hline
+    3 & 1\\ \hline
+    \vdots & \vdots
+\end{tabular} 
+and $F_3$ like this:
+\begin{tabular}{c|c}
+    1 & 1\\ \hline
+    2 & 1\\ \hline
+    3 & 2\\ \hline
+    \vdots & \vdots
+\end{tabular}, etc., for all of the natural numbers. The reader will notice that we have reversed the conventional matrix notation where the first subscript is the row and the second subscript the column. Perhaps because of this and for the benefit of the printer, we should write our files horizontally so that $A$, which in set notation really is $\{(1,a_1), (2,a_2), (3,a_3), \cdots\}$, will be abbreviated as $a_1, a_2, a_3, \cdots$. This is the ordinary way of writing an infinite sequence; which is what a file is, of course. This set of files, $F_1, F_2, F_3, \cdots$, has the property that $F_2 < F_1, F_3 < F_2, \cdots, F_{n+1} < F_n, \cdots$ (why?). So for no $n$ is $F_n$ the smallest. Hence, the set $\{F_n\}$ for $n = 1, 2, 3, \cdots$ contains no smallest file.
+
+\vspace{0.5cm}
+
+\subsection*{Problem} Construct a similar sequence of files which contains no largest term.
+
+
+
+\section{More On The Definition Of Order Among Files}
+
+We have defined $A$ to be less than $B$, when $A$ and $B$ are files, if (and, of course only if) for some natural number $n, a_n < b_n$ but for each natural number $j < n, a_j = b_j$. We would consider the definition to be very poor, possibly worthless, if there were two files $A$ and $B$ such that $A$ is less than $B$ and also $B$ is less than $A$. In the preceding section it was pointed out that transitivity prevents this because $A$ cannot be less than $A$. (The definition would say that if $A$ were less than $A$, then among other things, there is a natural number $n$ such that $a_n < a_n$. Of course, this is impossible.) But one may resolve this problem directly in the following way.
+
+If $A$ is less than $B$, there is a natural number $n$ such that $a_n < b_n$, but for $j < n$, $a_j = b_j$. If at the same time $B$ is less than $A$, there would have to be a natural number $m$, but for $j < m$, $b_j = a_j$. Clearly $m$ cannot be $n$, so either $m < n$ or $n < m$. But if $n < m$, it satisfies the condition on $j$ (i.e., $j < m$), which makes $b_n = a_n$, which is false. On the other hand, if $m < n$, it satisfies the condition $j < n$ (in the definition of $A < B$), and this makes $a_m = b_m$, which is also false. Hence, since if one assumes that both $A<B$ and $B<A$ are true, it leads to the truth of something which is false, we know that the assumption itself must be false. This type of argument (called \emph{reductio ad absurdum}) is frequently used in mathematics, especially topology. 
+
+Quite often a definition is more useful, especially for some special purpose, if it can be expressed in a changed but equivalent form. And even if the changed form were not more useful, the change to an equivalent form would strengthen one's understanding of its meaning. Consider the following proposition.
+
+\emph{The file $A$ is less than the file $B$ if and only if (a) there is a natural number $n$ such that $a_n < b_n$, and for $j<n$, $a_j \leqq b_j$} (i.e., if $j \leqq n$, then either $a_j=b_j$ or $a_j<b_j$).
+
+Quite clearly, if $A$ is less than $B$ (by the definition), (a) is certainly true (because $a_j=b_j$). But the converse requires a little argument. Suppose that (a) is true. Let $W$ be the set of all natural numbers $w$ such that $a_w < b_w$. Evidently $W$ is non-void (non-empty) because $n$ belongs to $W$. So by the Induction Axiom (or Well-Ordering Principle), $W$ contains a smallest number. Call this number $\bar{w}$. Now $\bar{w} \leqq n$, and hence if $j<\bar{w}$, $j<n$; so $a_j \leqq b_j$. But if $a_j<b_j$, $j$ would belong to $W$, which it cannot because $\bar{w}$ is the smallest in $W$. Hence if $j<\bar{w}$, $a_j$ must be $b_j$, i.e., $a_j = b_j$. This fits the definition of $A<B$ ($\bar{w}$ playing the role of $n$ in the definition).
+
+Now with this equivalent formulation of the definition, the reader should have no difficulty in proving that the ``one'' file (i.e., the set of all ordered pairs $(n,1)$ where $n$ is a natural number) is smaller than any other file. Denote the ``one'' file by $\underline{1}$.
+
+
+
+\section{A Little Something About Sets}
+
+A set of things (files, points, or whatever) is defined to be countable if it is in one-to-one correspondence with a subset (possibly all) of the natural numbers. If there is a ``bounded'' such correspondence, the set is said to be finite -- otherwise, infinite.
+
+The terms (i.e., the files) of an infinite sequence of files make a countable set. The set could (and would) be finite, of course, if all the files after some one of them were all the same. (This is a pretty loose statement, but perhaps it conveys some meaning.) But the set of all files is not countable because the assumption that it is countable leads to an impossibility (reductio ad absurdum again). However, one might decide that the set of all files was not countable for an erroneous reason as follows. 
+
+There are infinitely many files between the ``one'' file and the ``two'' file (=\{(1,2), (2,2), (3,2), $\cdots$\}), infinitely many between the ``two'' file and the ``three'' file, infinitely many between the ``three'' file and the ``four'' file, etc. (Why are these statements true?) So one would use up all the natural numbers just counting those between the ``one'' file and the ``two'' file. Or if you used the odd counting numbers on that bunch and the even ones on the next bunch, you would not have any natural numbers left to tag the files between the ``three'' file and the ``four'' file. (Even if all these bunches could be tagged, we still would not have tagged \emph{all} the files betcause we have not tagged the ``one'' file, or the ``two'' file, etc.) But wait! Here is the germ of an idea for tagging them all -- assuming, of course, that each bunch were countable. Use the odd numbers to tag the ``one'' file, the ``two'' file, etc. Now use half of the even numbers (i.e., every other alternating one) to tag the files between the ``one'' file and the ``two'' file, half of those you have not used for this purpose to tag those between the ``two'' file and the ``three'' file, etc. If you see what is going on here, you can see that the process, although ``infinite'', tags all the files (in the same way that walking out of a room may be broken down into an ``infinite'' process of walking halfway to the door, then half of the remaining distance, etc.).
+
+\subsection*{Problem}
+
+The set of all ordered pairs of natural numbers is coutnable.
+
+This problem may be done by the above method. Or better yet, try some peculiar particular method of pairing. For example, tag the ordered pair $(h,k)$ with the natural number $3^h 5^k$. Won't the tags be different if the ordered pairs are? Doesn't this make up a one-to-one correspondence? But the catch here is that the set of files between the ``one'' file and the ``two'' file is itself not countable.
+
+\vspace{0.5cm}
+
+\subsection*{Question}
+Is this property true of all files?
+
+
+
+\section{More Remarks On Order}
+
+In Axiom 0, $o$ was a table (or set) of ordered pairs of elements of $Z^+$ which we postulated in order to have a means of defining ``$x$ is less than $y$''. Recall that if $x$ and $y$ are distinct (different) elements of $Z^+$, $x$ is less than $y$ if and only if the ordered pair $(x,y)$ belonged to $o$. The table $o$ had a connection with the addition table $A$. In fact, we want it to be true (even if we have to make it an axiom) that $(x,y)$ belongs to $o$ if and only if there is an element $z$ such that $x+z=y$, and conversely. We may have used this property to prove (1) if $a$ is a natural number, $a+1$ is the next natural number; (2) every bonded subset of $Z^+$ contains a largest number; and possibly other things.
+
+\subsection*{Question}
+Is this property true of files?
+
+Recall that we have defined file $a$ to be smaller than file $b$ if $a_n<b_n$ for some $n$ such that for any smaller natural number $j$, $a_j=b_j$. Roughly speaking, we compare $(a_1, a_2, a_3, \cdots)$ with $(b_1, b_2, b_3, \cdots)$, starting with the first terms of each and proceeding in order of subscripts until we find the first terms that differ. Then we decide which is smaller by the comparative size of these terms. This is how one looks up a word in a dictionary (given the order a, b, c, etc., in the alphabet). Hence, this kind of order is called dictionary order (or lexicographic order). Now let us try this kind of order in a simpler setting.
+
+In discussing ``countable'' sets, you have proven (haven't you?) that the set of all ordered pairs of natural numbers is countable. So if $Z'$ denotes the set of all ordered pairs of natural numbers, the set $Z'$ has no more elements than $Z^+$. (in fact, since both $Z^+$ and $Z'$ are countably infinite, they have the same number of elements, i.e., are in one-to-one correspondence.) Let us define addition this way: $(a_1,a_2)+(b_1,b_2)=(a_1+b_1,a_2+b_2)$; and let ``order'' be the dictionary order, i.e., $(a_1,a_2)<(b_1,b_2)$ if $a_1<b_2$ or $a_1=b_1$ but $a_2<b_2$.
+
+\subsection*{Problems}
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item Does $Z'$ satisfy all the axioms for $Z^+$? (including the Induction Axiom)
+  \item Is there a bounded subset of $Z'$ which is not finite?
+  \item Is $(1,1)$ the smallest element of $Z'$?
+  \item Is $(1,1) + (1,1)$ the next smallest?
+\end{enumerate}
+
+
+
+\section{Arithmetic With Files}
+
+When we defined addition and multiplication of files in $\S 7$, we suggested that you prove commutivity, associativity, and many other properties of real numbers. Most of these properties are so obvious (since they are true for natural numbers) that the hard part is how to express the reasons, or how little or how much to say, as well as how to say it. Perhaps an example would be useful.
+
+Suppose that we wish to prove that if $a$, $b$, and $c$ are files with $a<b$, then $a+c<b+c$. (This is part of Axiom 0.) Using our ``standard'' notation (i.e., the one we have previously defined and used several times), $a<b$ means that for some $n$ (say $\bar{n}$ to be a bit more definite), $a_{\bar{n}} < b_{\bar{n}}$, but if $j < \bar{n}$, $a_j = b_j$. We would like to show that $a+c < b+c$, and this means we must find (or show there exists) a natural number $\hat{n}$ such that $(a+c)_{\hat{n}} < (b+c)_{\hat{n}}$, but if $j < \hat{n}$, $(a+c)_j = (b+c)_j$. If we let $n$ be $\bar{n}$, we know that $(a+c_{\bar{n}} = a_{\bar{n}} + c_{\bar{n}}$ and $(b+c)_{\bar{n}} = b_{\bar{n}} + c_{\bar{n}}$. Since $a_{\bar{n}} < b_{\bar{n}}$, it follows from (3) in Axiom 0 that $a_{\bar{n}} + c_{\bar{n}} < b_{\bar{n}} + c_{\bar{n}}$. So $(a+c)_{\bar{n}} < (b+c)_{\bar{n}}$. But if $j < \bar{n}$, $(a+c)_j = a_j + c_j = b_j + c_j = (b+c)_j$ because $a_j = b_j$ when $j < \bar{n}$. So we have found the number $\hat{n}$ required by the definition (to make $a+c < b+c$), namely the number $\bar{n}$ which was fiven to make $a<b$ in the hypothesis of the theorem. Never mind that we don't really know what $\bar{n}$ (we don't even know whether it is one or not). The fact that $a<b$ gives us the number $\bar{n}$, and we can use it to define $\hat{n}$ if we like. Also, you can see that standard algebraic notation rather than the set theoretic language of the axioms makes the proofs shorter and clearer (because we have become familiar with algebraic notation by previous training).
+
+
+
+\section{Old And New Problems On Order}
+
+We have previously observed that although the set of all files contains a smallest -- namely, the ``one'' file $(1, 1, 1, \cdots)$ -- this is not true of all other sets of files (e.g., the set of all files greater than the ``one'' file). SO the Induction Axiom which holds true for natural numbers does not hold true for files. In fact, there is even a stronger difference, one that is very useful: \emph{between two given natural numbers, there may not be another natural number} (there is no natural number between one and two, for instance), but \emph{it is always the case that between two (distinct) files, there is another file} (Exercise 3). There are wrong ways to try to prove this, which I am sure you may have tried, but the easiest correct way is as follows. 
+
+Suppose that $a$ and $b$ are distinct files. Since one of them is smaller than the other, let us assume that they have been named so that $a$ is less than $b$. From the definition of order for files, there is a (fixed) natural number $n$ such that $a_n < b_n$ but $a_j = b_j$ for every $j<n$. Now define the file $c$ as follows: (1) if $j<n$, let $c_j = a_j$, (2) let $c_n = a_n$, (3) let $c_{n+1} = 1+ a_{n+1}$, and (4) if $k> n+1$, let $c_k = 1$. It is easy to see (check it out carefully) that $c$ is between $a$ and $b$, i.e., $a<c<b$.
+
+\subsection*{Problem}
+Suppose in this argument that we had tried to define $c$ in the following way: (1) if $j<n$, let $c_j = a_j$, and (2) let $c_n = b_n$ (this, of course, guarantees that $c$ will be larger than $a$). All that remains to complete the solution is to finish the definition of $c$ so as to make $c<b$. But this may not be possible! Why? Construct such a situation.
+
+\vspace{0.5cm}
+
+\subsection*{Exercise}
+Show that there exists a sequence $f_1, f_2, f_3, \cdots$ of files such that if $a$ and $b$ are two (different) files, there is a term of this sequence between them (i.e., if $a<b$, there is a natural number $n$ such that $a < f_n < b$). 
+
+\vspace{0.5cm}
+
+Despite these striking differences in order with the natural numbers, there are some similarities. Each finite set of natural numbers contains a smallest and also a largest number. The same is true for files.
+
+\subsection*{Exercise}
+If $Q$ is a finite collection (= set) of files, then some file in $Q$ is smaller than all other files in $Q$. Furthermore, there is a file in $Q$ which is larger than all other files in $Q$.
+
+\vspace{0.5cm}
+
+You should remember our definition of \emph{finite}. A set is \emph{finite} if it is in one-to-one correspondence with a \emph{bounded} subset of the natural numbers. Perhaps we should think about the meaning of this definition a little. Consider the set of letters \{R, O, Y, G, B, I\}. This is a finite set because \{(R,1), (O,3), (Y,5), (G,7), (B,9), (I,11)\} is a one-to-one correspondence with a bounded set of natural numbers: namely, the set \{1, 3, 5, 7, 9, 11\}. But there are \emph{gaps} in this set, and for notational purposes, something other than \emph{random} correspondence is usually better. You probably have a vague feeling for what this is (nothing vague about this particular example, for we obviously mean the set \{1, 2, 3, 4, 5, 6\}). Perhaps what we mean is something of this sort:
+
+If a set $X$ is finite, it is in one-to-one correspondence with a bounded set $Y$ of natural numbers. Say $Y$ is bounded by a natural number $w$. Now let $W$ be the set of all such natural numbers. More precisely, let $W$ be the set of all natural numbers $w$ such that $X$ is in one-to-one correspondence with a subset of all natural numbers bounded by $w$ (i.e., the set of all $n \leqq w$). So, being a non-empty set of natural numbers, $W$ contains a smallest number $\bar{w}$. This means that $X$ is in one-to-one correspondence with each natural number $n$ such that $a_n < b_n$, but for each natural number $j<n$, $a_j = b_j$.
+
+\subsection*{Question}
+Isn't this subset identical with the set of all natural numbers less than or equal to $\bar{w}$? There isn't any ``gap'' or number left out?
+
+
+
+\section{Summary On Files}
+
+We have defined a file $f$ to be a sequence, $(f_1, f_2, f_3, \cdots)$, of natural numbers (i.e., a function from the natural numbers to the natural numbers). We know how to add them: if $a$ and $b$ are files $(a_1, a_2, a_3, \cdots)$ and $(b_1, b_2, b_3, \cdots)$ respectively, the file $a+b$ is the sequence $(a_1 + b_1, a_2 + b_2, a_3 + b_3, \cdots)$. Similarly, we know how to multiply files. We defined an order on the files by saying that file $a$ is less than file $b$ if and only if for some natural number $n$, $a_n < b_n$, but for each natural number $j<n$, $a_j = b_j$. (Of course, for a given pair of files, there is one and only one such natural number $n$.)
+
+Addition and multiplication work fairly well. Each is associative and commutative, and multiplication is distributive. Order is total (every two different files are \emph{related}; that is, if $a$ and $b$ are different files, then either $a<b$ or $b<a$, but \emph{not} both). Order is transitive; that is, if $a<b$ and $b<c$, then $a<c$. And order is related properly to addition and multiplication (thinking of the way positive real numbers behave): if $a<b$ and $c \leqq d$, then (1) $a+c < b+d$, and (2) $ac < bd$. More importantly (and differently from the natural numbers themselves), if $a$ and $b$ are files with $a<b$, then there is a file $c$ such that $a<c$ and $c<b$.
+
+Other easily observed facts are: (1) there is a smallest file (the ``one'' file $\underline{1}$), and (2) there is no largest file.
+
+Now, in proving that between any two files $a$ and $b$ there is a file $c$, $c$ could have been (in fact, was) taken to be a \emph{string} file. A \emph{string file} is one which ``terminates'' or ``winds up'' in a solid string of ones. More precisely, $(c_1, c_2, c_3, \cdots)$ is a \emph{string} file if there is a natural number $n$ such that if $j>n$, then $c_j = 1$. (Here, $n$ is not unique as it was in the definition of order. Can it somehow be chosen in a natural way so as to be unique?)
+
+There was an Exercise to prove that there is a sequence $(f_1, f_2, f_3, \cdots)$ of files such that if $a$ and $b$ are any two files, some term of this sequence is between $a$ and $b$. In fact, by several different schemes, one may form a sequence out of the string files. So from here on, we shall assume that each of the files in the sequence $(f_1, f_2, f_3, \cdots)$ is a string file. If you didn't make up the sequence this way, you can easily do so. How?
+
+\subsection*{Problem}
+Suppose that $(g_1, g_2, g_3, \cdots)$ is a sequence of files such that between any two $f$ files there is a $g$ file. More precisely, if $h$ and $k$ are integers such that $f_h \neq f_k$ (you probably didn't allow $f_h$ to be $f_k$ if $h$ and $k$ are different), there is a natural number $n$ such that either $f_h < g_n < f_k$ or $f_k < g_n < f_h$. Then isn't it true that if $a$ and $b$ are two different files (whether in the $f$ sequence or not), there is a $g$ file between $a$ and $b$? (Hint: haven't we learned how to count the ordered pairs of natural numbers?)
+
+
+
+\section{The Beginnings Of Topology}
+
+In topology we need a collection of sets, usually called \emph{regions} or \emph{neighborhoods}, which are used to measure ``closeness''. So we shall define regions (or neighborhoods) as follows.
+
+\begin{description}
+
+\item[Definition:] A \emph{region} (or \emph{neighborhood}) is a set $R$ of files for which there exist two files $p$ and $q$ such that $x$ belongs to $R$ if and only if $x$ is between $p$ and $q$ (i.e., assuming that if $p<q$, then $R= \{x | p<x<q\}$).
+
+\end{description}
+
+This definition does not give us enough regions because as a minimum, we need to have for any given file at least one region containing it, and as defined, no region contains the ``one'' file. So we shall call the following sets \emph{regions} also.
+
+\begin{description}
+
+\item[Definition:] If $q$ is a file ($q \neq \underline{1}$), then the set of all files $x$ such that $\underline{1} \leqq x < q$ shall also be called a \emph{region}. (Note that the ``one'' file belongs to regions of this type.)
+
+\end{description}
+
+So if you are familiar with the meaning of ``open interval'', all open intervals of files are regions, and in addition, those closed on the left and open on the right which contain $\underline{1}$ are also regions. The files $p$ and $q$ (or $\underline{1}$ and $q$) are called the \emph{endpoints} of $R$.
+
+Possibly you may recall from calculus that ``addition is a continuous operation''. Roughly, this means for real numbers that numbers close to $x$ and $y$ add up to be close to $x+y$. So, see if you can prove the same for files. Do the following more precise problem.
+
+\subsection*{Problem}
+If $a$ and $b$ are files and $R$ is a region containing $a+b$, then there exist regions $R_a$ and $R_b$ containing $a$ and $b$ respectively, such that if $x$ belongs to $R_a$ and $y$ belongs to $R_b$, then $x+y$ belongs to $R$. (Remember that here we don't have a ``distance'' to measure closeness -- only regions.)
+
+One would like to do a similar thing for multiplication. But watch out! One or both of these may be impossible. Maybe addition of files may not be continuous. Just exactly what does this mean?
+
+
+
+\section{The Case For Real Numbers}
+
+Suppose we see in detail what is involved in proving that for real numbers, addition is continuous. What we want to prove is as follows.
+
+Let $a$, $b$, and $\epsilon$ be real numbers, with $\epsilon > 0$. Suppose for simplicity, we limit our proof to the special case where $a$ and $b$ are also positive. Then we would like to find neighborhoods $R_a$ and $R_b$ of $a$ and $b$ respectively, so that if $x$ is in $R_a$ and $y$ is in $R_b$, then $x+y$ is in the $\epsilon$-neghborhood of $a+b$ (i.e., $x+y$ is between $(a+b) - \epsilon$ and $(a+b) + \epsilon$).
+
+That is, as you may recall, easy to do. Just a little trial and error will soon suggest that if $x$ is between $a - \frac{\epsilon}{2}$ and $a + \frac{\epsilon}{2}$ and $y$ is between $b - \frac{\epsilon}{2}$ and $b + \frac{\epsilon}{2}$ (i.e., $R_a$ and $R_b$ are the $\frac{\epsilon}{2}$-neighborhoods of $a$ and $b$, respectively), then $x+y$ lies between $(a+b) - \epsilon$ and $(a+b) + \epsilon$. (Put down these simple inequalities saying these things, and see that adding the first two produces the last one.)
+
+But it is a different story if we try this kind of trick when trying to prove that multiplication is continuous. Suppose that $a - \frac{\epsilon}{2} < x < a + \frac{\epsilon}{2}$ and $b - \frac{\epsilon}{2} < y < b + \frac{\epsilon}{2}$. Multiplication gives $ab - \frac{a \epsilon}{2} - \frac{b \epsilon}{2} + \frac{\epsilon^2}{4} < xy < ab + \frac{a \epsilon}{2} + \frac{b \epsilon}{2} + \frac{\epsilon^2}{4}$. Even if $\epsilon$ is small enough to make $a - \frac{\epsilon}{2}$ and $b - \frac{\epsilon}{2}$ positive so that multiplication gives an inequality of the same sense, it still isn't clear how $ab - \frac{a \epsilon}{2} - \frac{b \epsilon}{2} + \frac{\epsilon^2}{4}$ relates to $ab - \epsilon$, nor how $ab + \frac{a \epsilon}{2} + \frac{b \epsilon}{2} + \frac{\epsilon^2}{4}$ relates to $ab + \epsilon$.
+
+If instead of using $\frac{\epsilon}{2}$ neighborhoods of $a$ and $b$, we used $\frac{b \epsilon}{2}$ neighborhoods of $a$ and $\frac{a \epsilon}{2}$ neighborhoods of $b$, how would it come out? If this doesn't work, how would $2n$ instead of $2$ in each denominator work out (where $n$ is a natural number)? Surely after doing this we can see that by making $n$ ``large enough'', a useful comparison with $ab - \epsilon$ and $ab + \epsilon$ can be made. Maybe there are still difficulties? Would it help (and be useful later) to assume that $\epsilon < 1$? Then perhaps $R_a$ could be the neighborhood from $a(1-\epsilon)$ to $a(1+\epsilon)$, or from $a(1-\frac{\epsilon}{2})$ to $a(1+\frac{\epsilon}{2})$? It takes some trying on this one; so you should not despair about trying in the proposition about files.
+
+``Iffy'' question: If it should turn out that addition (or multiplication) of files is not continuous, maybe it is for certain kinds of files. If this is so, can you tell when these operations are not continuous and when they are continuous?
+
+Arithmetic is limited among the files, so that there is no real hope of producing an argument analogous to the case for real numbers. For instance, subtraction is not always possible with files even in those cases when it ought to be.
+
+\subsection*{Problem}
+Find two files $a$ and $b$ with $a<b$ such that $b-a$ doesn't exist (i.e., there is no file $c$ such that $a+c=b$).
+
+
+
+\section{How To Go About Finding A Proof For A Hard Theorem}
+
+When you start out to prove a theorem, you must first understand what the theorem says. Frequently it helps understanding to formulate special cases. It also helps to \emph{try} to find counter-examples, i.e., a special case where the theorem fails to be true. Of course, the starting point of understanding of the theorem is a clear understanding of the definition of the notions involved. For example, in the Problem immediately above, what exactly does $a<b$ mean when $a$ and $b$ are files? what does $a+c$ mean when $a$ and $c$ are files? And even before this, what is a file? But suppose you have done all this, and still no sign of a proof occurs to you. What then? Why, then, you give your theorem some more hypothesis -- enough to get \emph{started} on a proof. Let me illustrate with the following theorem (you may not have found it hard, but it illustrates the point).
+
+\begin{description}
+
+\item[Theorem:] There is a sequence $(f_1, f_2, f_3, \cdots)$ of files such that if $a$ is a file less than the file $b$, then there is a natural number $n$ so that $a< f_n < b$.
+
+\end{description}
+
+In this proposition, the sequence $(f_1, f_2, f_3, \cdots)$ must be found before $a$ and $b$ are specified, and this means that the selection must be very general indeed. If you were given both $a$ and $b$ first, we know already how to solve this problem. So maybe it would help to suppose that one of them is given first. This results in the following two statements. 
+
+\begin{description}
+
+\item[Theorem:] There is a sequence $(b_1, b_2, b_3, \cdots)$ of files such that if $a$ is a file less than the file $b$, then there is a natural number $n$ so that $a< b_n < b$.
+
+\item[Theorem:] There is a sequence $(a_1, a_2, a_3, \cdots)$ of files such that if $a$ is a file less than the file $b$, then there is a natural number $n$ so that $a< a_n < b$.
+
+\end{description}
+
+Now, of course, even if you know both of these, you may not be able to prove the original theorem, but at least you have been training in the right direction. So try to prove these if you haven't already done the hard one (and while doing these, make the sequence $(a_1, a_2, a_3, \cdots)$ and $(b_1, b_2, b_3, \cdots)$ monotone). 
+
+We have another sort of tough problem -- the continuity of the operations of addition and multiplication. The same sort of thing can be done there. Instead of trying to do the whole problem at once, try it in pieces. In fact, let's take a special case and do it in pieces.
+
+Let $a$ be the string file $(2, 1, 1, 1, \cdots)$ and $b$ be the string file $(3, 1, 1, 1, \cdots)$. Then $a+b$ is $(5, 2, 2, 2, \cdots)$. In the theorem, we are given a region containing $a+b$; so let $q$ be its right-hand end (or boundary). This makes $q > (5, 2, 2, 2, \cdots)$. Suppose that (even more special) $q > (5, 3, 2, 2, 2, \cdots)$. Now the problem is to find files $h$ and $k$ greater than $a$ and $b$ respectively, so that if $a<x<h$ and $b<y<k$, then $a+b < x+y < q$. Think about what $h_1$ and $k_1$ could be. You certainly wouldn't want to make $h_1 = 4$ and $k_1 = 6$, for example, since then $x_1$ and $y_1$ might be $3$ and $6$ respectively, and $x+y$ would start off with $9$ and wouldn't be less than $q$. So to play safe, why not start off $h$ like $a$ and $k$ like $b$, and hope to make them larger somewhere else. If $h$ were $(2,2,1,1,1,\cdots)$ and $k$ were $(3,2,1,1,1,\cdots)$, we would still be in trouble if $x$ were $(2,1,2,1,1,1,\cdots)$ and almost anything (what?) were chosen for $y$. This kind of trial and error should suggest that $h$ and $k$ should copy $a$ and $b$ for more than one term. How would $h=(2,1,2,1,1,1,\cdots)$ and $k=(3,1,2,1,1,1,\cdots)$ do?
+
+With this special case solved, maybe you can prove that addition is continuous on the right for any two files $a$ and $b$. Would this mean the following?
+
+\subsection*{Problem}
+If $a$, $b$, and $q$ are files such that $a+b < q$, then there exist files $h$ and $k$ such that $a<h$ and $b<k$, and if $a<x<h$ and $b<y<k$, then $a+b < x+y < q$.
+
+After doing this, try to do a similar thing on the left. Be careful! Maybe you should go back to the special case we just tried.
+
+\vspace{0.5cm}
+
+There is another technique employed in cutting a hard problem down to size, called ``lemmas''. A lemma is a theorem designed to be of help on a specific problem. Consider the above problem. If you could select $h$ and $k$ so that $h+k$ would be less than $q$, then the problem would be relatively simple because we have previously proved enough about order so that if $x<h$ and $y<k$, then $x+y < h+k$. And if $h+k$ were less than $q$, the transitive property would make $x+y < q$. But how is it possible to select $h$ and $k$ with this property? A little thought about the fact that $a+b$ is less than $q$ might lead one to the following rather easy lemma.
+
+\begin{description}
+
+\item[Lemma:] If the file $f$ is less than the file $g$, then for some natural number $n$, $f_n < g_n$, but for $j<n$, $f_j = g_j$. Let $h$ be a file such that $h_j = f_j$ for $j \leqq n$ (notice that $j$ can be $n$). Then $h$ is less than $g$.
+
+\end{description}
+
+Now let's go one step farther.
+
+\begin{description}
+
+\item[Lemma:] If $a$ and $b$ are files such that $a+b$ is less than file $q$, then there is a natural number $n$ such that $a_n + b_n < q_n$, but for $j<n$, $a_j + b_j = q_j$. If $h$ and $k$ are files such that for $j \leqq n$, $h_j = a_j$ and $k_j = b_j$, then $h+k=q$.
+
+\end{description}
+
+These two lemmas require proof, but once they are conceived and understood, they are almost self-evident. But with them in mind, isn't the original problem almost self-evident? Of course, success depends upon finding the correct lemmas, and this many times is as hard as the problem they are supposed to help on. Nevertheless, \emph{trying} to find them is many times a fruitful approach.
+
+
+
+\section{About Bounded Sequences}
+
+A set $F$ of files is \emph{bounded} if there is a file $b$ such that if $f$ is a file in $F$ (i.e., if $f \in F$), then $f \leqq b$. In other words, no element of $F$ is greater than $b$. A \emph{sequence} would be \emph{bounded} by $b$ if no term in the sequence were greater than $b$. Consider the following problem. 
+
+\subsection*{Problem}
+Suppose that $(f_1, f_2, f_3, \cdots)$ is an infinite sequence of files such that $f_1 > f_2 > f_3 > \cdots$. (Such a sequence is said to be \emph{monotone decreasing}.) Does there exist a file $g$ such that $g$ is less than every term of the sequence (i.e., $g<f_n$ for all $n$) but $g$ is the largest such file?
+
+\vspace{0.5cm}
+
+If you think a bit about what $g$ would necessarily have to do, you will see what $g$ ought to be. Then it becomes a problem of checking to see that $g$ has the required properties. So begin by asking what $g_1$ must be. Look at the set of first terms of members of the sequence $(f_1, f_2, f_3, \cdots)$; i.e., look at the set $\{(f_1)_1, (f_2)_1, (f_3)_1, \cdots\}$. This is a set of natural numbers, and by the Induction Axiom, must contain a smallest number, say $\bar{w}$. If $g$ is to be less than each of the files of $(f_1, f_2, f_3, \cdots)$, $g_1$ could not be larger than $\bar{w}$. If it is to be the \emph{largest} file smaller than all of them, $g_1$ could not be less than $\bar{w}$ because then the string file $(\bar{w}, 1, 1, 1, \cdots)$ would be larger than $g$ but smaller than every file in the sequence. So if $g$ is to exist, $g_1$ must be $\bar{w}$.
+
+Repeat this same process, taking care to eliminate from consideration all those files in the sequence which would be larger than $g$ no matter how the definition of $g$ is completed. Which files are these? Any file whose first term exceeds $g_1$ is greater than $g$ no matter how the definition of $g$ is completed. So $g_2$ must be the smallest of those numbers which are the second terms of members of the sequence $(f_1, f_2, f_3, \cdots)$ whose first terms are $g_1$, i.e., $g_2$ is the smallest natural number in the set $\{ (f_n)_2 | (f_n)_1 = g_1\}$.
+
+Complete the definition of $g$ in the following manner.
+
+Suppose that $g_1, g_2, g_3, \cdots, g_{k-1}$ are all defined. Then $g_k$ is the smallest number such that for some $n$, $g_1, g_2, \cdots, g_k$ is the first $k$ terms of $f_n$. Because this definition was employed in the definition of each $g_j$ for $j<k$, every $f_i$ of the sequence with $i>n$ must have the same first $k$ terms as $f_n$ since $f_i<f_n$ when $i>n$. We need to realize this so we can be sure that we are not trying to apply the Induction Axiom to an empty set. Additionally, this fact may be of use in showing that $g$ thus defined really has the properties called for in the problem.
+
+How do we know that $g$ is smaller than every term in the sequence $(f_1$, $f_2$, $f_3$, $\cdots)$? Try the following indirect argument.
+
+Suppose that for some subscript $m$, $f_m \leqq g$. It was given that $f_{m+1} < f_m$. So compare $f_{m+1}$ with $g$. Let $k$ be the smallest natural number $n$ such that $(f_{m+1})_n \neq g_n$. Then of course, under our assumption that $f_m \leqq g$, it follows that $f_{m+1} < g$, and so $(f_{m+1})_k < g_k$, but $(f_{m+1})_j = g_j$ for all $j<k$. This contradicts the definition of $g_k$. Hence for no $m$ is $f_j \leqq g$. This establishes one property required of $g$. And since there is a term of the sequence $(f_1, f_2, f_3, \cdots)$ which is equal to $g$ through as many terms as you with (provided that you wish for a \emph{finite} number), you can easily show that if $q$ is a file greater than $g$, $q$ does not have the property of being smaller than every term of the sequence $(f_1, f_2, f_3, \cdots)$.
+
+If we change the problem around to consider an increasing sequence, we must first assume that the sequence is bounded, or the conclusion would be impossible.
+
+\subsection*{Problem}
+Suppose that $(f_1, f_2, f_3, \cdots)$ is a bounded sequence of files such that $f_1 < f_2 < f_3 < \cdots$. Does there exist a file $g$ such that $g$ is greater than every file in the sequence $(f_1, f_2, f_3, \cdots)$, but $g$ is the smallest such file?
+
+
+
+\section{More On Proof By Mathematical Induction}
+
+Usually students have to be shown ``proofs'' by mathematical induction which do part of the proof (which might be called the induction lemma) but omit the heart of the proof. This always left me, when I was a student, with the very uneasy feeling that somehow I had been ``flim-flammed'', ``hood-winked'', or ``slight-of-handed''. So let me illustrate once more how such a proof might go, without being so abbreviated.
+
+Suppose that the problem at hand is to prove that the set of all $n$-tuples of natural numbers is coutnable. You should recall that we have previously proved that the set of all ordered pairs ($2$-tuples) of natural numbers is countable. (This can be done in several ways. The Cantor Diagonal Process is probably the most popular method.) And just a little thought shows that the following lemma is true.
+
+\begin{description}
+
+\item[Lemma:] Suppose that $M$ is a countable set and $n$ is a countable set. Then the set of all ordered pairs $(m,n)$, with $m$ chosen from $M$ and $n$ belonging to $N$, is countable. (This set is frequently called the Cartesian Product $M\times N$, by reason of analogy to the Cartesian $xy$-plane.
+
+\end{description}
+
+Now let us return to constructing our inductive proof. We will first prove what I like to call the induction lemma.
+
+\begin{description}
+
+\item[Induction Lemma:] If $k$ is a natural number such that for $j \leqq k$ the set of all $j$-tuples of natural numbers is countable, then the set of all $(k+1)$-tuples of natural numbers is countable.
+
+\item[Proof:] There is a one-to-one correspondence between the st of all $(k+1)$-tuples of natural numbers and the set of all ordered pairs $(m,n)$ where $m$ is a $k$-tuple of natural numbers and $n$ is a natural number. (This correspondence is the obvious one, $(n_1,n_2,n_3,\cdots,n_k,n_{k+1})$ corresponding to $((n_1,n_2,n_3,\cdots,n_k),n_{k+1})$.) So if one set is countable, so is the other. But the set $M$ of $k$-tuples is countable by the hypothesis of the induction lemma. Obviously, the set $N$ of all natural numbers $n$ is countable. So by an earlier lemma, the set $M\times N$ of all ordered pairs $(m,n)$ is countable. Hence the set of all $(K+1)$-tuples is countable.
+
+\end{description}
+
+We now set out to prove by mathematical induction the following theorem.
+
+\begin{description}
+
+\item[Theorem:] If $n$ is a natural number, the set of all $n$-tuples of natural numbers is countable.
+
+\end{description}
+
+The proof is indirect; that is, we assume that the theorem is false and show that this assumption has led to a contradiction.
+
+\begin{description}
+
+\item[Proof:] Suppose that the theorem is false. This means that there exists a natural number $w$ such that the set of all $w$-tuples is \emph{not} countable. Let $W$ be the set of all such natural numbers $w$. By the Induction Axiom, $W$ (being non-empty) contains a smallest number $\bar{w}$. Now, what properties does $\bar{w}$ possess? For one thing, the set of all $\bar{w}$-tuples of natural numbers is not countable. But being the smallest such, it follows that if $j<\bar{w}$, the set of all $j$-tuples of natural numbers \emph{is} countable. Of course, $\bar{w}$ cannot be $1$ because obviously the set of all $1$-tuples is countable. So since $\bar{w}$ is not $1$, $\bar{w}$ must be greater than $1$ (i.e., $\bar{w} > 1$). This implies that there is a natural number $k$ such that $\bar{w} = k+1$. What properties does $k$ possess? Since $\bar{w} = k+1$, this makes $k < \bar{w}$; so if $j \leqq k$, $j < \bar{w}$. Hence if $j \leqq k$, the set of all $j$-tuples of natural numbers is countable. Now the hypothesis of the Induction Lemma is satisfied; hence the conclusion is valid -- namely, the set of all $(k+1)$-tuples is countable. But $k+1$ is $\bar{w}$, and the set of all $\bar{w}$-tuples was not countable. This is a contradiction produced by assuming that the theorem was false. So the theorem must be true.
+
+\end{description}
+
+In this case, it's true that in proving the Induction Lemma, we didn't use all of the hypotheses of the lemma. But there are cases in which you may need all of the hypotheses. Even then, you may have to resort to an indirect argument. But such a complicated situation might lose the main illustrative point in the maze of detail. However, the student might like to try his hand at the following problem.
+
+\subsection*{Problem}
+If $n$ is a natural number, $3^{2n+1} + 2^{n+2}$ is divisible by $7$.
+
+\vspace{0.5cm}
+
+\subsection*{Problem}
+If $n$ is a natural number and $x$ is a positive real number ($x \geqq -1$ would do), then $(1+x)^n \geqq (1+x)$.
+
+
+
+\section{Infinite Processes}
+
+There are many examples of what might be called ``infinite processes''. The Cantor Diagonal Process is one. How would you prove that if you had an infinite but countable fleet of trucks, each loaded with finitely many oranges (not necessarily the same number per truck), that you would have countably many oranges?
+
+Consider this ``infinite'' process. Suppose that you started around an 18-hole golf course with a golf bag loaded with a countable infinity of golf balls. You don't play golf, but instead embark on this infinite process.
+
+The first time around, put ten balls in each cup. The second time around, remove one ball from the first cup, throw it in the bushes, and replace it with 10 balls from the bag. Do the same thing at cup two, at cup three, etc., for the complete round. There are now nineteen balls in each cup. On the third round, do exactly what you did on the second round; that is, at each cup, remove one ball, throw it in the bushes, and replace it with 10 balls from the bag. Continue this for infinitely many rounds. Now, the problem is this: how can you follow the above process to the letter and still finish the infinitely many rounds with one ball left in the first hole, two balls in the second hole, etc., and eighteen balls left in the eighteenth hole? You may color the balls, number the balls, select them from the bag in any way. But you must add and remove balls from the various holes \emph{exactly} as specified.
+
+\subsection*{Problem}
+There exists an infinite set $W$ of files such that every increasing sequence of files \emph{chosen from} $W$ is finite. Find such a set $W$.
+
+\vspace{0.5cm}
+
+\begin{description}
+
+\item[Theorem:] If $W$ is an infinite set of files, then there exists an infinite increasing sequence of files chosen from $W$ or there exists an infinitely decreasing sequence of files chosen from $W$.
+
+\end{description}
+
+As simple as this proposition is, a real proof of it is hard to lay one's hands on. Once captured and polished up, it can be quite convincing.
+
+
+
+\section{Least Upper Bounds And Greatest Lower Bounds}
+
+In connection with the ``continuity of addition' of files, we considered certain kinds of sets which did not obey certain intuitive laws or have certain intuitive properties. Let us look at another example of this sort.
+
+Consider the set of all files $z$ such that there are files $x$ and $y$ each less than $(2,1,1,\cdots)$ so that $z=x+y$. Call the set of all such sums $S$. How is it that a file gets to belong to $S$? Why, if and only if it is the sum of two files (not necessarily different), each of which is less than $(2,1,1,1,\cdots)$? One can easily see that each file in $S$ starts off with a two, for if $x$ is less than $(2,1,1,1,\cdots)$, $x$ must start off with one (i.e., $x=(1, x_2, x_3, \cdots)$), and so must $y$. So no file in $S$ can be larger than $(3,1,1,\cdots)$. Call this file $\bar{s}$. A file with this property is called an upper bound; i.e., $\bar{s}$ is an \emph{upper bound} of $S$. Clearly no smaller file would be an upper bound of $S$, because of the following simple facts.
+
+Consider an arbitrary file $f$ which is less than $\bar{s}$. Clearly, $f_1$ must be less than three. So $f_1$ is $1$ or $2$. But if $f_1$ were $1$, it would be less than every file in $S$. If $f_1$ is $2$, let $x= (1,f_2,f_3, \cdots)$ and $y=\underline{1}$. Then $x+y$ is $(2,1+f_2, 1+f_3, \cdots)$, which belonds to $S$ and is \emph{larger} than $f$. So $f$ is not an upper bound for $S$ because in either case, some file in $S$ is larger. Hence $\bar{s}$ is a file with two properties: (1) no file in $S$ is larger than it is, and (2) it is the smallest such file (i.e., no smaller file has property (1) because each smaller file $f$ is smaller than some file in $S$).
+
+The discontinuity of addition can be observed in the following rough way. There is no gap between the possible choices of $x$ and $(2,1,1,\cdots)$. Nor is there a gap between possible choices of $y$ and $(2,1,1,\cdots)$. Put in another way, $(2,1,1,\cdots)$ is the least upper bound of the set of all files less than it. But $(2,1,1,\cdots) + (2,1,1,\cdots)$ is $(4,2,2,\cdots)$, and there is quite a wide gap between it and all possible sums $x+y$ as specified for $S$, because all of these are less than $(3,1,1,\cdots)$. 
+
+\subsection*{Problem}
+If $M$ is the set of all files formed by consecutive permutations of $2$, $3$, and $7$, what is the least upper bound of $M$, and what is the greatest lower bound of $M$? Here are some of the files in $M$: $\underline{m} =$ $(2,3,7,2,3,7,\cdots)$, $(2,7,3,2,7,3,2,7,3,2,7,3$, $\cdots)$, $(7,3,2,32,7,2,3,7,\cdots)$; and $\bar{m} = (7,3,2,7,3,2,7,3,2,\cdots)$. Now the greatest lower bound need not belong to $M$ (in general), but isn't $\underline{m}$ a lower bound? And isn't $\bar{m}$ an upper bound? If so, clearly they are the greatest lower bound and least upper bound, respectively -- or \emph{is} this clear? But consider the set $M$ with both $\underline{m}$ and $\bar{m}$ removed. Call this set $M'$. What is the greatest lower bound of $M'$? What is its least upper bound?
+
+\vspace{0.5cm}
+
+Formally, we define least upper bound and greatest lower bound more accurately.
+
+\begin{description}
+
+\item[Definition:] Suppose that $M$ is a set of files and $u$ is a file. If $u$ has the following two properties, then $u$ is said to be a \emph{least upper bound} for $M$ (sometimes we say that $u$ is a least upper bound \emph{of} $M$, although $u$ may not be a file of $M$): (1) if $m$ belongs to $M$, then $m \leqq u$, and (2) if $u'$ is a file less than $u$, then there is at least one file in $M$ which is greater than $u'$.
+
+  Similarly, if $M$ is a set of files and $\ell$ is a file, then $\ell$ is a \emph{greatest lower bound} for $M$ (or of $M$), provided that $\ell$ has the following two properties: (1) if $m$ belongs to $M$, then $m \geqq \ell$, and (2) if $\ell'$ is a file greater than $\ell$, then some file in $M$ is less than $\ell'$.
+
+\end{description}
+
+You should check the following facts.
+
+No set has two least upper bounds nor two greatest lower bounds. This justifies calling $u$ \emph{the} least upper bound (and makes the use of the word ``least'' correct). Similarly, we may speak of $\ell$ as \emph{the} greatest lower bound. An \emph{upper} bound is a file with property (1) for $u$, and a \emph{lower} bound is a file which has property (1) for $\ell$. So property (1) for $u$ makes $u$ an upper bound, and property (2) makes $u$ the least such file.
+
+\begin{description}
+
+\item[Definition:] If $a$ is a file less than a file $b$, the set $I$ of all files $x$ such that $x \leqq x \leqq b$ is called an \emph{interval} (or closed inverval). For short, one says that $I=[a,b]$.
+
+\item[Examples:] If $I$ is the closed interval $[a,b]$, then $b$ is the least upper bound for $I$ because if $b'$ is any file less than $b$, there is a file of $I$ between it and $b$. And, of course, $a$ is the greatest lower bound for $I$. 
+
+\item[Question:] If $\phi$ is the empty set of files, does $\phi$ have a greatest lower bound (a least upper bound)? (Vacuous logic about vacuous sets is not very satisfying, but is necessary for accuracy.)
+
+\item[Theorem:] If $M$ is a non-empty set of files, $M$ has a greatest lower bound.
+
+\end{description}
+
+The $\underline{1}$ file is a lower bound for every set of files, but of course not necessarily the \emph{greatest} lower bound.
+
+\begin{description}
+
+\item[Theorem:] If $M$ is a bounded set of files, then $M$ has a least upper bound.
+
+\end{description}
+
+You should recall that when we first startyed constructing files, we observed that files had certain of the order properties possessed by natural numbers, but not the induction property. That is, there are sets of files which (unlike a set of natural numbers) do not contain a smallest member. This last theorem says that for certain kinds of sets of files, the old induction property \emph{does} hold true: namely, if $W$ is the set of all upper bounds for a given set $M$ of files and $W$ is non-empty, then $W$ really does contain a smallest file. This is also true in any set which is non-empty and finite, but not true for all non-empty sets of files in general.
+
+
+
+\section{Nested Sequence Of Intervals}
+
+As seen in the last two theorems, the existence of a set of files implies the existence of a file which has a particular relation to the given set. And the mere existence of such a file may help solve other problems (even practical problems). The same is true of the following theorem.
+
+\begin{description}
+
+\item[Theorem:] Suppose that $(I_1, I_2, I_3, \cdots)$ is an infinite sequence of closed intervals such that $I_2 \subset I_1$, $I_3 \subset I_2$, $\cdots$, $I_{n+1} \subset I_n$, $\cdots$. Then there is a file which belongs to all of the intervals $(I_1, I_2, I_3, \cdots)$. (A sequence of intervals satisfying the hypothesis of this theorem is called \emph{nested}.)
+
+\end{description}
+
+In rough language, this theorem says that a nested sequence of closed intervals has a non-empty intersection. An example of this kind of thing occured early in our work with files.
+
+Let $I_1$ be the interval $[\underline{1}, (1, 1, 2, 1,1,1,\cdots)]$; etc. There is a file, the $\underline{1}$ file, which belongs to all of the intervals in the sequence $(I_1, I_2, I_3, \cdots)$. In this case, it is the \emph{only} such file. In general, there could be more than one file common to all the intervals of the sequence.
+
+\subsection*{Problem}
+For each natural number $n$, let $I_n$ be the inverval $(a,b)$, where $a = (1,n,1,1,1$, $\cdots)$ and $b=(b_1, b_2, b_3, \cdots)$ where $b_j=2$ when $j\neq n$, and $b_j = n$ when $j=n$. Find two string files (files terminating in a string of ones), each of which belongs to all the intervals of the sequence $(I_1, I_2, I_3, \cdots)$.
+
+
+
+\section{Counting The String Files}
+
+The use of prime numbers (among the natural numbers) is very frequent in number theory. They may be used here in kind of a peculiar way to show that the set of all string files is countable.
+
+If $f=(f_1, f_2, f_3, \cdots)$ is a file from the following infinite product:
+\begin{equation*}
+n_f = 2^{f_1 -1} \times 3^{f_2 -1} \times 5^{f_3 -1} \times 7^{f_4 -1} \cdots
+\end{equation*}
+taking the prime numbers one after the other in order of magnitude. It is conventional to define $n^0$ to be one. In general, $n_f$ has no numeriucal meaning except when all but a finite number of the factors are one. Then $n_f$ is a product of these factors (i.e., those different from one). Hence if $f$ is a string file, $n_f$ is a natural number. The set of all ordered pairs $(f, n_f)$ when $f$ is a string file, is a correspondence between the set of all string files and a subset of the natural numbers. Clearly it is one-to-one (why?); so the set of all string files is coutnable. As we have remarked earlier, the ste of all files is not countable. You are now in a position to prove this, by assuming that the set of all files \emph{is} countable and obtaining a contradiction. This argument would be a bit like proving that the set of all prime numbers is infinite.
+
+Suppose that the set of all prime numbers is finite. Then there is a natural number $p$ which is the product of all the prime numbers. Consider $p+1$. It is larger than every prime, and hence itself is not a prime. So $p+1$ is the product of two natural numbers, neither of which is one. So each of these factors must either be a prime or have a prime as a factor. So $p+1$ may be expressed as a product of two numbers, one of which is a prime. But this prime divides $p$ (because $p$ is the product of all the primes) but not $1$. This is a contradiction.
+
+Probably you have noticed another more set theoretic way of proving that the set of all string files is countable. Somewhere, we have shown that for each natural number $n$, the set of all $n$-tuples is countable (this proof is a sort of classical example of the use of mathematical induction). So the set of all finite-tuples (i.e., \{$1$-tuples\} $\cup$ \{$2$-tuples\} $\cup$ \{$3$-tuples\} $\cup \cdots$) is countable, and we set up a one-to-one correspondence between the string files and a subset of this countable set. The correspondence is as follows: suppose that $s$ is a string file $(s_1,s_2,s_3,\cdots)$. Let $n(s)$ denote the smallest natural number $n$ such that for $j \geqq n$, $s_j = 1$. (The set of all such numbers $n$ is non-empty because $s$ is a string file and the induction axiom tells us that $n(s)$ exists.) Now let $s$ correspond to the $n(s)$-tuple $(s_1,s_2,\cdots,s_{n(s)})$. If two string files correspond to the same $n(s)$-tuple, this would mean they had the same (identical) terms from 1 to $n(s)$. But beyond $n(s)$, the terms in both of them would have to be one. Hence they could not differ; so only one string file could correspond to a given $n$-tuple. (The converse is confusing and of no bearing on the problem, but you might try to see why it would be difficult to make the correspondence one-to-one and onto; i.e., each $n$-tuple for $n>1$ corresponds to at most one file. The $\underline{1}$ file is the only string file which corresponds to a $1$-tuple.)
+
+
+\section{A Comment On This Infinite Labeling Process}
+
+In the above arguments, we have set up a one-to-one correspondence between an infinite set $M$ (say) and a subset of the natural numbers. But some (even infinitely many) of the natural numbers might be omitted from this correspondence. Suppose that we call this function from $M$ to the natural numbers by the name ``cor''. All we know is that if $m$ is an element of $M$, $cor(m)$ is a natural number, and if $m_1$ and $m_2$ are different elements of $M$, then $cor(m_1) \neq cor(m_2)$. 
+
+We shall now define a new function $Cor$ from $M$ to $Z^+$ by induction, as follows. There is a smallest natural number, say $z_1$, in $cor(M)$, and to $z_1$ there corresponds a unique element $m_1$ of $M$; i.e., $cor(m_1) = z_1$ for $m_1$ but for no other element of $M$. 
+
+We now define $Cor(m_1)=1$. Let $z_2$ be the smallest number in $cor(M-\{m_1\})$, and let $m_2$ be the element of $M$ such that $cor(m_2)=z_2$. Define $Cor(m_2)=2$. Let $z_3$ be the smallest number in $cor(M-\{m_1,m_2\})$, and let $m_3$ be the element of $M$ such that $cor(m_3)=z_3$. Define $Cor(m_3) = 3$, etc. 
+
+Without formally completing the induction definition of $Cor$, you can see that it can be done. 
+
+But of more importance is the intuitive view of what is happening, which is roughly as follows: (1) arrange the elements of $M$ in order from left to right so that $m_1$ is to the left of $m_2$ if and only if $cor(m_1) < cor(m_2)$, and (2) then shove them all over to the left, leaving no gaps.
+
+Try to picture this operation.
+
+
+
+
+\chapter{Topology}
+\markboth{2. Topology}{2. Topology}
+
+
+In the preceding chapter, we have constructed a linearly ordered space assuming the existence of a set $Z^+$ of elements called natural numbers. The elements of this space we called ``files'', and they have the following properties.
+\begin{enumerate}[\hspace{1cm}1.]
+  \item There is an order $<$ amont files such that (a) if $f_1$ and $f_2$ are distinct files, $f_1 < f_2$ or $f_2 < f_1$, but not both; and (b) if $f_1$, $f_2$, and $f_3$ are files with $f_1 < f_2$ and $f_2 < f_3$, then $f_1 < f_3$.
+  \item There is a smallest file (the ``one'' file, $\underline{1}$) but no largest file (i.e., no file $\bar{u}$ such that if $f$ is any file whatsoever, $f \leqq \bar{u}$).
+  \item There is a \emph{fundamental sequence} $(s_1, s_2, s_3, \cdots)$ of file s(the string files) such that if $a$ and $b$ are files with $a<b$, then there is a natural number $n$ such that $a < s_n < b$.
+  \item If $M$ is a bounded, non-empty set of files, then $M$ has a least upper bound and a greatest lower bound.
+\end{enumerate}
+
+There are many more properties which we have proved about files, sets of files, and the set of all files, but these will suffice for the beginning of topology.
+
+
+
+\section{The Basic Notion In Topology}
+
+We have previously defined a region to be the set of all points between two given points (from here on, except when necessary to make use of its internal structure, we shall call a file a point), or when the region contains $\underline{1}$, the set of all files (points) from $\underline{1}$ (inclusive) to a given file (point) (not included). There are as many regions as there are pairs of points (more in an elementary sense, because if $a$ is a point greater than $\underline{1}$, then both of the following sets are regions: $\{x| \underline{1} <x<a\}$ and $\{x| \underline{1} \leqq x<a\}$). Regions are subsets of our space which are used to measure ``closeness''. Or more precisely, these sets called ``regions'' are used to define the basic notion in topology called ``limit point'' (or cluster point, or accumulation point, or ``pile-up point''). 
+
+\begin{description}
+
+\item[Definition:] If $M$ is a set of poitns and $p$ is a point, then $p$ is said to be a \emph{limit point} of $M$ if every region containing $p$ contains some point of $M$ distinct from $p$.
+
+\item[Theorem 0:] If $p$ is a limit point of a point set $M$, and $W$ is a point set containing $M$, then $p$ is a limit point of $W$.
+
+\item[Theorem 1:] If the point $p$ is a limit point of the point set $M$, and $M$ is the union of the point sets $M_1$ and $M_2$ (i.e., $M = M_1 \cup M_2$), then either $p$ is a limit point of $M_1$ or $p$ is a limit point of $M_2$.
+
+\item[Theorem 2:] If every limit point of a point set $M_1$ is a point of $M_1$, and every limit point of a point set $M_2$ is similarly a point of $M_2$, then every limit point of $M_1 \cup M_2$ belongs to $M_1 \cup M_2$.
+
+\end{description}
+
+Sets like $M_1$ and $M_2$ in Theorem 2 are very useful in topology -- so much so, that they are given a special name: closed sets.
+
+\begin{description}
+
+\item[Definition:] If $M$ is a point set, then $M$ is said to be \emph{closed} if every limit point of $M$ is a point of $M$. (Note that this does not require that every point of $M$ also be a limit point. Point sets with both properties are called \emph{perfect}, and we shall study these later.
+
+\item[Examples Of Sets Which Are Not Closed:] Remember that we let $S$ denote the set of all files. If we let $M$ be $S - \{\underline{1}\}$ (i.e., all files except the ``one'' file), then $M$ is \emph{not} closed because $\underline{1}$ does not belong to $M$ but is a limit point of $M$. How do we see that $\underline{1}$ is a limit point of $M$? By using the definition of a region containing $\underline{1}$, there must exist a point $a$ such that $R = \{s| \underline{1} \leqq s < a\}$; that is, $R$ consists of $\underline{1}$ and all points between $\underline{1}$ and $a$. But between $\underline{1}$ and $a$, there must be a point (in fact, a point of the fundamental sequence). Call one such point $p$. Clearly, $p$ belongs to $R$ and also to $M$, but is different from $\underline{1}$. Thus we have shown that if $R$ is a region containing $\underline{1}$, then $R$ contains a point $p$ which belongs to $M$ and is different from $\underline{1}$. Hence by the definition of ``limit point'', $\underline{1}$ is a limit point of $M$. But $\underline{1}$ does not belong to $M$. So $M$ fails to be closed.
+
+\end{description}
+
+The above is a special case of a more general (but really trivial) sort of construction. Suppose that $L$ is a point set and $\ell$ is a limit point of $L$ which belongs to $L$ ($\underline{1}$ was a limit point of $S$ which belonged to $S$). If we let $M$ be the point set $L - \{ \ell \}$, then $M$ is not closed.
+
+\begin{description}
+
+\item[Examples Of Closed Sets:] Suppose that $M$ is a point set consisting of two points $a$ and $b$, and all points between $a$ and $b$. That is, $M = \{ s| a \leqq s \leqq b \}$. The point set $M$ is closed. Why? Because if $p$ is any point which fails to belong to $M$, then $p$ is not a limit point of $M$. To see this (it helps to draw a picture, like the non-negative part of the $x$-axis), consider two cases: (1) when $p<a$, and (2) when $p>b$. In case (1), the region $\{x| \underline{1} \leqq s < a\}$ contains $p$ but no point of $M$; in case (2), the region $\{x|b<x< p+ \underline{1} \}$ contains $p$ but no point of $M$. So in neither case is $p$ a limit point of $M$. It follows that every limit point of $M$ must be in $M$. (For this $M$, it is also true that every point of $M$ is a limit point of $M$, but as pointed out previously, this is not required of a closed set.)
+
+\end{description}
+
+\subsection*{Problem}
+Which of the following sets are closed? $S$, $\{ \underline{1} \}$, $\{ \underline{1},\underline{2}  \}$, $\{ \underline{1},\underline{2},\underline{3},\cdots \}$, the empty set
+
+\vspace{0.5cm}
+
+Now, what Theorem 2 says is that the union of two closed sets is closed. By induction, it follows that the union of any finite number of closed sets is closed. But the union of countably many closed sets need not necessarily be closed. Construct such a collection, that is a countable collection of closed sets whose union is not closed.
+
+\begin{description}
+
+\item[Theorem 3:] If $M_1$ and $M_2$ are closed point sets, then $M_1 \cap M_2$ is closed.
+
+\item[Theorem 4:] If $M$ is a collection of closed sets, then $\cap M$ is closed. ($\cap M$ is the set of all points $x$ such that $x$ belongs to every element of $M$, i.e., the common part of all members of the collection.)
+
+\end{description}
+
+You should notice that in Theorem 4, no restriction is placed on the number of elements of $M$. There could be infinitely many or even uncountably many elements in $M$. (Of course, we may not know for sure yet that there exist uncountably many things of any sort. But in case there did, it should make no difference in Theorem 4, if you don't label the elements of $M$ with natural numbers and then make use of the labeling in some non-trivial way.)
+
+\subsection*{Problem}
+Construct an example of an infinite nested sequence $(M_1,M_2,M_3,\cdots)$ of closed point sets such that $\displaystyle{\bigcap_{i=1}^{\infty} M_i = \phi}$. (nested $= M_1 \supset M_2 \supset M_3 \supset \cdots$)
+
+
+
+\section{A Useful Property About Regions}
+
+Regions play a vital, central, and fundamental role in our definitions and theorems (especially their proofs). For instance, in showing that a finite point set $M$ is closed, we show that $M$ has no limit point whatsoever; so it is true that $M$ is closed. (It helps to ask oneself here what happens when a point set fails to be closed: a point set fails to be closed if and only if there exists a point which is a limit point of the point set, but not a point of it.) Hence we need to show that if $p$ is a point, there is a region which contains $p$ but contains no point of $M$ different from $p$.
+
+Consider first the case when $p$ does not belong to $M$. Suppose that $m$ is a point of $M$. Since $m \neq p$, either $m<p$ of $m>p$. If $m<p$, the region $\{x|m<x<p+ \underline{1} \}$ is a region containing $p$ but not $m$. If $p<m$, the region $\{x| \underline{1} \leqq x<m\}$ contains $p$ but not $m$. So in either case, for each $m$ in $M$, there exists a region, call it $R_m$, which contains $p$ but not $m$. We know that $p$ belongs to $\cap R_m (m \in M)$. So if we know that $\cap R_m$ contained a region $R$ which contained $p$, we would have a region that contained no point of $M$. But do we know this? Here is where we could use a lemma like this:
+
+\begin{description}
+
+\item[Lemma:] The intersection of two intersecting regions is a region. (Two regions ``intersect'' if they have a point in common.)
+
+\end{description}
+
+Since there are two kinds of regions, we really have four cases here. Let me do one of them, and you do the others.
+
+Suppose that $R_1=\{x| a_1 < x < b_1 \}$ and $R_2=\{x| a_2 < x < b_2 \}$, where $a_1$, $b_1$, $a_2$, and $b_2$ are points. Suppose further that there is a point $p$ such that $p \in (R_1 \cap R_2)$; that is, $a_1 <p < b_1$ and $a_2 <p < b_2$. If $a_1 \neq a_2$, then $a_1 < a_2$ or $a_2 < a_1$, but not both. So if $a_1 \neq a_2$, let $a$ be the larger of the two, and if $a_1 = a_2$, let $a = a_2$. Similarly, if $b_1 \neq b_2$, one of them is amller than the other, and let $b$ be this smaller one; otherwise, let $b = b_1 = b_2$. Clearly, $a \neq b$ because $a<p<b$, since $a_1 < p$ and $a_2 < p$, and $a$ is either $a_1$ or $a_2$; and $p < b_1$ and $p<b_2$ and $b$ is one of $b_1$ and $b_2$. But if $a<b$, the set of all points between $a$ and $b$ is region $R$. What points belong to $R$? All points $x$ such that $a<x<b$. Every such point $x$ (and this includes $p$) belongs to $R_1$ and also to $R_2$. That is, every point of $R$ belongs to $R_1 \cap R_2$. But the converse is also true, as you can easily check; so $R = R_1 \cap R_2$.
+
+The other cases are just as simple.
+
+Returning to the statement just before the Lemma, $\cap R_m (m \in M)$ is a region, as one can see by using finite induction and the Lemma. Obviously this region contains $p$ but no point of $M$. 
+
+If $p$ is a point of $M$, the argument works in this way. For each point of $M$ different from $p$, let $R_m$ be a region containing $p$ but not containing $m$. Thus $\cap R_m$ is a region containing $p$ but containing no point of $M$ different from $p$. So $p$ cannot be a limit point of $M$.
+
+If you still have trouble with induction arguments, try your hand at showing that if $p$ is a point, $n$ is a natural number greater than one, and $\mathcal{R}$ is a collection of $n$ regions each containing $p$, then $\cap \mathcal{R}$ is a region. If this proposition is false, there must be a smallest natural number greater than one for which there exists a point $p$ and a collection $\mathcal{R}$ of $k$ regions each containing $p$, such that $\cap \mathcal{R}$ is not a region. Obviously $k$ cannot be $2$ because of the above Lemma. So how do you complete the argument?
+
+
+
+\section{More On Closed Point Sets}
+
+Theorems 3 and 4 tell us how to make closed point sets if we have some of them to begin with. Of course we have discovered some such sets directly from the definition of ``closed'': finite point sets, $S$, and closed intervals (sets of the form $\{x|a \leqq x \leqq b \}$ for points $a$ and $b$ with $a<b$). We now introduce a means of producing closed sets from sets which may not be closed.
+
+\begin{description}
+
+\item[Theorem 5:] Let $M$ be a set of points, and let $M'$ be the set of all limit points of $M$. Then both $M'$ and $M \cup M'$ are closed point sets.
+
+\item[Definition:] The set $M'$ is frequently called the \emph{derived} set of (or for) $M$, or $M$'s derived set. Also, $M \cup M'$ is usually denoted by $\bar{M}$ (or $M\bar{\ }$ or $c\wr M$), and is called the \emph{closure} of $M$, or $M$'s closure. In certain spaces, it is awkward that $M$'s closure need not be closed. But for our space, it is closed by Theorem 5.
+
+\item[Definition:] If every point of a closed non-empty point set $M$ is a limit point of $M$, then $M$ is said to be \emph{perfect}.
+
+\end{description}
+
+Examples of perfect sets are: $S$, a closed interval (is a closed interval closed?), the closure of a point set which may not itself be closed but which has the property that every point of it is a limit point of it, etc.
+
+\begin{description}
+
+\item[Theorem 6:] No perfect point set is countable, and no countable point set is perfect.
+
+\end{description}
+
+
+
+\section{More On Derived Sets}
+
+If a point set is finite, its derived set is empty. Even if a point set is infinite, its derived set may be empty, e.e., the set of constant files: $\{ \underline{1}, \underline{2}, \underline{3}, \cdots \}$. If $M$ is the infinite set of files consisting of $(2,1,1,1, \cdots)$, $(1,2,1,1,1, \cdots)$, $(1,1,2,1,1,1, \cdots)$, $\cdots$, clearly the $\underline{1}$ file is the only limit point of $M$. (Every region containing $\underline{1}$ contains a point of $M$, and none of these points are $\underline{1}$, so they must be different from $\underline{1}$.) So $\bar{M} = M \cup M' = M \cup \{ \underline{1} \}$. Also, $\bar{M}'$ contains only one point -- namely, $\underline{1}$. (Keep clearly in mind that a limit point of a point set may or may not be a point of that set, e.g., $\underline{1}$ is a limit point of $M$, but is not a point of $M$ and $\underline{1}$ is a limit point of $\bar{M}$ and is a point of $\bar{M}$.)
+
+From these examples, one might guess that if $M$ is a point set, the number of its limit points is smaller than the number of its points or possibly equal, as in the case of a region where each point is a limit point. (Do the two end points really change the number of limit points?) Actually, the number of limit points may exceed the number of points of a set. Consider our fundamental sequence $(s_1,s_2,s_3,\cdots)$ of all the string files. Let $M$ be the set of all the points in this sequence, i.e., $M=\{s_1,s_2,s_3,\cdots\}$. This set is countable, but $M'=S$. (Why?)
+
+\subsection*{Problem}
+Construct a countably infinite point set whose derived set is countably infinite.
+
+
+
+\section{Open Point Sets}
+
+Certain point sets, somewhat like regions, are called ``open''. Open intervals are usually defined as follows: if $a$ and $b$ are points with $a<b$, then $\{x|a<x<b\}$ is called an \emph{open interval}. Our definition of the word ``open'' for sets in general is such that an open interval is also an open point set -- fortunately.
+
+\begin{description}
+
+\item[Definition:] A point set is \emph{open} if it is the union of some collection of regions.
+
+\end{description}
+
+Evidently each region is open. So is the empty set $\phi$, for it is the union of an empty collection of regions! (I am not fond of this sort of emptyness, and if it bothers you, just decide for convenience sake to include $\phi$ among the open sets by definition.) $S$ is open because $S$ is the union of the collection of all regions. But no finite point set is open. (Why?) And very few closed point sets are open. (Which ones?) But one can recognize open sets in another, and very useful, way.
+
+\begin{description}
+
+\item[Theorem 7:] The point set $M$ is open if and only if $S-M$ is closed.
+
+\end{description}
+
+And certain other properties of open sets help one recognize them.
+
+\begin{description}
+
+\item[Theorem 8:] The union of any collection of open sets is open.
+
+\item[Theorem 9:] The intersection of two open sets is open.
+
+\end{description}
+
+\subsection*{Problem}
+Construct an example of a countable collection of open sets whose intersection is not open.
+
+\subsection*{Question} In the proofs of Theorems 3 and 4, did you use Theorem 0? If you didn't, look again.
+
+
+
+\section{When Does A Point Set Have A Limit Point?}
+
+We have seen how to recognize a closed set and how to recognize an open set. Later on, we shall be able to completely characterize open sets as the union of a countable collection of disjoint sets of a limited number of types (including regions, of course, but others as well -- obviously $S$ would have to be included). For the moment, we know enough about open sets to know if a given point set is open or when its complement (in $S$) is closed. However, we really need to know when a set has limit points, for if it has none, it \emph{is} closed. Obviously whenever $M'$ is empty, $\bar{M}=M$, and $M$ is closed. And, of course, $M'$ can be empty. (Be sure you know an example of this kind of behavior.) The following theorem shows that this is the correct direction.
+
+\begin{description}
+
+\item[Theorem 10:] Every infinite bounded point set has a limit point.
+
+\end{description}
+
+You should be able to see this quite easily from the properties of files which we established in Chapter 1, if you remember that whenever $M$ is an infinite set of files and no sequence of files whose terms belong to $M$ is monotone increasing, then some sequence is monotone decreasing. (If you didn't prove this when we first came to it, now is the time to do so, because you have a nice application handy.)
+
+\begin{description}
+
+\item[Theorem 11:] Every uncountable point set has uncountably many limit points.
+
+\end{description}
+
+Since Theorem 6 tells us that every perfect point set is uncountable, an appealing line of argument for Theorem 11 would be to show that every uncountable point set contained a perfect set. The trouble with this is that it is false. Right now it may be too hard to construct an uncountable point set which contains no perfect set. After we know more about the nature of open sets and how many of them there are, it will be much easier. So in any case, avoid this line of argument. Instead, assume that some uncountable point set $M$ has only countably many limit points, and see where this leads you.
+
+
+
+\section{Peculiar Point Sets}
+
+There are many kinds of point sets other than open or closed sets. Some of these, like the fundamental set $\{s_1,s_2,s_3,\cdots \}$ of string files, or the set $\{x| \underline{2} \leqq x < \underline{3} \}$ which is almost open and at the same time almost closed, are not so peculiar, but rather, natural. However, there are lots of peculiar ones.
+
+\vspace{0.5cm}
+
+\subsection*{Problem}
+Construct a set $M$ such that $M' \supset M'' \supset M''' \supset \cdots$, where the successive derived sets are all different and the sequence of derived sets is infinite.
+
+
+
+\section{Comments On The Clarity Of Proofs}
+
+If one isn't careful to be careful in proving a theorem, an improper argument can be very convincing. We saw a case of this in arguments for Theorem 1 of the following nature. Remember that we wished to prove that if the point $p$ were a limit point of a point set $M$, and $M$ were the union of two sets $M_1$ and $M_2$, then $p$ had to be a limit point of at least one of them. So let $R$ be a region containing $p$. Since $p$ is a limit point of $M$, $R$ must contain a point $x$ of $M$ different from $p$. But $x$ must belong either to $M_1$ or to $M_2$. If $x$ belongs to $M_1$, $p$ is a limit point of $M_1$. If $x$ belongs to $M_2$, $p$ is a limit point of $M_2$. So in either case, $p$ is a limit point of at least one of them. What is the fallacy (or gap) here? It is very easy to see (if you see it!), but not so easy to explain.
+
+To point out a defect of this sort in an argument, it is sometimes helpful to change the definition of ``region'' in such a way that makes the same reasoning leaad to a really false conclusion. Suppose that regions were all of the type $\{x|a<x \leqq b \}$ for all $a$ and $b$ with $a<b$. Then $\underline{2}$ would not be a limit point of $M_1=\{x|x>\underline{2}\}$, because $\{x|\underline{1}<x \leqq \underline{2}\}$ contains $\underline{2}$ but no point of $M_1$. Let $M_2=\{x|x<\underline{2}\}$. Then $M_1=\{x|x>\underline{2}\}$ is not a limit point of $M_2$, for the same kind of reason. But $M_1=\{x|x>\underline{2}\}$ \emph{is} a limit point of $M_1 \cup M_2$. Of course, our regions (and these are the ones we must use in our proofs) are not like this, but perhaps this can get one to see why the above argument is incomplete.
+
+Now, in the proof of the first part of Theorem 5, we can fail to be careful in the following way. Suppose that $p$ is a limit point of $M'$. (If we can show that $p$ is a limit point of $M$, we would know that $p$ would belong to $M'$ by definition, and this would make $M'$ closed.) Now let $R$ be a region containing $p$. Since $p$ is a limit point of $M'$, $R$ must contain a point $q$ of $M'$ such that $p \neq q$. But now since $R$ contains $q$ and $q$ is a limit point of $M$, $R$ must contain a point of $M$. Hence $p$ is a limit point of $M$. What is the gap here? For one thing, we haven't been careful with the definition of limit point. The point of $M$ that $R$ must contain will necessarily be different from $q$, but must it be different from $p$? Be sure you see through this incompleteness, and see how to remedy it.
+
+\subsection*{Problems}
+When is a point set not a region? Suppose that $M$ is a bounded point set, and that $a$ and $b$ are its greatest lower bound and least upper bound respectively. If there exists a point $c$ between $a$ and $b$ such that $c$ does not belong to $M$, then $M$ is not a region. Why?
+
+When is a point set not perfect?
+
+The set $S$ of all points is perfect. So is a closed interval; i.e., for some pair of points $a$ and $b$ with $a<b$, the set $\{x|a \leqq x \leqq b\}$. The union of two closed intervals, the union of any finite collection of closed intervals, the closure of the union of any collection of closed intervals -- each of these sets is perfect. Why? But suppose that a point set is not the closure of the union of some collection of closed intervals, could it be perfect?
+
+Consider the following set of all files $f$ (remember $f$ is a set of ordered pairs of natural numbers) such that no second member of a pair in $f$ is greater than $2$. That is, $(1,1,1,\cdots)$, $(2,2,2,\cdots)$, $(1,2,1,2,1,2,\cdots)$, $(2,1,1,2,2,2,1,1,1,1$, $\cdots)$, etc. -- all combinations of ones and twos -- all belong to $M$, and only files of this type belong to $M$. (a) Is $M$ closed? (b) Is $\bar{M}$ perfect? (c) Does $\bar{M}$ contain a closed interval?
+
+
+
+\section{When Are Infinite Sets Defined?}
+
+In the preceding problem, an infinite set has been defined directly by a common property among the points (files). This is the more common way of defining sets. The set $\{s_1,s_2,s_3,\cdots\}$ of all string files was defined in this way (roughly speaking, a string file is one which ends up with nothing but ones). Later we proved that this set was countable, and tagged them with the natural numbers as indicated. While we may have specified that $s_1$ was $\underline{1}$, we made no attempt to establish a formula which would tell us which string file $s_{25}$ was, or $s_{15}$, or $s_{101}$. And in fact, although we know that $s_{15} < s_{25}$ or $s_{25} < s_{15}$, we don't know which way it is. In fact, whether one string file is smaller or greater than another is unrelated to the size of their respective subscripts (except when one of them is $s_1$). But one can define an infinite \emph{subset} of string files by an inductive process (which does relate the subscript to the size of the file) in the following way.
+
+Suppose that $p$ is a point. Let $n_1$ be the smallest of all natural numbers $n$ such that $s_n > p$. We know that $p$ is not the largest file, so there is a file $q$ greater than $p$, and between $p$ and $q$ there is a string file. So the set of natural numbers $n$ such that $s_n > p$ is not empty, so by the Induction Axiom there is a smallest one which we call $n_1$. Now let $n_2$ be the smallest of all the natural numbers $n$ such that $p < s_n < s_{n_1}$. As for $n_1$, the Induction Axiom guarantees that $n_2$ exists. Suppose that $(n_1,n_2,\cdots,n_k)$ have all been defined in this manner; we define $n_{k+1}$ to be the smallest of all those natural numbers $n$ such that $p < s_n < s_{n_k}$. Clearly such a number $n$ exists, and by the Induction Axiom, so does $n_{k+1}$. So the set $\{ s_{n_1}, s_{n_2}, s_{n_3}, \cdots \}$ is infinite.
+\begin{enumerate}[\hspace{0.5cm}(a)]
+  \item Prove that $ s_{n_2} < s_{n_1}$.
+  \item Prove that if $k$ is a natural number, $ s_{n_{k+1}} < s_{n_1}$.
+  \item Prove that the sequence $(s_{n_1}, s_{n_2}, s_{n_3}, \cdots)$ is monotone decreasing.
+  \item Prove that $p$ is the greatest lower bound of $\{ s_{n_1}, s_{n_2}, s_{n_3}, \cdots \}$ and hence (?) is a limit point of this set.
+\end{enumerate}
+
+Suppose that $p^1$ and $p^2$ are two different points, and $(s^1_{m_1}, s^1_{m_2}, s^1_{m_3}, \cdots)$ and $(s^2_{n_1}, s^2_{n_2}, s^2_{n_3}, \cdots)$ are two sequences of string files defined in the above manner for $p^1$ and $p^2$ respectively. Prove that for some $k$, $m_k \neq n_k$. In other words, prove that the sequences are not the same. could the sets be the same? (The sequence $(1,2,3,\cdots)$ and $(2,1,3,4,5,\cdots)$ are not the same, but the sets $\{1,2,3,\cdots\}$ and $\{2,1,3,4,5,\cdots\}$ are the same.)
+
+
+
+\section{Certain Sequences Of Regions}
+
+We have previously noticed that the sequence of files $p_1 = (2,1,1,1,\cdots)$, $p_2 = (1,2,1,1,1,\cdots)$, $p_3 = (1,1,2,1,1,1,\cdots)$, $\cdots$, $p_k = (1,1,\cdots,1,2,1,1,1,\cdots)$ (with $k-1$ number of $1$s before the $2$), $\cdots$ has the one file $\underline{1}$ for its greatest lower bound. Hence the sequence of regions $R_1 = \{x| \underline{1} \leqq x < p_1 \}$, $R_2 = \{x| \underline{1} \leqq x < p_2 \}$, $R_3 = \{x| \underline{1} \leqq x < p_3 \}$, $\cdots$ has the following properties:
+\begin{enumerate}[\hspace{0.5cm}(1)]
+  \item for each natural number $k$, $\underline{1} \in R_k$,
+  \item for each natural number $k$, $R_{k+1} \subset R_k$, and
+  \item $\underline{1}$ is the only point common to all terms of the sequence (i.e., $\displaystyle{\bigcap_{k=1}^{\infty} R_k}$). 
+\end{enumerate}
+
+Now, in the preceding problem we have seen how, for each point $p$, to construct a subsequence $(s_{n_1}$, $s_{n_2}$, $s_{n_3}$, $\cdots)$ of the fundamental sequence $(s_1$, $s_2$, $s_3$, $\cdots)$ of string files such that $p$ is the greatest lower bound of $\{s_{n_1},s_{n_2},s_{n_3},\cdots\}$. So if $p= \underline{1}$, and $R_k= \{ \underline{1} \leqq x < s_{n_k} \}$ for each positive integer $k$, then the sequence $(R_1,R_2,R_3,\cdots)$ of regions has the above properties.
+
+But if $p \neq \underline{1}$, sets defined in this way would not be regions, and we also need to make a similar sort of construction on the other side of $p$. So when $p> \underline{1}$, we have the sequence $\{s_{n_1},s_{n_2},s_{n_3},\cdots\}$ as previously constructed, having $p$ as its greatest lower bound. Now there exists (you should go through the details of the construction) a subsequence $(s_{m_1},s_{m_2},s_{m_3},\cdots)$ such that $m_1<m_2<m_3<\cdots$, $s_{m_1}<s_{m_2}<s_{m_3}<\cdots<p$, and $p$ is the least upper bound of $\{s_{m_1},s_{m_2},s_{m_3},\cdots\}$. If for each natural number $k$ we let $R_k = \{x| s_{m_k} < x < s_{n_k} \}$, we have proved the following theorem.
+
+\begin{description}
+
+\item[Theorem 12:] If $p$ is a point, there exists a sequence $(R_1,R_2,R_3,\cdots)$ of regions such that
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item for each natural number $k$, $p \in R_k$,
+    \item for each natural number $k$, $R_{k+1} \subset R_k$, and
+    \item $p$ is the only point common to all terms of the sequence (i.e., $p = \displaystyle{\bigcap_{1}^{\infty} R_k}$).
+  \end{enumerate}
+
+\item[Theorem 13:] Suppose that $p$ is a point, and $(R_1,R_2,R_3,\cdots)$ is a sequence of regions having properties (1), (2), and (3) of the conclusion of Theorem 12. Then if $R$ is a region containing $p$, there exists a natural number $n$ such that $p \in R_n \subset R$.
+
+\item[Corollary:] A point $p$ is a limit point of a point set $M$ if and only if for each $n$, $R_n$ (of Theorem 13) containing $p$ contains a point of $M$ different from $p$.
+
+\end{description}
+
+This corollary makes a very useful statement because it says that while there may be (and there are) uncountably many regions which contain $p$, you only need to know what happens to a certain \emph{countable} infinity of them (to find out if $p$ is a limit point of $M$ or not). There is even a stronger theorem of this kind.
+
+\begin{description}
+
+\item[Theorem 14:] There exists a countable set $\mathcal{G}$ of regions such that if $p$ is a point of a region $R$ (not necessarily in $\mathcal{G}$, of course), then some member $G$ of $\mathcal{G}$ contains $p$ and is a subset of $R$ (i.e., $p \in G \subset R$).
+
+\end{description}
+
+You should note that in Theorem 13, the sequence $(R_1,R_2,R_3,\cdots)$ was selected \emph{after} $p$ is specified, but in Theorem 14, $\mathcal{G}$ is defined \emph{before} $p$ is specified. This use of the sequential nature of our language is sometimes quite subtle, and you must always be alert.
+
+
+
+\section{Alternative Proofs}
+
+Everyone knows that it is necessary to prove a theorem only one way to be sure the theorem is true. But many times, a different proof will shed new light on the situation or be more convincing to some people, especially those who might have felt a little uncomfortable with the first argument. In fact, one frequently hears the comment that while a certain argument proves that the theorem isn't false, it doesn't really tell you why it's true! This is especially likely in cases of indirect arguments where the assumption that the theorem (or proposition) is false leads to a contradiction. There are others, however, that while direct, are not as direct as possible, and it is this sort of thing that arises in the proof of Theorem 9.
+
+The not-so-direct argument goes like this: Let $O_1$ and $O_2$ be open sets. Then $S - O_1$ and $S - O_2$ are closed, so $(S - O_1) \cup (S - O_2)$ is also closed by Theorem 1. Hence $S - [(S - O_1) \cup (S - O_2)]$ is open. But this is $O_1 \cap O_2$. Therefore, the intersection of two open sets is open.
+
+But this argument goes around through a couple of theorems and some back-handed set juggling. So some people will feel convinced (if at all) because they really can't see anything wrong. The following is more direct (and perhaps less sophisticated). By definition, $O_1$ and $O_2$ are the unions (respectively) of certain collections $\mathcal{R}_1$ and $\mathcal{R}_2$ of regions. For each point $p$ in $O_1 \cap O_2$, there is at least one region $R_1$ from $\mathcal{R}_1$, and at least one region $R_2$ from $\mathcal{R}_2$, such that each contains $p$. By a previous lemma, $R_1 \cap R_2$ is a region $R_p$ which contains $p$. So the collection $\{ R_p \}$ for all $p$ in $O_1 \cap O_2$ is a collection of regions and the union of this collection is $O_1 \cap O_2$. Why?
+
+This argument goes directly from the definition of ``open'' through the lemma back to the definition. And this lemma is one of those propositions that is easy to remember and believe. But this argument also really tells you \emph{why} the intersection of two open sets must be open. From the stand-point of proving the theorem, neither is better than the other because each of them proves the theorem.
+
+
+
+\section{Some Theorems On Uncountable Sets}
+
+We have only a few facts to help us in the study of uncountable sets. We know the set theory proposition that no uncountable set is the union of countably many countable sets because such unions are countable. We know that no perfect set is countable. But not much more. So let's try to understand, and then prove, the following theorem.
+
+\begin{description}
+
+\item[Theorem 15:] If $p$ is a point and $M$ is an uncountable point set, then there is a region $R$ which contains $p$ such that $M-R$ is uncountable.
+
+\item[Theorem 16:] If $M$ is an uncountable point set, $M-M'$ is not uncountable.
+
+\item[Definition:] If $p$ is a point and $M$ is a point set, then $p$ is a \emph{condensation} point of $M$ if every region containing $p$ contains uncountably many points of $M$.
+
+\item[Theorem 17:] If $M$ is an uncountable point set, there exists a condensation point of $M$.
+
+\item[Theorem 18:] If $M$ is an uncountable point set, then some point of $M$ is a condensation point of $M$; in fact, all except possibly countably many points of $M$ are condensation points of $M$.
+
+\end{description}
+
+Obviously, a condensation point of a point set $M$ is also a limit point of $M$. So one might be tempted to think the following proposition is false. However, it was proved by a mathematician named Bernstein, about 1910. At this point, all of you can do it, but since a bit of bravery is required, perhaps a bit of time will be also.
+
+\begin{description}
+
+\item[Theorem 19:] Not every uncountable point set contains a perfect set, but every uncountable closed point set does.
+
+\end{description}
+
+\subsection*{Silly Problem}
+Every non-empty open point set contains a perfect set.
+
+
+
+\section{Further Comments On Discovering Proofs}
+
+Previously, we have discussed trying to find a useful lemma or stepping stone toward a complete proof. Another procedure is to try to prove a weaker theorem when the full theorem seems too hard. Frequently, there are several weaker theorems which are obvious corollaries of the full theorem. For example, take Theorem 11. Quite possibly you did not (even still don't) see how to prove this theorem. So in order to use Theorem 10, we would try to prove the following lemma.
+
+\begin{description}
+
+\item[Lemma For Theorem 11:] If $M$ is an uncountable point set, some uncountable subset $M_1$ is bounded.
+
+\end{description}
+
+If you think of how the following sequence of closed intervals intersect $M$, i.e., $[ \underline{1},\underline{2}]$, $[ \underline{1},\underline{3}]$, $[ \underline{1},\underline{4}]$, $\cdots$, you can (with a little thought, of course) see how to prove the lemma. Then by Theorem 10, $M_1$ has limit point. So we can prove a weaker theorem.
+
+\begin{description}
+
+\item[Theorem 11.1:] Every uncountable point set has at least one limit point.
+
+\end{description}
+
+Now we could try to prove that every uncountable point set has \emph{two} limit points. (It isn't as obvious as it appears, so don't be content with a hazy argument.) Then we might try for infinitely many (but countably many). And if we never got Theorem 11 proved, we would have some useful approximations. Furthermore, they just might help prove the full theorem.
+
+
+
+\section{Adequate Detail In A Proof}
+
+The question frequently arises as to just how much detail to include in a proof. This is hard to determine. Too much detail slows down the march of the argument, and often this causes the reader (or listener) to lose the thread of the argument. On the other hand, careful attention to detail is absolutely essential to the reduction of errors in arguments. If one states precisely what the omitted details prove and if this is something previously considered (perhaps in a proof or discussion of something else) or something intuitively obvious, it is probably preferable to omit the details and go on, returning later if there is any question.
+
+An example of this sort of thing occurs in the proof of Theorem 13. We are given a region $R$, and we were to select a natural number $n$ such that $R_n$ (of the sequence $R_1,R_2,R_3,\cdots$) was a subset of $R$. Letting $a$ and $b$ denote the endpoints of $R$ (in case $p \neq \underline{1}$), we let $\ell$ be an integer so that $R_{\ell}$ did not contain $a$, and let $\mathcal{m}$ be an integer so that $R_{\mathcal{m}}$ did not contain $b$. Then if $n$ is the larger of the two numbers $\ell$ and $\mathcal{m}$, $R_n$ would contain $p$ but neither $a$ nor $b$. Hence $R_n$ would have to be a subset of $R$.
+
+We have omitted the detailed reasons for this last statement. They could be inserted before stating the conclusion, but this might distract the reader (or listener). And this is something that we have done before: So $R_n$ contains $p$ but not $a$. Now if $R_n$ contains a point $x$ such that $x \leqq a < p$ where both $x$ and $p$ belong to $R_n$, this would make $a$ belong to $R_n$. Similarly, if $R_n$ contained a point $y$ such that $y \geqq b$, then $p < b \leqq y$ where $y$ and $p$ belong to $R_n$, and this would make $b$ belong to $R_n$. Hence every point of $R_n$ belongs to $R$. Is this enough detail? Perhaps. Maybe more is required.
+
+Suppose that (by definition) $R_n = \{ x | r_n < x < s_n \}$, and as before, $x \leqq a < p$. If both $x$ and $p$ belong to $R$, $r_n < x < s_n$ and $r_n < p < s_n$. It follows that $r_n < x \leqq a < p < s_n$, so $r_n < a < s_n$, and $a$ belongs to $R_n$. And a similar thing could be done for $b$. Would more detail be required? Certainly anyone familiar with the theorems on order in the first chapter could easily supply them. But if the reader (or listener) were not familiar with the theorems, or had forgotten them, he might need to be show more. So in the end, the amount of detail is largely a matter of judgement. In any case, clarity is required. So is accuracy, even though a rough outline based upon pictures and intuition may be extremely helpful in keeping the main thread of an argument in mind.
+
+
+
+\section{A Strange Phenomenon About Theorems And Their Proofs}
+
+Not infrequently, it happens in mathematics that a certain theorem seems difficult (if not impossible) to prove, while a stronger theorem seems much easier. For example, consider Theorems 11, 16, and 18. We were able to prove a part of Theorem 11, specifically, that every uncountable point set had at least one limit point. But beyond that, to show that there had to be uncountably many such points seemed hard. So Theorem 16 seemed even more difficult. Clearly, if $M$ is uncountable and $M-M'$ is not uncountable, then $M$ has uncountably many limit points \emph{actually belonging to} $M$. Thus Theorem 11 is a corollary of Theorem 16. But the difficulties remain. The point of view has changed a bit, and sometimes this helps. Then comes the notion of a condensation point. Of course, a condensation point of a point set $M$ is obviously a limit point of $M$. The converse is false. Offhand, it would appear that as far as Theorem 11 is concerned, these considerations are leading us in the wrong direction. They are. But one idea that one has to discover in connection with Theorem 18, and which is more or less forced upon us, just doesn't seem so appealing in connection with Theorem 11.
+
+To observe this, let us start to prove Theorem 17. We wish to show that the uncountable point set $M$ has not just a limit point, but a condensation point. Reasoning indirectly, if no point were a condensation point of $M$, then for each point $p$ in $S$, there would necessarily have to exist a region $R_p$ whose intersection with $M$ was \emph{not} uncountable. In other words, for each point $p$ there would be a region which contained $p$ but at most countably many points of $M$. Pick one such region (there would be many such regions, but pick one) and call it $R_p$. 
+
+Now if a different region were required for different points, and while each one of them contained only countably many points of $M$, there would (or could) be uncountably many such regions, and this would not be in conflict with $M$ being uncountable. But wait! Maybe we can limit our selection to a countable collection of regions. We have such a countable collection. In Theorem 14, $\mathcal{G}$ is a countable collection. Can we pick our regions solely from $\mathcal{G}$? Certainly. 
+
+Having chosen $R_p$, Theorem 14 tells us that there is a region $G_p$ chosen from $\mathcal{G}$ which contains $p$ and is a subset of $R_p$, i.e., $p \in G_p \subset R_p$. Since $R_p$ contains only countably many points of $M$, $G_p$ cannot contain uncountably many points of $M$ because it is a subset of $R_p$. 
+
+So $G_p$ does what $R_p$ does, and there are only countably many regions $G_p$ although there are uncountably many points $p$, i.e., $\{ G_p | p \in S \} \subset \mathcal{G} \}$. But obviously since every point of $S$ is contained in one or more of these sets $G_p$, every point of $M$ is also. This would make $M$ countable because the union of countably many countable sets is countable.
+
+Now, having discovered how to use Theorem 14 in this way, Theorem 18 is easy to prove (at least the first part is, and a little more gets it all), and Theorems 11 and 16 become corollaries. However, we see now -- after it was forced upon us -- that we could have used this kind of argument on each of them.
+
+\subsection*{Problem}
+Construct an infinite point set $T$ which has the property that every point of $T$ is a limit point of $T$ such that $T$ has no condensation point. $T$ cannot be closed. Why? That is, $T$ cannot be perfect. Show that $T + T'$ is perfect. So $T$ is countable, and $T'$ is uncountable.
+
+
+
+\section{Other Problems Of Dealing With Countable Collections}
+
+One of the advantages, a minor one to be sure, of knowing that a certain set or collection is countable, is that its elements may be labeled (or tagged) with different natural numbers, and this gives us a useful notational device. In this connection, the following theorems may be useful.
+
+\begin{description}
+
+\item[Theorem 20:] Every open point set is the union of a countable collection of regions.
+
+\item[Theorem 21:] Every region is the union of a countable collection of closed intervals.
+
+\item[Corollary:]  Every open point set is the union of a countable collection of closed intervals.
+
+\item[Theorem 22:] If $\mathcal{U}$ is a collection of regions (or open point sets), no two of which intersect, $\mathcal{U}$ is countable.
+
+\item[Theorem 23:] If $M$ is a bounded point set, then some finite subcollection $\mathcal{U}$ of $\mathcal{G}$ (cf. Theorem 14) covers $M$, i.e., some finite subcollection has the property that each point of $M$ belongs to at least one of them $(U \mathcal{U} = {\mathcal{U}}^{\star} \supset M)$. \emph{(When you see that Theorem 23 is of very much help on anything, we will revise it.)}
+
+\end{description}
+
+If you will look back at the argument for Theorem 17, you will notice that in the end it is clear what is happening, but not so easy to make this clear to someone else. There is another approach to this exposition, which is easier to write down even though it is a bit more sophisticated. This is something you can do after you know what you have done. That is, you have in the end picked a subcollection $\{ G_p | p \in S \}$ of $\mathcal{G}$ which does something for you. Why not pick this subcollection to start with? It is very simple to do this. Let $\mathcal{G}_c$ be a subcollection of $\mathcal{G}$ consisting of all those regions $G$ in $\mathcal{G}$ such that $G \cap M$ is countable (or empty, if you worry about counting nothing!). Since $\mathcal{G}_c$ is a subcollection of $\mathcal{G}$, it is countable. Let $\mathcal{G}_c = \{G_1,G_2,G_3,\cdots \}$. For each natural number $n$, $G_n \cap M$ is countable; so $\displaystyle{\bigcap_{n=1}^{\infty} G_n \cap M}$ is countable, since the union of countably many countable sets is countable. Now, if every point of $M$ belongs to this union, $M$ would have to be countable, and we would have a contradiction arising from the assumption that no point is a condensation point of $M$. So let's see if we can show that each point of $M$ belongs to some member of $\mathcal{G}_c$.
+
+Let $p$ be a point. By supposition, $p$ is not a condensation point of $M$; so there \emph{must} exist a region which contains $p$ but at most countably many points of $M$. By Theorem 14, there exists an element $G$ of $\mathcal{G}$ such that $p$ is an element of $G$, and $G$ is a subset of of $R$. Thus $G$ is an element of $\mathcal{G}$ such that $G \cap M$ is a subset of $R \cap M$, and is therefore countable. Consequently, $G$ belongs to $\mathcal{G}_c$ by definition. So $p$ \emph{does}, in fact, belong to an element of $\mathcal{G}_c$. Hence, in particular, each point of $M$ belongs to at least one member of $\mathcal{G}_c$.
+
+This kind of argument may seem a bit backward, but it has the virtue of focusing your attention on a certain collection of regions that you know is countable, and which at the same time helps you count $M$.
+
+
+
+\section{Corollaries}
+
+A corollary is usually thought of as a special case of a given theorem. For example, given the theorem in plane geometry that two triangles are congruent if two sides and the included angle of one are congruent to two sides and the included angle of the other, a corollary (a special case) is that two right triangles are congruent if the two \emph{legs} (the sides of the right angle) are congruent respectively to the two legs of the other. But it is also a corollary that two right triangles are congruent if two \emph{sides} of one are congruent respectively to two corresponding sides of the other. This is not strictly a special case, because some additional knowledge is required. But we still might call this proposition a corollary of the given theorem. Frequently, we go still further, and call a proposition that makes a special case of the given theorem a corollary -- just the reverse of the original meaning. An example of this is the following corollary of Theorem 20.
+
+\subsection*{Problems}
+Prove that if $\mathcal{U}$ is a collection of regions, there exists a countable subcollection $\mathcal{U}_1$ of $\mathcal{U}$ such that $U \mathcal{U} = U \mathcal{U}_1$.
+
+Prove the same letting $\mathcal{U}$ be a collection of open sets.
+
+Both of these problems may be solved by observing what went on in the proof of Theorem 20. But then Theorem 20 becomes a special case of these corollaries.
+
+\vspace{0.5cm}
+
+Actually, the property that whatever is covered by a collection of open sets may be covered by a countable subcollection of these open sets is quite useful -- so useful, in fact, that it is given a name: the Lebesque (or Lindelöf) Property. Our space of files has this property, and so do all of the Euclidean spaces (of whatever dimension). But there are spaces which do not. You will study some of these in General Topology.
+
+
+
+\section{More Covering Theorems}
+
+If $M$ is a point set and $\mathcal{C}$ is a collection of point sets such that each point in $M$ belongs to at least one element of $\mathcal{C}$, we say that $\mathcal{C}$ covers $M$. A covering theorem is a proposition that yields some information about some sort of covering. Theorems 20 and 21 are examples of this kind of proposition. Here are two more.
+
+\begin{description}
+
+\item[Theorem 24:] If $(M_1,M_2,M_3,\cdots)$ is a nested sequence of bounded closed non-empty point sets, then $\cap M_i \neq \phi$ (and is closed). (nested $= M_1 \supset M_2 \supset M_3 \supset \cdots$)
+
+\end{description}
+
+This theorem says that just as a nested sequence of intervals (see Chapter 1) must have at least one common point, so must a nested sequence of closed and bounded non-empty point sets.
+
+\subsection*{Problem}
+Construct an example to show that ``bounded'' is required for the truth of the theorem.
+
+\vspace{0.5cm}
+
+Theorem 24 does not look like it is a covering theorem, but it is, because Theorem 25 is an easy corollary.
+
+\begin{description}
+
+\item[Theorem 25:] If $M$ is a closed and bounded point set, and $\mathcal{C}$ is a collection of open point sets covering $M$, then some finite subcollection of $\mathcal{C}$ covers $M$.
+
+\end{description}
+
+Quite frequently, this property is called the finite covering property. A point set (like $M$ in Theorem 25) having the finite covering property is said to have the Heine-Borel Property, or more commonly, is simply said to be \emph{compact}.
+
+
+
+
+\chapter{Connectedness}
+\markboth{3. Connectedness}{3. Connectedness}
+
+
+An idea that has proved to be very useful in topology is the notion of connectedness. Intuitively (and naïvely), we feel that a point set is connected if a point-size bug can crawl from any point in the point set to any other point in the set, without getting out of the set. But it is rather hard in general to define this process using just points and the notion of limit points. So we shall try a different approach. Maybe it is easier to determine when a point set is \emph{not} connected! For example, when there were only 48 states in the United States, their union was a connected set. But now that there are 50 states, the union is no longer connected, but in three places separated from the other parts by water and land not belonging to the United States. Both of these ideas were used by mathematicians, the first one being limited to open sets. So finally, around the beginning of this century, topologists formulated and accepted the following definition.
+
+\begin{description}
+
+\item[Definition:] A point set $M$ is \emph{not connected} if it is the union of two non-empty subsets $H$ and $K$, neither of which contains a point nor a limit point of the other; i.e., $M=H \cup K$ and $\bar{H} \cap K = \phi = H \cap \bar{K}$
+
+\end{description}
+
+For instance, if $M = [\underline{1},\underline{2}] \cup [\underline{3},\underline{4}]$, then $M$ is closed but not connected, because neither of the sets $[\underline{1},\underline{2}]$ and [\underline{3},\underline{4}] contains a point (nor a limit point) of the other. On the other hand, if $M = [\underline{1},\underline{2}] \cup (\underline{2},\underline{3}]$, it is not clear whether $M$ is connected or not, because although these two sets $[\underline{1},\underline{2}]$ and $(\underline{2},\underline{3}]$ have no point in common, $[\underline{1},\underline{2}]$ contains a limit point of $(\underline{2},\underline{3}]$ and hence does not satisfy the definition of ``not connected'', maybe there is some other pair of sets $H$ and $K$ which does. To illustrate the import of this last remark, consider this set: $([\underline{1},\underline{3}] - \underline{2}) \cup (\underline{3},\underline{4}]$.
+
+The set $[\underline{1},\underline{3}] - 2$ contains a limit point of $(\underline{3},\underline{4}]$, so this way of writing the set as a union does not satisfy the definition of ``not connected''. But $([\underline{1},\underline{3}] - \underline{2}) \cup (\underline{3},\underline{4}] = [\underline{1},\underline{2}) \cup (\underline{2},\underline{4}]$ does give a way of writing the set as the union of two sets $[\underline{1},\underline{2})$ and $(\underline{2},\underline{4}]$, neither of which contains a point nor a limit point of the other. Hence $([\underline{1},\underline{3}] - \underline{2}) \cup (\underline{3},\underline{4}]$ is not connected.
+
+There are, of course, many ways of expressing a given set, especially when it is infinite, as the union of two sets neither of which contains a point of the other, i.e., a given set is in general the union of disjoint sets in many different ways. But when \emph{at least one} such pair of disjoint subsets also has the property that neither contains a limit point of the other, we say they are mutually separated (or mutually separate, or just separated). This leads us to the following definition of connectedness (if we wish every point set to be either connected or not connected!).
+
+\begin{description}
+
+\item[Definition:] A point set is \emph{connected} if it is not the union of two non-empty mutually separated subsets.
+
+\end{description}
+
+As you can see, we are really just saying that a connected point set is one which does not belong to the family of all non-connected sets. This kind of statement isn't very positive. Hence we must learn to recognize connected point sets with the help of some theorems.
+
+\begin{description}
+
+\item[Theorem 26:] No connected point set can lie in the union of two mutually separated sets and intersect both of them.
+
+\end{description}
+
+It is not true that the union of two connected point sets is connected. One of the preceding examples illustrates this.
+
+\subsection*{Problem}
+Which one?
+
+\vspace{0.5cm}
+
+But when they intersect, the situation is different.
+
+\begin{description}
+
+\item[Theorem 27:] The union of two intersecting connected point sets is connected.
+
+\item[Theorem 28:] If $M$ is a connected point set, then $M$ plus one or more of its limit points is connected.
+
+\end{description}
+
+This theorem says that if $N \subset M'$, then $M \cup N$ is connected whenever $M$ is connected. So if a region $R$ is connected, then $R$ plus either or both of its end points is connected. But \emph{is} every region connected?
+
+Suppose that some region $R$ is not connected. Then $R$ is the union of two non-empty mutually separated subsets $H$ and $K$. Let $p$ be a point of $H$. Now, $p$ does not belong to $\bar{K}$. Suppose that $K$ contains points greater than $p$, and let $q$ be the greatest lower bound of all such points. Clearly, $p \neq q$ and $p<q$. All of the points between $p$ and $q$ must belong to $H$. Hence $q$ is a limit point of $H$. So while $q$ must be a point or limit point of $K$ because it is the greatest lower bound of a subset of $K$, it cannot be a point of $K$. But if it isn't a point of $K$, it must be a limit point of $K$. Hence $q$ does not belong to $H$ either. This is impossible, since $R = H \cup K$ and $q \in R$.
+
+So we have proved the following theorem.
+
+\begin{description}
+
+\item[Theorem 29:] Every region is connected.
+
+\end{description}
+
+\subsection*{Problems}
+\begin{enumerate}[\hspace{1cm}1.]
+  \item Is the empty set connected?
+  \item Is a one-point point set connected?
+  \item Is a finite nondegenerate point set connected?
+\end{enumerate}
+
+
+
+\section{More On Unions Of Sets, And Proving Too Much}
+
+Frequently when you get a proof of a theorem, you notice that you have proved more than was required. So after looking carefully at your argument, you are able to formulate a much stronger theorem; in fact, one from which the original theorem follows as a corollary or special case. This may be the case with the proof of Theorem 27. Does it make any difference whether you have \emph{two} connected point sets or twenty? In fact, doesn't your argument support the following theorem?
+
+\begin{description}
+
+\item[Theorem 30:] Let $\mathcal{U}$ be a collection of connected point sets, each two of which intersect. Then $\mathcal{U}^{\star}$ is connected.
+
+\end{description}
+
+\subsection*{Problem}
+If $\mathcal{U}$ is a collection of connected point sets, and each element of $\mathcal{U}$ intersects some other element of $\mathcal{U}$, $\mathcal{U}^{\star}$ need not be connected. Construct an example.
+
+\begin{description}
+
+\item[Corollary:] If $\mathcal{U}$ is a collection of connected point sets, each of which intersects the non-empty connected point set $C$, then $\mathcal{U}^{\star} \cup C$ is connected.
+
+\end{description}
+
+\subsection*{Problem}
+Suppose that $\mathcal{U}$ is a collection of closed intervals such that if $H$ is an element of $\mathcal{U}$, $H$ is not a subset of any other element of $\mathcal{U}$, but each of its end points is an end point of some other element of $\mathcal{U}$. Then $\mathcal{U}^{\star}$ need not be connected. Give an example.
+
+
+
+\section{The Intersection Of Connected Point Sets}
+
+Unlike the situation in other spaces (the plane, for example), here the intersection of connected point sets must be connected.
+
+\begin{description}
+
+\item[Theorem 32:] If $T$ is the set of all points $p$ such that $p$ belongs to every element of a collection $\mathcal{U}$ of connected point sets, $T$ is also connected; i.e., $\cap H (H \in \mathcal{U})$ is connected.
+
+\end{description}
+
+
+
+\section{Classification Of Connected Point Sets}
+
+Our space (of files) is so simple that we are able to catalogue all of the connected subsets. Every non-degenerate connected set turns out to be an interval or a ray (of some kind), which we shall define below. We also need the following notion.
+
+\begin{description}
+
+\item[Definition:] By a \emph{component} of a point set $M$, we shall mean a subset $C$ of $M$ which is connected, but which is not a proper subset of any (other) connected subset of $M$; i.e., $C$ is a maximal connected subset of $M$.
+
+\item[Theorem 33:] If $p$ is a point of a point set $M$, then $p$ belongs to one and only one component of $M$.
+
+\item[Theorem 34:] If $C$ is a non-degenerate connected point set, then $C$ is either an interval or a ray.
+
+\end{description}
+
+An interval is one of the following.
+
+\begin{description}
+
+\item[Definition:] If $I$ is an interval, there exist points $a$ and $b$ with $a<b$, such that:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $I = \{ x | a<x<b \}$ (\emph{open} interval),
+    \item $I = \{ x | a \leqq x<b \}$ (\emph{half} open, closed on the left),
+    \item $I = \{ x | a <x \leqq b \}$ (\emph{half} open, closed on the right), and
+    \item $I = \{ x | a \leqq x \leqq b \}$ (\emph{closed}).
+  \end{enumerate}
+
+\end{description}
+
+It is fortunate that an open interval turns out to be an \emph{open} point set, and a \emph{closed} interval is closed.
+
+A ray is one of the following.
+
+\begin{description}
+
+\item[Definition:] If $R$ is a ray, there exists a point $O$ (called its emanation point or end point), such that:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $R = \{ x | O < x \}$ (\emph{open} ray), or
+    \item $R = \{ x | O \leqq x \}$ (\emph{closed} ray).
+  \end{enumerate}
+
+\end{description}
+
+
+
+\section{Some Ideas About Components}
+
+It follows as a corollary to Theorem 33 that no two components of a point set can intersect. So each component of a given point set has an identity of its own, and if we knew what kind of a point set each component was, we would begin to understand something about the given set. The following theorem helps a little.
+
+\begin{description}
+
+\item[Theorem 35:] Every component of a point set is open.
+
+\item[Corollary:] Each component of a bounded open point set is a region.
+
+\item[Corollary:] Every bounded open point set is the union of a countable collection of mutually disjoint regions.
+
+\item[Theorem 36:] Every component of a closed point set is closed.
+
+\item[Corollary:] Each component of a bounded closed point set is either a point or a closed interval.
+
+\end{description}
+
+Now, the converse to Theorem 35 is true. Why? But the converse to Theorem 36 is false.
+
+\subsection*{Problem}
+Construct a point set, each component of which is a closed interval, but which is itself not closed.
+
+\vspace{0.5cm}
+
+\begin{description}
+
+\item[Theorem 37:] If $M$ is a closed point set and $p$ and $q$ are distinct points of $M$ belonging to different components of $M$, then $M$ is the union of two mutually separated closed subsets, one of which contains $p$ but not $q$. (i.e., the other one contains $q$.)
+
+\item[Corollary:] A point set $M$ is connected if and only if each two of its points are the end points of an interval lying in $M$.
+
+\item[Corollary:] Each of $S$ and $S - \{ \underline{1} \}$ is connected.
+
+\end{description}
+
+
+
+\section{More On Components}
+
+We have seen that some of the components of a closed point set may be degenerate, i.e., single points. There are closed point sets where this is true of every component, e.g., finite point sets. Much more complicated such sets exist, and are of special interest.
+
+\begin{description}
+
+\item[Definition:] If every component of a point set is degenerate, it is said to be \emph{totally disconnected}. (A non-connected set is sometimes called a disconnected set.)
+
+\end{description}
+
+This gives rise to one anomaly: a set with only one point in it is both connected and totally disconnected.
+
+\subsection*{Question}
+Is the empty set totally disconnected?
+
+\vspace{0.5cm}
+
+\subsection*{Problem}
+Construct:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item an infinite, totally disconnected point set,
+  \item one such that every one of its points is a limit point of it, and
+  \item one which is perfect (and therefore uncountable).
+\end{enumerate}
+
+\begin{description}
+
+\item[Theorem 38:] If $M$ is a point set and $\mathcal{U}$ is the collection of all nondegenerate components of $M$, then $\mathcal{U}$ is countable.
+
+\end{description}
+
+
+\end{document}

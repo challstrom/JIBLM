@@ -1,0 +1,8 @@
+\contentsline {section}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {2}Folding Regular Star Polygons}{4}
+\contentsline {section}{\numberline {3}The Number Theory Of Period 2 Folding}{15}
+\contentsline {section}{\numberline {4}The Number Theory Of The General Folding Procedure}{22}
+\contentsline {section}{\numberline {5}Folding All Star Polygons}{31}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Appendix - The Further Generation Of Folding Numbers}{35}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Postscript - Some Questions For Diligent Readers}{37}
+\contentsline {section}{\hbox to\@tempdima {\hfil }References}{39}

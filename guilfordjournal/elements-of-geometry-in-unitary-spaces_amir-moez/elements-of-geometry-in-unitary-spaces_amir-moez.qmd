@@ -1,0 +1,36 @@
+---
+title: "Guilford Course Notes"
+---
+
+```{r}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+library(gt)
+
+note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Abstract")
+
+note_data <- c("Elements of Geometry in Unitary Spaces", "Amir-Moéz, Ali R.", "geometry", "42", "Texas Tech University", "The study of unitary spaces through generalizations of geometrical configurations gives insight to understanding of many concepts in linear spaces and linear algebra. This guide has been prepared for two essential purposes. First, to give a feeling for the meanings of ideas and concepts. Second, to show how one may generalize an idea which may turn into an interesting research problem. The reader is expected to have had an elementary course in linear algebra and linear spaces.")
+
+
+tibble(note_entries, note_data) |>
+  gt() |>
+  cols_align(align = "left") |>
+  tab_style(
+    style= cell_text(v_align = "top"),
+    locations = cells_body()
+  ) |>
+  tab_options( table.width = "80%", column_labels.hidden = TRUE)  
+
+
+```
+- [Download File](./elements-of-geometry-in-unitary-spaces_amir-moez.pdf)
+
+This course guide was originally published by the Guilford College Journal of Undergraduate Mathematics as a volume in the Monographs on Undergraduate Mathematics series.
+
+This course guide may be reproduced and distributed if the following conditions are met:
+
+- State that it is the property of the Math Department of Guilford College, and is protected under copyright by Guilford.
+- Take no profit from its distribution. (You may recover copying costs if you are using these for a class.) 
+

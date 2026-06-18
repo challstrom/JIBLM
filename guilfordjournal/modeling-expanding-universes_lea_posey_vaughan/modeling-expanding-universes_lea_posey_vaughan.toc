@@ -1,0 +1,9 @@
+\contentsline {section}{\hbox to\@tempdima {\hfil }Preface}{i}
+\contentsline {section}{\numberline {1}Brief history of the expanding universe model}{1}
+\contentsline {section}{\numberline {2}The inflating balloon model}{2}
+\contentsline {section}{\numberline {3}Definitions}{2}
+\contentsline {section}{\numberline {4}Models for $(n+1)$-dimensional hyperboloids, embedded in $E^{n+2}$}{4}
+\contentsline {section}{\numberline {5}Expanding Universes and the Hubble constant}{5}
+\contentsline {section}{\numberline {6}Determining Hubble's constant}{13}
+\contentsline {section}{\numberline {7}Wormholes, parallel universes, and infinite dimensions}{14}
+\contentsline {section}{\hbox to\@tempdima {\hfil }References}{17}

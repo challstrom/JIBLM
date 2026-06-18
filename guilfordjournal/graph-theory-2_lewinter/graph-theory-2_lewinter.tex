@@ -1,0 +1,1830 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% Journal headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright Guilford College Journal of Undergraduate Mathematics} \cfoot{} \rfoot{ - at www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Graph Theory II}
+\author{Martin Lewinter}
+\date{\vspace{3cm}
+\emph{Journal of Undergraduate Mathematics}
+  \\ Department of Mathematics
+  \\ Guilford College
+  \\ Greensboro, North Carolina 27410 
+  }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+
+\section*{Introduction}
+\addcontentsline{toc}{section}{\numberline{}Introduction}
+\markboth{Introduction}{Introduction}
+
+\pagenumbering{roman}
+
+This monograph was written to provide material for undergraduate research in graph theory. It is a sequel to my first graph theory monograph, which is Volume 13 of this series. It is my hope that the problems in this text will present undergraduates with experience in \emph{creative} mathematics -- the kind of mathematics which researchers do.
+
+Thanks to my research partners, from whom I've learned much: Frank Harary and Fred Buckley. Thanks, also, to the students with whom I did some of the research contained herein, and with whom I was able to share enthusiasm for the exciting pursuit of answers to pressing math problems and the creation of new ones. A particular list of these students include: Shaker Sundaram, Dan Kaufman, Marla Sole, William Widulski, Helene Smith, Jeremy Gratt, Sebastian Arengo, Carey Camazine, Dan Gagliardi, Amy Fox, Corey Delaplain, Mike Smith, Amos Yen, and Greg Davis.
+
+Thanks to J. F. Boyd and the rest of the faculty at Guilford College who publish this monograph series and the Journal of Undergraduate Mathematics, and who organize the yearly conferences which give undergraduates the opportunity to present their research and have it published. The conferences are very inspirational, and I believe are responsible for motivating students to continue their studies at the graduate level.
+
+\begin{flushright}
+Martin Lewinter
+
+Dept. of Mathematics
+
+State University of New York at Purchase
+
+Purchase, N.Y. 10577
+\end{flushright}
+
+
+\newpage
+
+
+\section{Spanning Trees}
+\markboth{1. Spanning Trees}{1. Spanning Trees}
+
+\pagenumbering{arabic}
+
+\begin{description}
+
+\item[1.] The reader is reminded that a \emph{tree} is a connected graph containing no cycles. In a sense, it is the simplest kind of graph. A tree on $n$ vertices has exactly $n-1$ edges. (Verify.) Show that this is the minimum number of edges such that a graph on $n$ vertices is connected. Recall that a graph $H$ is a \emph{spanning subgraph} of graph $G$ if both graphs have the same vertex set, while the edge set of $H$ is a subset of the edge set of $G$. If $H$ is a tree, then $H$ is called a \emph{spanning tree} of $G$. The collection of spanning trees of a graph $G$ is called the \emph{tree set} of $G$. Show that the tree set of the labeled cycle of $n$ vertices ($C_n$) consists of $n$ paths on $n$ vertices, i.e., $n$ copies of $P_n$. Find the tree sets of the graphs of Figure 1.
+
+\begin{center}
+%TeXCAD Picture [fig1.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(79.75,51.25)(0,0)
+\put(8.5,28.5){\line(1,0){13}}
+\put(8.5,28.5){\line(-1,-3){4}}
+\put(21.5,28.5){\line(1,-3){4}}
+\put(4.5,16.5){\line(5,-3){10}}
+\put(25.5,16.5){\line(-5,-3){10}}
+\put(8.9,28.5){\line(2,-3){6}}
+\put(21.1,28.5){\line(-2,-3){6}}
+\put(4.5,16){\line(5,2){10}}
+\put(25.5,16){\line(-5,2){10}}
+\put(15,10.5){\line(0,1){10}}
+\put(8.5,28.5){\circle*{1}}
+\put(4.25,40){\circle*{1}}
+\put(47,40){\circle*{1}}
+\put(4.25,50.75){\circle*{1}}
+\put(15.25,50.75){\circle*{1}}
+\put(58,50.75){\circle*{1}}
+\put(79.25,50.75){\circle*{1}}
+\put(78.5,12.25){\circle*{1}}
+\put(52.75,12.25){\circle*{1}}
+\put(70.75,18){\circle*{1}}
+\put(45,18){\circle*{1}}
+\put(74.75,25.25){\circle*{1}}
+\put(49,25.25){\circle*{1}}
+\put(25.75,50.75){\circle*{1}}
+\put(68.5,50.75){\circle*{1}}
+\put(15.25,39.75){\circle*{1}}
+\put(58,39.75){\circle*{1}}
+\put(26,39.75){\circle*{1}}
+\put(68.75,39.75){\circle*{1}}
+\put(21.5,28.5){\circle*{1}}
+\put(4.5,16.5){\circle*{1}}
+\put(25.5,16.5){\circle*{1}}
+\put(15,20){\circle*{1}}
+\put(15.1,10.5){\circle*{1}}
+\put(52.5,12){\line(1,0){26.25}}
+\put(45,18){\line(1,0){26.25}}
+\put(48.75,25.5){\line(1,0){26.25}}
+%\emline(48.75,25.5)(44.75,18.25)
+\multiput(48.75,25.5)(-.03361345,-.06092437){119}{\line(0,-1){.06092437}}
+%\end
+%\emline(74.75,25.5)(70.75,18.25)
+\multiput(74.75,25.5)(-.03361345,-.06092437){119}{\line(0,-1){.06092437}}
+%\end
+%\emline(44.75,18.25)(52.5,11.75)
+\multiput(44.75,18.25)(.04015544,-.03367876){193}{\line(1,0){.04015544}}
+%\end
+%\emline(70.75,18.25)(78.5,11.75)
+\multiput(70.75,18.25)(.04015544,-.03367876){193}{\line(1,0){.04015544}}
+%\end
+%\emline(52.5,11.75)(48.75,25.5)
+\multiput(52.5,11.75)(-.03348214,.12276786){112}{\line(0,1){.12276786}}
+%\end
+%\emline(78.5,11.75)(74.75,25.5)
+\multiput(78.5,11.75)(-.03348214,.12276786){112}{\line(0,1){.12276786}}
+%\end
+\put(4.25,40){\line(1,0){11}}
+\put(47,40){\line(1,0){11}}
+\put(15,40){\line(1,0){11}}
+\put(57.75,40){\line(1,0){11}}
+\put(4.25,40.25){\line(0,1){11}}
+\put(15,40.25){\line(0,1){11}}
+\put(57.75,40.25){\line(0,1){11}}
+\put(15,51){\line(-1,0){11}}
+\put(79.25,51){\line(-1,0){11}}
+\put(25.75,51){\line(-1,0){11}}
+\put(68.5,51){\line(-1,0){11}}
+\put(15,51){\line(0,-1){11}}
+\put(57.75,51){\line(0,-1){11}}
+\put(25.75,51){\line(0,-1){11}}
+\put(68.5,51){\line(0,-1){11}}
+\put(34.75,3){\makebox(0,0)[cc]{Figure 1: Some graphs}}
+\end{picture}
+\end{center}
+
+\item[2.] Two trees in the tree set of a graph $G$ are called \emph{adjacent} if the symmetric difference of their edge sets (i.e., those edges which belong to either one of the two trees, but do not belong to both) consist of two edges which are adjacent in graph $G$. Now suppose that the tree set of a graph $G$ consists of trees $T_1,T_2,\cdots,T_k$. Then the adjacency tree graph of $G$ (which will be denoted $T(G)$) has vertex set $\{ v_1,v_2,\cdots,v_k \}$, and vertex $v_i$ is adjacent to vertex $v_j$ if and only if trees $T_i$ and $T_j$ are adjacent spanning trees of graph $G$.
+
+\begin{center} 
+%TeXCAD Picture [fig2.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(70.5,34.75)(0,0)
+\put(22,13.75){\line(1,0){13.25}}
+\put(22,13.75){\line(0,1){13.25}}
+\put(14.5,14){\line(0,1){13.25}}
+\put(14.5,14){\line(-1,0){13.25}}
+\put(35.15,27.05){\line(-1,0){13.25}}
+\put(1.2,27.15){\line(0,-1){13.25}}
+\put(35.25,26.87){\line(0,-1){13.25}}
+%\emline(35.17,13.73)(42.24,19.92)
+\multiput(35.17,13.73)(.03842391,.0336413){184}{\line(1,0){.03842391}}
+%\end
+%\emline(14.52,27.17)(8.33,34.24)
+\multiput(14.52,27.17)(-.0336413,.03842391){184}{\line(0,1){.03842391}}
+%\end
+%\emline(42.24,19.92)(35.17,27.17)
+\multiput(42.24,19.92)(-.03366667,.03452381){210}{\line(0,1){.03452381}}
+%\end
+%\emline(8.33,34.24)(1.08,27.17)
+\multiput(8.33,34.24)(-.03452381,-.03366667){210}{\line(-1,0){.03452381}}
+%\end
+\put(22.5,27.25){\circle*{1}}
+\put(1.25,14.25){\circle*{1}}
+\put(35.5,27.25){\circle*{1}}
+\put(1.25,27.25){\circle*{1}}
+\put(35.5,14){\circle*{1}}
+\put(14.5,27.25){\circle*{1}}
+\put(49.5,25.75){\circle*{1}}
+\put(49.5,13.25){\circle*{1}}
+\put(70,13.25){\circle*{1}}
+\put(70,26){\circle*{1}}
+\put(22,14){\circle*{1}}
+\put(14.5,13.75){\circle*{1}}
+\put(42.5,19.5){\circle*{1}}
+\put(9,34.25){\circle*{1}}
+\put(49.25,13.5){\framebox(20.75,12.75)[]{}}
+%\emline(49.25,13.5)(70,26)
+\multiput(49.25,13.5)(.055929919,.033692722){371}{\line(1,0){.055929919}}
+%\end
+\put(29,4.5){\makebox(0,0)[cc]{Figure 2: Some more graphs.}}
+\end{picture}
+\end{center}
+
+  Find the adjacency tree graphs of the graphs of Figure 2. Show that $T(C_n)$ is isomorphic to $C_n$. Is this true of other graphs? Show that the adjacency graph is always connected. When is $T(G)$ a tree? Is there a way to find graph $G$ if we are only given $T(G)$? Find out as much as you can about properties of $T(G)$ which are linked to corresponding (or perhaps not corresponding) properties of graph $G$.
+
+\item[3.] Let $f$ be an integer-valued function on the tree set of a graph $G$. Then $f$ is called \emph{interpolating} if given trees $T$ and $T'$ of the tree set, and an integer $s$ such that $f(T) < s < f(T')$, then for some $T''$ in the tree set, we have $f(T'') = s$. One might think of such a function as satisfying an ``integer'' version of the intermediate value theorem of Calculus. Much research has been done to find interpolating functions on tree sets of graphs. Show that if $f(t)$ represents the number of endvertices of spanning tree $T$ of graph $G$, then $f$ interpolates on the tree sets of Figure 2. Do you think this is true for all graphs? Prove this or find a counterexample.
+
+\item[4.] A vertex $v$ of spanning trees $T$ of graph $G$ is called \emph{degree-preserving} if $\deg_Tv = \deg_Gv$. Show that given a graph $G$, there always exists at least one spanning tree $T$ which contains at least one degree-preserving vertex. Show that given any vertex $v$ of graph $G$, there exists at least one spanning tree in which $v$ is degree-preserving. Demonstrate a graph containing a vertex (of degree greater than two) whose degree must be preserved in all spanning trees!
+
+\item[5.] Let $T$ be in the tree set of graph $G$, and let $f(T)$ denote the number of degree-preserving vertices of $T$. Show that $f(T)$ is an interpolating function.
+
+  (Hint: First show that if $T$ and $T'$ are adjacent in the tree set of graph $G$, then $f(T)$ and $f(T')$ can differ by at most one.)
+
+\item[6.] Given a graph $G$ and a spanning tree $T$, the \emph{cotree} of $T$ in $G$ has the same vertex set as $G$, while its edge set consists of the edges of $G$ which are not in the edge set of $T$. Given a graph with $n$ vertices and $e$ edges, find an expression involving only $n$ and $e$ which yields the number of edges in any cotree of that graph.
+
+  If $v$ is a degree-preserving vertex of a spanning tree $T$ of graph $G$, show that it is an isolated vertex (i.e., degree $0$) of the cotree. Show, using Problem 5 above, that the number of isolated vertices interpolates over the set of cotrees of a graph.
+
+\item[7.] The reader is reminded that the \emph{distance} between two vertices $u$ and $v$ in graph $G$ (denoted $d_G(u,v)$) is the number of edges in a shortest path connecting them, i.e., the length of a shortest $u-v$ path. The \emph{eccentricity} of a vertex $v$ in graph $G$ (denoted $e_G(v)$ is the distance from $v$ to a farthest vertex. An \emph{eccentric vertex} of $v$ is a vertex $u$, such that $d(u,v) = e(v)$. Can a vertex have more than one eccentric vertex? Can you think of a graph such that each vertex has a unique eccentric vertex? The \emph{radius} and \emph{diameter} of a graph (denoted $\text{rad} G$ and $\text{diam} G$) are its minimum and maximum eccentricities. The \emph{center} of graph $G$ (denoted $C(G)$) consists of its vertices with minimum eccentricities, while the \emph{periphery} of $G$ (denoted $P(G)$), consists of its vertices with maximum eccentricity. Find the center, radius, diameter, eccentricities, periphery of the graphs of Figure 3. Find at least one eccentric vertex of each vertex.
+
+  Show the well-known fact that for trees, exactly one of the following statements is true:
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $\text{diam} T = 2 \cdot \text{rad} T$ and the center of $T$ consists of one point. (Such a tree is called \emph{central}.)
+    \item $\text{diam} T = 2 \cdot \text{rad} T-1$, and the center of $T$ consists of two adjacent vertices. (This kind of tree is called \emph{bicentral}.)
+  \end{enumerate}
+  Construct a tree such that each of its vertices have more than one eccentric vertex. Construct a tree such that each vertex has a unique eccentric point. Show that if vertex $v$ belongs to the periphery of a tree, then $v$ must be an endvertex. Is the converse true? If $u$ is an eccentric vertex of $v$ (in any graph), must $v$ be an eccentric vertex of $u$? Show that if $u$, $v$, and $w$ are vertices of a tree, such that $u$ and $v$ are adjacent, then $d(u,w)$ and $d(v,w)$ must differ by exactly one. Can you make an analogous statement for all graphs? Let $T$ be a spanning tree of graph $G$. Find the relation between the eccentricities of the vertices in $G$ and those of $T$. Compare their radii and diameters. Are their centers related? Show that for any graph on at least two vertices, the periphery must contain at least two vertices.
+
+\begin{center} 
+%TeXCAD Picture [fig3.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(108.5,56.75)(0,0)
+\unitlength 1mm
+\put(2.75,24.5){\line(1,0){60}}
+\put(22.75,24.5){\line(0,1){8}}
+\put(47.5,12.25){\line(0,1){8}}
+\put(12.75,24.5){\line(0,1){8}}
+\put(32.75,24.5){\line(-1,3){2.75}}
+\put(32.75,24.5){\line(1,3){2.75}}
+\put(12.75,24.5){\line(-2,-3){8}}
+\put(12.75,17.5){\line(1,0){15}}
+\put(27.75,17.5){\line(3,1){5}}
+\put(27.75,17.5){\line(3,-1){5}}
+\put(52.5,12.75){\line(0,-1){5}}
+\put(2.75,24.5){\circle*{1}}
+\put(47.75,24.5){\circle*{1}}
+\put(23,24.5){\circle*{1}}
+\put(12.75,17.5){\circle*{1}}
+\put(12.75,12.25){\circle*{1}}
+\put(32.5,19.25){\circle*{1}}
+\put(32.5,15.25){\circle*{1}}
+\put(32.75,24.25){\circle*{1}}
+\put(35.5,32.5){\circle*{1}}
+\put(30.25,32.5){\circle*{1}}
+\put(47.5,17.5){\circle*{1}}
+\put(47.5,12.25){\circle*{1}}
+\put(52.75,12.25){\circle*{1}}
+\put(52.75,7.5){\circle*{1}}
+\put(13,24.5){\circle*{1}}
+\put(62.75,24.5){\circle*{1}}
+\put(47.75,32.5){\circle*{1}}
+\put(23,32.5){\circle*{1}}
+\put(13,32.5){\circle*{1}}
+\put(27.75,17.5){\circle*{1}}
+\put(4.75,12.5){\circle*{1}}
+\put(8.05,17.5){\circle*{1}}
+\put(14.25,51.5){\line(-1,1){5}}
+\put(4.75,51.5){\line(1,1){5}}
+\put(24.25,51.5){\line(1,1){5}}
+\put(14.25,51.5){\line(-1,-1){5}}
+\put(4.75,51.5){\line(1,-1){5}}
+\put(24.25,51.5){\line(1,-1){5}}
+\put(14.25,51.5){\line(1,0){10}}
+\put(29.25,46.5){\line(1,0){5}}
+\put(24.25,51.5){\circle*{1}}
+\put(4.75,51.5){\circle*{1}}
+\put(14.25,51.5){\circle*{1}}
+\put(68.25,9.25){\circle*{1}}
+\put(73.75,9.25){\circle*{1}}
+\put(96.5,9.25){\circle*{1}}
+\put(85.25,9.25){\circle*{1}}
+\put(108,9.25){\circle*{1}}
+\put(79.25,9.25){\circle*{1}}
+\put(102,9.25){\circle*{1}}
+\put(90.75,9.25){\circle*{1}}
+\put(34.25,46.5){\circle*{1}}
+\put(73,21.25){\line(1,3){5}}
+\put(73,56.25){\line(1,-2){5}}
+\put(96,56.25){\line(-1,-2){5}}
+\put(96,21.25){\line(-1,3){5}}
+\put(91,46.25){\circle*{1}}
+\put(91,36){\circle*{1}}
+\put(96.25,21.5){\circle*{1}}
+\put(73.25,21.5){\circle*{1}}
+\put(73.25,56.25){\circle*{1}}
+\put(96.25,56.25){\circle*{1}}
+\put(77.75,46.5){\circle*{1}}
+\put(77.75,36){\circle*{1}}
+\put(28.75,46.5){\circle*{1}}
+\put(9.25,46.5){\circle*{1}}
+\put(29,56.25){\circle*{1}}
+\put(9.5,56.25){\circle*{1}}
+\put(9.5,56.25){\line(0,-1){9.25}}
+\put(29,56.25){\line(0,-1){9.25}}
+\put(77.75,36){\framebox(13.25,10.5)[cc]{}}
+\put(73,21.25){\framebox(23.25,35)[cc]{}}
+\put(47.5,32.5){\line(0,-1){18.25}}
+\put(47.5,17.75){\line(1,-1){5}}
+\put(12.75,31.5){\line(0,-1){19}}
+\put(68,9.5){\line(1,0){40}}
+\put(57.75,3.5){\makebox(0,0)[cc]{Figure 3: Even more graphs!}}
+\end{picture}
+\end{center}
+
+\item[8.] A spanning tree with the same radius as $G$ is \emph{radius-preserving}. It is known that every graph has at least one radius-preserving spanning tree (rpst for short). Show that it is not always the case that every graph has a diameter-preserving spanning tree (dpst). If $T$ is a dpst of $G$, show that it also must be a rpst. If $G$ is a graph for which $\text{diam} G = 2 \cdot \text{rad} G$, show that $G$ has a dpst.
+
+  Hint: Use the fact that $G$ has a rpst.
+
+  As a consequence, show that if $G$ is any graph whose center consists of a cutpoint (a vertex whose deletion disconnects $G$), then $G$ has a dpst. Show that if $C(G) = \{ x,y \}$ and edge $xy$ is a bridge (an edge not in any cycles of $G$), then $G$ has a dpst. If $\text{diam} G \leq 2 \cdot (\text{rad} G-1)$, show that $G$ has no dpst. Can you determine an ``if and only if'' condition for deciding whether a graph has a dpst?
+
+\item[9.] If $T$ is a spanning tree of $G$, and $C(T)$ = $C(G)$, then $T$ is called a \emph{center-preserving} spanning tree (cpst). Show that if $C(G)$ consists of exactly one vertex, then $G$ has a cpst. If the center of a graph consists of two nonadjacent vertices, show that $G$ has no cpst. If $C(G)$ contains more than two vertices, why can't a spanning tree of $G$ be center-preserving? Find at least two cpsts for the graph of Figure 4a, and show that there are no cpsts for the graph of Figure 4b.
+
+\begin{center} 
+%TeXCAD Picture [fig4.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(72.5,26.5)(0,0)
+\put(4.5,15.25){\framebox(11,11)[cc]{}}
+\put(39,15.25){\framebox(11,11)[cc]{}}
+\put(15.5,15.25){\framebox(11,11)[cc]{}}
+\put(50,15.25){\framebox(11,11)[cc]{}}
+\put(61,15.25){\framebox(11,11)[cc]{}}
+\put(4.5,26){\circle*{1}}
+\put(39,26){\circle*{1}}
+\put(15.5,26){\circle*{1}}
+\put(50,26){\circle*{1}}
+\put(26.5,26){\circle*{1}}
+\put(61,26){\circle*{1}}
+\put(72,26){\circle*{1}}
+\put(4.5,15){\circle*{1}}
+\put(39,15){\circle*{1}}
+\put(15.5,15){\circle*{1}}
+\put(50,15){\circle*{1}}
+\put(26.5,15){\circle*{1}}
+\put(61,15){\circle*{1}}
+\put(72,15){\circle*{1}}
+\put(15.5,9.25){\makebox(0,0)[cc]{(a)}}
+\put(55.5,9.75){\makebox(0,0)[cc]{(b)}}
+\put(32.25,3.75){\makebox(0,0)[cc]{Figure 4: Yet even more graphs!}}
+\end{picture}
+\end{center}
+
+  Given any vertex of the graph of Figure 4a, does there exist a spanning tree such that the chosen vertex belongs to its center? Construct a graph which is not a tree, but which contains a vertex which doesn't belong to the center of any spanning tree. Can you determine criteria for a graph to have the property that given any vertex, there is a spanning tree whose center contains that vertex? If $v$ belongs to the center of graph $G$, show that there exists a spanning tree $T$ of $G$ such that $v$ belongs to $C(G)$.
+
+\item[10.] We call $w$ a \emph{common eccentric point} (cep) of vertices $u$ and $v$ of graph $G$ if $w$ is an eccentric vertex of both $u$ and $v$. Construct a graph such that no pair of vertices have a cep! Construct a graph such that all pairs of \emph{adjacent} vertices have ceps. Show that if the center of a graph $G$ consists of two adjacent vertices which do not have a cep, then $G$ has a center preserving spanning tree. Show that if $G$ contains only one cycle (i.e., $G$ is unicyclic), and $C(G)$ consists of two adjacent vertices $x$ and $y$, then $G$ has a cpst \emph{if and only if} $x$ and $y$ have no cep. Notice that the ``only if'' part of this statement doesn't apply if $G$ has more than one cycle. The graph of Figure 5a has a center consisting of two adjacent vertices which have a cep. Note, however, that Figure 5b exhibits a cpst.
+
+\begin{center} 
+%TeXCAD Picture [fig5.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(110,30.75)(0,0)
+\put(3.25,22){\line(1,0){16}}
+\put(61.5,21.75){\line(1,0){16}}
+\put(51.25,22){\line(-1,0){16}}
+\put(109.5,21.75){\line(-1,0){16}}
+\put(27.25,22){\line(0,1){8}}
+\put(85.5,21.75){\line(0,1){8}}
+\put(27.25,21.96){\line(0,-1){8}}
+\put(85.5,21.71){\line(0,-1){8}}
+\put(19.25,22){\line(1,1){8}}
+\put(77.5,21.75){\line(1,1){8}}
+\put(19.25,21.96){\line(1,-1){8}}
+\put(35.25,22){\line(-1,1){8}}
+\put(35.25,21.96){\line(-1,-1){8}}
+\put(93.5,21.71){\line(-1,-1){8}}
+\put(27.25,30){\line(-1,0){.25}}
+\put(85.5,29.75){\line(-1,0){.25}}
+\put(27.25,30){\line(1,0){.25}}
+\put(85.5,29.75){\line(1,0){.25}}
+\put(19.75,22){\circle*{1}}
+\put(78,21.75){\circle*{1}}
+\put(34.75,22){\circle*{1}}
+\put(93,21.75){\circle*{1}}
+\put(27.25,29.75){\circle*{1}}
+\put(85.5,29.5){\circle*{1}}
+\put(27.25,14.21){\circle*{1}}
+\put(85.5,13.96){\circle*{1}}
+\put(11.75,21.75){\circle*{1}}
+\put(70,21.5){\circle*{1}}
+\put(42.75,21.75){\circle*{1}}
+\put(101,21.5){\circle*{1}}
+\put(3.25,22){\circle*{1}}
+\put(61.5,21.75){\circle*{1}}
+\put(51.25,22){\circle*{1}}
+\put(109.5,21.75){\circle*{1}}
+\put(29.5,30.75){\makebox(0,0)[cc]{$x$}}
+\put(87.75,30.5){\makebox(0,0)[cc]{$x$}}
+\put(30,14.5){\makebox(0,0)[cc]{$y$}}
+\put(88.25,14.25){\makebox(0,0)[cc]{$y$}}
+\put(27,9.5){\makebox(0,0)[cc]{(a)}}
+\put(85.25,9.25){\makebox(0,0)[cc]{(b)}}
+\put(56,4.5){\makebox(0,0)[cc]{Figure 5: Yet still even more graphs!}}
+\end{picture}
+\end{center}
+
+  Show that if a graph $G$ with center consisting of two adjacent vertices \emph{having a cep} has a cpst $T$, then the radius of $T$ must be greater than the radius of $G$. Show that in this case, every vertex $v$ satisfies
+    \begin{equation*}
+    e_T(v) - e_G(v) \leq \text{rad} T - \text{rad} G > 0
+    \end{equation*}
+  Is this inequality true for all spanning trees which are not radius preserving?
+
+\item[11.] Given a tree $T$, the \emph{derived tree} $T'$ results when all the endvertices of $T$ are deleted. A \emph{star} is a tree whose derived tree is the famous ``trivial graph'', i.e., the graph consisting of a single vertex. What can be said about graphs which are spanned by stars? A \emph{double star} is a tree whose derived tree is $K_2$. Again, what can be said about graphs which are spanned by double stars but are not spanned by stars? See Figure 6. If $G$ is a graph with radius strictly greater than two, show that $G$ has no spanning tree which is a double star.
+
+\begin{center} 
+%TeXCAD Picture [fig6.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(72.13,30.72)(0,0)
+\put(16.75,22){\line(3,1){10}}
+\put(16.75,22){\line(-6,-1){12}}
+\put(16.75,22){\circle*{1}}
+\put(12.45,30.22){\circle*{1}}
+\put(26.75,25.5){\circle*{1}}
+\put(23.57,15.21){\circle*{1}}
+\put(11.52,12.74){\circle*{1}}
+\put(4.75,20){\circle*{1}}
+\put(48.75,22){\line(-1,1){5}}
+\put(48.75,22){\line(-1,0){7}}
+\put(48.75,22){\line(-1,-1){5}}
+\put(63.94,22){\line(1,1){6}}
+\put(63.94,22){\line(5,2){8}}
+\put(63.94,22){\line(5,-2){8}}
+\put(63.94,22){\line(1,-1){6}}
+\put(41.75,22){\circle*{1}}
+\put(43.68,26.91){\circle*{1}}
+\put(48.74,22.15){\circle*{1}}
+\put(43.68,17.24){\circle*{1}}
+\put(70.14,16.05){\circle*{1}}
+\put(69.99,27.95){\circle*{1}}
+\put(71.63,25.27){\circle*{1}}
+\put(71.63,19.18){\circle*{1}}
+\put(64.2,21.85){\circle*{1}}
+%\emline(16.73,21.98)(23.62,14.9)
+\multiput(16.73,21.98)(.03363069,-.03449301){205}{\line(0,-1){.03449301}}
+%\end
+%\emline(16.73,22.33)(11.42,12.43)
+\multiput(16.73,22.33)(-.0335652,-.06265503){158}{\line(0,-1){.06265503}}
+%\end
+%\emline(16.73,22.15)(12.48,30.28)
+\multiput(16.73,22.15)(-.03367175,.06453752){126}{\line(0,1){.06453752}}
+%\end
+\put(48.75,21.98){\line(1,0){15.38}}
+\put(34.5,5.5){\makebox(0,0)[cc]{Figure 6: A star and a double star.}}
+\end{picture}
+\end{center}
+
+\item[12.] A \emph{caterpillar} is a tree whose derived tree is a path. The path is called the spine of the caterpillar. A caterpillar can be described conveniently as follows. If its spine has $k$ vertices, construct an ordered $k$-tuple whose entries list the numbers of adjacent vertices (called legs!) of each spine vertex. The caterpillar of Figure 7 can be denoted by $(2,1,0,3,0,1)$.
+
+\begin{center} 
+%TeXCAD Picture [fig7.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(107.4,21.25)(0,0)
+\put(7,20.75){\line(1,0){100}}
+\put(7,20.75){\line(-2,-5){4}}
+\put(7,20.75){\line(2,-5){4}}
+\put(67,20.75){\line(-2,-5){4}}
+\put(67,20.75){\line(0,-1){10}}
+\put(106.95,20.75){\line(0,-1){10}}
+\put(67,20.75){\line(2,-5){4}}
+\put(27,20.75){\line(0,-1){10}}
+\put(27,10.75){\circle*{1}}
+\put(66.95,10.75){\circle*{1}}
+\put(106.9,10.75){\circle*{1}}
+\put(27,20.47){\circle*{1}}
+\put(66.95,20.47){\circle*{1}}
+\put(106.9,20.47){\circle*{1}}
+\put(7,20.75){\circle*{1}}
+\put(3,10.75){\circle*{1}}
+\put(63,10.75){\circle*{1}}
+\put(70.95,10.75){\circle*{1}}
+\put(11.38,10.57){\circle*{1}}
+\put(47.27,20.65){\circle*{1}}
+\put(87.75,20.65){\circle*{1}}
+\put(55,4.75){\makebox(0,0)[cc]{Figure 7: A caterpillar.}}
+\end{picture}
+\end{center}
+
+  If a graph $G$ has a spanning tree which is a caterpillar whose spine has $k$ vertices (i.e., whose spine is $P_k$), show that the radius of $G$ can't exceed $\frac{(k+2)}{2}$. Can you discover other properties of ``caterpillar-spannable'' graphs? If the maximum number in the caterpillar code is $j$, then caterpillar is called \emph{$j$-legged}. The caterpillar of Figure 7, for example, is $3$-legged. Construct several caterpillar-spannable graphs. Can you produce graphs which have spanning caterpillars with various values of $j$? Compare their spine lengths and generalize your observations.
+
+\item[13.] A graph is \emph{bipartite} if its vertices may be assigned one of two colors in such a way that adjacent vertices are of different colors. All trees are bipartite. If there are the same number of vertices in each color, the graph is called \emph{equitable}. If the numbers differ by one, the graph is \emph{nearly equitable}. Otherwise it is \emph{skewed}. Show that a path is either equitable or nearly equitable. Show that a graph is bipartite if and only if it has no odd cycles. Show that a star with more than tree vertices is skewed. What about double stars? Show that if $G$ is an equitable bipartite graph, then all of its spanning trees are equitable. Formulate corresponding statements when $G$ is skewed or nearly equitable.
+
+\item[14.] A tree with one vertex of degree greater than two, and all other vertices of degree two or one, is called \emph{starlike}. The vertex of degree greater than two is called the \emph{junction}. If the degree of the junction is $k$, we call the starlike tree \emph{$k$-branched}. Figure 8 shows a $5$-branched starlike tree. Is it equitable? State and prove a theorem giving necessary and sufficient conditions under which a starlike tree is equitable.
+
+  Hint: Let the junction be colored black. Now consider the colors of the endvertices.
+
+\begin{center} 
+%TeXCAD Picture [fig8.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(47.25,52.43)(0,0)
+\put(26.25,30.25){\line(3,2){10}}
+\put(26.25,30.25){\line(3,-2){10}}
+\put(26.25,30.25){\line(-1,-3){3.5}}
+\put(26.25,30.25){\line(-1,0){12}}
+\put(26.25,30.25){\line(-1,3){3.5}}
+\put(26.25,30.25){\circle*{1}}
+\put(3.25,30.25){\circle*{1}}
+\put(23,51.75){\circle*{1}}
+\put(26.25,11.25){\circle*{1}}
+\put(46.75,23.5){\circle*{1}}
+\put(46.75,36.75){\circle*{1}}
+\put(36.09,36.93){\circle{1}}
+\put(11.59,51.93){\circle{1}}
+\put(3.34,41.43){\circle{1}}
+\put(36.09,23.59){\circle{1}}
+\put(22.74,20.01){\circle{1}}
+\put(14.34,30.1){\circle{1}}
+\put(22.85,40.61){\circle{1}}
+%\emline(22.75,20.25)(26,11)
+\multiput(22.75,20.25)(.03350515,-.09536082){97}{\line(0,-1){.09536082}}
+%\end
+\put(36,23.5){\line(1,0){11}}
+\put(35.75,37){\line(1,0){11.25}}
+\put(14.25,30.12){\line(-1,0){11}}
+\put(11.75,51.87){\line(1,0){11}}
+\put(3.25,30.12){\line(0,1){11.25}}
+\put(22.75,51.87){\line(0,-1){11.25}}
+\put(25.5,5){\makebox(0,0)[cc]{Figure 8: A starlike tree with vertex coloring.}}
+\end{picture}
+\end{center}
+
+  Graphs such as the one depicted in Figure 9 are called \emph{ladders}, for obvious reasons. A ladder on $2k$ vertices may be thought of as two copies of the path $P_k$ with edges (called \emph{rungs}) added between all corresponding pairs of vertices. Show that ladders are equitable bipartite. Which $3$-branched starlike trees on $2k$ vertices span a ladder on $2k$ vertices? Find all the $3$-branched starlike trees which span the ladder of Figure 9.
+
+\begin{center} 
+%TeXCAD Picture [fig9.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(60,26.5)(0,0)
+\put(4.5,15.25){\framebox(11,11)[cc]{}}
+\put(26.5,15.25){\framebox(11,11)[cc]{}}
+\put(15.5,15.25){\framebox(11,11)[cc]{}}
+\put(37.5,15.25){\framebox(11,11)[cc]{}}
+\put(48.5,15.25){\framebox(11,11)[cc]{}}
+\put(4.5,26){\circle*{1}}
+\put(26.5,26){\circle*{1}}
+\put(15.5,26){\circle*{1}}
+\put(37.5,26){\circle*{1}}
+\put(48.5,26){\circle*{1}}
+\put(59.5,26){\circle*{1}}
+\put(4.5,15){\circle*{1}}
+\put(26.5,15){\circle*{1}}
+\put(15.5,15){\circle*{1}}
+\put(37.5,15){\circle*{1}}
+\put(48.5,15){\circle*{1}}
+\put(59.5,15){\circle*{1}}
+\put(32.25,3.75){\makebox(0,0)[cc]{Figure 9: A ladder with 12 vertices.}}
+\end{picture}
+\end{center}
+
+\end{description}
+
+
+
+
+\newpage
+
+\section{Product Graphs}
+\markboth{2. Product Graphs}{2. Product Graphs}
+
+\begin{description}
+
+\item[15.] The \emph{cartesian product} (more simply, \emph{product}) of two graphs $U$ and $V$, denoted $U \times V$, is the graph whose vertex set is the product of the vertex sets of $U$ and $V$, i.e., if the vertex sets of $U$ and $V$ are $\{ u_1,u_2,\cdots,u_n \}$ and $\{ v_1,v_2,\cdots,v_m \}$ respectively, then the vertex set of $U \times V$ is $\{ g_{ij}:\ 1 \leq i \leq n$ and $1 \leq j \leq m \}$. Furthermore, vertices $g_{rs}$ and $g_{pq}$ are adjacent in $U \times V$ if and only if either
+  \begin{enumerate}[\hspace{1cm}(1)]
+    \item $r = p$ and $v_s v_q$ (the edge between $v_s$ and $v_q$) is an edge of $V$, or
+    \item $s = q$ and $u_r u_p$ is an edge of $U$.
+  \end{enumerate}
+  Figure 10 exhibits graphs $U$, $V$, and $U \times V$.
+
+\begin{center} 
+%TeXCAD Picture [fig10.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(76.5,57.12)(0,0)
+%\emline(3.25,20)(12.5,31.5)
+\multiput(3.25,20)(.033636364,.041818182){275}{\line(0,1){.041818182}}
+%\end
+%\emline(57.25,13.25)(66.5,24.75)
+\multiput(57.25,13.25)(.033636364,.041818182){275}{\line(0,1){.041818182}}
+%\end
+%\emline(57.25,29.25)(66.5,40.75)
+\multiput(57.25,29.25)(.033636364,.041818182){275}{\line(0,1){.041818182}}
+%\end
+%\emline(57.25,45.25)(66.5,56.75)
+\multiput(57.25,45.25)(.033636364,.041818182){275}{\line(0,1){.041818182}}
+%\end
+%\emline(21.66,20)(12.41,31.5)
+\multiput(21.66,20)(-.033636364,.041818182){275}{\line(0,1){.041818182}}
+%\end
+%\emline(75.66,13.25)(66.41,24.75)
+\multiput(75.66,13.25)(-.033636364,.041818182){275}{\line(0,1){.041818182}}
+%\end
+%\emline(75.66,29.25)(66.41,40.75)
+\multiput(75.66,29.25)(-.033636364,.041818182){275}{\line(0,1){.041818182}}
+%\end
+%\emline(75.66,45.25)(66.41,56.75)
+\multiput(75.66,45.25)(-.033636364,.041818182){275}{\line(0,1){.041818182}}
+%\end
+\put(3,19.87){\line(1,0){19}}
+\put(57,13.12){\line(1,0){19}}
+\put(57,29.12){\line(1,0){19}}
+\put(57,45.12){\line(1,0){19}}
+\put(39.5,19.75){\line(0,1){32}}
+\put(56.75,13){\line(0,1){32}}
+\put(76,13){\line(0,1){32}}
+\put(66.5,24.75){\line(0,1){32}}
+\put(39.5,19.62){\circle*{1}}
+\put(56.75,12.87){\circle*{1}}
+\put(76,12.87){\circle*{1}}
+\put(66.5,24.62){\circle*{1}}
+\put(39.5,35.62){\circle*{1}}
+\put(56.75,28.87){\circle*{1}}
+\put(76,28.87){\circle*{1}}
+\put(66.5,40.62){\circle*{1}}
+\put(39.5,51.62){\circle*{1}}
+\put(56.75,44.87){\circle*{1}}
+\put(2.75,19.63){\circle*{1}}
+\put(76,44.87){\circle*{1}}
+\put(22,19.63){\circle*{1}}
+\put(66.5,56.62){\circle*{1}}
+\put(12.5,31.38){\circle*{1}}
+\put(12,14.75){\makebox(0,0)[cc]{$U$}}
+\put(39.25,14.25){\makebox(0,0)[cc]{$V$}}
+\put(66.5,9){\makebox(0,0)[cc]{$U \times V$}}
+\put(39.25,3.75){\makebox(0,0)[cc]{Figure 10: Two graphs and their product.}}
+\end{picture}
+\end{center}
+
+  The edge set of graph $G$ is denoted $E(G)$ while its vertex set is denoted by $V(G)$. A subgraph $H$ of graph $G$ is called an $induced$ subgraph if whenever $x$ and $y$ are in $V(H)$ and $xy \in E(G)$, then $xy \in E(H)$. Getting back to product graphs, if we fix the first subscript in the vertex set of $U \times V$ with the value $k$, then the induced subgraph on this vertex set is called the $k$th $V$ copy, i.e., the induced subgraph on the vertex set $\{ g_{kj}:\ 1 \leq j \leq m \}$ is isomorphic to $V$. The $k$th $U$ copy is defined similarly. Find the first, second, and third $U$ and $V$ copies of the product graph of Figure 10. Prove that $U \times V$ is bipartite if and only if both of $U$ and $V$ are bipartite.
+
+  Define the \emph{skewness} of a bipartite graphs as $|b-w|$, where $b$ is the number of vertices of one color set and $w$ is the number of vertices of the other color set. Show that the skewness of $U \times V$ is the product of the skewness of $U$ and the skewness of $V$. If $G$ and $H$ are subgraphs of $U$ and $V$, respectively, why is $G \times H$ a subgraph of $U \times V$? Show that if $G$ and $H$ are \emph{spanning} subgraphs of $U$ and $V$, respectively, then $G \times H$ is a spanning subgraph of $U \times V$. In particular, show that if $T_1$ and $T_2$ are spanning trees of $G$ and $H$, respectively, the $T_1 \times T_2$ is a spanning subgraph of $U \times V$, though it isn't a tree (unless one of $U$ and $V$ is the trivial graph!). Prove that if $T$ is a spanning tree of $T_1 \times T_2$, then $T$ is also a spanning tree of $U \times V$. Why might this fact greatly simplify the task of finding a spanning tree of a large product graph? Use this idea to find several spanning trees of the product graph of Figure 10. Does that graph have any spanning trees which can't be found this way?
+
+\item[16.] Express the ladder on $2k$ vertices as a product of two trees. Show that this ladder is a spanning subgraph of $C_k \times K_2$. Now show that the graph of Figure 11 spans $C_k \times K_2$, but does not span the ladder on $2k$ vertices. Conclude that not all spanning trees of $U \times V$ span $T_1 \times T_2$, where $T_1$ and $T_2$ are spanning trees of $U$ and $V$ respectively.
+
+\begin{center}
+%TeXCAD Picture [fig11.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(72.85,21.28)(0,0)
+\put(2.5,20.75){\line(1,0){10}}
+\put(12.5,20.75){\line(1,0){10}}
+\put(52.5,20.75){\line(1,0){10}}
+\put(62.43,10.82){\line(1,0){10}}
+\put(22.5,20.75){\line(1,0){10}}
+\put(12.5,20.75){\line(0,-1){10}}
+\put(52.5,20.75){\line(0,-1){10}}
+\put(22.5,20.75){\line(0,-1){10}}
+\put(62.5,20.75){\line(0,-1){10}}
+\put(32.5,20.75){\line(0,-1){10}}
+%\dashline{1}(32.5,20.75)(52.5,20.75)
+\put(32.43,20.68){\line(1,0){.952}}
+\put(34.33,20.68){\line(1,0){.952}}
+\put(36.24,20.68){\line(1,0){.952}}
+\put(38.14,20.68){\line(1,0){.952}}
+\put(40.05,20.68){\line(1,0){.952}}
+\put(41.95,20.68){\line(1,0){.952}}
+\put(43.86,20.68){\line(1,0){.952}}
+\put(45.76,20.68){\line(1,0){.952}}
+\put(47.67,20.68){\line(1,0){.952}}
+\put(49.57,20.68){\line(1,0){.952}}
+\put(51.48,20.68){\line(1,0){.952}}
+%\end
+%\dashline{1}(32.5,10.75)(52.5,10.75)
+\put(32.43,10.68){\line(1,0){.952}}
+\put(34.33,10.68){\line(1,0){.952}}
+\put(36.24,10.68){\line(1,0){.952}}
+\put(38.14,10.68){\line(1,0){.952}}
+\put(40.05,10.68){\line(1,0){.952}}
+\put(41.95,10.68){\line(1,0){.952}}
+\put(43.86,10.68){\line(1,0){.952}}
+\put(45.76,10.68){\line(1,0){.952}}
+\put(47.67,10.68){\line(1,0){.952}}
+\put(49.57,10.68){\line(1,0){.952}}
+\put(51.48,10.68){\line(1,0){.952}}
+%\end
+\put(32.51,20.62){\circle*{1}}
+\put(62.47,20.62){\circle*{1}}
+\put(52.49,10.84){\circle*{1}}
+\put(72.35,10.84){\circle*{1}}
+\put(22.53,10.95){\circle*{1}}
+\put(12.54,20.51){\circle*{1}}
+\put(22.6,20.78){\circle{1}}
+\put(2.52,20.78){\circle{1}}
+\put(12.51,10.89){\circle{1}}
+\put(32.37,10.79){\circle{1}}
+\put(52.45,20.78){\circle{1}}
+\put(62.43,10.89){\circle{1}}
+\put(36.75,5){\makebox(0,0)[cc]{Figure 11: A spanning tree of $C_k \times K_2$.}}
+\end{picture}
+\end{center}
+
+\item[17.] Prove the following facts about $U \times V$:
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item $\deg g_{ij} = \deg_U u_i + \deg_V v_j$.
+    \item $e(g_{ij}) = e_U(u_i) + e_V(v_j)$.
+    \item $d_{U \times V} (g_{hi},g_{jk}) = d_{U} (u_{h},u_{j}) + d_{V} (v_{i},v_{k})$.
+    \item $\text{rad} U \times V = \text{rad} U + \text{rad} V$.
+    \item $\text{diam} U \times V = \text{diam} U + \text{diam} V$.
+    \item vertex $g_{ij} \in C (U \times V)$ if and only if $u_i \in C(U)$ and $v_j \in C(V)$.
+    \item vertex $g_{ij} \in P (U \times V)$ if and only if $u_i \in P(U)$ and $v_j \in P(V)$. (Recall that $P(G)$ denotes the periphery of $G$, i.e., vertices of maximum eccentricity.)
+  \end{enumerate}
+  Given vertices $u$ and $v$ of graph $G$ such that $d(u,v) = \text{diam} G$, we call $u$ and $v$ a \emph{diametral pair}. A geodesic (i.e., shortest) path connecting $u$ and $v$ is called a \emph{diametral path}. Note that there may be several $u - v$ diametral paths. In fact, a graph may contain several diametral paths. Why must a graph contain at least one such pair? Show that $g_{hi}$ and $g_{jk}$ are a diametral pair in $U \times V$ if and only if $u_h,u_j$ and $v_i,v_k$ are diametral pairs in $U$ and $V$ respectively.
+
+  Devise a way to obtain diametral paths in $U \times V$ employing the diametral paths of $U$ and $V$.
+
+  Hint: Let $L$ and $M$ be diametral paths in $U$ and $V$ respectively. Now consider $L \times M$. Show that it is a subgraph of $U \times V$. Then show that the diametral paths of $L \times M$ are easily obtained. Finally, show that any diametral path of $L \times M$ is also a diametral path in $U \times V$.
+
+\item[18.] Show that if a graph $G$ is the product of two trees, then $G$ is bipartite, has no endvertices, and has a composite number (i.e., not a prime number) of vertices of degree two. Construct a graph which demonstrates that the converse is not true. This raises the following question: When is a given graph the product of two trees? A useful observation is that a product of trees has a cycle basis consisting of four-cycles. (See \emph{Graph Theory}, M. Lewinter, Monographs in Undergraduate Mathematics, Vol. 13, p 28.) The graph of Figure 12, however, shows that this is a necessary but not sufficient condition, since this graph has a basis of three four-cycles but is not the product of two trees. Show, in fact, that the graphs of Figure 12 is not a product of any two graphs, i.e., it is not a product graph. A good starting point for finding criteria which establish that a graph is the product of two trees is to construct several such products and to look for some common properties.
+
+\begin{center} 
+%TeXCAD Picture [fig12.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(27,37.5)(0,0)
+\put(4.5,15.25){\framebox(11,11)[cc]{}}
+\put(15.5,26.25){\framebox(11,11)[cc]{}}
+\put(15.5,15.25){\framebox(11,11)[cc]{}}
+\put(4.5,26){\circle*{1}}
+\put(15.5,37){\circle*{1}}
+\put(15.5,26){\circle*{1}}
+\put(26.5,37){\circle*{1}}
+\put(26.5,26){\circle*{1}}
+\put(4.5,15){\circle*{1}}
+\put(15.5,15){\circle*{1}}
+\put(26.5,15){\circle*{1}}
+\put(15.5,6.25){\makebox(0,0)[cc]{Figure 12: Not a product graph.}}
+\end{picture}
+\end{center}
+
+\item[19.] The \emph{hypercube} $Q_n$ is defined recursively by $Q_1 = K_2$, while $Q_n = Q_{n-1} \times K_2$. Hypercubes are used extensively in computer science. In fact, it is the underlying structure of massively parallel computers. Figure 13 shows $Q_1$, $Q_2$, and $Q_3$.
+
+\begin{center} 
+%TeXCAD Picture [fig13.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(106.25,53.25)(0,0)
+\put(3.75,33.5){\line(1,0){20}}
+\put(34,23){\framebox(20,20)[cc]{}}
+\put(75.5,23){\framebox(20,20)[cc]{}}
+\put(65.5,13){\framebox(40,40)[cc]{}}
+\put(75.5,43){\line(-1,1){10}}
+\put(95.5,43){\line(1,1){10}}
+\put(75.5,23){\line(-1,-1){10}}
+\put(95.5,23){\line(1,-1){10}}
+\put(34.25,42.75){\circle*{1}}
+\put(75.75,42.75){\circle*{1}}
+\put(65.75,52.75){\circle*{1}}
+\put(65.75,13){\circle*{1}}
+\put(105.75,13){\circle*{1}}
+\put(105.75,52.75){\circle*{1}}
+\put(3.5,33.5){\circle*{1}}
+\put(34.25,23){\circle*{1}}
+\put(75.75,23){\circle*{1}}
+\put(54.25,42.75){\circle*{1}}
+\put(95.75,42.75){\circle*{1}}
+\put(23.5,33.5){\circle*{1}}
+\put(54.25,23){\circle*{1}}
+\put(95.75,23){\circle*{1}}
+\put(47.75,4.75){\makebox(0,0)[cc]{Figure 13: Some hypercubes.}}
+\put(12.75,28.5){\makebox(0,0)[cc]{$Q_1$}}
+\put(43.75,19.25){\makebox(0,0)[cc]{$Q_2$}}
+\put(85,9){\makebox(0,0)[cc]{$Q_3$}}
+\end{picture}
+\end{center}
+
+  Since hypercubes are defined recursively by taking products with $K_2$, let us take a closer look at this operation. Let $G$ be an equitable bipartite graph. Show that $G \times K_2$ is equitable bipartite. In particular, it follows that $Q_n$ is equitable bipartite. Show that if $G$ has $n$ vertices and $e$ edges, then $G \times K_2$ has $2n$ vertices and $2e+n$ edges. Then show that $Q_n$ has $2^n$ vertices and $n \cdot 2^{n-1}$ edges. (I once heard $n \cdot 2^{n-1}$ jokingly referred to as the derivative of $2^n$ with respect to $2$.)
+
+  A graph $G$ is called \emph{traceable} if one of its spanning trees is a path. Show that if $G$ is traceable, then so is $G \times K_2$. Then show that $Q_n$ is traceable. A graph is called \emph{hamiltonian} if it has a spanning cycle. Show, using similar logic, that $Q_n$ is hamiltonian. A traceable graph is \emph{homogeneous-connected} if given any vertex, there exists a spanning path with that vertex as an endvertex. If given any pair of vertices $v$ and $w$, there exists a spanning $v-w$ path (i.e., with endvertices $v$ and $w$), then the graph is called \emph{hamilton-connected}. By letting $v$ and $w$ be adjacent, show that a hamilton-connected graph is hamiltonian. Note that the converse is false. Show that a hamiltonian graph is homogeneous-connected, while the converse is false. Finally, show that a hamiltonian graph is homogeneous-connected, while the converse is false. Finally, show that if $G$ has any of the aforementioned properties, then so does $G \times K_2$. It follows that $Q_n$ is traceable, homogeneous-connected, and hamiltonian. However, $Q_n$ is not hamilton-connected. (show this.) This apparent contradiction can be cleared up by noting when you attempt to prove that $G \times K_2$ is hamilton-connected whenever $G$ is, that the proof requires that $G$ have ``enough'' vertices. As $Q_1$ has only two vertices, it will be obvious that it doesn't follow that $Q_2$ be hamilton-connected (even though $Q_1$ is!).
+
+  Though it isn't necessary for working with hypercubes, you may wish to repeat the above question by assuming properties of graphs $G$ and $H$, and then deducing whether or not $G \times H$ has them. Additional hypotheses may be needed. When, for example, does it follow that $G \times H$ is hamiltonian? It isn't enough to assume that $G$ and $H$ are traceable.
+
+  Hint: Look at $P_3 \times P_3$ and $P_3 \times P_4$.
+
+\item[20.] One may describe $G \times K_2$ as two copies of $G$, with corresponding vertices $v$ in one copy of $G$, and $v'$ in the other copy adjacent (for all $v \in V(G)$). Consequently, $Q_{n+1}$ may be thought of as two copies of $Q_n$, and called $Q^L_n$ (``$Q_n$ lower'') and $Q^U_n$ ``$Q_n$ upper''), with $2^n$ ``vertical'' edges connecting corresponding vertices in both copies. Show that if we color all vertices of $Q_{n+1}$ black and white (as will be our custom), then if $v$ is a black vertex in one copy of $Q_n$, then $v'$ in the other copy must be white. Using this fact, show that if $x$ and $y$ are oppositely colored vertices of $Q_n$, with $n \geq$ 2, then there exists an $x-y$ spanning path. This property for equitable bipartite graphs is called \emph{hamilton laceable}. (Though it isn't relevant here, if $G$ is a nearly equitable bipartite graph, then $G$ is called hamilton laceable if whenever $x$ and $y$ belong to the larger color set, there exists an $x-y$ spanning path.)
+
+\item[21.] Show that $Q_n$ is \emph{$n$-regular} (i.e., every vertex has the same degree: $n$). Show that $Q_n$ is a \emph{self-centered} graph (this is a graph whose center consists of its entire vertex set! -- or, put another way, each vertex has the same eccentricity). Show that the common eccentricity is $n$. Moreover, show that each vertex has a unique eccentric vertex. Any vertex $v$ of $Q_n$, together with its eccentric vertex $w$, are a diametral pair. We call $w$ the \emph{antipode} or \emph{antipodal vertex} of $v$.
+
+\item[22.] Show that the ladder on $2^n$ vertices is a spanning subgraph of $Q_n$. Then use Problem 14 of Chapter I to show that equitable $3$-branched starlike trees on $2^n$ vertices span $Q_n$. A \emph{double starlike tree} has two adjacent vertices of degree greater than two. All other vertices have degree two or one. Let $S(a_1,a_2,\cdots,a_s;\ b_1,b_2,\cdots,b_t)$ represent the double star with adjacent vertices $u$ and $v$ of degrees $s+1$ and $t+1$ respectively, such that the path components of $S-u$ and $S-v$ have $a_1$ through $a_s$ vertices and $b_1$ through $b_t$ vertices respectively. Figure 14 displays $S(3,2,2;\ 2,1)$.
+
+\begin{center} 
+%TeXCAD Picture [fig14.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(112,35.25)(0,0)
+\put(62,22.5){\line(-3,2){15}}
+\put(62,22.5){\line(-3,-2){15}}
+\put(47,32.5){\line(-6,1){15}}
+\put(47,12.5){\line(-6,-1){15}}
+\put(81.5,22.25){\line(3,2){15}}
+\put(81.5,22.25){\line(3,-2){15}}
+\put(96.5,32.25){\line(6,1){15}}
+\put(111.5,34.75){\circle*{1}}
+\put(96.75,32){\circle*{1}}
+\put(82,22.25){\circle*{1}}
+\put(2,22.5){\circle*{1}}
+\put(22,22.5){\circle*{1}}
+\put(42,22.5){\circle*{1}}
+\put(96.5,12.5){\circle*{1}}
+\put(46.75,12.25){\circle*{1}}
+\put(46.75,32.5){\circle*{1}}
+\put(62,22.25){\circle*{1}}
+\put(32,34.75){\circle*{1}}
+\put(32,9.75){\circle*{1}}
+\put(64,24.5){$u$}
+\put(79.5,24.25){$v$}
+\put(81.75,22.5){\line(-1,0){79.75}}
+\put(2,22.5){\line(1,0){.25}}
+\put(55,4.75){\makebox(0,0)[cc]{Figure 14: A double starlike tree.}}
+\end{picture}
+\end{center}
+
+  Which double starlike tree with maximum degree $3$ with $2k$ vertices are equitable? Put another way, what hypothesis must $a_1$, $a_2$, $b_1$, and $b_2$ satisfy in order to make $S(a_1,a_2;\ b_1,b_2)$ equitable? Which equitable starlike trees of this form span ladders? Finally, which such trees span $Q_n$?
+
+\item[23.] Show that the vertices of $Q_n$ can be labeled using all of the $2^n$ binary $n$-vectors (ordered $n$-tuples whose entries are $0$ and $1$), and that the distance between vertices $x$ and $y$ with labels $(x_1,x_2,\cdots,x_n)$ and $(y_1,y_2,\cdots,y_n)$ is $\Sigma |x_i-y_i|$. How does it follow that two vertices are adjacent exactly when their labels differ in only one place? Can you solve Problem 21 in a different way using binary levels? Using these labels, show that if $x$ and $y$ are vertices in $Q_n$ such that $d(u,v) = k$, then there are $k!$ different geodesic (i.e., shortest) $x-y$ paths. Show that the induced subgraph on all $2^{n-1}$ vertices with a $0$ in the $i$th place of their labels, is a copy of $Q_{n-1}$. The same is true about the vertices with a $1$ in the $i$th place. Show, then, that $Q_n$ may be divided \emph{in $n$ different ways} into two copies of $Q_{n-1}$. (See Problem 20.)
+
+  If the vertex with label $(0,0,\cdots,0)$ is colored white, determine a way to get the color of any other vertex from its label.
+
+  Figure 15 is a labeled copy of $Q_3$. Since higher-order hypercubes are nonplanar and contain many vertices, they are hard to draw well. Can you exhibit $Q_4$ in a way which minimizes the edge crossings? There are several ways to do this.
+
+\begin{center} 
+%TeXCAD Picture [fig15.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(53.75,55.25)(0,0)
+\put(21.75,22.75){\framebox(20,20)[cc]{}}
+\put(11.75,12.75){\framebox(40,40)[cc]{}}
+\put(21.75,42.75){\line(-1,1){10}}
+\put(41.75,42.75){\line(1,1){10}}
+\put(21.75,22.75){\line(-1,-1){10}}
+\put(41.75,22.75){\line(1,-1){10}}
+\put(11.75,52.75){\line(0,1){0}}
+\put(22,42.5){\circle*{1}}
+\put(12,52.5){\circle*{1}}
+\put(12,12.75){\circle*{1}}
+\put(52,12.75){\circle*{1}}
+\put(52,52.5){\circle*{1}}
+\put(22,22.75){\circle*{1}}
+\put(42,42.5){\circle*{1}}
+\put(42,22.75){\circle*{1}}
+\put(31.25,2.5){\makebox(0,0)[cc]{Figure 15: $Q_3$ with labeled vertices.}}
+\put(10,55.25){\makebox(0,0)[rc]{$(1,0,0)$}}
+\put(40.25,40.5){\makebox(0,0)[rc]{$(1,1,1)$}}
+\put(40.25,25.75){\makebox(0,0)[rc]{$(0,1,1)$}}
+\put(10,11.25){\makebox(0,0)[rc]{$(0,0,0)$}}
+\put(53.75,11){\makebox(0,0)[lc]{$(0,1,0)$}}
+\put(53.5,55){\makebox(0,0)[lc]{$(1,1,0)$}}
+\put(22,45.5){\makebox(0,0)[lc]{$(1,0,1)$}}
+\put(22,19.25){\makebox(0,0)[lc]{$(0,0,1)$}}
+\end{picture}
+\end{center}
+
+\item[24.] Devise a recursive procedure to find radius-preserving spanning trees of $Q_n$. How small can you make their diameters? Which caterpillars span $Q_n$? Partial results are good too! Show, for example, that the caterpillar whose code is the binary vector with $2^{n-1}$ entries, all of which are ones, spans $Q_n$. (Hint: The ladder on $2^n$ vertices spans $Q_n$.) Among all of the spanning caterpillars of $Q_n$, what is the shortest spine?
+
+  What is the maximum number of endvertices among the spanning trees of $Q_n$?
+
+  What is the maximum number of degree-preserving vertices among the spanning trees of $Q_n$? It may be helpful to first show that if $x$ and $y$ are vertices of $Q_n$ such that $d(x,y)=2$, then there exists exactly two vertices adjacent to both $x$ and $y$; i.e., $x$ and $y$ have exactly two common neighbors. Note that $x$, $y$, and their common neighbors determine a (unique) $4$-cycle. Now show that it is impossible for both $x$ and $y$ to be degree-preserving in the same spanning tree. Establish that $\frac{2^n}{n}$ is, therefore, an upper bound for the number of degree-preserving vertices of any spanning tree of $Q_n$. This number, however, is clearly an integer only when $n$ is a power of $2$. When $n = 4$, try to construct a spanning tree with $4$ degree-preserving vertices. Can you find a spanning tree of $Q_n$ with \emph{no} degree-preserving vertices?
+
+\item[25.] We call a subgraph $H$ of $Q_n$ a \emph{subcube of codimension $k$} if $H = Q_{n-k}$. How many subcubes of codimension $1$ are contained in $Q_n$? What about codimension $2$? Can you generalize? (Binary labels might be useful here.) Now given a label spanning tree $T$ of a labeled copy of $Q_n$, and a subcube $H$, such that $T \cap H$ is connected and is a spanning tree of $H$, then we call $H$ a \emph{spanned subcube} relative to $T$. Show that any spanning tree of $Q_3$ has at least one spanned subcube of codimension $1$, while for $n \geq 4$, there exists spanning trees with no spanned subcubes of codimension $1$. Generalize these results to spanned subcubes of codimension $k$.
+
+\item[26.] If the edge connecting the two junctions (vertices of degree greater than two) of a double starlike tree is replaced by a path (called the \emph{junction path}), we call the new graph a \emph{stretched} double starlike tree. Let $T$ be such a graph with both junctions having degree three. When is $T$ equitable? If $T$ is equitable, it clearly must have an even number of vertices, leading one to think it might span a ladder. Is this always the case? If not, find additional hypotheses which will assure that $T$ spans a ladder. If $T$ doesn't span a ladder, might it span $C_k \times K_2$ ($T$ has $2k$ vertices)?
+
+\item[27.] If the $n \times n$ matrix $A$ is an adjacency matrix for a graph $G$, show that for a suitable labeling of the vertex set of $G \times K_2$, its adjacency matrix is a $2n \times 2n$ matrix consisting of four $n \times n$ blocks: The upper left and lower right blocks are the matrix $A$, while the upper right and lower left blocks are the identity matrices. Use this idea to find adjacency matrices for $Q_n$, which we denote here by $A_n$. Figure 16 does this for $n = 1$ and $n = 2$. Find a formula for the determinant of $A_n$. Is it ever zero? What might the vanishing of the determinant indicate?
+
+\begin{center} 
+%TeXCAD Picture [fig16.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{6.7272}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(79.31,64.64)(0,0)
+\put(10.75,58.75){\line(1,0){20}}
+\put(9.25,16.25){\framebox(20,20)[cc]{}}
+\put(9.5,36){\circle*{1}}
+\put(10.5,58.75){\circle*{1}}
+\put(9.5,16.25){\circle*{1}}
+\put(29.5,36){\circle*{1}}
+\put(30.5,58.75){\circle*{1}}
+\put(29.5,16.25){\circle*{1}}
+\put(7.5,38.5){\makebox(0,0)[cc]{$1$}}
+\put(8.75,61.25){\makebox(0,0)[cc]{$1$}}
+\put(31.25,38.25){\makebox(0,0)[cc]{$2$}}
+\put(32.5,61){\makebox(0,0)[cc]{$2$}}
+\put(7.25,15){\makebox(0,0)[cc]{$3$}}
+\put(31.25,14.75){\makebox(0,0)[cc]{$4$}}
+\put(53.21,58.54){\makebox(0,0)[cc]{0}}
+\put(53.21,32.89){\makebox(0,0)[cc]{0}}
+\put(53.21,23.01){\makebox(0,0)[cc]{1}}
+\put(63.12,32.98){\makebox(0,0)[cc]{1}}
+\put(63.12,23.1){\makebox(0,0)[cc]{0}}
+\put(53.21,64.64){\makebox(0,0)[cc]{1}}
+\put(53.21,38.99){\makebox(0,0)[cc]{1}}
+\put(63.17,38.99){\makebox(0,0)[cc]{3}}
+\put(47.95,58.54){\makebox(0,0)[cc]{1}}
+\put(47.95,32.89){\makebox(0,0)[cc]{1}}
+\put(47.95,23.01){\makebox(0,0)[cc]{3}}
+\put(53.25,54.08){\makebox(0,0)[cc]{1}}
+\put(53.25,28.43){\makebox(0,0)[cc]{1}}
+\put(53.25,18.55){\makebox(0,0)[cc]{0}}
+\put(63.16,28.52){\makebox(0,0)[cc]{0}}
+\put(63.16,18.64){\makebox(0,0)[cc]{1}}
+\put(47.99,54.08){\makebox(0,0)[cc]{2}}
+\put(47.99,28.43){\makebox(0,0)[cc]{2}}
+\put(47.99,18.55){\makebox(0,0)[cc]{4}}
+\put(58.21,58.54){\makebox(0,0)[cc]{1}}
+\put(58.21,32.89){\makebox(0,0)[cc]{1}}
+\put(58.21,23.01){\makebox(0,0)[cc]{0}}
+\put(68.12,32.98){\makebox(0,0)[cc]{0}}
+\put(68.12,23.1){\makebox(0,0)[cc]{1}}
+\put(58.21,64.64){\makebox(0,0)[cc]{2}}
+\put(58.21,38.99){\makebox(0,0)[cc]{2}}
+\put(68.17,38.99){\makebox(0,0)[cc]{4}}
+\put(58.21,54.04){\makebox(0,0)[cc]{0}}
+\put(58.21,28.39){\makebox(0,0)[cc]{0}}
+\put(58.21,18.51){\makebox(0,0)[cc]{1}}
+\put(68.12,28.48){\makebox(0,0)[cc]{1}}
+\put(68.12,18.6){\makebox(0,0)[cc]{0}}
+\put(79.31,56.11){\makebox(0,0)[cc]{= $A_1$}}
+\put(79.31,25.62){\makebox(0,0)[cc]{= $A_2$}}
+\put(50.72,61.36){\line(0,-1){9.88}}
+\put(50.72,35.72){\line(0,-1){9.88}}
+\put(50.72,25.83){\line(0,-1){9.88}}
+\put(60.81,61.36){\line(0,-1){9.88}}
+\put(70.73,35.8){\line(0,-1){9.88}}
+\put(70.73,25.92){\line(0,-1){9.88}}
+\put(50.72,51.48){\line(1,0){2.52}}
+\put(50.72,15.95){\line(1,0){2.52}}
+\put(60.81,51.48){\line(-1,0){2.52}}
+\put(70.73,16.04){\line(-1,0){2.52}}
+\put(53.24,61.36){\line(-1,0){2.52}}
+\put(53.24,35.72){\line(-1,0){2.52}}
+\put(58.29,61.36){\line(1,0){2.52}}
+\put(68.2,35.8){\line(1,0){2.52}}
+\put(60.63,32.95){\line(0,-1){14.51}}
+\put(53.24,25.62){\line(1,0){15.14}}
+\put(44.75,4.75){\makebox(0,0)[cc]{Figure 16: Adjacency matrices for $Q_1$ and $Q_2$.}}
+\put(19.75,53.75){\makebox(0,0)[cc]{$Q_1$}}
+\put(19,12.5){\makebox(0,0)[cc]{$Q_2$}}
+\end{picture}
+\end{center}
+
+\item[28.] The \emph{$n$-dimensional mesh} $M(a_1,a_2,\cdots,a_n)$ is the graph whose vertex set $V(M)$ may be labeled by the set of all ordered $n$-tuples $x = $ $(x_1$, $x_2$, $\cdots$, $x_n)$, where $1 \leq x_i \leq a_i$, for each $i$ between $1$ and $n$. Two vertices $x$ and $y$ are adjacent if and only if $\Sigma |x_i-y_i| = 1$. Verify that a ladder with $2k$ vertices is the $2$-mesh $M(2,k)$. Show that $Q_n$ is the mesh $M(2,2,\cdots,2)$. Figure 17 presents a labeled $3$-mesh $M(2,3,2)$.
+
+\begin{center} 
+%TeXCAD Picture [fig17.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(70.75,51.25)(0,0)
+\put(10.25,13.5){\framebox(25,25)[cc]{}}
+\put(20.25,23.5){\framebox(25,25)[cc]{}}
+\put(35.25,13.5){\framebox(25,25)[cc]{}}
+\put(45.25,23.5){\framebox(25,25)[cc]{}}
+\put(10.25,13.5){\line(1,1){10}}
+\put(10.25,38.5){\line(1,1){10}}
+\put(35.25,38.5){\line(1,1){10}}
+\put(60.25,38.5){\line(1,1){10}}
+\put(60.25,13.5){\line(1,1){10}}
+\put(35.25,13.5){\line(1,1){10}}
+\put(10.25,11.25){\makebox(0,0)[cc]{(1,1,1)}}
+\put(20.25,21.25){\makebox(0,0)[lc]{(2,1,1)}}
+\put(20.25,51.25){\makebox(0,0)[cc]{(2,1,2)}}
+\put(10.25,41.75){\makebox(0,0)[rc]{(1,1,2)}}
+\put(35.25,11.25){\makebox(0,0)[cc]{(1,2,1)}}
+\put(45.25,21.25){\makebox(0,0)[lc]{(2,2,1)}}
+\put(45.25,51.25){\makebox(0,0)[cc]{(2,2,2)}}
+\put(35.25,41.75){\makebox(0,0)[rc]{(1,2,2)}}
+\put(60.25,11.25){\makebox(0,0)[cc]{(1,3,1)}}
+\put(70.25,21.25){\makebox(0,0)[lc]{(2,3,1)}}
+\put(70.25,51.25){\makebox(0,0)[cc]{(2,3,2)}}
+\put(60.25,41.75){\makebox(0,0)[rc]{(1,3,2)}}
+\put(20.25,48.25){\circle*{1}}
+\put(10.25,38.25){\circle*{1}}
+\put(10.25,13.25){\circle*{1}}
+\put(20.25,23.25){\circle*{1}}
+\put(45.25,48.25){\circle*{1}}
+\put(35.25,38.25){\circle*{1}}
+\put(35.25,13.25){\circle*{1}}
+\put(45.25,23.25){\circle*{1}}
+\put(70.25,48.25){\circle*{1}}
+\put(60.25,38.25){\circle*{1}}
+\put(60.25,13.25){\circle*{1}}
+\put(70.25,23.25){\circle*{1}}
+\put(34.75,4.5){\makebox(0,0)[cc]{Figure 17: $M(2,3,2)$}}
+\end{picture}
+\end{center}
+
+  Show that $M(a_1,\cdots,a_n)$ has $a_1 \times a_2 \times \cdots \times a_n$ vertices. How many edges does it have? An \emph{even mesh} has an even number of vertices, with odd meshes defined similarly. Show that an $n$-mesh is odd if and only if \emph{each} $a_i$ is odd. Show that even meshes are equitable bipartite, while odd meshes are nearly equitable.
+
+  Show that given any two graphs $G$ and $H$, then $G \times H$ and $H \times G$ are isomorphic (i.e., the same with perhaps different labels), thereby enabling to say ``the product'' of $G$ and $H$. Show furthermore that given graphs $U$, $V$, and $W$, then $(U \times V) \times W = U \times (V \times W)$, thereby making parentheses unnecessary. How would you label the vertices of $U \times V \times W$?
+
+  Show that the $n$-mesh $M(a_1,\cdots,a_n)$ is the product of the paths $P_{a_1}$, $P_{a_2}$, $\cdots$, $P_{a_n}$. How does it follow that meshes are traceable? Show that meshes are hamiltonian if and only if they are even. Which meshes are homogeneous-connected? Which are hamilton laceable?
+
+\item[29.] If each $a_i$ of the $n$-mesh $M(a_1,\cdots,a_n)$ is a power of $2$, we call it a \emph{binary mesh}. Show that the $n$-mesh $M(a_1,\cdots,a_n)$ spans $Q_m$ if and only if $a_1 \times a_2 \times \cdots a_n = 2^m$. This can only happen if $M$ is a binary mesh.
+
+\item[30.] Given the $d$-dimensional mesh $M(k,k,\cdots,k)$, what is the smallest $n$ such that $M(k,k,\cdots,k)$ is a subgraph of $Q_n$? It will be useful to observe that if $n = s_1 + s_2 + \cdots + s_t$, then $Q_n = Q_{s_1} \times Q_{s_2} \times \cdots \times Q_{s_t}$. Use the fact that $Q_n$ is traceable. It also pays to experiment with lower-order hypercubes such as $Q_3$ and $Q_4$, and to start with $d = 2$. Much graph theory research begins with empirical, rather than theoretical, procedures. When $d = 2$, show that the minimum $n$ which we seek satisfies the inequality $\lceil 2 \cdot \log_2k \rceil \leq n \leq 2 \lceil \log_2k \rceil$. ($\lceil x \rceil$ means the smallest integer greater than or equal to $x$.) Try to generalize this.
+
+\item[31.] A graph $G$ which has a $k$-legged caterpillar as a spanning tree is called \emph{$k$-caterpillar spannable}. If $k$ is not specified, $G$ is simply called \emph{caterpillar-spannable}. Show that if $G$ and $H$ are caterpillar-spannable, and at least one of them is $1$-caterpillar-spannable, then $G \times H$ is caterpillar-spannable. If $G$ is $k$-caterpillar-spannable and $H$ is traceable, show that $G \times H$ is $k$-caterpillar-spannable. Show that if $G$ is $1$-caterpillar-spannable and $H$ is traceable with even order (i.e., $H$ has an even number of vertices), then $G \times H$ is traceable. Can you add hypotheses to the previous sentence, which will permit ``traceable'' to be upgraded to ``hamiltonian''?
+
+\item[32.] Show that every $n$-dimensional mesh has a spanning $2$-dimensional mesh. (Can the dimensions of the $2$-mesh vary for some $n$-meshes?) Then find out which $3$-branched starlike trees span $2$-meshes, and conclude which $3$-branched starlike trees span $n$-meshes. What about $4$-branched starlike trees? Clearly, spanning $2$-meshes might still be useful for finding $4$-branched starlike trees, but will be inadequate when the number of branches is greater than $4$. This brings us to the question: Given the $n$-dimensional mesh $M(a_1,\cdots,a_2)$, which $k$-meshes span it when $3 \leq k \leq n-1$?
+
+\item[33.] The \emph{ternary cube} $T_n$ is defined recursively by $T_1 = K_3$, while $T_n = T_{n-1} \times K_3$. Show that $T_n$ has $3^n$ vertices and $n \cdot 3^n$ edges. Show that $T_1$ is the only planar ternary cube.
+
+  A graph that is isomorphic to its complement is called \emph{self-complementary}. Are there any self-complementary ternary cubes? What about hypercubes?
+
+  Show that ternary cubes are self-centered and $\text{rad} T_n = \text{diam} T_n = n$. Given a vertex of $T_n$, how many eccentric vertices does it have?
+
+  Show that if $G$ and $H$ are $m$-regular and $n$-regular respectively, then $G \times H$ is $(m+n)$-regular. Use this to find the common degree of the vertices of $T_n$.
+
+  A graph $G$ is \emph{$k$-colorable} if each vertex can be assigned one of a set of $k$ colors such that no pair of adjacent vertices have the same color. Show that if $G$ is $3$-colorable, so is $G \times K_3$ which implies that $T_n$ is $3$-colorable. Can you conclude anything about the colorability of $U \times V$ if $U$ and $V$ are $j$-colorable and $k$-colorable respectively?
+
+  Recall that bipartite graphs are $2$-colorable, and are called \emph{equitable} when the number of vertices of each color is the same. Obviously if we assign a color to a particular vertex, the colors of all of the remaining vertices are determined. Show that this is not the case with $3$-colorable graphs. Show that if we use the colors red, white, and blue (in a burst of patriotism!) for the $3$-colorable graph of Figure 18, it is possible to assign each color to two vertices; i.e., the colors may be assigned ``equitably''. Show, however, that one can distribute the colors so that there is one red vertex, two white vertices, and three blue vertices. When the order of a $3$-colorable graph is not a multiple of three, there obviously is no equitable color assignment. If the order is a multiple of three, is it always possible to have the same number of vertices in each color set? Regardless of your answer, show that $T_n$ can be colored equitably.
+
+\begin{center} 
+%TeXCAD Picture [fig18.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(53,29.5)(0,0)
+\put(32.5,29.25){\line(0,-1){20}}
+\put(32.5,9.25){\line(1,0){20}}
+\put(32.5,29.25){\line(1,0){20}}
+\put(32.5,29.25){\line(-1,-1){10}}
+\put(22.5,19.25){\line(1,-1){10}}
+\put(22.5,19.25){\line(-1,0){20}}
+\put(22.5,19){\circle*{1}}
+\put(2.5,19){\circle*{1}}
+\put(32.5,29){\circle*{1}}
+\put(32.5,9){\circle*{1}}
+\put(52.5,9){\circle*{1}}
+\put(52.5,29){\circle*{1}}
+\put(26.25,4.75){\makebox(0,0)[cc]{Figure 18: A 3-colorable graph.}}
+\end{picture}
+\end{center}
+
+\item[34.] Note that the graph of Figure 19 contains the cycles $C_3$, $C_4$, $C_5$, and $C_6$.
+
+\begin{center} 
+%TeXCAD Picture [fig19.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(47,29.75)(0,0)
+\put(16.5,29.5){\line(0,-1){20}}
+\put(36.5,29.5){\line(0,-1){20}}
+\put(16.5,9.5){\line(1,0){20}}
+\put(16.5,29.5){\line(1,0){20}}
+\put(16.5,29.5){\line(-1,-1){10}}
+\put(36.5,29.5){\line(1,-1){10}}
+\put(6.5,19.5){\line(1,-1){10}}
+\put(46.5,19.5){\line(-1,-1){10}}
+\put(6.5,19.25){\circle*{1}}
+\put(46.5,19.25){\circle*{1}}
+\put(16.5,29.25){\circle*{1}}
+\put(16.5,9.25){\circle*{1}}
+\put(36.5,9.25){\circle*{1}}
+\put(36.5,29.25){\circle*{1}}
+\put(26.25,4.75){\makebox(0,0)[cc]{Figure 19: An interesting graph!}}
+\end{picture}
+\end{center}
+
+  A graph on $n$ vertices which contains the cycles $C_3,C_4,\cdots,C_n$ is called \emph{pancyclic}. Observe that a pancyclic graph is hamiltonian. If $G$ is pancyclic, show that $G \times K_2$ is also pancyclic. If $G$ is pancyclic and hamilton-connected, prove that $G \times P_n$ is pancyclic for all $n$. Show that ternary cubes are hamilton-connected. Then in light of the fact that $P_3$ spans $K_3$, show that ternary cubes are pancyclic.
+
+  If $G$ is pancyclic and hamilton-connected, and $H$ is traceable, why is $G \times H$ pancyclic? Do we need all the hypotheses in this statement? In many theorems about the product graphs, it is possible to weaken the hypotheses of one graph by strengthening the hypotheses on the other. Can this be done here? If $G$ is pancyclic without being hamilton-connected, can we find conditions for $H$ such that $G \times H$ is pancyclic?
+
+  If $G$ is a hamiltonian graph of even order $k$ containing all even cycles $C_4,C_6,\cdots,C_k$, we call $G$ \emph{evenpancyclic}, with \emph{odd-pancyclic} similarly defined. If $G$ is even-pancyclic, show that $G \times P_n$ is even-pancyclic. Note that $G$ isn't hamilton-connected. Show that $Q_n$ is even-pancyclic.
+
+\item[35.] Show that both $T_n$ and $T_n \times K_2$ are hamilton-connected. Then show that a $3$-branched starlike tree on $3^n$ vertices spans $T_n$, $n \geq 2$. Try to obtain other spanning trees of $T_n$ and investigate their properties.
+
+\item[36.] The complete graph on $n$ vertices, $K_n$, has $n \frac{(n-1)}{2}$ edges. Consequently, given a graph $G$ on $n$ vertices and $e$ edges, we define its \emph{edge density} by $\frac{2e}{(n^2-n)}$; i.e., it is the ratio of the number of edges it has to the number of edges it would have if one were to connect every pair of vertices. Given a graph defined by a parameter which has integer values, such as $P_n$, $C_n$, $Q_n$, and $T_n$, we define the \emph{asymptotic edge density} as the limit of its edge density as $n$ goes to infinity (\emph{if it exists}). Let $G$ be a graph on $k$ vertices, define $G_0 = G$, while $G_n = G_{n-1} \times K_2$, and let $f_n$ be the edge density of $G_n$. Derive a recursive equation for $f_n$ involving $k$ and $f_{i-1}$, and use it to show that the asymptotic density of $G_n$ is zero. It follows that the asymptotic edge density of $Q_n$ is zero. Find the asymptotic density of $T_n$. Show that the edge density of a tree on $n$ vertices is $\frac{2}{n}$. Not surprisingly, this goes to zero as $n$ goes to infinity. It is interesting to compare the edge density of a graph on $n$ vertices to this number, since $\frac{2}{n}$ is the edge density of any of its spanning trees. Define the \emph{relative tree density} (rtd) of a graph with edge density $f$ to be the ratio of the two, i.e., $\frac{(2/n)}{f} = \frac{2}{(nf)}$. Show that if $G$ has $n$ vertices and $e$ edges, this number is $\frac{(n-1)}{e}$. Explain why this makes sense.
+
+  If $G_n$ is defined by the parameter $n$ (which isn't always the number of vertices), the \emph{asymptotic rtd} is the limit of the rtd of $G$ as $n$ goes to infinity. Find the rtds of $Q_n$ and $T_n$. When the asymptotic rtd of a graph goes to zero, it means that we have to delete ``almost all'' of its edges to get a spanning tree as $n$ goes to infinity. Put another way, the percentage of edges that we must delete approaches 100\%! Is it possible for the asymptotic edge density \emph{and} the asymptotic rtd to be zero?
+
+\end{description}
+
+
+
+
+\newpage
+
+\section{Distance Properties of Graphs}
+\markboth{3. Distance Properties of Graphs}{3. Distance Properties of Graphs}
+
+\begin{description}
+
+\item[37.] Show that if the diameter of a graph is greater than or equal to three, then the diameter of its complement is at most three. Then prove that the diameter of a self-complementary graph is either two or three (except for the ``trivial'' graph consisting of one vertex). The cycle $C_5$ and the graph of Figure 20 are self-complementary graphs, with diameters two and three respectively.
+
+\begin{center} 
+%TeXCAD Picture [fig20.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(35,41.75)(0,0)
+%\emline(12.5,11.25)(23.5,41.75)
+\multiput(12.5,11.25)(.033639144,.093272171){327}{\line(0,1){.093272171}}
+%\end
+%\emline(34.5,11.25)(23.5,41.75)
+\multiput(34.5,11.25)(-.033639144,.093272171){327}{\line(0,1){.093272171}}
+%\end
+\put(18,26.75){\line(1,0){11}}
+\put(23.5,41){\circle*{1}}
+\put(12.75,11.5){\circle*{1}}
+\put(18.5,27){\circle*{1}}
+\put(29,27){\circle*{1}}
+\put(34.5,11){\circle*{1}}
+\put(23.25,5){\makebox(0,0)[cc]{Figure 20: A self-complementary graph.}}
+\end{picture}
+\end{center}
+
+  Show that if $G$ is a graph with $n$ vertices and minimum degree of at least $\frac{(n-1)}{2}$, then either $G = K_n$ or $\text{diam} G = 2$. As a consequence, if $G$ is $d$-regular and $d \geq \frac{(n-1)}{2}$, show that $G = K_n$ or $\text{diam} G = 2$. Show that if the diameter of a \emph{regular} graph is greater than or equal to three, then the diameter of its complement is at most \emph{two}. Now deduce that the diameter of a regular self-complementary graph is two (excluding that nuisance -- the trivial graph!).
+
+\begin{center}
+%TeXCAD Picture [fig21.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(87.25,53.94)(0,0)
+\put(7.75,38.75){\circle{7.81}}
+\put(56.75,38.75){\circle{7.81}}
+\put(34.5,39){\circle{7.5}}
+\put(83.5,39){\circle{7.5}}
+\put(13.5,19){\circle{8.94}}
+\put(62.5,19){\circle{8.94}}
+\put(26.75,19){\circle{8.51}}
+\put(75.75,19){\circle{8.51}}
+\put(21,48.25){\circle*{.5}}
+%\emline(12.75,45)(16.5,47.5)
+\multiput(12.75,45)(.05,.0333333){75}{\line(1,0){.05}}
+%\end
+%\emline(61.75,45)(65.5,47.5)
+\multiput(61.75,45)(.05,.0333333){75}{\line(1,0){.05}}
+%\end
+%\emline(13.75,44)(16.75,46)
+\multiput(13.75,44)(.05,.0333333){60}{\line(1,0){.05}}
+%\end
+%\emline(62.75,44)(65.75,46)
+\multiput(62.75,44)(.05,.0333333){60}{\line(1,0){.05}}
+%\end
+\put(8.5,32){\line(1,-6){1}}
+\put(57.5,32){\line(1,-6){1}}
+%\emline(9.75,32.5)(11,26.5)
+\multiput(9.75,32.5)(.0328947,-.1578947){38}{\line(0,-1){.1578947}}
+%\end
+%\emline(58.75,32.5)(60,26.5)
+\multiput(58.75,32.5)(.0328947,-.1578947){38}{\line(0,-1){.1578947}}
+%\end
+\put(18.75,19.75){\line(1,0){2.75}}
+\put(67.75,19.75){\line(1,0){2.75}}
+\put(19,18.25){\line(1,0){2.25}}
+\put(68,18.25){\line(1,0){2.25}}
+%\emline(31.75,31.5)(29,27)
+\multiput(31.75,31.5)(-.0335366,-.054878){82}{\line(0,-1){.054878}}
+%\end
+%\emline(80.75,31.5)(78,27)
+\multiput(80.75,31.5)(-.0335366,-.054878){82}{\line(0,-1){.054878}}
+%\end
+%\emline(33.25,31)(30.75,26.75)
+\multiput(33.25,31)(-.0333333,-.0566667){75}{\line(0,-1){.0566667}}
+%\end
+%\emline(82.25,31)(79.75,26.75)
+\multiput(82.25,31)(-.0333333,-.0566667){75}{\line(0,-1){.0566667}}
+%\end
+%\emline(26,46.25)(29,43.25)
+\multiput(26,46.25)(.0337079,-.0337079){89}{\line(0,-1){.0337079}}
+%\end
+%\emline(75,46.25)(78,43.25)
+\multiput(75,46.25)(.0337079,-.0337079){89}{\line(0,-1){.0337079}}
+%\end
+%\emline(26.5,47.25)(29.5,44.25)
+\multiput(26.5,47.25)(.0337079,-.0337079){89}{\line(0,-1){.0337079}}
+%\end
+%\emline(75.5,47.25)(78.5,44.25)
+\multiput(75.5,47.25)(.0337079,-.0337079){89}{\line(0,-1){.0337079}}
+%\end
+\put(20.5,52){\makebox(0,0)[cc]{$K_{1}$}}
+\put(70.75,49.75){\circle{8.38}}
+\put(7.75,38.75){\makebox(0,0)[cc]{$K_{s}$}}
+\put(13.75,19){\makebox(0,0)[cc]{$\bar{K}_{s}$}}
+\put(26.75,19){\makebox(0,0)[cc]{$\bar{K}_{s}$}}
+\put(34.75,39.25){\makebox(0,0)[cc]{$K_{s}$}}
+\put(56.75,38.75){\makebox(0,0)[cc]{$G$}}
+\put(62.75,19){\makebox(0,0)[cc]{$G$}}
+\put(75.75,19){\makebox(0,0)[cc]{$G$}}
+\put(83.5,39.25){\makebox(0,0)[cc]{$G$}}
+\put(71,49.75){\makebox(0,0)[cc]{$G$}}
+\put(18.75,11){\makebox(0,0)[cc]{(a)}}
+\put(68.25,11){\makebox(0,0)[cc]{(b)}}
+\put(43.25,4.5){\makebox(0,0)[cc]{Figure 21: Self-complementary regular graphs.}}
+\end{picture}
+\end{center}
+
+  Observe that $C_5$ is a regular self-complementary graph, while the graph of Figure 20 is self-complementary but is not regular. The graphs of Figure 21 give infinite classes of regular self-complementary graphs. $G$ in Figure 21b is any regular self-complementary graph. In the graph of Figure 21a, we denote the complement of a graph by placing a bar on top of the letter representing the graph; i.e., the complement of $K_s$ is written $\bar{K}_s$. The \emph{join} of graphs $G$ and $H$, which is denoted $G = H$, is the graph consisting of a copy of $G$, a copy of $H$, and edges connecting each vertex of $G$ with each vertex of $H$. How is the join of a graph $G$ with itself related to $G \times K_2$? Note that they are not the same.
+
+  Let us prove, in a different way, that if the diameter of a regular graph is less than or equal to three, then its complement's diameter is at most two. Call the adjacency matrix of a $d$-regular graph $G$, with radius at most three, $A$; and call the adjacency matrix of its complement $B$. As $G$ (and $\bar{G}$) have $n$ vertices, their adjacency matrices $A$ and $B$ are $n \times n$. Let $J$ denote the $n \times n$ matrix whose entries are all $1$, and let $I$ be the $n \times n$ identity. Show that $B = J - A - I$. After squaring both sides, we get $B^2 = J^2 - JA - AJ - 2J + 2A + A^2 + I$. Now show that $J^2 = nJ$, and $JA + AJ = dJ$. Finally, show that
+    \begin{equation*}
+    B + B^2 = (n - 2d - 1) J + A^2 + A
+    \end{equation*}
+
+  Why is $n - 2d - 1$ positive? Show, using the above equation, that $B + B^2$ has only positive entries, implying that $\text{diam} \bar{G}$ is at most two. (Recall that the $(i,j)$ entry of $B^2$ counts the number of walks of length two between the $i$th and $j$th vertices of $B$.) Show that the radius of a non-trivial self-complementary graph must be two. Why could such a graph not have a cutpoint? (A \emph{cutpoint} is a vertex whose deletion disconnects a graph.) Try to find more properties of regular self-complementary graphs.
+
+\item[38.] The reader is reminded that the center of a tree consists of either a single vertex, or two adjacent vertices. It seems intuitively obvious that if the center has more than one vertex, the vertices should be ``close'' to one another, and indeed this is the case with trees. A glance at Figure 22, however, will perhaps be a surprise. The center vertices $x$ and $y$ are quite far apart. In fact, their distance, four, is the farthest apart they could be in this graph, since its radius is four. We call a graph whose center has more than one vertex, and the distance between any pair of center vertices equals the radius, an \emph{$F$-graph}. Construct $F$-graphs with more than three center vertices. Can you construct $F$-graphs with any radius? Show that a product graph ($U \times V$) is never an $F$-graph. Let $G$ be an $F$-graph with two center vertices $x$ and $y$. In $G \times K_2$, let $G'$ be the second copy of $G$, and let $x'$ and $y'$ in $G'$ correspond to $x$ and $y$. Obviously, $G \times K_2$ is not an $F$-graph. Now, however, add to it vertices $u$ and $v$ and edges $ux$ and $uy'$. Assuming that $\text{diam} G \geq \text{rad} G+2$, show that this graph is an $F$-graph whose radius is $1 + \text{rad} G$, and that it has exactly two center vertices. Observe that we can continue this procedure indefinitely; i.e., it is a recursive operation.
+
+  Show that a center vertex of an $F$-graph can't be a cutpoint. Show that a ``unique eccentric point'' graph (see Problem 7, Chapter I) with radius bigger than one, can't be an $F$-graph.
+
+\begin{center} 
+%TeXCAD Picture [fig22.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(63.25,44.25)(0,0)
+\put(2.75,28){\line(1,0){20}}
+\put(22.75,28){\line(-1,0){.25}}
+\put(62.75,28){\line(-1,0){.25}}
+\put(22.5,28){\line(2,-3){10}}
+\put(22.5,27.94){\line(2,3){10}}
+\put(32.5,13){\line(2,3){10}}
+\put(32.5,42.94){\line(2,-3){10}}
+\put(42.5,28){\line(1,0){20}}
+\put(22.75,27.75){\circle*{1}}
+\put(62.75,27.75){\circle*{1}}
+\put(12.75,28){\circle*{1}}
+\put(52.75,28){\circle*{1}}
+\put(2.75,28){\circle*{1}}
+\put(42.75,28){\circle*{1}}
+\put(32.75,13){\circle*{1}}
+\put(32.75,42.94){\circle*{1}}
+\put(37.75,20.5){\circle*{1}}
+\put(37.75,35.44){\circle*{1}}
+\put(27.75,20.5){\circle*{1}}
+\put(27.75,35.44){\circle*{1}}
+\put(30,44.25){\makebox(0,0)[cc]{$x$}}
+\put(30.5,12.75){\makebox(0,0)[cc]{$y$}}
+\put(32.5,5){\makebox(0,0)[cc]{Figure 22: An $F$-graph with radius four.}}
+\end{picture}
+\end{center}
+
+  A \emph{block} of a graph is a maximal connected subgraph with no cutpoints. One block of the graph of Figure 22 is $C_8$, while the other blocks are copies of $K_2$. Show that the center of any graph must be contained in a block (called the \emph{center block}). Of course, it need not be the case that all vertices of the center block are center vertices. Show that any diametral path of an $F$-graph $G$ has a subpath of length at least $(\text{diam} G - \text{rad} G)$ contained in its center block.
+
+  When a graph $G$ is a subgraph of graph $H$, we call $H$ a \emph{supergraph} of $G$. Given a graph $G$ which does not have some particular property, it is often of interest to find the smallest (in some sense -- number of vertices, edges, diameter, etc.) supergraph $H$, such that $H$ has the given property. Furthermore, it is often desirable that $G$ be an induced subgraph of $H$.
+
+  Given a graph $G$ with $n$ vertices, the construction shown in Figure 23 yields a supergraph $H$ of diameter four; is an $F$-graph; requires only five additional vertices; and contains $G$ as an induced subgraph. The construction consists of joining each vertex of $G$ to two endvertices $u$ and $v$ of a star with four vertices, and then attaching a pendant edge to an arbitrarily selected vertex of $G$. Note however, that this involves the addition of many edges to $G$. Can you devise an alternative which minimizes the number of required new edges?
+
+\begin{center}
+%TeXCAD Picture [fig23.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(88.75,44.5)(0,0)
+%\circle(58.5,25.25){31.18}
+\put(74.09,25.25){\line(0,1){.77}}
+\put(74.07,26.02){\line(0,1){.768}}
+\put(74.01,26.79){\line(0,1){.764}}
+\multiput(73.92,27.55)(-.0331,.1897){4}{\line(0,1){.1897}}
+\multiput(73.79,28.31)(-.0283,.1252){6}{\line(0,1){.1252}}
+\multiput(73.62,29.06)(-.02953,.10598){7}{\line(0,1){.10598}}
+\multiput(73.41,29.8)(-.03038,.09134){8}{\line(0,1){.09134}}
+\multiput(73.17,30.53)(-.03099,.07976){9}{\line(0,1){.07976}}
+\multiput(72.89,31.25)(-.0314,.07032){10}{\line(0,1){.07032}}
+\multiput(72.57,31.96)(-.03167,.06244){11}{\line(0,1){.06244}}
+\multiput(72.23,32.64)(-.03182,.05573){12}{\line(0,1){.05573}}
+\multiput(71.84,33.31)(-.031876,.049934){13}{\line(0,1){.049934}}
+\multiput(71.43,33.96)(-.031852,.044849){14}{\line(0,1){.044849}}
+\multiput(70.98,34.59)(-.03176,.04034){15}{\line(0,1){.04034}}
+\multiput(70.51,35.19)(-.033713,.038722){15}{\line(0,1){.038722}}
+\multiput(70,35.77)(-.03336,.034697){16}{\line(0,1){.034697}}
+\multiput(69.47,36.33)(-.035033,.033007){16}{\line(-1,0){.035033}}
+\multiput(68.91,36.86)(-.039062,.033319){15}{\line(-1,0){.039062}}
+\multiput(68.32,37.36)(-.043564,.033589){14}{\line(-1,0){.043564}}
+\multiput(67.71,37.83)(-.045169,.031397){14}{\line(-1,0){.045169}}
+\multiput(67.08,38.27)(-.050254,.031368){13}{\line(-1,0){.050254}}
+\multiput(66.43,38.67)(-.05605,.03125){12}{\line(-1,0){.05605}}
+\multiput(65.75,39.05)(-.06276,.03103){11}{\line(-1,0){.06276}}
+\multiput(65.06,39.39)(-.07064,.03068){10}{\line(-1,0){.07064}}
+\multiput(64.36,39.7)(-.08007,.03018){9}{\line(-1,0){.08007}}
+\multiput(63.64,39.97)(-.10474,.03367){7}{\line(-1,0){.10474}}
+\multiput(62.9,40.21)(-.12399,.0332){6}{\line(-1,0){.12399}}
+\multiput(62.16,40.4)(-.15057,.03244){5}{\line(-1,0){.15057}}
+\multiput(61.41,40.57)(-.19,.0312){4}{\line(-1,0){.19}}
+\put(60.65,40.69){\line(-1,0){.765}}
+\put(59.88,40.78){\line(-1,0){.769}}
+\put(59.11,40.83){\line(-1,0){.77}}
+\put(58.34,40.84){\line(-1,0){.77}}
+\put(57.57,40.81){\line(-1,0){.767}}
+\put(56.81,40.75){\line(-1,0){.763}}
+\multiput(56.04,40.64)(-.15145,-.02804){5}{\line(-1,0){.15145}}
+\multiput(55.28,40.5)(-.1249,-.02957){6}{\line(-1,0){.1249}}
+\multiput(54.54,40.33)(-.10568,-.0306){7}{\line(-1,0){.10568}}
+\multiput(53.8,40.11)(-.09103,-.03131){8}{\line(-1,0){.09103}}
+\multiput(53.07,39.86)(-.07944,-.03179){9}{\line(-1,0){.07944}}
+\multiput(52.35,39.58)(-.07,-.03211){10}{\line(-1,0){.07}}
+\multiput(51.65,39.26)(-.06212,-.0323){11}{\line(-1,0){.06212}}
+\multiput(50.97,38.9)(-.05541,-.03238){12}{\line(-1,0){.05541}}
+\multiput(50.3,38.51)(-.049609,-.03238){13}{\line(-1,0){.049609}}
+\multiput(49.66,38.09)(-.044524,-.032305){14}{\line(-1,0){.044524}}
+\multiput(49.04,37.64)(-.040016,-.032167){15}{\line(-1,0){.040016}}
+\multiput(48.44,37.16)(-.03598,-.031972){16}{\line(-1,0){.03598}}
+\multiput(47.86,36.64)(-.034357,-.03371){16}{\line(-1,0){.034357}}
+\multiput(47.31,36.11)(-.032651,-.035366){16}{\line(0,-1){.035366}}
+\multiput(46.79,35.54)(-.032922,-.039397){15}{\line(0,-1){.039397}}
+\multiput(46.29,34.95)(-.033146,-.043902){14}{\line(0,-1){.043902}}
+\multiput(45.83,34.33)(-.033317,-.048984){13}{\line(0,-1){.048984}}
+\multiput(45.4,33.7)(-.03343,-.05478){12}{\line(0,-1){.05478}}
+\multiput(45,33.04)(-.03347,-.06149){11}{\line(0,-1){.06149}}
+\multiput(44.63,32.36)(-.03343,-.06938){10}{\line(0,-1){.06938}}
+\multiput(44.29,31.67)(-.0333,-.07883){9}{\line(0,-1){.07883}}
+\multiput(43.99,30.96)(-.03303,-.09042){8}{\line(0,-1){.09042}}
+\multiput(43.73,30.24)(-.0326,-.10508){7}{\line(0,-1){.10508}}
+\multiput(43.5,29.5)(-.03194,-.12432){6}{\line(0,-1){.12432}}
+\multiput(43.31,28.76)(-.03091,-.15089){5}{\line(0,-1){.15089}}
+\put(43.15,28){\line(0,-1){.761}}
+\put(43.04,27.24){\line(0,-1){.766}}
+\put(42.96,26.47){\line(0,-1){1.539}}
+\put(42.91,24.93){\line(0,-1){.769}}
+\put(42.95,24.16){\line(0,-1){.767}}
+\put(43.02,23.4){\line(0,-1){.762}}
+\multiput(43.13,22.64)(.02957,-.15116){5}{\line(0,-1){.15116}}
+\multiput(43.28,21.88)(.03083,-.1246){6}{\line(0,-1){.1246}}
+\multiput(43.46,21.13)(.03167,-.10536){7}{\line(0,-1){.10536}}
+\multiput(43.69,20.4)(.03223,-.09071){8}{\line(0,-1){.09071}}
+\multiput(43.94,19.67)(.03259,-.07912){9}{\line(0,-1){.07912}}
+\multiput(44.24,18.96)(.03282,-.06967){10}{\line(0,-1){.06967}}
+\multiput(44.56,18.26)(.03292,-.06179){11}{\line(0,-1){.06179}}
+\multiput(44.93,17.58)(.03294,-.05508){12}{\line(0,-1){.05508}}
+\multiput(45.32,16.92)(.03288,-.049278){13}{\line(0,-1){.049278}}
+\multiput(45.75,16.28)(.032754,-.044195){14}{\line(0,-1){.044195}}
+\multiput(46.21,15.66)(.03257,-.039688){15}{\line(0,-1){.039688}}
+\multiput(46.7,15.07)(.032335,-.035654){16}{\line(0,-1){.035654}}
+\multiput(47.21,14.49)(.032053,-.032013){17}{\line(1,0){.032053}}
+\multiput(47.76,13.95)(.035694,-.032291){16}{\line(1,0){.035694}}
+\multiput(48.33,13.43)(.039729,-.032521){15}{\line(1,0){.039729}}
+\multiput(48.93,12.95)(.044235,-.0327){14}{\line(1,0){.044235}}
+\multiput(49.55,12.49)(.049319,-.032819){13}{\line(1,0){.049319}}
+\multiput(50.19,12.06)(.05512,-.03287){12}{\line(1,0){.05512}}
+\multiput(50.85,11.67)(.06183,-.03285){11}{\line(1,0){.06183}}
+\multiput(51.53,11.31)(.06971,-.03273){10}{\line(1,0){.06971}}
+\multiput(52.22,10.98)(.07916,-.0325){9}{\line(1,0){.07916}}
+\multiput(52.94,10.69)(.09075,-.03212){8}{\line(1,0){.09075}}
+\multiput(53.66,10.43)(.1054,-.03154){7}{\line(1,0){.1054}}
+\multiput(54.4,10.21)(.12463,-.03068){6}{\line(1,0){.12463}}
+\multiput(55.15,10.02)(.1512,-.02938){5}{\line(1,0){.1512}}
+\put(55.9,9.88){\line(1,0){.762}}
+\put(56.67,9.77){\line(1,0){.767}}
+\put(57.43,9.7){\line(1,0){.769}}
+\put(58.2,9.66){\line(1,0){.77}}
+\put(58.97,9.67){\line(1,0){.769}}
+\put(59.74,9.71){\line(1,0){.766}}
+\put(60.51,9.79){\line(1,0){.761}}
+\multiput(61.27,9.91)(.15085,.0311){5}{\line(1,0){.15085}}
+\multiput(62.02,10.06)(.12428,.03209){6}{\line(1,0){.12428}}
+\multiput(62.77,10.26)(.10504,.03273){7}{\line(1,0){.10504}}
+\multiput(63.5,10.49)(.09038,.03315){8}{\line(1,0){.09038}}
+\multiput(64.23,10.75)(.07878,.03339){9}{\line(1,0){.07878}}
+\multiput(64.94,11.05)(.06934,.03352){10}{\line(1,0){.06934}}
+\multiput(65.63,11.39)(.06145,.03355){11}{\line(1,0){.06145}}
+\multiput(66.31,11.76)(.05474,.0335){12}{\line(1,0){.05474}}
+\multiput(66.96,12.16)(.048943,.033378){13}{\line(1,0){.048943}}
+\multiput(67.6,12.59)(.043861,.0332){14}{\line(1,0){.043861}}
+\multiput(68.21,13.06)(.039356,.032971){15}{\line(1,0){.039356}}
+\multiput(68.8,13.55)(.035325,.032694){16}{\line(1,0){.035325}}
+\multiput(69.37,14.07)(.033667,.034399){16}{\line(0,1){.034399}}
+\multiput(69.91,14.62)(.031928,.03602){16}{\line(0,1){.03602}}
+\multiput(70.42,15.2)(.032117,.040056){15}{\line(0,1){.040056}}
+\multiput(70.9,15.8)(.03225,.044564){14}{\line(0,1){.044564}}
+\multiput(71.35,16.42)(.032318,.049649){13}{\line(0,1){.049649}}
+\multiput(71.77,17.07)(.03231,.05545){12}{\line(0,1){.05545}}
+\multiput(72.16,17.74)(.03222,.06216){11}{\line(0,1){.06216}}
+\multiput(72.51,18.42)(.03202,.07004){10}{\line(0,1){.07004}}
+\multiput(72.83,19.12)(.03169,.07948){9}{\line(0,1){.07948}}
+\multiput(73.12,19.84)(.0312,.09107){8}{\line(0,1){.09107}}
+\multiput(73.37,20.56)(.03047,.10572){7}{\line(0,1){.10572}}
+\multiput(73.58,21.3)(.02941,.12494){6}{\line(0,1){.12494}}
+\multiput(73.76,22.05)(.02785,.15149){5}{\line(0,1){.15149}}
+\put(73.9,22.81){\line(0,1){.763}}
+\put(74,23.57){\line(0,1){.767}}
+\put(74.06,24.34){\line(0,1){.908}}
+%\end
+\put(2.25,25.25){\line(1,0){19.25}}
+%\emline(21.5,25.25)(30.25,41.25)
+\multiput(21.5,25.25)(.033653846,.061538462){260}{\line(0,1){.061538462}}
+%\end
+%\emline(21.75,25.25)(29.25,10.75)
+\multiput(21.75,25.25)(.03363229,-.06502242){223}{\line(0,-1){.06502242}}
+%\end
+%\emline(29.25,10.75)(29.75,9.75)
+\multiput(29.25,10.75)(.033333,-.066667){15}{\line(0,-1){.066667}}
+%\end
+%\emline(29.75,9.75)(52,14.25)
+\multiput(29.75,9.75)(.16604478,.03358209){134}{\line(1,0){.16604478}}
+%\end
+%\emline(29.75,9.75)(50,16.25)
+\multiput(29.75,9.75)(.10492228,.03367876){193}{\line(1,0){.10492228}}
+%\end
+%\emline(29.75,9.75)(46.75,21.25)
+\multiput(29.75,9.75)(.049853372,.03372434){341}{\line(1,0){.049853372}}
+%\end
+%\emline(30,10)(47.5,19.25)
+\multiput(30,10)(.063636364,.033636364){275}{\line(1,0){.063636364}}
+%\end
+%\emline(30.25,10)(48.25,17.5)
+\multiput(30.25,10)(.08071749,.03363229){223}{\line(1,0){.08071749}}
+%\end
+%\emline(30,41)(46.75,28.75)
+\multiput(30,41)(.046016484,-.033653846){364}{\line(1,0){.046016484}}
+%\end
+%\emline(30.25,41)(54,38)
+\multiput(30.25,41)(.2668539,-.0337079){89}{\line(1,0){.2668539}}
+%\end
+%\emline(30.5,40.5)(51.75,36.5)
+\multiput(30.5,40.5)(.17857143,-.03361345){119}{\line(1,0){.17857143}}
+%\end
+%\emline(31,41)(47.75,31.75)
+\multiput(31,41)(.060909091,-.033636364){275}{\line(1,0){.060909091}}
+%\end
+%\emline(31.25,40.25)(49.5,34.5)
+\multiput(31.25,40.25)(.10672515,-.03362573){171}{\line(1,0){.10672515}}
+%\end
+\put(66.75,25){\line(1,0){21.5}}
+\put(88.25,25){\circle*{1}}
+\put(66.75,25){\circle*{1}}
+\put(21.75,25){\circle*{1}}
+\put(2.25,25.25){\circle*{1}}
+\put(30,40.75){\circle*{1}}
+\put(30,9.5){\circle*{1}}
+\put(30,41){\circle*{1}}
+\put(58.5,25.25){\makebox(0,0)[cc]{$G$}}
+\put(29.75,44.5){\makebox(0,0)[cc]{$u$}}
+\put(30,7){\makebox(0,0)[cc]{$v$}}
+\put(41.25,3.25){\makebox(0,0)[cc]{Figure 23: An $F$-graph with $G$ an induced subgraph.}}
+\end{picture}
+\end{center}
+
+\item[39.] Let $C(G) = \{ c_1,c_2,\cdots,c_s \}$. Then the \emph{central distance} of a vertex $v$ of $G$ is the distance from $v$ to its nearest center vertex; denoting this by $d(v,C)$, we have $d(v,C) = \min_i d(v,c_i)$.
+
+  Now define the $j$th \emph{central distance set}, denoted $N_j$, as the set of all vertices with central distance equal to $j$, i.e., $N_j = \{ v\ :\ d(v,C) = j \}$. Clearly, whenever $j$ exceeds the radius of $G$, then $N_j$ is empty. Can you construct a graph in which $N_{\text{rad} G}$ is the empty set? Show that if $N_k$ is non-empty, then so is $N_j$ for all $j \leq k-1$.
+
+  Given a graph $G$, let $m = \text{diam} G - \text{rad} G$. Show that $N_m$ is non-empty.
+
+  Now let $G$ be an $F$-graph. Since $F$-graphs have special distance-related properties, is there anything interesting to say about their central distance sets? Perhaps you can obtain a characterization of them.
+
+  Show, for example, that if $G$ is an $F$-graph with radius $r$ and center $C(G) = \{ c_1,\cdots,c_s \}$, then letting $h = \lfloor \frac{r}{2} \rfloor$ (greatest integer less than or equal to $\frac{r}{2}$), $N_h$ is non-empty.
+
+\item[40.] Describe the central distance sets of trees. Is the situation for central trees the same as it is for bicentral trees? If a graph $G$ has a center-preserving spanning tree, compare its central distance sets with those of $G$. Does it matter whether or not it is also a radius-preserving spanning tree?
+
+  Show that the center of a $2$-dimensional mesh consists of either one, two, or four vertices. In each case, study the central distance sets. Continue your study to higher-dimensional meshes. Why would the central distance sets of self-centered graphs be boring?
+
+\item[41.] Show that a diametral path of a tree must contain its central vertex (or vertices if the tree is bicentral). The graph of Figure 24, however, has the somewhat surprising property that its diametral path (it has only one) does not contain its center!
+
+  We call a graph with the property that all of its diametral paths contain at least one center vertex, an \emph{$L$-graph}. As we noted above, a tree is an example of an $L$-graph. On the other hand, we define an \emph{$L'$-graph} as a graph such that none of its diametral paths contain any center vertex. The graph of Figure 24 is an $L'$-graph. Show that there are graphs for which some diametral paths contain center vertices, while others do not. Consider $n$-dimensional meshes other than ladders.
+
+  Show that $U \times V$ is an $L'$-graph if and only if at least one of $U$ and $V$ is an $L'$-graph. On the other hand, show that if neither $U$ nor $V$ is an $L'$-graph, then $U \times V$ is an $L$-graph if and only if one of $U$ and $V$ is an $L$-graph and the other is self-centered.
+
+\begin{center}
+%TeXCAD Picture [fig24.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(55.5,35.25)(0,0)
+\put(5.25,35){\line(1,0){50}}
+\put(15,35){\line(0,-1){10}}
+%\emline(15,25)(30,17)
+\multiput(15,25)(.06302521,-.03361345){238}{\line(1,0){.06302521}}
+%\end
+%\emline(30,17)(45,25)
+\multiput(30,17)(.06302521,.03361345){238}{\line(1,0){.06302521}}
+%\end
+\put(45,25){\line(0,1){10}}
+\put(30,17){\line(0,-1){10}}
+\put(5,34.75){\circle*{1}}
+\put(15,34.75){\circle*{1}}
+\put(15,24.75){\circle*{1}}
+\put(25,34.75){\circle*{1}}
+\put(35,34.75){\circle*{1}}
+\put(45,24.75){\circle*{1}}
+\put(45,34.75){\circle*{1}}
+\put(55,34.75){\circle*{1}}
+\put(30.25,16.75){\circle*{1}}
+\put(30.25,6.75){\circle*{1}}
+\put(30,2.75){\makebox(0,0)[cc]{Figure 24: A shocking graph!}}
+\end{picture}
+\end{center}
+
+  Show that if the center of a graph consists of two adjacent vertices, and the edge connecting them is a bridge (i.e., it doesn't lie on a cycle), then the graph is an $L$-graph. Show, furthermore, that if the center of a graph is a single vertex which does not lie on a cycle, then it is an $L$-graph. Observe that trees have one of the above descriptions, and are necessarily $L$-graphs. Construct a graph with a single vertex as its center, while the graph is \emph{not} an $L$-graph. Construct $L$-graphs with every possible radius and diameter; i.e., given a pair of positive integers $s$ and $t$ such that $s \leq t \leq 2s$, construct an $L$-graph with radius $s$ and diameter $t$. Find conditions, however, on $s$ and $t$ such that there exists an $L'$-graph with radius $s$ and diameter $t$. Observe, for example, that if $s = t$, then the graph is not an $L'$-graph (it is in fact, an $L$-graph). After you find the appropriate restrictions on $s$ and $t$, show how to construct $L'$-graphs with these radii and diameters.
+
+  The graph of Figure 23 is an $L$-graph in addition to being an $F$-graph. Can you find an alternate supergraph with a given graph $G$ as an induced subgraph, such that the supergraph has diameter three and requires the addition of only three points (and perhaps many edges!)? Study the analogous ``supergraph'' problem for $L'$-graphs.
+
+  Call an $F$-graph which is also an $L$-graph an $FL'$-graph, defined similarly. Are there any $FL'$graphs? Study these graphs. Construct infinite classes, and find restrictions, if any, on their radii and diameters. What can be said about products involving them? Look for special properties, etc.
+
+\item[42.] Given a graph $G$ and a vertex $v$, we call $v$ a \emph{center eccentric point} if it is an eccentrix vertex for some center vertex of $G$. We use the abbreviation cep. Also, the set of ceps of $G$ will be denoted $\text{cep}(G)$. Show that a non-trivial graph has at least two ceps. Recall that a vertex with eccentricity equal to the diameter of $G$ belongs to the periphery of $G$, or $\text{peri}(G)$, which also must contain at least two vertices.
+
+  One might expect that $\text{peri}(G) = \text{cep}(G)$, since a vertex which is a cep is as far as possible from a center vertex, leading one to expect that it has maximum eccentricity. Show that there exists graphs for which $\text{peri}(G) = \text{cep}(G)$ (which we call $S$-graphs), \emph{and} there exists graphs for which these two sets are disjoint! i.e., $\text{cep}(G) \cap \text{peri}(G) = \emptyset$ (which we call $D$-graphs). Find an infinite class of graphs which are neither $S$-graphs nor $D$-graphs.
+
+  Show that if $G = U \times V$, then vertex $g_{ij}$ is a cep of $G$ if and only if $u_{i}$ and $v_j$ are ceps of $U$ and $V$ respectively. Recall from Problem 17 that the same applies to the periphery of $U \times V$. Using these facts, show that $U \times V$ is an $S$-graph if and only if \emph{both} $U$ and $V$ are. Show that $U \times V$ is a $D$-graph if at least \emph{one} of $U$ and $V$ is a $D$-graph!
+
+  Show that there exists a $D$-graph with radius $s$ and diameter $t$, if and only if $s + 2 \leq t \leq 2s - 2$. As a result, show that the smallest diameter for $D$-graphs is six. Figure 25 exhibits a $D$-graph with diameter six.
+
+\begin{center} 
+%TeXCAD Picture [fig25.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(62.5,28.15)(0,0)
+\put(2.75,10){\line(1,0){50}}
+\put(12.5,9.4){\line(0,1){10}}
+%\emline(12.5,19.4)(27.5,27.4)
+\multiput(12.5,19.4)(.06302521,.03361345){238}{\line(1,0){.06302521}}
+%\end
+%\emline(37.5,27.4)(52.5,19.4)
+\multiput(37.5,27.4)(.06302521,-.03361345){238}{\line(1,0){.06302521}}
+%\end
+\put(52.5,19.4){\line(0,-1){10}}
+\put(32.25,10.4){\line(0,1){10}}
+\put(12.5,9.65){\circle*{1}}
+\put(22.5,9.75){\circle*{1}}
+\put(32.5,9.75){\circle*{1}}
+\put(12.5,19.65){\circle*{1}}
+\put(52.5,19.65){\circle*{1}}
+\put(52.5,27.53){\circle*{1}}
+\put(12.51,27.53){\circle*{1}}
+\put(42.5,9.65){\circle*{1}}
+\put(52.5,9.75){\circle*{1}}
+\put(2.5,9.75){\circle*{1}}
+\put(27.75,27.65){\circle*{1}}
+\put(37.75,27.65){\circle*{1}}
+\put(32.5,20.65){\circle*{1}}
+\put(52.5,10){\line(1,0){10}}
+\put(12.8,27.5){\line(1,0){39.75}}
+\put(52.55,27.5){\line(0,-1){8}}
+\put(12.56,27.5){\line(0,-1){8}}
+\put(32.5,3.25){\makebox(0,0)[cc]{Figure 25: A $D$-graph with diameter six.}}
+\end{picture}
+\end{center}
+
+  Show that a graph $G$ whose center consists of two adjacent vertices $x$ and $y$, such that edge $xy$ is a bridge, is an $S$-graph. If the center of a graph $G$ is a single vertex not lying on a cycle, then $G$ is an $S$-graph. In particular, trees are $S$-graphs. For which radii and diameters do $S$-graphs exist?
+
+  A graph which is an $F$-graph is the complete graph $K_n$, so a study of $FS$-graphs would be very short! Prove this. Are there any $DL'$-graphs? If so, find out as much as you can about them. In general, investigate all possible combinations of $L$, $L'$, $F$, $D$, and $S$ graphs. Are there graphs with three of these distance-related properties?
+
+  Show how to find supergraphs of a given graph $G$, such that the supergraph is as ``small'' as possible in some sense (i.e., radius, diameter, number of vertices, number of edges, etc.), and the supergraph of an $S$-graph, $D$-graph, etc. In all cases, $G$ should be an induced subgraph; i.e., no edges should be added to any pair of non-adjacent vertices in $G$. (New edges may only be added to pairs consisting of a vertex of $G$ and a new vertex, and of course between pairs of new vertices.)
+
+\item[43.] Recall that a graph $G$ is \emph{eulerian} if there exists a closed walk in $G$ which uses each edge exactly once. Euler showed that a graph has this property if and only if each vertex has even degree. Show that the product of two eulerian graphs is eulerian. Can a product of two non-eulerian graphs be eulerian?
+
+  Hint: Consider two graphs whose vertices have odd degree.
+
+  Which hypercubes are eulerian? What about ternary cubes? Can you exhibit closed walks for them which use each edge exactly once? More generally, if $U \times V$ is eulerian, state what you can about $U$ and $V$, and develop a procedure for finding an eulerian circuit for $U \times V$. (A \emph{circuit} is a closed walk in which no edge is repeated. An \emph{eulerian circuit} uses every edge, and edge, and therefore every vertex.) Which $n$-dimensional meshes are eulerian? It will be helpful to find the degree set of the mesh, i.e., the set of degrees of the various vertices. The degree set of the $2$-mesh $M(3,4)$ is $\{ 2,3,4 \}$.
+
+\end{description}
+
+
+\end{document}

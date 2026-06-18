@@ -1,0 +1,59 @@
+\contentsline {section}{\hbox to\@tempdima {\hfil }Introduction}{i}
+\contentsline {section}{\numberline {1}Introductory Topology}{1}
+\contentsline {subsection}{\numberline {1.1}Introduction}{1}
+\contentsline {subsection}{\numberline {1.2}Sets and Functions}{1}
+\contentsline {subsection}{\hbox to\@tempdima {1.P1\hfil }Problems}{5}
+\contentsline {subsection}{\numberline {1.3}Spaces, Bases, and Sub-Bases}{7}
+\contentsline {subsection}{\numberline {1.4}Closed Sets and Limit Points}{8}
+\contentsline {subsection}{\numberline {1.5}Metric Spaces}{10}
+\contentsline {subsection}{\numberline {1.6}Subspaces}{11}
+\contentsline {subsection}{\numberline {1.7}Products and Quotients}{11}
+\contentsline {subsection}{\hbox to\@tempdima {1.P2\hfil }Problems}{12}
+\contentsline {subsection}{\numberline {1.8}Continuity}{14}
+\contentsline {subsection}{\numberline {1.9}Topological Equivalence}{14}
+\contentsline {subsection}{\hbox to\@tempdima {1.P3\hfil }Problems}{15}
+\contentsline {subsection}{\numberline {1.10}Separation of Points}{17}
+\contentsline {subsection}{\numberline {1.11}The First and Second Axioms of Countability}{17}
+\contentsline {subsection}{\numberline {1.12}Separability}{18}
+\contentsline {subsection}{\numberline {1.13}Separation of Closed Sets}{19}
+\contentsline {subsection}{\hbox to\@tempdima {1.P4\hfil }Problems}{19}
+\contentsline {subsection}{\numberline {1.14}Urysohn's Lemma}{20}
+\contentsline {subsection}{\numberline {1.15}The Urysohn Metrization Theorem}{21}
+\contentsline {subsection}{\numberline {1.16}The Tietze Extension Theorem}{21}
+\contentsline {subsection}{\hbox to\@tempdima {1.P5\hfil }Problems}{23}
+\contentsline {subsection}{\numberline {1.17}Compactness}{24}
+\contentsline {subsection}{\numberline {1.18}Some Alternatives to Compactness}{24}
+\contentsline {subsection}{\numberline {1.19}Some Nice Things About Compactness}{26}
+\contentsline {subsection}{\hbox to\@tempdima {1.P6\hfil }Problems}{26}
+\contentsline {subsection}{\numberline {1.20}Connectivity}{27}
+\contentsline {subsection}{\numberline {1.21}Components}{27}
+\contentsline {subsection}{\numberline {1.22}Continua}{28}
+\contentsline {subsection}{\numberline {1.23}Path Connectivity}{28}
+\contentsline {subsection}{\hbox to\@tempdima {1.P7\hfil }Problems}{29}
+\contentsline {subsection}{\numberline {1.24}Local Compactness}{29}
+\contentsline {subsection}{\numberline {1.25}Compactifications}{30}
+\contentsline {subsection}{\numberline {1.26}Local Connectivity}{31}
+\contentsline {subsection}{\numberline {1.27}Remarks}{31}
+\contentsline {subsection}{\hbox to\@tempdima {1.P8\hfil }Problems}{32}
+\contentsline {section}{\numberline {2}Spaces of Functions}{33}
+\contentsline {subsection}{\numberline {2.1}Introduction}{33}
+\contentsline {subsection}{\numberline {2.2}The Space $C(I,\Re )$}{33}
+\contentsline {subsection}{\hbox to\@tempdima {2.P1\hfil }Problems}{35}
+\contentsline {subsection}{\numberline {2.3}Generalizations of $C(I,\Re )$}{36}
+\contentsline {subsection}{\hbox to\@tempdima {2.P2\hfil }Problems}{38}
+\contentsline {subsection}{\numberline {2.4}The Compact-Open Topology}{39}
+\contentsline {subsection}{\hbox to\@tempdima {2.P3\hfil }Problems}{39}
+\contentsline {section}{\numberline {3}Spaces of Sets}{42}
+\contentsline {subsection}{\numberline {3.1}Introduction}{42}
+\contentsline {subsection}{\numberline {3.2}The Hausdorff Metric}{42}
+\contentsline {subsection}{\hbox to\@tempdima {3.P1\hfil }Problems}{43}
+\contentsline {subsection}{\numberline {3.3}Symmetric Products}{46}
+\contentsline {subsection}{\hbox to\@tempdima {3.P2\hfil }Problems}{48}
+\contentsline {subsection}{\numberline {3.4}The Vietoris Topology}{49}
+\contentsline {subsection}{\hbox to\@tempdima {3.P3\hfil }Problems}{49}
+\contentsline {section}{\numberline {4}Decomposition Spaces}{50}
+\contentsline {subsection}{\numberline {4.1}Semicontinuous and Continuous Spaces}{50}
+\contentsline {subsection}{\numberline {4.2}Upper Semicontinuous Decompositions}{50}
+\contentsline {subsection}{\numberline {4.3}Closed Maps and Induced Decompositions}{51}
+\contentsline {subsection}{\hbox to\@tempdima {4.P1\hfil }Problems}{51}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Bibliography}{54}

@@ -1,0 +1,1388 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% Journal headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright Guilford College Journal of Undergraduate Mathematics} \cfoot{} \rfoot{ - at www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Quadratic Forms and Orthogonal Vectors}
+\author{Ali Amir-Moéz}
+\date{\vspace{3cm}
+  \emph{Journal of Undergraduate Mathematics}
+  \\ Department of Mathematics
+  \\ Guilford College
+  \\ Greensboro, North Carolina 27410 
+  }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+
+\section*{Introduction}
+\addcontentsline{toc}{section}{\numberline{}Introduction}
+
+\pagenumbering{arabic}
+
+Properties of quadratic forms are extremely useful in both pure and applied mathematics. Many of the concepts involved in the study of the quadratic forms do not appear at the undergraduate level; so we would like to study the simplest cases and apply the results to some geometrical properties of conics suggesting many generalizations as undergraduate research.
+
+
+\section{Theorem} 
+\markboth{1. Theorem}{1. Theorem}
+
+Let the half-major and the half minor axes of an ellipse be $a$ and $b$ respectively. Let $POQ$ be a right triangle with the right angle at the center of the ellipse and with the other vertices $P$ and $Q$ on the ellipse (Fig. 1). Then the following statements are true:
+\begin{enumerate}[(i)]
+  \item $\frac{1}{OP^{2}} + \frac{1}{OQ^{2}} = \frac{1}{a^2} + \frac{1}{b^{2}}$
+  \item The line $PQ$ is tangent to a fixed circle whose center is $O$.
+  \item The maximum area of the triangle $POQ$ is $A_{max} = \frac{ab}{2}$
+  \item The minimum area of the triangle $POQ$ is $A_{min} = \frac{ a^{2} b^{2} }{ a^{2} + b^{2} }$
+\end{enumerate}
+
+One may use techniques of analytic geometry and calculus and prove the theorem, but they become messy and quite tedious; particularly, when the generalizations of the theorem for a Euclidean space of dimension $n$ are considered. In fact, the theorem can easily be generalized to a unitary space.
+
+% FIGURE 1
+\begin{center}
+%TeXCAD Picture [fig1.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(112,90.5)(0,0)
+\qbezier(51.75,74.25)(98,73.25)(98.25,40.25)
+\qbezier(51.75,74.25)(5.5,73.25)(5.25,40.25)
+\qbezier(51.75,7.25)(98,8.25)(98.25,41.25)
+\qbezier(51.75,7.25)(5.5,8.25)(5.25,41.25)
+\put(51.25,7.25){\vector(0,1){80}}
+\put(.25,40.5){\vector(1,0){108.5}}
+%\vector(51.25,40.75)(68.75,72.25)
+\put(68.75,72.25){\vector(1,2){.07}}\multiput(51.25,40.75)(.03371869,.060693642){519}{\line(0,1){.060693642}}
+%\end
+%\vector(51.25,40.75)(15.25,64)
+\put(15.25,64){\vector(-3,2){.07}}\multiput(51.25,40.75)(-.052173913,.0336956522){690}{\line(-1,0){.052173913}}
+%\end
+%\emline(80.25,73.75)(5,62.25)
+\multiput(80.25,73.75)(-.220674487,-.03372434){341}{\line(-1,0){.220674487}}
+%\end
+%\emline(47.75,43.25)(49.75,46.25)
+\multiput(47.75,43.25)(.0333333,.05){60}{\line(0,1){.05}}
+%\end
+%\emline(49.75,46.25)(53,44)
+\multiput(49.75,46.25)(.0485075,-.0335821){67}{\line(1,0){.0485075}}
+%\end
+%\emline(68.75,72)(16.5,40.75)
+\multiput(68.75,72)(-.056364617,-.0337108954){927}{\line(-1,0){.056364617}}
+%\end
+\put(48.25,37.5){\makebox(0,0)[cc]{$o$}}
+\put(112,40.5){\makebox(0,0)[cc]{$x$}}
+\put(51,90.5){\makebox(0,0)[cc]{$y$}}
+\put(14.75,66.25){\makebox(0,0)[cc]{$Q$}}
+\put(68.5,75.5){\makebox(0,0)[cc]{$P$}}
+\put(43.25,71.75){\makebox(0,0)[cc]{$H$}}
+%\circle(51.25,40.75){56.61}
+\put(79.56,40.75){\line(0,1){1.165}}
+\put(79.53,41.92){\line(0,1){1.163}}
+\put(79.46,43.08){\line(0,1){1.159}}
+\multiput(79.34,44.24)(-.03347,.23065){5}{\line(0,1){.23065}}
+\multiput(79.17,45.39)(-.03067,.16362){7}{\line(0,1){.16362}}
+\multiput(78.96,46.54)(-.0327,.14195){8}{\line(0,1){.14195}}
+\multiput(78.7,47.67)(-.03081,.11238){10}{\line(0,1){.11238}}
+\multiput(78.39,48.8)(-.03219,.10093){11}{\line(0,1){.10093}}
+\multiput(78.03,49.91)(-.03329,.09122){12}{\line(0,1){.09122}}
+\multiput(77.64,51)(-.031732,.076951){14}{\line(0,1){.076951}}
+\multiput(77.19,52.08)(-.032548,.070541){15}{\line(0,1){.070541}}
+\multiput(76.7,53.14)(-.033209,.06482){16}{\line(0,1){.06482}}
+\multiput(76.17,54.17)(-.031866,.056354){18}{\line(0,1){.056354}}
+\multiput(75.6,55.19)(-.032361,.0521){19}{\line(0,1){.0521}}
+\multiput(74.98,56.18)(-.032754,.048188){20}{\line(0,1){.048188}}
+\multiput(74.33,57.14)(-.033056,.04457){21}{\line(0,1){.04457}}
+\multiput(73.63,58.08)(-.033278,.04121){22}{\line(0,1){.04121}}
+\multiput(72.9,58.98)(-.033427,.038074){23}{\line(0,1){.038074}}
+\multiput(72.13,59.86)(-.033509,.035139){24}{\line(0,1){.035139}}
+\multiput(71.33,60.7)(-.034927,.03373){24}{\line(-1,0){.034927}}
+\multiput(70.49,61.51)(-.037863,.033666){23}{\line(-1,0){.037863}}
+\multiput(69.62,62.29)(-.040999,.033538){22}{\line(-1,0){.040999}}
+\multiput(68.72,63.02)(-.044361,.033337){21}{\line(-1,0){.044361}}
+\multiput(67.79,63.72)(-.04798,.033057){20}{\line(-1,0){.04798}}
+\multiput(66.83,64.39)(-.051895,.032689){19}{\line(-1,0){.051895}}
+\multiput(65.84,65.01)(-.056152,.032221){18}{\line(-1,0){.056152}}
+\multiput(64.83,65.59)(-.064609,.033617){16}{\line(-1,0){.064609}}
+\multiput(63.8,66.12)(-.070334,.032992){15}{\line(-1,0){.070334}}
+\multiput(62.74,66.62)(-.076749,.032217){14}{\line(-1,0){.076749}}
+\multiput(61.67,67.07)(-.084011,.031264){13}{\line(-1,0){.084011}}
+\multiput(60.57,67.48)(-.10072,.03283){11}{\line(-1,0){.10072}}
+\multiput(59.47,67.84)(-.11219,.03152){10}{\line(-1,0){.11219}}
+\multiput(58.34,68.15)(-.14174,.0336){8}{\line(-1,0){.14174}}
+\multiput(57.21,68.42)(-.16343,.0317){7}{\line(-1,0){.16343}}
+\multiput(56.07,68.64)(-.19203,.0291){6}{\line(-1,0){.19203}}
+\multiput(54.91,68.82)(-.2896,.0318){4}{\line(-1,0){.2896}}
+\put(53.76,68.95){\line(-1,0){1.163}}
+\put(52.59,69.02){\line(-1,0){1.165}}
+\put(51.43,69.06){\line(-1,0){1.165}}
+\put(50.26,69.04){\line(-1,0){1.164}}
+\put(49.1,68.97){\line(-1,0){1.16}}
+\multiput(47.94,68.86)(-.23085,-.03201){5}{\line(-1,0){.23085}}
+\multiput(46.79,68.7)(-.16381,-.02963){7}{\line(-1,0){.16381}}
+\multiput(45.64,68.49)(-.14215,-.03181){8}{\line(-1,0){.14215}}
+\multiput(44.5,68.24)(-.12508,-.03345){9}{\line(-1,0){.12508}}
+\multiput(43.38,67.94)(-.10113,-.03156){11}{\line(-1,0){.10113}}
+\multiput(42.26,67.59)(-.09143,-.03272){12}{\line(-1,0){.09143}}
+\multiput(41.17,67.2)(-.083084,-.03365){13}{\line(-1,0){.083084}}
+\multiput(40.09,66.76)(-.070745,-.032102){15}{\line(-1,0){.070745}}
+\multiput(39.03,66.28)(-.065028,-.0328){16}{\line(-1,0){.065028}}
+\multiput(37.98,65.76)(-.059881,-.033363){17}{\line(-1,0){.059881}}
+\multiput(36.97,65.19)(-.052303,-.032031){19}{\line(-1,0){.052303}}
+\multiput(35.97,64.58)(-.048394,-.032449){20}{\line(-1,0){.048394}}
+\multiput(35.01,63.93)(-.044778,-.032775){21}{\line(-1,0){.044778}}
+\multiput(34.06,63.24)(-.041419,-.033018){22}{\line(-1,0){.041419}}
+\multiput(33.15,62.52)(-.038285,-.033186){23}{\line(-1,0){.038285}}
+\multiput(32.27,61.75)(-.035349,-.033286){24}{\line(-1,0){.035349}}
+\multiput(31.42,60.95)(-.032591,-.033325){25}{\line(0,-1){.033325}}
+\multiput(30.61,60.12)(-.032492,-.036081){24}{\line(0,-1){.036081}}
+\multiput(29.83,59.26)(-.032326,-.039013){23}{\line(0,-1){.039013}}
+\multiput(29.09,58.36)(-.033616,-.04415){21}{\line(0,-1){.04415}}
+\multiput(28.38,57.43)(-.033359,-.047771){20}{\line(0,-1){.047771}}
+\multiput(27.71,56.48)(-.033015,-.051688){19}{\line(0,-1){.051688}}
+\multiput(27.09,55.49)(-.032574,-.055948){18}{\line(0,-1){.055948}}
+\multiput(26.5,54.49)(-.032023,-.060608){17}{\line(0,-1){.060608}}
+\multiput(25.96,53.46)(-.033435,-.070125){15}{\line(0,-1){.070125}}
+\multiput(25.45,52.4)(-.0327,-.076544){14}{\line(0,-1){.076544}}
+\multiput(25,51.33)(-.031793,-.083812){13}{\line(0,-1){.083812}}
+\multiput(24.58,50.24)(-.03346,-.10051){11}{\line(0,-1){.10051}}
+\multiput(24.21,49.14)(-.03223,-.11199){10}{\line(0,-1){.11199}}
+\multiput(23.89,48.02)(-.03066,-.1258){9}{\line(0,-1){.1258}}
+\multiput(23.62,46.88)(-.03273,-.16322){7}{\line(0,-1){.16322}}
+\multiput(23.39,45.74)(-.03031,-.19184){6}{\line(0,-1){.19184}}
+\multiput(23.21,44.59)(-.0336,-.2894){4}{\line(0,-1){.2894}}
+\put(23.07,43.43){\line(0,-1){1.162}}
+\put(22.98,42.27){\line(0,-1){2.33}}
+\put(22.96,39.94){\line(0,-1){1.164}}
+\put(23.01,38.78){\line(0,-1){1.161}}
+\multiput(23.12,37.62)(.03056,-.23105){5}{\line(0,-1){.23105}}
+\multiput(23.27,36.46)(.03337,-.19133){6}{\line(0,-1){.19133}}
+\multiput(23.47,35.31)(.03091,-.14235){8}{\line(0,-1){.14235}}
+\multiput(23.72,34.18)(.03266,-.12529){9}{\line(0,-1){.12529}}
+\multiput(24.01,33.05)(.03092,-.10133){11}{\line(0,-1){.10133}}
+\multiput(24.35,31.93)(.03214,-.09164){12}{\line(0,-1){.09164}}
+\multiput(24.74,30.83)(.033125,-.083294){13}{\line(0,-1){.083294}}
+\multiput(25.17,29.75)(.031655,-.070946){15}{\line(0,-1){.070946}}
+\multiput(25.64,28.69)(.032389,-.065234){16}{\line(0,-1){.065234}}
+\multiput(26.16,27.64)(.032985,-.06009){17}{\line(0,-1){.06009}}
+\multiput(26.72,26.62)(.033462,-.055421){18}{\line(0,-1){.055421}}
+\multiput(27.32,25.62)(.032143,-.048597){20}{\line(0,-1){.048597}}
+\multiput(27.97,24.65)(.032492,-.044984){21}{\line(0,-1){.044984}}
+\multiput(28.65,23.71)(.032756,-.041626){22}{\line(0,-1){.041626}}
+\multiput(29.37,22.79)(.032944,-.038493){23}{\line(0,-1){.038493}}
+\multiput(30.13,21.91)(.033063,-.035558){24}{\line(0,-1){.035558}}
+\multiput(30.92,21.05)(.033118,-.032801){25}{\line(1,0){.033118}}
+\multiput(31.75,20.23)(.035875,-.032719){24}{\line(1,0){.035875}}
+\multiput(32.61,19.45)(.038809,-.032571){23}{\line(1,0){.038809}}
+\multiput(33.5,18.7)(.04194,-.032353){22}{\line(1,0){.04194}}
+\multiput(34.43,17.99)(.04756,-.033659){20}{\line(1,0){.04756}}
+\multiput(35.38,17.31)(.051479,-.03334){19}{\line(1,0){.051479}}
+\multiput(36.35,16.68)(.055741,-.032926){18}{\line(1,0){.055741}}
+\multiput(37.36,16.09)(.060405,-.032404){17}{\line(1,0){.060405}}
+\multiput(38.39,15.54)(.065543,-.031759){16}{\line(1,0){.065543}}
+\multiput(39.43,15.03)(.076337,-.033182){14}{\line(1,0){.076337}}
+\multiput(40.5,14.56)(.08361,-.032321){13}{\line(1,0){.08361}}
+\multiput(41.59,14.14)(.09194,-.03126){12}{\line(1,0){.09194}}
+\multiput(42.69,13.77)(.11178,-.03293){10}{\line(1,0){.11178}}
+\multiput(43.81,13.44)(.1256,-.03145){9}{\line(1,0){.1256}}
+\multiput(44.94,13.16)(.14264,-.02954){8}{\line(1,0){.14264}}
+\multiput(46.08,12.92)(.19164,-.03152){6}{\line(1,0){.19164}}
+\multiput(47.23,12.73)(.23133,-.02833){5}{\line(1,0){.23133}}
+\put(48.39,12.59){\line(1,0){1.162}}
+\put(49.55,12.49){\line(1,0){1.164}}
+\put(50.71,12.45){\line(1,0){1.165}}
+\put(51.88,12.45){\line(1,0){1.164}}
+\put(53.04,12.5){\line(1,0){1.161}}
+\multiput(54.21,12.6)(.23124,.0291){5}{\line(1,0){.23124}}
+\multiput(55.36,12.74)(.19154,.03216){6}{\line(1,0){.19154}}
+\multiput(56.51,12.94)(.14254,.03001){8}{\line(1,0){.14254}}
+\multiput(57.65,13.18)(.1255,.03187){9}{\line(1,0){.1255}}
+\multiput(58.78,13.46)(.11167,.03331){10}{\line(1,0){.11167}}
+\multiput(59.9,13.8)(.09184,.03156){12}{\line(1,0){.09184}}
+\multiput(61,14.18)(.083502,.032599){13}{\line(1,0){.083502}}
+\multiput(62.08,14.6)(.076226,.033436){14}{\line(1,0){.076226}}
+\multiput(63.15,15.07)(.065437,.031977){16}{\line(1,0){.065437}}
+\multiput(64.2,15.58)(.060297,.032606){17}{\line(1,0){.060297}}
+\multiput(65.22,16.13)(.055631,.033112){18}{\line(1,0){.055631}}
+\multiput(66.23,16.73)(.051367,.033512){19}{\line(1,0){.051367}}
+\multiput(67.2,17.37)(.045188,.032207){21}{\line(1,0){.045188}}
+\multiput(68.15,18.04)(.041832,.032493){22}{\line(1,0){.041832}}
+\multiput(69.07,18.76)(.0387,.032701){23}{\line(1,0){.0387}}
+\multiput(69.96,19.51)(.035766,.032838){24}{\line(1,0){.035766}}
+\multiput(70.82,20.3)(.033009,.032911){25}{\line(1,0){.033009}}
+\multiput(71.64,21.12)(.032944,.035668){24}{\line(0,1){.035668}}
+\multiput(72.43,21.98)(.032816,.038603){23}{\line(0,1){.038603}}
+\multiput(73.19,22.86)(.032617,.041735){22}{\line(0,1){.041735}}
+\multiput(73.91,23.78)(.032342,.045092){21}{\line(0,1){.045092}}
+\multiput(74.59,24.73)(.033664,.051267){19}{\line(0,1){.051267}}
+\multiput(75.23,25.7)(.033277,.055532){18}{\line(0,1){.055532}}
+\multiput(75.82,26.7)(.032785,.060199){17}{\line(0,1){.060199}}
+\multiput(76.38,27.73)(.032172,.065341){16}{\line(0,1){.065341}}
+\multiput(76.9,28.77)(.033663,.076126){14}{\line(0,1){.076126}}
+\multiput(77.37,29.84)(.032847,.083404){13}{\line(0,1){.083404}}
+\multiput(77.8,30.92)(.03184,.09174){12}{\line(0,1){.09174}}
+\multiput(78.18,32.02)(.03364,.11157){10}{\line(0,1){.11157}}
+\multiput(78.51,33.14)(.03224,.1254){9}{\line(0,1){.1254}}
+\multiput(78.8,34.27)(.03044,.14245){8}{\line(0,1){.14245}}
+\multiput(79.05,35.41)(.03273,.19144){6}{\line(0,1){.19144}}
+\multiput(79.24,36.56)(.02979,.23115){5}{\line(0,1){.23115}}
+\put(79.39,37.71){\line(0,1){1.161}}
+\put(79.49,38.87){\line(0,1){1.878}}
+%\end
+%\emline(68.5,72)(87.75,40.75)
+\multiput(68.5,72)(.033712785,-.054728546){571}{\line(0,-1){.054728546}}
+%\end
+%\vector(51.25,41)(44,68.75)
+\put(44,68.75){\vector(-1,4){.07}}\multiput(51.25,41)(-.03372093,.12906977){215}{\line(0,1){.12906977}}
+%\end
+\put(51.25,4.25){\makebox(0,0)[cc]{Figure 1}}
+\end{picture}
+\end{center}
+
+
+\section{Positive Definite Matrices}
+\markboth{2. Positive Definite Matrices}{2. Positive Definite Matrices}
+
+We shall use a convenient definition. Let
+\begin{equation*}
+A = \left(
+  \begin{array}{cc}
+    a & b \\
+    b & c \\
+  \end{array}
+\right)
+\end{equation*}
+by a symmetric matrix, where
+\begin{equation}
+a + c = \text{trace } A > 0
+\end{equation}
+and the determinant of $A$ is positive, that is,
+\begin{equation}
+\text{det} A = \left|
+  \begin{array}{cc}
+    a & b \\
+    b & c \\
+  \end{array}
+\right| = ac - b^{2} > 0
+\end{equation}
+then $A$ is called a positive definite matrix.
+
+One must give a better definition for the general case, since (1) and (2) are not sufficient for $n \times n$ symmetric matrices, where $n > 2$. We shall get to the idea later because our purpose is to treat the subject clearly and simply.
+
+
+\section{Proper Values}
+\markboth{3. Proper Values}{3. Proper Values}
+
+We only discuss proper values (eigenvalues) of two-by-two positive definite matrices. A number $m$ is called a proper value of the matrix $A$ if it satisfies the equation
+\begin{equation}
+\left|
+  \begin{array}{cc}
+    a-m & b \\
+    b & c-m \\
+  \end{array}
+\right|
+\end{equation}
+
+Indeed, the reader is familiar with the idea that we are reviewing.
+
+The equation (3) will become
+\begin{equation}
+m^{2} - (a + c)m + ac - b^{2} = 0
+\end{equation}
+
+The discriminant of (4) is
+\begin{equation}
+(a + c)^{2} - 4(ac - b^{2}) = (a + c)^{2} + 4b^{2} > 0
+\end{equation}
+
+So the roots of (4) are real. Moreover, if $m_{1}$ and $m_{2}$ are the roots of (4), then
+\begin{equation}
+m_{l} + m_{2} = a + c = \text{trace } A
+\end{equation}
+and
+\begin{equation}
+m_{l} m_{2} = ac - b^{2} = \text{det } A
+\end{equation}
+
+Since the \emph{sum} and \emph{product} of the roots are both positive, the proper values of $A$ are also positive.
+
+Sometimes a positive definite matrix is defined as a symmetric (Hermitian) matrix whose proper values are positive. We shall get to the actual definition in terms of quadratic form in what follows.
+
+
+\section{Proper Vectors}
+\markboth{4. Proper Vectors}{4. Proper Vectors}
+
+Let us denote vectors by Greek letters. To each vector $\xi$ corresponds an ordered pair in three different ways:
+\begin{equation}
+\xi \Leftrightarrow (x,y), \xi \Leftrightarrow (x y), \xi \Leftrightarrow 
+\left(
+  \begin{array}{c}
+    x \\
+    y \\
+  \end{array}
+\right)
+\end{equation}
+
+The ordered pair $(x, y)$ is the pair of components, $(x y)$ is the row matrix and 
+$\left(
+\begin{array}{c}
+  x \\
+  y \\
+\end{array}
+\right)$
+is the column matrix corresponding to $\xi$. Sometimes $(xy)$ and 
+$\left(
+\begin{array}{c}
+  x \\
+  y \\
+\end{array}
+\right)$ are called the row vector and column vector respectively.
+
+Now for each proper value $m$ of $A$, we write
+\begin{equation}
+\left(
+  \begin{array}{cc}
+    a-m & b \\
+    b & c-m \\
+  \end{array}
+\right) 
+\left(
+  \begin{array}{c}
+    x \\
+    y \\
+  \end{array}
+\right) = 
+\left(
+  \begin{array}{c}
+    0 \\
+    0 \\
+  \end{array}
+\right)
+\end{equation}
+
+This can be written as
+\begin{equation}
+A \xi = m \xi
+\end{equation}
+
+The vector $\xi$ which satisfies (10) is called a proper vector of $A$ corresponding to $m$. Since (9) is equivalent to the set of homogeneous linear equations:
+\begin{equation}
+\left\{
+  \begin{array}{c}
+    (a-m)x + by = 0 \\
+    bx + (c - m)y = 0 \\
+  \end{array}%
+\right\}
+\end{equation}
+for which the determinant of the coefficients is zero, the two equations of (11) are equivalent, and there are many proper vectors of $A$ corresponding to $m$. We usually choose the ones with norm (magnitude) one.
+
+It is well known that if $m_{l} \neq m_{2}$, then the corresponding proper vectors are orthogonal (perpendicular). So we choose a set of proper vectors $\{ \alpha, \beta \}$ such that
+\begin{equation}
+\vert \vert \alpha \vert \vert = \vert \vert \beta \vert \vert = 1 , ( \alpha , \beta ) = 0
+\end{equation}
+where, for example $\vert \vert \alpha \vert \vert$ is the norm of $\alpha$, and $( \alpha , \beta )$ is the inner produce of $\alpha$ and $\beta$. So the set $\{ \alpha , \beta \}$ is called orthonormal. Thus we have
+\begin{equation}
+\left\{
+  \begin{array}{c}
+    A\alpha = m_{1}\alpha , A\beta = m_{2}\beta , \\
+    \vert \vert \alpha \vert \vert = \vert \vert \beta \vert \vert = 1 , (\alpha, \beta) = 0 \\
+  \end{array}
+\right\}
+\end{equation}
+
+
+\section{Components of a Vector}
+\markboth{5. Components of a Vector}{5. Components of a Vector}
+
+Let $\{ \alpha , \beta \}$ be an orthonormal set of vectors (Fig. 2). A vector $\xi$ in the plane has two perpendicular projections on $\alpha$ and $\beta$ respectively. So we can write
+
+% FIGURE 2
+\begin{center}
+%TeXCAD Picture [fig2.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength .75mm % = 2.13pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(96,78.5)(0,0)
+%\vector[middle](28.25,7.75)(3.25,77)
+\put(15.75,42.38){\vector(-1,3){.09}}\multiput(28.25,7.75)(-.044964029,.12455036){556}{\line(0,1){.12455036}}
+%\end
+%\vector[middle](28.25,8)(96,41.75)
+\put(62.13,24.88){\vector(2,1){.09}}\multiput(28.25,8)(.0902130493,.0449400799){751}{\line(1,0){.0902130493}}
+%\end
+%\vector(28.25,8.25)(65.75,62.75)
+\put(65.75,62.75){\vector(2,3){.09}}\multiput(28.25,8.25)(.0449640288,.0653477218){834}{\line(0,1){.0653477218}}
+%\end
+%\vector(65.75,62.75)(65,61)
+\put(65,61){\vector(-1,-2){.09}}\multiput(65.75,62.75)(-.044118,-.102941){17}{\line(0,-1){.102941}}
+%\end
+%\dashline{1}(16,42)(65.5,62.75)
+\multiput(15.91,41.91)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(17.74,42.67)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(19.57,43.44)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(21.41,44.21)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(23.24,44.98)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(25.07,45.75)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(26.91,46.52)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(28.74,47.29)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(30.57,48.05)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(32.41,48.82)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(34.24,49.59)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(36.07,50.36)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(37.91,51.13)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(39.74,51.9)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(41.57,52.67)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(43.41,53.43)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(45.24,54.2)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(47.07,54.97)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(48.91,55.74)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(50.74,56.51)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(52.57,57.28)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(54.41,58.05)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(56.24,58.81)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(58.07,59.58)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(59.91,60.35)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(61.74,61.12)(.10185,.0427){9}{\line(1,0){.10185}}
+\multiput(63.57,61.89)(.10185,.0427){9}{\line(1,0){.10185}}
+%\end
+%\dashline{1}(65.5,62.75)(78,32.5)
+\multiput(65.41,62.66)(.04085,-.09886){9}{\line(0,-1){.09886}}
+\multiput(66.14,60.88)(.04085,-.09886){9}{\line(0,-1){.09886}}
+\multiput(66.88,59.1)(.04085,-.09886){9}{\line(0,-1){.09886}}
+\multiput(67.61,57.32)(.04085,-.09886){9}{\line(0,-1){.09886}}
+\multiput(68.35,55.54)(.04085,-.09886){9}{\line(0,-1){.09886}}
+\multiput(69.08,53.76)(.04085,-.09886){9}{\line(0,-1){.09886}}
+\multiput(69.82,51.98)(.04085,-.09886){9}{\line(0,-1){.09886}}
+\multiput(70.55,50.2)(.04085,-.09886){9}{\line(0,-1){.09886}}
+\multiput(71.29,48.42)(.04085,-.09886){9}{\line(0,-1){.09886}}
+\multiput(72.02,46.64)(.04085,-.09886){9}{\line(0,-1){.09886}}
+\multiput(72.76,44.86)(.04085,-.09886){9}{\line(0,-1){.09886}}
+\multiput(73.49,43.08)(.04085,-.09886){9}{\line(0,-1){.09886}}
+\multiput(74.23,41.3)(.04085,-.09886){9}{\line(0,-1){.09886}}
+\multiput(74.97,39.52)(.04085,-.09886){9}{\line(0,-1){.09886}}
+\multiput(75.7,37.74)(.04085,-.09886){9}{\line(0,-1){.09886}}
+\multiput(76.44,35.97)(.04085,-.09886){9}{\line(0,-1){.09886}}
+\multiput(77.17,34.19)(.04085,-.09886){9}{\line(0,-1){.09886}}
+%\end
+%\vector{dot}(76.25,31.75)(77.75,32.75)
+\put(77.75,32.75){\vector(3,2){.09}}\multiput(76.16,31.66)(.5,.333){4}{{\rule{.4pt}{.4pt}}}
+%\end
+%\vector{dot}(24,19.75)(21.75,26)
+\put(21.75,26){\vector(-1,3){.09}}\multiput(23.91,19.66)(-.2813,.7813){9}{{\rule{.4pt}{.4pt}}}
+%\end
+%\vector{dot}(21.75,26)(21.75,26.25)
+\put(21.75,26.25){\vector(0,1){.09}}\multiput(21.66,25.91)(0,.125){3}{{\rule{.4pt}{.4pt}}}
+%\end
+\put(28.5,78.5){\line(0,-1){76.25}}
+\put(28.25,8.25){\line(1,0){64.75}}
+\put(28,8.25){\line(-1,0){23.75}}
+\put(68.5,65.25){\makebox(0,0)[cc]{$\xi$}}
+\put(81.25,28){\makebox(0,0)[cc]{$(\xi, \alpha) \alpha$}}
+\put(61.25,21){\makebox(0,0)[cc]{$\alpha$}}
+\put(18.5,24.75){\makebox(0,0)[cc]{$\beta$}}
+\put(8.25,38){\makebox(0,0)[cc]{$(\xi, \beta) \beta$}}
+\put(43.25,2.75){\makebox(0,0)[cc]{Figure 2}}
+\end{picture}
+\end{center}
+
+\begin{equation}
+\xi = ( \xi , \alpha ) \alpha + ( \xi , \beta ) \beta
+\end{equation}
+
+The vector $(\xi , \alpha ) \alpha$ is the component of $\xi$ on $\alpha$, and $(\xi , \beta )\beta$ is the component of $\xi$ and $\beta$.
+
+In particular, we may be interested in components of a vector $\xi$ with respect to proper vectors of a positive definite matrix. Let $\{ \alpha , \beta \}$ be an orthonormal set of proper vectors of the positive definite matrix $A$. Let $m_{1}$ and $m_{2}$ be proper values of $A$. Then
+\begin{equation}
+\left\{
+  \begin{array}{cc}
+    \xi  & =  (\xi ,\alpha )\alpha + (\xi ,\beta )\beta \\
+    A\xi & =  (\xi ,\alpha) A\alpha + (\xi ,\beta ) A\beta \\
+         & =  m_{1}(\xi , \alpha )\alpha + m_{2}(\xi , \beta )\beta \\
+  \end{array}
+\right\}
+\end{equation}
+These equalities are extremely useful in the study of quadratic forms.
+
+
+\section{Quadratic Forms}
+\markboth{6. Quadratic Forms}{6. Quadratic Forms}
+
+Let
+\begin{equation}
+q = q(x, y) = ax^{2} + 2bxy + cy^{2}
+\end{equation}
+where $x$ and $y$ are real variables and $a, b, c$ are real numbers. Then $q$ is called a quadratic form. We can write (16) in a matrix form; that is, (16) is equivalent to
+\begin{equation}
+q(x\ y)
+\left(
+  \begin{array}{c}
+     a+b \\
+     b+c \\
+  \end{array}
+\right)
+\left(
+  \begin{array}{c}
+    x \\
+    y \\
+  \end{array}
+\right)
+\end{equation}
+
+In what follows, we only study the case where
+\begin{equation*}
+A = 
+\left(
+  \begin{array}{cc}
+    a & b \\
+    b & c \\
+  \end{array}
+\right)
+\end{equation*}
+is positive definite. Other cases will be suggested as problems. Note that (17) can be written in the form of an inner product
+\begin{equation}
+q = (A \xi ,\xi )
+\end{equation}
+where $\xi = (x,y)$, and $A \xi$ can be written as
+\begin{equation}
+(x\ y)
+\left(
+  \begin{array}{cc}
+    a & b \\
+    b & c \\
+  \end{array}
+\right) = (ax + by\ bx + cy)
+\end{equation}
+or
+\begin{equation}
+\left(
+  \begin{array}{cc}
+    a & b \\
+    b & c \\
+  \end{array}
+\right)
+\left(
+  \begin{array}{c}
+    x \\
+    y \\
+  \end{array}
+\right)
+\left(
+  \begin{array}{c}
+    ax+by \\
+    bx+cy \\
+  \end{array}
+\right)
+\end{equation}
+since $A$ is symmetric.
+
+Now this quadratic form in terms of proper values of $A$, by (15), can be written as
+\begin{equation}
+  \begin{array}{ccc}
+    (A\xi ,\xi ) & = & m_{1}(\xi,\alpha)^{2}\vert\vert \alpha \vert\vert^{2} + m_{2}(\xi,\beta)^{2} \vert\vert \beta \vert\vert^{2} \\
+                 & = & m_{1}(\xi,\alpha)^{2} + m_{2}(\xi,\beta)^{2} \\
+  \end{array}
+\end{equation}
+
+This equality suggests the general definition that a symmetric matrix is positive definite in $(A\xi,\xi)$ for every non-zero $\xi$ is positive.
+
+
+\section{Theorem (Fischer)}
+\markboth{7. Theorem (Fischer)}{7. Theorem (Fischer)}
+
+Let $A$ be a positive definite matrix with proper values
+\begin{equation}
+\left\{
+  \begin{array}{c}
+    m_{1} \geq m_{2} \\
+    A\alpha = m_{1}\alpha , A\beta = m_{2}\beta \\
+  \end{array}
+\right\}
+\end{equation}
+
+Then
+\begin{equation}
+\left\{
+  \begin{array}{c}
+    \text{max}_{\vert \vert \alpha \vert \vert = 1} (A \xi, \alpha) = m_{1} \\
+    \text{min}_{\vert \vert \alpha \vert \vert = 1} (A \xi, \alpha) = m_{2} \\
+  \end{array}
+\right\}
+\end{equation}
+
+This is a very special case of Fischer's minimax principle.
+
+\vspace{0.5cm}
+
+\textbf{Proof:} By (21) and (22) we have
+\begin{equation}
+(A\xi, \xi) = m_{1} (\xi, \alpha)^{2} + m_{2} (\xi, \beta)^{2} \leq m_{1} (\xi, \alpha)^{2} + (\xi, \beta)^{2}] = m_{1}
+\end{equation}
+since
+\begin{equation}
+\vert \vert \xi \vert \vert ^{2} = (\xi, \alpha)^{2} + (\xi, \alpha)^{2} = 1
+\end{equation}
+
+The equality holds if $\xi = \alpha$. Thus
+\begin{equation}
+\text{max}_{\vert \vert \alpha \vert \vert = 1} (A\xi, \alpha) (A\xi, \xi) = m_{1}
+\end{equation}
+
+On the other hand, by (21) and (22) we have
+\begin{equation}
+(A\xi, \xi) = m_{1} (\xi, \alpha)^{2} + m_{2} (\xi, \beta)^{2}  \geq  m_{2} (\xi, \alpha)^{2} + (\xi, \beta)^{2} = m_{2}
+\end{equation}
+
+The equality holds when $\xi = \beta$. So
+\begin{equation}
+\text{min}_{\vert \vert \alpha \vert \vert = 1} (A\xi, \xi) = m_{2}
+\end{equation}
+
+
+\section{Theorem}
+\markboth{8. Theorem}{8. Theorem}
+
+Let $A$ be a positive definite matrix with proper values $m_{1}$ and $m_{2}$. Let $\{ \xi, \eta \}$ be any orthonormal set of vectors. Then
+\begin{equation}
+\text{trace } A = (A\xi ,\xi ) + (A\eta ,\eta ) = m_{1} + m_{2}
+\end{equation}
+
+\textbf{Proof}: Let $\{ \alpha, \beta \}$ be the set of orthonormal proper vectors of $A$, that is
+\begin{equation}
+A\alpha = m_{1}\alpha \text{ and } A\beta  = m_{2}\beta
+\end{equation}
+
+So by (21) we have
+\begin{equation}
+(A\xi, \xi) = m_{1}(\xi, \alpha)^{2} + m_{2}(\xi, \beta)^{2}
+\end{equation}
+and
+\begin{equation}
+(A\eta, \eta) = m_{1}(\eta, \alpha)^{2} + m_{2}(\eta, \beta)^{2}
+\end{equation}
+
+So
+\begin{equation}
+  \begin{array}{ccc}
+    (A\xi, \xi) + (A\eta, \eta) & = & m_{1}[(\xi, \alpha)^{2} + (\eta, \alpha)^{2}] + m_{2}[(\xi, \beta)^{2} + (\eta, \beta)^{2}] \\
+                                & = & m_{1}[(\alpha, \xi)^{2} + (\alpha, \eta)^{2}] + m_{2}[(\beta, \xi)^{2} + (\beta, \xi)^{2}] \\
+  \end{array}
+\end{equation}
+
+Since $\{ \xi, \eta \}$ is orthonormal, and components of $\alpha$ and $\beta$ with respect to this set are
+\begin{equation}
+[(\alpha ,\xi ),(\alpha ,\eta )] \text{ and } [(\beta ,\xi),(\beta ,\eta )]
+\end{equation}
+respectively, we have
+\begin{equation}
+\left\{
+  \begin{array}{c}
+    (\alpha, \xi)^{2} + (\alpha, \eta)^{2} = \vert \vert \alpha \vert \vert ^{2} = 1 \\
+    (\beta, \xi)^{2} + (\beta, \eta)^{2} = \vert \vert \beta \vert \vert ^{2} = 1 \\
+  \end{array}
+\right\}
+\end{equation}
+
+Therefore (33), (34), and (35) imply
+\begin{equation*}
+(A\xi, \xi) + (A\eta, \eta) = m_{1} + m_{2} = \text{trace } A
+\end{equation*}
+
+
+\section{Lemma}
+\markboth{9. Lemma}{9. Lemma}
+
+For the matrix
+\begin{equation*}
+A = \left(
+  \begin{array}{cc}
+    a_{11} & a_{12} \\
+    a_{21} & a_{22} \\
+  \end{array}
+\right)
+\end{equation*}
+let the following be true:
+\begin{equation}
+\left\{
+  \begin{array}{c}
+    a^{2}_{11} + a^{2}_{12} = 1 = a^{2}_{21} + a^{2}_{22} \\
+    a_{11}a_{21} + a_{l2}a_{22} = 0 \\
+  \end{array}
+\right\}
+\end{equation}
+
+Then the matrix $A$ is called orthogonal and $\text{det } A = \sim 1$.
+
+This is quite well-known and we omit the proof.
+
+
+\section{Theorem}
+\markboth{10. Theorem}{10. Theorem}
+
+Let $\{ \xi, \eta \}$ be orthonormal and $A$ be a positive definite matrix. Then
+\begin{equation}
+\text{det } A = 
+\left|
+  \begin{array}{cc}
+    (A\xi,\xi) & (A\xi,\eta) \\
+    (A\eta,\xi) & (A\eta,\eta) \\
+  \end{array}
+\right| = m_{1}m_{2}
+\end{equation}
+
+\textbf{Proof:} By (14) and (15), we can write
+\begin{equation}
+\left\{
+  \begin{array}{cc}
+    \xi   & =       (\xi,\alpha)\alpha  +       (\xi,\beta)\beta \\
+    \eta  & =      (\eta,\alpha)\alpha  +      (\eta,\beta)\beta \\
+    A\xi  & =  m_{1}(\xi,\alpha)\alpha  + m_{2}(\xi,\beta)\beta  \\
+    A\eta & =  m_{1}(\eta,\alpha)\alpha + m_{2}(\eta,\beta)\beta \\
+  \end{array}
+\right\}
+\end{equation}
+where $\{ \alpha, \beta \}$ is the set of orthonormal proper vectors of $A$ corresponding to $m_{1}$ and $m_{2}$. Therefore
+\begin{equation}
+\begin{split}
+\left|
+  \begin{array}{cc}
+    (A\xi,\xi) & (A\xi,\eta) \\
+    (A\eta,\xi) & (A\eta,\eta) \\
+  \end{array}
+\right| = (A\xi,\xi)(A\eta,\eta) - (A\xi,\eta)^{2} \\
+\\
+= m_{1}^{2}(\xi,\alpha)^{2}(\eta,\alpha)^{2} + m_{1}m_{2}[(\xi,\alpha)^{2}(\eta,\beta)^{2} + (\xi,\beta)^{2}(\eta,\alpha)^{2}] + m_{2}^{2}(\xi,\beta)^{2}(\eta,\beta)^{2} \\
+- \{ m_{1}^{2}(\xi,\alpha)^{2}(\eta,\beta)^{2} + 2m_{1}m_{2}(\xi,\alpha)(\eta,\alpha)(\xi,\beta)(\eta,\beta) + m_{2}^{2}(\xi,\beta)^{2}(\eta,\beta)^{2} \} \\
+= m_{1}m_{2} [ (\xi,\alpha)(\eta,\beta) - (\xi,\beta)(\eta,\alpha) ]^{2} = m_{1}m_{2} 
+\left|
+  \begin{array}{cc}
+    (\xi,\alpha) & (\xi,\beta) \\
+    (A\eta,\alpha) & (A\eta,\beta) \\
+  \end{array}
+\right|^{2} = m_{1}m_{2} 
+\end{split}
+\end{equation}
+
+Note that the matrix
+\begin{equation*}
+X = 
+\left(
+  \begin{array}{cc}
+    (\xi,\alpha) & (\xi,\beta) \\
+    (A\eta,\alpha) & (A\eta,\beta) \\
+  \end{array}
+\right)
+\end{equation*}
+is orthogonal and $[\text{det } X]^{2} = 1$. The reader may verify it.
+
+
+\section{Theorem}
+\markboth{11. Theorem}{11. Theorem}
+
+Let $A$ be a positive definite matrix with proper values $m_{1}$ and $m_{0}$. Then for any orthonormal set of vectors $\{ \xi, \eta \}$, we have
+\begin{equation}
+\text{max}(A\xi ,\xi )(A\eta ,\eta ) =
+(\frac{m_{1}\:+\:m_{2}}{2})^{2} \tag{40}
+\end{equation}
+and
+\begin{equation}
+\text{min}(A\xi,\xi)(A\eta,\eta) = m_{1} m_{2}
+\end{equation}
+
+\textbf{Proof}: It is well-known that the geometric mean of two positive numbers is less than or equal to the arithmetic mean of those numbers. So
+\begin{equation}
+\sqrt{(A\xi,\xi)(A\eta,\eta)}  \leq  \frac{(A\xi,\xi)+(A\eta,\eta)}{2}
+\end{equation}
+
+By (29) we have
+\begin{equation}
+(A\xi, \xi) + (A\eta, \eta) = m_{1} + m_{2}
+\end{equation}
+
+Thus (42) and (43) imply
+\begin{equation}
+(A\xi,\xi)(A\eta,\eta)  \leq  \left(\frac{ m_{1}+m_{2} }{2} \right)^{2}
+\end{equation}
+
+Therefore
+\begin{equation}
+\text{max}(A\xi,\xi)(A\eta,\eta) = \left( \frac{ m_{1}+m_{2} }{2} \right)^{2}
+\end{equation}
+
+On the other hand, by (37) we have
+\begin{equation}
+X = 
+\left(
+  \begin{array}{cc}
+    (\xi,\alpha) & (\xi,\beta) \\
+    (A\eta,\alpha) & (A\eta,\beta) \\
+  \end{array}
+\right) = m_{1}m_{2}
+\end{equation}
+
+which implies
+\begin{equation}
+(A\xi,\xi) (A\eta,\eta) = m_{1}m_{2} + (A\xi,\eta)^{2}
+\end{equation}
+
+So
+\begin{equation}
+(A\xi ,\xi )(A\eta , \eta )  \geq  m_{1}m_{2}
+\end{equation}
+
+The equality holds when $\{ \xi, \eta \} = \{ \alpha, \beta \}$; that is, the orthonormal set of proper values of $A$. Consequently
+\begin{equation}
+\text{min}(A\xi, \xi)(A\eta, \eta) = m_{1} m_{2}
+\end{equation}
+
+
+\section{A Proof Of Theorem 1}
+\markboth{12. A Proof Of Theorem 1}{12. A Proof Of Theorem 1}
+
+Let the equation of the ellipse be
+\begin{equation}
+\frac{x^{2}}{a^{2}} + \frac{y^{2}}{b^{2}}  = 1
+\end{equation}
+
+This equation can be written as
+\begin{equation}
+(x y) 
+\left(
+  \begin{array}{cc}
+    \frac{1}{a^{2}} & 0 \\
+    0 & \frac{1}{b^{2}} \\
+  \end{array}
+\right)
+\left(
+  \begin{array}{c}
+    x \\
+    y \\
+  \end{array}
+\right) = 1
+\end{equation}
+or
+\begin{equation}
+(A\xi, \xi) = 1
+\end{equation}
+where $\xi = (x,y)$, and $A$ is the matrix of the quadratic form (51). It is clear that $A$ is positive definite. We shall repeat the Figure 1 for reference. Choose $\xi$ to correspond to $OP$ and $\eta$ to correspond to $OQ$. Let $\{ \alpha, \beta \}$ be an orthonormal set of vectors such that
+\begin{equation}
+\alpha = \frac{1}{p} \xi  \text{ and }  \beta = \frac{1}{q} \eta
+\end{equation}
+
+% FIGURE 1a
+\begin{center}
+%TeXCAD Picture [fig1a.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(112,90.5)(0,0)
+\qbezier(51.75,74.25)(98,73.25)(98.25,40.25)
+\qbezier(51.75,74.25)(5.5,73.25)(5.25,40.25)
+\qbezier(51.75,7.25)(98,8.25)(98.25,41.25)
+\qbezier(51.75,7.25)(5.5,8.25)(5.25,41.25)
+\put(51.25,7.25){\vector(0,1){80}}
+\put(.25,40.5){\vector(1,0){108.5}}
+%\vector(51.25,40.75)(68.75,72.25)
+\put(68.75,72.25){\vector(1,2){.07}}\multiput(51.25,40.75)(.03371869,.060693642){519}{\line(0,1){.060693642}}
+%\end
+%\vector(51.25,40.75)(15.25,64)
+\put(15.25,64){\vector(-3,2){.07}}\multiput(51.25,40.75)(-.052173913,.0336956522){690}{\line(-1,0){.052173913}}
+%\end
+%\emline(80.25,73.75)(5,62.25)
+\multiput(80.25,73.75)(-.220674487,-.03372434){341}{\line(-1,0){.220674487}}
+%\end
+%\emline(47.75,43.25)(49.75,46.25)
+\multiput(47.75,43.25)(.0333333,.05){60}{\line(0,1){.05}}
+%\end
+%\emline(49.75,46.25)(53,44)
+\multiput(49.75,46.25)(.0485075,-.0335821){67}{\line(1,0){.0485075}}
+%\end
+%\emline(68.75,72)(16.5,40.75)
+\multiput(68.75,72)(-.056364617,-.0337108954){927}{\line(-1,0){.056364617}}
+%\end
+\put(48.25,37.5){\makebox(0,0)[cc]{$o$}}
+\put(112,40.5){\makebox(0,0)[cc]{$x$}}
+\put(51,90.5){\makebox(0,0)[cc]{$y$}}
+\put(14.75,66.25){\makebox(0,0)[cc]{$Q$}}
+\put(68.5,75.5){\makebox(0,0)[cc]{$P$}}
+\put(43.25,71.75){\makebox(0,0)[cc]{$H$}}
+%\circle(51.25,40.75){56.61}
+\put(79.56,40.75){\line(0,1){1.165}}
+\put(79.53,41.92){\line(0,1){1.163}}
+\put(79.46,43.08){\line(0,1){1.159}}
+\multiput(79.34,44.24)(-.03347,.23065){5}{\line(0,1){.23065}}
+\multiput(79.17,45.39)(-.03067,.16362){7}{\line(0,1){.16362}}
+\multiput(78.96,46.54)(-.0327,.14195){8}{\line(0,1){.14195}}
+\multiput(78.7,47.67)(-.03081,.11238){10}{\line(0,1){.11238}}
+\multiput(78.39,48.8)(-.03219,.10093){11}{\line(0,1){.10093}}
+\multiput(78.03,49.91)(-.03329,.09122){12}{\line(0,1){.09122}}
+\multiput(77.64,51)(-.031732,.076951){14}{\line(0,1){.076951}}
+\multiput(77.19,52.08)(-.032548,.070541){15}{\line(0,1){.070541}}
+\multiput(76.7,53.14)(-.033209,.06482){16}{\line(0,1){.06482}}
+\multiput(76.17,54.17)(-.031866,.056354){18}{\line(0,1){.056354}}
+\multiput(75.6,55.19)(-.032361,.0521){19}{\line(0,1){.0521}}
+\multiput(74.98,56.18)(-.032754,.048188){20}{\line(0,1){.048188}}
+\multiput(74.33,57.14)(-.033056,.04457){21}{\line(0,1){.04457}}
+\multiput(73.63,58.08)(-.033278,.04121){22}{\line(0,1){.04121}}
+\multiput(72.9,58.98)(-.033427,.038074){23}{\line(0,1){.038074}}
+\multiput(72.13,59.86)(-.033509,.035139){24}{\line(0,1){.035139}}
+\multiput(71.33,60.7)(-.034927,.03373){24}{\line(-1,0){.034927}}
+\multiput(70.49,61.51)(-.037863,.033666){23}{\line(-1,0){.037863}}
+\multiput(69.62,62.29)(-.040999,.033538){22}{\line(-1,0){.040999}}
+\multiput(68.72,63.02)(-.044361,.033337){21}{\line(-1,0){.044361}}
+\multiput(67.79,63.72)(-.04798,.033057){20}{\line(-1,0){.04798}}
+\multiput(66.83,64.39)(-.051895,.032689){19}{\line(-1,0){.051895}}
+\multiput(65.84,65.01)(-.056152,.032221){18}{\line(-1,0){.056152}}
+\multiput(64.83,65.59)(-.064609,.033617){16}{\line(-1,0){.064609}}
+\multiput(63.8,66.12)(-.070334,.032992){15}{\line(-1,0){.070334}}
+\multiput(62.74,66.62)(-.076749,.032217){14}{\line(-1,0){.076749}}
+\multiput(61.67,67.07)(-.084011,.031264){13}{\line(-1,0){.084011}}
+\multiput(60.57,67.48)(-.10072,.03283){11}{\line(-1,0){.10072}}
+\multiput(59.47,67.84)(-.11219,.03152){10}{\line(-1,0){.11219}}
+\multiput(58.34,68.15)(-.14174,.0336){8}{\line(-1,0){.14174}}
+\multiput(57.21,68.42)(-.16343,.0317){7}{\line(-1,0){.16343}}
+\multiput(56.07,68.64)(-.19203,.0291){6}{\line(-1,0){.19203}}
+\multiput(54.91,68.82)(-.2896,.0318){4}{\line(-1,0){.2896}}
+\put(53.76,68.95){\line(-1,0){1.163}}
+\put(52.59,69.02){\line(-1,0){1.165}}
+\put(51.43,69.06){\line(-1,0){1.165}}
+\put(50.26,69.04){\line(-1,0){1.164}}
+\put(49.1,68.97){\line(-1,0){1.16}}
+\multiput(47.94,68.86)(-.23085,-.03201){5}{\line(-1,0){.23085}}
+\multiput(46.79,68.7)(-.16381,-.02963){7}{\line(-1,0){.16381}}
+\multiput(45.64,68.49)(-.14215,-.03181){8}{\line(-1,0){.14215}}
+\multiput(44.5,68.24)(-.12508,-.03345){9}{\line(-1,0){.12508}}
+\multiput(43.38,67.94)(-.10113,-.03156){11}{\line(-1,0){.10113}}
+\multiput(42.26,67.59)(-.09143,-.03272){12}{\line(-1,0){.09143}}
+\multiput(41.17,67.2)(-.083084,-.03365){13}{\line(-1,0){.083084}}
+\multiput(40.09,66.76)(-.070745,-.032102){15}{\line(-1,0){.070745}}
+\multiput(39.03,66.28)(-.065028,-.0328){16}{\line(-1,0){.065028}}
+\multiput(37.98,65.76)(-.059881,-.033363){17}{\line(-1,0){.059881}}
+\multiput(36.97,65.19)(-.052303,-.032031){19}{\line(-1,0){.052303}}
+\multiput(35.97,64.58)(-.048394,-.032449){20}{\line(-1,0){.048394}}
+\multiput(35.01,63.93)(-.044778,-.032775){21}{\line(-1,0){.044778}}
+\multiput(34.06,63.24)(-.041419,-.033018){22}{\line(-1,0){.041419}}
+\multiput(33.15,62.52)(-.038285,-.033186){23}{\line(-1,0){.038285}}
+\multiput(32.27,61.75)(-.035349,-.033286){24}{\line(-1,0){.035349}}
+\multiput(31.42,60.95)(-.032591,-.033325){25}{\line(0,-1){.033325}}
+\multiput(30.61,60.12)(-.032492,-.036081){24}{\line(0,-1){.036081}}
+\multiput(29.83,59.26)(-.032326,-.039013){23}{\line(0,-1){.039013}}
+\multiput(29.09,58.36)(-.033616,-.04415){21}{\line(0,-1){.04415}}
+\multiput(28.38,57.43)(-.033359,-.047771){20}{\line(0,-1){.047771}}
+\multiput(27.71,56.48)(-.033015,-.051688){19}{\line(0,-1){.051688}}
+\multiput(27.09,55.49)(-.032574,-.055948){18}{\line(0,-1){.055948}}
+\multiput(26.5,54.49)(-.032023,-.060608){17}{\line(0,-1){.060608}}
+\multiput(25.96,53.46)(-.033435,-.070125){15}{\line(0,-1){.070125}}
+\multiput(25.45,52.4)(-.0327,-.076544){14}{\line(0,-1){.076544}}
+\multiput(25,51.33)(-.031793,-.083812){13}{\line(0,-1){.083812}}
+\multiput(24.58,50.24)(-.03346,-.10051){11}{\line(0,-1){.10051}}
+\multiput(24.21,49.14)(-.03223,-.11199){10}{\line(0,-1){.11199}}
+\multiput(23.89,48.02)(-.03066,-.1258){9}{\line(0,-1){.1258}}
+\multiput(23.62,46.88)(-.03273,-.16322){7}{\line(0,-1){.16322}}
+\multiput(23.39,45.74)(-.03031,-.19184){6}{\line(0,-1){.19184}}
+\multiput(23.21,44.59)(-.0336,-.2894){4}{\line(0,-1){.2894}}
+\put(23.07,43.43){\line(0,-1){1.162}}
+\put(22.98,42.27){\line(0,-1){2.33}}
+\put(22.96,39.94){\line(0,-1){1.164}}
+\put(23.01,38.78){\line(0,-1){1.161}}
+\multiput(23.12,37.62)(.03056,-.23105){5}{\line(0,-1){.23105}}
+\multiput(23.27,36.46)(.03337,-.19133){6}{\line(0,-1){.19133}}
+\multiput(23.47,35.31)(.03091,-.14235){8}{\line(0,-1){.14235}}
+\multiput(23.72,34.18)(.03266,-.12529){9}{\line(0,-1){.12529}}
+\multiput(24.01,33.05)(.03092,-.10133){11}{\line(0,-1){.10133}}
+\multiput(24.35,31.93)(.03214,-.09164){12}{\line(0,-1){.09164}}
+\multiput(24.74,30.83)(.033125,-.083294){13}{\line(0,-1){.083294}}
+\multiput(25.17,29.75)(.031655,-.070946){15}{\line(0,-1){.070946}}
+\multiput(25.64,28.69)(.032389,-.065234){16}{\line(0,-1){.065234}}
+\multiput(26.16,27.64)(.032985,-.06009){17}{\line(0,-1){.06009}}
+\multiput(26.72,26.62)(.033462,-.055421){18}{\line(0,-1){.055421}}
+\multiput(27.32,25.62)(.032143,-.048597){20}{\line(0,-1){.048597}}
+\multiput(27.97,24.65)(.032492,-.044984){21}{\line(0,-1){.044984}}
+\multiput(28.65,23.71)(.032756,-.041626){22}{\line(0,-1){.041626}}
+\multiput(29.37,22.79)(.032944,-.038493){23}{\line(0,-1){.038493}}
+\multiput(30.13,21.91)(.033063,-.035558){24}{\line(0,-1){.035558}}
+\multiput(30.92,21.05)(.033118,-.032801){25}{\line(1,0){.033118}}
+\multiput(31.75,20.23)(.035875,-.032719){24}{\line(1,0){.035875}}
+\multiput(32.61,19.45)(.038809,-.032571){23}{\line(1,0){.038809}}
+\multiput(33.5,18.7)(.04194,-.032353){22}{\line(1,0){.04194}}
+\multiput(34.43,17.99)(.04756,-.033659){20}{\line(1,0){.04756}}
+\multiput(35.38,17.31)(.051479,-.03334){19}{\line(1,0){.051479}}
+\multiput(36.35,16.68)(.055741,-.032926){18}{\line(1,0){.055741}}
+\multiput(37.36,16.09)(.060405,-.032404){17}{\line(1,0){.060405}}
+\multiput(38.39,15.54)(.065543,-.031759){16}{\line(1,0){.065543}}
+\multiput(39.43,15.03)(.076337,-.033182){14}{\line(1,0){.076337}}
+\multiput(40.5,14.56)(.08361,-.032321){13}{\line(1,0){.08361}}
+\multiput(41.59,14.14)(.09194,-.03126){12}{\line(1,0){.09194}}
+\multiput(42.69,13.77)(.11178,-.03293){10}{\line(1,0){.11178}}
+\multiput(43.81,13.44)(.1256,-.03145){9}{\line(1,0){.1256}}
+\multiput(44.94,13.16)(.14264,-.02954){8}{\line(1,0){.14264}}
+\multiput(46.08,12.92)(.19164,-.03152){6}{\line(1,0){.19164}}
+\multiput(47.23,12.73)(.23133,-.02833){5}{\line(1,0){.23133}}
+\put(48.39,12.59){\line(1,0){1.162}}
+\put(49.55,12.49){\line(1,0){1.164}}
+\put(50.71,12.45){\line(1,0){1.165}}
+\put(51.88,12.45){\line(1,0){1.164}}
+\put(53.04,12.5){\line(1,0){1.161}}
+\multiput(54.21,12.6)(.23124,.0291){5}{\line(1,0){.23124}}
+\multiput(55.36,12.74)(.19154,.03216){6}{\line(1,0){.19154}}
+\multiput(56.51,12.94)(.14254,.03001){8}{\line(1,0){.14254}}
+\multiput(57.65,13.18)(.1255,.03187){9}{\line(1,0){.1255}}
+\multiput(58.78,13.46)(.11167,.03331){10}{\line(1,0){.11167}}
+\multiput(59.9,13.8)(.09184,.03156){12}{\line(1,0){.09184}}
+\multiput(61,14.18)(.083502,.032599){13}{\line(1,0){.083502}}
+\multiput(62.08,14.6)(.076226,.033436){14}{\line(1,0){.076226}}
+\multiput(63.15,15.07)(.065437,.031977){16}{\line(1,0){.065437}}
+\multiput(64.2,15.58)(.060297,.032606){17}{\line(1,0){.060297}}
+\multiput(65.22,16.13)(.055631,.033112){18}{\line(1,0){.055631}}
+\multiput(66.23,16.73)(.051367,.033512){19}{\line(1,0){.051367}}
+\multiput(67.2,17.37)(.045188,.032207){21}{\line(1,0){.045188}}
+\multiput(68.15,18.04)(.041832,.032493){22}{\line(1,0){.041832}}
+\multiput(69.07,18.76)(.0387,.032701){23}{\line(1,0){.0387}}
+\multiput(69.96,19.51)(.035766,.032838){24}{\line(1,0){.035766}}
+\multiput(70.82,20.3)(.033009,.032911){25}{\line(1,0){.033009}}
+\multiput(71.64,21.12)(.032944,.035668){24}{\line(0,1){.035668}}
+\multiput(72.43,21.98)(.032816,.038603){23}{\line(0,1){.038603}}
+\multiput(73.19,22.86)(.032617,.041735){22}{\line(0,1){.041735}}
+\multiput(73.91,23.78)(.032342,.045092){21}{\line(0,1){.045092}}
+\multiput(74.59,24.73)(.033664,.051267){19}{\line(0,1){.051267}}
+\multiput(75.23,25.7)(.033277,.055532){18}{\line(0,1){.055532}}
+\multiput(75.82,26.7)(.032785,.060199){17}{\line(0,1){.060199}}
+\multiput(76.38,27.73)(.032172,.065341){16}{\line(0,1){.065341}}
+\multiput(76.9,28.77)(.033663,.076126){14}{\line(0,1){.076126}}
+\multiput(77.37,29.84)(.032847,.083404){13}{\line(0,1){.083404}}
+\multiput(77.8,30.92)(.03184,.09174){12}{\line(0,1){.09174}}
+\multiput(78.18,32.02)(.03364,.11157){10}{\line(0,1){.11157}}
+\multiput(78.51,33.14)(.03224,.1254){9}{\line(0,1){.1254}}
+\multiput(78.8,34.27)(.03044,.14245){8}{\line(0,1){.14245}}
+\multiput(79.05,35.41)(.03273,.19144){6}{\line(0,1){.19144}}
+\multiput(79.24,36.56)(.02979,.23115){5}{\line(0,1){.23115}}
+\put(79.39,37.71){\line(0,1){1.161}}
+\put(79.49,38.87){\line(0,1){1.878}}
+%\end
+%\emline(68.5,72)(87.75,40.75)
+\multiput(68.5,72)(.033712785,-.054728546){571}{\line(0,-1){.054728546}}
+%\end
+%\vector(51.25,41)(44,68.75)
+\put(44,68.75){\vector(-1,4){.07}}\multiput(51.25,41)(-.03372093,.12906977){215}{\line(0,1){.12906977}}
+%\end
+\put(51.25,4.25){\makebox(0,0)[cc]{Figure 1a}}
+\put(15.25,61){\makebox(0,0)[cc]{$\eta$}}
+\put(73.5,69){\makebox(0,0)[cc]{$\xi$}}
+\end{picture}
+\end{center}
+
+We have chosen $p = \vert \vert \xi \vert \vert$ and $q = \vert \vert \eta \vert \vert$. Since $\xi$ and $\eta$ satisfy (52) we have
+
+\begin{equation}
+\left\{
+  \begin{array}{ccc}
+    (A\xi, \xi)   & = p^{2}(A\alpha, \alpha) & = 1 \\
+    (A\eta, \eta) & = q^{2}(A\beta, \beta)   & = 1 \\
+  \end{array}
+\right\}
+\end{equation}
+
+From (54) we obtain
+\begin{equation}
+(A\alpha , \alpha ) + (A\beta ,\beta ) = \frac{1}{p^{2}} + \frac{1}{q^{2}}  = \text{trace } A
+\end{equation}
+
+Since the proper values of $A$ are $\frac{1}{a^{2}}$ and $\frac{1}{b^{2}}$, we get
+\begin{equation}
+\frac{1}{\vert \vert \xi \vert \vert ^{2}} + \frac{1}{\vert \vert \eta \vert \vert ^{2}} = \frac{1}{a^{2}} + \frac{1}{b^{2}}
+\end{equation}
+
+This proves (i) for Theorem 2, that is,
+\begin{equation}
+\frac{1}{OP^{2}} + \frac{1}{OQ^{2}} = \frac{1}{a^{2}} + \frac{1}{b^{2}}
+\end{equation}
+
+Now to prove (ii), we look at the right triangle $POQ$. The line segment $OH$ is the altitude corresponding to the hypotenuse if and only if
+\begin{equation}
+\frac{1}{OH^{2}} = \frac{1}{OP^{2}} + \frac{1}{OQ^{2}}
+\end{equation}
+
+By (57), we obtain that $OH$ is constant and therefore the line $PQ$ is tangent to the circle of center $O$ and the radius $OH$. If $OH = r$, we can write
+\begin{equation}
+\frac{1}{r^{2}} = \frac{1}{a^{2}} + \frac{1}{b^{2}} + \frac{ a^{2}+b^{2} }{ a^{2}b^{2} }
+\end{equation}
+
+So
+\begin{equation}
+r = \frac{ab}{ \sqrt{ a^{2}+b^{2} } }
+\end{equation}
+
+For (iii) and (iv), we observe that the area of the triangle $POQ$ is
+\begin{equation}
+A = \frac{pq}{2}
+\end{equation}
+
+From (54) we get
+\begin{equation}
+p^{2} = \frac{1}{(A\alpha, \alpha)}, q^{2} = \frac{1}{(A\beta,\beta)}
+\end{equation}
+
+This implies that
+\begin{equation}
+A = \frac{1}{ 2 \sqrt{(A\alpha,\alpha)(A\beta,\beta)} }
+\end{equation}
+
+Since $\{ \alpha , \beta \}$ is orthonormal by (49) we have
+\begin{equation}
+\text{min} (A\alpha,\alpha)(A\beta,\beta) = \frac{1}{a^{2}} \cdot \frac{1}{b^{2}}
+\end{equation}
+
+Note that $\frac{1}{a^{2}}$ and $\frac{1}{b^{2}}$ are the proper values of $A$. So (63) and (64) imply that
+\begin{equation}
+A_{max} = \frac{ab}{2}
+\end{equation}
+
+The maximum area is attained when $P$ and $Q$ are on the ends of the major and minor axes (Fig. 3).
+
+% FIGURE 3
+\begin{center}
+%TeXCAD Picture [fig3.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(112,90.5)(0,0)
+\qbezier(51.75,74.25)(5.5,73.25)(5.25,40.25)
+\qbezier(51.75,7.25)(98,8.25)(98.25,41.25)
+\qbezier(51.75,74.25)(98,73.25)(98.25,40.25)
+\qbezier(51.75,7.25)(5.5,8.25)(5.25,41.25)
+\put(51.25,7.25){\vector(0,1){80}}
+\put(.25,40.5){\vector(1,0){108.5}}
+%\emline(68.75,72)(16.5,40.75)
+\multiput(68.75,72)(-.056364617,-.0337108954){927}{\line(-1,0){.056364617}}
+%\end
+\put(48.25,37.5){\makebox(0,0)[cc]{$o$}}
+\put(112,40.5){\makebox(0,0)[cc]{$x$}}
+\put(51,90.5){\makebox(0,0)[cc]{$y$}}
+%\emline(68.5,72)(87.75,40.75)
+\multiput(68.5,72)(.033712785,-.054728546){571}{\line(0,-1){.054728546}}
+%\end
+\put(51.25,4.25){\makebox(0,0)[cc]{Figure 3}}
+%\emline(51.25,74)(98.25,40.5)
+\multiput(51.25,74)(.0473313192,-.0337361531){993}{\line(1,0){.0473313192}}
+%\end
+%\emline(51.25,72)(95.75,40.5)
+\multiput(51.25,72)(.0476445396,-.0337259101){934}{\line(1,0){.0476445396}}
+%\end
+%\emline(51.25,70.25)(93.5,40.25)
+\multiput(51.25,70.25)(.0474719101,-.0337078652){890}{\line(1,0){.0474719101}}
+%\end
+%\emline(51.25,68.5)(90.5,40.5)
+\multiput(51.25,68.5)(.0472891566,-.0337349398){830}{\line(1,0){.0472891566}}
+%\end
+%\emline(51.25,66.75)(87.75,40.5)
+\multiput(51.25,66.75)(.0468549422,-.0336970475){779}{\line(1,0){.0468549422}}
+%\end
+%\emline(51.25,64.75)(85,40.75)
+\multiput(51.25,64.75)(.0474016854,-.0337078652){712}{\line(1,0){.0474016854}}
+%\end
+%\emline(51.25,62.75)(82.75,40.5)
+\multiput(51.25,62.75)(.047727273,-.033712121){660}{\line(1,0){.047727273}}
+%\end
+%\emline(51.25,61)(79.75,40.5)
+\multiput(51.25,61)(.046875,-.033717105){608}{\line(1,0){.046875}}
+%\end
+%\emline(51.25,59)(77,40.5)
+\multiput(51.25,59)(.046903461,-.033697632){549}{\line(1,0){.046903461}}
+%\end
+%\emline(51.25,57.25)(74.5,40.5)
+\multiput(51.25,57.25)(.046780684,-.033702213){497}{\line(1,0){.046780684}}
+%\end
+%\emline(51.25,55.25)(72,40.5)
+\multiput(51.25,55.25)(.047374429,-.033675799){438}{\line(1,0){.047374429}}
+%\end
+%\emline(51.25,53.5)(69.25,40.5)
+\multiput(51.25,53.5)(.046632124,-.033678756){386}{\line(1,0){.046632124}}
+%\end
+%\emline(51.25,51.5)(66.25,40.75)
+\multiput(51.25,51.5)(.047021944,-.03369906){319}{\line(1,0){.047021944}}
+%\end
+%\emline(51.25,49.75)(63.75,40.5)
+\multiput(51.25,49.75)(.045454545,-.033636364){275}{\line(1,0){.045454545}}
+%\end
+%\emline(51.25,48)(60.75,40.75)
+\multiput(51.25,48)(.04418605,-.03372093){215}{\line(1,0){.04418605}}
+%\end
+%\emline(51.25,46.25)(58.5,40.5)
+\multiput(51.25,46.25)(.04239766,-.03362573){171}{\line(1,0){.04239766}}
+%\end
+\put(51.25,44.25){\line(6,-5){4.5}}
+%\emline(51.25,42.25)(53.25,40.5)
+\multiput(51.25,42.25)(.0384615,-.0336538){52}{\line(1,0){.0384615}}
+%\end
+\end{picture}
+\end{center}
+
+Now in order to obtain the minimum area, we again look at (63). By (44) for the orthonormal set $\{ \alpha, \beta \}$, we have
+\begin{equation}
+\text{max}(A\alpha,\alpha)(A\beta,\beta) = \left( \frac{(1/a^{2})+(1/b^{2})}{2} \right)^{2}
+\end{equation}
+
+So by (63)
+\begin{equation}
+A_{min} = \frac{a^{2}b^{2}}{a^{2} + b^{2}}
+\end{equation}
+
+We observe that the minimum is attained when $OP$ and $OQ$ are on the angle bisectors of the first and second quadrants (Fig. 4).
+
+% FIGURE 4
+\begin{center}
+%TeXCAD Picture [fig4.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(112,90.5)(0,0)
+\qbezier(51.75,74.25)(5.5,73.25)(5.25,40.25)
+\qbezier(51.75,7.25)(98,8.25)(98.25,41.25)
+\qbezier(51.75,74.25)(98,73.25)(98.25,40.25)
+\qbezier(51.75,7.25)(5.5,8.25)(5.25,41.25)
+\put(51.25,7.25){\vector(0,1){80}}
+\put(.25,40.5){\vector(1,0){108.5}}
+%\emline(68.75,72)(16.5,40.75)
+\multiput(68.75,72)(-.056364617,-.0337108954){927}{\line(-1,0){.056364617}}
+%\end
+\put(45.5,37.75){\makebox(0,0)[cc]{$o$}}
+\put(112,40.5){\makebox(0,0)[cc]{$x$}}
+\put(51,90.5){\makebox(0,0)[cc]{$y$}}
+%\emline(68.5,72)(87.75,40.75)
+\multiput(68.5,72)(.033712785,-.054728546){571}{\line(0,-1){.054728546}}
+%\end
+\put(51.25,4.25){\makebox(0,0)[cc]{Figure 4}}
+\put(83,67.5){\line(0,-1){53.25}}
+\put(83,14.5){\line(-1,0){63.25}}
+\put(20,14.5){\line(0,1){53}}
+\put(20,67.25){\line(1,0){62.75}}
+%\emline(20,67.25)(82.75,14.5)
+\multiput(20,67.25)(.0401214834,-.0337276215){1564}{\line(1,0){.0401214834}}
+%\end
+%\emline(82.75,67.5)(20.25,14.5)
+\multiput(82.75,67.5)(-.0397835773,-.0337364736){1571}{\line(-1,0){.0397835773}}
+%\end
+\put(21.75,65.75){\line(1,0){58.75}}
+\put(24,64){\line(1,0){54.5}}
+\put(26,62.25){\line(1,0){50.25}}
+\put(27.75,60.75){\line(1,0){46.5}}
+\put(29.5,59.25){\line(1,0){43.25}}
+\put(31.25,57.75){\line(1,0){40}}
+\put(33.5,56){\line(1,0){35.5}}
+\put(66.5,54){\line(0,1){0}}
+\put(35.25,54.5){\line(1,0){32}}
+\put(37.25,52.75){\line(1,0){28}}
+\put(39.25,51){\line(1,0){23.75}}
+\put(41.75,49){\line(1,0){19}}
+\put(43.75,47.25){\line(1,0){15.25}}
+\put(59,47.25){\line(0,1){0}}
+\put(46,45.5){\line(1,0){10.5}}
+\put(48,44){\line(1,0){7}}
+\put(49.5,42.5){\line(1,0){3.5}}
+\end{picture}
+\end{center}
+
+
+\section{Suggestions}
+\markboth{13. Suggestions}{13. Suggestions}
+
+\begin{enumerate}[1.]
+  \item State and prove Theorem 1 for a hyperbola. In this case, the problem of the maximum and minimum becomes slightly complicated. One has to get around it.
+  \item Generalize Sections 2, 3, $\cdots$ , 9 to a Euclidean space of dimension $n$.
+  \item Generalize the previous suggestion to a unitary space; that is, a vector space over the field of complex numbers which has an inner product.
+  \item Generalize Theorem 1 to a Euclidean $n$-dimensional space.
+  \item Generalize suggestion 4 to a unitary space.
+  \item What would Theorem 1 be on the space of square matrices with real or complex entries?
+  \item If the matrix of a quadratic form is not positive definite, how far can you generalize the concepts studied so far?
+\end{enumerate}
+
+
+\section{Bibliography}
+\markboth{14. Bibliography}{14. Bibliography}
+
+\begin{enumerate}[1.]
+  \item Amir-Moéz, A. R.; and Fass, A. L. \emph{Elements of linear spaces}, Pergamon Press, Oxford (1962).
+  \item Amir-Moéz, A. R.; and Bian, A. \emph{Orthogonal Vectors Ending on Quadrics}, The Toth-Maatican Review, Vol. 7, No.2 (1988).
+  \item Milnes, Harold W. \emph{Some Properties of the Ellipse Synthetically Demonstrated}, The Toth-Maatican Review, Vol. 7, No.4 (1989).
+\end{enumerate}
+
+\end{document}

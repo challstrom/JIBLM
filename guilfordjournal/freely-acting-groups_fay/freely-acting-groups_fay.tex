@@ -1,0 +1,356 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% Journal headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright Guilford College Journal of Undergraduate Mathematics} \cfoot{} \rfoot{ - at www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{On Freely Acting Groups}
+\author{Temple H. Fay}
+\date{\vspace{3cm}
+\emph{Journal of Undergraduate Mathematics}
+  \\ Department of Mathematics
+  \\ Guilford College
+  \\ Greensboro, North Carolina 27410 
+  }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+\section*{Preface}
+\addcontentsline{toc}{section}{\numberline{}Preface}
+\markboth{Preface}{Preface}
+
+\pagenumbering{roman}
+
+The purpose of the monograph is to introduce the undergraduate reader to the notions of free semi-group, free group, free product, and the corresponding topological counterparts, in a relatively quick, easy, and apparently new fashion. Some research problems are indicated, solutions of which would be suitable, in the author's opinion, for publication in the \emph{Journal of Undergraduate Mathematics}.
+
+Very little algebra background is required for understanding this paper; only a basic familiarity with groups, congruences, and quotients is necessary. The topological aspects are also elementary. It is expected that the reader have some mathematical maturity. No particular knowledge of the theory of topological groups is required. It is hoped that many readers will find the topic of interest and pursue the subject further.
+
+Much of what is done can be easily constructed, although less easily explained, through the use of category theory. In particular, the notions of adjoint functor and reflective hull are basic to what is done. This approach has been avoided so as to keep the paper accessible to as wide an audience as possible.
+
+A word concerning the exposition herein is in order. Many assertions are made; each of these is to be considered an exercise. They vary in degree of difficulty. Very few theorems are proved; the author hopes the major concepts are given in enough detail so that proofs to the theorems may be supplied by the diligent reader.
+
+Examples are very important; not only for understanding and illuminating the ideas involved, but for reference when the research problems are to be considered. An attempt has been made to include many algebraic examples. Fewer topological examples are given. The reason is that such examples are more difficult to describe without assuming an informed (at least topologically) reader. To ameliorate this somewhat, an extensive -- but by no means exhaustive -- bibliography is given, where many interesting examples may be found.
+
+Finally, the author recommends the reader rewrite the paper \emph{in full detail}, as he or she goes. If this is done, in the author's opinion, the reader will not only have learned some important mathematics, but will also have helped develop his or her ability to do mathematics.
+
+The author wishes to thank Leslie Lynne Berry, John Tiller, and T. K. Teague for many helpful conversations concerning the preparation of this monograph.
+
+Dedicated to: E. Garness Purdom (Professor Emeritus, Guilford College)
+
+\begin{flushright}
+Temple H. Fay
+
+Hendrix College
+\end{flushright}
+
+
+\newpage
+
+\section{Free Semigroups}
+\markboth{1. Free Semigroups}{1. Free Semigroups}
+
+\pagenumbering{arabic}
+
+In this section, we develop the basic thrust of this paper in an algebraic setting. First, we recall some definitions.
+
+A \emph{semigroup} is a pair $(Y, \#)$, where $Y$ is a set and $\#$ is an associative binary operation on the set $Y$. As usual, if $a,b \in Y$, their product is denoted $a\#b$. Sometimes, when there is little likelihood of confusion, we shall simply call $Y$ a semigroup, the operation $\#$ being understood. We shall call $Y$ \emph{abelian} (or \emph{commutative}) if $a\#b = b\#a$ for all $a,b \in Y$. If $(Y,\#)$ and $(Z,\*)$ are semigroups, a function $f: Y \rightarrow Z$ is called a (\emph{semigroup}) \emph{homomorphism} from $(Y,\#)$ to $(Z,\*)$ if $f(a\#b) = f(a) * f(b)$ for all $a,b \in Y$. A bijective homomorphism is called an \emph{isomorphism}. We shall denote identity homomorphisms by $1$. Compositions of functions will be denoted by juxtaposition.
+
+A semigroup congruence $E$ on a semigroup $(Y,\#)$ is an \emph{equivalence relation} on $Y$ satisfying: if $(x,y),(x',y') \in E$, then $(x\#x',y\#y') \in E$. This simply means that $E$ is a semigroup of $Y \times Y$ considered as a semigroup with coordinatewise operations. The set of equivalence classes determined by $E$, $Y/E$, can be given a canonical operation ``$*$'' making $Y/E$ a semigroup and such that the canonical map $\phi: Y \rightarrow Y/E$ is a semigroup homomorphism from $(Y,\#)$ to $(Y/E,*)$. This operation is defined by $E[x] * E[y] = E[x\#y]$, where $E[x]$, $E[y]$, and $E[x\#y]$ are the equivalence classes containing $x$, $y$, and $x\#y$, respectively. The reader should check for himself that the operation is independent of the choice of representatives; i.e., $*$ is well defined.
+
+If $f: (Y,\#) \rightarrow (Z,\*)$ is a semigroup homomorphism, then the congruence determined by $f$ is $\{ (x,x') : f(x) = f(x') \} = K(f)$. The semigroup $Y/K(f)$ is isomorphic to the subsemigroup $f(Y)$ of $Z$. This sometimes is called the First Isomorphism Theorem.
+
+Let $X$ be an arbitrary set, and $X^n$ be the $n$-fold product of $X$ with itself. Let $S(X) = \cup_{n=1}^\infty X$, and define a binary operation on $S(X)$ by: if $(x_1, \cdots, x_n), (y_1, \cdots, y_m)$ are elements of $S(X)$, then their product is $(x_1$, $\cdots$, $x_n$, $y_1$, $\cdots$, $y_m)$. It follows that $S(X)$ with this operation is a semigroup. Define $j: X \rightarrow S(X)$ by $j(x) = (x) \in X^1$. That is, $j$ is simply the inclusion map of $X$ into $S(X)$. Note that $j$ is injective and is not a homomorphism.
+
+If $g: X \rightarrow (Y,\#)$ is any function and $(Y,\#)$ a semigroup, then define $\hat{g}: S(X) \rightarrow Y$ by $\hat{g}(x_1, \cdots, x_n) = g(x_1) \# \cdots \# g(x_n)$.
+
+\begin{description}
+
+\item[Theorem:] $\hat{g}$ is that unique homomorphism satisfying $\hat{g}j = g$.
+
+\end{description}
+
+Suppose $(Z,*)$ is a semigroup, and $k: X \rightarrow Z$ is a function satisfying: given any function $g: X \rightarrow (Y,\#)$ with $(Y,\#)$ a semigroup, there exists a unique homomorphism $\hat{g}: (Z,*) \rightarrow (Y,\#)$ such that $\hat{g}k = g$.
+
+\begin{description}
+
+\item[Theorem:] $(Z,*)$ and $S(X)$ are isomorphic as semigroups.
+
+\item[Proof:] By the properties which $S(X)$ and $(Z,*)$ enjoy, there exist homomorphisms $\hat{j}$ and $\hat{k}$ such that $\hat{k}j = k$ and $\hat{j}k = j$. Then $1j = j = \hat{j} \hat{k} j$. By the uniqueness, it follows that $1 = \hat{j} \hat{k}$. Similarly, $1k = k = \hat{k}j = \hat{k} \hat{j}k$, so $\hat{k} \hat{j} = 1$. Thus $\hat{j}$ and $\hat{k}$ are mutual inverses, and hence $(Z,*)$ and $S(X)$ are isomorphic as semigroups.
+
+\end{description}
+
+This theorem justifies calling the pair $(S(X),j)$ the \emph{free semigroup} over $X$. Determine $S(X)$ if $X$ is void; also if $X$ is a singleton set.
+
+For a set $X$, define $X^0 = \{\emptyset\}$, where $\emptyset$ is the empty set. Define $S^1(X) = \cup_{n=0}^\infty X^n$. Then $S^1(X)$ can be turned into a semigroup with identity. Furthermore, if $(Y,\#)$ is a semigroup with identity, and $g: X \rightarrow Y$ is any function, there exists a unique semigroup homomorphism $\hat{g}: S^1(X) \rightarrow (Y,\#)$ satisfying $\hat{g}j=g$, and $\hat{g}$ preserves the identity. It follows that $S^1(X)$ is unique up to isomorphism of semigroups. We call the pair $(S^1(X),j)$ the \emph{free semigroup with identity} over $X$.
+
+Let $X$ be a set, and consider $(S(X),j)$. Let $E$ be the intersection of all congruences on $S(X)$ determined by homomorphisms having codomain with an abelian semigroup. It is clear that $E$ is a semigroup congruence, and it follows that $S(X)/E$ with the canonically induced operation is abelian. Furthermore, if $g: X \rightarrow (Y,\#)$ is a function, with $(Y,\#)$ an abelian semigroup, then there exists a unique semigroup homomorphism $\hat{g}: S(X)/E \rightarrow (Y,\#)$ such that $\hat{g}{\Phi}j = g$. The pair $(S(X)/E,{\Phi}j)$ is called the \emph{free abelian semigroup} over $X$. It is unique up to isomorphism of semigroups.
+
+The above may be repeated for $S^1(X)$ to produce \emph{the free abelian semigroup with identity over $X$}.
+
+
+
+\section{Free Groups}
+\markboth{2. Free Groups}{2. Free Groups}
+
+Let $X$ be a set. A word is either void (written $e$), or a finite formal product $x_1^{\varepsilon_1} x_2^{\varepsilon_2} {\cdots} x_2^{\varepsilon_2}$ where $\varepsilon_i = \pm 1$. A word is called \emph{reduced} if it is either void, or if whenever $x_i = x_{i+1}, \varepsilon_i = \varepsilon_{i+1}$. Let $G(X)$ be the set of all reduced words. Let $\overline{x} = x_1^\varepsilon \cdots x_n^{\varepsilon_n}$ and $\overline{y} = y_1^{\delta_1} \cdots y_m^{\delta_m}$ be reduced words. We form the product as follows: $\overline{xy} = x_1^{\varepsilon_1} \cdots x_n^{\varepsilon_n} y_1^{\delta_1} \cdots y_m^{\delta_m}$ if this is reduced. If it is not reduced, then $x_n = y_1$ and $\delta_1 = -\varepsilon_n$. Consider $x_1^{\varepsilon_1} \cdots x_{n-1}^{\varepsilon_{n-1}} y_2^{\delta_m} \cdots y_m^{\delta_m}$. If this is reduced, define it to be $\overline{x} \overline{y}$. If not, continue in the indicated way until a reduced word is obtained, and define $\overline{x} \overline{y}$ to be this product. With this multiplication, $G(X)$ is a group with identity $e$ and $(\overline{x})^{-1} = x_n^{-\varepsilon_n} \cdots x_1^{-\varepsilon_1}$. The proof that this multiplication is associative is a straightforward induction argument.
+
+There are alternative approaches to showing the existence of $G(X)$. One is given by Lange [7, pg. 34] and a similar one is used in the proof of Theorem 8.8 of [5]. We next outline a proof essentially the same as that given by Meyer [10], but couched in different terminology.
+
+Let $X$ be a set, and $\overline{X} = X \cup x^{-1}$ where $X^{-1} = \{ a^{-1}: a \in X \}$ is a formal copy of $X$. Note this is a disjoint union. Let $i: X \rightarrow \overline{X}$ be the inclusion, and let $j: \overline{X} \rightarrow S(X)$ be as in Section 1. If $f: S(\overline{X}) \rightarrow (G,*)$ is a homomorphism, where $(G,*)$ is a group satisfying $f(a)^{-1} = f(a^{-1})$ for all $a^{-1} \in X^{-1}$, we call $f$ \emph{admissible}. Let $E$ be the intersection of all congruences on $S(\overline{X})$ determined by admissible homomorphisms. With the canonically induced operation, $S(\overline{X})/E$ is a group. If $g: X \rightarrow (G,*)$ is a function and $(G,*)$ is a group, extend $g$ to $\overline{g}: \overline{X} \rightarrow (G,*)$ by defining $\overline{g}(a^{-1}) = g(a)^{-1}$ for each $a^{-1} \in X^{-1}$. This induces an admissible homomorphism $\overline{\overline{g}}: S(\overline{X}) \rightarrow G$. From this it follows that there exists a unique (group) homomorphism $g: S(\overline{X})/E \rightarrow G$ such that $\hat{g} \Phi ji = g$. It follows that $S(\overline{X})/E$ is (group) isomorphic to $G(X)$.
+
+As we did for semigroups, one might expect to be able to construct the free abelian group over a set. In fact, if $\mathcal{F}$ is any class of groups, one might expect to be able to construct the free $\mathcal{F}$ group over a set. Unfortunately, this is not always possible. The class $\mathcal{F}$ might be too small. We next show that for any class $\mathcal{F}$, the best one can construct is the free residually-$\mathcal{F}$ group over a set, where the class of residually-$\mathcal{F}$ groups is the smallest class of groups containing the class $\mathcal{F}$ closed under formation of products and subgroups.
+
+Let $\mathcal{F}$ be any class of groups. By a \emph{residually-$\mathcal{F}$ group} is meant a group $H$ such that for any $x \in H, x \ne e$, there exists a group homomorphism $f: H \rightarrow G$, with $G \in \mathcal{F}$, satisfying $f(x) \ne e$. Note that this definition slightly differs from the usual definition in that one usually requires $f$ to be surjective. In the case that $\mathcal{F}$ is closed under formation of subgroups, the two notions coincide. Tiller [17] has recently shown that the class of residually-$\mathcal{F}$ groups is the smallest class of groups containing $\mathcal{F}$ which is closed under formation of products and subgroups.
+
+Let $X$ be a set, and $X^1 = \{ a^1: a \in X \}$ and $X^{-1} = \{a^{-1}: a \in X\}$ be copies of $X$. Let $S(X)$ be the free semigroup over $\overline{X} = X^1 \cup X^{-1}$ (note this is a disjoint union) with inclusion $j$. Let $k: X \rightarrow \overline{X}$ be defined by $k(a) = a^1$. For a class of groups $\mathcal{F}$, a semigroup homomorphism $f: S(X) \rightarrow G$ is called \emph{$\mathcal{F}$-admissible} if $G \in \mathcal{F}$ and $f(a^{-1}) = [f(a^1)]^{-1}$ for all $a \in X$. Define the relation $E$ on $S(\overline{X})$ by $(x,y) \in E$ if and only if $f(x) = f(y)$ for every $\mathcal{F}$-admissible homomorphism $f$.
+
+\begin{description}
+
+\item[Theorem:] The relation $E$ is a semigroup congruence on $S(\overline{X})$, $S(\overline{X})/E$ with the canonically induced operation is a residually-$\mathcal{F}$ group, and if $H$ is any residually-$\mathcal{F}$ group and $g: X \rightarrow H$ a function, then there exists a unique group homomorphism $g: S(\overline{X})/E \rightarrow H$ such that $\hat{g} \Phi j k = g$.
+
+\item[Proof:] It is clear that $E$ is a semigroup congruence, hence $S(\overline{X})/E$ with the canonically induced operation is a semigroup. Emulating the technique of Meyer [10], one readily verifies that $S(\overline{X})$ is in fact a group. To see that $S(\overline{X})$ is residually-$\mathcal{F}$, let $\Phi(x) \in S(\overline{X})/E$, and suppose that $h(\Phi(x)) = e$ for every homomorphism $h: S(\overline{X})/E \rightarrow G$ where $G \in \mathcal{F}$. Then $x$ is mapped trivially by every $\mathcal{F}$-admissible homomorphism, and hence $\Phi(x) = e$.
+
+  Let $g:X \rightarrow H$ be a function, and $H$ a residually-$\mathcal{F}$ group. Extend $g$ to $\overline{X}$ by defining $\overline{g}: \overline{X} \rightarrow H$ by $\overline{g}(a^{-1}) = [g(a)]^{-1}$ for each $a \in X$. There exists a semigroup homomorphism $\overline{\overline{g}}: S(\overline{X}) \rightarrow H$ such that $\overline{\overline{g}}j = \overline{g}$. If $(x,y) \in E$ and $\overline{\overline{g}}(x) \ne \overline{\overline{g}}(y)$, then there exists a homomorphism $h: H \rightarrow G$ such that $G \in \mathcal{F}$ and $h \overline{\overline{g}}(x) \ne h \overline{\overline{g}}(y)$. It follows that $h \overline{\overline{g}}$ is an $\mathcal{F}$-admissible homomorphism. This contradicts the assumption that $(x,y) \in E$. Therefore, there exists a unique homomorphism $\hat{g}: S(\overline{X})/E \rightarrow H$ such that $\hat{g}\Phi = \overline{\overline{g}}$. It follows that $\hat{g}$ is that unique homomorphism having the property that $\hat{g}\Phi jk = g$. This completes the proof.
+
+\end{description}
+
+If $\mathcal{F}$ contains a group of order greater than one, then $\Phi jk:X \rightarrow S(\overline{X})/E$ is injective.
+
+We call the pair $(S(\overline{X})/E, \Phi jk)$ the free residually-$\mathcal{F}$ group over $X$. It is clearly unique up to isomorphism of groups. In the following table, we list some examples.
+
+\begin{center} 
+\begin{tabular}{|c|c|c|}
+\hline
+$\mathcal{F}$                               & Residually-$\mathcal{F}$ groups             & $S(\overline{X})/E$ \\
+\hline
+{\footnotesize the empty class}             & {\footnotesize the trivial group}           & {\footnotesize the trivial group} \\
+{\footnotesize all groups}                  & {\footnotesize all groups}                  & {\footnotesize the free group on $X$} \\
+{\footnotesize all finite groups}           & {\footnotesize all resid. finite groups}    & {\footnotesize the free group on $X$} \\
+{\footnotesize all solvable groups}         & {\footnotesize all resid. solvable grps}    & {\footnotesize the free group on $X$} \\
+{\footnotesize all nilpotent groups}        & {\footnotesize all resid. nilpotent grps}   & {\footnotesize the free group on $X$} \\
+{\footnotesize \{ the circle group \} }     & {\footnotesize all abelian groups}          & {\footnotesize the free abelian group on $X$} \\
+{\footnotesize all abelian groups}          & {\footnotesize all abelian groups}          & {\footnotesize the free abelian group on $X$} \\
+{\footnotesize all $n$-step solvable grps}  & {\footnotesize all $n$-step solvable grps}  & {\footnotesize the free $n$-step solvable grp on $X$} \\
+{\footnotesize all $n$-step nilpotent grps} & {\footnotesize all $n$-step nilpotent grps} & {\footnotesize the free $n$-step nilpotent grp on $X$} \\
+\hline
+\end{tabular} 
+\end{center}
+\vspace{0.3cm}
+
+Note that every free group is residually nilpotent, and hence is also residually solvable (see E. Schenkman, \emph{Group Theory}, Van Nostrand, 1965).
+
+If $\mathcal{F}$ is the class of abelian groups, the class of residually abelian groups is simply $\mathcal{F}$. Thus we can construct the free abelian group on any set $X$.
+
+The notion of residually-$\mathcal{F}$ is interesting. There are several classes $\mathcal{F}$ for which residually-$\mathcal{F}$ groups have been investigated extensively (e.g., finite groups and cyclic groups). The next table lists some classes $\mathcal{F}$, and the corresponding residually-$\mathcal{F}$ class.
+
+\begin{center} 
+\begin{tabular}{|c|c|}
+\hline
+$\mathcal{F}$                      & Residually-$\mathcal{F}$ Groups \\
+\hline
+the trivial group                  & the trivial group \\
+all groups                         & all groups \\
+finite groups                      & residually finite groups \\
+non-abelian groups                 & all groups \\
+cyclic groups                      & residually cyclic groups \\
+free groups                        & torsion free residually finite groups? \\
+\{ the circle group \}             & abelian groups \\
+\{ the group of integers \}        & torsionless abelian groups \\
+divisible abelian groups           & abelian groups \\
+complete groups                    & all groups \\
+centerless groups                  & all groups \\
+finitely generated abelian groups  & residually cyclic groups \\
+finitely generated solvable groups & ? \\
+torsion free abelian groups        & torsion free abelian groups \\
+\hline
+\end{tabular} 
+\end{center}
+\vspace{0.3cm}
+
+\textbf{Research Problem}: For a set $X$ and various classes of groups $\mathcal{F}$, determine the nature of the residually-$\mathcal{F}$ group over $X$. Define residually-$\mathcal{F}$ for a class of semigroups (rings, algebras in some variety) and determine the nature of the free residually-$\mathcal{F}$ semigroup (ring, algebra) over $X$.
+
+
+
+\section{Free Topological Groups}
+\markboth{3. Free Topological Groups}{3. Free Topological Groups}
+
+The situation for constructing types of free topological groups over a topological space is somewhat more complicated than the preceding, and is consequently more interesting. We begin with a few preliminaries.
+
+A topological space is a pair $(X,\tau)$ where $X$ is a set and $\tau$ is a topology on $X$; that is, $\tau$ is a family of subsets of $X$ containing the empty set and the set $X$, closed under formation of finite intersection and arbitrary unions. When there is little likelihood of confusion, we shall simply refer to $X$ as a topological space, the topology $\tau$ being understood. If $(X,\tau)$ and $(Y,\sigma)$ are (topological) spaces, a function $f: X \rightarrow Y$ is called continuous if and only if $f^{-1}(V) \in \tau$ for every $V \in \sigma$.
+
+\begin{description}
+
+\item[Theorem:] [14, pg.71] Let $X$ be a set, $\{ (Y_{\alpha},\tau_{\alpha}): \alpha \in A \}$ a family of spaces indexed by a set $A$, and for each $\alpha \in A$ let $g_{\alpha}: X \rightarrow Y$ be a function. Then there exists a coarsest topology $\tau$ on $X$ for which each $g_{\alpha}$ is continuous. Furthermore, $\tau$ is characterized by the following conditions:
+  \begin{enumerate}[\hspace{1cm}(i)]
+    \item $\{ g_{\alpha}^{-1} (V): V \in \tau, \ \alpha \in A \}$ is a subbase for $\tau$.
+    \item If $(Z,\mu)$ is a space and $f: (Z,\mu) \rightarrow (X,\tau)$ is a function, then $f$ is continuous if and only if $g_{\alpha} f$ is continuous for each $\alpha \in A$.
+  \end{enumerate}
+
+\end{description}
+
+The topology $\tau$ is called the \emph{coarse topology induced by the family $\{g_{\alpha}:\alpha \in A\}$}.
+
+A topological group is a triple $(G,m,\tau)$ where $(G,m)$ is a group and $\tau$ is a topology on $G$ such that:
+\begin{enumerate}[\hspace{1cm}(i)]
+  \item inversion is continuous, i.e. the map $x \rightarrow x^{-1}$ is continuous; and 
+  \item $m: G \times G \rightarrow G$ is continuous where $G \times G$ is given the product topology induced by $\tau$ (this is the coarse topology induced by the projection maps).
+\end{enumerate}
+
+A topological semigroup is a triple $(Y,\#,\tau)$ where $(Y,\#)$ is a semigroup and $\tau$ is a topology making $\#: Y \times Y \rightarrow Y$ continuous when $Y \times Y$ is given the product topology induced by $\tau$.
+
+If $G$ and $H$ are topological semigroups (groups) for which there exists an algebraic isomorphism $f: G \rightarrow H$ with the property that $F$ is also a homeomorphism, then we say that $G$ and $H$ are \emph{iseomorphic}.
+
+The utility of the coarse topology is illustrated by the following two theorems.
+
+\begin{description}
+
+\item[Theorem:] If $(Y,\#)$ is a semigroup and $\{ f_{\alpha}: Y \rightarrow Z_{\alpha}: \alpha \in A \}$ is a family of semigroup homomorphisms, and each $Z_{\alpha}$ is a topological semigroup, then the coarse topology on $Y$ induced by the family $\{ f_{\alpha}: \alpha \in A \}$ turns $(Y,\#)$ into a topological semigroup.
+
+\item[Theorem:] If $(G,m)$ is a group, and $\{ f_{\alpha}: G \rightarrow Z : \alpha \in A \}$ is a family of semigroup homomorphisms, and each $Z_{\alpha}$ is a topological semigroup, then the coarse topology on $Y$ induced by the family $\{ f_{\alpha}: \alpha \in A \}$ turns $(G,m)$ into a topological group.
+
+\end{description}
+
+If $X$ is a space and $(S(X),j)$ the free semigroup over the underlying set of $X$, we call a semigroup homomorphism $f: S(X) \rightarrow Y$ \emph{induced} if $Y$ is a topological semigroup and $fj$ is continuous.
+
+Endow $S(X)$ with the coarse topology induced by ``all'' induced homomorphisms. In view of the above theorem, $S(X)$ is a topological semigroup with this topology. Let us denote this topological semigroup by $TS(X)$. The inclusion $j$ is continuous.
+
+\begin{description}
+
+\item[Theorem:] $(TS(X),j)$ is the free topological semigroup over the space $X$; that is, if $g: X \rightarrow T$ is a continuous function and $T$ is a topological semigroup, then there exists a unique continuous semigroup homomorphism $\hat{g}: TS(X) \rightarrow T$ such that $\hat{g}j = g$. Moreover, $(TS(X), j)$ is unique up to isomorphism.
+
+\end{description}
+
+The alert reader will note that ``all'' induced homomorphisms used in the above construction may be a proper class, whereas for the coarse topology we only assume we have a family (set). Let it suffice to say that this technicality can be overcome, but the details would lead us too far astray from the main thrust of this paper. We refer the interested reader to the notions of well-powered and co-well-powered, in references [4] and [8].
+
+\begin{description}
+
+\item[Research Problem:] As far as the author knows, there are many open questions concerning free topological semigroups. For example, what types of spaces $X$ have Hausdorff free topological semigroups? The answer for the same question about free topological groups is that $X$ must be functionally Hausdorff (any pair of distinct points can be separated by some continuous to the real line). Another question is: what are necessary and sufficient conditions for the inclusion map $j$ to be an embedding? The answer for topological groups is that $X$ must be completely regular and Hausdorff (a Tychonoff space). See Thomas [16] for proofs of these results for free topological groups.
+
+\end{description}
+
+We next show how one may construct the free topological group over a space $X$. Let $\overline{X} = X^1 \cup X^{-1}$, as we have done earlier. Let $TS(\overline{X})$ be the free topological semigroup over the space $\overline{X}$. Let $k: X \rightarrow \overline{X}$ and $j: \overline{X} \rightarrow TS(\overline{X})$ be the inclusion maps. Define an \emph{admissible homomorphism} to be a continuous homomorphism $f: TS(\overline{X}) \rightarrow G$, where $G$ is a topological group, satisfying $f(a^{-1}) = f(a)^{-1}$ for each $a \in X$. Let $E$ be the intersection of all congruences $TS(\overline{X})$ determined by admissible homomorphisms. Call a homomorphism $gTS(\overline{X})/E \rightarrow G$ to be \emph{induced} if $G$ is a topological group and $g \Phi$ is admissible. Endow $TS(\overline{X})/E$ with the coarse topology determined by all induced homomorphisms.
+
+\begin{description}
+
+\item[Theorem:] $TS(\overline{X})/E$ is a topological group, and $\Phi jk: X \rightarrow TS(\overline{X})/E$ is continuous, and if $g: X \rightarrow G$ is any continuous function to a topological group $G$, then there exists a unique continuous homomorphism $\hat{g}: TS(\overline{X})/E \rightarrow G$ such that $\hat{g} \Phi jk = g$.
+
+\end{description}
+
+We call the pair $(TS(\overline{X})/E, \Phi jk)$ the \emph{free topological group} over $X$. It is clearly unique up to iseomorphism.
+
+If $\mathcal{F}$ is a class of topological groups, define a group $H$ to be residually-$\mathcal{F}$ if and only if for every $x \in H, x \ne e$, there exists a continuous group homomorphism $f: H \rightarrow G$ with $G \in \mathcal{F}$ and $f(x) \ne e$.
+
+Let $X$ be a space, and $TS(\overline{X})$ be the free topological semigroup over the space $\overline{X}$ as constructed above. A homomorphism $f: TS(\overline{X}) \rightarrow G$ is $\mathcal{F}$-admissible if $G \in \mathcal{F}$, and $f$ is continuous with the property that $f(a^{-1}) = f(a)^{-1}$ for each $a \in X$. Let $E$ be the intersection of all congruences determined by all $\mathcal{F}$-induced homomorphisms.
+
+\begin{description}
+
+\item[Theorem:] $TS(\overline{X})/E$ is a residually-$\mathcal{F}$ topological group, and $\Phi jk: X \rightarrow TS(\overline{X})/E$ is continuous, and if $g: X \rightarrow G$ is a continuous function to a residually-$\mathcal{F}$ group $G$, then there exists a unique continuous homomorphism $\hat{g}: TS(\overline{X})/E \rightarrow G$ such that $\hat{g} \Phi jk = g$.
+
+\end{description}
+
+We call $(TS(\overline{X})/E, \Phi jk)$ with the coarse topology the \emph{free residually-$\mathcal{F}$ topological group} over $X$. It is clearly unique up to iseomorphism.
+
+If $\mathcal{F}$ is the class of Hausdorff groups, then since such groups are closed under formation of products and subgroups, residually Hausdorff is simply Hausdorff. If $X$ is a space, the free Hausdordff group over $X$ is $TG(X)/ \text{cl} \{ e \}$, where $TG(X)$ is the free topological group over $X$, and $\text{cl} \{ e \}$ is the closure of the identity, which is a normal subgroup.
+
+Let $\mathcal{F}$ be the class of abelian topological groups. Then a residually abelian topological group is simply an abelian topological group. If $X$ is a space, the free abelian topological group over $X$ is obtained by taking the quotient group $TG(X)/c$ where $TG(C)$ is the free topological group over $X$, $C$ is the commutator subgroup of $TG(X)$, and endowing the quotient group with the quotient topology ($V$ is open in $TG(X)/C$ if and only if $\Phi^{-1}(V)$ is open in $TG(X)$).
+
+If $\mathcal{F}$ is the class of compact Hausdorff groups, then a group is residually-$\mathcal{F}$ if and only if it is iseomorphic to a subgroup of a subgroup of a compact Hausdorff group (such groups are called \emph{totally bounded groups}). Hewitt and Ross [5] show that for any Tychonoff space $X$, the free algebraic group over the underlying space of $X$ admits homomorphisms separating points to unitary groups (which are compact Hausdorff). Thus it follows that the free totally bounded group over Tychonoff space is simply the algebraic free group over $X$ with a particular Hausdorff topology.
+
+\begin{description}
+
+\item[Research Problem:] For various classes $\mathcal{F}$ of topological groups, determine the nature of the free residually-$\mathcal{F}$ topological space. Repeat the determination for various classes of spaces; for example, Tychonoff spaces, functionally Hausdorff spaces, compact spaces, etc.
+
+\end{description}
+
+
+
+\section{Free Products}
+\markboth{4. Free Products}{4. Free Products}
+
+We may use a similar procedure as above to construct both algebraic and topological free products (coproducts) of families of groups.
+
+Let $\mathcal{F}$ be a class of groups, and let $\{G_{\alpha}: \alpha \in A\}$ be a family of groups. Let $Y= \cup_{\alpha \in A} G_{\alpha}$ be the set theoretic disjoint union of the family with inclusions $i_{\alpha}: G_{\alpha} \rightarrow Y$. Let $(S(Y),j)$ be the free semigroup over the set $Y$, and define $j_{\alpha} = ji_{\alpha}$ for each $\alpha \in A$.
+
+Let $E$ be the relation on $S(Y)$ defined by $(x,y) \in E$ if and only if $h(x) = h(y)$ for all semigroup homomorphisms $h: S(Y) \rightarrow H$ where $H$ is an $\mathcal{F}$-group and $hj_{\alpha}$ is a group homomorphism for each $\alpha \in A$. As above, it follows that $S(Y)/E$ is a group and $\Phi j_{\alpha}$ is a group homomorphism for each $\alpha \in A$.
+
+If $H$ is a residually-$\mathcal{F}$ group and $f_\alpha : G_\alpha \rightarrow H$ is a group homomorphism for each $\alpha \in A$, then there exists a unique homomorphism $\hat{f}: S(Y)/E \rightarrow H$ such that $f_{\alpha} = \hat{f} \Phi j_{\alpha}$ for each $\alpha \in A$. Furthermore, $S(Y)/E$ is a residually-$\mathcal{F}$ group, and is unique up to isomorphism. We call $(S(Y)/E, \{ j_{\alpha}: \alpha \in A \})$ the \emph{free residually-$\mathcal{F}$} product of the family $\{ G_{\alpha}: \alpha \in A \}$.
+
+If $\mathcal{F}$ is a class of topological groups and $\{G_{\alpha}: \alpha \in A\}$ is a family of groups, then define the relation $E$ on $TS(Y)$, where $Y= \cup_{\alpha \in A} G_{\alpha}$, by $(x,y) \in E$, if and only if $h(x) = h(y)$ for all continuous homomorphisms $h: TS(Y) \rightarrow H$, with $H$ an $\mathcal{F}-group$, and $hj_{\alpha}$ a group homomorphism for each $\alpha \in A$. Then $TS(Y) / E$, with the coarse topology induced by all homomorphisms $f: TS(Y)/E \rightarrow H$ where $H$ is an $\mathcal{F}$-group, $f \Phi$ is continuous, and $f \Phi j_{\alpha}$ is a group homomorphism for each $\alpha \in A$, is a residually-$\mathcal{F}$ topology group. Furthermore, if $H$ is residually-$\mathcal{F}$ and $f_{\alpha}: G_{\alpha} \rightarrow H$ is a continuous homomorphism for each $\alpha \in A$, then there exists a unique continuous homomorphism $\hat{f}: TS(Y)/E \rightarrow H$ such that $\hat{f} \Phi j_{\alpha} = f_{\alpha}$ for each $\alpha \in A$.
+
+\begin{description}
+
+\item[Research Problem:] Determine the nature of the free residually-$\mathcal{F}$ (topological) product for various classes of (topological) groups $\mathcal{F}$.
+
+\item[Remark:] A similar procedure as the above can be performed to produce the free residually-$\mathcal{F}$ product with amalgamated subgroup.
+
+\end{description}
+
+It may be helpful in dealing with the various research problems to note that if one knows the nature of the free residually-$\mathcal{F}$ object over a singleton set and how to construct the free residually-$\mathcal{F}$ product, then one knows exactly what the free residually-$\mathcal{F}$ object over any (non-empty) set is. More precisely, the free residually-$\mathcal{F}$ object over a set $X$ is the free residually-$\mathcal{F}$ product of ``$X$'' copies of the free residually-$\mathcal{F}$ object over a singleton set. Thus the free group over a set $X$ is the free product (coproduct in the category of groups) of ``$X$'' copies of $\mathbb{Z}$, the group of integers is the free group over a singleton set. The free abelian group over a set $X$ is the direct product (coproduct in the category of abelian groups) of ``$X$'' copies of $Z$.
+
+\begin{description}
+
+\item[Addendum:] John Tiller has informed me that the tensor product of modules can be obtained in a manner similar to that above. More precisely, let $M$ be a right $R$ module, and $N$ be a left $R$ module. Let $Z^{(M \times N)}$ denote the free abelian group over the set $M \times N$. Let $K = \{ k:$ if $A$ is an abelian group and $f: Z^{(M \times N)} \rightarrow A$ is a homomorphism such that $f$ restricted to $M \times N$ is bilinear, then $k \in ker(f) \}$. It follows that $K = \cup_{f \in F} \text{ker}(f)$, where $F$ is the set of all such homomorphisms; thus $K$ is a subgroup. It also follows that $K$ is the subgroup generated by $\{ (m+n,p)-(m,p)-(n,p), (m,p+q)-(m,p)-(m,q), (mr,p)-(m,rp) : m \in M, n \in N, r \in R \}$, and consequently the quotient group $Z^{(M \times N)}/K$ is the tensor product $M \bigotimes_R N$.  This construction is no more vague than, and seems to be as direct as, the classical approach as outlined in, for instance, P. Hilton and U. Stammbach, \emph{A Course in Homological Algebra}, (Spronger Verlag, New York, 1971).
+
+\end{description}
+
+
+
+\section*{References}
+\addcontentsline{toc}{section}{\numberline{}References}
+\markboth{References}{References}
+
+\begin{enumerate}[1.]
+  \item R. W. Bagley and T. S. Wu, ``Topological Groups with Equal Left and Right Uniformities'', \emph{PAMS} 18 (1967), p142-147.
+  \item M. I. Graev, ``Free Topological Groups'', \emph{Izvestiya Akad. Nauk. SSSR. Ser Mat.} 12 (1948), p 279-324. English Transl., \emph{AMS Transl.} 35, 61pp.(1951). Reprint, AMS Transl. (1) 8 (1962), p 305-364.
+  \item S. Hartman and J. Mycielski, ``On The Embedding of Topological Groups into Connected Topological Groups'', \emph{Colloq. Math.} 5 (1958), p167-169.
+  \item H. Herrlich and G. E. Strecker, \emph{Category Theory}, (Allyn and Bacon, Boston 1973).
+  \item E. Hewitt and K. Ross, \emph{Abstract Harmonic Analysis}, Vol. 1, (Academic Press, New York, 1963).
+  \item S. Katutani, ``Free Topological Groups and Infinite Direct Product Topological Groups'', \emph{Proc. Imp. Acad. Tokyo} 20 (1944), p595-598.
+  \item S. Lang, \emph{Algebra}, (Addison-Wesley, Reading, Mass. 1965).
+  \item S. MacLane, \emph{Categories for the Working Mathematician}, (Sprinter-Verlag, New York, 1971).
+  \item A. A. Markov, ``On Free Topological Groups'', \emph{C.R (Doklady) Acad. Sci. URSS}, (N.S.) 31 (1941), p299-301. English Transl., AMS Transl. 30 (1950), p11-88. Reprint AMS Transl. (1) 8 (1962), p195-273.
+  \item N. C. Meyer, Jr., ``A New Proof of the Existence of the Free Group'', \emph{Amer. Math. Monthly} 77 (1970), p870-873.
+  \item S. A. Morris, ``Varieties of Topological Groups'', \emph{Bull. Austral. Math. Soc.} 1 (1969), p145-160.
+  \item author unstated, ''Varieties of Topological Groups and Left Adjoint Functors'', \emph{J. Austral. Math Soc.} 5 (1973), p220-227.
+  \item T. Nakayama, ``Note on Free Topological Groups'', \emph{Proc. Imp. Acad. Tokyo} 19 (1943), p471-475.
+  \item P. Nanzetta and G. Strecker, \emph{Set Theory and Topology}, (Bogden and Quigley, Belmont, Calif., 1971).
+  \item S. Swierczkowski, ``Topologies in Free Algebras'', \emph{Proc. London Math Soc.} (3) 14 (1964), p566-576.
+  \item B. V. S. Thomas, ``Free Topological Groups'', \emph{Gen. Top. App.} 4 (1974), p51-72.
+  \item J. Tiller, ``On Constructing Reflective and Coreflective Hulls With Sources and Sinks'', to appear in \emph{Journal of Undergraduate Mathematics}.
+\end{enumerate}
+
+\end{document}
+

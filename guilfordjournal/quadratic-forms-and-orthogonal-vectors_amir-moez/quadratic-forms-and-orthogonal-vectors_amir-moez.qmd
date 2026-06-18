@@ -1,0 +1,36 @@
+---
+title: "Guilford Course Notes"
+---
+
+```{r}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+library(gt)
+
+note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Abstract")
+
+note_data <- c("Quadratic Forms and Orthogonal Vectors", "Amir-Moéz, Ali R.", "topology", "15", "Texas Tech University", "Properties of quadratic forms are extremely useful in both pure and applied mathematics. Many of the concepts involved in the study of the quadratic forms do not appear at the undergraduate level; so we would like to study the simplest cases and apply the results to some geometrical properties of conics suggesting many generalizations as undergraduate research.")
+
+
+tibble(note_entries, note_data) |>
+  gt() |>
+  cols_align(align = "left") |>
+  tab_style(
+    style= cell_text(v_align = "top"),
+    locations = cells_body()
+  ) |>
+  tab_options( table.width = "80%", column_labels.hidden = TRUE)  
+
+
+```
+- [Download File](./quadratic-forms-and-orthogonal-vectors_amir-moez.pdf)
+
+This course guide was originally published by the Guilford College Journal of Undergraduate Mathematics as a volume in the Monographs on Undergraduate Mathematics series.
+
+This course guide may be reproduced and distributed if the following conditions are met:
+
+- State that it is the property of the Math Department of Guilford College, and is protected under copyright by Guilford.
+- Take no profit from its distribution. (You may recover copying costs if you are using these for a class.) 
+

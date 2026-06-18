@@ -1,0 +1,1634 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% Journal headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright Guilford College Journal of Undergraduate Mathematics} \cfoot{} \rfoot{ - at www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{The Convex Hull Of A Set Of Vectors}
+\author{Ali R. Amir-Moéz \\ Gregory A. Fredricks}
+\date{\vspace{3cm}
+\emph{Journal of Undergraduate Mathematics}
+  \\ Department of Mathematics
+  \\ Guilford College
+  \\ Greensboro, North Carolina 27410 
+  }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{1} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+\section*{Preface}
+\addcontentsline{toc}{section}{\numberline{}Preface}
+\markboth{Preface}{Preface}
+
+\pagenumbering{arabic}
+
+The convex hull of a set of vectors has many interesting properties in Euclidean and unitary spaces. In this monograph, we demonstrate the use of vector algebra in studying higher dimensional analogues of familiar properties of triangles in the plane. The special beauty of the study of plane figures comes from the ability to draw accurate diagrams and use natural geometric insight. In higher dimensions, the geometric insight is not as well-developed and often the natural generalizations need modification.
+
+The table of contents gives a list of properties considered. Each topic is presented in the plane; in finite dimensional Euclidean spaces; in unitary spaces; and in spaces of linear transformations. Many of Euclid's ideas are used to prove results concerning triangles. This monograph contains 49 exercises, many of which have several parts. They range in difficulty from routine to original research problems. In most exercises the intention is to investigate the statement, i.e., find counterexamples; find conditions under which it holds; etc. Some exercises may be false as stated. We are hopeful that the reader will be able to find many research problems which we have not listed in the exercises.
+
+\begin{flushright}
+Ali R. Amir-Moéz and Gregory A. Fredricks
+
+Texas Tech University
+\end{flushright}
+
+
+\section{Preliminaries}
+\markboth{1. Preliminaries}{1. Preliminaries}
+
+A vector space over the field of real numbers for which an inner product is given is usually called a Euclidean space. We are interested in finite dimensional vector spaces and will use $R_{n}$ to denote the usual Euclidean space of dimension $n$. Vectors and scalars will be denoted by small Greek and Latin letters, respectively. The inner product of $\xi$ and $\eta$ will be denoted by $(\xi,\eta)$, and the norm of $\xi$ is defined by $\vert \vert \xi \vert \vert =(\xi,\xi)^{1/2}$.
+
+We will assume that the reader is familiar with basic topics of linear algebra such as linear independence, span, basis, orthogonality, etc. We will also assume familiarity with standard theorems of linear algebra and matrix theory.
+
+For a set of vectors $(\xi_{1},\cdots,\xi_{k})$ in $R_{n}$, we let $[\xi_{1},\cdots,\xi_{k}]$ denote the sub-space of $R_{n}$ spanned by this set. A \emph{$k$-dimensional plane} in $R_{n}$ is a set of vectors of the form
+\begin{equation*}
+\xi_{0}+[\xi_{1},\cdots,\xi_{k}]
+\end{equation*}
+where $\xi_{1},\cdots,\xi_{k} \in R_{n}$ and $\{ \xi_{1},\cdots,\xi_{k} \}$ is a linearly independent set in $R_{n}$. For a set of vectors $\{ \eta_{0},\cdots,\eta_{m} \}$ in $R_{n}$, let $P(\eta_{0},\cdots,\eta_{m})$ denote the plane determined by $\eta_{0},\cdots,\eta_{m}$, i.e.,
+\begin{equation*}
+P(\eta_{0},\cdots,\eta_{m})=\eta_{0}+[\eta_{1}-\eta_{0},\cdots,\eta_{m}-\eta_{0}]
+\end{equation*}
+The dimension of $P(\eta_{0},\cdots,\eta_{m})$ is the dimension of subspace $[\eta_{1}-\eta_{0},\cdots,\eta_{m}-\eta_{0}]$ of $R_{n}$.
+
+For a set of vectors $\{ \eta_{1},\cdots,\eta_{m} \}$ in $R_{n}$, let $H(\eta_{1},\cdots,\eta_{m})$ denote the convex hull of $\{ \eta_{1},\cdots,\eta_{m} \}$, i.e., $H(\eta_{1},\cdots,\eta_{m})$ is the set of all vectors $\xi \in R_{n}$ such that
+\begin{equation*}
+\xi=\sum_{i=1}^{m}t_{i}n_{i} \text{ with } t_{i} \geq 0 \text{ and } \sum_{i=1}^{m}t_{i}=1
+\end{equation*}
+
+The \emph{Gram matrix} of the ordered set of vectors $\{ \xi_{1},\cdots,\xi_{k} \}$ in $R_{n}$ is the $k \times k$ matrix
+\begin{equation*}
+G = \left(
+\begin{array}{ccc}
+(\xi_{1},\xi_{1}) & \cdots & (\xi_{1},\xi_{k}) \\
+      \cdots      & \      &        \cdots     \\
+(\xi_{k},\xi_{1}) & \cdots & (\xi_{k},\xi_{k}) 
+\end{array}
+\right)
+\end{equation*}
+ 
+
+\subsection{Theorem}
+
+If $\{ \xi_{1},\cdots,\xi_{k} \}$ is a linearly independent set in $R_{n}$, then the Gram matrix of $\{ \xi_{1},\cdots,\xi_{k} \}$ is nonsingular.
+
+\vspace{0.3cm}
+
+\textbf{Proof}: Let $\{ \alpha_{1},\cdots,\alpha_{k} \}$ be an orthonormal basis of $[\xi_{1},\cdots,\xi_{k}]$, and let $a_{im}$ for $i,m=1,\cdots,k$ be the real numbers uniquely defined by 
+\begin{equation*}
+\xi_{1}=\sum_{m=1}^{k}a_{im}a_{m} \text{ for } i=1,\cdots,k
+\end{equation*}
+
+For any $i,j = 1,\cdots,k$, we have 
+\begin{equation*}
+(\xi_{i},\xi_{j})=\left(\sum_{m}a_{im}a_{m},\sum_{\ell}a_{j\ell}a_{\ell}\right)=\sum_{m=1}^{k}a_{im}a_{jm}
+\end{equation*}
+and hence $G=AA'$, where ${A}$ is the $k \times k$ matrix 
+\begin{equation*}
+A = \left(
+\begin{array}{ccc}
+  a_{11} & \cdots & a_{1k} \\
+  \cdots & \      & \cdots \\
+  a_{k1} & \cdots & a_{kk}
+\end{array}
+\right)
+\end{equation*}
+and $A'$ denotes the transpose (or adjoint) of $A$. Since $A$ has a linearly independent set of rows, it is nonsingular, and thus $G$ is also nonsingular.
+
+
+\subsection{Corrolary}
+
+The Gram matrix of a set of linearly independent vectors is positive definite.
+
+\vspace{0.3cm}
+
+\textbf{Proof}: Consider $G=AA'$ as in the proof of Theorem 1.1. The matrix
+${G}$ is self-adjoint (or hermetian) as
+\begin{equation*}
+G'=(AA')'=AA'=G
+\end{equation*}
+
+For each $\xi \in R_{k}$ we have
+\begin{equation*}
+(G\xi,\xi)=(AA'\xi,\xi)=(A'\xi,A'\xi)= \vert \vert A'\xi \vert \vert ^{2}
+\end{equation*}
+
+Since ${A'}$ is nonsingular, we conclude that $(G\xi,\xi)>0$ if $\xi \ne 0$ (the zero vector). Hence $G$ is positive definite.
+
+
+\subsubsection*{Exercises}
+
+\begin{enumerate}
+  \item Prove the converse of Theorem 1.1. 
+  \item Show that the Gram matrix of \emph{any} set of vectors $\{ \xi_{1},\cdots,\xi_{k} \}$ in $R_{n}$ is non-negative. 
+  \item Show that the determinant of the Gram matrix of $\{ \xi_{1},\cdots,\xi_{k} \}$ is independent of the ordering of $\xi_{1},\cdots,\xi_{k}$.
+  \item Let $\{ \xi_{1},\cdots,\xi_{k} \}$ be a linearly independent set in $R_{n}$ and let $\{ \alpha_{1},\cdots,\alpha_{k} \}$ be the orthogonal set obtained from $\{ \xi_{1},\cdots,\xi_{k} \}$ by the Gram-Schmidt orthogonalization process. Show that the determinants of the Gram matrices of $\{ \xi_{1},\cdots,\xi_{k} \}$ and $\{ \alpha_{1},\cdots,\alpha_{k} \}$ are equal.
+\end{enumerate}
+
+
+\section{Volumes}
+\markboth{2. Volumes}{2. Volumes}
+
+The Gram matrix plays an important role in volume measures. The $k$-dimen-sional volume measure of a subset of $R_{n}$ is defined analytically (see Smith [5, p.369]) and has the following property. The $k$-dimensional volume measure of the parallelepiped defined by the linearly independent set $\{ \xi_{1},\cdots,\xi_{k} \}$ in $R_{n}$ is found by expressing $\xi_{1},\cdots,\xi_{k}$ in terms of an orthonormal basis $\{ \alpha_{1},\cdots,\alpha_{k} \}$ of $[\xi_{1},\cdots,\xi_{k}]$ and then taking the absolute value of the determinant of the resulting coefficient matrix. In the notation of Section 1, we see that the $k$-dimensional volume measure of the parallelepiped defined by $\{ \xi_{1},\cdots,\xi_{k} \}$ is $V=\vert \det A \vert $. We also see from the proof of Theorem 1.1 that $\det G=(\det A)^{2}$, and hence conclude that
+
+
+\subsection{Equation}
+
+\begin{equation*}
+V=(\det G)^{\frac{1}{2}}
+\end{equation*}
+(The determinant of $G$ is called the \emph{Gram determinant} of $\{ \xi_{1},\cdots,\xi_{k} \}$.)
+
+We will examine the case $n=k=2$ in more detail. Let $\{ \xi_{1},\xi_{2} \}$ be a linearly independent set in $R_{2}$. The parallelogram defined by this set is $H(0,\xi_{1},\xi_{2},\xi_{1}+\xi_{2})$ (Figure 2.1). 
+
+\begin{center}
+%TeXCAD Picture [ch-fig2.1.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(63.63,31)(0,0)
+\put(4,9){\vector(1,0){41.5}}
+\put(4,9){\vector(1,1){18.25}}
+%\dashline{1}(3.75,27.25)(22,27.25)
+\put(3.68,27.18){\line(1,0){.961}}
+\put(5.6,27.18){\line(1,0){.961}}
+\put(7.52,27.18){\line(1,0){.961}}
+\put(9.44,27.18){\line(1,0){.961}}
+\put(11.36,27.18){\line(1,0){.961}}
+\put(13.28,27.18){\line(1,0){.961}}
+\put(15.21,27.18){\line(1,0){.961}}
+\put(17.13,27.18){\line(1,0){.961}}
+\put(19.05,27.18){\line(1,0){.961}}
+\put(20.97,27.18){\line(1,0){.961}}
+%\end
+\put(4,9){\vector(0,1){18.25}}
+\put(22,27.13){\line(1,0){41.63}}
+%\emline(63.5,27.13)(45.25,8.88)
+\multiput(63.5,27.13)(-.033733826,-.033733826){541}{\line(-1,0){.033733826}}
+%\end
+%\emline(5.75,10.5)(7.25,9)
+\multiput(5.75,10.5)(.0333333,-.0333333){45}{\line(1,0){.0333333}}
+%\end
+%\emline(7.21,12.16)(10.33,8.96)
+\multiput(7.21,12.16)(.03356633,-.03436553){93}{\line(0,-1){.03436553}}
+%\end
+%\emline(8.99,13.87)(13.75,9.03)
+\multiput(8.99,13.87)(.03373637,-.0342635){141}{\line(0,-1){.0342635}}
+%\end
+%\emline(10.63,15.5)(17.02,9.03)
+\multiput(10.63,15.5)(.03364204,-.03403323){190}{\line(0,-1){.03403323}}
+%\end
+%\emline(12.34,17.21)(20.51,8.96)
+\multiput(12.34,17.21)(.03364526,-.03395113){243}{\line(0,-1){.03395113}}
+%\end
+%\emline(13.82,18.77)(23.49,9.03)
+\multiput(13.82,18.77)(.033666578,-.033925551){287}{\line(0,-1){.033925551}}
+%\end
+\put(15.31,20.26){\line(1,-1){11.3}}
+\put(16.95,21.89){\line(1,-1){12.86}}
+%\emline(18.51,23.53)(33.07,8.96)
+\multiput(18.51,23.53)(.03372173,-.03372173){432}{\line(0,-1){.03372173}}
+%\end
+%\emline(19.92,24.87)(35.82,8.96)
+\multiput(19.92,24.87)(.033698401,-.033698401){472}{\line(1,0){.033698401}}
+%\end
+%\emline(21.33,26.43)(38.57,9.03)
+\multiput(21.33,26.43)(.033678717,-.033969051){512}{\line(0,-1){.033969051}}
+%\end
+\put(23.56,27.1){\line(1,-1){18.06}}
+%\emline(26.39,27.02)(44.37,9.03)
+\multiput(26.39,27.02)(.033683067,-.033683067){534}{\line(0,-1){.033683067}}
+%\end
+%\emline(29.58,27.1)(46.53,10.15)
+\multiput(29.58,27.1)(.033690261,-.033690261){503}{\line(0,-1){.033690261}}
+%\end
+%\emline(32.85,27.1)(48.16,11.78)
+\multiput(32.85,27.1)(.033724761,-.033724761){454}{\line(0,-1){.033724761}}
+%\end
+\put(36.12,27.02){\line(1,-1){13.68}}
+%\emline(39.39,27.02)(51.36,15.05)
+\multiput(39.39,27.02)(.033708159,-.033708159){355}{\line(0,-1){.033708159}}
+%\end
+%\emline(42.59,27.1)(53.07,16.62)
+\multiput(42.59,27.1)(.033697388,-.033697388){311}{\line(1,0){.033697388}}
+%\end
+\put(45.78,27.02){\line(1,-1){8.77}}
+\put(48.79,27.1){\line(1,-1){7.25}}
+%\emline(51.97,27.1)(57.63,21.53)
+\multiput(51.97,27.1)(.03407744,-.03354498){166}{\line(1,0){.03407744}}
+%\end
+%\emline(55.15,27.01)(59.13,23.03)
+\multiput(55.15,27.01)(.03370742,-.03370742){118}{\line(1,0){.03370742}}
+%\end
+%\emline(58.07,27.1)(60.72,24.45)
+\multiput(58.07,27.1)(.0335652,-.0335652){79}{\line(0,-1){.0335652}}
+%\end
+%\emline(60.81,27.1)(62.14,25.86)
+\multiput(60.81,27.1)(.0358331,-.0334442){37}{\line(1,0){.0358331}}
+%\end
+\put(26.25,3){\makebox(0,0)[cc]{Figure 2.1}}
+\put(2.75,7.25){\makebox(0,0)[cc]{$0$}}
+\put(4,31){\makebox(0,0)[cc]{$\mu$}}
+\put(22,30.75){\makebox(0,0)[cc]{$\xi_2$}}
+\put(48.25,7.5){\makebox(0,0)[cc]{$\xi_1$}}
+\end{picture}
+\end{center}
+
+If $\eta$ is the projection of $\xi_{2}$ into the orthogonal complement of $[\xi_{1}]$, then the area of this parallelogram is
+\begin{equation*}
+A= \vert \vert \xi_{1} \vert \vert \  \vert \vert \eta \vert \vert = \vert \vert \xi_{1} \vert \vert \  \vert \vert \xi_{2} \vert \vert \ \sin t
+\end{equation*}
+where $t$ is the angle between $\xi_{1}$ and $\xi_{2}$. Thus 
+\begin{equation*}
+A^{2}= \vert \vert \xi_{1} \vert \vert ^{2} \vert \vert \xi_{2} \vert \vert ^{2}(1-\cos^{2}t)= \vert \vert \xi_{1} \vert \vert ^{2} \vert \vert \xi_{2} \vert \vert ^{2}-(\xi_{1},\xi_{2}) = \det 
+\left(
+\begin{array}{cc}
+  (\xi_{1},\xi_{1}) & (\xi_{1},\xi_{2})\\
+  (\xi_{2},\xi_{1}) & (\xi_{2},\xi_{2})
+\end{array}
+\right)
+\end{equation*}
+
+To generalize the ideas just considered, let $\{ \xi_{1},\cdots,\xi_{k} \}$ be a set of linearly independent vectors in $R_{n}$. Fix an integer $m$ with $0<m<k$, let $M=[\xi_{1},\cdots,\xi_{m}]$, and let $P$ denote the orthogonal projection of $R_{n}$ onto $M^{\perp}$ (the orthogonal complement of $M$ in $R_{n}$). We claim that $\{ P\xi_{m+1},\cdots,P\xi_{k} \}$ is a linearly independent set in $R_{n}$. Indeed, if $a_{m+1},\cdots,a_{k}$ are real numbers such that
+\begin{equation*}
+a_{m+1}P\xi_{m+1}+\cdots+a_{k}P\xi_{k}=0
+\end{equation*}
+then $P(a_{m+1}\xi_{m+1}+\cdots+a_{k}\xi_{k})=0$ and hence $a_{m+1}\xi_{m+1}+\cdots+a_{k}\xi_{k}\in M$. It follows from the linear independence of $\{ \xi_{1},\cdots,\xi_{k} \}$ and the definition of $M$, that $a_{m+1}\xi_{m+1}+\cdots+a_{k}\xi_{k}=0$, and hence that $a_{m+1}=\cdots=a_{k}=0$.
+
+We therefore obtain two new parallelepipeds - the parallelepiped defined by $\{ \xi_{1},\cdots,\xi_{m} \}$, which is called the \emph{base parallelepiped}, and the parallelepiped defined by $\{ P\xi_{m+1},\cdots,P\xi_{k} \}$, which is called the \emph{altitude parallelepiped}.
+
+
+\subsection{Theorem}
+
+In the preceding setting, the $k$-dimensional volume measure of the parallelepiped defined by $\{ \xi_{1},\cdots,\xi_{k} \}$ is $V=V_{1}V_{2}$, where $V_{1}$ is the $m$-dimensional volume measure of the base parallelepiped and $V_{2}$ is the $(k-m)$-dimensional volume measure of the altitude parallelepiped.
+
+\vspace{0.3cm}
+
+\textbf{Proof}: Since $[\xi_{1},\cdots,\xi_{m}] \cap [P\xi_{m+1},\cdots,P\xi_{k}] = 0$, it follows from the linear independence of $\{ \xi_{1},\cdots,\xi_{m} \}$ and $\{ P\xi_{m+1},\cdots,P\xi_{k} \}$ that $\{ \xi_{1},\cdots,\xi_{m},$ $P\xi_{m+1},\cdots,P\xi_{k} \}$ is a linearly independent set in $R_{n}$. Let $\{ \alpha_{1},\cdots,\alpha_{k} \}$ be an orthonormal basis of $[\xi_{1},\cdots,\xi_{k}]$ such that $\alpha_{1},\cdots,\alpha_{m}\in M$. Writing $\xi_{1},\cdots,\xi_{k}$ in terms of $\alpha_{1},\cdots,\alpha_{k}$, we see that $V=\vert \det B \vert$, where
+
+$B=$
+{ \small
+\begin{equation*}
+\left(
+\begin{array}{cc}
+  \left[\begin{array}{ccc}
+    (\xi_{1},\alpha_{1}) & \cdots & (\xi_{1},\alpha_{m})\\
+    \cdots & \  & \cdots\\
+    (\xi_{m},\alpha_{1})\ \  & \cdots & \ \ (\xi_{m},\alpha_{m})
+    \end{array}
+  \right] & 
+  \left[\begin{array}{ccc}
+    \  & \  & \ \\
+    \  & 0 & \ \\
+    \  & \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  & \ 
+  \end{array}
+  \right] \\
+  \left[\begin{array}{ccc}
+    (\xi_{m+1},\alpha_{1}) & \cdots & (\xi_{m+1},\alpha_{m})\\
+    \cdots & \  & \cdots\\
+    (\xi_{k},\alpha_{1}) & \cdots & (\xi_{k},\alpha_{m})
+  \end{array}
+  \right] & 
+  \left[\begin{array}{ccc}
+    (\xi_{m+1},\alpha_{m+1}) & \cdots & (\xi_{m+1},\alpha_{k})\\
+    \cdots & \  & \cdots\\
+    (\xi_{k},\alpha_{m+1}) & \cdots & (\xi_{k},\alpha_{k})
+  \end{array}
+  \right]
+\end{array}
+\right)
+\end{equation*}
+}
+
+Letting
+
+\begin{equation*}
+C=\left(
+\begin{array}{ccc}
+  (\xi_{1},\alpha_{1}) & \cdots & (\xi_{1},\alpha_{m})\\
+  \cdots & \  & \cdots\\
+  (\xi_{m},\alpha_{1}) & \cdots & (\xi_{m},\alpha_{m})
+\end{array}
+\right)
+\end{equation*}
+and
+\begin{equation*}
+D=\left(
+\begin{array}{ccc}
+  (\xi_{m+1},\alpha_{m+1}) & \cdots & (\xi_{m+1},\alpha_{k})\\
+  \cdots & \  & \cdots\\
+  (\xi_{k},\alpha_{m+1}) & \cdots & (\xi_{k},\alpha_{k})
+\end{array}
+\right)
+\end{equation*}
+
+we see that $\det B=\det C\ \det D$ and $V_{1}=\vert \det C \vert$. Since
+\begin{equation*}
+P\xi_{j}=(\xi_{j},a_{m+1})a_{m+1}+\cdots+(\xi_{j},\alpha_{k})a_{k} \text{ for } j>m
+\end{equation*}
+we have $V_{2}=\vert \det D \vert$ and hence $V=V_{1}V_{2}$ as desired.
+
+Note that Birkhoff and MacLane [3, p.308] \emph{define} the $k$-dimensional volume measure of a parallelepiped inductively so that Theorem 2.2 holds. That is, they define the $k$-dimensional volume measure of the parallelepiped defined by $\{ \xi_{1},\cdots,\xi_{k} \}$ to be $V=V_{1}V_{2}$ where $V_{1}$ is the $(k-1)$-dimensional volume measure of the base parallelepiped and $V_{2}$ is the one dimensional volume measure (or length) of the altitude parallelepiped. Using this definition, Birkhoff and MacLane show that $V$ is given by (2.1).
+
+We begin the study of volumes of convex hulls by considering the area of a triangle. The triangle defined by the linearly independent set $\{ \xi_{1},\xi_{2} \}$ in $R_{2}$ is $H(o,\xi_{1},\xi_{2})$ (Figure 2.2). Let $\xi_{1}=(x_{1},y_{1})$ and $\xi_{2}=(x_{2},y_{2})$ with respect to the usual coordinates on $R_{2}$. 
+
+\begin{center}
+%TeXCAD Picture [ch-fig2.2.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(57.25,47.25)(0,0)
+\put(2.75,13.5){\line(1,0){50.5}}
+\put(14,8.25){\line(0,1){35.5}}
+%\vector(14,13.75)(22,38.5)
+\put(22,38.5){\vector(1,3){.07}}\multiput(14,13.75)(.03361345,.1039916){238}{\line(0,1){.1039916}}
+%\end
+%\emline(14.75,15.88)(15.5,15.13)
+\multiput(14.75,15.88)(.032609,-.032609){23}{\line(0,-1){.032609}}
+%\end
+%\emline(15.29,17.85)(16.79,16.35)
+\multiput(15.29,17.85)(.0333912,-.0333912){45}{\line(0,-1){.0333912}}
+%\end
+\put(17.24,23.86){\line(1,-1){3.54}}
+\put(17.77,25.63){\line(1,-1){4.15}}
+%\emline(18.3,27.22)(23.07,22.54)
+\multiput(18.3,27.22)(.03433792,-.03370203){139}{\line(1,0){.03433792}}
+%\end
+%\emline(18.92,29.08)(24.22,23.86)
+\multiput(18.92,29.08)(.03421484,-.0336446){155}{\line(1,0){.03421484}}
+%\end
+\put(19.62,31.11){\line(1,-1){5.92}}
+\put(20.24,32.97){\line(1,-1){6.45}}
+%\emline(20.77,34.65)(28.02,27.49)
+\multiput(20.77,34.65)(.03402744,-.03361247){213}{\line(1,0){.03402744}}
+%\end
+%\emline(15.91,19.62)(17.94,17.68)
+\multiput(15.91,19.62)(.0350506,-.0335266){58}{\line(1,0){.0350506}}
+%\end
+%\emline(16.62,21.57)(19.27,18.92)
+\multiput(16.62,21.57)(.0335652,-.0335652){79}{\line(1,0){.0335652}}
+%\end
+\put(21.3,36.42){\line(1,-1){7.78}}
+%\emline(21.92,37.83)(29.96,29.7)
+\multiput(21.92,37.83)(.03365414,-.03402397){239}{\line(0,-1){.03402397}}
+%\end
+%\vector(13.97,13.44)(30.67,30.23)
+\put(30.67,30.23){\vector(1,1){.07}}\multiput(13.97,13.44)(.033680237,.03385844){496}{\line(0,1){.03385844}}
+%\end
+\put(26.25,4){\makebox(0,0)[cc]{Figure 2.2}}
+\put(11.25,11){\makebox(0,0)[cc]{$0$}}
+\put(57.25,13.5){\makebox(0,0)[cc]{$x$}}
+\put(13.75,47.25){\makebox(0,0)[cc]{$y$}}
+\put(32.5,31.5){\makebox(0,0)[cc]{$\xi_1$}}
+\put(21.75,41.75){\makebox(0,0)[cc]{$\xi_2$}}
+\end{picture}
+\end{center}
+
+If we employ a double integral for computing the area of this triangle, we must describe the domain of integration $D$ in two parts. However, if we use the transformation
+\begin{equation*}
+  \begin{cases}
+    x=x_{1}t_{1}+x_{2}t_{2} \\
+    y=y_{1}t_{1}+y_{2}t_{2}
+  \end{cases}
+\end{equation*}
+in the change of variable theorem, we obtain the area as
+\begin{equation*}
+A=\int\int_{D} dx dy = \vert \det A \vert \int_{0}^{1}\int_{0}^{1-t_{1}}dt_{2}dt_{1} = \frac{\vert \det A \vert}{2}
+\end{equation*}
+where $A=\left(
+\begin{array}{cc}
+x_{1} & x_{2}\\
+y_{1} & y_{2}
+\end{array}
+\right)$ .
+
+We can now generalize this result to $n$ dimensions. The reader should verify by induction that
+\begin{equation*}
+\int_{0}^{1}\ \ \int_{0}^{1-t_{1}} \cdots \int_{0}^{1-t_{1} - \cdots - t_{n-1}}\  dt_{n}\cdots dt_{2} dt_{1} = \frac{1}{n!}
+\end{equation*}
+
+Suppose now that $\{ \xi_{1},\cdots,\xi_{n} \}$ is a linearly independent set in $R_{n}$, and let $\xi\in H(0,\xi_{1},\cdots,\xi_{n})$, i.e.,
+\begin{equation*}
+\xi=\sum_{i=1}^{n}t_{i}\xi_{i}\textnormal{ with }t_{i}\geq0\textnormal{ and }\sum_{i=1}^{n}t_{i}\leq1
+\end{equation*}
+
+Let $\xi=(x_{1},\cdots,x_{n})$ and $\xi_{i}=(x_{i1},\cdots,x_{in})$ for $i=1,\cdots,n$ with respect to the usual coordinates on $R_{n}$. We now have
+\begin{equation*}
+x_{i}=\sum_{j=1}^{n}x_{ij}t_{j} \text{ for } i=1,\cdots,n
+\end{equation*}
+which we consider as a transformation in the change of variable theorem.
+
+The $n$-dimensional volume measure of $D=H(0,\xi_{1},\cdots,\xi_{n})$ is
+\begin{equation*}
+V=\int_{D} \cdots \int dx_{1} \cdots dx_{n} = \vert \det A \vert \int_{0}^{1} \cdots \int_{0}^{1-t_{1} - \cdots - t_{n-1}} dt_{n} \cdots dt_{1}
+\end{equation*}
+where
+\begin{equation*}
+A=\left(
+\begin{array}{ccc}
+  x_{11} & \cdots & x_{1n}\\
+  \cdots & \  & \cdots\\
+  x_{n1} & \cdots & x_{nn}
+\end{array}
+\right)
+\end{equation*}
+
+Once again we use the fact that the Gram determinant of $\{ \xi_{1},\cdots,\xi_{n} \}$ is equal to $(\det A)^{2}$ and hence conclude that the $n$-dimensional measure of $H(0,\xi_{1},\cdots,\xi_{n})$ is 
+
+
+\subsection{Equation}
+
+\begin{equation*}
+V= \frac{ (\det G)^{\frac{1}{2}} }{n!}
+\end{equation*}
+
+More generally, one can show (see Smith [5, p.371]) that if $\xi_{1},\cdots,\xi_{k}\in R_{n}$, then the $k$-dimensional volume measure of $H(0,\xi_{1},\cdots,\xi_{k})$is the square root of the Gram determinant of $\{ \xi_{1},\cdots,\xi_{k} \}$ divided by $k!$.
+
+
+\subsection*{Exercises}
+
+\begin{enumerate}
+  \item Define the parallelepiped defined by $\{ \xi_{1},\cdots,\xi_{k} \}$ in $R_{n}$ as the convex hull of a certain set of vectors.
+  \item Generalize the statement of Theorem 2.2 to the case where the parallelepiped defined by $\{ \xi_{1},\cdots,\xi_{k} \}$ is split into $r$ parallelepipeds with $2 \leq r \leq k$. Note that when $r=k$, one obtains the volume as a product of lengths.
+  \item Let $M$ be a subspace of $R_{n}$ and let $P$ denote the orthogonal projection onto $M$. For any set of vectors $\{ \xi_{1},\cdots,\xi_{k} \}$ in $R_{n}$, prove that the Gram determinant of $\{ P\xi_{1},\cdots,P\xi_{k} \}$ is less than or equal to the Gram determinant of $\{ \xi_{1},\cdots,\xi_{k} \}$. Give a geometric interpretation of this fact.
+  \item Let $\{ \xi_{1},\xi_{2} \}$ be a linearly independent set of vectors in $R_{3}$, let $M_{1},M_{2},M_{3}$ be three mutually orthogonal $2$-dimensional subspaces of $R_{3}$, and let $P_{1},P_{2},P_{3}$ be the orthogonal projections of $R_{3}$ onto $M_{1},M_{2},M_{3}$, respectively. Let $A,A_{i}(i=1,2,3)$ denote the areas of the parallelograms defined by the sets $\{ \xi_{1},\xi_{2} \},\ \{ P_{i}\xi_{1},P_{i}\xi_{2} \}\ (i=1,2,3)$, respectively. Prove that 
+    \begin{enumerate}
+      \item $A_{1}^{2}+A_{2}^{2} \leq A^{2}$ (\emph{Bessel's inequality}),
+      \item $A_{1}^{2}+A_{2}^{2}+A_{3}^{2} = A^{2}$ (\emph{Pythagorean identity})
+    \end{enumerate}
+    Investigate some of the many generalizations to $R_{n}$.
+\end{enumerate}
+
+
+\section{Perpendicular Equisectors}
+\markboth{3. Perpendicular Equisectors}{3. Perpendicular Equisectors}
+
+If $\alpha,\beta \in R_{2}$ and $\alpha \neq \beta$, then a vector $\xi$ is a \emph{perpendicular bisector} of the line segment which connects $\alpha$ and $\beta$ if $(\xi-\mu,\alpha-\beta)=0$, where $\mu=\frac{(\alpha+\beta)}{2}$. Note that the set of perpendicular bisectors of the line segment which connects $\alpha$ and $\beta$ is the line through the midpoint $\mu$ of that segment which is perpendicular to $\alpha-\beta$.
+
+
+\subsection{Theorem}
+
+A vector $\xi \in R_{2}$ is a perpendicular bisector of the line segment determined by $\alpha$ and $\beta$ if and only if $\vert \vert \xi-\alpha \vert \vert = \vert \vert \xi-\beta \vert \vert$ (Figure 3.1).
+
+\begin{center}
+%TeXCAD Picture [ch-fig3.1.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(48,47)(0,0)
+%\vector(16,43.75)(46,20.5)
+\put(46,20.5){\vector(4,-3){.07}}\multiput(16,43.75)(.0434782609,-.0336956522){690}{\line(1,0){.0434782609}}
+%\end
+\put(4.1,20.55){\line(1,0){42}}
+%\vector(16,43.75)(4.25,20.5)
+\put(4.25,20.5){\vector(-1,-2){.07}}\multiput(16,43.75)(-.033667622,-.066618911){349}{\line(0,-1){.066618911}}
+%\end
+%\vector(16,43.82)(27.75,20.57)
+\put(27.75,20.57){\vector(1,-2){.07}}\multiput(16,43.82)(.033667622,-.066618911){349}{\line(0,-1){.066618911}}
+%\end
+\put(28.25,39.75){\line(0,-1){32.25}}
+\put(30.25,20.5){\line(0,1){2.25}}
+\put(30.25,22.75){\line(-1,0){2}}
+%\dashline{1}(4,20.5)(28.25,9.75)
+\multiput(3.93,20.43)(.07485,-.03318){12}{\line(1,0){.07485}}
+\multiput(5.73,19.63)(.07485,-.03318){12}{\line(1,0){.07485}}
+\multiput(7.52,18.84)(.07485,-.03318){12}{\line(1,0){.07485}}
+\multiput(9.32,18.04)(.07485,-.03318){12}{\line(1,0){.07485}}
+\multiput(11.11,17.24)(.07485,-.03318){12}{\line(1,0){.07485}}
+\multiput(12.91,16.45)(.07485,-.03318){12}{\line(1,0){.07485}}
+\multiput(14.71,15.65)(.07485,-.03318){12}{\line(1,0){.07485}}
+\multiput(16.5,14.86)(.07485,-.03318){12}{\line(1,0){.07485}}
+\multiput(18.3,14.06)(.07485,-.03318){12}{\line(1,0){.07485}}
+\multiput(20.1,13.26)(.07485,-.03318){12}{\line(1,0){.07485}}
+\multiput(21.89,12.47)(.07485,-.03318){12}{\line(1,0){.07485}}
+\multiput(23.69,11.67)(.07485,-.03318){12}{\line(1,0){.07485}}
+\multiput(25.49,10.87)(.07485,-.03318){12}{\line(1,0){.07485}}
+\multiput(27.28,10.08)(.07485,-.03318){12}{\line(1,0){.07485}}
+%\end
+%\dashline{1}(28.25,9.75)(45.75,20.75)
+\multiput(28.18,9.68)(.05303,.033333){15}{\line(1,0){.05303}}
+\multiput(29.77,10.68)(.05303,.033333){15}{\line(1,0){.05303}}
+\multiput(31.36,11.68)(.05303,.033333){15}{\line(1,0){.05303}}
+\multiput(32.95,12.68)(.05303,.033333){15}{\line(1,0){.05303}}
+\multiput(34.54,13.68)(.05303,.033333){15}{\line(1,0){.05303}}
+\multiput(36.13,14.68)(.05303,.033333){15}{\line(1,0){.05303}}
+\multiput(37.73,15.68)(.05303,.033333){15}{\line(1,0){.05303}}
+\multiput(39.32,16.68)(.05303,.033333){15}{\line(1,0){.05303}}
+\multiput(40.91,17.68)(.05303,.033333){15}{\line(1,0){.05303}}
+\multiput(42.5,18.68)(.05303,.033333){15}{\line(1,0){.05303}}
+\multiput(44.09,19.68)(.05303,.033333){15}{\line(1,0){.05303}}
+%\end
+%\vector(16,43.5)(28,10.25)
+\put(28,10.25){\vector(1,-3){.07}}\multiput(16,43.5)(.033707865,-.093398876){356}{\line(0,-1){.093398876}}
+%\end
+\put(28.5,2.25){\makebox(0,0)[cc]{Figure 3.1}}
+\put(26.5,7.75){\makebox(0,0)[cc]{$\xi$}}
+\put(48,20.5){\makebox(0,0)[cc]{$\beta$}}
+\put(1.75,20.25){\makebox(0,0)[cc]{$\alpha$}}
+\put(15.75,47){\makebox(0,0)[cc]{$0$}}
+\put(30.5,18.25){\makebox(0,0)[cc]{$\mu$}}
+\end{picture}
+\end{center}
+
+\textbf{Proof}: The result follows from the relationship
+\begin{equation*}
+2(\xi-\mu,\alpha-\beta) = 2(\xi,\alpha)-2(\xi,\beta) - \vert \vert \alpha \vert \vert ^{2} + \vert \vert \beta \vert \vert ^{2} = \vert \vert \xi-\alpha \vert \vert ^{2} - \vert \vert \xi-\beta \vert \vert ^{2}
+\end{equation*}
+
+
+\subsection{Theorem}
+
+There is a unique perpendicular bisector of the three sides of a triangle.
+
+\vspace{0.3cm}
+
+\textbf{Proof}: Let $\{ \alpha,\beta \}$ be a linearly independent set in $R_{2}$ and consider the triangle $H(0,\alpha,\beta)$. Since $\{ \alpha,\beta \}$ is a linearly independent set, the lines of perpendicular bisectors of the segments determined by $0$ and $\alpha$ and by $0$ and $\beta$ are not parallel. In fact, the angle between these lines is the smaller of the angles between $\alpha$ and $\beta$ and between $\alpha$ and $-\beta$. It now follows from Theorem 3.1 that there is a unique vector $\xi \in R_{2}$ such that
+\begin{equation*}
+\vert \vert \xi \vert \vert = \vert \vert \xi-\alpha \vert \vert \ \textnormal{and}\  \vert \vert \xi \vert \vert = \vert \vert \xi-\beta \vert \vert
+\end{equation*}
+(See Figure 3.2, but also note that $\xi$ is sometimes outside the triangle.) 
+
+\begin{center}
+%TeXCAD Picture [ch-fig3.2.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(51,38.5)(0,0)
+%\vector(19,35.25)(49,12)
+\put(49,12){\vector(4,-3){.07}}\multiput(19,35.25)(.0434782609,-.0336956522){690}{\line(1,0){.0434782609}}
+%\end
+\put(7.1,12.05){\line(1,0){42}}
+%\vector(19,35.25)(7.25,12)
+\put(7.25,12){\vector(-1,-2){.07}}\multiput(19,35.25)(-.033667622,-.066618911){349}{\line(0,-1){.066618911}}
+%\end
+\put(29.25,12){\line(0,1){2.25}}
+\put(29.25,14.25){\line(-1,0){2}}
+\put(28.5,2.25){\makebox(0,0)[cc]{Figure 3.2}}
+\put(28.75,16){\makebox(0,0)[cc]{$\xi$}}
+\put(51,12){\makebox(0,0)[cc]{$\beta$}}
+\put(4.75,11.75){\makebox(0,0)[cc]{$\alpha$}}
+\put(18.75,38.5){\makebox(0,0)[cc]{$0$}}
+\put(19.25,35.25){\vector(1,-2){7.5}}
+%\emline(24.25,16.25)(37.5,36.75)
+\multiput(24.25,16.25)(.033715013,.05216285){393}{\line(0,1){.05216285}}
+%\end
+%\emline(31.5,17.75)(6.5,32.5)
+\multiput(31.5,17.75)(-.057077626,.033675799){438}{\line(-1,0){.057077626}}
+%\end
+\put(27.5,17.25){\line(0,-1){10.25}}
+%\emline(14.25,25.75)(16,25)
+\multiput(14.25,25.75)(.076087,-.032609){23}{\line(1,0){.076087}}
+%\end
+%\emline(16,25)(16.75,26.75)
+\multiput(16,25)(.032609,.076087){23}{\line(0,1){.076087}}
+%\end
+%\emline(29.75,25)(31.25,23.75)
+\multiput(29.75,25)(.0394737,-.0328947){38}{\line(1,0){.0394737}}
+%\end
+%\emline(31.25,23.75)(32,25.25)
+\multiput(31.25,23.75)(.032609,.065217){23}{\line(0,1){.065217}}
+%\end
+\end{picture}
+\end{center}
+
+It now follows that $\vert \vert \xi-\alpha \vert \vert = \vert \vert \xi-\beta \vert \vert$ and thus, by Theorem 3.1, $\xi$ is also a perpendicular bisector of the segment determined by $\alpha$ and $\beta$.
+
+The higher dimensional version of a perpendicular bisector of a segment is perpendicular equisector of the convex hull of a set of vectors. The definition depends on a vector $\mu$ having properties which correspond to those of the midpoint of a segment.
+
+
+\subsection{Theorem}
+
+If $\{ \xi_{1},\cdots,\xi_{k} \}$ is a linearly independent set in $R_{n}$, then there exists a unique $\xi \in [\xi_{1},\cdots,\xi_{k}]$ such that
+\begin{equation*}
+\vert \vert \xi \vert \vert = \vert \vert \xi-\xi_{i} \vert \vert \text{ for } i=1,\cdots,k
+\end{equation*}
+
+\textbf{Proof}: Rewriting the preceding equation as $(\xi,\xi_{i})= \frac{ \vert \vert \xi_{i} \vert \vert ^{2} }{2}$ for $i=1,\cdots,k$ and letting $\xi=x_{1}\xi_{1}+\cdots+x_{k}\xi_{k}$, we obtain the matrix equation $GX=B$, where $G$ is the Gram matrix of $\{ \xi_{1},\cdots,\xi_{k} \}$, $x'=(x_{1},\cdots,\xi_{k})$, and $B'= \frac{( \vert \vert \xi_{1} \vert \vert ^{2},\cdots, \vert \vert \xi_{k} \vert \vert ^{2})}{2}$.
+
+It follows from Theorem 1.1 that $G$ is nonsingular and hence $\xi$ is uniquely defined.
+
+
+\subsection{Corollary}
+
+If $\xi_{0},\cdots,\xi_{k}\in R_{n}$ and $\{ \xi_{1}-\xi_{0},\cdots,\xi_{k}-\xi_{0} \}$ is a linearly independent set in $R_{n}$, then there exists a unique $\mu\in P(\xi_{0},\cdots,\xi_{k})$ such that
+\begin{equation*}
+\vert \vert \mu-\xi_{0} \vert \vert = \vert \vert \mu-\xi_{i} \vert \vert \text{ for } i=1,\cdots,k
+\end{equation*}
+
+\textbf{Proof}: If $\xi \in [\xi_{1}-\xi_{0},\cdots,\xi_{k}-\xi_{0}]$ is given as in Theorem 3.3 for the set $\{ \xi_{1}-\xi_{0},\cdots,\xi_{k}-\xi_{0} \}$, then $\mu=\xi+\xi_{0}$ satisfies the conditions of this corollary.
+
+The uniqueness of $\mu$ follows from the uniqueness of the representation $\mu=\xi_{0}+\sum_{i=1}^{k}x_{i}(\xi_{i}-\xi_{0})$ in the plane $P(\xi_{0},\cdots,\xi_{k})$ and the uniqueness of $\xi$ in Theorem 3.3. Note that if $\mu=\sum_{i=0}^{k}a_{i}\xi_{i}$, then $\sum_{i=0}^{k}a_{i}=1$. Also note that $\mu$ does not always belong to $H(\xi_{0},\cdots,\xi_{k})$, as some of the '$a_{i}$'s may be negative.
+
+Suppose now that $\xi_{0},\cdots,\xi_{k}\in R_{n}$ and that $\{ \xi_{1}-\xi_{0},\cdots,\xi_{k}-\xi_{0} \}$ is a linearly independent set in $R_{n}$. Let $\mu \in P(\xi_{0},\cdots,\xi_{k})$ be the unique vector given in Corollary 3.4 and note that $\mu$ is the analogue of a midpoint for $H(\xi_{o},\cdots,\xi_{k})$. A vector $\xi \in R_{n}$ is a \emph{perpendicular equisector} of $H(\xi_{o},\cdots,\xi_{k})$ if $(\xi-\mu,\xi_{i}-\xi_{0})=0$ for $i=1,\cdots,k$. Note that the set of perpendicular equisectors of $H(\xi_{o},\cdots,\xi_{k})$ is the $(n-k)$-dimensional plane through $\mu$ which is perpendicular to $P(\xi_{o},\cdots,\xi_{k})$.
+
+As in Theorem 3.1, we obtain
+
+
+\subsection{Theorem}
+
+A vector $\xi\in R_{n}$ is a perpendicular equisector of $H(\xi_{o},\cdots,\xi_{k})$ if and only if $\vert \vert \xi-\xi_{0} \vert \vert = \vert \vert \xi-\xi_{i} \vert \vert$ for $i=1,\cdots,k$.
+
+The higher dimensional analogue of Theorem 3.2 is
+
+
+\subsection{Theorem}
+
+If $\{ \xi_{1},\cdots,\xi_{n} \}$ is a linearly independent set in $R_{n}$, then there exists a unique perpendicular equisector of the $n+1$ faces of $H(0,\xi_{1},\cdots,\xi_{n})$.
+
+\vspace{0.3cm}
+
+\textbf{Proof}: From Theorem 3.3, there exists a unique $\xi \in [\xi_{1},\cdots,\xi_{n}] = R_{n}$ such that $\vert \vert \xi \vert \vert = \vert \vert \xi-\xi_{i} \vert \vert$ for $i=1,\cdots,n$. It follows from Theorem 3.5 that $\xi$ is a perpendicular equisector of the faces $H(0,\xi_{1},\cdots,\hat{\xi}_{i},\cdots,\xi_{n})$ for $i=1,\cdots,n$, where $\hat{\xi_{i}}$ means that $\xi_{i}$ is deleted. It also follows from these equations that $\vert \vert \xi-\xi_{1} \vert \vert = \vert \vert \xi-\xi_{j} \vert \vert$ for $j=2,\cdots,n$, and thus by Theorem 3.5 we see that $\xi$ is also a perpendicular equisector of the last face $H(\xi_{1},\cdots,\xi_{n})$ of $H(0,\xi_{1},\cdots,\xi_{n})$.
+
+
+\subsection*{Exercises}
+
+\begin{enumerate}
+  \item For a linearly independent set $\{ \xi_{1},\cdots,\xi_{k} \}$ in $R_{n}$ and for a positive integer $m$ with $m<k$, compare the sets of perpendicular equisectors of $H(0,\xi_{1},\cdots,\xi_{k})$ and of $H(0,\xi_{1},\cdots,\xi_{m})$. 
+  \item For a linearly independent set $\{ \alpha,\beta \}$ in $R_{3}$, describe the intersection of the sets of perpendicular equisectors of the sides of the triangle $H(0,\alpha,\beta)$. Generalize this to a linearly independent set, $\{ \xi_{1},\cdots,\xi_{k} \}$ in $R_{n}$. 
+  \item If $\{ \xi_{1},\cdots,\xi_{n} \}$ is a linearly independent set in $R_{n}$, then there exists a unique perpendicular equisector of the $\binom{n+1}{2}$ ``edges'' of $H(0,\xi_{1},\cdots,\xi_{n})$. Generalize this. 
+  \item Express the unique $\xi\in R_{n}$ found in Theorem 3.6 in terms of $\xi_{1},\cdots,\xi_{n}$ and the Gram determinant $g$ of $\{ \xi_{1},\cdots,\xi_{n} \}$. Note that this $\xi$ is the unique perpendicular equisector of $H(0,\xi_{1},\cdots,\xi_{n})$ and that it plays an important role in Exercise 3.3.
+\end{enumerate}
+
+
+\section{Altitudes}
+\markboth{4. Altitudes}{4. Altitudes}
+
+Let $\{ \alpha,\beta \}$ be a linearly independent set in $R_{2}$; consider the triangle $H (0,\alpha,\beta)$. A vector $\xi \in R_{2}$ is an altitude of $H(0,\alpha,\beta)$ at $0$ if $(\xi,\beta-\alpha)=0$, i.e., $\xi$ belongs to the line $L_{0}$ which passes through $0$ and is perpendicular to $\beta-\alpha$. A vector $\xi \in R_{2}$ is an altitude of $H(0,\alpha,\beta)$ at $\alpha$ [respectively, $\beta$] if $(\xi,\beta-\alpha)=0$ [respectively, $(\xi-\beta,\alpha)=0$], i.e., $\xi$ belongs to the line $L_{l}$ [respectively, $L_{2}$] which passes through $\alpha$ [respectively, $\beta$] and is perpendicular to $\beta$ [respectively, $\alpha$]. (See Figure 4.1, but also note that $L_{1}$ and $L_{2}$ may intersect $H(0,\alpha,\beta)$ at single points.) This figure suggests the following well-known result. 
+
+\begin{center}
+%TeXCAD Picture [ch-fig4.1.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(48.25,52)(0,0)
+\put(6.25,16.75){\line(1,0){37.5}}
+%\emline(48.25,13.75)(11,36.25)
+\multiput(48.25,13.75)(-.0558470765,.0337331334){667}{\line(-1,0){.0558470765}}
+%\end
+%\vector(22.5,46)(6.25,17)
+\put(6.25,17){\vector(-1,-2){.07}}\multiput(22.5,46)(-.033713693,-.060165975){482}{\line(0,-1){.060165975}}
+%\end
+%\vector(22.5,45.75)(43.75,16.75)
+\put(43.75,16.75){\vector(3,-4){.07}}\multiput(22.5,45.75)(.033730159,-.046031746){630}{\line(0,-1){.046031746}}
+%\end
+\put(22.5,52){\line(0,-1){39.5}}
+%\emline(35.25,39.75)(2.5,13.5)
+\multiput(35.25,39.75)(-.0420410783,-.0336970475){779}{\line(-1,0){.0420410783}}
+%\end
+%\emline(17.25,32.38)(18.13,34.13)
+\multiput(17.25,32.38)(.033654,.067308){26}{\line(0,1){.067308}}
+%\end
+%\emline(18.13,34.13)(16.5,35.25)
+\multiput(18.13,34.13)(-.0477941,.0330882){34}{\line(-1,0){.0477941}}
+%\end
+\put(22.5,18.75){\line(-1,0){2}}
+\put(20.5,18.75){\line(0,-1){2}}
+%\emline(29.5,32.75)(31,34.13)
+\multiput(29.5,32.75)(.0365854,.0335366){41}{\line(1,0){.0365854}}
+%\end
+%\emline(29.38,32.75)(28.38,34.13)
+\multiput(29.38,32.75)(-.033333,.045833){30}{\line(0,1){.045833}}
+%\end
+\put(22.5,10){\makebox(0,0)[cc]{$L_0$}}
+\put(37.25,41.25){\makebox(0,0)[cc]{$L_1$}}
+\put(8.75,38.5){\makebox(0,0)[cc]{$L_2$}}
+\put(21,48){\makebox(0,0)[cc]{$0$}}
+\put(7.25,14){\makebox(0,0)[cc]{$\alpha$}}
+\put(42,14){\makebox(0,0)[cc]{$\beta$}}
+\put(22.25,4.25){\makebox(0,0)[cc]{Figure 4.1}}
+\end{picture}
+\end{center}
+
+
+\subsection{Theorem}
+
+The three altitudes of a triangle are concurrent. (That is, there is a unique vector common to the three lines $L_{0},L_{1},L_{2}$.)
+
+\vspace{0.3cm}
+
+\textbf{Proof}: Since $\{ \alpha,\beta \}$ is a linearly independent set in $R_{2}$, the lines $L_{1}$ and $L_{2}$ are not parallel and hence there exists a unique $\xi \in R_{2}$ which belongs to $L_{1} \cap L_{2}$. To show that this unique $\xi$ also belongs to $L_{0}$, we show that the equations $(\xi-\alpha,\beta)=0$ and $(\xi-\beta,\alpha)=0$ imply that $(\xi,\beta-\alpha)=0$. For this, we have
+\begin{eqnarray*}
+  (\xi,\beta-\alpha) & = & (\xi-\alpha+\alpha,\beta-\alpha)\\
+  \  & = & (\xi-\alpha,\beta)-(\xi-\alpha,\alpha)+(\alpha,\beta-\alpha)\\
+  \  & = & -(\xi-\beta+\beta-\alpha,\alpha)+(\alpha,\beta-\alpha)\\
+  \  & = & -(\xi-\beta,\alpha)-(\beta-\alpha,\alpha)+(\alpha,\beta-\alpha) = 0
+\end{eqnarray*}
+
+We will now use vector algebra to find the common altitude whose existence is guaranteed by the preceding theorem. Since $\{ \alpha,\beta \}$ is a linearly independent set in $R_{2}$, we can write $\xi = x\alpha+y\beta$ with $x,y \in R$. The equations for $L_{1}$ and $L_{2}$ now become
+\begin{equation*}
+([x-1]\alpha+y\beta,\beta)=0 \text{ and } (x\alpha+[y-1]\beta,\alpha)=0
+\end{equation*}
+and this leads to the linear system of equations
+\begin{equation*}
+  \begin{cases}
+    (\alpha,\alpha)x+(\alpha,\beta)y & =(\alpha,\beta)\\
+    (\beta,\alpha)x+(\beta,\beta)y & =(\alpha,\beta)
+  \end{cases}
+\end{equation*}
+
+Since the coefficient matrix is the Gram matrix of the linearly independent set, we can solve this system by Cramer's Rule to get
+\begin{equation*}
+x=(\alpha,\beta) \frac{[\vert \vert \beta \vert \vert ^{2}-(\alpha,\beta)]}{g} \text{ and } y=(\alpha,\beta) \frac{[\vert \vert \alpha \vert \vert ^{2}-(\alpha,\beta)]}{g}
+\end{equation*}
+where $g$ is the Gram determinant of $\{ \alpha,\beta \}$. The unique $\xi$ given by Theorem 4.1 is now seen to be
+\begin{equation*}
+\xi=(\alpha,\beta) \frac{[ \vert \vert \beta \vert \vert ^{2}-(\alpha,\beta)]\alpha+[ \vert \vert \alpha \vert \vert ^{2}-(\alpha,\beta)]\beta}{g}
+\end{equation*}
+ 
+In turning to higher dimensions, we consider a linearly independent set $\{ \xi_{1},\cdots,\xi_{n} \}$ in $R_{n}$. A vector $\xi \in R_{n}$ is an altitude of $H(0,\xi_{1},\cdots,\xi_{n})$ at $0$ if $\xi$ belongs to the line $L_{0}$ which passes through $0$ and is perpendicular to the plane $P(\xi_{1},\cdots,\xi_{n})$. A vector $\xi \in R_{n}$ is an altitude of $H(0,\xi_{1},\cdots,\xi_{n})$ at $\xi_{i}\ (i=1,\cdots,n)$ if $(\xi-\xi_{1},\xi_{k})$ for $k=1,\cdots,\hat{i},\cdots,n\ (i=1,\cdots,n)$, where $\hat{i}$ means that $i$ is deleted for the set. Therefore $\xi$ is an altitude of $H(0,\xi_{1},\cdots,\xi_{n})$ at $\xi_{i}$ if and only if $\xi$ belongs to the line $L_{i}$ which passes through $\xi_{i}$ and is perpendicular to $\xi_{1},\cdots,\hat{\xi}_{i},\cdots,\xi_{n}$.
+
+It is easy to see that the $n+1$ altitudes of $H(0,\xi_{1},\cdots,\xi_{n})$ are not necessarily concurrent. Consider the example of $\xi_{1}=(1,0,0)$, $\xi_{2}=(0,0,1)$, $\xi_{3}=(1,1,0)$ in $R_{3}$ and note that $L_{2}$ is the $z$-axis, while $L_{3}$ is given by the equations $x=1$, $z=0$. Hence $L_{2} \cap L_{3}$ is empty. 
+
+If $i,j \in \{ 1,\cdots,n \}$ and $i\neq j$, then for each $k=1,\cdots,\hat{i},\cdots,\hat{j},\cdots,n$ we have $(\xi,\xi_{k})=(\xi_{i},\xi_{k})$ and $(\xi,\xi_{k})=(\xi_{j},\xi_{k})$ whenever $\xi \in L_{i} \cap L_{j}$. Hence a necessary condition for $L_{i} \cap L_{j}$ to be nonempty is that
+\begin{equation*}
+(\xi_{i},\xi_{k})=(\xi_{j},\xi_{k}) \text{ whenever } k=1,\cdots,\hat{i},\cdots,\hat{j},\cdots,n
+\end{equation*}
+
+It now follows that a necessary condition for $L_{1}\cap\cdots\cap L_{n}$ to be nonempty is that 
+
+
+\subsection{Equation}
+
+$(\xi_{i},\xi_{j})$ is independent of $i$ and $j$ with $i\neq j \in \{ 1,\cdots,n \}$.
+
+An example of a linearly independent set in $R_{3}$ which satisfies (4.2) but is not an orthogonal set is $\xi_{1}=(1,0,0)$, $\xi_{2}=(1,0,1)$, $\xi_{3}=(1,1,0)$.
+
+
+\subsection{Theorem}
+
+The altitudes of $H(0,\xi_{1},\cdots,\xi_{n})$ are concurrent, that is, there is a unique vector common to the $n+1$ lines $L_{0},\cdots,L_{n}$, if and only if (4.2) holds.
+
+\vspace{0.3cm}
+
+\textbf{Proof}: The necessity of (4.2) has already been demonstrated, For the sufficiency, we suppose that $(\xi_{i},\xi_{j})=b$ whenever $i \neq j \in \{ 1,\cdots,n \}$. It now follows that $\xi \in L_{1} \cap \cdots \cap L_{n}$ if and only if $(\xi,\xi_{i})=b$ for $i=1,\cdots,n$. Such a $\xi$ obviously satisfies $(\xi,\xi_{i}-\xi_{j})=0$ whenever $i\neq j$ and hence belongs to $L_{0}$. We must now show that there is a \emph{unique} $\xi\in R_{n}$ which satisfies $(\xi,\xi_{i})=b$ for $i=1,\cdots,n$. Writing $\xi=\sum_{i=1}^{n}x_{i}\xi_{i}$ with $x_{i} \in R$ yields the linear system of equations $GX=B$, where $G$ is the Gram matrix of $\{ \xi_{1},\cdots,\xi_{n} \}$, $X'=(x_{1},\cdots,x_{n})$, and $B'=(b,\cdots,b)$. Once again, $G$ is non-singular by Theorem 1.1 and hence $\xi$ is unique. 
+
+Note that the unique $\xi \in R_{n}$ given by the preceding theorem can be found by Cramer's Rule as in the case $n=2$ and is
+\begin{equation*}
+\xi = b \frac{ \left( \sum_{i=1}^{n}g_{i}\xi_{i} \right) }{g}
+\end{equation*}
+where $g$ is the Gram determinant of $\{ \xi_{1},\cdots,\xi_{n} \}$ and $g_{i}$ is the determinant of the matrix obtained from $G$ by replacing the $i$-th column of $G$ by the column with all entries equal to one. 
+
+Here is another interesting problem related to altitudes. Let $\{ \xi_{1},\cdots,\xi_{n} \}$ be a linearly independent set in $R_{n}$, and find the vector $\delta$ of smallest norm in $P(\xi_{1},\cdots,\xi_{n})$. From geometric considerations, it follows that $\delta$ is the unique vector in $L_{0} \cap P(\xi_{1},\cdots,\xi_{n})$. In the preceding notation, Griffin [4] has shown that
+\begin{equation*}
+\delta = \sum_{i=1}^{n} g_{i} \frac{\xi_{i}}{g} \text{ and } \vert \vert \delta \vert \vert ^{2} = g / \left(\sum_{i=1}^{n}g_{i}\right)
+\end{equation*}
+
+The norm of unique vector $\delta_{i} \in R_{n}$ for which $\xi_{i}+\delta_{i} \in L_{i} \cap [\xi_{1},\cdots,\hat{\xi}_{i},\cdots,\xi_{n}]$ is obtained by finding the distance from $\xi_{i}$ to the hyperplane $[\xi_{1},\cdots,\hat{\xi}_{i},\cdots,\xi_{n}]$. In this way, it is easily shown that
+\begin{equation*}
+\vert \vert \delta_{i} \vert \vert ^{2}= \frac{g}{\hat{g}_{i}}
+\end{equation*}
+where $g_{i}$ is the Gram determinant of $\{ \xi_{1},\cdots,\hat{\xi}_{i},\cdots,\xi_{n} \}$.
+
+
+\subsection*{Exercises}
+
+\begin{enumerate}
+  \item Prove the well-known theorem of Euclid that the altitudes of $H(0,\alpha,\beta)$ are the perpendicular bisectors of $H(\alpha+\beta,\beta-\alpha,\alpha-\beta)$ in $R_{2}$. Theorem 4,1 now follows from Theorem 3.2. 
+  \item Can Exercise 4.1 be generalized if (4.2) holds? 
+  \item Define altitudes of $H(0,\xi_{1},\cdots,\xi_{k})$ where $\{ \xi_{1},\cdots,\xi_{k} \}$ is a linearly independent set in $R_{n}$. The $k+1$ sets of altitudes $L_{0},\cdots,L_{k}$ will be $(n-k+1)$-dimensional planes in $R_{n}$. What are necessary conditions for $L_{1}\cap\cdots\cap L_{k}$ to be nonempty? Do these conditions imply that $L_{0}\cap\cdots\cap L_{k}$ is nonempty? Describe $L_{0}\cap\cdots\cap L_{k}$ and $L_{0}\cap\cdots\cap L_{k}\cap[\xi_{1},\cdots,\xi_{k}]$. 
+  \item Use the Cauchy-Schwartz inequality to justify the ``geometric considerations'' which imply that $\delta \in L_{0}$. That is, show that if $\delta \in L_{0} \cap P(\xi_{1},\cdots,\xi_{n})$ then $\vert \vert \delta \vert \vert \leq \vert \vert \alpha \vert \vert$ whenever $\alpha \in P(\xi_{1},\cdots,\xi_{n})$. 
+  \item Find the formula for the distance from a point (or vector) to a hyperplane in $R_{n}$. Find the formula for the distance from a point (or vector) to a $k$-dimensional plane in $R_{n}$.
+\end{enumerate}
+
+
+\section{Centroids and Medians}
+\markboth{5. Centroids and Medians}{5. Centroids and Medians}
+
+Let $\{ \alpha,\beta \}$ be a linearly independent set in $R_{2}$. The \emph{centroid of the triangle} $H(0,\alpha,\beta)$ is $\gamma= \frac{(\alpha+\beta)}{3}$ (Figure 5.1(a)), which is, in fact, the point of intersection of the three medians of $H(0,\alpha,\beta)$. In order to study properties of the centroid, we translate the origin to $\gamma$ (Figure 5.1 (b)). Thus we let
+\begin{equation*}
+\eta_{1}=-\gamma \text{ , } \eta_{2}=\alpha-\gamma \text{ , and } \eta_{3}=\beta-\gamma
+\end{equation*}
+and note that $\{ \eta_{1},\eta_{2} \}$ is a linearly independent set in $R_{2}$, and $\eta_{1}+\eta_{2}+\eta_{3}=0$. 
+
+\begin{center}
+%TeXCAD Picture [ch-fig5.1.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(102,48)(0,0)
+\put(6.25,16.75){\line(1,0){37.5}}
+\put(64.5,16.75){\line(1,0){37.5}}
+%\vector(22.5,46)(6.25,17)
+\put(6.25,17){\vector(-1,-2){.07}}\multiput(22.5,46)(-.033713693,-.060165975){482}{\line(0,-1){.060165975}}
+%\end
+%\vector(80.75,46)(64.5,17)
+\put(64.5,17){\vector(-1,-2){.07}}\multiput(80.75,46)(-.033713693,-.060165975){482}{\line(0,-1){.060165975}}
+%\end
+%\vector(22.5,45.75)(43.75,16.75)
+\put(43.75,16.75){\vector(3,-4){.07}}\multiput(22.5,45.75)(.033730159,-.046031746){630}{\line(0,-1){.046031746}}
+%\end
+%\vector(80.75,45.75)(102,16.75)
+\put(102,16.75){\vector(3,-4){.07}}\multiput(80.75,45.75)(.033730159,-.046031746){630}{\line(0,-1){.046031746}}
+%\end
+\put(21,48){\makebox(0,0)[cc]{$0$}}
+\put(79.25,48){\makebox(0,0)[cc]{$\mu_1$}}
+\put(7.25,14){\makebox(0,0)[cc]{$\alpha$}}
+\put(65.5,14){\makebox(0,0)[cc]{$\mu_2$}}
+\put(42,14){\makebox(0,0)[cc]{$\beta$}}
+\put(100.25,14){\makebox(0,0)[cc]{$\mu_3$}}
+\put(22.25,4.25){\makebox(0,0)[cc]{Figure 5.1 (a)}}
+%\vector(22.75,45.75)(24.25,28.25)
+\put(24.25,28.25){\vector(0,-1){.07}}\multiput(22.75,45.75)(.0333333,-.3888889){45}{\line(0,-1){.3888889}}
+%\end
+\put(24.5,25.5){\makebox(0,0)[cc]{$\gamma$}}
+\put(82.75,25.5){\makebox(0,0)[cc]{$0$}}
+%\vector(83,29.25)(80.5,45.75)
+\put(80.5,45.75){\vector(-1,4){.07}}\multiput(83,29.25)(-.0333333,.22){75}{\line(0,1){.22}}
+%\end
+%\vector(83,29)(65.5,17.5)
+\put(65.5,17.5){\vector(-3,-2){.07}}\multiput(83,29)(-.051319648,-.03372434){341}{\line(-1,0){.051319648}}
+%\end
+%\vector(83,28.75)(101,17.25)
+\put(101,17.25){\vector(3,-2){.07}}\multiput(83,28.75)(.052785924,-.03372434){341}{\line(1,0){.052785924}}
+%\end
+\put(81,4){\makebox(0,0)[cc]{Figure 5.1 (b)}}
+\end{picture}
+\end{center}
+
+We can now prove a ``least squares'' theorem.
+
+
+\subsection{Theorem}
+
+Let $\eta_{1},\eta_{2},\eta_{3} \in R_{2}$ with $\{ \eta_{1},\eta_{2} \}$ a linearly independent set, and $\eta_{1}+\eta_{2}+\eta_{3}=0$. Then
+\begin{equation*}
+\vert \vert \eta_{1}-\xi \vert \vert ^{2}+ \vert \vert \eta_{2}-\xi \vert \vert ^{2}+ \vert \vert \eta_{3}-\xi \vert \vert ^{2}
+\end{equation*}
+is minimal over $\xi \in R_{2}$ if and only if $\xi=0$.
+
+\vspace{0.3cm}
+
+\textbf{Proof}: Since $\eta_{1}+\eta_{2}+\eta_{3}=0$, we see that
+\begin{equation*}
+(\eta_{1},\xi)+(\eta_{2},\xi)+(\eta_{3},\xi)=0 \text{ for all } \xi \in R_{2}
+\end{equation*}
+and hence
+\begin{eqnarray*}
+\sum_{i=1}^{3} \vert \vert \eta_{i}-\xi \vert \vert ^{2} & = & \sum_{i=1}^{3} \vert \vert \eta_{i} \vert \vert ^{2}-2\sum_{i=1}^{3}(\eta_{i},\xi)+3 \vert \vert \xi \vert \vert ^{2}\\
+\  & = &  \vert \vert \eta_{1} \vert \vert ^{2}+ \vert \vert \eta_{2} \vert \vert ^{2}+ \vert \vert \eta_{3} \vert \vert ^{2}+3 \vert \vert \xi \vert \vert ^{2}
+\end{eqnarray*}
+This is clearly minimal if and only if $\xi=0$.
+
+
+\subsection{Theorem}
+
+If $\eta_{1},\eta_{2},\eta_{3} \in R_{2}$ as in Theorem 5.1, then the areas of the triangles $H(0,\eta_{1},\eta_{2})$, $H(0,\eta_{1},\eta_{3})$, and $H(0,\eta_{2},\eta_{3})$ are equal.
+
+\vspace{0.3cm}
+
+\textbf{Proof}: It suffices by (2.3) to show that the corresponding Gram determinants are equal, i.e., in the obvious notation, that $g(\eta_{1},\eta_{2}) = g(\eta_{1},\eta_{3}) = g(\eta_{2},\eta_{3})$. To show that $g(\eta_{1},\eta_{2}) = g(\eta_{2},\eta_{3})$, we replace $\eta_{1}$ by $-(\eta_{2}+\eta_{3})$, and calculate as follows.
+\begin{eqnarray*}
+g(\eta_{1},\eta_{2}) & = & 
+\left|
+\begin{array}{cc}
+  \ \ \ (\eta_{1},\eta_{1}) & -(\eta_{1},\eta_{2})\\
+  -(\eta_{2},\eta_{1}) & \ \ \ (\eta_{2},\eta_{2})
+\end{array}
+\right|\\
+\  & = & 
+\left|
+\begin{array}{cc}
+  \ \ \ (\eta_{2}+\eta_{3},\eta_{2}+\eta_{3}) & -(\eta_{2}+\eta_{3},\eta_{2})\\
+  -(\eta_{2},\eta_{2}+\eta_{3}) & \ \ \ (\eta_{2},\eta_{2})
+\end{array}
+\right|
+\\ \  & = & 
+\left|
+\begin{array}{cc}
+  \ \ \ (\eta_{2},\eta_{2})+2(\eta_{2},\eta_{3})+(\eta_{3},\eta_{3}) & \ \ -(\eta_{2},\eta_{2})-(\eta_{3},\eta_{2})\\
+  -(\eta_{2},\eta_{2})-(\eta_{2},\eta_{3}) & \ \ \ (\eta_{2},\eta_{2})
+\end{array}
+\right|
+\end{eqnarray*}
+
+Adding the second row to the first row gives
+\begin{equation*}
+g(\eta_{1},\eta_{2})=
+\left|
+\begin{array}{cc}
+  \ \ \ (\eta_{2},\eta_{3})+(\eta_{3},\eta_{3}) & \ \ -(\eta_{3},\eta_{2})\\
+  -(\eta_{2},\eta_{2})-(\eta_{2},\eta_{3}) & \ \ \ \ \ (\eta_{2},\eta_{2})
+\end{array}
+\right|
+\end{equation*}
+
+Adding the second column to the first column now gives
+\begin{eqnarray*}
+g(\eta_{1},\eta_{2}) & = & 
+\left|
+  \begin{array}{cc}
+    \ \ \ (\eta_{3},\eta_{3}) & -(\eta_{3},\eta_{2})\\
+    -(\eta_{2},\eta_{3}) & \ \ \ (\eta_{2},\eta_{2})
+  \end{array}
+\right| \\
+\  & = & g(\eta_{2},\eta_{3})
+\end{eqnarray*}
+
+The fact that $g(\eta_{1},\eta_{3}) = g(\eta_{2},\eta_{3})$ is now obvious. 
+
+We now suppose that $\{ \xi_{1},\cdots,\xi_{k} \}$ is a linearly independent set in $R_{n}$. The \emph{centroid} of $H(0,\xi_{1},\cdots,\xi_{k})$ is defined to be the vector $\gamma= \frac{(\xi_{1}+\cdots+\xi_{k})}{(k+1)}$. Translation of the origin to $\gamma$ as in the case $n=2$ leads to the study of sets of vectors $\eta_{1},\cdots,\eta_{k+1} \in R_{n}$, for which $\{ \eta_{1},\cdots,\eta_{k} \}$ is a linearly independent set and $\eta_{1}+\cdots+\eta_{k+1} = 0$. 
+
+The following two higher dimensional analogues of Theorems 5.1 and 5.2 have been proven by Beck [2].
+
+
+\subsection{Theorem}
+
+Let $\eta_{1},\cdots,\eta_{k+1} \in R_{n}$ with $\{ \eta_{1},\cdots,\eta_{k} \}$ a linearly independent set and $\eta_{1}+\cdots+\eta_{k+1}=0$. Then
+\begin{equation*}
+\vert \vert \eta_{1}-\xi \vert \vert ^{2} + \cdots + \vert \vert \eta_{k+1}-\xi \vert \vert ^{2}
+\end{equation*}
+is minimal over $\xi \in R_{n}$ if and only if $\xi=0$.
+
+
+\subsection{Theorem}
+
+If $\eta_{1},\cdots,\eta_{k+1} \in R_{n}$ are as in Theorem 5.3, then the $k$-dimensional volume measures of $H(0,\eta_{1},\cdots,\hat{\eta}_{i},\cdots,\eta_{k+1})$ are independent of $i=1,\cdots,k+1$.
+
+
+\subsection*{Exercises}
+
+\begin{enumerate}
+  \item Illustrate and prove Theorems 5.3 and 5.4 in the case $n=k=3$. 
+  \item Prove Theorems 5.3 and 5.4. 
+  \item Find the distances from $0$ to the faces of the triangle $H(\eta_{1},\eta_{2},\eta_{3})$ in Figure 5.1(b). Use these distances to give another proof of Theorem 5.2. 
+  \item Prove Theorem 5.4 by generalizing the idea in Exercise 5.3. 
+  \item Define the three sets of medians of a triangle in $R_{2}$ via vector algebra. Show that the medians of a triangle in $R_{2}$ are concurrent. Generalize this.
+  \item If $\{ \xi_{1},\cdots,\xi_{n} \}$ is a linearly independent set in $R_{n}$ and $M_{0}$ denotes the medians of $H(0,\xi_{1},\cdots,\xi_{n})$ at $0$, find $\delta$ and $\vert \vert \delta \vert \vert$, where $\delta \in M_{0} \cap P(\xi_{1},\cdots,\xi_{n})$. 
+\end{enumerate}
+
+
+\section{Angle Equisectors}
+\markboth{6. Angle Equisectors}{6. Angle Equisectors}
+
+Let $\alpha,\beta,\gamma \in R_{2}$ with $\{ \alpha,\beta \}$ a linearly independent set. A vector $\xi \in R_{2}$ is an \emph{angle bisector} of $\alpha$ and $\beta$ at $\gamma$ if $\left( \xi-\gamma, \frac{\alpha}{\vert \vert \alpha \vert \vert} \right) = \left( \xi-\gamma, \frac{\beta}{\vert \vert \beta \vert \vert} \right)$ i.e., the lengths of the perpendicular projections of $\xi-\gamma$ onto $[\alpha]$ and $[\beta]$ are equal (Figure 6.1). 
+
+\begin{center}
+%TeXCAD Picture [ch-fig6.1.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(46.5,50.5)(0,0)
+\put(6.5,9.75){\vector(1,0){37.5}}
+\put(6.25,9.75){\vector(0,1){26.25}}
+%\dashline{1}(6.25,35.75)(43.25,35.75)
+\put(6.18,35.68){\line(1,0){.974}}
+\put(8.13,35.68){\line(1,0){.974}}
+\put(10.07,35.68){\line(1,0){.974}}
+\put(12.02,35.68){\line(1,0){.974}}
+\put(13.97,35.68){\line(1,0){.974}}
+\put(15.92,35.68){\line(1,0){.974}}
+\put(17.86,35.68){\line(1,0){.974}}
+\put(19.81,35.68){\line(1,0){.974}}
+\put(21.76,35.68){\line(1,0){.974}}
+\put(23.71,35.68){\line(1,0){.974}}
+\put(25.65,35.68){\line(1,0){.974}}
+\put(27.6,35.68){\line(1,0){.974}}
+\put(29.55,35.68){\line(1,0){.974}}
+\put(31.5,35.68){\line(1,0){.974}}
+\put(33.44,35.68){\line(1,0){.974}}
+\put(35.39,35.68){\line(1,0){.974}}
+\put(37.34,35.68){\line(1,0){.974}}
+\put(39.28,35.68){\line(1,0){.974}}
+\put(41.23,35.68){\line(1,0){.974}}
+%\end
+%\dashline{1}(43.25,35.75)(43.25,9.75)
+\put(43.18,35.68){\line(0,-1){.963}}
+\put(43.18,33.75){\line(0,-1){.963}}
+\put(43.18,31.83){\line(0,-1){.963}}
+\put(43.18,29.9){\line(0,-1){.963}}
+\put(43.18,27.98){\line(0,-1){.963}}
+\put(43.18,26.05){\line(0,-1){.963}}
+\put(43.18,24.12){\line(0,-1){.963}}
+\put(43.18,22.2){\line(0,-1){.963}}
+\put(43.18,20.27){\line(0,-1){.963}}
+\put(43.18,18.35){\line(0,-1){.963}}
+\put(43.18,16.42){\line(0,-1){.963}}
+\put(43.18,14.49){\line(0,-1){.963}}
+\put(43.18,12.57){\line(0,-1){.963}}
+\put(43.18,10.64){\line(0,-1){.963}}
+%\end
+%\dashline{1}(32.75,9.75)(33,9.75)
+\put(32.68,9.68){\line(1,0){.125}}
+%\end
+%\dashline{1}(33.25,9.75)(33.25,41.5)
+\put(33.18,9.68){\line(0,1){.992}}
+\put(33.18,11.66){\line(0,1){.992}}
+\put(33.18,13.65){\line(0,1){.992}}
+\put(33.18,15.63){\line(0,1){.992}}
+\put(33.18,17.62){\line(0,1){.992}}
+\put(33.18,19.6){\line(0,1){.992}}
+\put(33.18,21.59){\line(0,1){.992}}
+\put(33.18,23.57){\line(0,1){.992}}
+\put(33.18,25.55){\line(0,1){.992}}
+\put(33.18,27.54){\line(0,1){.992}}
+\put(33.18,29.52){\line(0,1){.992}}
+\put(33.18,31.51){\line(0,1){.992}}
+\put(33.18,33.49){\line(0,1){.992}}
+\put(33.18,35.48){\line(0,1){.992}}
+\put(33.18,37.46){\line(0,1){.992}}
+\put(33.18,39.45){\line(0,1){.992}}
+%\end
+%\dashline{1}(33.25,41.5)(6.5,36)
+\multiput(33.18,41.43)(-.15923,-.03274){6}{\line(-1,0){.15923}}
+\multiput(31.27,41.04)(-.15923,-.03274){6}{\line(-1,0){.15923}}
+\multiput(29.36,40.64)(-.15923,-.03274){6}{\line(-1,0){.15923}}
+\multiput(27.45,40.25)(-.15923,-.03274){6}{\line(-1,0){.15923}}
+\multiput(25.54,39.86)(-.15923,-.03274){6}{\line(-1,0){.15923}}
+\multiput(23.63,39.47)(-.15923,-.03274){6}{\line(-1,0){.15923}}
+\multiput(21.72,39.07)(-.15923,-.03274){6}{\line(-1,0){.15923}}
+\multiput(19.8,38.68)(-.15923,-.03274){6}{\line(-1,0){.15923}}
+\multiput(17.89,38.29)(-.15923,-.03274){6}{\line(-1,0){.15923}}
+\multiput(15.98,37.89)(-.15923,-.03274){6}{\line(-1,0){.15923}}
+\multiput(14.07,37.5)(-.15923,-.03274){6}{\line(-1,0){.15923}}
+\multiput(12.16,37.11)(-.15923,-.03274){6}{\line(-1,0){.15923}}
+\multiput(10.25,36.72)(-.15923,-.03274){6}{\line(-1,0){.15923}}
+\multiput(8.34,36.32)(-.15923,-.03274){6}{\line(-1,0){.15923}}
+%\end
+%\dashline{1}(38.5,50.5)(38.5,27)
+\put(38.43,50.43){\line(0,-1){.979}}
+\put(38.43,48.47){\line(0,-1){.979}}
+\put(38.43,46.51){\line(0,-1){.979}}
+\put(38.43,44.55){\line(0,-1){.979}}
+\put(38.43,42.6){\line(0,-1){.979}}
+\put(38.43,40.64){\line(0,-1){.979}}
+\put(38.43,38.68){\line(0,-1){.979}}
+\put(38.43,36.72){\line(0,-1){.979}}
+\put(38.43,34.76){\line(0,-1){.979}}
+\put(38.43,32.8){\line(0,-1){.979}}
+\put(38.43,30.85){\line(0,-1){.979}}
+\put(38.43,28.89){\line(0,-1){.979}}
+%\end
+%\dashline{1}(38.5,50.5)(6.25,35.75)
+\multiput(38.43,50.43)(-.06891,-.031517){13}{\line(-1,0){.06891}}
+\multiput(36.64,49.61)(-.06891,-.031517){13}{\line(-1,0){.06891}}
+\multiput(34.85,48.79)(-.06891,-.031517){13}{\line(-1,0){.06891}}
+\multiput(33.05,47.97)(-.06891,-.031517){13}{\line(-1,0){.06891}}
+\multiput(31.26,47.15)(-.06891,-.031517){13}{\line(-1,0){.06891}}
+\multiput(29.47,46.33)(-.06891,-.031517){13}{\line(-1,0){.06891}}
+\multiput(27.68,45.51)(-.06891,-.031517){13}{\line(-1,0){.06891}}
+\multiput(25.89,44.69)(-.06891,-.031517){13}{\line(-1,0){.06891}}
+\multiput(24.1,43.87)(-.06891,-.031517){13}{\line(-1,0){.06891}}
+\multiput(22.3,43.05)(-.06891,-.031517){13}{\line(-1,0){.06891}}
+\multiput(20.51,42.24)(-.06891,-.031517){13}{\line(-1,0){.06891}}
+\multiput(18.72,41.42)(-.06891,-.031517){13}{\line(-1,0){.06891}}
+\multiput(16.93,40.6)(-.06891,-.031517){13}{\line(-1,0){.06891}}
+\multiput(15.14,39.78)(-.06891,-.031517){13}{\line(-1,0){.06891}}
+\multiput(13.35,38.96)(-.06891,-.031517){13}{\line(-1,0){.06891}}
+\multiput(11.55,38.14)(-.06891,-.031517){13}{\line(-1,0){.06891}}
+\multiput(9.76,37.32)(-.06891,-.031517){13}{\line(-1,0){.06891}}
+\multiput(7.97,36.5)(-.06891,-.031517){13}{\line(-1,0){.06891}}
+%\end
+%\vector(6.25,9.75)(33.25,41.25)
+\put(33.25,41.25){\vector(3,4){.07}}\multiput(6.25,9.75)(.0337078652,.0393258427){801}{\line(0,1){.0393258427}}
+%\end
+%\vector(6.25,10)(38.5,27.75)
+\put(38.5,27.75){\vector(2,1){.07}}\multiput(6.25,10)(.061195446,.033681214){527}{\line(1,0){.061195446}}
+%\end
+%\vector(6.25,9.75)(33.25,17.5)
+\put(33.25,17.5){\vector(4,1){.07}}\multiput(6.25,9.75)(.1173913,.03369565){230}{\line(1,0){.1173913}}
+%\end
+%\dashline{1}(33.25,17.75)(30.5,23.5)
+\multiput(33.18,17.68)(-.03274,.06845){12}{\line(0,1){.06845}}
+\multiput(32.39,19.32)(-.03274,.06845){12}{\line(0,1){.06845}}
+\multiput(31.61,20.97)(-.03274,.06845){12}{\line(0,1){.06845}}
+\multiput(30.82,22.61)(-.03274,.06845){12}{\line(0,1){.06845}}
+%\end
+%\emline(28.51,21.92)(29.22,20.5)
+\multiput(28.51,21.92)(.033672,-.067344){21}{\line(0,-1){.067344}}
+%\end
+%\emline(29.22,20.5)(31.16,21.56)
+\multiput(29.22,20.5)(.060767,.033146){32}{\line(1,0){.060767}}
+%\end
+\put(30.5,9.75){\line(0,1){2.75}}
+\put(30.5,12.5){\line(1,0){2.75}}
+\put(4.25,8.75){\makebox(0,0)[cc]{$0$}}
+\put(4.75,37){\makebox(0,0)[cc]{$\gamma$}}
+\put(34.75,44){\makebox(0,0)[cc]{$\xi$}}
+\put(46.5,9.75){\makebox(0,0)[cc]{$\beta$}}
+\put(40.75,27.75){\makebox(0,0)[cc]{$\alpha$}}
+\put(37.25,17.25){\makebox(0,0)[cc]{$\xi-\gamma$}}
+\put(27.75,3.75){\makebox(0,0)[cc]{Figure 6.1}}
+\end{picture}
+\end{center}
+
+The set of all angle bisectors of $\alpha$ and $\beta$ at $\gamma$ is the line which passes through $\gamma$ and is perpendicular to $\left( \frac{\alpha}{\vert \vert \alpha \vert \vert} \right) - \left( \frac{\beta}{\vert \vert \beta \vert \vert} \right)$. Note that
+\begin{equation*}
+\left( \frac{\alpha}{ \vert \vert \alpha \vert \vert } - \frac{\beta}{ \vert \vert \beta \vert \vert }, \ \frac{\alpha}{ \vert \vert \alpha \vert \vert } + \frac{\beta}{ \vert \vert \beta \vert \vert } \right) = \frac{(\alpha,\alpha)}{ \vert \vert \alpha \vert \vert ^{2}} - \frac{(\beta,\beta)}{ \vert \vert \beta \vert \vert ^{2}} = 0
+\end{equation*}
+and hence that $\xi$ is an angle bisector of $\alpha$ and $\beta$ at $\gamma$ if and only if 
+
+
+\subsection{Equation}
+
+$\xi=\gamma+t \left( \frac{\alpha}{ \vert \vert \alpha \vert \vert }+\frac{\beta}{ \vert \vert \beta \vert \vert } \right)$ for some $t \in R$.
+
+
+\subsection{Theorem}
+
+If $\xi$ is an angle bisector of $\alpha$ and $\beta$ at $0$, and $P_{1}$ and $P_{2}$ denote the perpendicular projections of $R_{2}$ onto $[\alpha]$ and $[\beta]$, respectively, then $\vert \vert \xi-P_{1}\xi \vert \vert = \vert \vert \xi-P_{2}\xi \vert \vert$.
+
+\vspace{0.3cm}
+
+\textbf{Proof}: For any $\xi \in R_{2}$, we have $P_{1}\xi = \left( \xi, \frac{\alpha}{\vert \vert \alpha \vert \vert} \right) \frac{\alpha}{\vert \vert \alpha \vert \vert}$ and hence $\vert \vert P_{1}\xi \vert \vert = \left( \xi, \frac{\alpha}{\vert \vert \alpha \vert \vert} \right)$ and $(\xi,P_{1}\xi) = \left( \xi, \frac{\alpha}{\vert \vert \alpha \vert \vert} \right) ^{2}$. It now follows that
+\begin{equation*}
+\vert \vert \xi-P_{1}\xi \vert \vert ^{2}= \vert \vert \xi \vert \vert ^{2}-2(\xi,P_{1}\xi)+ \vert \vert P_{1}\xi \vert \vert ^{2}= \vert \vert \xi \vert \vert ^{2}-(\xi,\alpha/ \vert \vert \alpha \vert \vert )^{2}
+\end{equation*}
+If $\xi$ is an angle bisector of $\alpha$ and $\beta$ at $0$, then we clearly have $\vert \vert \xi-P_{1}\xi \vert \vert ^{2} = \vert \vert \xi-P_{2}\xi \vert \vert ^{2}$. The preceding theorem states that if $\xi$ is an angle bisector of $\alpha$ and $\beta$ at $0$, then $P$ is equidistant from the sides of the angle determined by $\alpha$ and $\beta$. The following result is a consequence of the definitions of angle bisector and altitude.
+
+
+\subsection{Theorem}
+
+A vector $\xi \in R_{2}$ is an angle bisector of $\alpha$ and $\beta$ at $0$, if and only if is an altitude of $H \left( 0, \frac{\alpha}{\vert \vert \alpha \vert \vert}, \frac{\beta}{\vert \vert \beta \vert \vert} \right)$ at $0$.
+
+We continue to assume that $\{\alpha,\beta\}$ is a linearly independent set in $R_{2}$. Let $B_{0}$ denote the set of angle bisectors of $\alpha$ and $\beta$ at $0$. We would like to find the unique vector $\mu \in R_{2}$ which belongs to $B_{0} \cap H(\alpha,\beta)$, i.e., the angle bisector of $\alpha$ and $\beta$ at $0$, which belongs to the segment determined by $\alpha$ and $\beta$. It follows from (6.1) and the definition of $H(\alpha,\beta)$ that
+\begin{equation*}
+\mu = t \left( \frac{\alpha}{ \vert \vert \alpha \vert \vert } + \frac{\beta}{ \vert \vert \beta \vert \vert } \right) = s\alpha + (1-s)\beta \text{ for some } t \in R \text{ and } s \in [0,1]
+\end{equation*}
+
+The linear independence of the set $\{ \alpha,\beta \}$ implies that
+\begin{equation*}
+t(\frac{1}{ \vert \vert \alpha \vert \vert }+\frac{1}{ \vert \vert \beta \vert \vert })=1\ \textnormal{or}\  t=\frac{ \vert \vert \alpha \vert \vert \  \vert \vert \beta \vert \vert }{ \vert \vert \alpha \vert \vert + \vert \vert \beta \vert \vert }
+\end{equation*}
+
+We therefore see that
+\begin{equation*}
+\mu = \frac{ ( \vert \vert \beta \vert \vert \alpha + \vert \vert \alpha \vert \vert \beta) }{ ( \vert \vert \alpha \vert \vert + \vert \vert \beta \vert \vert ) }
+\end{equation*}
+
+The norm of $\mu$ can be computed by observing that
+\begin{equation*}
+( \vert \vert \beta \vert \vert \alpha+ \vert \vert \alpha \vert \vert \beta,\  \vert \vert \beta \vert \vert \alpha+ \vert \vert \alpha \vert \vert \beta)=2 \vert \vert \alpha \vert \vert \ \  \vert \vert \beta \vert \vert \ \ [ \vert \vert \alpha \vert \vert \ \  \vert \vert \beta \vert \vert +(\alpha,\beta)]
+\end{equation*}
+and hence giving
+\begin{equation*}
+\vert \vert \mu \vert \vert ^{2} = 2 \vert \vert \alpha \vert \vert \ \  \vert \vert \beta \vert \vert \ \ \frac{ [ \vert \vert \alpha \vert \vert \ \  \vert \vert \beta \vert \vert \ +(\alpha,\beta)] }{ ( \vert \vert \alpha \vert \vert + \vert \vert \beta \vert \vert )^{2} }
+\end{equation*}
+ 
+We now consider the intersection of the sets of angle bisectors of a triangle. Let $\{ \alpha,\beta \}$ be a linearly independent set in $R_{2}$ and consider the triangle $H(0,\alpha,\beta)$. A vector $\xi \in R_{2}$ is an angle bisector of $H(0,\alpha,\beta)$ at $0$ if $\xi$ is an angle bisector of $\alpha$ and $\beta$ at $0$. A vector $\xi\in R_{2}$ is an angle bisector of $H(0,\alpha,\beta)$ at $\alpha$ if $\xi$ is an angle bisector of $-\alpha$ and $\beta-\alpha$ at $\alpha$. A vector $\xi\in R_{2}$ is an angle bisector of $H(0,\alpha,\beta)$ at $\beta$ if $\xi$ is an angle bisector of $-\beta$ and $\alpha-\beta$ at $\beta$. We therefore have $B_{0},B_{1},B_{2}$, the three lines of angle bisectors of $H(0,\alpha,\beta)$, as in Figure 6.2. 
+
+\begin{center}
+%TeXCAD Picture [ch-fig6.2.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(57.5,53.5)(0,0)
+\put(8,17.5){\line(1,0){39.75}}
+%\vector(23.25,40.75)(8.25,17.5)
+\put(8.25,17.5){\vector(-2,-3){.07}}\multiput(23.25,40.75)(-.033707865,-.052247191){445}{\line(0,-1){.052247191}}
+%\end
+%\vector(23.25,41)(47.5,17.25)
+\put(47.5,17.25){\vector(1,-1){.07}}\multiput(23.25,41)(.0344460227,-.0337357955){704}{\line(1,0){.0344460227}}
+%\end
+%\emline(21.75,53.5)(27.5,10.75)
+\multiput(21.75,53.5)(.03362573,-.25){171}{\line(0,-1){.25}}
+%\end
+%\emline(1.5,14.5)(43.5,32.75)
+\multiput(1.5,14.5)(.077634011,.033733826){541}{\line(1,0){.077634011}}
+%\end
+%\emline(57.5,14.5)(6.25,31.5)
+\multiput(57.5,14.5)(-.101686508,.033730159){504}{\line(-1,0){.101686508}}
+%\end
+\put(27.75,8.5){\makebox(0,0)[cc]{$B_0$}}
+\put(46.5,34){\makebox(0,0)[cc]{$B_1$}}
+\put(4.25,33.75){\makebox(0,0)[cc]{$B_2$}}
+\put(47,13.75){\makebox(0,0)[cc]{$\beta$}}
+\put(8.5,14){\makebox(0,0)[cc]{$\alpha$}}
+\put(25.25,43){\makebox(0,0)[cc]{$0$}}
+\put(27.5,3.5){\makebox(0,0)[cc]{Figure 6.2}}
+\end{picture}
+\end{center}
+
+
+\subsection{Theorem}
+
+The angle bisectors of a triangle are concurrent. (That is, there is a unique vector common to the three lines $B_{0},B_{1},B_{2}$.)
+
+\vspace{0.3cm}
+
+\textbf{Proof}: Since $\{ \alpha,\beta \}$ is a linearly independent set, the lines $B_{0}$ and $B_{1}$ are not parallel and hence, using the form (6.1), there exists a unique $\xi \in R_{2}$ such that
+\begin{equation*}
+\xi = t \left( \frac{\alpha}{ \vert \vert \alpha \vert \vert } + \frac{\beta}{ \vert \vert \beta \vert \vert } \right) = \alpha-s \left( \frac{\alpha}{ \vert \vert \alpha \vert \vert } + \frac{\alpha-\beta}{ \vert \vert \alpha-\beta \vert \vert } \right) \text{ for some } s,t \in R
+\end{equation*}
+
+Therefore
+\begin{equation*}
+\frac{t}{ \vert \vert \alpha \vert \vert }\alpha + \frac{t}{ \vert \vert \beta \vert \vert }\beta = \left( 1 - \frac{s}{ \vert \vert \alpha \vert \vert } - \frac{s}{ \vert \vert \alpha-\beta \vert \vert } \right) \alpha + \frac{s}{ \vert \vert \alpha-\beta \vert \vert }\beta
+\end{equation*}
+and the linear independence of the set $\{ \alpha,\beta \}$ implies that
+\begin{equation*}
+\frac{t}{ \vert \vert \alpha \vert \vert } = 1 - \frac{s}{ \vert \vert \alpha \vert \vert } - \frac{s}{ \vert \vert \alpha-\beta \vert \vert } \text{ and } \frac{t}{ \vert \vert \beta \vert \vert } = \frac{s}{ \vert \vert \alpha-\beta \vert \vert }
+\end{equation*}
+
+Substituting $s= \frac{ \vert \vert \alpha-\beta \vert \vert t }{ \vert \vert \beta \vert \vert }$ into the first equation and solving for $t$ gives
+\begin{equation*}
+t = \frac{ \vert \vert \alpha \vert \vert \ \  \vert \vert \beta \vert \vert }{ ( \vert \vert \alpha \vert \vert + \vert \vert \beta \vert \vert + \vert \vert \alpha-\beta \vert \vert ) }
+\end{equation*}
+
+The unique $\xi\in R_{2}$ in $B_{0}\cap B_{1}$ is therefore 
+
+
+\subsection{Equation}
+
+\begin{equation*}
+\xi=\frac{( \vert \vert \beta \vert \vert \alpha+ \vert \vert \alpha \vert \vert \beta)}{( \vert \vert \alpha \vert \vert + \vert \vert \beta \vert \vert + \vert \vert \alpha-\beta \vert \vert )}
+\end{equation*}
+
+Interchanging $\alpha$ and $\beta$ in the preceding argument shows that $\xi \in B_{0} \cap B_{2}$ and hence that $\xi \in B_{0} \cap B_{1} \cap B_{2}$, as desired. 
+
+Note that $\xi \in H(0,\alpha,\beta)$ and (as with $\mu$) that
+\begin{equation*}
+\vert \vert \xi \vert \vert ^{2} = 2 \ \vert \vert \alpha \vert \vert \ \  \vert \vert \beta \vert \vert \ \ \frac{ [ \vert \vert \alpha \vert \vert \ \  \vert \vert \beta \vert \vert + (\alpha,\beta)] }{ ( \vert \vert \alpha \vert \vert + \vert \vert \beta \vert \vert + \vert \vert \alpha-\beta \vert \vert )^{2} }
+\end{equation*}
+
+In higher dimensions, we consider $\xi_{0},\cdots,\xi_{n} \in R_{n}$ with $\{ \xi_{1},\cdots,\xi_{n} \}$ a linearly independent set in $R_{n}$. A vector $\xi \in R_{n}$ is an \emph{angle equisector} of $\{ \xi_{1},\cdots,$ $\xi_{n} \}$ at $\xi_{0}$ if $\left( \xi-\xi_{0}, \frac{\xi_{i}}{\vert \vert \xi_{i} \vert \vert} \right) = \left( \xi-\xi_{0}, \frac{\xi_{j}}{\vert \vert \xi_{j} \vert \vert} \right)$ for $i,j = 1,\cdots,n$, i.e., the lengths of the orthogonal projections of $\xi-\xi_{0}$ onto $[\xi_{i}]$ for $i = 1,\cdots,n$ are equal. The set of all angle equisectors of $\{ \xi_{1},\cdots,\xi_{n} \}$ at $\xi_{0}$ is a line which passes through $\xi_{0}$ and is perpendicular to $\left( \frac{ \xi_{i} }{ \vert \vert \xi_{i} \vert \vert } \right) - \left( \frac{ \xi_{j} }{ \vert \vert \xi_{j} \vert \vert } \right)$ for $i,j = 1,\cdots,n$. As in the case $n=2$, we obtain 
+
+
+\subsection{Theorem}
+
+If $\xi$ is an angle equisector of $\{ \xi_{1},\cdots,\xi_{n} \}$ at $0$, and $P_{i}$ denotes the orthogonal projection of $R_{n}$ onto $[\xi_{i}]$, then $ \vert \vert \xi-P_{i}\xi \vert \vert = \vert \vert \xi-P_{j}\xi \vert \vert $ for $i,j=1,\cdots,n$.
+
+For a linearly independent set $\{ n \}$ in $R_n \{ \xi_{1},\cdots,\xi_{n} \}$ at $R_{n}$, let $B_{0}$ denote the set of angle equisectors of $\{ \xi_{1},\cdots,\xi_{n} \}$ at $0$. As in the case $n=2$, we would like to find the unique $\mu \in R_{n}$ which is in $B_{0} \cap H(\xi_{1},\cdots,\xi_{n})$. To do this, it is convenient to find a direction vector for the line $B_{0}$ so that we have a form similar to (6.1). One method for finding a direction vector for $B_{0}$ is to note, as in Theorem 6.3, that $\xi \in B_{0}$ if and only if $\xi$ is an altitude of $H \left( 0, \frac{\xi_{1}}{\vert \vert \xi_{1} \vert \vert}, \cdots, \frac{\xi_{n}}{\vert \vert \xi_{n} \vert \vert} \right)$ at $0$. Hence the vector $\delta$ (or a nonzero multiple of $\delta$) given in Section 4 with $\xi_{i}$ replaced by $\frac{\xi_{i}}{\vert \vert \xi_{i} \vert \vert}$ is a direction vector for $B_{0}$. Alternatively, one can find a direction vector for $B_{0}$ by noting that $\nu \in B_{0}$ if $(\nu,\xi_{i})= \vert \vert \xi_{i} \vert \vert$ for $i=1,\cdots,n$. Letting $\nu=\sum_{i=1}^{n}x_{i} \xi_{i}$, we obtain the linear system of equations $GX=B$, where $G$ is the Gram matrix of $\{ \xi_{1},\cdots,\xi_{n} \}$, $X'=(x_{1},\cdots,x_{n})$ and $B'=( \vert \vert \xi_{1} \vert \vert ,\cdots, \vert \vert \xi_{n} \vert \vert )$. From Cramer's Rule, we now conclude that the unique $\nu$ satisfying $(\nu,\xi_{i})= \vert \vert \xi_{i} \vert \vert$ for $i=1,\cdots,n$ is
+\begin{equation*}
+\nu=\sum_{i=1}^{n}h_{i}\xi_{i} / g
+\end{equation*}
+where $g$ is the Gram determinant of $\{\xi_{1},\cdots,\xi_{n}\}$, and $h_{i}$ is the determinant of the matrix obtained by replacing the $i$-th column of the Gram matrix of $\{\xi_{1},\cdots,\xi_{n}\}$ by $( \vert \vert \xi_{1} \vert \vert ,\cdots, \vert \vert \xi_{n} \vert \vert )'$. We now conclude that $\xi \in B_{0}$ if and only if 
+
+
+\subsection{Equation}
+
+\begin{equation*}
+\xi=t\sum_{i=1}^{n}h_{i}\xi_{i}/g\ \textnormal{for\  some}\  t\in R
+\end{equation*}
+
+Hence $\mu\in B_{0}\cap H(\xi_{1},\cdots,\xi_{n})$ if and only if
+\begin{equation*}
+\mu=t\sum_{i=1}^{n}h_{i}\xi_{i}/g\ =\sum_{i=1}^{n}a_{i}\xi_{i}\textnormal{ for\  some }\  t\in R\ \textnormal{and}\  a_{i}\geq0\ \textnormal{with}\ \sum_{i=1}^{n}a_{i}=1
+\end{equation*}
+
+The linear independence of the set $\{ \xi_{1},\cdots,\xi_{n} \}$ implies that
+\begin{equation*}
+t\sum_{i=1}^{n}h_{i}/g=1\ \textnormal{or}\  t=g/\sum_{i=1}^{n}h_{i}
+\end{equation*}
+
+We therefore see that
+\begin{equation*}
+\mu = \sum_{i=1}^{n}h_{i}\xi_{i} \ / \ \sum_{i=1}^{n}h_{i}
+\end{equation*}
+
+In considering the concurrency of the sets of angle equisectors of the convex hull of a set of vectors, we encounter problems similar to those for altitudes. Let $\{ \xi_{1},\cdots,\xi_{n} \}$ be a linearly independent set in $R_{n}$. A vector $\xi \in R_{n}$ is angle equisector of $H(0,\xi_{1},\cdots,\xi_{n})$ at $0$ if $\xi$ is an angle equisector of $\{\xi_{1},\cdots,\xi_{n}\}$ at $0$. A vector $\xi \in R_{n}$ is an angle equisector of $H(0,\xi_{1},\cdots,\xi_{n})$ at $\xi_{i}(i=1,\cdots,n)$ if $\xi$ is an angle equisector of $\{ -\xi_{i},\ \xi_{1}-\xi_{i},\cdots,\hat{(\xi_{i}-\xi_{i})},\cdots,\xi_{n}-\xi_{i} \}$ at $\xi_{i}$. In the obvious notation, we have $B_{0},\cdots,B_{n}$, the $n+1$ lines of angle equisectors of $H(0,\xi_{1},\cdots,\xi_{n})$. 
+
+Note that if $\xi \in B_{0}$, then $\left(\xi,\frac{\xi_{i}}{ \vert \vert \xi_{i} \vert \vert } \right) = \left( \xi, \frac{\xi_{j}}{ \vert \vert \xi_{j} \vert \vert } \right)$ for all $i,j=1,\cdots,n$, and hence $\left(\xi, \frac{\xi_{i}}{ \vert \vert \xi_{i} \vert \vert } \right)$ is independent of $i=1,\cdots,n$. Therefore if $\xi \in B_{0} \cap B_{i}$ for some $i=1,\cdots,n$, then
+\begin{equation*}
+\left( \xi, \frac{\xi_{1}}{ \vert \vert \xi_{1} \vert \vert } \right) = \cdots = \left( \xi, \frac{\xi_{n}}{ \vert \vert \xi_{n} \vert \vert } \right)
+\end{equation*}
+(say, $= d$),  and
+\begin{equation*}
+\left( \xi-\xi_{i}, \frac{-\xi_{i}}{ \vert \vert \xi_{i} \vert \vert } \right) = \left( \xi-\xi_{i}, \frac{(\xi_{j}-\xi_{i})}{ \vert \vert \xi_{i}-\xi_{j} \vert \vert } \right) \text{ for } j=1,\cdots,\hat{i},\cdots,n
+\end{equation*}
+
+It now follows from these equations that
+\begin{eqnarray*}
+- \left( \xi, \frac{\xi_{i}}{\vert \vert \xi_{i} \vert \vert} \right) + \vert \vert \xi_{i} \vert \vert  & = & \frac{ [(\xi,\xi_{j})-(\xi,\xi_{i})+(\xi_{i},\xi_{i}-\xi_{j})] }{ \vert \vert \xi_{i}-\xi_{j} \vert \vert } \ , - d + \vert \vert \xi_{i} \vert \vert \\ \\
+\  & = & \frac{ [ \vert \vert \xi_{j} \vert \vert  d -  \vert \vert \xi_{i} \vert \vert d + (\xi_{i},\xi_{i}-\xi_{j}) }{ \vert \vert \xi_{i}-\xi_{j} \vert \vert }
+\end{eqnarray*}
+
+One can algebraically solve for $d$ to get
+\begin{equation*}
+d = \frac{ [(\xi_{i},\xi_{1}-\xi_{j})- \vert \vert \xi_{i} \vert \vert \ \  \vert \vert \xi_{i}-\xi_{j} \vert \vert \ ] }{ ( \vert \vert \xi_{i} \vert \vert - \vert \vert \xi_{j} \vert \vert - \vert \vert \xi_{i}-\xi_{j} \vert \vert ) }
+\end{equation*}
+
+We therefore see that a necessary condition for $B_{0}\cap B_{i}$ to be nonempty is that the right-hand side of the preceding equation for $d$ is independent of $j=1,\cdots,\hat{i},\cdots,n$. It now follows that a necessary condition for $B_{0}\cap\cdots\cap B_{n}$ to be nonempty is that 
+
+
+\subsection{Equation}
+
+\begin{equation*}
+\frac{ [(\xi_{i},\xi_{i}-\xi_{j})- \vert \vert \xi_{i} \vert \vert \ \  \vert \vert \xi_{i}-\xi_{j} \vert \vert \ ] }{ ( \vert \vert \xi_{i} \vert \vert - \vert \vert \xi_{j} \vert \vert - \vert \vert \xi_{i}-\xi_{j} \vert \vert ) }
+\end{equation*}
+is independent of $i \neq j \in \{ 1,\cdots,n \}$. 
+
+
+\subsection{Theorem}
+
+The angle equisectors of $H(0,\xi_{1},\cdots,\xi_{n})$ are concurrent; that is, there is a unique vector common to the $n+1$ lines $B_{0},\cdots,B_{n}$, if and only if (6.8) holds.
+
+\vspace{0.3cm}
+
+\textbf{Proof}: The necessity of (6.8) has already been demonstrated. For the sufficiency, we suppose that (6.8) holds and we denote the common value by $d$. As usual, there is a unique $\xi \in R_{n}$ for which $\left( \xi, \frac{\xi_{1}}{ \vert \vert \xi_{1} \vert \vert } \right) = \cdots = \left( \xi, \frac{\xi_{n}}{ \vert \vert \xi_{n} \vert \vert } \right) = d$. Thus $\xi \in B_{0}$ and the preceding calculation shows that $\xi \in B_{1}$ for each $i=1,\cdots,n$. The uniqueness of this follows from the preceding calculations.
+
+Note that the unique $\xi\in R_{n}$ given by the preceding theorem is
+\begin{equation*}
+\xi = d\nu = d(\sum_{i=1}^{n}h_{i}\xi_{i}) /g
+\end{equation*}
+where $g$ is the Gram determinant of $\{ \xi_{1},\cdots,\xi_{n} \}$ and $h_{i}$ is the determinant of the matrix obtained by replacing the $i$-th column of the Gram matrix of $\{ \xi_{1},\cdots,\xi_{n} \}$ by $( \vert \vert \xi_{1} \vert \vert ,\cdots, \vert \vert \xi_{n} \vert \vert )'$.
+
+
+\subsection*{Exercises}
+
+\begin{enumerate}
+  \item Show that $\xi= \frac{( \vert \vert \beta \vert \vert \alpha + \vert \vert \alpha \vert \vert \beta)}{( \vert \vert \alpha \vert \vert + \vert \vert \beta \vert \vert + \vert \vert \alpha-\beta \vert \vert )}$ belongs to $B_{0} \cap B_{1} \cap B_{2}$ as in Theorem 6.4 by showing that it satisfies the angle bisector equations of $H(0,\alpha,\beta)$:
+    \begin{equation*}
+      \begin{cases}
+        \left( \xi, \frac{\alpha}{\vert \vert \alpha \vert \vert} \right)        & = \left( \xi, \frac{\beta}{\vert \vert \beta \vert \vert} \right) \\
+        \left( \xi-\alpha, \frac{\alpha}{\vert \vert \alpha \vert \vert} \right) & = \left( \xi-\alpha, \frac{(\alpha-\beta)}{\vert \vert \alpha-\beta \vert \vert} \right) \\
+        \left( \xi-\beta, \frac{\beta}{\vert \vert \beta \vert \vert} \right)    & = \left( \xi-\beta,\ \frac{(\beta-\alpha)}{\vert \vert \alpha-\beta \vert \vert} \right)
+      \end{cases}
+    \end{equation*}
+  \item Show that any pair of the angle bisector equations of $H(0,\alpha,\beta)$ given in Exercise 6.1 imply the third equation.
+  \item Prove the following improved version of Theorem 6.2. A vector $\xi \in R_{2}$ is an angle bisector of $\alpha$ and $\beta$ at $\gamma$ if and only if $\vert \vert \xi-\gamma-P_{1}(\xi-\gamma) \vert \vert = \vert \vert \xi-\gamma-P_{2}(\xi-\gamma) \vert \vert $ and $\xi=\gamma+t(s\alpha+(1-s)\beta)$ for some $t \in R$ and $s \in [0,1]$. The latter condition says that $\xi-\gamma$ is a scalar multiple of a vector belonging to the segment $H(\alpha,\beta)$.
+  \item Use Exercise 6.3 to show Exercise 6.2 by noting that $\xi \in B_{0} \cap B_{1} \cap B_{2}$ if and only if $\xi \in H(0,\alpha,\beta)$ and
+    \begin{equation*}
+      \begin{cases}
+        B_{0}: &  \vert \vert \xi-P_{1}\xi \vert \vert = \vert \vert \xi-P_{2}\xi \vert \vert \\
+        B_{1}: &  \vert \vert \xi-P_{1}\xi \vert \vert = \vert \vert \xi-\alpha-P_{3}(\xi-\alpha) \vert \vert \\
+        B_{2}: &  \vert \vert \xi-P_{2}\xi \vert \vert = \vert \vert \xi-\beta-P_{3}(\xi-\beta) \vert \vert
+      \end{cases}
+    \end{equation*}
+    where $P_{3}$ denotes the orthogonal projection of $R_{2}$ onto $[\alpha-\beta]$. Interpret this result geometrically.
+  \item Generalize the idea in Exercise 6.4 to higher dimensions.
+  \item Let $\xi$ be the unique vector in $R_{2}$ given by Theorem 6.4. Show that $\xi$ is equidistant from the three sides of $H(0,\alpha,\beta)$ and then find this distance $r$ as a function of $\alpha$ and $\beta$. Relate this to Exercise 6.4. Generalize this to higher dimensions.
+  \item For a linearly independent set $\{ \alpha,\beta \}$ in $R_{3}$, define angle bisectors of $H(0,\alpha,\beta)$ by the equations in Exercise 6.1. Show that $B_{0}\cap B_{1}\cap B_{2}$ is the line through (defined in Exercise 6.1) which is perpendicular to $[\alpha,\beta]$. Generalize this to $H(0,\xi_{1},\cdots,\xi_{k})$, where $\{ \xi_{1},\cdots,\xi_{k} \}$ is a linearly independent set in $R_{n}$.
+  \item Show that condition (6.8) is symmetric in $i$ and $j$, and hence conclude that the phrase ``independent of $i \neq j \in \{ 1,\cdots,n \}$'' can be replaced by ``independent of $1\leq i<j\leq n$''. We now see that condition (6.8) is vacuous if $n=2$ and this is consistent with Theorem 6.4.
+  \item Investigate condition (6.8) in the case that $n=3$ and $\vert \vert \xi_{1} \vert \vert = \vert \vert \xi_{2} \vert \vert = \vert \vert \xi_{3} \vert \vert$. More generally, define what it means for $H(0,\xi_{1},\cdots,\xi_{n})$ to be isosceles (at $0$) and investigate condition (6.8) in this setting.
+\end{enumerate}
+
+
+\section{Problems}
+\markboth{7. Problems}{7. Problems}
+
+In this section, we state some additional exercises, many of which relate topics from more than one of the preceding sections and may lead to more advanced research problems. A geometrical understanding of the two dimensional problem is essential before posing generalizations to higher dimensions.
+
+\subsection*{Exercises}
+
+\begin{enumerate}
+  \item Let $\xi$ denote the unique common angle bisector of $H(0,\alpha,\beta)$ given in Theorem 6.4. Use the idea of Exercise 6.6 to show that
+    \begin{equation*}
+    \frac{A_{0}}{ \vert \vert \alpha-\beta \vert \vert }=\frac{A_{1}}{ \vert \vert \alpha \vert \vert }=\frac{A_{2}}{ \vert \vert \beta \vert \vert }
+    \end{equation*}
+    where $A_{0},A_{1},A_{2}$ are the areas of $H(\alpha,\beta,\xi), H(0,\alpha,\xi), H(0,\beta,\xi)$, respectively. What does this say about the Gram determinants $g(\alpha,\xi)$, $g(\beta,\xi)$, and $g(\xi-\alpha,\xi-\beta)$?
+  \item Let $\xi$ denote the unique common angle bisector of $H(0,\alpha,\beta)$ given in Theorem 6.4, and let $\delta$ denote the unique altitude vector of $H(0,\alpha,\beta)$ at $0$ which belongs to $P(\alpha,\beta)$ given in Section 4. Show by geometry and by the formula in Section 4, that $ \vert \vert \delta \vert \vert ^{2} = \frac{g}{ \vert \vert \alpha-\beta \vert \vert } ^{2}$. Then show that $\frac{r}{ \vert \vert \delta \vert \vert } = \frac{ \vert \vert \alpha-\beta \vert \vert }{k}$, where $r$ is the distance in Exercise 6.6 and $k= \vert \vert \alpha \vert \vert + \vert \vert \beta \vert \vert + \vert \vert \alpha-\beta \vert \vert $. Find similar formulas for the vectors $\delta_{1}$ and $\delta_{2}$ defined in Section 4. Show that
+    \begin{equation*}
+    \frac{1}{r} = \frac{1}{ \vert \vert \delta \vert \vert } + \frac{1}{ \vert \vert \delta_{1} \vert \vert } + \frac{1}{ \vert \vert \delta_{2} \vert \vert }
+    \end{equation*}
+  \item For any $\gamma \in H(0,\alpha,\beta)$, let $\ell$, $\ell_{1}$, $\ell_{2}$ denote the distances from $\gamma$ to $P(\alpha,\beta)$, $[\beta]$, $[\alpha]$, respectively. Prove that
+    \begin{equation*}
+    \frac{\ell}{ \vert \vert \delta \vert \vert }+\frac{\ell_{1}}{ \vert \vert \delta_{1} \vert \vert }+\frac{\ell_{2}}{ \vert \vert \delta_{2} \vert \vert }=1
+    \end{equation*}
+    where $\delta,\delta_{1},\delta_{2}$ are the altitudes of $H(0,\alpha,\beta)$ defined in Section 4. What happens if $\gamma \notin H(0,\alpha,\beta)$?
+  \item Try to generalize Exercises 7.1 - 7.3 to three dimensions and then to higher dimensions. It will be useful to develop a theory to find a vector in $R_{3}$ which is equidistant from the faces of $H(0,\xi_{1},\xi_{2},\xi_{3})$ and then generalize this to higher dimensions.
+  \item Prove that conditions (4.2) and (6.8) are equivalent if $H(0,\xi_{1},\cdots,\xi_{n})$ is isosceles (at $0$). (See Exercise 6.9.) Investigate implications and relationships between conditions (4.2) and (6.8). In particular, try to find situations in which $H(0,\xi_{1},\cdots,\xi_{n})$ has concurrent altitudes if and only if it has concurrent angle equisectors. Also prove that the unique perpendicular equisector of $H(0,\xi_{1},\cdots,\xi_{n})$ (see Exercise 3.4) is an angle equisector of $(\xi_{1},\cdots,\xi_{n})$ at 0 if $H(0,\xi_{1},\cdots,\xi_{n})$ is isosceles.
+  \item Prove the following result in the setting of Exercise 7.2. If $\delta \in H(\alpha,\beta)$ and $\delta\neq\alpha,\beta$, then the set of altitudes of $H(0,\alpha,\beta)$ at 0 is equal to the set of angle bisectors of $H(\delta,\alpha+\delta_{1},\beta+\delta_{2})$ at $\delta$. What happens if $\delta \notin H(\alpha,\beta)$? Generalize this to higher dimensions.
+  \item Find relationships between perpendicular equisectors, altitudes, medians, and angle equisectors similar to those in Exercises 7.6 and 4.1.
+  \item Let $\mu$ denote the unique angle bisector of $\alpha$ and $\beta$ at $0$ which belongs to $H(\alpha,\beta)$. Prove that
+    \begin{equation*}
+    \frac{ \vert \vert \mu-\alpha \vert \vert }{ \vert \vert \mu-\beta \vert \vert } = \frac{ \vert \vert \alpha \vert \vert }{ \vert \vert \beta \vert \vert }
+    \end{equation*}
+    Try to generalize this result to higher dimensions.
+  \item Let $\xi$ denote the unique common angle bisector of $H(0,\alpha,\beta)$ given in Theorem 6.4, and let $\psi$ denote the unique common perpendicular bisector of $H(0,\alpha,\beta)$ given in Theorem 3.2. Let $r$ denote the distance from $\xi$ to the sides of $H(0,\alpha,\beta)$ as in Exercise 6.6 and let $R$ denote the distance from $\psi$ to the corners of $H(0,\alpha,\beta)$ as in Theorem 3.1. Prove Euler's Theorem:
+    \begin{equation*}
+    \vert \vert \xi-\psi \vert \vert ^{2}=R(R-r)
+    \end{equation*}
+    Generalize this result to higher dimensions.
+  \item Consider a triangle $H(0,\alpha,\beta)$ in $R_{2}$ with $(\alpha,\beta)=0$. Let $\delta$ be the unique altitude vector of $H(0,\alpha,\beta)$ at $0$ which belongs to $P(\alpha,\beta)$ and hence to $H(\alpha,\beta)$. Let $P_{1},P_{2},P_{3}$ denote the orthogonal projections of $R_{2}$ onto $[\alpha],[\beta],[\alpha-\beta]$, respectively. Define two sequences of vectors $\{ \alpha_{n} \}$ and $\{ \mu_{n} \}$ according to the scheme:
+    \begin{equation*}
+    \alpha_{1}=P_{1}\delta,\ \ \mu_{1}=\delta+P_{3}\alpha_{1},\ \ \alpha_{2}=P_{1}\mu_{1},\ \ \mu_{2}=\delta+P_{3}\alpha_{2},\ \ \cdots
+    \end{equation*}
+    Note that $\alpha_{n} \in [\alpha]$, $\mu_{n} \in H(\alpha,\beta)$, and $\mu_{n}$ is the unique altitude vector of $H(\alpha_{n},\mu_{n-1},\alpha)$ at $\alpha_{n}$ which belongs to $H(\alpha,\beta)$. Another pair of sequences of vectors $\{ \beta_{n} \}$ and $\{ \nu_{n} \}$ is defined by replacing $P_{l}$ by $P_{2}$ in the preceding scheme. Hence $\beta_{n} \in [\beta]$ and $\nu_{n} \in H(\alpha,\beta)$. Use induction to prove that
+    \begin{equation*}
+    \frac{ \vert \vert \alpha_{n}-\alpha \vert \vert }{ \vert \vert \beta_{n}-\beta \vert \vert }=\left(\frac{ \vert \vert \alpha \vert \vert }{ \vert \vert \beta \vert \vert }\right)\ \textnormal{and}\ \frac{ \vert \vert \alpha_{n}-\mu_{n} \vert \vert }{ \vert \vert \beta_{n}-\nu_{n} \vert \vert }=\left(\frac{ \vert \vert \alpha \vert \vert }{ \vert \vert \beta \vert \vert }\right)^{2n}
+    \end{equation*}
+  \item Consider an equilateral triangle $H(0,\alpha,\beta)$ in $R_{2}$, and let $\psi$ and $R$ be as in Exercise 7.9. Show that $ \vert \vert \psi \vert \vert = \vert \vert \psi-\eta \vert \vert $ for each $\eta \in R_{2}$ of the form $\eta = t(s\alpha+(1-s)\beta)$ with $t>0$ and $s \in [0,1]$ and $ \vert \vert \eta \vert \vert =R$. Generalize this to higher dimensions with an inequality. 
+\end{enumerate}
+
+
+\section{Unitary Spaces}
+\markboth{8. Unitary Spaces}{8. Unitary Spaces}
+
+A \emph{unitary space} is a vector space over the field of complex numbers for which a unified presentation of real and complex an inner product is given. See [1] for inner product spaces.
+
+Let $E_{n}$ be an $n$-dimensional unitary space. The \emph{Gram matrix} of the set $\{ \xi_{1},\cdots,\xi_{k} \} \subset E_{n}$ is defined by
+\begin{equation*}
+G = \left(
+\begin{array}{ccc}
+  (\xi_{1},\xi_{1}) & \cdots & (\xi_{1},\xi_{k})\\
+  \cdots & \  & \cdots\\
+  (\xi_{k},\xi_{1}) & \cdots & (\xi_{k},\xi_{k})
+\end{array}
+\right)
+\end{equation*}
+
+One can show that $G$ is nonnegative, in general, and that $G$ is and only if $\{ \xi_{1},\cdots,\xi_{k} \}$ is a linearly independent set. Hence the determinant of $G$, denoted by $g(\xi_{1},\cdots,\xi_{k})$, is a nonnegative real number. 
+
+One can now define perpendicular equisectors, altitudes, centroids, medians, and angle equisectors as was done for the real inner product spaces $R_{n}$ and attempt to carry out a program as in Sections 3 - 7. See Exercise 8.1.
+
+We now consider the vector space of linear transformations on $E_{n}$, denoted by $L(E_{n})$. If $A$ is a linear transformation on $E_{n}$, then the \emph{adjoint} of $A$ is the linear transformation $A^{*}$ on $E_{n}$, defined by
+\begin{equation*}
+(A\xi,\eta) = (\xi,A^{*}\eta) \text{ for every } \xi,\eta \in E_{n}
+\end{equation*}
+
+For two linear transofmrations, $A$ and $B$, on $E_{n}$, we define the \emph{{*}-product} of $A$ and $B$ to be the linear transformation $A*B$ on $E_{n}$. The {*}-product can be viewed as a generalization of the usual inner product on the set on linear transformations on $E_{1}$, i.e., on the complex numbers. If $n>1$, the {*}-product is \emph{not} an inner product on $L(E_{n})$ -- it is not complex-valued! -- but it does satisfy the linearity properties of an inner product, and it is true that $A*A=0$ if and only if $A=0$. Two linear transformations $A$ and $B$ on $E_{n}$ are \emph{{*}-orthogonal} if $A*B=0$ (and hence $B*A=0$). 
+
+We define the \emph{Gram determinant} of $A,B\in L(E_{n})$ by 
+
+
+\subsection{Equation}
+
+\begin{equation*}
+g(A,B)=\max( \vert \vert \xi \vert \vert =1)\ \det 
+\left(
+\begin{array}{cc}
+  (A*A\xi,\xi) & (B*A\xi,\xi)\\
+  (A*B\xi,\xi) & (B*B\xi,\xi)
+\end{array}
+\right)
+\end{equation*}
+
+It follows from the definition of the adjoint that
+\begin{equation*}
+g(A,B) = \max( \vert \vert \xi \vert \vert =1)\ \  g(A\xi,B\xi)
+\end{equation*}
+
+Note that 
+
+
+\subsection{Equation}
+
+\begin{equation*}
+g(A\xi,B\xi)= \vert \vert A\xi \vert \vert ^{2}\  \vert \vert B\xi \vert \vert ^{2} - \vert (A\xi,B\xi) \vert ^{2}
+\end{equation*}
+is a nonnegative real number; that $\{ \xi \in E_{n} | \ \  \vert \vert \xi \vert \vert =1 \}$ is a compact set; and thus that the maximum exists, and so $g(A,B)$ is well-defined by (8.1). 
+
+Note from (8.2) that
+\begin{equation*}
+G(A\xi,B\xi) \leq \vert \vert A\xi \vert \vert ^{2}\  \vert \vert B\xi \vert \vert ^{2}\ \textnormal{for all}\ \xi\in E_{n}
+\end{equation*}
+and thus that
+\begin{equation*}
+g(A,B) \leq \max( \vert \vert \xi \vert \vert =1)\  \vert \vert A\xi \vert \vert ^{2} \vert \vert B\xi \vert \vert ^{2}\leq \vert \vert A \vert \vert _{H}^{2}\  \vert \vert B \vert \vert _{H}^{2}
+\end{equation*}
+where $\vert \vert C \vert \vert _{H} = \max( \vert \vert \xi \vert \vert =1)\  \vert \vert C\xi \vert \vert$ is the \emph{Hilbert norm} of $C \in L(E_{n})$. As a consequence of the theorem of Fischer (see [1]) applied to $A*A$, we see that $\vert \vert A \vert \vert _{H}^{2}$ is equal to the largest eigenvalue of $A*A$, and hence that
+
+
+\subsection{Equation}
+
+\begin{equation*}
+g(A,B) \leq ab
+\end{equation*}
+where $a$ and $b$ are the largest eigenvalues of $A*A$ and $B*B$, respectively. 
+
+More generally, the Gram determinant of $\{ A_{1},\cdots,A_{k} \} \subset L(E_{n})$ is defined by
+\begin{equation*}
+g(A_{1},\cdots,A_{k})=\max( \vert \vert \xi \vert \vert =1)\ \  g(A_{1}\xi,\cdots,A_{k}\xi)
+\end{equation*}
+
+This is well-defined since $g(A_{1}\xi,\cdots,A_{k}\xi)$ is a nonnegative real number and the maximum is attained on the compact set $\{ \xi\in E_{n}|\ \ \vert \vert \xi \vert \vert =1 \}$. It is a well-known fact that the determinant of a nonnegative matrix is less than or equal to the product of the diagonal elements and hence, by the theorem of Fisher applied as before, we obtain
+
+
+\subsection{Equation}
+
+\begin{equation*}
+g(A_{1},\cdots,A_{k}) \leq \prod_{i=1}^{k}a_{i}
+\end{equation*}
+where $a_{i}$ is the largest eigenvalue of $A_{i}^{2}A_{i}$.
+
+
+\subsection*{Exercises}
+
+\begin{enumerate}
+  \item Define perpendicular equisectors, altitudes, centroids, medians, and angle equisectors in $E_{n}$. Examine the theorems and exercises of Sections 3 - 7 in this setting. (Caution: $\beta,\alpha=\overline{(\alpha,\beta)}$.)
+  \item Show that $g(A_{1},\cdots,A_{k}) \neq 0$ if and only if $\{ A_{1},\cdots,A_{k} \}$is a linearly independent set in $L(E_{n})$.
+  \item Show that equality holds in (8.3) if $A$ and $B$ are $*$-orthogonal, and the intersection of the $a$ eigenspace of $A$ and the $b$ eigenspace of $B$ is nontrivial. Find necessary and sufficient conditions for equality to hold in (8.4).
+  \item Solve the problems on $*$-products given in Chapter 4 of [1].
+  \item Define the \emph{$k$-dimensional Hilbert volume measure} of the parallelepiped defined by $\{ A_{1},\cdots,A_{k} \}$ in $L(E_{n})$ to be
+    \begin{equation*}
+    V=[g(A_{1},\cdots,A_{k})]^{\frac{1}{2}}
+    \end{equation*}
+    Investigate Theorem 2.2 and the exercises of Section 2 in this setting.
+  \item Define perpendicular equisectors, altitudes, centroids, medians, and angle equisectors in $L(E_{n})$ using the $*$-product and the Hilbert norm. Examine the theorems and exercises of Sections 3 - 7 in this setting. 
+\end{enumerate}
+
+
+\section*{References}
+\addcontentsline{toc}{section}{\numberline{}References}
+\markboth{References}{References}
+
+\begin{enumerate}[1.]
+  \item A. R. Amir-Moéz, \emph{Elements of Geometry in Unitary Spaces}, Monographs in Undergraduate Mathematics, Vol. 7, Guilford College.
+  \item H. W. Beck, \emph{Centroids in Euclidean n-space}, J. Undergrad. Math. 13 (1981), 45-57.
+  \item G. Birkhoff and S. MacLane, \emph{A Survey of Modern Algebra}, MacMillan, New York, 1941.
+  \item M. D. Griffin, \emph{The altitude of the convex hull of a set of vectors}, J. Undergrad. Math. 9 (1977), 67-68.
+  \item K. T. Smith, \emph{Smith's Primer of Modern Analysis}, Bogden and Quigley, New York, 1971. 
+\end{enumerate}
+
+\end{document}

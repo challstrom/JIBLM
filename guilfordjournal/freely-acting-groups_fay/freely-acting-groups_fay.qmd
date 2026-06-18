@@ -1,0 +1,36 @@
+---
+title: "Guilford Course Notes"
+---
+
+```{r}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+library(gt)
+
+note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Abstract")
+
+note_data <- c("On Freely Acting Groups", "Fay, Temple H.", "topology", "13", "Hendrix College", "The purpose of the monograph is to introduce the undergraduate reader to the notions of free semi-group, free group, free product, and the corresponding topological counterparts, in a relatively quick, easy, and apparently new fashion. Very little algebra background is required for understanding this paper; only a basic familiarity with groups, congruences, and quotients is necessary. The topological aspects are also elementary. Much of what is done can be easily constructed, although less easily explained, through the use of category theory. In particular, the notions of adjoint functor and reflective hull are basic to what is done.")
+
+
+tibble(note_entries, note_data) |>
+  gt() |>
+  cols_align(align = "left") |>
+  tab_style(
+    style= cell_text(v_align = "top"),
+    locations = cells_body()
+  ) |>
+  tab_options( table.width = "80%", column_labels.hidden = TRUE)  
+
+
+```
+- [Download File](./freely-acting-groups_fay.pdf)
+
+This course guide was originally published by the Guilford College Journal of Undergraduate Mathematics as a volume in the Monographs on Undergraduate Mathematics series.
+
+This course guide may be reproduced and distributed if the following conditions are met:
+
+- State that it is the property of the Math Department of Guilford College, and is protected under copyright by Guilford.
+- Take no profit from its distribution. (You may recover copying costs if you are using these for a class.) 
+

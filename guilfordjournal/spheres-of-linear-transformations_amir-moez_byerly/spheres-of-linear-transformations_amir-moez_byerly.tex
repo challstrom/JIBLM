@@ -1,0 +1,478 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% Journal headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright Guilford College Journal of Undergraduate Mathematics} \cfoot{} \rfoot{ - at www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Spheres of Linear Transformations and Matrices}
+\author{Ali R. Amir-Moéz \\ R. E. Byerly}
+\date{\vspace{3cm}
+\emph{Journal of Undergraduate Mathematics}
+  \\ Department of Mathematics
+  \\ Guilford College
+  \\ Greensboro, North Carolina 27410 
+  }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+\section*{Preface}
+\addcontentsline{toc}{section}{\numberline{}Preface}
+\markboth{Preface}{Preface}
+
+\pagenumbering{roman}
+
+Many characterizations of circles have been given synthetically and analytically. A vector approach to this study is quite powerful, and can be generalized to the space of linear transformations on a unitary space. We shall study a few samples, and suggest some problems for undergraduate research in mathematics.
+
+\begin{flushright}
+Ali R. Amir-Moéz and R. E. Byerly
+
+Texas Tech University
+\end{flushright}
+
+
+\section{Unitary Spaces}
+\markboth{1. Unitary Spaces}{1. Unitary Spaces}
+
+\pagenumbering{arabic}
+
+In what follows, we consider only vector spaces over the field of real or complex numbers. Vectors will be denoted by Greek letters ($\alpha$, $\beta$, $\gamma$, $\cdots$), and scalars by Latin letters ($a$, $b$, $c$, $\cdots$).
+
+
+\subsection{Inner Product}
+
+Let $V$ be a vector space over a field of complex numbers $\mathbb{C}$. Let $f$ be a function of $V \times V$ into $\mathbb{C}$, such that:
+\begin{equation}
+  f(\eta,\xi) = \overline{f(\xi,\eta)}
+\end{equation}
+where $\overline{f(\xi,\eta)}$ is the complex conjugate of $f(\xi,\eta)$,
+\begin{equation}
+  f(\xi,\xi) \geq 0, \text{ and } f(\xi,\xi) = 0 \text{ if and only if } \xi = \overrightarrow{0}
+\end{equation}
+\begin{equation}
+  f(a_1 \xi_1 + a_2 \xi_2, \eta) = a_1 f(\xi_1,\eta) + a_2 f(\xi_2,\eta)
+\end{equation}
+for all $\xi_1, \xi_2, \eta$ in $V$ and $a_1, a_2$ in $\mathbb{C}$. $f$ is called an \emph{inner product} on $V$. For convenience, we write $(\xi,\eta)$ for $f(\xi,\eta)$. The \emph{norm} of a vector $\xi$ will be defined by $||\xi|| = (\xi,\xi)^{1/2}$. In the case where $V$ is over the field of real numbers, the inner product is commutative, i.e. $(\xi,\eta) = (\eta,\xi)$.
+
+A vector space $V$ over the field of real or complex numbers is called \emph{unitary} if an inner product is defined for $V$. Such a space is also called an \emph{inner product} space.
+
+A unitary space over the field of complex numbers will be denoted by $\mathbb{E}$, and a unitary space over the field of real numbers will be denoted by $\mathbb{R}$. When the space is finite-dimensional with dimension $n$, we denote it by $\mathbb{E}_n$ if it is complex, and by $\mathbb{R}_n$ if it is real.
+
+
+\subsection{Linear Transformations}
+
+Let $A$ be a linear transformation on $\mathbb{E}_n$. Then the adjoint of $A$ is denoted by $A^*$, and is defined by
+\begin{equation*}
+(A\xi,\eta) = (\xi,A^*\eta),\ \xi,\eta \in \mathbb{E}_n
+\end{equation*}
+
+If $A^*=A$, then $A$ is called a \emph{Hermitian} or a \emph{self-adjoint} transformation. If $A^*A = AA^*$, then $A$ is called a \emph{normal} transformation. If $A^*A = AA^* = I$, then $A$ is a \emph{unitary} transformation. A Hermitian transformation $A$ is called \emph{positive (positive definite)} if for every $\xi \neq 0, \xi \in \mathbb{E}_n$, we have $(A\xi,\xi) > 0$. A Hermitian transformation $A$ is called \emph{non-negative (positive semidefinite)} if for every $\xi \in \mathbb{E}_n$, we have $(A\xi,\xi) \geq 0$.
+
+Now we shall review a few theorems without proof. Proper values of a positive (non-negative) transformation are positive (non-negative). Let $m_1, \cdots, m_n$ be proper values of a Hermitian transformation $A$. Then there exists an orthonormal basis $\{ \alpha_1, \cdots, \alpha_n \}$ such that
+\begin{equation*}
+A \alpha_i = m_i \alpha_i,\ i=1,\cdots,n
+\end{equation*}
+Whenever necessary, we shall state other theorems [1, 2].
+
+\begin{description}
+\item[Theorem 1.1 (Fischer):] Let $A$ be a Hermitian transformation on $\mathbb{E}_n$, with proper values $m_1 \geq \cdots \geq m_n$. Then
+  \begin{equation}
+  m_1 = \sup_{||\xi||=1} (A\xi, \xi)
+  \end{equation}
+  and
+  \begin{equation}
+  m_n = \inf_{||\xi||=1} (A\xi, \xi)
+  \end{equation}
+
+\item[Proof:] Let $\{ \alpha_1, \cdots, \alpha_n \}$ be an orthonormal set of proper vectors of $A$ such that $A \alpha_i = m_i \alpha_i,\ i=1,\cdots,n$. Then for any $\xi \in \mathbb{E}_n$, we have
+  \begin{equation*}
+  \xi = (\xi,\alpha_1)\alpha_1 + \cdots + (\xi,\alpha_n)\alpha_n
+  \end{equation*}
+  and
+  \begin{equation*}
+  A\xi = m_1(\xi,\alpha_1)\alpha_1 + \cdots + m_n(\xi,\alpha_n)\alpha_n
+  \end{equation*}
+  Therefore
+  \begin{equation*}
+  (A\xi,\xi) = m_1 |(\xi,\alpha_1)|^2 + \cdots + |(\xi,\alpha_n)|^2
+  \end{equation*}
+  To prove (1), we observe that
+  \begin{equation*}
+  (A\xi,\xi) \leq m_1 \left[ |(\xi,\alpha_1)|^2 + \cdots + |(\xi,\alpha)|^2 \right]
+  \end{equation*}
+  Now if we let $||\xi||=1$, then we have
+  \begin{equation*}
+  1 = ||\xi||^2 = |(\xi,\alpha_1)|^2 + \cdots + |(\xi,\alpha_n)|^2
+  \end{equation*}
+  Therefore, $(A\xi,\xi) \leq m_1$. If we let $\xi = \alpha_1$, we obtain $(A\xi,\xi) = (A\alpha_1,\alpha_2) = (m_1\alpha_1,\alpha_1) = m_1$. Thus $\sup_{||\xi||=1} (A\xi,\xi) = m_1$. Now to prove (2), one notes that
+  \begin{equation*}
+  (A\xi,\xi) \geq m_n \left[ |(\xi,\alpha_1)|^2 + \cdots + |(\xi,\alpha_n)|^2 \right]
+  \end{equation*}
+  If we let $||\xi||=1$, we obtain $(A\xi,\xi) \geq m_n$. Again for $\xi = \alpha_n$, we have
+  \begin{equation*}
+  (A\xi,\xi) = (A\alpha_n,\alpha_n) = (m_n\alpha_n,\alpha_n) = m_n
+  \end{equation*}
+  Consequently, $\inf_{||\xi||=1} (A\xi,\xi) = m_n$.
+\end{description}
+
+Many generalizations of this result may be found in the literature [1]. Since we do not use them, we shall not pursue that direction.
+
+\begin{description}
+\item[Theorem 1.2:] Let $A$ be a linear transformation on $\mathbb{E}_n$. Then $A^*A$ and $AA^*$ are both non-negative, and have the same proper values.
+\end{description}
+
+We omit the proof.
+
+\begin{description}
+\item[Definition 1.1 (Square Roots):] We shall define non-negative square roots only for non-negative transformations. Let $A$ be a non-negative transformation on $\mathbb{E}_n$, with proper values $h_1 \geq \cdots \geq h_n$. Let $\{ \alpha_1, \cdots, \alpha_n \}$ be an orthonormal basis in $\mathbb{E}_n$ such that $A\alpha_1 = h_i\alpha_i,\ i=1,\cdots,n$. Then the matrix of $A$ with respect to this basis is
+  \begin{equation*}
+  \begin{pmatrix}
+  h_1 &        & 0   \\
+      & \ddots &     \\
+  0   &        & h_n 
+  \end{pmatrix}
+  \end{equation*}
+  which is in diagonal form. We define the linear transformation $B$ on $\mathbb{E}_n$ whose matrix with respect to $\{ \alpha_1, \cdots, \alpha_n \}$ is
+  \begin{equation*}
+  \begin{pmatrix} 
+  \sqrt{h_1} &        & 0          \\
+             & \ddots &            \\
+  0          &        & \sqrt{h_n} 
+  \end{pmatrix}
+  \end{equation*}
+  Then $B$ is called the \emph{non-negative square root} of $A$, and will be denoted by $\sqrt{A}$. It is clear that $\sqrt{A}$ is non-negative and has the same proper vectors as $A$.
+\end{description}
+
+\begin{description}
+\item[Definition 1.2 (Singular Values):] Let $A$ be a linear transformation on $\mathbb{E}_n$, and let $a_1, \cdots, a_n$ be proper values of $A^*A$. Then the set $\{ \sqrt{a_1}, \cdots, \sqrt{a_n} \}$ is called the set of \emph{absolute singular values} of $A$. Note that we have only considered positive square roots. In what follows, whenever we say ``singular values'', we mean ``absolute singular values''.
+\end{description}
+
+We may easily show that the absolute singular values of $A$ are the same as the proper values of $\sqrt{A^*A}$ or the proper values of $\sqrt{AA^*}$. We leave the proof as an exercise.
+
+\begin{description}
+\item[Definition 1.3 (The Hilbert Norm):] Let $A$ be a linear transformation on $\mathbb{E}_n$. Then the \emph{Hilbert norm} of $A$ is defined by
+  \begin{equation*}
+  ||A||_H = \sup_{||\xi||=1} ||A\xi||
+  \end{equation*}
+\end{description}
+
+One can express this norm in terms of singular values of $A$. Let $a$ be the singular value of $A$ such that $a$ is maximal. We observe that $a^2$ is a proper value of $A^*A$. By Theorem 1.1, equation (4), we have $\sup_{||\xi||=1} (A^*A\xi,\xi) = a^2$, but $(A^*A\xi,\xi) = (A\xi,A\xi) = ||A\xi||^2$. Therefore, $||A||_H^2 = \sup_{||\xi||=1} ||A\xi||^2 = a^2$. This implies that $||A||_H = a$.
+
+\begin{description}
+\item[Definition 1.4 (Frobenius Inner Product):] Let $A$ and $B$ be linear transformations on $\mathbb{E}_n$. Let $\mathcal{B} = \{ \alpha_1, \cdots, \alpha_n \}$ be an orthonormal basis on $\mathbb{E}_n$. Let $(a_{ij})$ and $(b_{ij})$ respectively be the matrices of $A$ and $B$ with respect to $\mathcal{B}$. Then we define the \emph{Frobenius inner product} of $A$ and $B$ by
+  \begin{equation*}
+  (A,B)_F = \sum_{i,j=1}^n a_{ij} \overline{b}_{ij}
+  \end{equation*}
+\end{description}
+
+For example, let
+\begin{equation*}
+[A] = 
+\begin{pmatrix} 
+a_{11} & \cdots & a_{1n} \\
+\vdots &        & \vdots \\
+a_{n1} & \cdots & a_{nn}
+\end{pmatrix}
+\end{equation*}
+and
+\begin{equation*}
+[B] = 
+\begin{pmatrix}
+b_{11} & \cdots & b_{1n} \\
+\vdots &        & \vdots \\
+b_{n1} & \cdots & b_{nn} 
+\end{pmatrix}
+\end{equation*}
+Then
+$(A,B)_F = a_{11} \overline{b}_{11} + a_{12} \overline{b}_{12} + \cdots + a_{nn} \overline{b}_{nn}$. This inner product introduces the Frobenius norm for $A$, i.e.,
+\begin{equation*}
+||A||_F^2 = (A,A)_F = \sum_{i,j=1}^n (a_{ij})^2
+\end{equation*}
+
+The next theorem will show that this inner product is well-defined; i.e., it is independent of the choice of the basis.
+
+\begin{description}
+\item[Theorem 1.3:] Let $A$ and $B$ be linear transformations on $\mathbb{E}_n$. Then
+  \begin{equation*}
+  (A,B)_F = \text{ trace }AB^*
+  \end{equation*}
+\end{description}
+
+\begin{description}
+\item[Theorem 1.4:] Let $A$ be a linear transformation on $\mathbb{E}_n$. Let $a_1, \cdots, a_n$ be the singular values of $A$. Then
+  \begin{equation*}
+  ||A||_F = \left( \sum_{i=1}^na_i^2 \right)^{1/2}
+  \end{equation*}
+\end{description}
+
+
+
+\section{Spheres of Transformations}
+\markboth{2. Spheres of Transform.}{2. Spheres of Transform.}
+
+
+In what follows, all transformations are linear on $\mathbb{E}_n$ or $\mathbb{R}_n$.
+
+\begin{description}
+\item[Definition 2.1 (Adjoint Products):] Let $A$ and $B$ be linear transformations. We define $A^*B$ to be the \emph{adjoint product} or \emph{$*$-product} of $A$ and $B$.
+
+  This product does not have all the properties of an inner product. But one may consider analogues of geometrical problems for this product.
+\end{description}
+
+\begin{description}
+\item[Lemma 2.1:] Let $\{ \alpha,\beta \}$ be a set of linearly independent vectors in $\mathbb{E}_n$. Let $\xi$ vary such that
+  \begin{equation}
+  (\xi-\alpha, \xi-\beta) = 0
+  \end{equation}
+  Then $\xi$ describes a sphere whose center is defined by $\frac{\alpha+\beta}{2}$ and whose radius is $\left|\left| \frac{\alpha-\beta}{2} \right|\right|$.
+
+\item[Proof:] One observes that (6) can be written as
+  \begin{equation}
+  \left( \left[ \xi-\frac{\alpha+\beta}{2} \right] + \frac{\beta-\alpha}{2}, \left[ \xi-\frac{\alpha+\beta}{2} \right] + \frac{\alpha-\beta}{2} \right) = 0
+  \end{equation}
+  One also observes that (6) implies $(\xi-\beta, \xi-\alpha) = 0$, which can be written as
+  \begin{equation}
+  \left( \left[ \xi-\frac{\alpha+\beta}{2} \right] + \frac{\alpha-\beta}{2}, \left[ \xi-\frac{\alpha+\beta}{2} \right] + \frac{\beta-\alpha}{2} \right) = 0
+  \end{equation}
+  From (7) and (8), we obtain
+  \begin{equation}
+  \left|\left| \xi-\frac{\alpha+\beta}{2} \right|\right| = \left|\left| \frac{\alpha-\beta}{2} \right|\right|
+  \end{equation}
+\end{description}
+
+\begin{description}
+\item[Theorem 2.1:] Let $\{ A,B \}$ be a set of linearly independent transformations on $\mathbb{E}_n$, and $X$, a linear transformation on $\mathbb{E}_n$, vary such that
+  \begin{equation}
+  [X-A]^* [X-B] = 0
+  \end{equation}
+  Then
+  \begin{equation*}
+  \left|\left| X-\frac{A+B}{2} \right|\right|_H = \left|\left| \frac{A-B}{2} \right|\right|_H
+  \end{equation*}
+
+\item[Proof:] Let $\xi \in \mathbb{E}_n$ and $||\xi|| = 1$. Then equation (10) implies that
+  \begin{equation*}
+  ([X-A]^*[X-B]\xi,\xi) = ([X-B]\xi,[X-A]\xi) = 0
+  \end{equation*}
+  or $(X\xi - B\xi, X\xi - A\xi) = 0$. One observes that the vectors $X\xi$, $A\xi$, and $B\xi$ satisfy (6). Thus by (9), we obtain
+  \begin{equation*}
+  \left|\left| \left[ X-\frac{A+B}{2} \right] \xi \right|\right| = \left|\left| \left[ \frac{A-B}{2} \right] \xi \right|\right| \text{ for all } ||\xi||=1
+  \end{equation*}
+  Consequently, by Theorem 1.3, we have
+  \begin{equation*}
+  \left|| X-\frac{A+B}{2} \right||_H = \left|| \frac{A-B}{2} \right||_H
+  \end{equation*}
+\end{description}
+
+One may employ the Frobenius inner product and norm, and state and prove a theorem analogous to Theorem 2.1. We leave this to the reader as an exercise.
+
+One may also ask for a relation among the singular values of $X-A$, $X-B$, $A$, and $B$ when the Frobenius inner product is used.
+
+\begin{description}
+\item[Lemma 2.2:] Let $\{ \alpha_1, \cdots, \alpha_n \}$ be a set of linearly independent vectors in $\mathbb{E}_n$, and let $\xi \in \mathbb{E}_n$ vary such that
+  \begin{equation}
+  \sum_{i<j} a_{ij} (\xi-\alpha_i, \xi-\alpha_j) = 0
+  \end{equation}
+  Then $\xi$ describes a sphere.
+\end{description}
+
+One observes that (11) is equivalent to
+\begin{equation*}
+||\xi||^2 \left( \sum_{i<j} a_{ij} \right) - \sum_{i<j} a_{ij} \left[ (\xi,\alpha_j) + (\alpha_j,\xi) \right] + \sum_{i<j} a_{ij} \left( \alpha_i,\alpha_j \right) = 0
+\end{equation*}
+
+If $\sum a_{ij} = 0$, then (11) describes a hyperplane. Let $\sum a_{ij} \neq 0$. Then one can easily find the center and the radius of the sphere. We shall leave this as an exercise.
+
+A particular case of (11) is when $\sum_{i<j} a_{ij} = 1$. One may also consider the following corollary.
+
+\begin{description}
+\item[Lemma 2.3:] Let $\{ \alpha_1, \cdots, \alpha_n \}$ be a set of linearly independent vectors in $\mathbb{E}_n$, and let $\xi$ vary such that
+  \begin{equation}
+  (\xi-\alpha_i, \xi-\alpha_j) = 0,\ i \neq j
+  \end{equation}
+  Then $\xi$ describes a sphere with center $\frac{\sum a_i}{n}$ and radius
+  \begin{equation*}
+  \frac{1}{n\sqrt{n-1}} \left[ \sum ||\alpha_i-\alpha_j||^2 \right]
+  \end{equation*}
+
+\item[Proof:] Expanding (12), we obtain
+  \begin{equation*}
+  \left|\left| \xi-\frac{\sum\alpha_i}{n} \right|\right|^2 = \frac{1}{n^2(n-1)} \left[ \sum ||\alpha_i-\alpha_j||^2 \right]
+  \end{equation*}
+  We leave the details to the reader.
+\end{description}
+
+\begin{description}
+\item[Theorem 2.2:] Let $\{ A_1, \cdots, A_n \}$ be a set of linearly independent transformations on $\mathbb{E}_n$, and $X$ be a linear transformation on $\mathbb{E}_n$ varying such that
+  \begin{equation}
+  [X-A_i]^* [X-A_j] = 0,\ i \neq j
+  \end{equation}
+  Then
+  \begin{equation*}
+  \left|\left| X-\frac{\sum A_i}{n} \right|\right|_H^2 = \frac{1}{n^2(n-1)} \left[ \sum ||A_i-A_j||_H^2 \right]
+  \end{equation*}
+
+\item[Proof:] As in Theorem 2.1, we let $\xi \in \mathbb{E}_n$, and $||\xi||=1$. Then (13) implies that
+  \begin{equation}
+  (X\xi - A_i\xi, X\xi - A_j\xi) = 0,\ i \neq j
+  \end{equation}
+  Applying (12) to (14), we obtain
+  \begin{equation*}
+  \left|\left| X-\frac{\sum A_i}{n} \right|\right|_H^2 = \frac{1}{n^2(n-1)} \left[ \sum ||A_i-A_j||^2 \right]
+  \end{equation*}
+\end{description}
+
+The reader may apply (12) to the Frobenius inner product and norm, and state and prove a theorem analogous to Theorem 2.2.
+
+Theorem 2.2 may also be extended to rectangular matrices. We shall leave this to the reader.
+
+\begin{description}
+\item[Lemma 2.4:] Let $\{ \alpha, \beta \}$ be a set of linearly independent vectors in $\mathbb{E}_n$, and let $\xi$ vary such that
+  \begin{equation}
+  ||\xi-\alpha||^2 + ||\xi-\beta||^2 = k^2
+  \end{equation}
+  Then $\xi$ describes a sphere whose center is $\frac{1}{2} (\alpha+\beta)$ and whose radius depends on $k$.
+
+\item[Proof:] From (15), we obtain
+  \begin{equation*}
+  2 ||\xi||^2 - (\xi,\alpha+\beta) - (\alpha+\beta,\xi) + ||\alpha||^2 + ||\beta||^2 = k^2
+  \end{equation*}
+  which implies
+  \begin{equation*}
+  \left|\left| \xi-\frac{\alpha+\beta}{2} \right|\right|^2 - \left|\left| \frac{\alpha+\beta}{2} \right|\right|^2 = \frac{1}{2}  \left[ k^2 - ||\alpha||^2 - ||\beta||^2 \right]
+  \end{equation*}
+  It is clear that the above equation represents a sphere whose center is $\frac{\alpha+\beta}{2}$. Now in order to have a real number for the radius, we must have
+  \begin{equation*}
+  \frac{1}{2} \left[ k^2 - ||\alpha||^2 - ||\beta||^2 \right]  +  \left|\left| \frac{\alpha+\beta}{2} \right|\right|^2  >  0
+  \end{equation*}
+  or $k^2 > \frac{1}{2} ||\alpha-\beta||^2$. We leave the details to the reader.
+\end{description}
+
+\begin{description}
+\item[Theorem 2.3:] Let $\{ A,B \}$ be a set of linearly independent transformations on $\mathbb{E}_n$, and let $X$ vary such that
+  \begin{equation*}
+  ||X-A||_F^2 + ||X-B||_F^2 = k^2
+  \end{equation*}
+  Then
+  \begin{equation*}
+  \left|\left| X-\frac{A+B}{2} \right|\right|_F = \text{ constant}
+  \end{equation*}
+
+\item[Proof:] Considering the quadratic forms of $(X-A)^* (X-A)$ and $(X-B)^* (X-B)$ for $||\xi|| = 1$, and Theorem 1.1, one finds that the constant is $\displaystyle \frac{k^2}{2} - \left|\left| \frac{A-B}{2} \right|\right|_F^2$. One must choose $k^2 \geq \frac{1}{2} ||A-B||_F^2$; otherwise, the constant will be imaginary. We leave the details to the reader.
+\end{description}
+
+The reader may apply Lemma 2.4 to obtain a similar theorem for the Hilbert norm.
+
+This theorem can also be generalized to obtain inequalities involving singular values of $X-A$ and $X-B$.
+
+\begin{description}
+\item[Lemma 2.5:] Let $\{ \alpha_1, \cdots, \alpha_n \}$ be linearly independent in $\mathbb{E}_n$, and let $\xi$ vary such that
+  \begin{equation}
+  \sum_{i=1}^n ||\xi-\alpha_i||^2 = k^2
+  \end{equation}
+  Then $\xi$ describes a sphere whose center is $\frac{1}{n} \sum_{i=1}^n \alpha_i$, and whose radius depends on $k$.
+
+\item[Proof:] We shall give an outline of a proof. From (16), we obtain
+  \begin{equation*}
+  ||\xi||^2 - \left\{ \left( \xi, \frac{\sum \alpha_i}{n} \right) + \left( \frac{\sum \alpha_i}{n}, \xi \right) \right\} + \frac{1}{n} \sum ||\alpha_i|| = \frac{k^2}{n}
+  \end{equation*}
+  This implies that
+  \begin{equation*}
+  \left|\left| \xi-\frac{\sum\alpha_i}{n} \right|\right|^2 - \left|\left| \frac{\sum \alpha_i}{n} \right|\right|^2 + \frac{1}{n} \sum ||\alpha_i||^2 = \frac{k^2}{n}
+  \end{equation*}
+  One observes that the radius is
+  \begin{equation*}
+  r = \frac{k^2}{n} - \frac{1}{n} \sum ||\alpha_i||^2 + \left|\left| \frac{\sum \alpha_i}{n} \right|\right|^2
+  \end{equation*}
+\end{description}
+
+\begin{description}
+\item[Conjecture 2.1:] Let $A_i\ i=1,\cdots,n$ be linearly independent on $\mathbb{E}_n$, and let $X$ vary so that
+  \begin{equation*}
+  \sum_{i=1}^n ||X-A_i||_H^2 = k^2
+  \end{equation*}
+  Then
+  \begin{equation}
+  \left|\left| X-\frac{\sum A_i}{n} \right|\right|_H = p
+  \end{equation}
+  is constant, and
+  \begin{equation*}
+  p = \frac{k^2}{n} - \frac{1}{n} \sum ||A_i||_H^2 + \left|\left| \frac{\sum \alpha_i}{n} \right|\right|_H^2
+  \end{equation*}
+
+\item[Suggestion:] Considering the sum of quadratic forms of $(X-A_i)^* (X-A_i)$ for $||\xi|| = 1$, and applying 2.5 and 1.1, one may obtain (17) or an inequality. We leave the details to the reader.
+\end{description}
+
+
+\section{Suggestions}
+\markboth{3. Suggestions}{3. Suggestions}
+
+\begin{enumerate}
+
+  \item In Lemma 2.1, one may study the case when $(\xi-\alpha,\xi-\beta) = c$, a constant, and attempt to obtain theorems similar to 2.1.
+
+  \item In Lemma 2.3, one may study the cases when
+    \begin{equation}
+      (\xi\alpha_i, \xi\alpha_j) = c,\ i \neq j
+    \end{equation}
+    and
+    \begin{equation}
+      (\xi-\alpha_i, \xi-\alpha_j) = c_{ij},\ i \neq j
+    \end{equation}
+    Note that in (18), $c$ is the same for all $i$ and $j$, but in (19) each equality has a different constant.
+
+  \item In Lemma 2.4, one may replace (15) by $\left| ||\xi-\alpha||^2 - ||\xi-\beta||^2 \right| = k^2$, and try to apply it to the norms of some linear transformations.
+
+  \item Lemma 2.5 can be changed by setting $\displaystyle \left| \sum_{i=1}^j ||\xi-\alpha_i||^2 - \sum_{i=j+1}^n ||\xi-\alpha_i||^2 \right| = k^2$, and considering theorems similar to 2.1.
+
+  \item One may study $\displaystyle \frac{||\xi-\alpha||}{||\xi-\beta||} = k>0$, its generalizations, and applications to linear transformations.
+
+\end{enumerate}
+
+In Conjecture 2.1, a sum of quadratic forms is considered. One may attempt to obtain many inequalities using the \emph{minimax principle} [1].
+
+
+\section*{References}
+\addcontentsline{toc}{section}{\numberline{}References}
+\markboth{References}{References}
+
+\begin{enumerate}[1.]
+  \item Ali R. Amir-Moéz, Math. Series No. 2 and 3, Texas Tech University, p9-89 (1987).
+  \item Ali R. Amir-Moéz, \emph{Elements of Geometry in Unitary Spaces}, Monographs in Undergraduate Math., Vol. 7.
+\end{enumerate}
+
+
+\end{document}
+

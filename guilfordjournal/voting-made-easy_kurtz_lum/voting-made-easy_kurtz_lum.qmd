@@ -1,0 +1,36 @@
+---
+title: "Guilford Course Notes"
+---
+
+```{r}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+library(gt)
+
+note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Abstract")
+
+note_data <- c("Voting Made Easy: A Mathematical Theory of Election Procedures", "Lum, Lewis; Kurtz, David C.", "uncategorized", "21", "Salem College in North Carolina", "This guide investigates some ``classical'' results in social choice theory; i.e., Arrow's theorem and variations of it. No previous exposure to the theory is assumed, and very little mathematical knowledge is required. We hope that economists and political scientists as well as mathematicians will find something of interest here. For the economists and political scientist, we have some simple proofs of variations of Arrow's theorem, and a unified notation that seems to be lacking in the literature. For the mathematician, we have some perhaps unfamiliar and surprising results about voting. We hope readers will find this monograph suitable for use in an undergraduate seminar or independent study.")
+
+
+tibble(note_entries, note_data) |>
+  gt() |>
+  cols_align(align = "left") |>
+  tab_style(
+    style= cell_text(v_align = "top"),
+    locations = cells_body()
+  ) |>
+  tab_options( table.width = "80%", column_labels.hidden = TRUE)  
+
+
+```
+- [Download File](./voting-made-easy_kurtz_lum.pdf)
+
+This course guide was originally published by the Guilford College Journal of Undergraduate Mathematics as a volume in the Monographs on Undergraduate Mathematics series.
+
+This course guide may be reproduced and distributed if the following conditions are met:
+
+- State that it is the property of the Math Department of Guilford College, and is protected under copyright by Guilford.
+- Take no profit from its distribution. (You may recover copying costs if you are using these for a class.) 
+

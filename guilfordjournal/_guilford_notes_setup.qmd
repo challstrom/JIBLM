@@ -1,0 +1,141 @@
+---
+title: "Guilford Course Notes Setup"
+---
+
+Running this populates the subdirectories with the `.qmd` files based on the template below. Run it once if changes are needed to the format or styling of the individual file pages.
+
+```{r}
+#| include: false
+
+library(tidyverse)
+library(DT)
+library(gt)
+```
+
+```{r}
+
+```
+
+# This code chunk reads the `guilford_files.csv` datafile to get the names of the `.qmd` files.
+
+```{r}
+#| warning: false
+
+# replace NA entries with empty string
+
+guilford_files <- read_csv("guilford_files.csv")
+
+guilford_files[is.na(guilford_files)] <- ""
+```
+
+```{r}
+#| eval: true
+
+# generate names of .qmd files to be written
+
+output_files <- ""
+
+for (i in 1:nrow(guilford_files)) {
+  output_files[[i]] <- str_glue("{guilford_files$file[[i]]}/{guilford_files$file[[i]]}.qmd")
+}
+
+```
+
+Testing the table output...
+
+```{r}
+#| echo: false
+
+output <- guilford_files |>
+  slice(1) |>
+  select(title, author, subject, pages, university, abstract) |>
+  t()
+
+cn <- guilford_files |>
+  select(title, author, subject, pages, university, abstract) |>
+  colnames()
+
+tibble(cn, output) |>
+  gt() |>
+  cols_align(align = "left") |>
+  tab_style(
+    style= cell_text(v_align = "top"),
+    locations = cells_body()
+  ) |>
+  tab_options( table.width = "80%", column_labels.hidden = TRUE)
+
+```
+
+## Template for `.qmd` files (copy above code to display tables)
+
+```{r}
+#| include: false
+
+
+# Define the content of the Quarto file
+
+qmd_block <- ""
+
+for (i in 1:nrow(guilford_files)) {
+
+block1 <- str_glue("---
+title: \"Guilford Course Notes\"
+---
+
+\`\`\`{{r}}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+library(gt)
+
+note_entries <- c(\"Title\", \"Author\", \"Subject\", \"Pages\", \"University\", \"Abstract\")
+
+note_data <- c(\"{guilford_files$title[[i]]}\", \"{guilford_files$author[[i]]}\", \"{guilford_files$subject[[i]]}\", \"{guilford_files$pages[[i]]}\", \"{guilford_files$university[[i]]}\", \"{guilford_files$abstract[[i]]}\")
+
+
+tibble(note_entries, note_data) |>
+  gt() |>
+  cols_align(align = \"left\") |>
+  tab_style(
+    style= cell_text(v_align = \"top\"),
+    locations = cells_body()
+  ) |>
+  tab_options( table.width = \"80%\", column_labels.hidden = TRUE)  
+
+
+\`\`\`
+
+")
+
+  
+block2 <- str_glue("    
+- [Download File](./{guilford_files$file[[i]]}.pdf)\n
+
+")
+
+
+
+block3 <- str_glue("
+This course guide was originally published by the Guilford College Journal of Undergraduate Mathematics as a volume in the Monographs on Undergraduate Mathematics series.
+
+This course guide may be reproduced and distributed if the following conditions are met:
+
+- State that it is the property of the Math Department of Guilford College, and is protected under copyright by Guilford.
+- Take no profit from its distribution. (You may recover copying costs if you are using these for a class.) 
+
+"
+)
+
+
+
+qmd_block[[i]] <- str_c(block1, block2, block3)
+
+dir.create(str_glue("{guilford_files$file[[i]]}"))
+}  
+
+
+walk2(qmd_block, output_files, 
+      \(content, path) writeLines(content, path))
+
+```

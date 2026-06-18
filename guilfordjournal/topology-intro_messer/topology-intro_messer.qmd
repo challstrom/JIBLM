@@ -1,0 +1,36 @@
+---
+title: "Guilford Course Notes"
+---
+
+```{r}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+library(gt)
+
+note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Abstract")
+
+note_data <- c("Introduction to Topology", "Messer, Robert", "topology", "25", "Vanderbilt University", "The introductory course in topology is especially well-suited for the Moore method of instruction, since there is an abundance of examples and results that are interesting yet are provable by fairly straightforward techniques. This series of notes, supplemented by material presented in class, is intended to contain all the facts needed to solve these theorems. There seems to be more than enough material in these notes for a one-semester course for students with some familiarity with set theory. Topics include topological spaces and continuous functions, induced structures and coinduced structures, Hausdorff spaces, compact spaces, connected spaces, normal spaces, and metric spaces.")
+
+
+tibble(note_entries, note_data) |>
+  gt() |>
+  cols_align(align = "left") |>
+  tab_style(
+    style= cell_text(v_align = "top"),
+    locations = cells_body()
+  ) |>
+  tab_options( table.width = "80%", column_labels.hidden = TRUE)  
+
+
+```
+- [Download File](./topology-intro_messer.pdf)
+
+This course guide was originally published by the Guilford College Journal of Undergraduate Mathematics as a volume in the Monographs on Undergraduate Mathematics series.
+
+This course guide may be reproduced and distributed if the following conditions are met:
+
+- State that it is the property of the Math Department of Guilford College, and is protected under copyright by Guilford.
+- Take no profit from its distribution. (You may recover copying costs if you are using these for a class.) 
+

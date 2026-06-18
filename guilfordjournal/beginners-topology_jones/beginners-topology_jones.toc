@@ -1,0 +1,52 @@
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Preface}{i}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Introduction}{iii}
+\contentsline {chapter}{\numberline {1}Constructing A Space}{1}
+\contentsline {section}{\numberline {1.1}Natural Numbers}{1}
+\contentsline {section}{\numberline {1.2}Files}{3}
+\contentsline {section}{\numberline {1.3}More On Natural Numbers}{4}
+\contentsline {section}{\numberline {1.4}Comment About Files}{6}
+\contentsline {section}{\numberline {1.5}Formalism}{7}
+\contentsline {section}{\numberline {1.6}More On Formalism}{9}
+\contentsline {section}{\numberline {1.7}Files Again}{11}
+\contentsline {section}{\numberline {1.8}Order Proofs And Problems}{12}
+\contentsline {section}{\numberline {1.9}More On The Definition Of Order Among Files}{13}
+\contentsline {section}{\numberline {1.10}A Little Something About Sets}{14}
+\contentsline {section}{\numberline {1.11}More Remarks On Order}{15}
+\contentsline {section}{\numberline {1.12}Arithmetic With Files}{16}
+\contentsline {section}{\numberline {1.13}Old And New Problems On Order}{17}
+\contentsline {section}{\numberline {1.14}Summary On Files}{18}
+\contentsline {section}{\numberline {1.15}The Beginnings Of Topology}{19}
+\contentsline {section}{\numberline {1.16}The Case For Real Numbers}{20}
+\contentsline {section}{\numberline {1.17}How To Go About Finding A Proof For A Hard Theorem}{21}
+\contentsline {section}{\numberline {1.18}About Bounded Sequences}{23}
+\contentsline {section}{\numberline {1.19}More On Proof By Mathematical Induction}{24}
+\contentsline {section}{\numberline {1.20}Infinite Processes}{26}
+\contentsline {section}{\numberline {1.21}Least Upper Bounds And Greatest Lower Bounds}{27}
+\contentsline {section}{\numberline {1.22}Nested Sequence Of Intervals}{29}
+\contentsline {section}{\numberline {1.23}Counting The String Files}{29}
+\contentsline {section}{\numberline {1.24}A Comment On This Infinite Labeling Process}{30}
+\contentsline {chapter}{\numberline {2}Topology}{33}
+\contentsline {section}{\numberline {2.1}The Basic Notion In Topology}{33}
+\contentsline {section}{\numberline {2.2}A Useful Property About Regions}{35}
+\contentsline {section}{\numberline {2.3}More On Closed Point Sets}{36}
+\contentsline {section}{\numberline {2.4}More On Derived Sets}{37}
+\contentsline {section}{\numberline {2.5}Open Point Sets}{38}
+\contentsline {section}{\numberline {2.6}When Does A Point Set Have A Limit Point?}{38}
+\contentsline {section}{\numberline {2.7}Peculiar Point Sets}{39}
+\contentsline {section}{\numberline {2.8}Comments On The Clarity Of Proofs}{39}
+\contentsline {section}{\numberline {2.9}When Are Infinite Sets Defined?}{40}
+\contentsline {section}{\numberline {2.10}Certain Sequences Of Regions}{41}
+\contentsline {section}{\numberline {2.11}Alternative Proofs}{43}
+\contentsline {section}{\numberline {2.12}Some Theorems On Uncountable Sets}{43}
+\contentsline {section}{\numberline {2.13}Further Comments On Discovering Proofs}{44}
+\contentsline {section}{\numberline {2.14}Adequate Detail In A Proof}{45}
+\contentsline {section}{\numberline {2.15}A Strange Phenomenon About Theorems And Their Proofs}{45}
+\contentsline {section}{\numberline {2.16}Other Problems Of Dealing With Countable Collections}{47}
+\contentsline {section}{\numberline {2.17}Corollaries}{48}
+\contentsline {section}{\numberline {2.18}More Covering Theorems}{48}
+\contentsline {chapter}{\numberline {3}Connectedness}{51}
+\contentsline {section}{\numberline {3.1}More On Unions Of Sets, And Proving Too Much}{53}
+\contentsline {section}{\numberline {3.2}The Intersection Of Connected Point Sets}{53}
+\contentsline {section}{\numberline {3.3}Classification Of Connected Point Sets}{54}
+\contentsline {section}{\numberline {3.4}Some Ideas About Components}{54}
+\contentsline {section}{\numberline {3.5}More On Components}{55}

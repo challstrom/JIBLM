@@ -1,0 +1,303 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+
+\newcounter{theoremcount}
+\newenvironment{theorem}
+{ \begin{description} \refstepcounter{theoremcount} \item[Theorem \arabic{theoremcount}:] }
+{ \end{description} }
+
+\newcounter{exercisecount}
+\newenvironment{exercise}
+{ \begin{description} \refstepcounter{exercisecount} \item[Theorem \arabic{exercisecount}:] }
+{ \end{description} }
+
+
+% Journal headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright Guilford College Journal of Undergraduate Mathematics} \cfoot{} \rfoot{ - at www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Well-Ordered Sequences}
+\author{B. J. Ball}
+\date{\vspace{3cm}
+\emph{Journal of Undergraduate Mathematics}
+  \\ Department of Mathematics
+  \\ Guilford College
+  \\ Greensboro, North Carolina 27410 
+  \vspace{3cm}
+  \\ The publication of this \emph{Monograph} was 
+  \\ partially supported by a gift from 
+  \\ Dr. Lewis Lum, Professor of Mathematics.
+  }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+\section*{Preface}
+\addcontentsline{toc}{section}{\numberline{}Preface}
+\markboth{Preface}{Preface}
+
+\pagenumbering{roman}
+
+This monograph is a somewhat expanded version of a talk given at the \emph{Conference on Undergraduate Mathematics}, Harvey Mudd College, Claremont, California, April 21-22, 1979. The purpose is to give an unsophisticated treatment of some of the properties of well-ordered sequences; this could serve as a basis for a more detailed and abstract study of ordinal numbers and their arithmetic (as given, for example, in W. Sierpinski's excellent introductory text, \emph{Cardinal and Ordinal Numbers} [5]), or for the beginnings of a foundational study along the lines of the appendix of J. L. Kelley's \emph{General Topology} [3].
+
+The treatment given here closely resembles, initially, that presented by R. L. Moore in the author's first graduate mathematics course. All of the ideas should be easily understood by a good undergraduate student, provided the student is careful to write out the details of the numerous unsubstantiated assertions which are found throughout the monograph. In some cases, an indication of a proof is given, but these sketches should also be subjected to careful elaboration. In this respect, reading this monograph is similar to, though easier than, reading a current research paper: One must pick out the hidden or disguised assertions and verify them, as well as fill in details of the ``proofs'' given. Usually, but not always, this is easy.
+
+At the end of the presentation, a number of exercises are stated. All should be within the abilities of anyone who has understood the preceding material.
+
+\begin{flushright}B. J. Ball
+\\ University of Georgia
+\\ Athens, Georgia 30602
+\end{flushright}
+
+\newpage
+
+
+\pagenumbering{arabic}
+
+\section{Introduction}
+\markboth{1. Introduction}{1. Introduction}
+
+
+One of the most fundamental and important properties of the real numbers is the fact that they are \emph{ordered}: of any two distinct real numbers, one is \emph{less than} the other, or \emph{precedes} it (for example, in the order from left to right on a horizontal line). This ordering has many properties which are useful in algebra and analytic geometry, and especially in calculus and later analysis courses.
+
+Naturally, mathematicians have tried to isolate, and study separately, the ordering relation on the real numbers. To do this, one begins by listing all the properties of the ordering relation he can think of, beginning with the most basic, then tries to derive some of the later properties from those listed earlier, discards those which \emph{can} be so derived, and finally derives as many properties (old and new) as possible from the remaining basic ones. One goal might be to \emph{characterize} the real numbers in terms of an ordering relation; i.e., to postulate enough properties of the relation so that any set having such an ordering relation would have to be ``just like'' the real numbers (in a sense to be made precise later).
+
+Alternatively, one might be interested in the consequences of a somewhat smaller set of order postulates. It is generally agreed that the three most fundamental properties of the ordering relation on the real numbers are these: (1) of any two distinct real numbers, one precedes the other; (2) if one number precedes another, the second does not precede the first; and (3) if one number precedes a second, and the second precedes a third, then the first number precedes the third. Such an ordering relation may be imposed on sets of many different kinds of objects, of course, not just on sets of numbers; any set, together with such an ordering relation, is called an ``ordered set''. Specifically, an \emph{ordered set} is defined to be a nonempty set $S$ together with a notion of ``preceding'' applicable to the elements of $S$ which satisfies the following conditions:
+\begin{enumerate}[\vspace{1cm}(1)]
+  \item if $x$ and $y$ are distinct elements of $S$, then either $x$ precedes $y$ or $y$ precedes $x$;
+  \item if $x$ and $y$ are elements of $S$, and $x$ precedes $y$, then $y$ does not precede $x$; and
+  \item if $x$, $y$, and $z$ are elements of $S$ such that $x$ precedes $y$ and $y$ precedes $z$, then $x$ precedes $z$.
+\end{enumerate}
+
+(More formally, an ordered set is a pair $(S,R)$ such that $S$ is a nonempty set and $R$ is a binary relation on $S$ for which the appropriate restatements of (1), (2), and (3) above hold, with ``$x$ precedes $y$'' meaning ``$(x,y) \in R$'' or ``$xRy$''.)
+
+A few examples may be appropriate. First, as noted earlier, the set $\Re$ of all real numbers with ``precedes'' meaning ``is less than'' is an ordered set. So is the same set $\Re$ with ``precedes'' meaning ``is greater than''. In fact, given any ordered set $S$, there is an ordered set $S*$ having the same elements as $S$ but with ``precedes in $S*$'' meaning ``is preceded by in $S$''.
+
+If $S$ is any ordered set and $T$ is a nonempty subset of $S$, then defining ``$x$ precedes $y$ in $T$'' to mean ``$x$ and $y$ belong to $T$, and $x$ precedes $y$ in $S$'' clearly makes $T$ an ordered set. Thus, any nonempty set of real numbers, with ``precedes'' meaning ``is less than'', is an ordered set. Such an ordered set of real numbers will be said to be \emph{naturally ordered}.
+
+Two ordered sets $S$ and $S'$ are said to be \emph{similar} if there is a one-to-one correspondence between their elements with the property that if $x$ and $y$ are elements of $S$, and $x'$ and $y'$ are elements of $S'$ corresponding to $x$ and $y$ respectively, then $x$ precedes $y$ in $S$ if and only if $x'$ precedes $y'$ in $S'$. A one-to-one function $f$ from $S$ onto $S'$ is called a \emph{similarity} if it satisfies this condition; namely, for each $x,y$ in $S$, $x$ precedes $y$ in $S$ if and only if $f(x)$ precedes $f(y)$ in $S'$. Note that, for example, the naturally ordered open interval $(0,1)$ of $\Re$ is similar to all of $\Re$, but the closed interval $[0,1]$ is \emph{not} similar to $\Re$. Note also that the assertion that two ordered sets $S$ and $S'$ are similar merely asserts that there is \emph{at least one} similarity $f: S \rightarrow S'$ (there may, in general, be many such functions; in certain important cases, to be discussed later, there can only be at most one).
+
+The study of general ordered sets is an important subject in its own right, and a good introduction to this subject may be found in an earlier monograph in this series by J. R. Boyd and G. R. Gordh, Jr. [1]. Familiarity with this material is not necessary for our purposes, however.
+
+
+\section{Sequences}
+\markboth{2. Sequences}{2. Sequences}
+
+
+Of the many kinds of ordered sets, those called ``sequences'' are of particular interest. We will use the term \emph{simple infinite sequence} to denote an ordered set which is similar to the (naturally ordered) set of all positive integers. It is customary to represent a simple infinite sequence by some such notation such as $(x_1, x_2, x_3, \cdots)$. Here the correspondence giving the similarity of the set $N = \{ 1, 2, 3, \cdots \}$ with the set $X = \{ x_1, x_2, x_3, \cdots \}$ is understood to be $1 \rightarrow x_1, 2 \rightarrow x_2, 3 \rightarrow x_3, \cdots$. Note that the order attached to the set $X = \{ x_i | i = 1, 2, 3, \cdots \}$ when it is considered as a \emph{sequence} $(x_1, x_2, x_3, \cdots)$ need have no relation to the order $X$ has when considered as a (naturally ordered) subset of $\Re$ (for example, $x_1$ always precedes $x_2$ in the sequence $(x_1, x_2, x_3, \cdots)$, though of course it may happen that $x_2 < x_1$ and hence $x_2$ precedes $x_1$ in $\Re$). When mentioned, this is obvious, and yet students in beginning calculus classes frequently confuse the assertion that one number ``precedes'' another in a particular \emph{sequence} in which they both occur, and the assertion that this number precedes the other \emph{in} $\Re$. The distinction is worth pointing out, and emphasizes the necessity of being certain that the ordering relation used is clearly understood when dealing with an ordered set.
+
+Simply infinite sequences have an important, useful property not shared by all ordered sets: every nonempty subset of a simple infinite sequence has a first term (i.e., a member of the subset which precedes all other members of the subset). This property is the basis of the method of proof called ``mathematical induction''; the argument proceeds as follows: suppose you have a simple infinite sequence of \emph{statements} such that (i) the first statement in the sequence is true; and (ii) if all the statements preceding a certain one are true, then that one is also true. It then follows that all statements in the sequence are true because if any were false, then the set of all false statements in the sequence is nonempty, and hence there must be a \emph{first} false statement in the sequence. But this is easily seen to be a contradiction.
+
+This property of an ordered set -- that every nonempty subset has a first term -- is called the \emph{inductive property}. One might wonder, briefly, whether every infinite ordered set with the inductive property is necessarily a simple infinite sequence. Minimal reflection, however, shows that this is not the case. For example, one can adjoin an additional term $x_\infty$ to a simple infinite sequence $(x_1, x_2, x_3, \cdots)$, with the agreement that in the enlarged set, $x_n$ precedes $x_m$ if $n$ and $m$ are positive integers and $n < m$; and for each positive integer $n$, $x_n$ precedes $x_\infty$. This gives an ordered set $S = x_1, x_2, x_3, \cdots, x_\infty)$, which is easily shown to have the inductive property. It is clear that $S$ is not a simple infinite sequence because, for example, the term $x_\infty$ has no immediate predecessor in $S$. (In any ordered set, a term $x$ is called an \emph{immediate predecessor} of a term $y$ if $x$ precedes $y$ but there is no term $z$ such that $x$ precedes $z$ and $z$ precedes $y$. Clearly, no term of an ordered set can have more than one immediate predecessor. It is not difficult to show that if $S$ is an infinite ordered set with the inductive property, and each term of $S$ other that the first has an immediate predecessor, then $S$ is a simple infinite sequence.)
+
+We will use the term \emph{well-ordered sequence} to denote an nonempty ordered set with the inductive property. This terminology is not in exact conformity with common usage, since it is customary to allow repetitions in a \emph{sequence}, though not in a \emph{set}. In the case of a simple infinite sequence, as defined above, it is easy to allow for repetitions by considering the terms of the sequence to be ordered pairs, with the second term of each ordered pair a positive integer; thus $(x,n)$ and $(y,m)$ are distinct if $n \neq m$, even though $x$ and $y$ may be equal. To avoid certain technical difficulties and to make the presentation as natural as possible, we will use the term ``well-ordered \emph{sequence}'' as synonymous with ``well-ordered \emph{set}''.
+
+A \emph{subsequence} of a well-ordered sequence $\alpha$ is a nonempty (ordered) subset $\beta$ of $\alpha$, with ``precedes in $\beta$'' meaning ``precedes in $\alpha$''. Note that any subsequence of a well-ordered sequence is also well-ordered.
+
+For any ordered set $S$, a nonempty subset $T$ of $S$ is called an \emph{initial segment} of $S$ if for each $x$ in $T$, every element of $S$ which precedes $x$ in $S$ belongs to $T$; and is called a \emph{terminal segment} of $S$ if for each $x$ in $T$, every element of $S$ which follows (i.e., is preceded by) $x$ in $S$ belongs to $T$. Initial and terminal segments of well-ordered sequences are particularly important.
+
+If $x$ is a term of a well-ordered sequence $\alpha$, we will let $I_\alpha(x)$ and $T_\alpha(x)$ denote, respectively, the set of all terms of $\alpha$ which precede $x$, and the set consisting of $x$ and all terms of $\alpha$ which follow $x$. It is easily shown that:
+\begin{enumerate}[\vspace{1cm}(1)]
+  \item if $x$ is any term of $\alpha$ other than the first term, then $I_\alpha(x)$ is an initial segment of $\alpha$,
+  \item if $\beta$ is any \emph{proper} initial segment of $\alpha$ (i.e., $\beta \neq \alpha$), then there is a (unique) term $x$ of $\alpha$ such that $\beta = I_\alpha(x)$,
+  \item for each term $x$ of $\alpha$, $T_\alpha(x)$ is a terminal segment of $\alpha$, and 
+  \item if $\gamma$ is any terminal segment of $\alpha$, then there is a term $x$ of $\alpha$ such that $\gamma = T_\alpha(x)$.
+\end{enumerate}
+
+
+\section{Basic Structure of Well-Ordered Sequences}
+\markboth{3. Basic Structure}{3. Basic Structure}
+
+
+Let $\alpha$ be a well-ordered sequence and, for simplicity, assume that $\alpha$ has infinitely many terms. Since $\alpha$ is a nonempty subset of itself, $\alpha$ has a first term. Let $x_1$ denote the first term of $\alpha$. Since $\alpha$ is infinite, $\alpha - \{ x_1 \} \neq 0$, and hence $\alpha - \{ x_1 \}$ has a first term, say $x_2$. Since $\alpha - \{ x_1, x_2 \} \neq 0$, there is a first term, $x_3$, of $\alpha - \{ x_1, x_2 \}$. Continuing this process, we find that $\alpha$ ``starts off'' like the simple infinite sequence $\beta = (x_1, x_2, x_3, \cdots)$. Now if $\beta_1$ is not all of $\alpha$, i.e. $\alpha - \beta_{1} \neq 0$, then there is a first term of $\alpha - \beta_1$. It is customary to denote the first term of $\alpha - beta_1$ by $x_\omega$. If $\alpha \neq (x_1, x_2, x_3, \cdots, x_\omega)$, then there is a first term $x_{\omega+1}$ of $\alpha$, which follows $x_\omega$ (i.e., $x_{\omega+1}$ is the first term of $\alpha - \{ x_1, x_2, \cdots, x_{\omega} \}$ in $\alpha$). Continuing, if possible, we see that $\alpha$ starts off $x_1, x_2, x_3, \cdots, x_{\omega}, x_{\omega+1}, x_{\omega+2}, \cdots$. If this still does not exhaust $\alpha$, we let $x_{\omega+\omega}$ denote the first term of $\alpha$ following all of the terms already named, and continue as before. It thus appears that all well-ordered sequences start off alike. More precisely, we have the following theorem.
+
+\begin{theorem} %1
+Of any two well-ordered sequences, one is similar to an initial segment of the other.
+\end{theorem}
+
+A proof of Theorem 1 will be sketched, since it introduces a process (called ``transfinite induction'') which is basic to any study of well-ordering. First, we introduce the notion of a \emph{monotonic collection} of well-ordered sequences, and of the \emph{union} of such a collection.
+
+Suppose $S$ is a set, each element of which is a well-ordered sequence. Then $S$ is said to be a \emph{monotonic collection} provided that of any two well-ordered sequences belonging to $S$, one is an initial segment of the other. If, for example, one starts with a particular well-ordered sequence $\alpha$ and lets $S$ denote the collection of all proper initial segments of $\alpha$, then $S$ is a monotonic collection of well-ordered sequences because if $\beta$ and $\beta'$ are initial segments of $\alpha$, then either $\beta$ is an initial segment of $\beta'$, or $\beta'$ is an initial segment of $\beta$. In fact, for the same reason, given a well-ordered sequence $\alpha$, then \emph{any} collection of initial segments of $\alpha$ is monotonic. Indeed, this is the only kind of monotonic collection of well-ordered sequences that is possible; i.e., if $S$ is an arbitrary monotonic collection of well-ordered sequences, then there exists a well-ordered sequence $\sigma$ such that every member of $S$ is an initial segment of $\sigma$. 
+
+To see this, let the term of $\sigma$ be the union of the terms of the sequences belonging to $S$ ($x$ is a term of $\sigma$ if and only if there is at least one sequence $\beta$ in the collection $S$ such that $x$ is a term of $\beta$). To define the ordering relation on $\sigma$, note that for any two terms $x$ and $y$ of $\sigma$, there is at least one member of $S$ having both $x$ and $y$ as terms; and that if $x$ precedes $y$ in one member of $S$, then $x$ precedes $y$ in every member of $S$ which contains them both. Thus one can unambiguously define ``$x$ precedes $y$ in $\sigma$'' to mean ``there is a sequence $\beta$ belonging to $S$ such that both $x$ and $y$ are terms of $\beta$, and $x$ precedes $y$ in $\beta$''. It must then be verified that this definition makes $\sigma$ an ordered set, and that each nonempty subset of $\sigma$ has a first term in this ordering; neither is difficult.
+
+We also need the following observation: \emph{no proper initial segment of a well-ordered sequence $\alpha$ can be similar to all of $\alpha$}. To see this, recall that if $\beta$ is a proper initial segment of $\alpha$, there is a term $x$ of $\alpha$ such that $\beta = I_\alpha(x)$. Hence if $\alpha$ is similar to any proper initial segment of itself, there is a term $\bar{x}$ of $\alpha$ such that $\alpha$ is similar to $I_\alpha(\bar{x})$, but $\alpha$ is not similar to $I_\alpha(x)$ for any $x$ preceding $\bar{x}$. Let $\alpha' = I_\alpha(\bar{x})$, and let $f: \alpha \rightarrow \alpha'$ be a similarity function. If $\bar{x}' = f(\bar{x})$, then $f$ determines a similarity function from $I_\alpha(\bar{x})$ to $I_{\alpha'}(\bar{x}')$; since $\alpha$ is similar to $I_\alpha(\bar{x})$ and $I_\alpha(\bar{x})$ is similar to $I_{\alpha'}(\bar{x}')$, it easily follows that $\alpha$ is similar to $I_{\alpha'}(\bar{x}')$. But this is a contradiction, since $I_{\alpha'}(\bar{x}') = I_{\alpha}(\bar{x}')$, $\bar{x}'$ precedes $\bar{x}$ in $\alpha$, and $\bar{x}$ is the first term of $\alpha$ such that $\alpha$ is similar to the initial segment determined by it.
+
+From this we easily obtain the additional result that \emph{no two segments of a well-ordered sequence can be similar to each other}.
+
+Now, to prove Theorem 1, consider any two well-ordered sequences $\alpha$ and $\alpha'$, and let $S$ denote the collection consisting of every initial segment of $\alpha$ which is similar to an initial segment of $\alpha'$. It is clear that $S$ is nonempty (the initial segment of $\alpha$ consisting of only the first term of $\alpha$ is similar to the initial segment of $\alpha'$ consisting of only the first term of $\alpha'$), and that $S$ is monotonic (of any two initial segments of $\alpha$, one is an initial segment of the other). Let $\sigma$ denote the well-ordered sequence which is the union of the members of $S$, as defined earlier. It is clear that $\sigma$ is an initial segment of $\alpha$, and is similar to an initial segment $\sigma'$ of $\alpha'$. If $\sigma = \alpha$, then $\alpha$ is similar to the initial segment of $\alpha'$; and if $\sigma' = \alpha'$, then $\alpha'$ is similar to an initial segment of $\alpha$. Suppose that $\sigma \neq \alpha$ and $\sigma' \neq \alpha'$. Let $x$ be the first term of $\alpha$ not in $\sigma$, and let $x'$ be the first term of $\alpha'$ not in $\sigma'$. Then $\sigma \cup \{ x \}$ is an initial segment of $\alpha$ which is similar to the initial segment $\sigma' \cup \{ x' \}$ of $\alpha'$, which is a contradiction since $x \epsilon \sigma$ and $\sigma$ contains every term of $\alpha$ which belongs to an initial segment of $\alpha$ that is similar to an initial segment of $\alpha'$. It therefore follows that either $\sigma = \alpha$ or $\sigma' = \alpha'$; i.e., either $\alpha$ is similar to an initial segment of $\alpha'$, or $\alpha'$ is similar to an initial segment of $\alpha$.
+
+
+\section{Cardinal Equivalence}
+\markboth{4. Cardinal Equivalence}{4. Cardinal Equivalence}
+
+
+Before continuing with our discussion, we need to introduce a new idea or two. Two sets $A$ and $B$ are said to be \emph{cardinally equivalent}, or \emph{contain the same number of elements}, if there is a $1-1$ correspondence between the element of $A$ and those of $B$. When applied to finite sets, the terminology ``having the same number of elements'' is clearly in agreement with ordinary usage. In the case of infinite sets, however, the term ``cardinally equivalent'' would seem to be preferable, since it is obvious to anyone that there are ``more'' positive integers than there are even positive integers, yet it is clear from the definition that the set of all positive integers is cardinally equivalent to the set of all even positive integers: the correspondence $n \rightarrow 2n$, for example, satisfies the definition.
+
+Also, it might at first be thought that \emph{any} two infinite sets must be cardinally equivalent. That this is false can be seen from the following example.
+
+Let $S$ denote the set of all simple infinite sequences of positive integers. Suppose there exists a $1-1$ correspondence between the set $N$ of all positive integers and the set $S$, and for each positive integer $n$, let $\alpha_n$ be the member of $S$ corresponding to $n$. Then $S = \{ \alpha_1, \alpha_2, \alpha_3, \cdots \}$, and each $\alpha_i$ is a simple infinite sequence of positive integers. Let $\alpha_1 = \{ n_{11}, n_{12}, n_{13}, \cdots \}$, $\alpha_2 = \{ n_{21}, n_{22}, n_{23}, \cdots \}$, $\alpha_3 = \{ n_{31}, n_{32}, n_{33}, \cdots \}$, and in general, let $\alpha_i = \{ n_{i1}, n_{i2}, n_{i3}, \cdots \}$. Now let $\alpha = \{ n_{1}, n_{2}, n_{3}, \cdots \}$, where $n_1 = 1 + n_{11}, n_2 = 1 + n_{21}, n_3 = 1 + n_{31}, \cdots$. Then $\alpha$ is a simple infinite sequence of positive integers, and hence $\alpha$ belongs to $S$. But $\alpha \neq \alpha_1$ because $n_1 \neq n_{11}$, $\alpha \neq \alpha_2$ because $n_2 \neq n_{22}$, $\alpha \neq \alpha_3$ because $n_3 \neq n_{33}$, and in general, $\alpha \neq \alpha_i$ because $n_i \neq n_{ii}$. Thus $\alpha$ is a member of $S$, but for each positive integer $i$, $\alpha \neq \alpha_i$. This contradicts the assumption that $S = \{ \alpha_1, \alpha_2, \alpha_3, \cdots \}$, and it follows that there cannot exist a $1-1$ correspondence between $N$ and $S$.
+
+A set $A$ is said to be \emph{cardinally greater} than a set $B$ (and $B$ is \emph{cardinally less} than $A$) if there is a subset of $A$ which is cardinally equivalent to $B$, but no subset of $B$ is cardinally equivalent to $A$. It is easy to see, in the above example, that $N$ is cardinally equivalent to a subset of $S$ (i.e., $S$ is an infinite set), and the argument given can easily be modified to show that $S$ is not cardinally equivalent to any subset of $N$. Hence $S$ is cardinally greater than $N$.
+
+More generally, it can be show that for any set $A$, the collection $P_A$ of all subsets of $A$ is cardinally greater than $A$; in particular, for any set $A$, there is a set $B$ which is cardinally greater than $A$.
+
+A set is said to be \emph{countable} if either it is finite or it is cardinally equivalent to $N$; a set which is not countable is \emph{uncountable}. It is easy to show that a set is countable if and only if there is a simple infinite sequence (repetitions allowed) which includes all of the elements of the set. Using this fact, it is a simple matter to show that the union of any two countable sets is countable, or more generally, that the union of any countable collection of countable sets is countable. From this, it easily follows that the set $Q$ of all rational numbers is countable. An argument similar to that given for the uncountability of the set $S$ of simple infinite sequences of positive integers shows that the set $\Re$ of all real numbers is uncountable. Since $\Re$ is the union of the set of all rational numbers and the set of all irrational numbers, it follows, for example, that the set of irrational numbers is uncountable.
+
+It has been observed that a set is countable if and only if its elements can be arranged in a simple infinite sequence, and that not every set has this property. The following theorem is one of the primary reasons for introducing the notion of a well-ordered sequence.
+
+\begin{theorem} %2
+For every nonempty set $M$, there is a well-ordered sequence whose terms are the elements of $M$.
+\end{theorem}
+
+The proof of this theorem depends on a basic property of sets, the so-called Zermelo Postulate: If $S$ is any nonempty collection of disjoint nonempty sets, there exists a set $C$ which contains one and only one element of each member of $S$. Here, this proposition will be accepted as true, without proof. From it, it is easy to prove that if $S$ is any collection of nonempty sets (disjoint or not), there is a function $f$ with domain $S$ such that for each member $X$ of $S$, $f(X)$ is an element of $X$; i.e., the ``choice function'' $f$ chooses a particular element $f(X)$ from each set $X$ in the collection $S$.
+
+Now to prove Theorem 2, let $M$ be an arbitrary nonempty set, and let $S$ be the collection of all nonempty subsets of $M$. Let $f$ be a choice function for $S$, as described above. Let $x_1 = F(M)$, and define a ``$Q$-sequence'' to be a well-ordered sequence $\alpha$ with the following two properties: (1) the first term of $\alpha$ is $x_1$, and (2) if $\beta$ is a proper initial segment of $\alpha$, then the first term of $\alpha$ which follows every term of $\beta$ is $f(M - \beta)$. (Note that here, as elsewhere, we use the same symbol for a well-ordered sequence and for the set of all terms of that sequence; it is hoped that no confusion will result.) Since $\beta$ is required to be a \emph{proper} initial segment of $\alpha$, $M - \beta$ is nonempty and hence belongs to $S$, so $f(M - \beta)$ is defined. Now let $C$ denote the collection of all $Q$-sequences. It can easily be shown that $C$ is nonempty and is a monotonic collection, and that if $\sigma$ is the well-ordered sequence which is the union of members of $C$, ordered as described earlier, then $\sigma$ is a $Q$-sequence. If $M - \sigma \neq 0$, then we can adjoin to $\sigma$ the point $x = f(M - \sigma)$, obtaining a new $Q$-sequence $\sigma' = (\sigma, x)$, where the notation is intended to indicate that $x$ follows, in $\sigma'$, all the terms of $\sigma$, and the order of the terms of $\sigma$ in $\sigma'$ is the same as their order in $\sigma$. This is a contradiction since $x \epsilon M - \sigma$, but since $x$ belongs to a $Q$-sequence (namely, $\sigma'$), then $x$ must belong to $\sigma$. Hence $M - \sigma = 0$, so $\sigma$ includes all the elements of $M$, as required.
+
+Since, as we have seen, there exist sets which are not countable, it follows from Theorem 2 that there exist well-ordered sequences having uncountable many terms. While this may be surprising, the following easy consequences is perhaps even more so.
+
+\begin{theorem} %3
+There exists a well-ordered sequence $\gamma$ such that $\gamma$ has uncountably many terms, but each term of $\gamma$ has at most a countable number of predecessors.
+\end{theorem}
+
+The proof is trivial. Let $\sigma$ be any uncountable well-ordered sequence; if any term of $\sigma$ has uncountably many predecessors, let $p$ be the first such term and let $\gamma = I_{\sigma}(p)$, the initial segment of $\sigma$ determined by $p$. It is easily seen that $\gamma$ has the required properties.
+
+It was shown earlier (Theorem 1) that of any two well-ordered sequences, one (and only one) of them is similar to an initial segment of the other (and this initial segment is unique). A well-ordered sequence $\beta$ will be said to be \emph{shorter than} a well-ordered sequence $\alpha$ if $\beta$ is similar to a proper initial segment of $\alpha$. The sequence $\gamma$ described in Theorem 3 is thus a \emph{shortest uncountable} well-ordered sequence.
+
+In exactly the same way as $\gamma$ was produced in the proof of Theorem 3, it can be shown that for any set $M$, there is a shortest well-ordered sequence $\gamma_M$ which is cardinally equivalent to $M$, i.e., the set of all terms of $\gamma_M$ is cardinally equivalent to $M$, but if $\beta$ is any proper initial segment of $\gamma_M$, then the set of all terms of $\beta$ is cardinally less then $M$. This result, together with Theorem 1, can be used to prove the following theorem, which is probably the most important consequence of the well-ordering theorem.
+
+\begin{theorem} %4
+For any set $M$, there exists a set $P$ such that $P$ is cardinally greater than $M$, but such that there is no set $S$ which is cardinally greater than $M$ and cardinally less than $P$.
+\end{theorem}
+
+If one introduced the notion of \emph{cardinal number} (for example, by defining the cardinal number of a set $M$ to be the class of all sets cardinally equivalent to $M$), then Theorem 4 asserts that for any cardinal number, there is a \emph{next larger} cardinal number. The fact remarked upon following Theorem 3, together with Theorem 1, can be used to establish the comparability of cardinal numbers; i.e., of any two distinct cardinal numbers, one is less than the other. In fact, it can be shown that \emph{any set of cardinal numbers is well-ordered by magnitude}. Analogous results can be established for ordinal numbers, where the ordinal number of a well-ordered sequence $\alpha$ is defined to be the class of all well-ordered sequences similar to $\alpha$.
+
+
+\section{Realizability of Well-Ordered Sequences}
+\markboth{5. Realizability}{5. Realizability}
+
+
+A well-ordered sequence $\alpha$ will be said to be \emph{realizable on} $\Re$ if there is a subset $S$ of $\Re$ which, with its natural order as a subset of $\Re$, is similar to $\alpha$. The main goal of this section is to establish the fact that countable well-ordered sequences, and only the countable ones, are realizable on $\Re$.
+
+A subsequence $\beta$ of a well ordered sequence $\alpha$ is said to \emph{run through} $\alpha$ or to be \emph{cofinal} with $\alpha$, if for each term $x$ of $\alpha$, there is a term $y$ of $\beta$ such that either $x = y$ or $x$ precedes $y$ in $\alpha$. (If $\alpha$ has a last term, then $\beta$ is cofinal with $\alpha$ if and only if $\beta$ contains the last term of $\alpha$; in the more important cases in which $\alpha$ has no last term, then $\beta$ runs through $\alpha$ if and only if for each $x$ in $\alpha$, there is a term of $\beta$ which follows $x$.)
+
+It is easy to see that if $\gamma$ is a \emph{shortest uncountable} well-ordered sequence, then $\gamma$ cannot have a countable subsequence running through it (if $(x_1, x_2, x_3, \cdots)$ runs through $\gamma$, then $\gamma$ is the union of the initial segments $I_\gamma(x_1)$, $I_\gamma(x_2)$, $I_\gamma(x_3)$, $\cdots$; since each of these initial segments is countable, $\gamma$ must be countable). It is also easy to show that any naturally ordered subset of $\Re$ which is well-ordered has a countable subsequence running through it. Now if there is any naturally ordered subset of $\Re$ which is similar to an uncountable well-ordered sequence, then there is one which is similar to a shortest uncountable well-ordered sequence. But this contradicts the two facts mentioned above: no shortest uncountable well-ordered sequence has a countable subsequence running through it, but every well-ordered subset of $\Re$ does have such a subsequence. Thus we have the following result: \emph{No uncountable well-ordered sequence is realizable on $\Re$}.
+
+Next we wish to establish that every countable well-ordered sequence \emph{is} realizable on $\Re$. To do this, we first observe that any countable well-ordered sequence with no last term has a simple infinite subsequence running through it. Now, assuming that there is some countable well-ordered sequence which is not realizable on $\Re$, there must be a shortest one; i.e., a countable well-ordered sequence $\delta$ such that $\delta$ is not realizable on $\Re$ but every proper initial segment of $\delta$ \emph{is} realizable on $\Re$. Let $(x_1, x_2, x_3, \cdots)$ be a simple infinite sequence running through $\delta$. Since $\Re$ is similar to any open interval on $\Re$, each initial segment of $\delta$ is realizable on any open interval of $\Re$. Hence there is a subset $S_1$ of $(0,1)$ which is similar to $I_\delta(x_1)$, a subset of $S_2$ of $(1,2)$ similar to $I_\delta(x_2) - I_\delta(x_1)$, a subset $S_3$ of $(2,3)$ similar to $I_\delta(x_3) - I_\delta(x_2)$, and so on. Clearly the set $S_2 \cup S_2 \cup S_3 \cup \cdots$ is similar to $\delta$, contradicting the assumption that $\delta$ is not realizable on $\Re$.
+
+These two results are summarized in the following theorem.
+
+\begin{theorem} %5
+A well-ordered sequence $\alpha$ is realizable on $\Re$ if and only if $\alpha$ is countable.
+\end{theorem}
+
+With a little extra care, one can establish that every countable well-ordered sequence is realizable as a closed subset of $\Re$. (A subset $M$ of $\Re$ is ``closed'' provided that if $p$ is a point of $\Re$ such that every open interval containing $p$ intersects $M$, then $p$ belongs to $M$; a subset $M$ of the coordinate plane $E^2$ is ``closed'' provided that if $p$ is a point of $E^2$ such that every open disk containing $p$ intersects $M$, then $p$ belongs to $M$.)
+
+Suppose $G$ is a collection of sets such that of any two members of $G$, one is a subset of the other (such a collection is said to be \emph{monotonic}). Then, defining ``$G_1$ precedes $G_2$ in $G$'' to mean ``$G_1 \subset G_2$'', $G$ becomes an ordered set; such a collection $G$, with this notion of ``preceding'', is said to be \emph{ordered by inclusion}. Arguments similar to those given above can be used to establish the following result.
+
+\begin{theorem} %6
+There does not exist an uncountable monotonic collection $G$ of closed subsets of $\Re$ (or of $E^2$) which is well-ordered by inclusion.
+\end{theorem}
+
+The preceding theorem remains true if ``closed'' is replaced by ``open''. (A subset $U$ of $\Re$ ($E^2$) is \emph{open} if for each point $p$ of $U$, there is an open interval (open disk) containing $p$ and lying entirely in $U$.)
+
+Results such as these make the following fact, due to Mary-Ellen Estill (Rudin) [2], seem even more surprising (the result is surprisingly easy to prove, however). First, a ``topological ray in $E^2$ starting from $(0,0)$ and lying except for $(0,0)$ entirely in the first quadrant'' may be defined as the graph of a continuous function $f$ with domain $[0,\infty)$ such that $f(0) - 0$ and $f(x) > 0$ for $x > 0$. If $r_1$ and $r_2$ are two such topological rays, then $r_2$ is said to \emph{start below} $r_1$ if there is a positive number $p$ such that $f_2(x) < f_1(x)$ for every $x$ with $0 < x < p$. The result is: there exists an uncountable well-ordered sequence $\alpha$ of topological rays each starting from $(0,0)$ and lying otherwise in the first quadrant, such that if $r_1$ precedes $r_2$ in $\alpha$, then $r_2$ starts below $r_1$.
+
+
+\section{Some Additional Properties and Exercises}
+\markboth{6. Additional Properties and Exercises}{6. Additional Properties and Exercises}
+
+
+The sum $\alpha + \beta$ of well-ordered sequences $\alpha, \beta$ is defined to be the well-ordered sequence $\gamma$ obtained by ``following $\alpha$ with $\beta$''; i.e., the terms of $\gamma$ are the terms of $\alpha$ together with those of $\beta$, with the terms of $\alpha$ having the same order that they have in $\alpha$ and the terms of $\beta$ having the same order that they have in $\beta$, and with each term of $\alpha$ preceding each term of $\beta$ in $\gamma$. It is clear that addition of well-ordered sequences is \emph{not} commutative. Moreover, as the following two exercises show, there is a ``left cancellation law'' for addition of well-ordered sequences, but not ``right cancellation law''.
+
+\begin{exercise} %1
+\textbf{Exercise 1}: If $\alpha + \beta$ is similar to $\alpha + \beta'$, then $\beta$ is similar to $\beta'$.
+\end{exercise}
+
+\begin{exercise} %2
+\textbf{Exercise 2}: There exist well-ordered sequences $\alpha, \beta, \alpha'$ such that $\alpha + \beta$ is similar to $\alpha' + \beta$, but $\alpha$ is not similar to $\alpha'$.
+\end{exercise}
+
+It was observed earlier that no two initial segments of a well-ordered sequence are similar to each other. This is not true for terminal segments of a well-ordered sequence, and in fact we have the following result.
+
+\begin{exercise} %3
+\textbf{Exercise 3}: For any well-ordered sequence $\alpha$, there exists a finite number of terminal segments of $\alpha$ such that every terminal segment of $\alpha$ is similar to one of them.
+\end{exercise}
+
+A well-ordered sequence $\gamma$ is said to be \emph{prime} if there do not exist two well-ordered sequences $\alpha$ and $\beta$, each shorter than $\gamma$, such that $\gamma$ is similar to $\alpha + \beta$.
+
+\begin{exercise} %4
+Every well-ordered sequence is the sum of a finite number of prime sequences.
+\end{exercise}
+
+Given two ordered sets $S$ and $T$, the Cartesian product $S \times T$ may be ordered by the relation ``$(s,t)$ precedes $(s', t')$'' if either (1) $s$ precedes $s'$ in $S$, or (2) $s = s'$ and $t$ precedes $t'$ in $T$. It is not difficult to show that this relation (called the ``lexicographic'' order on $S \times T$ because it is the way words are ordered in a dictionary) is indeed an ordering of $S \times T$. Moreover, if $S$ and $T$ are well-ordered, then the lexicographic ordering well-orders $S \times T$. The \emph{product} $\alpha \cdot \beta$ of two well-ordered sequences is just $\alpha \times \beta$ with the lexicographic ordering. It might be useful to think of $\alpha \cdot \beta$ as the well-ordered sequence obtained by ``replacing each term of $\alpha$ with a sequence similar to $\beta$''. As in the case of sums, the product of ordinal numbers is not commutative. Also, there is a left cancellation law, but no right cancellation law, as the following exercises indicate.
+
+\begin{exercise} %5
+If $\alpha \cdot \beta$ is similar to $\alpha \cdot \beta'$, then $\beta$ is similar to $\beta'$.
+\end{exercise}
+
+\begin{exercise} %6
+There exists well-ordered sequences $\alpha$, $\beta$, $\alpha'$ such that $\alpha \cdot \beta$ is similar to $\alpha' \cdot \beta$, but $\alpha$ is not similar to $\alpha'$.
+\end{exercise}
+
+The preceding six exercises all deal with the rudiments of the ``arithmetic'' of ordinal numbers. Much more detail can be found in [5]. The following two miscellaneous exercises might also be of interest.
+
+The assertion that two ordered sets $S$ and $T$ are similar merely requires that there be \emph{at least one} similarity transformation $f: S \rightarrow T$; in general, if there is one such, there are many others. In the case of well-ordered sequences, however, this is not the case.
+
+\begin{exercise} %7
+If $\alpha$ and $\beta$ are similar well-ordered sequences, then there is a unique similarity transformation $f: \alpha \rightarrow \beta$.
+\end{exercise}
+
+We conclude with one exercise of quite a different type, in which well-ordered sequences can be used to advantage. A much more general result is given in [4].
+
+\begin{exercise} %8
+Suppose $M$ is a set and $G$ is a the collection of all pairs of distinct elements of $M$. If $P$ and $Q$ are subcollections of $G$ such that $P \cup Q = G$, and $P$ is cardinally greater than $Q$, then there is a subset $M'$ of $M$ such that $M'$ is cardinally equivalent to $M$, and every pair of distinct elements of $M'$ belongs to $P$.
+\end{exercise}
+
+
+\section{References}
+\markboth{7. References}{7. References}
+
+
+\begin{enumerate}[1.]
+  \item J. R. Boyd and G. R. Gordh Jr., \emph{An introduction to point set topology via linearly ordered spaces}, Monographs in Undergraduate Mathematics, vol. 3, Greensboro, 1977.
+  \item M. E. Estill, \emph{Separation in non-separable spaces}, Duke Math. J., 18 (1951), pp. 623-629.
+  \item J. L. Kelley, \emph{General topology}, van Nostrand, Princeton, 1955.
+  \item F. B. Jones, \emph{On the separation of the set of pairs of a set}, J. Elisha Mitchell Sci. Soc., 68 (1952), pp. 44-45.
+  \item W. Sierpinski, \emph{Cardinal and ordinal numbers}, PWN, Warsaw, 1958.
+\end{enumerate}
+
+
+\end{document}

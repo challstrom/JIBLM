@@ -1,0 +1,40 @@
+---
+title: "Guilford Course Notes"
+---
+
+```{r}
+#| include: false
+
+library(tidyverse)
+library(DT)
+```
+
+These notes come from "Monographs in Undergraduate Mathematics," founded by J. R. Boyd and developed by the faculty of the Department of Mathematics at Guilford College over the period from 1969 to 1994. When this series became inactive, these notes were donated under the condition that they remain unaltered and protected by Guilford copyright.
+
+
+```{r}
+#| include: false
+
+guilford <- read_csv("guilford_files.csv") |>
+  mutate(title = str_glue("<a href=\"./{file}/{file}.html\">{title}</a>")) |>
+  select(title, author, subject, pages) |>
+  rename(Title = title, Author = author, Subject = subject, Pages = pages)
+
+
+#  separate_wider_regex(Issue, patterns = c("No. ", v = "[0-9]+", " [(]", date = "[A-Za-z]+ [0-9]+", " [)]"))
+
+  
+
+```
+
+```{r}
+#| echo: false
+
+options(DT.options = list(order = list( list(0, 'asc'), list(1, 'asc'))))
+
+#materials |>
+#  datatable(rownames = FALSE, style = 'bootstrap', class = "table-condensed table-striped", escape = FALSE)
+
+guilford |>
+  datatable(rownames = FALSE, style = 'bootstrap', class = "table-condensed table-striped", escape = FALSE)
+```

@@ -1,0 +1,3126 @@
+\documentclass{book}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% Journal headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{Point Set Topology via Linearly Ordered Spaces: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright Guilford College Journal of Undergraduate Mathematics} \cfoot{} \rfoot{ - at www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+\thispagestyle{empty}
+\title{An Introduction To Point Set Topology Via Linearly Ordered Spaces}
+\author{J. R. Boyd \\ G. R. Gordh, Jr.}
+\date{\vspace{3cm}
+\emph{Journal of Undergraduate Mathematics}\\
+Department of Mathematics\\
+Guilford College\\
+Greensboro, North Carolina 27410
+}
+\maketitle
+
+% table of contents
+
+\thispagestyle{empty}
+\pagenumbering{roman}
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+
+\chapter*{Preface}
+\markboth{Preface}{Preface}
+\addcontentsline{toc}{chapter}{\numberline{}Preface}
+
+\pagenumbering{arabic}
+
+Mathematically speaking, the primary purpose of this \emph{Monograph} is to outline a topological characterization of the real number line among all linearly ordered spaces. Pedagogically speaking, its primary purpose is to actively involve the student in \emph{doing}, rather than watching, mathematics. The \emph{Monograph} is also intended (1) to introduce the student to the axiomatic and deductive character of mathematics, (2) to help the student develop his/her critical reasoning ability, (3) to provide the student with an understanding of the real number line, and (4) to introduce the student to important concepts of topology and analysis.
+
+The material is virtually self-contained. The student need only know the intuitive definitions of \emph{element} and \emph{set} to begin work. For this reason technical notation is used sparingly. This helps to de-emphasize the importance of previous mathematical training. It also makes the material more relevant for non-mathematics majors who will never need specialized mathematical notation, but who will need the ability to use English logically and critically.
+
+The following conventions are observed throughout: 
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item The word \emph{``or''} always means \emph{``and/or''}.
+  \item Plural words have plural meaning (e.g., if $p$ and $q$ are \emph{points}, then $p$ is not $q$). 
+  \item The \emph{``empty set''} is not considered to be a set. 
+\end{enumerate}
+
+The student is hereby warned that the problems vary considerably in difficulty. Thus it is acceptable to skip problems with the promise of returning to them later. The most difficult problems can be omitted entirely without loss of continuity. The Appendix contains optional material which is intended to provide a transition from the study of linearly ordered spaces to the general study of topological spaces.
+
+This \emph{Monograph} is an extension and revision of a booklet entitled \emph{Introduction to Elementary Point Set Theory} written by the first author and published by the Department of Mathematics of Guilford College.
+
+Acknowledgements: First, we recognize our debt to R. L. Moore and his ``Moore method'' of teaching mathematics. Second, we are grateful to R. L. Wilder and C. E. Burgess, each of whom provided us with notes similar in purpose and content to this \emph{Monograph}. However, none of them is responsible for the viewpoint expressed herein or for the choice of material. Finally, we wish to express thanks to the many students whose critical remarks have been useful and greatly appreciated. This \emph{Monograph} is dedicated to F. Burton Jones.
+
+\begin{flushright}
+J. R. Boyd and G. R. Gordh, Jr. \\
+Greensboro, North Carolina. \\
+June, 1977
+\end{flushright}
+
+
+
+\chapter*{Chapter 1: Preliminary Definitions and Notations}
+\markboth{Chapter 1}{Chapter 1}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter 1: Preliminary Definitions and Notations}
+
+
+The \emph{real number line} is a Euclidean line whose points have been coordinatized by means of the real numbers, as indicated in Figure A. In other words, each point on the line is named with a real number. We symbolize the \emph{real number line} by $Re$.
+
+\begin{center}
+%TeXCAD Options
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(120,15.5)(0,117)
+\thicklines \put(10.75,128.75){\vector(-1,0){6.5}}
+%\emline(11,128.75)(11.5,128.5)
+\multiput(11,128.75)(.0625,-.03125){8}{\line(1,0){.0625}}
+%\end
+%\emline(11.5,128.5)(12,129)
+\multiput(11.5,128.5)(.033333,.033333){15}{\line(0,1){.033333}}
+%\end
+%\emline(12,129)(12.25,128)
+\multiput(12,129)(.03125,-.125){8}{\line(0,-1){.125}}
+%\end
+%\emline(12.25,128)(13,130.25)
+\multiput(12.25,128)(.032609,.097826){23}{\line(0,1){.097826}}
+%\end
+%\emline(13,130.25)(13.25,128.75)
+\multiput(13,130.25)(.03125,-.1875){8}{\line(0,-1){.1875}}
+%\end
+%\emline(13.25,128.75)(13.5,128.5)
+\multiput(13.25,128.75)(.03125,-.03125){8}{\line(0,-1){.03125}}
+%\end
+\put(13.5,128.5){\line(1,0){99.25}}
+%\emline(112.75,128.5)(113.75,129.75)
+\multiput(112.75,128.5)(.033333,.041667){30}{\line(0,1){.041667}}
+%\end
+\put(113.75,129.75){\line(0,-1){1}}
+\put(113.75,128.75){\line(0,-1){.25}}
+\put(114,128.5){\vector(1,0){6}} 
+\put(23.5,128.5){\circle*{.71}}
+\put(37,128.5){\circle*{.5}} 
+\put(49.25,128.5){\circle*{.71}}
+\put(61.25,128.5){\circle*{.5}} 
+\put(72.75,128.5){\circle*{.5}}
+\put(85.25,128.5){\circle*{.5}} 
+\put(98.25,128.25){\circle*{.71}}
+\put(101.25,128.5){\circle*{.71}} 
+\put(41.25,128.5){\circle*{.5}}
+\put(23,125.25){\makebox(0,0)[cc]{-3}}
+\put(36.75,125.75){\makebox(0,0)[cc]{-2}}
+\put(48.5,125){\makebox(0,0)[cc]{-1}}
+\put(61,125.25){\makebox(0,0)[cc]{0}}
+\put(72.75,125.75){\makebox(0,0)[cc]{1}}
+\put(85.25,125.75){\makebox(0,0)[cc]{2}}
+\put(98.25,126){\makebox(0,0)[cc]{3}}
+\put(66.75,128.5){\circle*{.71}} 
+\put(76.75,128.5){\circle*{.5}}
+\put(17.75,126.25){\makebox(0,0)[cc]{...}}
+\put(105.5,126.75){\makebox(0,0)[cc]{...}}
+\put(100.75,132.25){\makebox(0,0)[cc]{$\pi$}}
+\put(76.5,131.5){\makebox(0,0)[cc]{$\sqrt{2}$}}
+\put(66.5,131.5){\makebox(0,0)[cc]{$1/2$}}
+\put(41,131.5){\makebox(0,0)[cc]{$-\pi/2$}}
+\put(60.75,119){\makebox(0,0)[cc]{Figure A}}
+\end{picture}
+\end{center}
+
+
+For our purposes, it will not be important to distinguish between a given real number and the point on the \emph{real number line} whose name is that real number. Thus we may refer to $2$ as a point in $Re$. (The reader should observe that we do the same thing when we say ``Bill is in class'' rather than ``the boy named Bill is in class''.) In other words, we shall think of $Re$ as a ``line of real numbers''.
+
+There are several subsets of the real number line $Re$ which will be especially important. These subsets are described below.
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item $Nat$ denotes the set of \emph{natural numbers}: $\{ l, 2, 3, \cdots , n, \cdots \}$.
+  \item $Int$ denotes the set of \emph{integers}: $\{ \cdots$, $-n$, $\cdots$, $-2$, $-1$, $0$, $1$, $2$, $\cdots$, $n$, $\cdots \}$.
+  \item $Rat$ denotes the set of \emph{rational numbers}: real numbers of the form $\frac{m}{n}$ where $m$ is an integer and $n$ is a natural number.
+  \item $Irr$ denotes the set of \emph{irrational numbers}: real numbers which are not rational numbers.
+  \item $[0,1]$ denotes the set of all real numbers between and including $0$ and $1$.
+\end{enumerate}
+
+\begin{description}
+
+\item[Definition 1.1:] ``The set $X$ is a \emph{subset} of the set $Y$'' means that each element in $X$ is an element in $Y$.
+
+\item[Question 1.2:] Complete the following: ``the set $X$ is \emph{not a subset} of the set $Y$'' means ... ?
+
+\item[Notation 1.3:] The fact that $X$ is a \emph{subset} of $Y$ is symbolized by $X \subseteq Y$. If $X$ is \emph{not a subset} of $Y$, then we write $X \not \subseteq Y$.
+
+\item[Question 1.4:] Which of the following are true and which are false?
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $Rat \subseteq Irr$
+  \item $[0,1] \subseteq Rat$ 
+  \item $Int \subseteq Nat$
+  \item $Nat \not \subseteq Int$
+  \item $Int \subseteq Rat$
+  \item $Irr \subseteq Rat$
+  \item $Rat \not \subseteq Irr$
+  \item $Nat \not \subseteq [0,1]$
+  \item $[0,1] \subseteq Re$
+\end{enumerate}
+
+\item[Question 1.5:] Which of the following are true and which are false?
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $Nat \subseteq Int \subseteq Rat \subseteq Re$
+  \item $Int \subseteq Irr \subseteq Re$
+  \item $[0,1] \not \subseteq Rat \subseteq Re$
+\end{enumerate}
+
+\item[Definition 1.6:] ``The set $X$ is a \emph{proper subset} of the set $Y$'' means that $X$ is a subset of $Y$ and there exists an element in $Y$ which is not in $X$.
+
+\item[Question 1.7:] Complete the following: ``the set $X$ is \emph{not a proper subset} of the set $Y$'' means ... ?
+
+\item[Notation 1.8:] The fact that $X$ is a \emph{proper subset} of $Y$ is symbolized by $X \subset Y$. If $X$ is \emph{not a proper subset} of $Y$, then we write $X \not \subseteq Y$.
+
+\item[Question 1.9:] In Questions 1.4 and 1.5, substitute $\subset$ for $\subseteq$, and $\not \subset$ for $\not \subseteq$. Decide which of the resulting statements are true and which are false.
+
+\item[Definition 1.10:] If $X$ and $Y$ are sets and $X \subset Y$, then the \emph{complement of $X$ with respect to $Y$} is the set to which an element $q$ belongs if and only if $q$ is in $Y$ and $q$ is not in $X$.
+
+\item[Notation 1.11:] The \emph{complement of $X$ with respect to $Y$} is symbolized by $Y - X$.
+
+\item[Remark 1.12:] If each of $X$ and $Y$ is a set, then the phrase ``$Y - X$ exists'' means that $X$ is a proper subset of $Y$.
+
+\item[Question 1.13:] Give the elements in each of the following, if it exists.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $Re - Irr$
+  \item $Re - Rat$
+  \item $Re - [0,1]$
+  \item $Int - Int$
+  \item $Irr - Rat$
+  \item $Re - Int$
+\end{enumerate}
+
+\end{description}
+
+If each of $X$, $Y$, and $Z$ is a set, then $F = \{ X, Y, Z \}$ is a set, each element of which is a set. We say that $F$ is a \emph{collection}, each element of which is a set. Of course, the number of sets in such a collection is not restricted to 3 as in this simple case.
+
+\begin{description}
+
+\item[Example 1.14:] For each natural number $n$, let $X_{n}$ be the set of real numbers between and including the natural numbers $n$ and $n+1$. Let $F$ be the collection $\{ X_{1}, X_{2}, X_{3}, \cdots , X_{n}, \cdots \}$.
+
+\item[Definition 1.15:] If $F$ is a collection, each element of which is a set, then the \emph{union} of $F$ is the set to which an element $p$ belongs if and only if $p$ belongs to some set in $F$.
+
+\item[Notation 1.16:] The \emph{union} of $F$ is symbolized by $\cup F$. If $F$ consists of only two sets, say $X$ and $Y$, then $\cup F$ is sometimes written $X \cup Y$.
+
+\item[Question 1.17:] Give the elements in each of the following.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $Int \cup Nat$
+  \item $Nat \cup Nat$
+  \item $Rat \cup Irr$
+  \item $[0,1] \cup Nat$
+\end{enumerate}
+
+\item[Question 1.18:] Let $F$ be as in Example 1.14. Give the elements in $\cup F$.
+
+\item[Question 1.19:] For each positive real number $p$, let $X_{p}$ be the set of real numbers between and including $0$ and $p$. Let $F$ be the collection of all such sets. Give the elements of $\cup $F.
+
+\item[Definition 1.20:] If $F$ is a collection, each element of which is a set, and there exists an element which belongs to each set in $F$, then the \emph{intersection} of $F$ is the set to which an element $p$ belongs if and only if $p$ belongs to each set in $F$.
+
+\item[Notation 1.21:] The \emph{intersection} of $F$ is symbolized by $\cap $F. If $F$ consists of only two sets, say $X$ and $Y$, then $\cap F$ is sometimes written $X \cap Y$.
+
+\item[Definition 1.22:] If each of $X$ and $Y$ is a set, then ``$X$ and $Y$ are \emph{disjoint}'' means that there is no element which belongs to both $X$ and $Y$.
+
+\item[Question 1.23:] Complete the following: ``the set $X$ and the set $Y$ are \emph{not disjoint}'' means ... ?
+
+\item[Remark 1.24:] If each of $X$ and $Y$ is a set, then the phrase ``$X \cap Y$ exists'' means that $X$ and $Y$ are not disjoint. If $F$ is a collection, each element of which is a set, then the phrase ``$\cap F$ exists'' means that there exists an element which belongs to each set in $F$.
+
+\item[Question 1.25:] Give the elements in each of the following, if it exists.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $Nat \cap [0,1]$
+  \item $Rat \cap Irr$
+  \item $(Nat \cap Int) \cap Rat$
+  \item $(Rat \cap Int) \cap [0,1]$
+\end{enumerate}
+
+\item[Question 1.26:] Let $F$ be as in Example 1.14. Give the elements of $\cap $F, if it exists. Do the same for $F$ as in Question 1.19.
+
+\item[Question 1.27:] For each natural number $n$, let $X_{n}$ be the set of real numbers between (not including) $0$ and $\frac{1}{n}$. Let $F$ be the collection of all such sets, and give each element of $\cap F$, if it exists.
+
+\item[Definition 1.28:] If each of $X$ and $Y$ is a set, then ``$X$ \emph{equals} $Y$'' means that $X \subseteq Y$ and $Y \subseteq X$.
+
+\item[Question 1.29:] Complete the following: ``the set $X$ does \emph{not equal} the set $Y$'' means ... ?
+
+\item[Notation 1.30:] The fact that the set $X$ \emph{equals} the set $Y$ is symbolized by $X = Y$. If $X$ does \emph{not equal} $Y$, then we write $X \neq Y$.
+
+\item[Question 1.31:] Decide which of the following are true and which are false.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $Int \cap Nat = Nat$
+  \item $[0,1] \cap Int = \{ 0,l \}$
+  \item $Re - Irr = Rat$
+  \item $Rat \cup Irr = Re$
+  \item $Nat \cup Int = Int$
+  \item $Nat \cup Nat = Nat \cap Rat$
+\end{enumerate}
+
+\item[Question 1.32:] Let $F$ be as in Question 1.19, and let $X = \cup F$. Let $Y$ be the set of all non-negative real numbers. Is it true that $X = Y$?
+
+\end{description}
+
+The \emph{real number plane} is a Euclidean plane whose points have been coordinatized by ordered pairs of real numbers as in Figure B.
+
+\begin{center}
+%TeXCAD Picture [figB.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(120.5,93.25)(0,0)
+%\dottedline(8.75,51.25)(8.75,88)
+\multiput(8.68,51.18)(0,.99324){38}{{\rule{.4pt}{.4pt}}}
+%\end
+%\dottedline(8.75,88)(53.5,87.75)
+\multiput(8.68,87.93)(.99444,-.00556){46}{{\rule{.4pt}{.4pt}}}
+%\end
+%\dottedline(53.75,68.5)(99.25,68.25)
+\multiput(53.68,68.43)(.98913,-.00543){47}{{\rule{.4pt}{.4pt}}}
+%\end
+%\dottedline(99.25,68.25)(99.25,51.25)
+\multiput(99.18,68.18)(0,-.9444){19}{{\rule{.4pt}{.4pt}}}
+%\end
+%\dottedline(87.25,50.5)(87.25,32.25)
+\multiput(87.18,50.43)(0,-.9605){20}{{\rule{.4pt}{.4pt}}}
+%\end
+%\dottedline(87.25,32.25)(53.75,32.25)
+\multiput(87.18,32.18)(-.98529,0){35}{{\rule{.4pt}{.4pt}}}
+%\end
+\qbezier(32.5,39.75)(34.25,41.13)(37,41)
+%\qbezvec(37,41)(29.13,35)(51.75,49)
+\put(51.75,49){\vector(3,2){.07}}\qbezier(37,41)(29.13,35)(51.75,49)
+%\end
+\put(53.5,4){\makebox(0,0)[cc]{Figure B}}
+\put(8.75,46){\makebox(0,0)[cc]{$(-2,0)$}}
+\put(8.75,92.5){\makebox(0,0)[cc]{$(-2,2)$}}
+\put(59.5,87.75){\makebox(0,0)[cc]{$(0,2)$}}
+\put(59.5,14.5){\makebox(0,0)[cc]{$(0,-2)$}}
+\put(99.25,72.75){\makebox(0,0)[cc]{$(2,1)$}}
+\put(115.5,46.25){\makebox(0,0)[cc]{$(3,0)$}}
+\put(70.75,46.25){\makebox(0,0)[cc]{$(1,0)$}}
+\put(92.5,29.5){\makebox(0,0)[cc]{$(\frac{3}{2},-1)$}}
+\put(29,37){\makebox(0,0)[cc]{$(0,0)$}}
+%\vector[both](53.5,93.25)(53.5,9)
+\put(53.5,9){\vector(0,-1){.07}}\put(53.5,93.25){\vector(0,1){.07}}\put(53.5,93.25){\line(0,-1){84.25}}
+%\end
+\put(53.75,50.5){\circle*{1.5}}
+\put(8.75,50.5){\circle*{1.5}}
+\put(8.75,87.75){\circle*{1.5}}
+\put(54,87.75){\circle*{1.5}}
+\put(53.5,32.5){\circle*{1.5}}
+\put(53.5,68.5){\circle*{1.5}}
+\put(53.5,14.5){\circle*{1.5}}
+\put(87.5,32.5){\circle*{1.5}}
+\put(70.75,50.75){\circle*{1.5}}
+\put(86.75,51){\circle*{1.5}}
+\put(99.25,51){\circle*{1.5}}
+\put(115.5,51){\circle*{1.5}}
+\put(99,68.5){\circle*{1.5}}
+\put(29.75,50.75){\circle*{1.5}}
+%\vector[both](119.5,51)(1.5,51)
+\put(1.5,51){\vector(-1,0){.07}}\put(119.5,51){\vector(1,0){.07}}\put(119.5,51){\line(-1,0){118}}
+%\end
+\end{picture}
+\end{center}
+
+For our purposes, it will not be important to distinguish between a given ordered pair of real numbers and the point which is determined by the given ordered pair. In other words we shall think of the \emph{real number plane} as a ``plane of ordered pairs of real numbers''.
+
+The reader should compare this discussion about the \emph{real} \emph{number plane} with the earlier discussion about the \emph{real} \emph{number line}.
+
+\begin{description}
+
+\item[Definition 1.33:] Let each of $X$ and $Y$ be a set. The \emph{product} of $X$ and $Y$ is the set to which an element belongs if and only if it is an ordered pair $(p,q)$ such that $p$ belongs to $X$ and $q$ belongs to $Y$.
+
+\item[Notation 1.34:] The \emph{product} of $X$ and $Y$ is symbolized by $X \times Y$.
+
+\item[Example 1.35:] The product $Re \times Re$ is the real number plane.
+
+\item[Question 1.36:] Each of the products given below is a subset of the real number plane. In each case, sketch the real number plane and indicate the given product.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $Nat \times Nat$
+  \item $Nat \times Int$
+  \item $Int \times Int$ 
+  \item $Nat \times Re$
+  \item $Nat \times [0,l]$
+  \item $[0,l] \times [0,l]$
+\end{enumerate}
+
+\end{description}
+
+One of the most important facts about the real number line $Re$ is that it is \emph{linearly ordered} by the binary relation \emph{less than}. If $p$ and $q$ are in $Re$, then the fact that $p$ is less than $q$ is symbolized by $p < q$. Furthermore, if each of $p$, $q$, and $r$ belongs to $Re$, then the following conditions are satisfied:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item if $p$ and $q$ are distinct, then either $p < q$ or $q < p$,
+  \item if $p < q$, then $p$ and $q$ are distinct, and
+  \item if $p < q$ and $q < r$, then $p < r$.
+\end{enumerate}
+Using these remarks as a guide, we can give the definition of a \emph{linear order} on an arbitrary set.
+
+\begin{description}
+
+\item[Definition 1.37:] If $X$ is any set, then a \emph{linear order} on $X$ is a binary relation $\prec$ such that if each of $p$, $q$, and $r$ is an element in $X$, then the following conditions are satisfied:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item if $p$ and $q$ are distinct, then either $p \prec q$ or $q \prec p$,
+  \item if $p \prec q$, then $p$ and $q$ are distinct, and
+  \item if $p \prec q$ and $q \prec r$, then $p \prec r$.
+\end{enumerate}
+
+\item[Remark 1.38:] In the next chapter, we shall present many examples of \emph{linear orders}, some of which are quite unlike the familiar linear order on the real number line.
+
+\end{description}
+
+If you examine Definition 1.37 carefully, then you may find yourself wondering about the term \emph{binary relation}. The next definition makes this term mathematically precise.
+
+\begin{description}
+
+\item[Definition 1.39:] If $X$ is a set, then any subset $B$ of the product $X \times X$ is said to be a \emph{binary relation} on $X$.
+
+\item[Notation 1.40:] Let $B$ be a binary relation on the set $X$. If the ordered pair $(p,q)$ belongs to $B$, then we say that $p$ is \emph{related} by $B$ to $q$, and we write $pBq$.
+
+\item[Example 1.41:] Let $X$ be the set of all living people. Let $B$ be the subset of $X \times X$ such that an element $(p,q)$ belongs to it if and only if $p$ is ``blood related'' to $q$. The subset $B$ of $X \times X$ is a \emph{binary relation} on $X$. If the person $p$ is ``blood related'' to the person $q$, then $(p,q)$ belongs to $B$, and we write $pBq$.
+
+\item[Example 1.42:] Let $B$ be the subset of $Re \times Re$ such that an ordered pair of real numbers $(p,q)$ belongs to $B$ if and only if $p$ is less than $q$. The set $B$ is a binary relation on the real number line.
+
+\item[Question 1.43:] Let $B$ be as in Example 1.42. What does $pBq$ mean? Sketch $B$ as a subset of the real number plane $Re \times Re$. Show that if each of $p$, $q$, and $r$ belongs to $Re$, then the following conditions are satisfied.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item If $p$ and $q$ are distinct, then either $pBq$ or $qBp$.
+  \item If $pBq$, then $p$ and $q$ are distinct.
+  \item If $pBq$ and $qBr$, then $pBr$.
+\end{enumerate}
+
+\end{description}
+
+What happens when $B$ is replaced by $\prec$?
+
+
+
+
+\chapter*{Chapter 2: The Axiom For Linearly Ordered Spaces}
+\markboth{Chapter 2}{Chapter 2}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter 2: The Axiom For Linearly Ordered Spaces}
+
+
+The reader should recall from geometry that in any axiom system it is necessary to begin with \emph{undefined} \emph{terms}. The undefined terms of this subject are \emph{point} and \emph{precede}. The following axiom will be assumed throughout the \emph{Monograph}.
+
+\begin{description}
+
+\item[Axiom:] $S$ is a set, each undefined element of which is called a point, and $\prec$ is an undefined binary relation on $S$ called ``precede''. In addition, if each of $p$, $q$, and $r$ is a point, then the following conditions are satisfied:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item If $p$ and $q$ are distinct, then either $p \prec q$ or $q \prec p$.
+  \item If $p \prec q$, then $p$ and $q$ are distinct.
+  \item If $p \prec q$ and $q \prec r$, then $p \prec r$.
+\end{enumerate}
+
+\item[Remark 2.1:] In light of the discussion at the end of Chapter 1, the Axiom could be stated more briefly as follows: $S$ is a set each element of which is called a point, and $\prec$ is a linear order on $S$ called ``precede''.
+
+\item[Definition 2.2:] A \emph{linearly ordered space} is a pair $(S, \prec)$ such that $S$ and $\prec$ satisfy the Axiom.
+
+\item[Remark 2.3:] A linearly ordered space is simply an example which satisfies the Axiom. The symbol $(S, \prec)$ will be used to denote any such example. To give such an example one, must give specific meanings to the undefined terms ``point'' and ``precede'', and verify that ``precede'' is a linear order.
+
+\end{description}
+
+The reader should verify that the examples described below are linearly ordered spaces (i.e., that they satisfy the Axiom).
+
+\begin{description}
+
+\item[Example 2.4:] Let $S$ be a set consisting of one nickel, one dime and one quarter (see Figure C). Let \emph{point} mean \emph{element of the set} $S$. If each of $p$ and $q$ is a point, then let $p$ \emph{precede} $q$ mean that the value of $p$ is less than the value of $q$. 
+
+\begin{center}
+%TeXCAD Picture [figC.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(90.37,33.94)(0,0)
+%\circle(77.43,21){25.87}
+\put(90.37,21){\line(0,1){.667}}
+\put(90.35,21.67){\line(0,1){.665}}
+\put(90.3,22.33){\line(0,1){.661}}
+\put(90.21,22.99){\line(0,1){.656}}
+\multiput(90.09,23.65)(-.03066,.12979){5}{\line(0,1){.12979}}
+\multiput(89.94,24.3)(-.03109,.1067){6}{\line(0,1){.1067}}
+\multiput(89.75,24.94)(-.03133,.08996){7}{\line(0,1){.08996}}
+\multiput(89.53,25.57)(-.03143,.0772){8}{\line(0,1){.0772}}
+\multiput(89.28,26.19)(-.03144,.06709){9}{\line(0,1){.06709}}
+\multiput(89,26.79)(-.03137,.05884){10}{\line(0,1){.05884}}
+\multiput(88.68,27.38)(-.03124,.05195){11}{\line(0,1){.05195}}
+\multiput(88.34,27.95)(-.03105,.04608){12}{\line(0,1){.04608}}
+\multiput(87.97,28.5)(-.03338,.04442){12}{\line(0,1){.04442}}
+\multiput(87.57,29.03)(-.032887,.039363){13}{\line(0,1){.039363}}
+\multiput(87.14,29.55)(-.032381,.034929){14}{\line(0,1){.034929}}
+\multiput(86.69,30.04)(-.034138,.033213){14}{\line(-1,0){.034138}}
+\multiput(86.21,30.5)(-.035804,.03141){14}{\line(-1,0){.035804}}
+\multiput(85.71,30.94)(-.04025,.031794){13}{\line(-1,0){.04025}}
+\multiput(85.18,31.35)(-.04532,.03215){12}{\line(-1,0){.04532}}
+\multiput(84.64,31.74)(-.05118,.03248){11}{\line(-1,0){.05118}}
+\multiput(84.08,32.1)(-.05807,.03278){10}{\line(-1,0){.05807}}
+\multiput(83.5,32.42)(-.06631,.03305){9}{\line(-1,0){.06631}}
+\multiput(82.9,32.72)(-.07642,.03328){8}{\line(-1,0){.07642}}
+\multiput(82.29,32.99)(-.08918,.03349){7}{\line(-1,0){.08918}}
+\multiput(81.66,33.22)(-.10592,.03366){6}{\line(-1,0){.10592}}
+\multiput(81.03,33.42)(-.10751,.02815){6}{\line(-1,0){.10751}}
+\multiput(80.38,33.59)(-.13058,.02709){5}{\line(-1,0){.13058}}
+\put(79.73,33.73){\line(-1,0){.659}}
+\put(79.07,33.83){\line(-1,0){.663}}
+\put(78.41,33.9){\line(-1,0){.666}}
+\put(77.74,33.93){\line(-1,0){.667}}
+\put(77.07,33.93){\line(-1,0){.666}}
+\put(76.41,33.89){\line(-1,0){.663}}
+\put(75.75,33.82){\line(-1,0){.659}}
+\multiput(75.09,33.72)(-.13049,-.02753){5}{\line(-1,0){.13049}}
+\multiput(74.43,33.58)(-.10742,-.02851){6}{\line(-1,0){.10742}}
+\multiput(73.79,33.41)(-.09069,-.02915){7}{\line(-1,0){.09069}}
+\multiput(73.16,33.21)(-.07793,-.02956){8}{\line(-1,0){.07793}}
+\multiput(72.53,32.97)(-.07631,-.03354){8}{\line(-1,0){.07631}}
+\multiput(71.92,32.7)(-.0662,-.03327){9}{\line(-1,0){.0662}}
+\multiput(71.33,32.4)(-.05796,-.03297){10}{\line(-1,0){.05796}}
+\multiput(70.75,32.07)(-.05107,-.03265){11}{\line(-1,0){.05107}}
+\multiput(70.18,31.72)(-.04521,-.0323){12}{\line(-1,0){.04521}}
+\multiput(69.64,31.33)(-.040144,-.031929){13}{\line(-1,0){.040144}}
+\multiput(69.12,30.91)(-.035699,-.03153){14}{\line(-1,0){.035699}}
+\multiput(68.62,30.47)(-.034027,-.033328){14}{\line(-1,0){.034027}}
+\multiput(68.14,30)(-.032264,-.035037){14}{\line(0,-1){.035037}}
+\multiput(67.69,29.51)(-.032755,-.039472){13}{\line(0,-1){.039472}}
+\multiput(67.27,29)(-.03323,-.04453){12}{\line(0,-1){.04453}}
+\multiput(66.87,28.47)(-.0337,-.05039){11}{\line(0,-1){.05039}}
+\multiput(66.5,27.91)(-.03106,-.05206){11}{\line(0,-1){.05206}}
+\multiput(66.16,27.34)(-.03117,-.05895){10}{\line(0,-1){.05895}}
+\multiput(65.84,26.75)(-.03121,-.06719){9}{\line(0,-1){.06719}}
+\multiput(65.56,26.15)(-.03117,-.0773){8}{\line(0,-1){.0773}}
+\multiput(65.31,25.53)(-.03103,-.09006){7}{\line(0,-1){.09006}}
+\multiput(65.1,24.9)(-.03074,-.1068){6}{\line(0,-1){.1068}}
+\multiput(64.91,24.26)(-.03023,-.12989){5}{\line(0,-1){.12989}}
+\put(64.76,23.61){\line(0,-1){.656}}
+\put(64.64,22.95){\line(0,-1){.662}}
+\put(64.56,22.29){\line(0,-1){.665}}
+\put(64.51,21.62){\line(0,-1){1.998}}
+\put(64.57,19.63){\line(0,-1){.661}}
+\multiput(64.66,18.96)(.0305,-.1639){4}{\line(0,-1){.1639}}
+\multiput(64.78,18.31)(.0311,-.12969){5}{\line(0,-1){.12969}}
+\multiput(64.93,17.66)(.03145,-.10659){6}{\line(0,-1){.10659}}
+\multiput(65.12,17.02)(.03163,-.08985){7}{\line(0,-1){.08985}}
+\multiput(65.34,16.39)(.03169,-.07709){8}{\line(0,-1){.07709}}
+\multiput(65.6,15.78)(.03166,-.06698){9}{\line(0,-1){.06698}}
+\multiput(65.88,15.17)(.03157,-.05874){10}{\line(0,-1){.05874}}
+\multiput(66.2,14.59)(.03141,-.05185){11}{\line(0,-1){.05185}}
+\multiput(66.54,14.01)(.0312,-.04598){12}{\line(0,-1){.04598}}
+\multiput(66.92,13.46)(.03353,-.04431){12}{\line(0,-1){.04431}}
+\multiput(67.32,12.93)(.033019,-.039252){13}{\line(0,-1){.039252}}
+\multiput(67.75,12.42)(.032498,-.03482){14}{\line(0,-1){.03482}}
+\multiput(68.2,11.93)(.034249,-.033099){14}{\line(1,0){.034249}}
+\multiput(68.68,11.47)(.038672,-.033697){13}{\line(1,0){.038672}}
+\multiput(69.19,11.03)(.040357,-.031659){13}{\line(1,0){.040357}}
+\multiput(69.71,10.62)(.04543,-.032){12}{\line(1,0){.04543}}
+\multiput(70.26,10.24)(.05129,-.03231){11}{\line(1,0){.05129}}
+\multiput(70.82,9.88)(.05818,-.03258){10}{\line(1,0){.05818}}
+\multiput(71.4,9.56)(.06642,-.03282){9}{\line(1,0){.06642}}
+\multiput(72,9.26)(.07653,-.03303){8}{\line(1,0){.07653}}
+\multiput(72.61,9)(.08929,-.03319){7}{\line(1,0){.08929}}
+\multiput(73.24,8.76)(.10603,-.0333){6}{\line(1,0){.10603}}
+\multiput(73.87,8.56)(.12912,-.03335){5}{\line(1,0){.12912}}
+\multiput(74.52,8.4)(.1633,-.0333){4}{\line(1,0){.1633}}
+\put(75.17,8.26){\line(1,0){.659}}
+\put(75.83,8.16){\line(1,0){.664}}
+\put(76.5,8.1){\line(1,0){.666}}
+\put(77.16,8.07){\line(1,0){.667}}
+\put(77.83,8.07){\line(1,0){.666}}
+\put(78.49,8.11){\line(1,0){.663}}
+\put(79.16,8.18){\line(1,0){.658}}
+\multiput(79.82,8.29)(.1304,.02796){5}{\line(1,0){.1304}}
+\multiput(80.47,8.43)(.10732,.02887){6}{\line(1,0){.10732}}
+\multiput(81.11,8.6)(.09059,.02946){7}{\line(1,0){.09059}}
+\multiput(81.75,8.81)(.07783,.02982){8}{\line(1,0){.07783}}
+\multiput(82.37,9.04)(.06773,.03004){9}{\line(1,0){.06773}}
+\multiput(82.98,9.32)(.06609,.03349){9}{\line(1,0){.06609}}
+\multiput(83.57,9.62)(.05785,.03317){10}{\line(1,0){.05785}}
+\multiput(84.15,9.95)(.05096,.03282){11}{\line(1,0){.05096}}
+\multiput(84.71,10.31)(.04511,.03245){12}{\line(1,0){.04511}}
+\multiput(85.25,10.7)(.040036,.032063){13}{\line(1,0){.040036}}
+\multiput(85.77,11.12)(.035593,.031649){14}{\line(1,0){.035593}}
+\multiput(86.27,11.56)(.033915,.033442){14}{\line(1,0){.033915}}
+\multiput(86.75,12.03)(.032146,.035145){14}{\line(0,1){.035145}}
+\multiput(87.2,12.52)(.032623,.039582){13}{\line(0,1){.039582}}
+\multiput(87.62,13.03)(.03308,.04464){12}{\line(0,1){.04464}}
+\multiput(88.02,13.57)(.03353,.0505){11}{\line(0,1){.0505}}
+\multiput(88.39,14.12)(.03089,.05216){11}{\line(0,1){.05216}}
+\multiput(88.73,14.7)(.03097,.05905){10}{\line(0,1){.05905}}
+\multiput(89.04,15.29)(.03099,.0673){9}{\line(0,1){.0673}}
+\multiput(89.31,15.89)(.03091,.07741){8}{\line(0,1){.07741}}
+\multiput(89.56,16.51)(.03072,.09017){7}{\line(0,1){.09017}}
+\multiput(89.78,17.14)(.03038,.1069){6}{\line(0,1){.1069}}
+\multiput(89.96,17.79)(.02979,.12999){5}{\line(0,1){.12999}}
+\put(90.11,18.44){\line(0,1){.657}}
+\put(90.22,19.09){\line(0,1){.662}}
+\put(90.3,19.75){\line(0,1){1.245}}
+%\end
+%\circle(15.94,21.94){17.87}
+\put(24.88,21.94){\line(0,1){.493}}
+\put(24.86,22.43){\line(0,1){.491}}
+\put(24.82,22.92){\line(0,1){.488}}
+\put(24.75,23.41){\line(0,1){.484}}
+\multiput(24.66,23.9)(-.0303,.1195){4}{\line(0,1){.1195}}
+\multiput(24.54,24.37)(-.02946,.09409){5}{\line(0,1){.09409}}
+\multiput(24.39,24.84)(-.02884,.07693){6}{\line(0,1){.07693}}
+\multiput(24.22,25.31)(-.03304,.07522){6}{\line(0,1){.07522}}
+\multiput(24.02,25.76)(-.03183,.06282){7}{\line(0,1){.06282}}
+\multiput(23.8,26.2)(-.03084,.05335){8}{\line(0,1){.05335}}
+\multiput(23.55,26.62)(-.03374,.05156){8}{\line(0,1){.05156}}
+\multiput(23.28,27.04)(-.03247,.04411){9}{\line(0,1){.04411}}
+\multiput(22.99,27.43)(-.03137,.03803){10}{\line(0,1){.03803}}
+\multiput(22.67,27.81)(-.03342,.03624){10}{\line(0,1){.03624}}
+\multiput(22.34,28.18)(-.03215,.03122){11}{\line(-1,0){.03215}}
+\multiput(21.99,28.52)(-.03721,.03234){10}{\line(-1,0){.03721}}
+\multiput(21.61,28.84)(-.04326,.0336){9}{\line(-1,0){.04326}}
+\multiput(21.22,29.15)(-.04505,.03116){9}{\line(-1,0){.04505}}
+\multiput(20.82,29.43)(-.05253,.03221){8}{\line(-1,0){.05253}}
+\multiput(20.4,29.68)(-.06198,.03344){7}{\line(-1,0){.06198}}
+\multiput(19.96,29.92)(-.06373,.02997){7}{\line(-1,0){.06373}}
+\multiput(19.52,30.13)(-.07616,.03081){6}{\line(-1,0){.07616}}
+\multiput(19.06,30.31)(-.09329,.03188){5}{\line(-1,0){.09329}}
+\multiput(18.59,30.47)(-.1186,.0334){4}{\line(-1,0){.1186}}
+\put(18.12,30.6){\line(-1,0){.481}}
+\put(17.64,30.71){\line(-1,0){.486}}
+\put(17.15,30.79){\line(-1,0){.49}}
+\put(16.66,30.85){\line(-1,0){.492}}
+\put(16.17,30.87){\line(-1,0){.493}}
+\put(15.68,30.87){\line(-1,0){.492}}
+\put(15.19,30.84){\line(-1,0){.49}}
+\put(14.7,30.79){\line(-1,0){.486}}
+\put(14.21,30.71){\line(-1,0){.481}}
+\multiput(13.73,30.6)(-.09481,-.02703){5}{\line(-1,0){.09481}}
+\multiput(13.25,30.46)(-.09318,-.03222){5}{\line(-1,0){.09318}}
+\multiput(12.79,30.3)(-.07605,-.03109){6}{\line(-1,0){.07605}}
+\multiput(12.33,30.11)(-.06362,-.0302){7}{\line(-1,0){.06362}}
+\multiput(11.89,29.9)(-.06186,-.03366){7}{\line(-1,0){.06186}}
+\multiput(11.45,29.67)(-.05242,-.0324){8}{\line(-1,0){.05242}}
+\multiput(11.03,29.41)(-.04493,-.03132){9}{\line(-1,0){.04493}}
+\multiput(10.63,29.13)(-.03882,-.03038){10}{\line(-1,0){.03882}}
+\multiput(10.24,28.82)(-.03709,-.03247){10}{\line(-1,0){.03709}}
+\multiput(9.87,28.5)(-.03204,-.03133){11}{\line(-1,0){.03204}}
+\multiput(9.52,28.15)(-.03329,-.03636){10}{\line(0,-1){.03636}}
+\multiput(9.19,27.79)(-.03123,-.03814){10}{\line(0,-1){.03814}}
+\multiput(8.87,27.41)(-.03231,-.04423){9}{\line(0,-1){.04423}}
+\multiput(8.58,27.01)(-.03355,-.05168){8}{\line(0,-1){.05168}}
+\multiput(8.31,26.6)(-.03065,-.05346){8}{\line(0,-1){.05346}}
+\multiput(8.07,26.17)(-.03161,-.06293){7}{\line(0,-1){.06293}}
+\multiput(7.85,25.73)(-.03277,-.07534){6}{\line(0,-1){.07534}}
+\multiput(7.65,25.28)(-.02856,-.07703){6}{\line(0,-1){.07703}}
+\multiput(7.48,24.81)(-.02913,-.09419){5}{\line(0,-1){.09419}}
+\put(7.33,24.34){\line(0,-1){.478}}
+\put(7.21,23.86){\line(0,-1){.484}}
+\put(7.12,23.38){\line(0,-1){.489}}
+\put(7.06,22.89){\line(0,-1){.491}}
+\put(7.02,22.4){\line(0,-1){1.477}}
+\put(7.06,20.92){\line(0,-1){.488}}
+\put(7.13,20.44){\line(0,-1){.483}}
+\multiput(7.23,19.95)(.0307,-.1194){4}{\line(0,-1){.1194}}
+\multiput(7.35,19.48)(.0298,-.09398){5}{\line(0,-1){.09398}}
+\multiput(7.5,19.01)(.02912,-.07683){6}{\line(0,-1){.07683}}
+\multiput(7.68,18.54)(.03331,-.07511){6}{\line(0,-1){.07511}}
+\multiput(7.88,18.09)(.03206,-.0627){7}{\line(0,-1){.0627}}
+\multiput(8.1,17.65)(.03103,-.05323){8}{\line(0,-1){.05323}}
+\multiput(8.35,17.23)(.03015,-.04573){9}{\line(0,-1){.04573}}
+\multiput(8.62,16.82)(.03263,-.04399){9}{\line(0,-1){.04399}}
+\multiput(8.91,16.42)(.0315,-.03791){10}{\line(0,-1){.03791}}
+\multiput(9.23,16.04)(.03355,-.03612){10}{\line(0,-1){.03612}}
+\multiput(9.56,15.68)(.03226,-.0311){11}{\line(1,0){.03226}}
+\multiput(9.92,15.34)(.03732,-.03221){10}{\line(1,0){.03732}}
+\multiput(10.29,15.02)(.04338,-.03344){9}{\line(1,0){.04338}}
+\multiput(10.68,14.72)(.04516,-.031){9}{\line(1,0){.04516}}
+\multiput(11.09,14.44)(.05265,-.03202){8}{\line(1,0){.05265}}
+\multiput(11.51,14.18)(.0621,-.03322){7}{\line(1,0){.0621}}
+\multiput(11.94,13.95)(.06383,-.02974){7}{\line(1,0){.06383}}
+\multiput(12.39,13.74)(.07627,-.03054){6}{\line(1,0){.07627}}
+\multiput(12.85,13.56)(.09341,-.03155){5}{\line(1,0){.09341}}
+\multiput(13.32,13.4)(.1188,-.0329){4}{\line(1,0){.1188}}
+\put(13.79,13.27){\line(1,0){.482}}
+\put(14.27,13.16){\line(1,0){.487}}
+\put(14.76,13.08){\line(1,0){.49}}
+\put(15.25,13.03){\line(1,0){.492}}
+\put(15.74,13.01){\line(1,0){.493}}
+\put(16.23,13.01){\line(1,0){.492}}
+\put(16.73,13.04){\line(1,0){.49}}
+\put(17.22,13.1){\line(1,0){.486}}
+\put(17.7,13.18){\line(1,0){.48}}
+\multiput(18.18,13.29)(.09472,.02737){5}{\line(1,0){.09472}}
+\multiput(18.66,13.43)(.09306,.03255){5}{\line(1,0){.09306}}
+\multiput(19.12,13.59)(.07594,.03136){6}{\line(1,0){.07594}}
+\multiput(19.58,13.78)(.06351,.03043){7}{\line(1,0){.06351}}
+\multiput(20.02,13.99)(.05402,.02965){8}{\line(1,0){.05402}}
+\multiput(20.45,14.23)(.0523,.03258){8}{\line(1,0){.0523}}
+\multiput(20.87,14.49)(.04482,.03148){9}{\line(1,0){.04482}}
+\multiput(21.28,14.77)(.03871,.03052){10}{\line(1,0){.03871}}
+\multiput(21.66,15.08)(.03697,.0326){10}{\line(1,0){.03697}}
+\multiput(22.03,15.4)(.03193,.03145){11}{\line(1,0){.03193}}
+\multiput(22.38,15.75)(.03316,.03648){10}{\line(0,1){.03648}}
+\multiput(22.72,16.11)(.03109,.03825){10}{\line(0,1){.03825}}
+\multiput(23.03,16.5)(.03215,.04434){9}{\line(0,1){.04434}}
+\multiput(23.32,16.9)(.03337,.0518){8}{\line(0,1){.0518}}
+\multiput(23.58,17.31)(.03046,.05357){8}{\line(0,1){.05357}}
+\multiput(23.83,17.74)(.03138,.06304){7}{\line(0,1){.06304}}
+\multiput(24.05,18.18)(.0325,.07546){6}{\line(0,1){.07546}}
+\multiput(24.24,18.63)(.02829,.07714){6}{\line(0,1){.07714}}
+\multiput(24.41,19.1)(.02879,.0943){5}{\line(0,1){.0943}}
+\put(24.55,19.57){\line(0,1){.479}}
+\put(24.67,20.05){\line(0,1){.484}}
+\put(24.76,20.53){\line(0,1){.489}}
+\put(24.83,21.02){\line(0,1){.92}}
+%\end
+\put(43.63,21.63){\circle{12.75}}
+\put(43.5,5){\makebox(0,0)[cc]{Figure C}}
+\put(16,21.5){\makebox(0,0)[cc]{\$0.05}}
+\put(43.75,21.5){\makebox(0,0)[cc]{\$0.10}}
+\put(77.25,20.75){\makebox(0,0)[cc]{\$0.25}}
+\end{picture}
+\end{center}
+
+
+\item[Example 2.5:] Let the term \emph{point} be as in Example 2.4. If each of $p$ and $q$ is a point, then let $p$ \emph{precede} $q$ mean that the diameter of $p$ is greater than the diameter of $q$ (see Figure D).
+
+\begin{center}
+%TeXCAD Picture [figD.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(81.13,37.19)(0,0)
+%\circle(16,24.25){25.87}
+\put(28.94,24.25){\line(0,1){.667}}
+\put(28.92,24.92){\line(0,1){.665}}
+\put(28.87,25.58){\line(0,1){.661}}
+\put(28.78,26.24){\line(0,1){.656}}
+\multiput(28.66,26.9)(-.03066,.12979){5}{\line(0,1){.12979}}
+\multiput(28.51,27.55)(-.03109,.1067){6}{\line(0,1){.1067}}
+\multiput(28.32,28.19)(-.03133,.08996){7}{\line(0,1){.08996}}
+\multiput(28.1,28.82)(-.03143,.0772){8}{\line(0,1){.0772}}
+\multiput(27.85,29.44)(-.03144,.06709){9}{\line(0,1){.06709}}
+\multiput(27.57,30.04)(-.03137,.05884){10}{\line(0,1){.05884}}
+\multiput(27.25,30.63)(-.03124,.05195){11}{\line(0,1){.05195}}
+\multiput(26.91,31.2)(-.03105,.04608){12}{\line(0,1){.04608}}
+\multiput(26.54,31.75)(-.03338,.04442){12}{\line(0,1){.04442}}
+\multiput(26.14,32.28)(-.032887,.039363){13}{\line(0,1){.039363}}
+\multiput(25.71,32.8)(-.032381,.034929){14}{\line(0,1){.034929}}
+\multiput(25.26,33.29)(-.034138,.033213){14}{\line(-1,0){.034138}}
+\multiput(24.78,33.75)(-.035804,.03141){14}{\line(-1,0){.035804}}
+\multiput(24.28,34.19)(-.04025,.031794){13}{\line(-1,0){.04025}}
+\multiput(23.75,34.6)(-.04532,.03215){12}{\line(-1,0){.04532}}
+\multiput(23.21,34.99)(-.05118,.03248){11}{\line(-1,0){.05118}}
+\multiput(22.65,35.35)(-.05807,.03278){10}{\line(-1,0){.05807}}
+\multiput(22.07,35.67)(-.06631,.03305){9}{\line(-1,0){.06631}}
+\multiput(21.47,35.97)(-.07642,.03328){8}{\line(-1,0){.07642}}
+\multiput(20.86,36.24)(-.08918,.03349){7}{\line(-1,0){.08918}}
+\multiput(20.23,36.47)(-.10592,.03366){6}{\line(-1,0){.10592}}
+\multiput(19.6,36.67)(-.10751,.02815){6}{\line(-1,0){.10751}}
+\multiput(18.95,36.84)(-.13058,.02709){5}{\line(-1,0){.13058}}
+\put(18.3,36.98){\line(-1,0){.659}}
+\put(17.64,37.08){\line(-1,0){.663}}
+\put(16.98,37.15){\line(-1,0){.666}}
+\put(16.31,37.18){\line(-1,0){.667}}
+\put(15.64,37.18){\line(-1,0){.666}}
+\put(14.98,37.14){\line(-1,0){.663}}
+\put(14.32,37.07){\line(-1,0){.659}}
+\multiput(13.66,36.97)(-.13049,-.02753){5}{\line(-1,0){.13049}}
+\multiput(13,36.83)(-.10742,-.02851){6}{\line(-1,0){.10742}}
+\multiput(12.36,36.66)(-.09069,-.02915){7}{\line(-1,0){.09069}}
+\multiput(11.73,36.46)(-.07793,-.02956){8}{\line(-1,0){.07793}}
+\multiput(11.1,36.22)(-.07631,-.03354){8}{\line(-1,0){.07631}}
+\multiput(10.49,35.95)(-.0662,-.03327){9}{\line(-1,0){.0662}}
+\multiput(9.9,35.65)(-.05796,-.03297){10}{\line(-1,0){.05796}}
+\multiput(9.32,35.32)(-.05107,-.03265){11}{\line(-1,0){.05107}}
+\multiput(8.75,34.97)(-.04521,-.0323){12}{\line(-1,0){.04521}}
+\multiput(8.21,34.58)(-.040144,-.031929){13}{\line(-1,0){.040144}}
+\multiput(7.69,34.16)(-.035699,-.03153){14}{\line(-1,0){.035699}}
+\multiput(7.19,33.72)(-.034027,-.033328){14}{\line(-1,0){.034027}}
+\multiput(6.71,33.25)(-.032264,-.035037){14}{\line(0,-1){.035037}}
+\multiput(6.26,32.76)(-.032755,-.039472){13}{\line(0,-1){.039472}}
+\multiput(5.84,32.25)(-.03323,-.04453){12}{\line(0,-1){.04453}}
+\multiput(5.44,31.72)(-.0337,-.05039){11}{\line(0,-1){.05039}}
+\multiput(5.07,31.16)(-.03106,-.05206){11}{\line(0,-1){.05206}}
+\multiput(4.73,30.59)(-.03117,-.05895){10}{\line(0,-1){.05895}}
+\multiput(4.41,30)(-.03121,-.06719){9}{\line(0,-1){.06719}}
+\multiput(4.13,29.4)(-.03117,-.0773){8}{\line(0,-1){.0773}}
+\multiput(3.88,28.78)(-.03103,-.09006){7}{\line(0,-1){.09006}}
+\multiput(3.67,28.15)(-.03074,-.1068){6}{\line(0,-1){.1068}}
+\multiput(3.48,27.51)(-.03023,-.12989){5}{\line(0,-1){.12989}}
+\put(3.33,26.86){\line(0,-1){.656}}
+\put(3.21,26.2){\line(0,-1){.662}}
+\put(3.13,25.54){\line(0,-1){.665}}
+\put(3.08,24.87){\line(0,-1){1.998}}
+\put(3.14,22.88){\line(0,-1){.661}}
+\multiput(3.23,22.21)(.0305,-.1639){4}{\line(0,-1){.1639}}
+\multiput(3.35,21.56)(.0311,-.12969){5}{\line(0,-1){.12969}}
+\multiput(3.5,20.91)(.03145,-.10659){6}{\line(0,-1){.10659}}
+\multiput(3.69,20.27)(.03163,-.08985){7}{\line(0,-1){.08985}}
+\multiput(3.91,19.64)(.03169,-.07709){8}{\line(0,-1){.07709}}
+\multiput(4.17,19.03)(.03166,-.06698){9}{\line(0,-1){.06698}}
+\multiput(4.45,18.42)(.03157,-.05874){10}{\line(0,-1){.05874}}
+\multiput(4.77,17.84)(.03141,-.05185){11}{\line(0,-1){.05185}}
+\multiput(5.11,17.26)(.0312,-.04598){12}{\line(0,-1){.04598}}
+\multiput(5.49,16.71)(.03353,-.04431){12}{\line(0,-1){.04431}}
+\multiput(5.89,16.18)(.033019,-.039252){13}{\line(0,-1){.039252}}
+\multiput(6.32,15.67)(.032498,-.03482){14}{\line(0,-1){.03482}}
+\multiput(6.77,15.18)(.034249,-.033099){14}{\line(1,0){.034249}}
+\multiput(7.25,14.72)(.038672,-.033697){13}{\line(1,0){.038672}}
+\multiput(7.76,14.28)(.040357,-.031659){13}{\line(1,0){.040357}}
+\multiput(8.28,13.87)(.04543,-.032){12}{\line(1,0){.04543}}
+\multiput(8.83,13.49)(.05129,-.03231){11}{\line(1,0){.05129}}
+\multiput(9.39,13.13)(.05818,-.03258){10}{\line(1,0){.05818}}
+\multiput(9.97,12.81)(.06642,-.03282){9}{\line(1,0){.06642}}
+\multiput(10.57,12.51)(.07653,-.03303){8}{\line(1,0){.07653}}
+\multiput(11.18,12.25)(.08929,-.03319){7}{\line(1,0){.08929}}
+\multiput(11.81,12.01)(.10603,-.0333){6}{\line(1,0){.10603}}
+\multiput(12.44,11.81)(.12912,-.03335){5}{\line(1,0){.12912}}
+\multiput(13.09,11.65)(.1633,-.0333){4}{\line(1,0){.1633}}
+\put(13.74,11.51){\line(1,0){.659}}
+\put(14.4,11.41){\line(1,0){.664}}
+\put(15.07,11.35){\line(1,0){.666}}
+\put(15.73,11.32){\line(1,0){.667}}
+\put(16.4,11.32){\line(1,0){.666}}
+\put(17.06,11.36){\line(1,0){.663}}
+\put(17.73,11.43){\line(1,0){.658}}
+\multiput(18.39,11.54)(.1304,.02796){5}{\line(1,0){.1304}}
+\multiput(19.04,11.68)(.10732,.02887){6}{\line(1,0){.10732}}
+\multiput(19.68,11.85)(.09059,.02946){7}{\line(1,0){.09059}}
+\multiput(20.32,12.06)(.07783,.02982){8}{\line(1,0){.07783}}
+\multiput(20.94,12.29)(.06773,.03004){9}{\line(1,0){.06773}}
+\multiput(21.55,12.57)(.06609,.03349){9}{\line(1,0){.06609}}
+\multiput(22.14,12.87)(.05785,.03317){10}{\line(1,0){.05785}}
+\multiput(22.72,13.2)(.05096,.03282){11}{\line(1,0){.05096}}
+\multiput(23.28,13.56)(.04511,.03245){12}{\line(1,0){.04511}}
+\multiput(23.82,13.95)(.040036,.032063){13}{\line(1,0){.040036}}
+\multiput(24.34,14.37)(.035593,.031649){14}{\line(1,0){.035593}}
+\multiput(24.84,14.81)(.033915,.033442){14}{\line(1,0){.033915}}
+\multiput(25.32,15.28)(.032146,.035145){14}{\line(0,1){.035145}}
+\multiput(25.77,15.77)(.032623,.039582){13}{\line(0,1){.039582}}
+\multiput(26.19,16.28)(.03308,.04464){12}{\line(0,1){.04464}}
+\multiput(26.59,16.82)(.03353,.0505){11}{\line(0,1){.0505}}
+\multiput(26.96,17.37)(.03089,.05216){11}{\line(0,1){.05216}}
+\multiput(27.3,17.95)(.03097,.05905){10}{\line(0,1){.05905}}
+\multiput(27.61,18.54)(.03099,.0673){9}{\line(0,1){.0673}}
+\multiput(27.88,19.14)(.03091,.07741){8}{\line(0,1){.07741}}
+\multiput(28.13,19.76)(.03072,.09017){7}{\line(0,1){.09017}}
+\multiput(28.35,20.39)(.03038,.1069){6}{\line(0,1){.1069}}
+\multiput(28.53,21.04)(.02979,.12999){5}{\line(0,1){.12999}}
+\put(28.68,21.69){\line(0,1){.657}}
+\put(28.79,22.34){\line(0,1){.662}}
+\put(28.87,23){\line(0,1){1.245}}
+%\end
+%\circle(48.75,24.5){17.87}
+\put(57.69,24.5){\line(0,1){.493}}
+\put(57.67,24.99){\line(0,1){.491}}
+\put(57.63,25.48){\line(0,1){.488}}
+\put(57.56,25.97){\line(0,1){.484}}
+\multiput(57.47,26.46)(-.0303,.1195){4}{\line(0,1){.1195}}
+\multiput(57.35,26.93)(-.02946,.09409){5}{\line(0,1){.09409}}
+\multiput(57.2,27.4)(-.02884,.07693){6}{\line(0,1){.07693}}
+\multiput(57.03,27.87)(-.03304,.07522){6}{\line(0,1){.07522}}
+\multiput(56.83,28.32)(-.03183,.06282){7}{\line(0,1){.06282}}
+\multiput(56.61,28.76)(-.03084,.05335){8}{\line(0,1){.05335}}
+\multiput(56.36,29.18)(-.03374,.05156){8}{\line(0,1){.05156}}
+\multiput(56.09,29.6)(-.03247,.04411){9}{\line(0,1){.04411}}
+\multiput(55.8,29.99)(-.03137,.03803){10}{\line(0,1){.03803}}
+\multiput(55.48,30.37)(-.03342,.03624){10}{\line(0,1){.03624}}
+\multiput(55.15,30.74)(-.03215,.03122){11}{\line(-1,0){.03215}}
+\multiput(54.8,31.08)(-.03721,.03234){10}{\line(-1,0){.03721}}
+\multiput(54.42,31.4)(-.04326,.0336){9}{\line(-1,0){.04326}}
+\multiput(54.03,31.71)(-.04505,.03116){9}{\line(-1,0){.04505}}
+\multiput(53.63,31.99)(-.05253,.03221){8}{\line(-1,0){.05253}}
+\multiput(53.21,32.24)(-.06198,.03344){7}{\line(-1,0){.06198}}
+\multiput(52.77,32.48)(-.06373,.02997){7}{\line(-1,0){.06373}}
+\multiput(52.33,32.69)(-.07616,.03081){6}{\line(-1,0){.07616}}
+\multiput(51.87,32.87)(-.09329,.03188){5}{\line(-1,0){.09329}}
+\multiput(51.4,33.03)(-.1186,.0334){4}{\line(-1,0){.1186}}
+\put(50.93,33.16){\line(-1,0){.481}}
+\put(50.45,33.27){\line(-1,0){.486}}
+\put(49.96,33.35){\line(-1,0){.49}}
+\put(49.47,33.41){\line(-1,0){.492}}
+\put(48.98,33.43){\line(-1,0){.493}}
+\put(48.49,33.43){\line(-1,0){.492}}
+\put(48,33.4){\line(-1,0){.49}}
+\put(47.51,33.35){\line(-1,0){.486}}
+\put(47.02,33.27){\line(-1,0){.481}}
+\multiput(46.54,33.16)(-.09481,-.02703){5}{\line(-1,0){.09481}}
+\multiput(46.06,33.02)(-.09318,-.03222){5}{\line(-1,0){.09318}}
+\multiput(45.6,32.86)(-.07605,-.03109){6}{\line(-1,0){.07605}}
+\multiput(45.14,32.67)(-.06362,-.0302){7}{\line(-1,0){.06362}}
+\multiput(44.7,32.46)(-.06186,-.03366){7}{\line(-1,0){.06186}}
+\multiput(44.26,32.23)(-.05242,-.0324){8}{\line(-1,0){.05242}}
+\multiput(43.84,31.97)(-.04493,-.03132){9}{\line(-1,0){.04493}}
+\multiput(43.44,31.69)(-.03882,-.03038){10}{\line(-1,0){.03882}}
+\multiput(43.05,31.38)(-.03709,-.03247){10}{\line(-1,0){.03709}}
+\multiput(42.68,31.06)(-.03204,-.03133){11}{\line(-1,0){.03204}}
+\multiput(42.33,30.71)(-.03329,-.03636){10}{\line(0,-1){.03636}}
+\multiput(42,30.35)(-.03123,-.03814){10}{\line(0,-1){.03814}}
+\multiput(41.68,29.97)(-.03231,-.04423){9}{\line(0,-1){.04423}}
+\multiput(41.39,29.57)(-.03355,-.05168){8}{\line(0,-1){.05168}}
+\multiput(41.12,29.16)(-.03065,-.05346){8}{\line(0,-1){.05346}}
+\multiput(40.88,28.73)(-.03161,-.06293){7}{\line(0,-1){.06293}}
+\multiput(40.66,28.29)(-.03277,-.07534){6}{\line(0,-1){.07534}}
+\multiput(40.46,27.84)(-.02856,-.07703){6}{\line(0,-1){.07703}}
+\multiput(40.29,27.37)(-.02913,-.09419){5}{\line(0,-1){.09419}}
+\put(40.14,26.9){\line(0,-1){.478}}
+\put(40.02,26.42){\line(0,-1){.484}}
+\put(39.93,25.94){\line(0,-1){.489}}
+\put(39.87,25.45){\line(0,-1){.491}}
+\put(39.83,24.96){\line(0,-1){1.477}}
+\put(39.87,23.48){\line(0,-1){.488}}
+\put(39.94,23){\line(0,-1){.483}}
+\multiput(40.04,22.51)(.0307,-.1194){4}{\line(0,-1){.1194}}
+\multiput(40.16,22.04)(.0298,-.09398){5}{\line(0,-1){.09398}}
+\multiput(40.31,21.57)(.02912,-.07683){6}{\line(0,-1){.07683}}
+\multiput(40.49,21.1)(.03331,-.07511){6}{\line(0,-1){.07511}}
+\multiput(40.69,20.65)(.03206,-.0627){7}{\line(0,-1){.0627}}
+\multiput(40.91,20.21)(.03103,-.05323){8}{\line(0,-1){.05323}}
+\multiput(41.16,19.79)(.03015,-.04573){9}{\line(0,-1){.04573}}
+\multiput(41.43,19.38)(.03263,-.04399){9}{\line(0,-1){.04399}}
+\multiput(41.72,18.98)(.0315,-.03791){10}{\line(0,-1){.03791}}
+\multiput(42.04,18.6)(.03355,-.03612){10}{\line(0,-1){.03612}}
+\multiput(42.37,18.24)(.03226,-.0311){11}{\line(1,0){.03226}}
+\multiput(42.73,17.9)(.03732,-.03221){10}{\line(1,0){.03732}}
+\multiput(43.1,17.58)(.04338,-.03344){9}{\line(1,0){.04338}}
+\multiput(43.49,17.28)(.04516,-.031){9}{\line(1,0){.04516}}
+\multiput(43.9,17)(.05265,-.03202){8}{\line(1,0){.05265}}
+\multiput(44.32,16.74)(.0621,-.03322){7}{\line(1,0){.0621}}
+\multiput(44.75,16.51)(.06383,-.02974){7}{\line(1,0){.06383}}
+\multiput(45.2,16.3)(.07627,-.03054){6}{\line(1,0){.07627}}
+\multiput(45.66,16.12)(.09341,-.03155){5}{\line(1,0){.09341}}
+\multiput(46.13,15.96)(.1188,-.0329){4}{\line(1,0){.1188}}
+\put(46.6,15.83){\line(1,0){.482}}
+\put(47.08,15.72){\line(1,0){.487}}
+\put(47.57,15.64){\line(1,0){.49}}
+\put(48.06,15.59){\line(1,0){.492}}
+\put(48.55,15.57){\line(1,0){.493}}
+\put(49.04,15.57){\line(1,0){.492}}
+\put(49.54,15.6){\line(1,0){.49}}
+\put(50.03,15.66){\line(1,0){.486}}
+\put(50.51,15.74){\line(1,0){.48}}
+\multiput(50.99,15.85)(.09472,.02737){5}{\line(1,0){.09472}}
+\multiput(51.47,15.99)(.09306,.03255){5}{\line(1,0){.09306}}
+\multiput(51.93,16.15)(.07594,.03136){6}{\line(1,0){.07594}}
+\multiput(52.39,16.34)(.06351,.03043){7}{\line(1,0){.06351}}
+\multiput(52.83,16.55)(.05402,.02965){8}{\line(1,0){.05402}}
+\multiput(53.26,16.79)(.0523,.03258){8}{\line(1,0){.0523}}
+\multiput(53.68,17.05)(.04482,.03148){9}{\line(1,0){.04482}}
+\multiput(54.09,17.33)(.03871,.03052){10}{\line(1,0){.03871}}
+\multiput(54.47,17.64)(.03697,.0326){10}{\line(1,0){.03697}}
+\multiput(54.84,17.96)(.03193,.03145){11}{\line(1,0){.03193}}
+\multiput(55.19,18.31)(.03316,.03648){10}{\line(0,1){.03648}}
+\multiput(55.53,18.67)(.03109,.03825){10}{\line(0,1){.03825}}
+\multiput(55.84,19.06)(.03215,.04434){9}{\line(0,1){.04434}}
+\multiput(56.13,19.46)(.03337,.0518){8}{\line(0,1){.0518}}
+\multiput(56.39,19.87)(.03046,.05357){8}{\line(0,1){.05357}}
+\multiput(56.64,20.3)(.03138,.06304){7}{\line(0,1){.06304}}
+\multiput(56.86,20.74)(.0325,.07546){6}{\line(0,1){.07546}}
+\multiput(57.05,21.19)(.02829,.07714){6}{\line(0,1){.07714}}
+\multiput(57.22,21.66)(.02879,.0943){5}{\line(0,1){.0943}}
+\put(57.36,22.13){\line(0,1){.479}}
+\put(57.48,22.61){\line(0,1){.484}}
+\put(57.57,23.09){\line(0,1){.489}}
+\put(57.64,23.58){\line(0,1){.92}}
+%\end
+\put(74.75,24){\circle{12.75}}
+\put(46.75,4.75){\makebox(0,0)[cc]{Figure D}}
+\put(16.25,24){\makebox(0,0)[cc]{\$0.25}}
+\put(48.75,24.25){\makebox(0,0)[cc]{\$0.05}}
+\put(74.5,24){\makebox(0,0)[cc]{\$0.10}}
+\end{picture}
+\end{center}
+
+
+\item[Remark 2.6:] Although the set of points in Example 2.4 is the same as the set of points in Example 2.5, the definitions of \emph{precede} are different. Thus, these are different examples of linearly ordered spaces.
+
+\item[Question 2.7:] Examples 2.4 and 2.5 are linearly ordered spaces which ``occur naturally'' in everyday life. Discover other similar examples.
+
+\item[Example 2.8:] Let \emph{point} mean \emph{natural number}, and let \emph{precede} mean \emph{less than}. Using the notation in Chapter 1, we have $S = Nat$. This particular example of a linearly ordered space $(S, \prec)$ will be symbolized by $(Nat, \prec)$.
+
+\item[Example 2.9:] Let \emph{point} mean \emph{integer}, and let \emph{precede} mean \emph{less than}. Here, $S = Int$. This example will be symbolized by $(Int, \prec)$.
+
+\item[Example 2.10:] Let \emph{point} mean \emph{rational number}, and let \emph{precede} mean \emph{less than}. Here, $S = Rat$. This example will be symbolized by $(Rat, \prec)$.
+
+\item[Example 2.11:] Let \emph{point} mean \emph{irrational number}, and let \emph{precede} mean \emph{less than}. Here, $S = Irr$. This example will be symbolized by $(Irr, \prec)$.
+
+\item[Example 2.12:] Let \emph{point} mean \emph{real number}, and let \emph{precede} mean \emph{less than}. Here, $S = Re$. This example will be symbolized by $(Re, \prec)$.
+
+\item[Remark 2.13:] If $(S, \prec)$ is a linearly ordered space, then $S$ contains at least two points. This fact is a consequence of our convention that every set is non-empty (see the Preface). To prove this fact, suppose that $S = \{ p \}$. Then, since the binary relation $\prec$ is a subset of $S \times S = \{ (p,p) \}$, it follows that $\prec$ contains $(p,p)$. This means that $p \prec p$, which contradicts part (b) of the Axiom.
+
+\item[Example 2.14:] Let $S$ be any subset of $Re$ which contains at least two elements. Let \emph{point} mean \emph{real number in $S$}, and let \emph{precede} mean \emph{less than}. As a specific example, let $S = [0,1]$ (i.e., $S$ is the set of all real numbers between and including $0$ and $1$). This example will be symbolized by $([0,1], \prec)$.
+
+\item[Example 2.15:] Let \emph{point} mean \emph{vertical line in the real number plane}. If each of $p$ and $q$ is a point (i.e., vertical line), then let ``$p \prec q$'' mean that the first term of any ordered pair in the line $p$ is less than the first term of any ordered pair in the line $q$. Sketch a picture of this example.
+
+\item[Example 2.16:] Let each of $(S', \prec ')$ and $(S'', \prec '')$ be a linearly ordered space. In this example, we describe a method for constructing a new linearly ordered space $(S, \prec)$ from $(S', \prec ')$ and $(S'', \prec '')$. To illustrate the method, let $(S', \prec ') = (Nat, \prec)$, and let $(S'', \prec '') = ([0,l], \prec)$. Let \emph{point} mean ordered pair of the form $(m,p)$ where $m$ is any element in $Nat$ and $p$ is any element in $[0,1]$. Here, $S = Nat \times [0,l]$. If each of $(m,p)$ and $(n,q)$ is a point, let ``$(m,p)$ \emph{precede} $(n,q)$'' mean that either (a) $m \prec n$ in $(Nat,\prec)$, or (b) $m$ is nand $p \prec q$ in $([0,l],\prec)$. Sketch a picture of this example.
+
+\item[Question 2.17:] If each of $(S', \prec ')$ and $(S'', \prec '')$ is a linearly ordered space, then we can construct a new linearly ordered space $(S, \prec)$ by letting the points of $S'$ precede the points of $S''$. Write out a careful description of $(S, \prec)$ in this case.
+
+\item[Example 2.18:] Let $F$ be the collection of subsets of the real line described in Question 1.19. Let \emph{point} mean ``element of the collection $F$''. Here, $S = F$. If each of $p$ and $q$ is a point, let ``$p$ \emph{precede} $q$'' mean that $p$ is a proper subset of q.
+
+\end{description}
+
+In each of the following questions, specific meanings are given to the terms \emph{point} and \emph{precede}. Decide whether or not the resulting pair $(S, \prec)$ is a linearly ordered space. If it is not, indicate each condition of the Axiom which is not satisfied.
+
+\begin{description}
+
+\item[Question 2.19:] Let $S$ be the set of \emph{all} nickels, dimes, and quarters. Let \emph{point} mean element of the set $S$. If each of $p$ and $q$ is a point, then let ``$p$ \emph{precede} $q$'' mean that the value of $p$ is less than the value of $q$.
+
+\item[Question 2.20:] Let \emph{point} mean element of the set $S = \{ -1, 1 \}$, and let \emph{precede} mean ``greater than''.
+
+\item[Question 2.21:] Let \emph{point} mean ``living human being''. If each of $p$ and $q$ is a point, let ``$p \prec q$'' mean that the birthday of $p$ comes before the birthday of $q$.
+
+\item[Question 2.22:] Let \emph{point} mean ``real number''. If each of $p$ and $q$ is a point, let ``$p \prec q$'' mean that $\vert p \vert$ is less than $\vert q \vert$.
+
+\item[Question 2.23:] Let \emph{point} mean ``integer''. If each of $p$ and $q$ is a point, let ``$p \prec q$'' mean that $p$ is not greater than $q$.
+
+\item[Question 2.24:] Let \emph{point} mean ``integer''. If each of $p$ and $q$ is a point, let ``$p \prec q$'' mean that $p$ is different from $q$.
+
+\item[Question 2.25:] Let \emph{point} mean ``subset of $Re$''. If each of $p$ and $q$ is a point, let ``$p \prec q$'' mean $p \subset q$.
+
+\end{description}
+
+An important aspect of mathematics is to investigate the consequences of one or more axioms. We shall now investigate some consequences of our Axiom. Each of the statements preceded by a blank concerns the point set $S$ and the binary relation $\prec$ of our Axiom. Some of these statements are true and some of them are false. If a statement is true, then the reader should provide a \emph{proof} and fill in the blank with a T. If a statement is false, then the reader should provide a \emph{counterexample} and fill in the blank with an F. A \emph{counterexample} is a specific example of a linearly ordered space $(S, \prec)$ for which the statement in question is demonstrably false.
+
+It may help to imagine a box which contains every linearly ordered space. Hence, this box contains all the examples of linearly ordered spaces discussed previously, as well as other examples in this \emph{Monograph}, and many more. If a statement is true, then it is true of every example in the box. Avoid the common mistake of attempting to prove a statement by proving it true for some particular example in the box. To show that a statement is false, it suffices to find an example in the box (called a counterexample) for which the statement is false.
+
+\begin{description}
+
+\item[Convention:] Throughout the \emph{Monograph}, the phrases ``$p$ is a \emph{point}'' and ``$X$ is a \emph{point set}'' will mean ``$p$ belongs to $S$'' and ``$X$ is a subset of $S$'' where $S$ is as in the Axiom.
+
+\item[1.] \_\_\_ If $p$ and $q$ are points and $p \prec q$, then it is not true that $q \prec p$.
+
+\item[2.] \_\_\_ If $p$, $q$, and $r$ are points such that $p \prec q$ or $q \prec r$, then $p \prec r$.
+
+\item[Definition 2.26:] ``The point $p$ in the point set $X$ is a \emph{first point} in $X$'' means that for each point $q$ in $X$, either $p$ is $q$ \emph{or} $p \prec q$.
+
+\item[Question 2.27:] Give an analogous definition for \emph{last point} in $X$.
+
+\item[Question 2.28:] Complete the following: ``the point $p$ in the point set $X$ is \emph{not} the \emph{first point} in $X$'' means ... ?
+
+\item[Question 2.29:] Which of Examples 2.4, 2.5, 2.8 - 2.12, 2.14 - 2.16, and 2.18, have a first (last) point?
+
+\item[3.] \_\_\_ $S$ has a first point.
+
+\item[4.] \_\_\_ $S$ has no first point.
+
+\item[Question 2.30:] Are your answers to 3 and 4 contradictory? Discuss.
+
+\item[5.] \_\_\_ No point set has two first (last) points.
+
+\item[Definition 2.31:] ``The set $X$ is finite'' means that there exists a natural number $n$ such that $X$ does not contain $n$ elements.
+
+\item[Question 2.32:] Complete the following: ``the set $X$ is \emph{not finite}'' means ... ?
+
+\item[Definition 2.33:] ``The set $X$ is \emph{infinite}'' means that $X$ is not finite.
+
+\item[6.] \_\_\_ If the point set $X$ is finite, then $X$ has a first point and a last point.
+
+\item[7.] \_\_\_ If the point set $X$ is finite, then there exists a natural number $n$ such that the points of $X$ can be denoted by $p_{1}, p_{2}, p_{3}, \cdots , p_{n}$ such that $p_{1}  \prec p_{2} \prec p_{3} \prec \cdots \prec p_{n}$.
+
+\end{description}
+
+
+
+
+\chapter*{Chapter 3: Limit Points, Closed Point Sets, and Open Point Sets}
+\markboth{Chapter 3}{Chapter 3}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter 3: Limit Points, Closed Point Sets, and Open Point Sets}
+
+
+In this chapter, we define and study one of the most important concepts of analysis and topology - the concept of \emph{limit point}. We also study several related notions.
+
+\begin{description}
+
+\item[Definition 3.1:] ``The point $q$ \emph{follows} the point $p$'' means that $p \prec q$. ``The point $q$ is \emph{between} the points $p$ and $r$'' means that either $p \prec q \prec r$, or $r \prec q \prec p$.
+
+\item[Question 3.2:] Complete the following: ``the point $q$ does \emph{not follow} the point $p$ means ... ? ``The point $q$ is \emph{not between} $p$ and $r$'' means ... ?
+
+\item[Definition 3.3:] ``The point set $U$ is an \emph{open interval}'' means that one of the following conditions is satisfied:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item There exist points $p$ and $r$ such that the point $q$ belongs to $U$ if and only if $q$ is between $p$ and $r$.
+  \item There exists a point $p$ such that the point $q$ belongs to $U$ if and only if $q$ precedes $p$.
+  \item There exists a point $p$ such that the point $q$ belongs to $U$ if and only if $q$ follows $p$.
+\end{enumerate}
+
+\item[Remark 3.4:] In less precise terms, an \emph{open interval} consists of all points which (a) lie between some pair of points, (b) precede some point, or (c) follow some point.
+
+\item[Example 3.5:] The following point sets are examples of \emph{open intervals} in the linearly ordered space $(Re, \prec )$: (a) the set of all points between $\pi$ and $5 \sqrt{3}$ (note that $\pi$ and $5 \sqrt{3}$ do not belong to the open interval), (b) the set of points which precede $\sqrt{2}$, and (c) the set of points which follow $4 \pi$.
+
+\item[Question 3.6:] Give examples of open intervals in each of the linearly ordered spaces defined in Examples 2.4, 2.5, 2.8 - 2.12, 2.14 - 2.16, and 2.18.
+
+\item[8.] \_\_\_ If $p$ is a point, then there exists an open interval which contains $p$.
+
+\item[9.] \_\_\_ If $p$ and $q$ are points, then there exists an open interval $U$ which contains $p$ but not $q$.
+
+\item[10.] \_\_\_ If $p$ and $q$ are points in an open interval $U$, then there exists an open interval $V$ such that $V$ is an subset of $U$, and $V$ contains $p$ and not $q$.
+
+\item[11.] \_\_\_ If $p$ is a point, and each of $U$ and $V$ is an open interval containing $p$, then there exists an open interval $W$ containing $p$ such that $W$ is a subset of $U$ and $V$.
+
+\item[12.] \_\_\_ If $p$ and $q$ are points, then there exist disjoint open intervals, one containing $p$ and the other containing $q$.
+
+\item[Question 3.7:] Describe all of the open intervals which contain the point $1$ in each of the linearly ordered spaces $(Nat, \prec)$, $(Int, \prec)$, $(Rat, \prec)$, and $(Re, \prec)$. Describe all the open intervals which contain the point $(2,0)$ in the linearly ordered space $(S, \prec)$ described in Example 2.16.
+
+\item[Definition 3.8:] ``The point $p$ is a \emph{limit point} of the point set $X$'' means that each open interval containing $p$ contains a point in $X$ which is different from $p$.
+
+\item[Question 3.9:] Complete the following: ``the point $p$ is \emph{not a limit point} of the point set $X$'' means ... ?
+
+\item[Question 3.10:] In the linearly ordered space $(Int, \prec)$, let $X$ be the point set consisting of the positive integers. Is the point $2$ a limit point of $X$?
+
+\item[Question 3.11:] In the linearly ordered space $(Re, \prec)$, let $X$ be the point set consisting of the positive real numbers. Is the point $2$ a limit point of $X$?
+
+\item[Question 3.12:] In the linearly ordered space $(Rat, \prec)$, let $X$ be the point set consisting of all rational numbers between $-1$ and $1$. Is the point $\frac{1}{2}$ a limit point of $X$? Is the point $1$ a limit point of $X$? Does the point $1$ belong to $X$?
+
+\item[Question 3.13:] In $(Re, \prec)$, is the point $\frac{2}{3}$ a limit point of the subset $Irr$ of irrational numbers?
+
+\item[Question 3.14:] In $(Re, \prec)$, is the point $\sqrt{2}$ a limit point of the subset $Rat$?
+
+\item[Question 3.15:] Let $(S, \prec)$ denote the linearly ordered space described in Example 2.16. Let $X$ be the point set whose points are of the form $(1,p)$ where $p$ is any element in $[0,1]$. Is the point $(2,0)$ a limit point of $X$?
+
+\item[13.] \_\_\_ If $X$ is a finite point set, then no point is a limit point of $X$.
+
+\item[14.] \_\_\_ If $p$ is a limit point of the point set $X$, and $X$ is a subset of the point set $Y$, then $p$ is a limit point of $Y$.
+
+\item[15.] \_\_\_ If each of $X$ and $Y$ is a point set, and $p$ is a limit point of $X \cup Y$, then $p$ is a limit point of $X$ or $Y$.
+
+\item[16.] \_\_\_ If each of $X$ and $Y$ is a point set, and $p$ is a limit point of $X \cup Y$, then $p$ is a limit point of $X$ and $Y$.
+
+\item[Remark 3.16:] The point $p$ and the point set $\{ p \}$ whose only element is $p$ are different. It is legitimate to say that $\{ p \}$ contains only one point, while it is not legitimate to say that $p$ contains one point. Similarly, it is legitimate to ask whether $p$ is a limit point of $\{ p \}$ (is it?), while it is not legitimate to ask any of the following: (a) is $p$ a limit point of $p$, (b) is $\{ p \}$ a limit point of $p$, or (c) is $\{ p \}$ a limit point of $\{ p \}$? Of course, given a point $p$, one can always form the point set $\{ p \}$.
+
+\item[Remark 3.17:] If the reader is familiar with \emph{mathematical induction}, then it is instructive to attempt to use it on the next three propositions.
+
+\item[17.] \_\_\_ If $F$ is a collection each element of which is a point set and $p$ is a limit point of $\cup F$, then $p$ is a limit point of some point set in $F$.
+
+\item[18.] \_\_\_ If $F$ is a collection each element of which is a point set and $p$ is not a limit point of any point set in $F$, then $p$ is not a limit point of $\cup F$.
+
+\item[19.] \_\_\_ If the point $p$ is not a limit point of any one of a finite number of point sets, then $p$ is not a limit point of their union.
+
+\item[Question 3.18:] Can you rewrite 19 so that it closely resembles 18 in form?
+
+\item[20.] \_\_\_ Let $X$ be a point set having at least one limit point. Let $Y$ be the point set such that a point $p$ belongs to $Y$ if and only if $p$ is a limit point of $X$. Then each limit point of $Y$ belongs to $Y$.
+
+\item[Definition 3.19:] ``The point set $H$ is \emph{closed}'' means that if $p$ is a limit point of $H$, then $p$ belongs to $H$.
+
+\item[Question 3.20:] Complete the following: ``the point set $H$ is \emph{not closed}'' means ... ?
+
+\item[Question 3.21:] Which of the point sets considered in Questions 3.10 through 3.15 are closed?
+
+\item[21.] \_\_\_ The point set $H$ is closed if and only if there is no limit point $H$ which does not belong to $H$.
+
+\item[22.] \_\_\_ $S$ is closed.
+
+\item[23.] \_\_\_ Every finite point set is closed.
+
+\item[24.] \_\_\_ If $F$ is a collection each element of which is a closed point set, then $\cup F$ is closed.
+
+\item[25.] \_\_\_ The union of a finite number of closed point sets is closed.
+
+\item[Question 3.22:] Can you rewrite 25 so that it closely resembles 24 in form?
+
+\item[26.] \_\_\_ If $F$ is a collection each element of which is a closed point set, and $\cap F$ exists, then $\cap F$ is closed.
+
+\item[Definition 3.23:] ``The point set U is \emph{open}'' means that for each point $p$ in $U$, there exists an open interval which contains $p$ and is a subset of $U$.
+
+\item[Question 3.24:] Complete the following: ``the point set $U$ is \emph{not open}'' means ... ?
+
+\item[Question 3.25:] Which of the point sets considered in Questions 3.10 through 3.15 are open?
+
+\item[27.] \_\_\_ Every open interval is open.
+
+\item[28.] \_\_\_ Every open point set is an open interval.
+
+\item[29.] \_\_\_ $S$ is open.
+
+\item[30.] \_\_\_ If $F$ is a collection each element of which is a point set which is open, then $\cup F$ is open.
+
+\item[31.] \_\_\_ If $F$ is a collection each element of which is a point set which is open, and $\cap F$ exists, then $\cap F$ is open.
+
+\item[32.] \_\_\_ The intersection of a finite number of open point sets is open.
+
+\item[33.] \_\_\_ If a point set is closed, then it is not open.
+
+\item[34.] \_\_\_ If a point set is not open, then it is closed.
+
+\item[35.] \_\_\_ If a point set is open, then it is not closed.
+
+\item[36.] \_\_\_ If a point set is not closed, then it is open.
+
+\item[37.] \_\_\_ The proper subset $U$ of $S$ is open if and only if $S - U$ is closed.
+
+\item[38.] \_\_\_ The proper subset $H$ of $S$ is closed if and only if $S - H$ is open.
+
+\item[39.] \_\_\_ The point set $U$ is open if and only if $U$ is a union of a collection each element of which is an open interval.
+
+\item[40.] \_\_\_ The point $p$ is a limit point of the point set $X$ if and only if each open point set containing $p$ contains a point $X$ which is different from $p$.
+
+\item[Definition 3.26:] The \emph{closure} of the point set $X$ is the point set to which a point $p$ belongs if and only if $p$ is in $X$ or $p$ is a limit point of $X$.
+
+\item[Question 3.27:] Complete the following: ``the point set $H$ is \emph{not the closure} of the point set $X$'' means ... ?
+
+\item[Notation 3.28:] The \emph{closure} of the point set $X$ will be denoted by $cl(X)$.
+
+\item[Question 3.29:] Give the closures of the point sets considered in each of Questions 3.10 through 3.15.
+
+\item[41.] \_\_\_ If the point set $X$ contains at most a finite number of points, then $X = cl(X)$.
+
+\item[42.] \_\_\_ A necessary and sufficient condition that the point set $H$ be closed is that $H = cl(H)$.
+
+\item[43.] \_\_\_ If $X$ is any point set, then $cl(X) = cl(cl(X))$.
+
+\item[44.] \_\_\_ If $U$ is an open interval containing the point $p$, then there exists an open interval $V$ containing $p$ such that $cl(V) \subseteq U$.
+
+\item[45.] \_\_\_ If $U$ is an open point set containing the point $p$, then there exists an open point set $V$ containing $p$ such that $cl(V) \subseteq U$.
+
+\item[46.] \_\_\_ If $p$ and $q$ are points, then there exist open intervals $U$ and $V$ containing $p$ and $q$ respectively, such that $cl(U)$ and $cl(V)$ are disjoint.
+
+\item[47.] \_\_\_ If $p$ and $q$ are points, then there exists open point sets $U$ and $V$ containing $p$ and $q$ respectively, such that $cl(U)$ and $cl(V)$ are disjoint.
+
+\item[48.] \_\_\_ If $H$ is a closed point set and $p$ is a point of $S - H$, then there exist open intervals $U$ and $V$ containing $H$ and $p$ respectively, such that $cl(U)$ and $cl(V)$ are disjoint.
+
+\item[49.] \_\_\_ If $H$ is a closed point set and $p$ is a point of $S - H$, then there exist open point sets $U$ and $V$ containing $H$ and $p$ respectively, such that $cl(U)$ and $cl(V)$ are disjoint.
+
+\item[50.] \_\_\_ If $H$ and $K$ are disjoint closed point sets, then there exist open point sets $U$ and $V$ containing $H$ and $K$ respectively, such that $cl(U)$ and $cl(V)$ are disjoint.
+
+\end{description}
+
+
+
+
+\chapter*{Chapter 4: Connected Point Sets}
+\markboth{Chapter 4}{Chapter 4}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter 4: Connected Point Sets}
+
+
+One of our major objectives is to characterize the linearly ordered space $(Re, \prec)$. In order to do this, we must first discover properties of $(Re, \prec)$ which distinguish it from other linearly ordered spaces. The fact that $(Re, \prec)$ is \emph{connected} is one of the most obvious properties that distinguishes it from linearly ordered spaces like $(Nat, \prec)$ and $(Int, \prec)$. In this chapter, we define and study the notion of connectivity.
+
+\begin{description}
+
+\item[Definition 4.1:] ``Two point sets are \emph{separated}'' means that they are disjoint and neither contains a limit point of the other.
+
+\item[Question 4.2:] Complete the following: ``two point sets are \emph{not separated}'' means ... ?
+
+\item[Question 4.3:] Give examples of separated point sets in $(Rat, \prec)$ and $(Re, \prec)$.
+
+\item[Question 4.4:] Are the point sets $Rat$ and $Irr$ separated in $(Re, \prec)$?
+
+\item[Example 4.5:] Let each of $(S', \prec ')$ and $(S'', \prec '')$ be the linearly ordered space $([0,l], \prec)$. Apply the construction described in Example 2.16 to $(S', \prec ')$ and $(S'', \prec '')$, and denote the resulting linearly ordered space by $(S, \prec ')$. Note that $S$ is the ``unit square'' together with its interior, i.e., $S = [0,l] \times [0,l]$. This example will be symbolized by $(Sq, \prec)$.
+
+\item[Question 4.6:] Let $(Sq, \prec)$ be as in Example 4.5. Let $X_{0}$ denote the point set each point of which has the form $(p,0)$ where $p$ is any element in $[0,1]$. Let $X_{1}$ denote the point set each point of which has the form $(p,1)$ where $p$ is any element in $[0,1]$. Sketch a picture of this example, and decide whether or not $X_{0}$ and $X_{1}$ are separated.
+
+\item[Question 4.7:] Let $(Sq, \prec)$, $X_{0}$, and $X_{1}$ be as in Question 4.6. Do there exist separated point sets $Y$ and $Z$ such that $Y \cup Z = X_{0} \cup X_{1}$?
+
+\item[Definition 4.8:] ``The point set $M$ is \emph{connected}'' means that $M$ is not the union of two separated point sets.
+
+\item[Question 4.9:] Complete the following: ``the point set $M$ is \emph{not connected}'' means ... ?
+
+\item[Question 4.10:] Which of $(Int, \prec)$, $(Rat, \prec)$, $(Re, \prec)$, $(Irr, \prec)$, and $(Sq, \prec)$ do you think are connected linearly ordered spaces? Is the point set $[0,1]$ connected in $(Re, \prec)$? Is the point set $X_{0}$ in Question 4.6 connected in $(Sq, \prec)$?
+
+\item[Definition 4.11:] ``A point set is \emph{degenerate}'' means that it contains exactly one element. ``A set is \emph{nondegenerate}'' means that it contains more than one element.
+
+\item[51.] \_\_\_ $S$ is connected.
+
+\item[52.] \_\_\_ $S$ is not connected.
+
+\item[53.] \_\_\_ If $M$ is a nondegenerate connected point set, then each point in $M$ is a limit point of $M$.
+
+\item[54.] \_\_\_ If each point in the point set $M$ is a limit point of $M$, then $M$ is connected.
+
+\item[55.] \_\_\_ If $X$ and $Y$ are separated point sets, then each connected subsets of $X \cup Y$ is a subset of $X$ or $Y$.
+
+\item[56.] \_\_\_ If $M$ is a nondegenerate connected point set, then $M$ is infinite.
+
+\item[57.] \_\_\_ If $M$ is a connected point set, then $cl(M)$ is connected.
+
+\item[58.] \_\_\_ If $F$ is a collection, each element of which is a connected point set, and each point set in $F$ contains a limit point of every other point set in $F$, then $\cup F$ is connected.
+
+\item[59.] \_\_\_ If $F$ is a collection, each element of which is a point set such that if $X$ and $Y$ are elements of $F$ then $X \cup Y$ is connected, then $\cup F$ is connected.
+
+\item[60.] \_\_\_ If $F$ is a collection of connected point sets $\{ M_{1}, M_{2}, \cdots, M_{n}, \cdots \}$ such that for each natural number $n$, $M_{n} \cup M_{n+1}$ is connected, then $\cup F$ is connected.
+
+\item[61.] \_\_\_ If $p$ is a point, and $F$ is a collection each element of which is a connected point set which contains $p$, then $\cup F$ is connected.
+
+\item[62.] \_\_\_ If a closed point set is not connected, then it is the union of two disjoint closed point sets.
+
+\item[63.] \_\_\_ If the point set $X$ is a proper subset of the point set $Y$, and $X$ is both open and closed, then $Y$ is connected.
+
+\item[64.] \_\_\_ If for each pair of points in the point set $M$ there exists a connected subset of $M$ containing them, then $M$ is connected.
+
+\item[65.] \_\_\_ If $p$ is a point, and $M$ is a connected point set such that $M - \{ p \}$ is the union of separated point sets $X$ and $Y$, then $X \cup \{ p \}$ and $Y \cup \{ p \}$ is connected.
+
+\item[66.] \_\_\_ A necessary and sufficient condition that $S$ be connected is that $S$ contains no proper subset which is both open and closed.
+
+\item[67.] \_\_\_ If $M$ is a connected point set, and $p$ and $r$ are points in $M$, then there exists a point $q$ in $M$ such that $q$ is between $p$ and $r$.
+
+\item[68.] \_\_\_ If M is a connected point set, and $p$ and $r$ are points in $M$, then each point $q$ which is between $p$ and $r$ belongs to $M$.
+
+\item[69.] \_\_\_ If $S$ is not connected, then $S$ is the union of two disjoint open point sets.
+
+\item[Definition 4.12:] ``An ordered pair $(L,R)$ of subsets of $S$ is a \emph{cut}'' means that $L \cup R = S$ and each point in $L$ precedes each point in $R$.
+
+\item[Definition 4.13:] ``$S$ has the \emph{cut property}'' means that if $(L,R)$ is a cut, then either $L$ has a last point or $R$ has a first point, and not both.
+
+\item[Definition 4.14:] Complete the following: ``$S$ does \emph{not} have the \emph{cut property}'' means ... ?
+
+\item[Question 4.15:] Which of $(Int, \prec)$, $(Rat, \prec)$, $(Re, \prec)$, $(Irr, \prec)$, and $(Sq, \prec)$ do you think have the cut property?
+
+\item[Question 4.16:] In each example below, $(L,R)$ is a cut of $S$. In each case, decide which one of the following conditions is satisfied. (a) $L$ has a last point and $R$ has a first point, (b) $L$ has no last point and $R$ has no first point, or (c) $L$ has a last point or $R$ has a first point and not both.
+
+\item[Example i:] Let $(S, \prec)$ be $(Int, \prec)$. Let $R$ be the point set to which an integer $p$ belongs if and only if $2 \prec p^{2}$. Let $L = S - R$.
+
+\item[Example ii:] Let $(S, \prec)$ be $(Rat, \prec)$. Let $R$ be the point set to which a rational number $p$ belongs if and only if $2 \prec p^{2}$. Let $L = S - R$.
+
+\item[Example iii:] Let $(S, \prec)$ be $(Re, \prec)$. Let $R$ be the point set to which a real number $p$ belongs if and only if $2 \prec p^{2}$. Let $L = S - R$.
+
+\item[Example iv:] Let $(S, \prec)$ be $(Re, \prec)$. Let $R$ be the point set to which a real number $p$ belongs if and only if there exists a natural number $n$ such that $\frac{1}{n} \prec p$. Let $L = S - R$.
+
+\item[Question 4.17:] Let $(S, \prec)$ be $(Re, \prec)$. Define a cut such that the limit point of the point set $\{ \frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \cdots \}$ is the point given in the conclusion of the definition of the cut property.
+
+\item[70.] \_\_\_ If $S$ is connected, then $S$ has the cut property.
+
+\item[71.] \_\_\_ If $S$ has the cut property, then $S$ is connected.
+
+\item[Definition 4.18:] ``The point set $X$ is \emph{bounded above}'' means that there exists a point $q$ such that if $p$ belongs to $X$, then either $p$ is $q$ or $p \prec q$. Such a point $q$ is called an \emph{upper bound} of $X$.
+
+\item[Question 4.19:] Write analogous definitions for the terms \emph{bounded below} and \emph{lower bound}.
+
+\item[Question 4.20:] Complete the following: ``the point set $X$ is \emph{not bounded above}'' means ... ?
+
+\item[Definition 4.21:] ``The point set $X$ is \emph{bounded}'' means that $X$ has an upper bound and a lower bound.
+
+\item[Question 4.22:] Complete the following: ``the point set $X$ is \emph{not bounded}'' means ... ?
+
+\item[72.] \_\_\_ If a point set is bounded, then it has a first point and last point.
+
+\item[73.] \_\_\_ Every finite point set is bounded.
+
+\item[74.] \_\_\_ If the point $p$ is the upper bound of the point set $X$, and $p$ is the limit point of $X$, then if $q$ is a point which is different from $p$ and is an upper bound of $X$, then $p \prec q$.
+
+\item[Question 4.23:] State and settle the analogous proposition to 74 for lower bounds.
+
+\item[75.] \_\_\_ Let $S$ be connected. If the point set $X$ is infinite and bounded, then $X$ has a limit point.
+
+\item[76.] \_\_\_ Let $S$ be connected. If $H$ is a closed and bounded point set, then $H$ contains a first point and last point.
+
+\item[77.] \_\_\_ Let $S$ be connected. If each of $H_{1}, H_{2}, H_{3}, \cdots, H_{n}, \cdots$ is a closed and bounded point set, and $H_{n+1}$ is a subset of $H_{n}$ for each natural number $n$, then $\cap \{ H_{1}, H_{2}, \cdots \}$ exists and is a closed and bounded point set.
+
+\item[78.] \_\_\_ Let $S$ be connected. Let $F$ be a collection, each element of which is a closed and bounded point set, and such that if $H$ and $K$ are in $F$, then either $H \subseteq K$ or $K \subseteq H$. Then $\cap F$ exists and is a closed and bounded point set.
+
+\item[Definition 4.24:] Let $X$ be a point set which is bounded above, and let $Y$ be the point set to which a point $q$ belongs if and only if $q$ is an upper bound of $X$. ``The point $p$ in $Y$ is the \emph{least upper bound} of $X$'' means that if $q$ is a point in $Y$, then either $p$ is $q$ or $p \prec q$.
+
+\item[Question 4.25:] In Definition 4.24 the point $p$ is called \emph{the} least upper bound of X. Justify this statement by showing that a point set can have at most one least upper bound.
+
+\item[Question 4.26:] Give the definition for the term \emph{greatest lower bound}. For each statement below which involves \emph{least upper bound}, state and settle the analogous statement for \emph{greatest lower bound}.
+
+\item[79.] \_\_\_ If $X$ is a point set which is bounded above, and $Y$ is the point set such that a point $q$ belongs to it if and only if $q$ is an upper bound of $X$, and the point $p$ is the least upper bound of $X$, then $p$ is the first point in $Y$.
+
+\item[80.] \_\_\_ If the point $p$ is the least upper bound of the point set $H$, then $p$ is the last point in $H$.
+
+\item[81.] \_\_\_ The point $q$ is the least upper bound of the point set $X$ if and only if $q$ is an upper bound of $X$, and if $p$ is a point such that $p \prec q$, then $p$ is not an upper bound of $X$.
+
+\item[82.] \_\_\_ If the point set $X$ is bounded, then $X$ has a least upper bound and greatest lower bound.
+
+\item[83.] \_\_\_ If $S$ is connected and $X$ is a bounded point set, then $X$ has a least upper bound and a greatest lower bound.
+
+\end{description}
+
+
+
+
+\chapter*{Chapter 5: Functions}
+\markboth{Chapter 5}{Chapter 5}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter 5: Functions}
+
+
+We interrupt our study of linearly ordered spaces to discuss one of the most important concepts in mathematics - \emph{functions}.
+
+\begin{description}
+
+\item[Definition 5.1:] Let each of $X$ and $Y$ be a set. A \emph{function} $F$ from $X$ into $Y$ is a subset of $X \times Y$ such that each element $p$ in $X$ belongs to one and only one ordered pair in $F$.
+
+\item[Question 5.2:] Complete the following: ``the subset $F$ of $X \times Y$ is \emph{not a function}'' means ... ?
+
+\item[Notation 5.3:] The fact that $F$ is a function from $X$ into $Y$ is symbolized by $F: X \rightarrow Y$. If $F: X \rightarrow Y$ and $p$ is in $X$, then the element $q$ in $Y$ such that $(p,q)$ belongs to $F$ is called the \emph{image} of $p$, and is denoted by $F(p)$. With this notation, each element in $F$ is of the form $(p,F(p))$.
+
+\item[Remark 5.4:] Equations provide a convenient way of defining functions from $Re$ into $Re$. For example, the equation $F(p) = p^{2} + 1$ defines the function $F$ whose elements are all ordered pairs of real numbers of the form $(p, p^{2}+1)$.
+
+\item[Question 5.5:] Determine which of the following equations define functions from $Re$ into $Re$.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $F(p) = 3p^{2} + p$
+  \item $F(p) = 2p + \frac{1}{p}$
+  \item $F(p) = \frac{(p^{2} - 2p + 1)}{(p - 1)}$
+  \item $F(p) = \sqrt{p}$
+  \item $F(p) = p - p^{3}$
+\end{enumerate}
+
+\item[Question 5.6:] Let $X = \{ 1, 2, 3 \}$, and let $Y = \{ 6, 7, 8, 9 \}$. Determine which of the following subsets of $X \times Y$ are functions from $X$ into $Y$, and which are not. Justify your answers.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $\{ (1,6), (2,7), (3,8) \}$
+  \item $\{ (1,6), (2,6), (3,6) \}$
+  \item $\{ (1,6), (1,7), (1,8) \}$
+  \item $\{ (3,8), (2,7), (1,6) \}$
+  \item $\{ (1,7), (2,9) \}$
+  \item $\{ (1,8), (2,7), (3,6), (2,8) \}$
+\end{enumerate}
+
+\item[Remark 5.7:] Graphs provide a convenient way of ``picturing'' functions. 
+
+  Graphs of the functions in (a) and (b) of Question 5.6 are illustrated in Figure E.
+
+
+\begin{center}
+%TeXCAD Picture [figE.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(103.5,56.25)(0,0)
+\put(8.25,56.25){\line(0,-1){31.75}}
+\put(62.5,56.25){\line(0,-1){31.75}}
+\put(24.5,29.25){\makebox(0,0)[cc]{(1,6)}}
+\put(37.25,37.75){\makebox(0,0)[cc]{(2,7)}}
+\put(49,46.25){\makebox(0,0)[cc]{(3,8)}}
+\put(5.5,54.75){\makebox(0,0)[cc]{9}}
+\put(59.75,54.75){\makebox(0,0)[cc]{9}}
+\put(5.25,46.75){\makebox(0,0)[cc]{8}}
+\put(59.5,46.75){\makebox(0,0)[cc]{8}}
+\put(5,36.75){\makebox(0,0)[cc]{7}}
+\put(59.25,36.75){\makebox(0,0)[cc]{7}}
+\put(5.5,27.75){\makebox(0,0)[cc]{6}}
+\put(59.75,27.75){\makebox(0,0)[cc]{6}}
+\put(20,16){\makebox(0,0)[cc]{1}}
+\put(74.25,16){\makebox(0,0)[cc]{1}}
+\put(31.5,16){\makebox(0,0)[cc]{2}}
+\put(85.75,16){\makebox(0,0)[cc]{2}}
+\put(44.5,16){\makebox(0,0)[cc]{3}}
+\put(98.75,16){\makebox(0,0)[cc]{3}}
+\put(74.5,30.5){\makebox(0,0)[cc]{(1,6)}}
+\put(86.25,30.25){\makebox(0,0)[cc]{(2,6)}}
+\put(99,30){\makebox(0,0)[cc]{(3,6)}}
+\put(31.75,10.75){\makebox(0,0)[cc]{(a)}}
+\put(85.75,10.25){\makebox(0,0)[cc]{(b)}}
+\put(53.25,5.5){\makebox(0,0)[cc]{Figure E}}
+\put(12.25,20){\line(1,0){37}}
+\put(66.5,20){\line(1,0){37}}
+\put(20,20){\circle*{1.41}}
+\put(74.25,20){\circle*{1.41}}
+\put(74.5,27.25){\circle*{1.41}}
+\put(32,19.75){\circle*{1.41}}
+\put(86.25,19.75){\circle*{1.41}}
+\put(86.5,27){\circle*{1.41}}
+\put(44.75,19.75){\circle*{1.41}}
+\put(99,19.75){\circle*{1.41}}
+\put(99.25,27){\circle*{1.41}}
+\put(8.5,27.25){\circle*{1.41}}
+\put(62.75,27.25){\circle*{1.41}}
+\put(8.5,37){\circle*{1.41}}
+\put(62.75,37){\circle*{1.41}}
+\put(8.5,47.25){\circle*{1.41}}
+\put(62.75,47.25){\circle*{1.41}}
+\put(8.5,54.75){\circle*{1.41}}
+\put(62.75,54.75){\circle*{1.41}}
+\put(44.75,46){\circle*{1.41}}
+\put(32.5,36.25){\circle*{1.41}}
+\put(20.25,27.5){\circle*{1.41}}
+\end{picture}
+\end{center}
+
+
+\item[Remark 5.8:] Another way to ``picture'' the same functions is illustrated in Figure F.
+
+
+\begin{center}
+%TeXCAD Picture [figF.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(102.5,39)(0,0)
+\put(8.75,9.75){\makebox(0,0)[cc]{X}}
+\put(65.75,9.75){\makebox(0,0)[cc]{X}}
+\put(41.5,9.75){\makebox(0,0)[cc]{Y}}
+\put(98.5,9.75){\makebox(0,0)[cc]{Y}}
+\put(24.25,7){\makebox(0,0)[cc]{(a)}}
+\put(81.5,7){\makebox(0,0)[cc]{(b)}}
+\put(53,4){\makebox(0,0)[cc]{Figure F}}
+\put(9,14){\circle*{1}}
+\put(66,14){\circle*{1}}
+\put(41.75,14){\circle*{1}}
+\put(98.75,14){\circle*{1}}
+\put(9,22.25){\circle*{1}}
+\put(66,22.25){\circle*{1}}
+\put(41.75,22.25){\circle*{1}}
+\put(98.75,22.25){\circle*{1}}
+\put(41.75,38.5){\circle*{1}}
+\put(98.75,38.5){\circle*{1}}
+\put(9,29.75){\circle*{1}}
+\put(66,29.75){\circle*{1}}
+\put(41.75,29.75){\circle*{1}}
+\put(98.75,29.75){\circle*{1}}
+\put(4.5,29.75){\makebox(0,0)[cc]{1}}
+\put(61.5,29.75){\makebox(0,0)[cc]{1}}
+\put(45.5,29.75){\makebox(0,0)[cc]{8}}
+\put(102.5,29.75){\makebox(0,0)[cc]{8}}
+\put(45.5,38.25){\makebox(0,0)[cc]{9}}
+\put(102.5,38.25){\makebox(0,0)[cc]{9}}
+\put(4.5,22.25){\makebox(0,0)[cc]{2}}
+\put(61.5,22.25){\makebox(0,0)[cc]{2}}
+\put(45.5,22.25){\makebox(0,0)[cc]{7}}
+\put(102.5,22.25){\makebox(0,0)[cc]{7}}
+\put(4.5,13.75){\makebox(0,0)[cc]{3}}
+\put(61.5,13.75){\makebox(0,0)[cc]{3}}
+\put(45.5,13.75){\makebox(0,0)[cc]{6}}
+\put(102.5,13.75){\makebox(0,0)[cc]{6}}
+%\vector(8.75,29.75)(40.75,14.75)
+\put(40.75,14.75){\vector(2,-1){.07}}\multiput(8.75,29.75)(.071910112,-.033707865){445}{\line(1,0){.071910112}}
+%\end
+\put(8.75,22.5){\vector(1,0){32}}
+%\vector(8.75,14)(40.5,30)
+\put(40.5,30){\vector(2,1){.07}}\multiput(8.75,14)(.066842105,.033684211){475}{\line(1,0){.066842105}}
+%\end
+\put(65.75,14){\vector(1,0){32.25}}
+%\vector(65.75,22.25)(97.75,14.75)
+\put(97.75,14.75){\vector(4,-1){.07}}\multiput(65.75,22.25)(.14349776,-.03363229){223}{\line(1,0){.14349776}}
+%\end
+%\vector(65.75,30)(98,15.75)
+\put(98,15.75){\vector(2,-1){.07}}\multiput(65.75,30)(.076241135,-.033687943){423}{\line(1,0){.076241135}}
+%\end
+\end{picture}
+\end{center}
+
+
+\item[Definition 5.9:] ``The function $F$ from the set $X$ into the set $Y$ is \emph{onto}'' means that each element in $Y$ belongs to some ordered pair in $F$.
+
+\item[Question 5.10:] Complete the following: ``the function $F$ from the set $X$ into the set $Y$ is \emph{not onto}'' means ... ?
+
+\item[Question 5.11:] Determine which of the following equations define functions from $Re$ onto $Re$.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $F(p) = p^{2}$
+  \item $F(p) = p^{3}$
+  \item $F(p) = 4p + 3$
+  \item $F(p) = p$
+  \item $F(p) = p(p - l)(p + 1)$
+  \item $F(p) = 2^{p}$
+\end{enumerate}
+
+\item[Question 5.12:] Let $X$ be the set of positive rational numbers ($0$ not included). Let $Y$ be the subset of $Nat \times Nat$ to which an ordered pair $(m,n)$ belongs if and only if $m$ and $n$ have no common factor other than $1$. Define a function $F$ from $X$ onto $Y$.
+
+\item[Definition 5.13:] ``The function $F$ from the set $X$ into the set $Y$ is \emph{one-to-one}'' means that no two ordered pairs in $F$ have the same second term.
+
+\item[Question 5.14:] Complete the following: the function $F$ from the set $X$ into the set $Y$ is \emph{not one-to-one} means ... ?
+
+\item[Question 5.15:] Define a function $F$ from $Nat$ into the set $\{ \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \cdots, \frac{1}{n}, \cdots \}$ which is onto and one-to-one.
+
+\item[Remark 5.16:] If $F$ is a function from $Re$ into $Re$, then $F$ is a subset of the real number plane $Re \times Re$. Observe that the definition of \emph{function} implies that each vertical line in the real number plane intersects $F$ exactly once. Similarly, (a) $F$ is onto if and only if each horizontal line intersects $F$; (b) $F$ is one-to-one if and only if each horizontal line intersects $F$ at most once; and (c) $F$ is onto and one-to-one if and only if each horizontal line intersects $F$ exactly once.
+
+\item[Question 5.17:] Determine which of the functions in Question 5.11 are one-to-one.
+
+\item[Definition 5.18:] ``The function $F$ from the set $X$ into the set $Y$ is a \emph{one-to-one correspondence}'' means that $F$ is one-to-one and onto.
+
+\item[Question 5.19:] Complete the following: ``the function $F$ from the set $X$ into the set $Y$ is \emph{not a one-to-one correspondence}'' means ... ?
+
+\item[Definition 5.20:] ``The set $X$ is in \emph{one-to-one correspondence} with the set $Y$'' means that there exists a function from $X$ into $Y$ which is a one-to-one correspondence.
+
+\item[Question 5.21:] Complete the following: ``the set $X$ is \emph{not in one-to-one correspondence} with the set $Y$'' means ... ?
+
+\item[Question 5.22:] Decide whether or not the following pairs of sets are in one-to-one correspondence.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item Nat and Int.
+  \item The set of even natural numbers and the set of odd natural numbers.
+  \item Nat and the set of even natural numbers.
+  \item Nat and the set of positive rational numbers. (Hint: the set of positive rational numbers can be displayed as in Figure G.)
+\end{enumerate}
+
+\begin{center}
+\begin{tabular}{cccccccc}
+  $1/1$    &  $2/1$   &  $3/1$   &  $4/1$   &  $5/1$   &  $6/1$   &  $7/1$   & $\cdots$ \\
+  $1/2$    &  $3/2$   &  $5/2$   &  $7/2$   &  $9/2$   & $11/2$   & $13/2$   & $\cdots$ \\
+  $1/3$    &  $2/3$   &  $4/3$   &  $5/3$   &  $7/3$   &  $8/3$   & $10/3$   & $\cdots$ \\
+  $1/4$    &  $3/4$   &  $5/4$   &  $7/4$   &  $9/4$   & $11/4$   & $13/4$   & $\cdots$ \\
+  $1/5$    &  $2/5$   &  $3/5$   &  $4/5$   &  $6/5$   &  $7/5$   &  $8/5$   & $\cdots$ \\
+  $1/6$    &  $5/6$   &  $7/6$   & $11/6$   & $13/6$   & $17/6$   & $19/6$   & $\cdots$ \\
+  $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+\end{tabular}
+\end{center}
+\begin{center}
+Figure G
+\end{center}
+
+\begin{enumerate}
+  \item[\hspace{1cm}(e)] $Nat$ and $Nat \times Nat$
+  \item[\hspace{1cm}(f)] $Nat$ and $Int \times Int$
+  \item[\hspace{1cm}(g)] $Nat$ and $Rat$
+  \item[\hspace{1cm}(h)] $Nat$ and $Rat \times Rat$
+  \item[\hspace{1cm}(i)] $Nat$ and the set $Y$ of real numbers between $0$ and $1$. (Hint: this time the answer is no! Before indicating why this is true, let us observe that each real number between $0$ and $1$ can be expressed as a decimal of the form $0.p_{1} p_{2} p_{3} \cdots p_{n} \cdots$, where each of $p_{1}, p_{2}, p_{3}, \cdots, p_{n}, \cdots$ is a digit. Let us show that there does not even exist a function $F$ from $Nat$ onto $Y$. Using the indirect method of proof, let us assume that there does exist a function $F$ from $Nat$ onto $Y$. For each natural number $n$, denote $F(n)$ by $0.p_{n1} p_{n2} p_{n3} \cdots p_{nm} \cdots$, where each $p_{nm}$ is a digit. The function $F$ is illustrated in Figure H. Notice that for $F$ to be onto, each real number in $Y$ must appear in the list below $Y$ in Figure H. Can you choose digits $q_{1}, q_{2}, q_{3}, \cdots, q_{n}, \cdots$ so that the real number $0.q_{1} q_{2} q_{3} \cdots q_{n} \cdots$ does \emph{not} appear in the list below $Y$?)
+\end{enumerate}
+
+\begin{center}
+\begin{tabular}{rclcc}
+   $F:Nat$ & $\rightarrow$ & $Y$                      &          &          \\
+       $1$ & $\rightarrow$ & $0.p_{11} p_{12} p_{13}$ & $\cdots$ & $p_{1m}$ \\
+       $2$ & $\rightarrow$ & $0.p_{21} p_{22} p_{23}$ & $\cdots$ & $p_{2m}$ \\
+       $3$ & $\rightarrow$ & $0.p_{31} p_{32} p_{33}$ & $\cdots$ & $p_{3m}$ \\
+  $\vdots$ &               &                          & $\vdots$ &          \\
+       $n$ & $\rightarrow$ & $0.p_{n1} p_{n2} p_{n3}$ & $\cdots$ & $p_{nm}$ \\
+  $\vdots$ &               &                          & $\vdots$ &          \\
+\end{tabular}
+\end{center}
+\begin{center}
+Figure H
+\end{center}
+
+\item[Remark 5.23:] In Question 5.22, we have seen that there exist sets which are not in one-to-one correspondence with the set $Nat$. Intuitively, this means that there exist infinite sets of ``different size''. The definitions below make this idea precise.
+
+\item[Definition 5.24:] ``The set $X$ is \emph{countably infinite}'' means that there exists a one-to-one correspondence between the set $Nat$ and $X$.
+
+\item[Definition 5.25:] ``The set $X$ is \emph{uncountably infinite}'' means that $X$ is infinite and $X$ is not countably infinite.
+
+\item[Question 5.26:] Show that if $F$ is a collection of sets each of which is countably infinite, and $F$ is also countably infinite, then $\cup F$ is countably infinite.
+
+\item[Question 5.27:] Show that the real number line $Re$ is uncountably infinite.
+
+\item[Question 5.28:] Let $F$ be the collection of all cuts of $(Int, \prec)$ (i.e., $(L,R)$ belongs to $F$ if and only if $(L,R)$ is a cut of $(Int, \prec)$ ). Is $F$ countably infinite or uncountably infinite?
+
+\item[Question 5.29:] Let $F$ be the collection of all cuts of $(Rat, \prec)$. Is $F$ countably infinite or uncountably infinite?
+
+\item[Question 5.30:] Show that there exists an uncountably infinite collection $F$ of subsets of $Nat$ such that if $X$ and $Y$ are in $F$, then either $X \subset Y$ or $Y \subset X$.
+
+\item[Definition 5.31:] Let $F$ be a function from the set $X$ into the set $Y$. If $Z$ is a subset of $X$, then the \emph{image} of $Z$ under $F$ is the subset of $Y$ to which an element $q$ belongs if and only if there exists an ordered pair $(p,q)$ in $F$ with $p$ in $Z$.
+
+\item[Notation 5.32:] If $F: X \rightarrow Y$, and $Z$ is a subset of $X$, then the \emph{image} of $Z$ is symbolized by $F(Z)$.
+
+\item[Question 5.33:] For each of the functions $F$ defined in Question 5.11, find $F(Z)$ where $Z = \{ -1, 0, 1 \}$.
+
+\item[Definition 5.34:] Let $F$ be a function from the set $X$ into the set $Y$. Let $Z$ be a subset of $Y$ such that for some element $p$ in $X$, $F(p)$ is in $Z$. The \emph{inverse image} of $Z$ under $F$ is the subset of $X$ to which an element $p$ belongs if and only if there exists an ordered pair $(p,q)$ in $F$ with $q$ in $Z$.
+
+\item[Notation 5.35:] If $F: X \rightarrow Y$, and $Z$ is a subset of $Y$ such that $F(p)$ is in $Z$ for some element $p$ in $X$, then the \emph{inverse image} of $Z$ under $F$ is symbolized by $F^{-1}(Z)$. In case $Z = \{ q \}$, we write $F^{-1}(q)$ for $F^{-1}(Z)$.
+
+\item[Question 5.36:] Let $F$ be the function from $Re$ into $Re$ defined by $F(p) = p^{2}$. Let $X$ be the set $[0,1]$, and let $Y$ be the set $[-1,\frac{1}{2}]$ (i.e., $Y$ is the set of real numbers between and including $-1$ and $\frac{1}{2}$). Give the elements in each of the following sets.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $F(X)$
+  \item $F(Y)$
+  \item $F^{-1}(X)$
+  \item $F^{-1}(Y)$
+  \item $F^{-1}(F(X))$
+  \item $F(F^{-1}(Y))$
+  \item $F(X \cup Y)$
+  \item $F(X) \cup F(Y)$
+  \item $F(X \cap Y)$
+  \item $F(X) \cap F(Y)$
+  \item $F^{-1}(X \cup Y)$
+  \item $F^{-1}(X) \cup F^{-1}(Y)$
+  \item $F^{-1}(X \cap Y)$
+  \item $F^{-1}(X) \cap F^{-1}(Y)$
+\end{enumerate}
+
+\item[Question 5.37:] Let $F$ be a function from the set $X$ into the set $Y$. Let $X'$ and $X''$ be subsets of $X$, and let $Y'$ and $Y''$ be subsets of $Y$. Decide which of the following assertions are necessarily true, and justify your answers.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item If $p$ is an element of $X'$, then $p$ belongs to $F^{-1}(F(X'))$.
+  \item If $q$ is an element of $Y'$, then $q$ belongs to $F(F^{-1}(Y'))$.
+  \item If $F^{-1}(Y')$ exists and $q$ belongs to $F(F^{-1}(Y'))$, then $q$ belongs to $Y'$.
+  \item $X' = F^{-1}(F(X'))$.
+  \item If $F$ is one-to-one, then $X' = F^{-1}(F(X'))$.
+  \item If $F^{-1}(Y')$ exists, then $Y' = F(F^{-1}(Y'))$.
+  \item If $F$ is onto, then $Y' = F(F^{-1}(Y'))$.
+  \item $F(X' \cup X'') = F(X') \cup F(X'')$.
+  \item If $F^{-1}(Y')$ and $F^{-1}(Y'')$ exist, then $F^{-1}(Y' \cup Y'') = F^{-1}(Y') \cup F^{-1}(Y'')$.
+\end{enumerate}
+Notice the similarity between statements (h) and (i). Settle analogous pairs of statements for intersection ($\cap$) and for complement ($-$).
+
+\item[Definition 5.38:] Let $F$ be a one-to-one function from the set $X$ onto the set $Y$. The \emph{inverse function} of $F$ is the subset of $Y \times X$ such that an ordered pair $(q,p)$ belongs to it if and only if the ordered pair $(p,q)$ belongs to $F$.
+
+\item[Notation 5.39:] If $F: X \rightarrow Y$ is a one-to-one correspondence, then the \emph{inverse function} of $F$ is symbolized by $F^{-1}$. Note that the ordered pair $(q,p)$ belongs to $F^{-1}$ if and only if $F^{-1}(q)$ is $p$.
+
+\item[Question 5.40:] In the definition of \emph{inverse function}, why do you think that the given function $F$ was required to be one-to-one? Why was it required to be onto? Is the function $F^{-1}$ necessarily one-to-one? Is $F^{-1}$ necessarily onto?
+
+\item[Question 5.41:] Determine which of the functions given in Question 5.11 are one-to-one correspondences. For those functions $F$ which are one-to-one correspondences, find equations which define $F^{-1}$.
+
+\item[Definition 5.42:] Let $F$ be a function from the set $X$ into the set $Y$, and let $G$ be a function from the set $Y$ into the set $Z$. The \emph{composition} of $F$ and $G$ is the function from $X$ into $Z$ such that an ordered pair $(p,r)$ belongs to it if and only if there exists an element $q$ in $Y$ such that $(p,q)$ belongs to $F$ and $(q,r)$ belongs to $G$.
+
+\item[Notation 5.43:] If $F: X \rightarrow Y$ and $G: Y \rightarrow Z$, then the \emph{composition} of $F$ and $G$ is symbolized by $G \circ F$. Observe that $G \circ F(p) = G(F(p))$ for each element $p$ in $X$.
+
+\item[Remark 5.44:] Note in Definition 5.42 that if $(p,q)$ is an ordered pair in $F$ and $(q,r)$ is an ordered pair in $G$, then $(p,r)$ is an ordered pair in $G \circ F$. Furthermore, all ordered pairs in $G \circ F$ are obtained in this way.
+
+\item[Example 5.45:] Let $F: Nat \rightarrow Nat$ be defined by the equation $F(p) = 2p + 1$. Let $G: Nat \rightarrow Rat$ be defined by the equation $G(q) = 1/q$. Then $G \circ F$ is defined by the equation $G \circ F(p) = \frac{1}{(2p + 1)}$. To verify that this is true, note that $G \circ F(p) = G(F(p)) = \frac{1}{F(p)} = \frac{1}{(2p + 1)}$. See Figure I.
+
+\item[Question 5.46:] In each of the following, let $F$ and $G$ be the functions from $Re$ into $Re$ defined by the given equations. In each case, find an equation for $G \circ F$. Also sketch a diagram similar to FIGURE I in each case.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $F(p) = 3p^{2} + 5p$ ; $G(q) = 2q + 3$.
+  \item $F(p) = 2p$ ; $G(q) = q^{2} + 6q + 9$.
+  \item $F(p) = -p$ ; $G(q) = -q$.
+\end{enumerate}
+
+\begin{center}
+\begin{tabular}{ccc}
+  $F(p) = 2p + 1$         & $G(q) = 1/q$            & $G \circ F(p) = 1/(2p + 1)$      \\
+  $F:Nat \rightarrow Nat$ & $G:Nat \rightarrow Rat$ & $G \circ F: Nat \rightarrow Rat$ \\
+  $(1,3)$                 & $(1,1)$                 &                                  \\
+  $(2,5)$                 & $(2,1/2)$               &                                  \\
+  $(3,7)$                 & $(3,1/3)$               & $(1,1/3)$                        \\
+  $(4,9)$                 & $(4,1/4)$               &                                  \\
+  $(5,11)$                & $(5,1/5)$               & $(2,1/5)$                        \\
+  $\vdots$                & $\vdots$                &                                  \\
+  $(p,q)$                 & $(q,r)$                 & $(p,r)$                          \\
+  $(p, F(p))$             & $(F(p), G(F(p)) )$      & $(p, G(F(p)) )$                  \\
+\end{tabular}
+\end{center}
+\begin{center}
+Figure I
+\end{center}
+
+\item[Example 5.47:] Most of the examples of functions which we have considered have been from one subset of $Re$ into another subset of $Re$. We now define a quite different sort of function. Let $F$ be the collection of all subsets of $Re$. Define a function from $F$ into $F$ by the equation $F(X) = cl(X)$. In other words, if $X$ is a subset of $Re$, let $F(X)$ be the closure of the set $X$. Observe that any linearly ordered space $(S, \prec)$ could play the role of $(Re, \prec)$ in this example.
+
+\end{description}
+
+
+
+
+\chapter*{Chapter 6: Order Preserving Functions and Continuous Functions}
+\markboth{Chapter 6}{Chapter 6}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter 6: Order Preserving Functions and Continuous Functions}
+
+
+In the previous chapter, we studied functions between arbitrary sets. In this chapter, we shall be concerned with functions between linearly ordered spaces. In this setting, we shall be interested in the following two important types of functions: 
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item those which ``preserve the notion of precede'', called \emph{order preserving} functions; and 
+  \item those which ``preserve the notion of limit'', called \emph{continuous} functions.
+\end{enumerate}
+
+\begin{description}
+
+\item[Notation 6.1:] If each of $(S, \prec)$ and $(S', \prec ')$ is a linearly ordered space, then the fact that $F$ is a function from $S$ into $S'$ will be symbolized by $F: (S, \prec) \rightarrow (S', \prec ')$.
+
+\item[Definition 6.2:] ``The function $F: (S, \prec) \rightarrow (S', \prec ')$ is \emph{order preserving}'' means that if $p$ and $q$ are points in $S$ such that $p \prec q$, then $F(p) \prec F(q)$.
+
+\item[Question 6.3:] Complete the following: ``the function $F: (S, \prec) \rightarrow (S', \prec ')$ is \emph{not order preserving}'' means ... ?
+
+\item[Question 6.4:] The following equations define functions from $Re$ into $Re$. Determine which of these functions are order preserving and which are not order preserving.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $F(p) = p^{2}$ 
+  \item $F(p) = 2^{p}$ 
+  \item $F(p) = p^{3} + 4$
+  \item $F(p) = -4p + 2$
+  \item $F(p) = p$
+  \item $F(p) = \pi p + 4$
+\end{enumerate}
+
+\item[84.] \_\_\_ If $F: (S, \prec) \rightarrow (S', \prec ')$ is order preserving, then $F$ is one-to-one.
+
+\item[85.] \_\_\_ If each of $F: (S, \prec) \rightarrow (S', \prec ')$ and $G: (S', \prec ') \rightarrow (S'', \prec '')$ is order preserving, then $G \circ F: (S, \prec ) \rightarrow (S'', \prec '')$ is order preserving.
+
+\item[Remark 6.5:] If $F: (S, \prec) \rightarrow (S', \prec ')$ is order preserving and onto, then by 84, $F$ is a one-to one correspondence. This observation suggests our next definition.
+
+\item[Definition 6.6:] ``The function $F: (S, \prec) \rightarrow (S', \prec ')$ is an \emph{isomorphism}'' means that $F$ is order preserving and onto.
+
+\item[Question 6.7:] Complete the following: ``the function $F: (S, \prec) \rightarrow (S', \prec ')$ is \emph{not an isomorphism}'' means ... ?
+
+\item[Definition 6.8:] ``The linearly ordered space $(S, \prec)$ is \emph{isomorphic} to the linearly ordered space $(S', \prec ')$'' means that there exists a function $F: (S, \prec) \rightarrow (S', \prec ')$ which is an isomorphism.
+
+\item[Question 6.9:] Complete the following: ``the linearly ordered space $(S, \prec)$ is \emph{not isomorphic} to the linearly ordered space $(S', \prec ')$'' means ... ?
+
+\item[86.] \_\_\_ If each of $F: (S, \prec) \rightarrow (S', \prec ')$ and $G: (S', \prec ') \rightarrow (S'', \prec '')$ is an isomorphism, then $G \circ F: (S, \prec) \rightarrow (S'', \prec '')$ is an isomorphism.
+
+\item[87.] \_\_\_ If $F: (S, \prec) \rightarrow (S', \prec ')$ is an isomorphism, then $F^{-1}: (S', \prec ') (S, \prec)$ is an isomorphism.
+
+\item[Remark 6.10:] We can now say precisely what it means to characterize the linearly ordered space $(Re, \prec)$. In order to characterize $(Re, \prec)$, we must find conditions such that if $(S, \prec)$ is any linearly ordered space satisfying these conditions, then $(S, \prec)$ is isomorphic to $(Re, \prec)$.
+
+\item[88.] \_\_\_ If $F: (S, \prec) \rightarrow (S', \prec ')$ is order preserving, and the subset $X$ of $S$ has a first point, then $F(X)$ has a first point.
+
+\item[89.] \_\_\_ If $F: (S, \prec) \rightarrow (S', \prec ')$ is order preserving, and $p$ is a limit point of the subset $X$ of $S$, then $F(p)$ is a limit point of $F(X)$.
+
+\item[90.] \_\_\_ If $F: (S, \prec) \rightarrow (S', \prec ')$ is order preserving, and $M$ is a connected subset of $S$, then $F(M)$ is connected.
+
+\item[91.] \_\_\_ If $F: (S, \prec) \rightarrow (S', \prec ')$ is order preserving, and $U$ is an open subset of $S$, then $F(U)$ is open.
+
+\item[92.] \_\_\_ If $F: (S, \prec) \rightarrow (S', \prec ')$ is order preserving, and $U$ is an open subset of $S'$ such that $F^{-1}(U)$ exists, then $F^{-1}(U)$ is open.
+
+\item[Question 6.11:] Settle 88 through 92 with the additional assumption that $\ \ \ \ \ $ $F: (S, \prec) \rightarrow (S', \prec ')$ is an isomorphism.
+
+\item[Question 6.12:] Determine which of the following pairs of linearly ordered spaces are isomorphic. In each case, $S$ and $S'$ are designated subsets of $Re$, and $\prec$ and $\prec '$ are assumed to mean \emph{less than}.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $S = \{ l, 2, 3 \}$ ; $S' = \{ -1, -2, -3 \}$.
+  \item $S = \{ \frac{l}{2}, \frac{1}{3}, \frac{1}{4}, \cdots \}$ ; $S' = \{ -\frac{1}{2}, -\frac{1}{3}, -\frac{1}{4}, \cdots \}$.
+  \item $S = Nat$; $S' = Int$.
+  \item $S$ is the set of positive real numbers; $S'$ is the set of negative real numbers.
+  \item $S = [0,1]$ ; $S' = [0,2]$ (where $[0,2]$ denotes the set of real numbers between and including $0$ and $2$).
+  \item $S = Rat$ ; $S' = Irr$.
+  \item $S = Re$; $S'$ is the set of real numbers between $0$ and $1$.
+\end{enumerate}
+
+\item[Definition 6.13:] ``The function $F: (S, \prec) \rightarrow (S', \prec ')$ is \emph{continuous at the point} $p$ in $S$'' means that for each open interval $U$ in $S'$ which contains $F(p)$, there exists an open interval $V$ in $S$ which contains $p$ such that $F(V)$ is a subset of $U$.
+
+\item[Question 6.14:] Complete the following: ``the function $F: (S, \prec) \rightarrow (S', \prec ')$ is \emph{not continuous at the point} $p$ in $S$ means'' ... ?
+
+\item[93.] \_\_\_ The function $F:(S, \prec) \rightarrow (S', \prec ')$ is continuous at the point $p$ in $S$ if and only if for each open set $U$ in $S'$ which contains $F(p)$, there exists an open set $V$ in $S$ which contains $p$ such that $F(V)$ is a subset of $U$.
+
+\item[94.] \_\_\_ If $F: (S, \prec) \rightarrow (S', \prec ')$ is order preserving, then for each point $p$ in $S$, $F$ is continuous at $p$.
+
+\item[95.] \_\_\_ (missing)
+
+\item[Example 6.15:] The function $F: (S, \prec) \rightarrow (S', \prec ')$ pictured in Figure J is continuous at the point $p$, while that pictured in Figure K is not continuous at $p$.
+
+
+\begin{center}
+%TeXCAD Picture [figJ.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(87.25,67.5)(0,0)
+%\emline(18.5,65)(17.5,64.5)
+\multiput(18.5,65)(-.066667,-.033333){15}{\line(-1,0){.066667}}
+%\end
+%\emline(17.5,64.5)(18.5,63.75)
+\multiput(17.5,64.5)(.043478,-.032609){23}{\line(1,0){.043478}}
+%\end
+%\emline(18.5,63.75)(17.25,63.25)
+\multiput(18.5,63.75)(-.083333,-.033333){15}{\line(-1,0){.083333}}
+%\end
+%\emline(17.25,63.25)(18.25,62.5)
+\multiput(17.25,63.25)(.043478,-.032609){23}{\line(1,0){.043478}}
+%\end
+\put(18.25,62.5){\line(0,-1){48.75}}
+%\emline(18.25,13.75)(17.5,13.25)
+\multiput(18.25,13.75)(-.05,-.033333){15}{\line(-1,0){.05}}
+%\end
+%\emline(17.5,13.25)(18,12.5)
+\multiput(17.5,13.25)(.033333,-.05){15}{\line(0,-1){.05}}
+%\end
+%\emline(18,12.5)(17.25,11.75)
+\multiput(18,12.5)(-.032609,-.032609){23}{\line(0,-1){.032609}}
+%\end
+%\emline(17.25,11.75)(18.25,11.25)
+\multiput(17.25,11.75)(.066667,-.033333){15}{\line(1,0){.066667}}
+%\end
+%\emline(8.25,18.25)(8.5,19.75)
+\multiput(8.25,18.25)(.03125,.1875){8}{\line(0,1){.1875}}
+%\end
+%\emline(8.5,19.75)(9.5,18.5)
+\multiput(8.5,19.75)(.033333,-.041667){30}{\line(0,-1){.041667}}
+%\end
+%\emline(9.5,18.5)(10.25,20.5)
+\multiput(9.5,18.5)(.032609,.086957){23}{\line(0,1){.086957}}
+%\end
+%\emline(10.25,20.5)(10.75,19.25)
+\multiput(10.25,20.5)(.033333,-.083333){15}{\line(0,-1){.083333}}
+%\end
+\put(10.75,19.25){\line(1,0){72.75}}
+%\emline(83.5,19.25)(83.75,20.25)
+\multiput(83.5,19.25)(.03125,.125){8}{\line(0,1){.125}}
+%\end
+%\emline(83.75,20.25)(84.5,19)
+\multiput(83.75,20.25)(.032609,-.054348){23}{\line(0,-1){.054348}}
+%\end
+\put(84.5,19){\line(0,1){.25}}
+\put(84.5,19.25){\line(0,-1){1.5}}
+\put(1.25,34.75){\vector(0,-1){6.25}}
+\put(10.5,39){\vector(0,-1){5.25}}
+\put(10.75,47){\vector(0,1){5}}
+\thicklines
+\qbezier(27.5,15)(50.25,41.25)(59,40.5)
+\qbezier(59.25,40.5)(72.13,45.63)(79.5,60.25)
+%\emline(23.5,12.25)(25.25,12.5)
+\multiput(23.5,12.25)(.21875,.03125){8}{\line(1,0){.21875}}
+%\end
+%\emline(25.25,12.5)(24.75,13.5)
+\multiput(25.25,12.5)(-.033333,.066667){15}{\line(0,1){.066667}}
+%\end
+\put(24.75,13.5){\line(1,0){2}}
+%\emline(26.75,13.5)(26,14.5)
+\multiput(26.75,13.5)(-.032609,.043478){23}{\line(0,1){.043478}}
+%\end
+%\emline(26,14.5)(28,15.25)
+\multiput(26,14.5)(.086957,.032609){23}{\line(1,0){.086957}}
+%\end
+%\emline(79.5,60)(80.5,59.75)
+\multiput(79.5,60)(.125,-.03125){8}{\line(1,0){.125}}
+%\end
+%\emline(80.5,59.75)(80.75,62.25)
+\multiput(80.5,59.75)(.03125,.3125){8}{\line(0,1){.3125}}
+%\end
+%\emline(80.75,62.25)(82,61.75)
+\multiput(80.75,62.25)(.083333,-.033333){15}{\line(1,0){.083333}}
+%\end
+%\emline(82,61.75)(82.5,63)
+\multiput(82,61.75)(.033333,.083333){15}{\line(0,1){.083333}}
+%\end
+\thinlines
+\put(67,9.75){\vector(1,0){7.25}}
+\put(63.25,9.75){\vector(-1,0){16}}
+%\dashline{1}(18.5,51.25)(74,51.5)
+\put(18.43,51.18){\line(1,0){.991}}
+\put(20.41,51.19){\line(1,0){.991}}
+\put(22.39,51.2){\line(1,0){.991}}
+\put(24.38,51.21){\line(1,0){.991}}
+\put(26.36,51.22){\line(1,0){.991}}
+\put(28.34,51.22){\line(1,0){.991}}
+\put(30.32,51.23){\line(1,0){.991}}
+\put(32.3,51.24){\line(1,0){.991}}
+\put(34.29,51.25){\line(1,0){.991}}
+\put(36.27,51.26){\line(1,0){.991}}
+\put(38.25,51.27){\line(1,0){.991}}
+\put(40.23,51.28){\line(1,0){.991}}
+\put(42.22,51.29){\line(1,0){.991}}
+\put(44.2,51.3){\line(1,0){.991}}
+\put(46.18,51.3){\line(1,0){.991}}
+\put(48.16,51.31){\line(1,0){.991}}
+\put(50.14,51.32){\line(1,0){.991}}
+\put(52.13,51.33){\line(1,0){.991}}
+\put(54.11,51.34){\line(1,0){.991}}
+\put(56.09,51.35){\line(1,0){.991}}
+\put(58.07,51.36){\line(1,0){.991}}
+\put(60.05,51.37){\line(1,0){.991}}
+\put(62.04,51.38){\line(1,0){.991}}
+\put(64.02,51.39){\line(1,0){.991}}
+\put(66,51.39){\line(1,0){.991}}
+\put(67.98,51.4){\line(1,0){.991}}
+\put(69.97,51.41){\line(1,0){.991}}
+\put(71.95,51.42){\line(1,0){.991}}
+%\end
+%\dashline{1}(74,51.5)(74,19.25)
+\put(73.93,51.43){\line(0,-1){.977}}
+\put(73.93,49.48){\line(0,-1){.977}}
+\put(73.93,47.52){\line(0,-1){.977}}
+\put(73.93,45.57){\line(0,-1){.977}}
+\put(73.93,43.61){\line(0,-1){.977}}
+\put(73.93,41.66){\line(0,-1){.977}}
+\put(73.93,39.7){\line(0,-1){.977}}
+\put(73.93,37.75){\line(0,-1){.977}}
+\put(73.93,35.79){\line(0,-1){.977}}
+\put(73.93,33.84){\line(0,-1){.977}}
+\put(73.93,31.88){\line(0,-1){.977}}
+\put(73.93,29.93){\line(0,-1){.977}}
+\put(73.93,27.98){\line(0,-1){.977}}
+\put(73.93,26.02){\line(0,-1){.977}}
+\put(73.93,24.07){\line(0,-1){.977}}
+\put(73.93,22.11){\line(0,-1){.977}}
+\put(73.93,20.16){\line(0,-1){.977}}
+%\end
+%\dashline{1}(45.25,19.5)(45.25,33.5)
+\put(45.18,19.43){\line(0,1){.933}}
+\put(45.18,21.3){\line(0,1){.933}}
+\put(45.18,23.16){\line(0,1){.933}}
+\put(45.18,25.03){\line(0,1){.933}}
+\put(45.18,26.9){\line(0,1){.933}}
+\put(45.18,28.76){\line(0,1){.933}}
+\put(45.18,30.63){\line(0,1){.933}}
+\put(45.18,32.5){\line(0,1){.933}}
+%\end
+%\dashline{1}(45.25,33.5)(18.5,33.5)
+\put(45.18,33.43){\line(-1,0){.991}}
+\put(43.2,33.43){\line(-1,0){.991}}
+\put(41.22,33.43){\line(-1,0){.991}}
+\put(39.24,33.43){\line(-1,0){.991}}
+\put(37.25,33.43){\line(-1,0){.991}}
+\put(35.27,33.43){\line(-1,0){.991}}
+\put(33.29,33.43){\line(-1,0){.991}}
+\put(31.31,33.43){\line(-1,0){.991}}
+\put(29.33,33.43){\line(-1,0){.991}}
+\put(27.35,33.43){\line(-1,0){.991}}
+\put(25.36,33.43){\line(-1,0){.991}}
+\put(23.38,33.43){\line(-1,0){.991}}
+\put(21.4,33.43){\line(-1,0){.991}}
+\put(19.42,33.43){\line(-1,0){.991}}
+%\end
+\put(18.25,41.25){\circle*{.5}}
+\put(56.75,19.25){\circle*{.5}}
+\put(65,9.75){\makebox(0,0)[cc]{$V$}}
+\put(10.75,42.5){\makebox(0,0)[cc]{$F(V)$}}
+\put(1.5,37.5){\makebox(0,0)[cc]{$U$}}
+\put(38.25,58.25){\makebox(0,0)[cc]{$F(p)$}}
+\put(17.75,67.5){\makebox(0,0)[cc]{$S'$}}
+\put(87.25,41.5){\makebox(0,0)[cc]{$(p,F(p))$}}
+\put(56.5,16){\makebox(0,0)[cc]{$P$}}
+\put(42.5,5){\makebox(0,0)[cc]{Figure J}}
+\put(86,19.25){\makebox(0,0)[cc]{$S$}}
+\qbezier(19.75,41.75)(21.75,46.38)(27.75,49.5)
+\qbezier(27.75,49.75)(21.38,42.13)(38.5,55)
+\qbezier(58.25,39.4)(67.13,42.53)(71.5,42.15)
+\qbezier(71.5,42)(69.88,39.25)(78.75,42.5)
+\put(1.5,41.75){\vector(0,1){8.75}}
+\end{picture}
+\end{center}
+
+\begin{center}
+%TeXCAD Picture [figK.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(83.25,70.5)(0,0)
+%\emline(28.5,68.25)(26.75,67.5)
+\multiput(28.5,68.25)(-.076087,-.032609){23}{\line(-1,0){.076087}}
+%\end
+%\emline(26.75,67.5)(28,66.5)
+\multiput(26.75,67.5)(.041667,-.033333){30}{\line(1,0){.041667}}
+%\end
+%\emline(28,66.5)(26.25,65.25)
+\multiput(28,66.5)(-.0460526,-.0328947){38}{\line(-1,0){.0460526}}
+%\end
+%\emline(26.25,65.25)(27.75,64.75)
+\multiput(26.25,65.25)(.1,-.033333){15}{\line(1,0){.1}}
+%\end
+%\emline(27.75,64.75)(26.75,63.5)
+\multiput(27.75,64.75)(-.033333,-.041667){30}{\line(0,-1){.041667}}
+%\end
+\put(26.75,63.5){\line(0,-1){55.25}}
+%\emline(26.75,8.25)(25.5,7.75)
+\multiput(26.75,8.25)(-.083333,-.033333){15}{\line(-1,0){.083333}}
+%\end
+%\emline(25.5,7.75)(27.5,7)
+\multiput(25.5,7.75)(.086957,-.032609){23}{\line(1,0){.086957}}
+%\end
+%\emline(27.5,7)(26,6.5)
+\multiput(27.5,7)(-.1,-.033333){15}{\line(-1,0){.1}}
+%\end
+%\emline(26,6.5)(26.75,5.75)
+\multiput(26,6.5)(.032609,-.032609){23}{\line(0,-1){.032609}}
+%\end
+%\emline(26.75,5.75)(25.25,5.25)
+\multiput(26.75,5.75)(-.1,-.033333){15}{\line(-1,0){.1}}
+%\end
+%\emline(20,11)(20.5,11.75)
+\multiput(20,11)(.033333,.05){15}{\line(0,1){.05}}
+%\end
+%\emline(20.5,11.75)(21.25,10.75)
+\multiput(20.5,11.75)(.032609,-.043478){23}{\line(0,-1){.043478}}
+%\end
+%\emline(21.25,10.75)(22.5,11.5)
+\multiput(21.25,10.75)(.054348,.032609){23}{\line(1,0){.054348}}
+%\end
+%\emline(22.5,11.5)(23.5,11)
+\multiput(22.5,11.5)(.066667,-.033333){15}{\line(1,0){.066667}}
+%\end
+\put(23.5,11){\line(1,0){52.75}}
+%\emline(76.25,11)(77,12.25)
+\multiput(76.25,11)(.032609,.054348){23}{\line(0,1){.054348}}
+%\end
+\put(77,12.25){\line(0,-1){1.25}}
+%\emline(77,11)(78,12)
+\multiput(77,11)(.033333,.033333){30}{\line(0,1){.033333}}
+%\end
+%\emline(78,12)(79.25,10.5)
+\multiput(78,12)(.0328947,-.0394737){38}{\line(0,-1){.0394737}}
+%\end
+%\emline(79.25,10.5)(81.25,12.5)
+\multiput(79.25,10.5)(.0333333,.0333333){60}{\line(0,1){.0333333}}
+%\end
+%\vector[both](22,43.75)(22,58.25)
+\put(22,58.25){\vector(0,1){.07}}\put(22,43.75){\vector(0,-1){.07}}\put(22,43.75){\line(0,1){14.5}}
+%\end
+\put(6.5,23.5){\vector(0,-1){6}}
+\put(6.5,28.5){\vector(0,1){9.5}}
+\put(22,30){\vector(0,-1){7}}
+\put(22,30){\circle*{.5}}
+\put(26.75,30.25){\circle*{.5}}
+\put(52.75,11.25){\circle*{.71}}
+\put(61.5,6){\vector(1,0){7.75}}
+\put(56.25,6){\vector(-1,0){10.5}}
+\thicklines
+%\qbezvec(70.75,65.25)(67.75,52.25)(53.75,43.25)
+\put(53.75,43.25){\vector(-3,-2){.07}}\qbezier(70.75,65.25)(67.75,52.25)(53.75,43.25)
+%\end
+\qbezier(34.5,7.5)(37.13,24.38)(52.25,29.75)
+\put(52.25,29.75){\circle*{.71}}
+\thinlines
+%\dashline{1}(26.75,43.25)(54,43.5)
+\put(26.68,43.18){\line(1,0){.973}}
+\put(28.63,43.2){\line(1,0){.973}}
+\put(30.57,43.22){\line(1,0){.973}}
+\put(32.52,43.23){\line(1,0){.973}}
+\put(34.47,43.25){\line(1,0){.973}}
+\put(36.41,43.27){\line(1,0){.973}}
+\put(38.36,43.29){\line(1,0){.973}}
+\put(40.3,43.3){\line(1,0){.973}}
+\put(42.25,43.32){\line(1,0){.973}}
+\put(44.2,43.34){\line(1,0){.973}}
+\put(46.14,43.36){\line(1,0){.973}}
+\put(48.09,43.38){\line(1,0){.973}}
+\put(50.04,43.39){\line(1,0){.973}}
+\put(51.98,43.41){\line(1,0){.973}}
+%\end
+%\dashline{1}(68.75,59.25)(26.75,59)
+\put(68.68,59.18){\line(-1,0){.977}}
+\put(66.73,59.17){\line(-1,0){.977}}
+\put(64.77,59.16){\line(-1,0){.977}}
+\put(62.82,59.14){\line(-1,0){.977}}
+\put(60.87,59.13){\line(-1,0){.977}}
+\put(58.91,59.12){\line(-1,0){.977}}
+\put(56.96,59.11){\line(-1,0){.977}}
+\put(55.01,59.1){\line(-1,0){.977}}
+\put(53.05,59.09){\line(-1,0){.977}}
+\put(51.1,59.08){\line(-1,0){.977}}
+\put(49.14,59.06){\line(-1,0){.977}}
+\put(47.19,59.05){\line(-1,0){.977}}
+\put(45.24,59.04){\line(-1,0){.977}}
+\put(43.28,59.03){\line(-1,0){.977}}
+\put(41.33,59.02){\line(-1,0){.977}}
+\put(39.38,59.01){\line(-1,0){.977}}
+\put(37.42,58.99){\line(-1,0){.977}}
+\put(35.47,58.98){\line(-1,0){.977}}
+\put(33.52,58.97){\line(-1,0){.977}}
+\put(31.56,58.96){\line(-1,0){.977}}
+\put(29.61,58.95){\line(-1,0){.977}}
+\put(27.66,58.94){\line(-1,0){.977}}
+%\end
+%\dashline{1}(69,59)(69,11.25)
+\put(68.93,58.93){\line(0,-1){.995}}
+\put(68.93,56.94){\line(0,-1){.995}}
+\put(68.93,54.95){\line(0,-1){.995}}
+\put(68.93,52.96){\line(0,-1){.995}}
+\put(68.93,50.97){\line(0,-1){.995}}
+\put(68.93,48.98){\line(0,-1){.995}}
+\put(68.93,46.99){\line(0,-1){.995}}
+\put(68.93,45){\line(0,-1){.995}}
+\put(68.93,43.01){\line(0,-1){.995}}
+\put(68.93,41.02){\line(0,-1){.995}}
+\put(68.93,39.03){\line(0,-1){.995}}
+\put(68.93,37.04){\line(0,-1){.995}}
+\put(68.93,35.05){\line(0,-1){.995}}
+\put(68.93,33.07){\line(0,-1){.995}}
+\put(68.93,31.08){\line(0,-1){.995}}
+\put(68.93,29.09){\line(0,-1){.995}}
+\put(68.93,27.1){\line(0,-1){.995}}
+\put(68.93,25.11){\line(0,-1){.995}}
+\put(68.93,23.12){\line(0,-1){.995}}
+\put(68.93,21.13){\line(0,-1){.995}}
+\put(68.93,19.14){\line(0,-1){.995}}
+\put(68.93,17.15){\line(0,-1){.995}}
+\put(68.93,15.16){\line(0,-1){.995}}
+\put(68.93,13.17){\line(0,-1){.995}}
+%\end
+%\dashline{1}(52,29.25)(52,11)
+\put(51.93,29.18){\line(0,-1){.961}}
+\put(51.93,27.26){\line(0,-1){.961}}
+\put(51.93,25.34){\line(0,-1){.961}}
+\put(51.93,23.42){\line(0,-1){.961}}
+\put(51.93,21.5){\line(0,-1){.961}}
+\put(51.93,19.57){\line(0,-1){.961}}
+\put(51.93,17.65){\line(0,-1){.961}}
+\put(51.93,15.73){\line(0,-1){.961}}
+\put(51.93,13.81){\line(0,-1){.961}}
+\put(51.93,11.89){\line(0,-1){.961}}
+%\end
+%\dashline{1}(51.75,30.25)(26.75,30.25)
+\put(51.68,30.18){\line(-1,0){.962}}
+\put(49.76,30.18){\line(-1,0){.962}}
+\put(47.83,30.18){\line(-1,0){.962}}
+\put(45.91,30.18){\line(-1,0){.962}}
+\put(43.99,30.18){\line(-1,0){.962}}
+\put(42.06,30.18){\line(-1,0){.962}}
+\put(40.14,30.18){\line(-1,0){.962}}
+\put(38.22,30.18){\line(-1,0){.962}}
+\put(36.3,30.18){\line(-1,0){.962}}
+\put(34.37,30.18){\line(-1,0){.962}}
+\put(32.45,30.18){\line(-1,0){.962}}
+\put(30.53,30.18){\line(-1,0){.962}}
+\put(28.6,30.18){\line(-1,0){.962}}
+%\end
+\put(8.75,54){\makebox(0,0)[cc]{$F(V)$}}
+\put(6.25,26){\makebox(0,0)[cc]{$U$}}
+\put(43,49.5){\makebox(0,0)[cc]{$F(p)$}}
+\put(27.25,70.5){\makebox(0,0)[cc]{$S'$}}
+\put(52.25,8){\makebox(0,0)[cc]{$P$}}
+\put(83.25,12.25){\makebox(0,0)[cc]{$S$}}
+\put(58.75,6.25){\makebox(0,0)[cc]{$V$}}
+\qbezier(9.75,52.5)(12,51.38)(15.25,52.75)
+\qbezier(15.25,52.5)(13.13,50.88)(20.5,51.75)
+\qbezier(9.25,52)(20.13,35.88)(18.5,35.25)
+\qbezier(18.5,35.5)(15,36.88)(20.5,26.75)
+\qbezier(28,31.75)(32.5,34.5)(34,38.25)
+\qbezier(34.25,38.25)(28.25,34.5)(41.25,47.75)
+\qbezier(54,30.5)(57.5,32.38)(63,32.75)
+\qbezier(63,32.75)(55.38,29.5)(72.25,33.25)
+\put(38.25,2.25){\makebox(0,0)[cc]{Figure K}}
+\put(80.75,33.5){\makebox(0,0)[cc]{$(p,F(p))$}}
+\end{picture}
+\end{center}
+
+
+\item[Remark 6.16:] Recall that a function $F: (Re, \prec) \rightarrow (Re, \prec)$ is a subset of the real number plane. Such a function $F$ is continuous at the point $p$ if and only if for each pair of horizontal lines $H$ and $H'$ with $(p, F(p))$ between them, there exist vertical lines $V$ and $V'$ with $(p, F(p))$ between them, such that each element in $F$ which lies between $V$ and $V'$ also lies between $H$ and $H'$. Thus the function pictured in Figure L is continuous at $p$, while that pictured in Figure M is not.
+
+
+\begin{center}
+%TeXCAD Picture [figL.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(78,67.75)(0,0)
+\thicklines
+%\emline(9.75,67.75)(11,66.75)
+\multiput(9.75,67.75)(.041667,-.033333){30}{\line(1,0){.041667}}
+%\end
+%\emline(11,66.75)(10.25,66)
+\multiput(11,66.75)(-.032609,-.032609){23}{\line(0,-1){.032609}}
+%\end
+%\emline(10.25,66)(10.75,65.25)
+\multiput(10.25,66)(.033333,-.05){15}{\line(0,-1){.05}}
+%\end
+\put(10.75,65.25){\line(0,-1){58.75}}
+%\emline(10.75,6.5)(12.25,5.25)
+\multiput(10.75,6.5)(.0394737,-.0328947){38}{\line(1,0){.0394737}}
+%\end
+%\emline(12.25,5.25)(11,4.5)
+\multiput(12.25,5.25)(-.054348,-.032609){23}{\line(-1,0){.054348}}
+%\end
+%\emline(11,4.5)(11.75,4)
+\multiput(11,4.5)(.05,-.033333){15}{\line(1,0){.05}}
+%\end
+%\emline(11.75,4)(10.75,3.75)
+\multiput(11.75,4)(-.125,-.03125){8}{\line(-1,0){.125}}
+%\end
+%\emline(2.25,14)(3.25,15.5)
+\multiput(2.25,14)(.033333,.05){30}{\line(0,1){.05}}
+%\end
+%\emline(3.25,15.5)(3.5,15)
+\multiput(3.25,15.5)(.03125,-.0625){8}{\line(0,-1){.0625}}
+%\end
+%\emline(3.5,15)(4,15.5)
+\multiput(3.5,15)(.033333,.033333){15}{\line(0,1){.033333}}
+%\end
+\put(4,15.5){\line(1,0){69}}
+%\emline(73,15.5)(74,16.75)
+\multiput(73,15.5)(.033333,.041667){30}{\line(0,1){.041667}}
+%\end
+%\emline(74,16.75)(74.25,15.25)
+\multiput(74,16.75)(.03125,-.1875){8}{\line(0,-1){.1875}}
+%\end
+%\emline(74.25,15.25)(74.75,15.75)
+\multiput(74.25,15.25)(.033333,.033333){15}{\line(0,1){.033333}}
+%\end
+%\emline(74.75,15.75)(74.5,14)
+\multiput(74.75,15.75)(-.03125,-.21875){8}{\line(0,-1){.21875}}
+%\end
+\qbezier(7,20.75)(41.63,35.5)(55.75,61.25)
+\thinlines
+%\dottedline(30.25,33.5)(11,33.5)
+\multiput(30.18,33.43)(-.9625,0){21}{{\rule{.4pt}{.4pt}}}
+%\end
+%\dottedline(30,33.25)(30,15.75)
+\multiput(29.93,33.18)(0,-.9722){19}{{\rule{.4pt}{.4pt}}}
+%\end
+\put(10.75,33.75){\circle*{.71}}
+\put(30,15.5){\circle*{.5}}
+%\dashline{1}(6,42.25)(68.25,42.5)
+\put(5.93,42.18){\line(1,0){.988}}
+\put(7.91,42.19){\line(1,0){.988}}
+\put(9.88,42.2){\line(1,0){.988}}
+\put(11.86,42.2){\line(1,0){.988}}
+\put(13.83,42.21){\line(1,0){.988}}
+\put(15.81,42.22){\line(1,0){.988}}
+\put(17.79,42.23){\line(1,0){.988}}
+\put(19.76,42.24){\line(1,0){.988}}
+\put(21.74,42.24){\line(1,0){.988}}
+\put(23.72,42.25){\line(1,0){.988}}
+\put(25.69,42.26){\line(1,0){.988}}
+\put(27.67,42.27){\line(1,0){.988}}
+\put(29.64,42.27){\line(1,0){.988}}
+\put(31.62,42.28){\line(1,0){.988}}
+\put(33.6,42.29){\line(1,0){.988}}
+\put(35.57,42.3){\line(1,0){.988}}
+\put(37.55,42.31){\line(1,0){.988}}
+\put(39.52,42.31){\line(1,0){.988}}
+\put(41.5,42.32){\line(1,0){.988}}
+\put(43.48,42.33){\line(1,0){.988}}
+\put(45.45,42.34){\line(1,0){.988}}
+\put(47.43,42.35){\line(1,0){.988}}
+\put(49.41,42.35){\line(1,0){.988}}
+\put(51.38,42.36){\line(1,0){.988}}
+\put(53.36,42.37){\line(1,0){.988}}
+\put(55.33,42.38){\line(1,0){.988}}
+\put(57.31,42.39){\line(1,0){.988}}
+\put(59.29,42.39){\line(1,0){.988}}
+\put(61.26,42.4){\line(1,0){.988}}
+\put(63.24,42.41){\line(1,0){.988}}
+\put(65.22,42.42){\line(1,0){.988}}
+\put(67.19,42.43){\line(1,0){.988}}
+%\end
+%\dashline{1}(6.75,28)(67.5,27.75)
+\put(6.68,27.93){\line(1,0){.996}}
+\put(8.67,27.92){\line(1,0){.996}}
+\put(10.66,27.91){\line(1,0){.996}}
+\put(12.66,27.91){\line(1,0){.996}}
+\put(14.65,27.9){\line(1,0){.996}}
+\put(16.64,27.89){\line(1,0){.996}}
+\put(18.63,27.88){\line(1,0){.996}}
+\put(20.62,27.87){\line(1,0){.996}}
+\put(22.61,27.86){\line(1,0){.996}}
+\put(24.61,27.86){\line(1,0){.996}}
+\put(26.6,27.85){\line(1,0){.996}}
+\put(28.59,27.84){\line(1,0){.996}}
+\put(30.58,27.83){\line(1,0){.996}}
+\put(32.57,27.82){\line(1,0){.996}}
+\put(34.56,27.81){\line(1,0){.996}}
+\put(36.56,27.81){\line(1,0){.996}}
+\put(38.55,27.8){\line(1,0){.996}}
+\put(40.54,27.79){\line(1,0){.996}}
+\put(42.53,27.78){\line(1,0){.996}}
+\put(44.52,27.77){\line(1,0){.996}}
+\put(46.52,27.77){\line(1,0){.996}}
+\put(48.51,27.76){\line(1,0){.996}}
+\put(50.5,27.75){\line(1,0){.996}}
+\put(52.49,27.74){\line(1,0){.996}}
+\put(54.48,27.73){\line(1,0){.996}}
+\put(56.47,27.72){\line(1,0){.996}}
+\put(58.47,27.72){\line(1,0){.996}}
+\put(60.46,27.71){\line(1,0){.996}}
+\put(62.45,27.7){\line(1,0){.996}}
+\put(64.44,27.69){\line(1,0){.996}}
+\put(66.43,27.68){\line(1,0){.996}}
+%\end
+%\dashline{1}(39.5,8.5)(39.75,56.75)
+\put(39.43,8.43){\line(0,1){.985}}
+\put(39.44,10.4){\line(0,1){.985}}
+\put(39.45,12.37){\line(0,1){.985}}
+\put(39.46,14.34){\line(0,1){.985}}
+\put(39.47,16.31){\line(0,1){.985}}
+\put(39.48,18.28){\line(0,1){.985}}
+\put(39.49,20.25){\line(0,1){.985}}
+\put(39.5,22.22){\line(0,1){.985}}
+\put(39.51,24.18){\line(0,1){.985}}
+\put(39.52,26.15){\line(0,1){.985}}
+\put(39.53,28.12){\line(0,1){.985}}
+\put(39.54,30.09){\line(0,1){.985}}
+\put(39.55,32.06){\line(0,1){.985}}
+\put(39.56,34.03){\line(0,1){.985}}
+\put(39.57,36){\line(0,1){.985}}
+\put(39.58,37.97){\line(0,1){.985}}
+\put(39.59,39.94){\line(0,1){.985}}
+\put(39.6,41.91){\line(0,1){.985}}
+\put(39.61,43.88){\line(0,1){.985}}
+\put(39.62,45.85){\line(0,1){.985}}
+\put(39.63,47.82){\line(0,1){.985}}
+\put(39.64,49.79){\line(0,1){.985}}
+\put(39.65,51.76){\line(0,1){.985}}
+\put(39.66,53.73){\line(0,1){.985}}
+\put(39.67,55.7){\line(0,1){.985}}
+%\end
+%\dashline{1}(24.5,8.5)(24.5,57.5)
+\put(24.43,8.43){\line(0,1){.98}}
+\put(24.43,10.39){\line(0,1){.98}}
+\put(24.43,12.35){\line(0,1){.98}}
+\put(24.43,14.31){\line(0,1){.98}}
+\put(24.43,16.27){\line(0,1){.98}}
+\put(24.43,18.23){\line(0,1){.98}}
+\put(24.43,20.19){\line(0,1){.98}}
+\put(24.43,22.15){\line(0,1){.98}}
+\put(24.43,24.11){\line(0,1){.98}}
+\put(24.43,26.07){\line(0,1){.98}}
+\put(24.43,28.03){\line(0,1){.98}}
+\put(24.43,29.99){\line(0,1){.98}}
+\put(24.43,31.95){\line(0,1){.98}}
+\put(24.43,33.91){\line(0,1){.98}}
+\put(24.43,35.87){\line(0,1){.98}}
+\put(24.43,37.83){\line(0,1){.98}}
+\put(24.43,39.79){\line(0,1){.98}}
+\put(24.43,41.75){\line(0,1){.98}}
+\put(24.43,43.71){\line(0,1){.98}}
+\put(24.43,45.67){\line(0,1){.98}}
+\put(24.43,47.63){\line(0,1){.98}}
+\put(24.43,49.59){\line(0,1){.98}}
+\put(24.43,51.55){\line(0,1){.98}}
+\put(24.43,53.51){\line(0,1){.98}}
+\put(24.43,55.47){\line(0,1){.98}}
+%\end
+\put(7,65.5){\makebox(0,0)[cc]{$Re$}}
+\put(78,15.5){\makebox(0,0)[cc]{$Re$}}
+\put(24.75,59.75){\makebox(0,0)[cc]{$V$}}
+\put(6,33.75){\makebox(0,0)[cc]{$F(p)$}}
+\put(70.75,42){\makebox(0,0)[cc]{$H$}}
+\put(70,28){\makebox(0,0)[cc]{$H'$}}
+\put(45.5,2.75){\makebox(0,0)[cc]{Figure L}}
+\put(39.5,59.5){\makebox(0,0)[cc]{$V'$}}
+\put(30,12){\makebox(0,0)[cc]{$P$}}
+\end{picture}
+\end{center}
+
+\begin{center}
+%TeXCAD Picture [figM.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(80.25,66.5)(0,0)
+\thicklines
+\put(13.5,60.5){\line(0,-1){52.75}}
+%\emline(13.5,7.75)(12.5,6.75)
+\multiput(13.5,7.75)(-.033333,-.033333){30}{\line(0,-1){.033333}}
+%\end
+%\emline(12.5,6.75)(13.5,5.5)
+\multiput(12.5,6.75)(.033333,-.041667){30}{\line(0,-1){.041667}}
+%\end
+%\emline(13.5,5.5)(12.5,5)
+\multiput(13.5,5.5)(-.066667,-.033333){15}{\line(-1,0){.066667}}
+%\end
+%\emline(13.5,60.75)(13,61.5)
+\multiput(13.5,60.75)(-.033333,.05){15}{\line(0,1){.05}}
+%\end
+%\emline(13,61.5)(14,62)
+\multiput(13,61.5)(.066667,.033333){15}{\line(1,0){.066667}}
+%\end
+%\emline(14,62)(13.25,62.75)
+\multiput(14,62)(-.032609,.032609){23}{\line(0,1){.032609}}
+%\end
+%\emline(13.25,62.75)(13.75,63.5)
+\multiput(13.25,62.75)(.033333,.05){15}{\line(0,1){.05}}
+%\end
+\put(13.75,63.5){\line(1,0){.25}}
+\put(3.25,15.5){\line(1,0){70.25}}
+%\emline(73.5,15.5)(74,14.75)
+\multiput(73.5,15.5)(.033333,-.05){15}{\line(0,-1){.05}}
+%\end
+%\emline(74,14.75)(75,16)
+\multiput(74,14.75)(.033333,.041667){30}{\line(0,1){.041667}}
+%\end
+%\emline(75,16)(75.25,14)
+\multiput(75,16)(.03125,-.25){8}{\line(0,-1){.25}}
+%\end
+%\emline(75.25,14)(76.5,15)
+\multiput(75.25,14)(.041667,.033333){30}{\line(1,0){.041667}}
+%\end
+%\emline(3.25,15.75)(2.75,15.25)
+\multiput(3.25,15.75)(-.033333,-.033333){15}{\line(0,-1){.033333}}
+%\end
+%\emline(2.75,15.25)(2,16)
+\multiput(2.75,15.25)(-.032609,.032609){23}{\line(0,1){.032609}}
+%\end
+%\emline(2,16)(1.25,15)
+\multiput(2,16)(-.032609,-.043478){23}{\line(0,-1){.043478}}
+%\end
+%\qbezvec(79,30.75)(53.25,39)(37.5,55.25)
+\put(37.5,55.25){\vector(-1,1){.07}}\qbezier(79,30.75)(53.25,39)(37.5,55.25)
+%\end
+\qbezier(7.5,18.75)(20.75,15.5)(37,35.25)
+\thinlines
+%\dottedline(37,35.25)(13.75,35)
+\multiput(36.93,35.18)(-.9688,-.0104){25}{{\rule{.4pt}{.4pt}}}
+%\end
+%\dottedline(37,35)(37,15.75)
+\multiput(36.93,34.93)(0,-.9625){21}{{\rule{.4pt}{.4pt}}}
+%\end
+%\dashline{1}(46.25,60)(46.75,10.25)
+\put(46.18,59.93){\line(0,-1){.995}}
+\put(46.2,57.94){\line(0,-1){.995}}
+\put(46.22,55.95){\line(0,-1){.995}}
+\put(46.24,53.96){\line(0,-1){.995}}
+\put(46.26,51.97){\line(0,-1){.995}}
+\put(46.28,49.98){\line(0,-1){.995}}
+\put(46.3,47.99){\line(0,-1){.995}}
+\put(46.32,46){\line(0,-1){.995}}
+\put(46.34,44.01){\line(0,-1){.995}}
+\put(46.36,42.02){\line(0,-1){.995}}
+\put(46.38,40.03){\line(0,-1){.995}}
+\put(46.4,38.04){\line(0,-1){.995}}
+\put(46.42,36.05){\line(0,-1){.995}}
+\put(46.44,34.06){\line(0,-1){.995}}
+\put(46.46,32.07){\line(0,-1){.995}}
+\put(46.48,30.08){\line(0,-1){.995}}
+\put(46.5,28.09){\line(0,-1){.995}}
+\put(46.52,26.1){\line(0,-1){.995}}
+\put(46.54,24.11){\line(0,-1){.995}}
+\put(46.56,22.12){\line(0,-1){.995}}
+\put(46.58,20.13){\line(0,-1){.995}}
+\put(46.6,18.14){\line(0,-1){.995}}
+\put(46.62,16.15){\line(0,-1){.995}}
+\put(46.64,14.16){\line(0,-1){.995}}
+\put(46.66,12.17){\line(0,-1){.995}}
+%\end
+%\dashline{1}(33.5,11.5)(33.5,60.5)
+\put(33.43,11.43){\line(0,1){.98}}
+\put(33.43,13.39){\line(0,1){.98}}
+\put(33.43,15.35){\line(0,1){.98}}
+\put(33.43,17.31){\line(0,1){.98}}
+\put(33.43,19.27){\line(0,1){.98}}
+\put(33.43,21.23){\line(0,1){.98}}
+\put(33.43,23.19){\line(0,1){.98}}
+\put(33.43,25.15){\line(0,1){.98}}
+\put(33.43,27.11){\line(0,1){.98}}
+\put(33.43,29.07){\line(0,1){.98}}
+\put(33.43,31.03){\line(0,1){.98}}
+\put(33.43,32.99){\line(0,1){.98}}
+\put(33.43,34.95){\line(0,1){.98}}
+\put(33.43,36.91){\line(0,1){.98}}
+\put(33.43,38.87){\line(0,1){.98}}
+\put(33.43,40.83){\line(0,1){.98}}
+\put(33.43,42.79){\line(0,1){.98}}
+\put(33.43,44.75){\line(0,1){.98}}
+\put(33.43,46.71){\line(0,1){.98}}
+\put(33.43,48.67){\line(0,1){.98}}
+\put(33.43,50.63){\line(0,1){.98}}
+\put(33.43,52.59){\line(0,1){.98}}
+\put(33.43,54.55){\line(0,1){.98}}
+\put(33.43,56.51){\line(0,1){.98}}
+\put(33.43,58.47){\line(0,1){.98}}
+%\end
+%\dashline{1}(8.25,42)(76,42)
+\put(8.18,41.93){\line(1,0){.996}}
+\put(10.17,41.93){\line(1,0){.996}}
+\put(12.17,41.93){\line(1,0){.996}}
+\put(14.16,41.93){\line(1,0){.996}}
+\put(16.15,41.93){\line(1,0){.996}}
+\put(18.14,41.93){\line(1,0){.996}}
+\put(20.14,41.93){\line(1,0){.996}}
+\put(22.13,41.93){\line(1,0){.996}}
+\put(24.12,41.93){\line(1,0){.996}}
+\put(26.11,41.93){\line(1,0){.996}}
+\put(28.11,41.93){\line(1,0){.996}}
+\put(30.1,41.93){\line(1,0){.996}}
+\put(32.09,41.93){\line(1,0){.996}}
+\put(34.08,41.93){\line(1,0){.996}}
+\put(36.08,41.93){\line(1,0){.996}}
+\put(38.07,41.93){\line(1,0){.996}}
+\put(40.06,41.93){\line(1,0){.996}}
+\put(42.05,41.93){\line(1,0){.996}}
+\put(44.05,41.93){\line(1,0){.996}}
+\put(46.04,41.93){\line(1,0){.996}}
+\put(48.03,41.93){\line(1,0){.996}}
+\put(50.03,41.93){\line(1,0){.996}}
+\put(52.02,41.93){\line(1,0){.996}}
+\put(54.01,41.93){\line(1,0){.996}}
+\put(56,41.93){\line(1,0){.996}}
+\put(58,41.93){\line(1,0){.996}}
+\put(59.99,41.93){\line(1,0){.996}}
+\put(61.98,41.93){\line(1,0){.996}}
+\put(63.97,41.93){\line(1,0){.996}}
+\put(65.97,41.93){\line(1,0){.996}}
+\put(67.96,41.93){\line(1,0){.996}}
+\put(69.95,41.93){\line(1,0){.996}}
+\put(71.94,41.93){\line(1,0){.996}}
+\put(73.94,41.93){\line(1,0){.996}}
+%\end
+%\dashline{1}(76,28.75)(9.25,28.5)
+\put(75.93,28.68){\line(-1,0){.996}}
+\put(73.94,28.67){\line(-1,0){.996}}
+\put(71.94,28.66){\line(-1,0){.996}}
+\put(69.95,28.66){\line(-1,0){.996}}
+\put(67.96,28.65){\line(-1,0){.996}}
+\put(65.97,28.64){\line(-1,0){.996}}
+\put(63.97,28.63){\line(-1,0){.996}}
+\put(61.98,28.63){\line(-1,0){.996}}
+\put(59.99,28.62){\line(-1,0){.996}}
+\put(58,28.61){\line(-1,0){.996}}
+\put(56,28.61){\line(-1,0){.996}}
+\put(54.01,28.6){\line(-1,0){.996}}
+\put(52.02,28.59){\line(-1,0){.996}}
+\put(50.03,28.58){\line(-1,0){.996}}
+\put(48.03,28.58){\line(-1,0){.996}}
+\put(46.04,28.57){\line(-1,0){.996}}
+\put(44.05,28.56){\line(-1,0){.996}}
+\put(42.06,28.55){\line(-1,0){.996}}
+\put(40.06,28.55){\line(-1,0){.996}}
+\put(38.07,28.54){\line(-1,0){.996}}
+\put(36.08,28.53){\line(-1,0){.996}}
+\put(34.09,28.52){\line(-1,0){.996}}
+\put(32.09,28.52){\line(-1,0){.996}}
+\put(30.1,28.51){\line(-1,0){.996}}
+\put(28.11,28.5){\line(-1,0){.996}}
+\put(26.12,28.49){\line(-1,0){.996}}
+\put(24.12,28.49){\line(-1,0){.996}}
+\put(22.13,28.48){\line(-1,0){.996}}
+\put(20.14,28.47){\line(-1,0){.996}}
+\put(18.15,28.46){\line(-1,0){.996}}
+\put(16.15,28.46){\line(-1,0){.996}}
+\put(14.16,28.45){\line(-1,0){.996}}
+\put(12.17,28.44){\line(-1,0){.996}}
+\put(10.18,28.43){\line(-1,0){.996}}
+%\end
+\put(13.75,34.75){\circle*{.71}}
+\put(36.75,34.75){\circle*{.5}}
+\put(37,15.75){\circle*{.5}}
+\put(33.75,62.5){\makebox(0,0)[cc]{$V$}}
+\put(46.25,62.75){\makebox(0,0)[cc]{$V'$}}
+\put(13.75,66.5){\makebox(0,0)[cc]{$Re$}}
+\put(80.25,14.75){\makebox(0,0)[cc]{$Re$}}
+\put(79.75,27.5){\makebox(0,0)[cc]{$H'$}}
+\put(37,12.5){\makebox(0,0)[cc]{$P$}}
+\put(9,35.25){\makebox(0,0)[cc]{$F(p)$}}
+\put(78.5,42){\makebox(0,0)[cc]{$H$}}
+\put(41.5,2.75){\makebox(0,0)[cc]{Figure M}}
+\end{picture}
+\end{center}
+
+
+\item[Question 6.17:] Complete the following using the geometrical interpretation of continuity discussed in Remark 6.16: ``the function $F: (S, \prec) \rightarrow (S', \prec ')$ is \emph{not continuous at the point} $p$'' means ... ?
+
+\item[Question 6.18:] Let $F: (Int, \prec) \rightarrow (Int, \prec)$ be the function defined by the equation $F(n) = n^{2}$. Is $F$ continuous at the point $2$?
+
+\item[Question 6.19:] Let $F: (Re, \prec) \rightarrow (Nat, \prec)$ be the function defined by the equation $F(p) = 5$. Is $F$ continuous at the point $2$?
+
+\item[Question 6.20:] Let $F: (Re, \prec) \rightarrow (Re, \prec)$ be the function defined by the following two conditions:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $F(p) = p$ if $p$ is a rational number, and 
+  \item $F(p) = -p$ if $p$ is an irrational number. Is $F$ continuous at the point $2$?
+\end{enumerate}
+
+\item[Definition 6.21:] ``The function $F: (S, \prec) \rightarrow (S', \prec ')$ is \emph{continuous}'' means that for each point $p$ in $S$, $F$ is continuous at $p$.
+
+\item[Question 6.22:] Complete the following: the function $F: (S, \prec) \rightarrow (S', \prec ')$ is \emph{not continuous} means ... ?
+
+\item[Question 6.23:] Prove that if $F: (Nat, \prec) \rightarrow (Re, \prec)$ is any function, then $F$ is continuous. Can you state and prove a more general result?
+
+\item[Remark 6.24:] At the beginning of this chapter, we referred to continuous functions as those functions which ``preserve the notion of limit point''. The following, 96, which characterizes continuous functions, makes this idea precise.
+
+\item[96.] \_\_\_ The function $F: (S, \prec) \rightarrow (S', \prec ')$ is continuous if and only if whenever a point $p$ is a point or limit point of a subset $X$ of $S$, then $F(p)$ is a point or limit point of $F(X)$.
+
+\item[97.] \_\_\_ The function $F: (S, \prec) \rightarrow (S', \prec ')$ is continuous if and only if whenever a point $p$ is a limit point of a subset $X$ of $S$, then $F(p)$ is a limit point of $F(X)$.
+
+\item[98.] \_\_\_ A necessary and sufficient condition for the function $F: (S, \prec) \rightarrow (S', \prec ')$ to be continuous is that for each subset $X$ of $S$, $F(cl(X)) \subseteq cl(F(X))$.
+
+\item[99.] \_\_\_ The function $F: (S, \prec) \rightarrow (S', \prec ')$ is continuous if and only if for each open interval $U$ in $S'$ for which $F^{-1}$ exists, $F^{-1}(U)$ is an open interval.
+
+\item[100.] \_\_\_ A necessary and sufficient condition for the function $F: (S, \prec) \rightarrow  (S', \prec ')$ to be continuous is that for each open set $U$ in $S'$ for which $F^{-1}(U)$ exists, $F^{-1}(U)$ is open.
+
+\item[101.] \_\_\_ Each of the functions $F: (S, \prec) \rightarrow $ (S$'$, $\prec '$) and $G: (S', \prec ') \rightarrow (S'', \prec '')$ is continuous only if the function $G \circ F: (S, \prec) \rightarrow (S'', \prec '')$ is continuous.
+
+\item[102.] \_\_\_ The function $F: (S, \prec) \rightarrow (S', \prec ')$ is continuous if and only if for each closed set $H$ in $S'$ for which $F^{-1}(H)$ exists, $F^{-1}(H)$ is closed.
+
+\item[103.] \_\_\_ That the function $F: (S, \prec) \rightarrow (S', \prec ')$ be continuous, it is necessary and sufficient that the image of each open set in $S$ be open in $S'$.
+
+\item[104.] \_\_\_ A necessary and sufficient condition that the function $F: (S, \prec) \rightarrow (S', \prec ')$ be continuous is that the image of each closed set in $S$ be closed in $S'$.
+
+\item[105.] \_\_\_ If $F: (S, \prec) \rightarrow (S', \prec ')$ is continuous, and $M$ is a connected subset of $S$, then $F(M)$ is connected.
+
+\item[106.] \_\_\_ Let $F: (S, \prec) \rightarrow (S', \prec ')$ be continuous, and let $S$ be connected. If $H$ is a closed and bounded subset of $S$, then $F(H)$ is closed and bounded.
+
+\item[107.] \_\_\_ If $F: (S, \prec) \rightarrow (S', \prec')$ is a continuous one-to-one correspondence, then $F^{-1}: (S', \prec ') \rightarrow (S, \prec)$ is continuous.
+
+\item[Definition 6.25:] ``The function $F: (S, \prec) \rightarrow (S', \prec ')$ is a \emph{homeomorphism}'' means that $F$ is a continuous one-to-one correspondence and $F^{-1}$ is continuous.
+
+\item[Question 6.26:] Complete the following: ``the function $F:(S, \prec) \rightarrow (S', \prec ')$ is \emph{not a homeomorphism}'' means ... ?
+
+\item[Definition 6.27:] ``The linearly ordered space $(S, \prec)$ is \emph{homeomorphic} to the linearly ordered space $(S', \prec ')$'' means that there exists a homeomorphism $F: (S, \prec) \rightarrow (S', \prec ')$.
+
+\item[Question 6.28:] ``Complete the following: the linearly ordered space $(S, \prec)$ is \emph{not homeomorphic} to the linearly ordered space $(S', \prec ')$'' means ... ?
+
+\item[Question 6.29:] Which pairs of linearly ordered spaces given in Question 6.12 are homeomorphic?
+
+\item[108.] \_\_\_ If $(S, \prec)$ and $(S', \prec ')$ are isomorphic, then they are homeomorphic.
+
+\item[109.] \_\_\_ If $(S, \prec)$ and $(S', \prec ')$ are homeomorphic, then they are isomorphic.
+
+\item[110.] \_\_\_ If each of $F: (S, \prec) \rightarrow (S', \prec ')$ and $G: (S', \prec ') \rightarrow (S'', \prec '')$ is a homeomorphism, then $G \circ F: (S, \prec) \rightarrow (S'', \prec '')$ is a homeomorphism.
+
+\item[111.] \_\_\_ If $F: (S, \prec) \rightarrow (S', \prec ')$ is a homeomorphism, then $F^{-1}: (S', \prec ') \rightarrow (S, \prec)$ is a homeomorphism.
+
+\item[112.] \_\_\_ Let $F: (S, \prec) \rightarrow (S', \prec ')$ be a homeomorphism. If the subset $X$ of $S$ has a first point and a last point, then $F(X)$ has a first point and a last point.
+
+\item[113.] \_\_\_ If $F: (S, \prec) \rightarrow (S', \prec ')$ is a homeomorphism and $U$ is an open subset of $S$, then $F(U)$ is open.
+
+\item[Definition 6.30:] ``The function $F: (S, \prec) \rightarrow (S', \prec ')$ is \emph{order reversing}'' means that if $p$ and $q$ are points in $S$ such that $p \prec q$, then $f(q) \prec F(p)$.
+
+\item[Question 6.31:] Complete the following: ``the function $F (S, \prec) \rightarrow (S', \prec ')$ is \emph{not order reversing}'' means ... ?
+
+\item[114.] \_\_\_ If $F: (S, \prec) \rightarrow (S', \prec ')$ is order reserving, then $F$ is one-to-one.
+
+\item[115.] \_\_\_ If $F: (S, \prec) \rightarrow (S', \prec ')$ is order reserving and onto, then $F^{-1}: (S', \prec ') \rightarrow (S, \prec)$ exists and is order reserving.
+
+\item[116.] \_\_\_ If each of $F: (S, \prec) \rightarrow (S', \prec ')$ and $G: (S', \prec ') \rightarrow (S'', \prec '')$ is order reversing, then $G \circ F: (S, \prec) \rightarrow (S'', \prec '')$ is order reversing.
+
+\item[Definition 6.32:] ``The point set $H$ is a \emph{closed interval}'' means that there exist points $p$ and $r$ such that the point $q$ belongs to $H$ if and only if $q$ is $p$, $q$ is $r$, or $q$ is between $p$ and $r$.
+
+\item[Question 6.33:] Complete the following: ``the point set H is \emph{not} a \emph{closed interval}'' means ... ?
+
+\item[117.] \_\_\_ Every closed interval is closed.
+
+\item[118.] \_\_\_ If $S$ is connected and $M$ is a closed interval, then $M$ is connected.
+
+\item[119.] \_\_\_ If $F: (S, \prec) \rightarrow (S', \prec ')$ is order preserving, and $H$ is a closed interval in $S$, then $F(H)$ is a closed interval.
+
+\item[120.] \_\_\_ If $F: (S, \prec) \rightarrow (S', \prec ')$ is an isomorphism, and $H$ is a closed interval in $S$, then $F(H)$ is a closed interval.
+
+\item[121.] \_\_\_ If $F: (S, \prec) \rightarrow (S', \prec ')$ is a homeomorphism, and $H$ is a closed interval in $S$, then $F(H)$ is a closed interval.
+
+\item[122.] \_\_\_ If $F: (S, \prec) \rightarrow (S', \prec ')$ is continuous, $S$ is connected, and $M$ is a closed interval in $S$, then $F(M)$ is either degenerate or a closed interval.
+
+\item[123.] \_\_\_ If $F: (S, \prec) \rightarrow (S', \prec ')$ is a homeomorphism, and $S$ is connected, then $F$ is either order preserving or order reversing.
+
+\item[Question 6.34:] Are the linearly ordered spaces $(Re, \prec)$ and $([0,1], \prec)$ homeomorphic? Prove your answer (you may assume that they are connected).
+
+\end{description}
+
+
+
+
+\chapter*{Chapter 7: Sequences}
+\markboth{Chapter 7}{Chapter 7}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter 7: Sequences}
+
+
+We interrupt our study of linearly ordered spaces again to study another basic concept of mathematics - \emph{sequences}. We also discuss the importance and difficulty of making good definitions.
+
+The definition of a concept which has prior intuitive meaning should reflect that meaning while making it mathematically precise. As an example, recall our definition of \emph{linear order}. Presumably you are convinced by now that our definition captures the intuitive notion of ``linear order'' in a precise and usable way.
+
+Intuitively, a \emph{sequence} is simply an ``infinite list'' having a first term, a second term, $\cdots$, an $n^{th}$ term, $\cdots$ . Thus, the following are sequences:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $2, 4, 6, 8, \cdots, 2n, \cdots$
+  \item $1, \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \cdots, \frac{1}{n}, \cdots$
+  \item $3, 3, 3, 3, \cdots, 3, \cdots$
+  \item $-1, 1, -1, 1, \cdots, (-1)^{n}, \cdots$
+  \item $1, -1, 1, -1, \cdots, (-1)^{n+1}, \cdots$
+\end{enumerate}
+Even with a good intuitive feeling for the concept of \emph{sequence}, it is difficult to give an appropriate mathematical definition for the term.
+
+\begin{description}
+
+\item[Question 7.1:] Before reading further, attempt to give an appropriate mathematical definition for the \emph{sequence} $q_{1}, q_{2}, q_{3}, \cdots, q_{n}, \cdots$.
+
+\end{description}
+
+If you have decided that the sequence $q_{1}, q_{2}, q_{3}, \cdots, q_{n}, \cdots$ is simply the same as the set $\{ q_{1}, q_{2}, q_{3}, \cdots, q_{n}, \cdots \}$, you are wrong. With this definition, the sequences (d) and (e) would be the same, since the set of elements in each sequence is the set $\{ -1, 1 \}$. Furthermore, sequence (a) would be the same as the sequence $4, 2, 8, 6, 12, 10, \cdots$. (Why?)
+
+Like a linearly ordered space, a sequence is more than its set of elements. In both cases, there needs to be a method for ``ordering'' the elements.
+
+If you noticed that a sequence requires some method for ``ordering'' its elements, you may have decided that a sequence is simply a special kind of linearly ordered space. If so, you are wrong. Applying this definition to the sequence (d), we would have $-1 \prec 1$ and $1 \prec -1$, which is impossible in a linearly ordered space. (Why?)
+
+Having seen some of the difficulties involved in trying to define \emph{sequence}, you may be better able to appreciate the definition.
+
+\begin{description}
+
+\item[Definition 7.2:] A \emph{sequence} is a pair $(Y, F)$ such that (a) $Y$ is a set, and (b) $F$ is a function from $Nat$ onto $Y$.
+
+\item[Remark 7.3:] We often denote a sequence $(Y, F)$ by $q_{1}, q_{2}, q_{3}, \cdots, q_{n}, \cdots$. In this case, $Y$ is understood to be the set $\{ q_{1}, q_{2}, q_{3}, \cdots, q_{n}, \cdots \}$, and $F$ denotes the function whose ordered pairs are of the form $(n, q_{n})$. This notation stresses the similarity between the definition of a sequence $(Y, F)$ and a linearly ordered space $(S, \prec)$. In each case, the first term of the pair is a set, and the second term is a ``method for ordering the elements''.
+
+\item[Question 7.4:] We have just pointed out the similarity between sequences and linearly ordered spaces. Here, we study this similarity more carefully.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item Let $(Y, F)$ be a sequence such that $F: Nat \rightarrow Y$ is a one-to-one correspondence. Let \emph{point} mean ``element of the set $Y$''. If each of $p$ and $q$ is a point, let $p \prec q$ mean that $F^{-1}(p)$ is \emph{less than} $F^{-1}(q)$ in $Nat$. Verify that $(S, \prec)$ is a linearly ordered space.
+  \item Let $(S, \prec)$ be a linearly ordered space such that the points in $S$ can be denoted by $q_{1}, q_{2}, q_{3}, \cdots, q_{n}, \cdots$, such that $q_{1} \prec q_{2} \prec q_{3} \prec \cdots \prec q_{n} \prec \cdots$. Let $Y = S$, and define $F: Nat \rightarrow Y$ by letting $F(n)$ be $q_{n}$. Verify that $(Y, F)$ is a sequence such that $F: Nat \rightarrow Y$ is a one-to-one correspondence.
+\end{enumerate}
+Discuss the relationship between (a) and (b). What is the purpose of the requirement that $F$ be a one-to-one correspondence?
+
+\item[Remark 7.5:] Let us examine the sequences (a) through (e) in light of Definition 7.2. In each case, let $Y$ be the set to which an element belongs if and only if it appears in the given sequence. Thus we need only define the function $F: Nat \rightarrow Y$ in each case.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $F: Nat \rightarrow Y$ is given by $F(n) = 2n$ (See Figure N).
+  \item $F: Nat \rightarrow Y$ is given by $F(n) = \frac{1}{n}$. 
+  \item $F: Nat \rightarrow Y$ is given by $F(n) = 3$.
+  \item $F: Nat \rightarrow Y$ is given by $F(n)=(-1)^{n}$.
+  \item $F: Nat \rightarrow Y$ is given by $F(n)=(-1)^{n+1}$.
+\end{enumerate}
+
+\item[Question 7.6:] In Figure N, we have illustrated the fundamental facts about sequence (a). Give analogous figures for sequences (b) through (e).
+
+\begin{center}
+\begin{tabular}{rl}
+  \multicolumn{2}{c}{$(Y, F) = 2, 4, 6, 8, \cdots, 2n, \cdots$} \\
+  \multicolumn{2}{c}{$F(n) = 2n$} \\
+  $F: Nat \rightarrow Y$ \hspace{0.25cm} & \hspace{0.25cm} ordered pairs in $F$ \\
+  $1 \rightarrow 2$      \hspace{0.25cm} & \hspace{0.25cm} $(1,2)$ \\
+  $2 \rightarrow 4$      \hspace{0.25cm} & \hspace{0.25cm} $(2,4)$ \\
+  $3 \rightarrow 6$      \hspace{0.25cm} & \hspace{0.25cm} $(3,6)$ \\
+  $\vdots$               \hspace{0.25cm} & \hspace{0.25cm} $\vdots$ \\
+  $n \rightarrow 2n$     \hspace{0.25cm} & \hspace{0.25cm} $(n,2n)$ \\
+  $\vdots$               \hspace{0.25cm} & \hspace{0.25cm} $\vdots$ \\
+\end{tabular}
+\end{center}
+\begin{center}
+Figure N
+\end{center}
+
+\item[Notation 7.7:] Let $Z$ be any set, let $F: Nat \rightarrow Z$ be any function, and define $Y$ to be $F(Nat)$. The pair $(Y, F)$ is said to be the \emph{sequence determined by the function} $F: Nat \rightarrow Z$. Notice that this sequence $(Y, F)$ may also be written $F(1), F(2), F(3), \cdots, F(n), \cdots$. Denoting $F(n)$ by $q_{n}$, the sequence becomes $q_{1}, q_{2}, q_{3}, \cdots, q_{n}, \cdots$.
+
+\item[Question 7.8:] Give the sequences which are determined by the following functions.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item Let $F: Nat \rightarrow Re$ be defined by $F(n) = 3n - 1$.
+  \item Let $F: Nat \rightarrow Re$ be defined by $F(n) = n^{2}$.
+  \item Let $F: Nat \rightarrow Re$ be defined by $F(n) = (-\frac{1}{2})^{n}$.
+\end{enumerate}
+
+\item[Question 7.9:] Does there exist a sequence $q_{1}, q_{2}, q_{3}, \cdots, q_{n}, \cdots$ such that each rational number is an element of it? Justify your answer.
+
+\item[Question 7.10:] Does there exist a sequence $q_{1}, q_{2}, q_{3}, \cdots, q_{n}, \cdots$ such that each real number is an element of it? Justify your answer.
+
+\item[Question 7.11:] Consider the sequence $\{ q_{11}, q_{12}, q_{13}, \cdots \}$, $\{ q_{21}, q_{22}, q_{23}, \cdots \}$, $\ \ \ \ \ $ $\{ q_{31}, q_{32}, q_{33}, \cdots \}$, $\cdots$, $\{ q_{n1}, q_{n2}, q_{n3}, \cdots \}$, $\cdots$, each element of which is a countable set. Does there exist a sequence $q_{1}, q_{2}, q_{3}, \cdots, q_{n}, \cdots$, such that each element $q_{mn}$ belonging to a set in the given sequence of sets is an element of it?
+
+\end{description}
+
+Intuitively, a \emph{subsequence} of a given sequence is a new sequence which ``runs through'' the given sequence. The sequences (a$'$) through (e$'$) given below are subsequences of the sequences (a) through (e) given in Remark 7.5.
+\begin{enumerate}[\hspace{1cm}(a$'$)]
+  \item $6, 12, 18, 24, \cdots, 6n, \cdots$.
+  \item $\frac{1}{3}, \frac{1}{6}, \frac{1}{9}, \frac{1}{12}, \cdots, \frac{1}{3n}, \cdots$.
+  \item $3, 3, 3, 3, \cdots, 3, \cdots$.
+  \item $1, 1, 1, 1, \cdots, 1, \cdots$.
+  \item $-1, 1, -1, 1, \cdots, (-1), \cdots$.
+\end{enumerate}
+
+\begin{description}
+
+\item[Question 7.12:] Before reading further, attempt to give an appropriate mathematical definition for a \emph{subsequence} of a sequence.
+
+\item[Definition 7.13:] ``The function $H: Nat \rightarrow Nat$ is \emph{order preserving}'' means that $H: (Nat, \prec) \rightarrow (Nat, \prec)$ is order preserving.
+
+\item[Definition 7.14:] ``The sequence $(X, G)$ $=$ $p_{1}$, $p_{2}$, $p_{3}$, $\cdots$, $p_{n}$, $\cdots$ is a \emph{subsequence} of the sequence $(Y, F) = q_{1}, q_{2}, q_{3}, \cdots, q_{n}, \cdots$'' means that (a) $X \subseteq Y$, and (b) there exists an order preserving function $H: Nat \rightarrow Nat$ such that $G(n) = F \circ H(n)$.
+
+\item[Example 7.15:] Consider the sequences (a) $2, 4, 6, 8, \cdots, 2n, \cdots$, and $\ \ \ \ \ \ \ \ $ (a$'$) $6, 12, 18, 24, \cdots, 6n, \cdots$. We shall show that sequence (a$'$) is a subsequence of sequence (a). To do this, let $(Y, F)$ be the sequence (a), and let $(X,G)$ be the sequence (a$'$). Thus, $F: Nat \rightarrow Y$ is defined by $F(n) = 2n$, and $G: Nat \rightarrow X$ is defined by $G(n) = 6n$. To show that $(X,G)$ is a subsequence of $(Y,F)$, we must find an order preserving function $H: Nat \rightarrow Nat$ such that $G(n) = F \circ H(n)$. Define $H: Nat \rightarrow Nat$ by $H(n) = 3n$. (The reader should verify that $H$ is order preserving.) Notice that $F \circ H(n) = F(H(n)) = F(3n) = 6n = G(n)$. See Figure O.
+
+\begin{center}
+\begin{tabular}{ccc}
+  $H(n) = 3n$              & $F(n) = 2n$           & $G(n) = F \circ H(n) = 6n$ \\
+  $H: Nat \rightarrow Nat$ & $F: Nat \rightarrow Y$ & $G: Nat \rightarrow X \subseteq Y$ \\
+  $(1,3)$  & $(1,2)$   &          \\
+  $(2,6)$  & $(2,4)$   &          \\
+  $(3,9)$  & $(3,6)$   & $(1,6)$  \\
+  $(4,12)$ & $(4,8)$   &          \\
+  $(5,15)$ & $(5,10)$  &          \\
+  $(6,18)$ & $(6,12)$  & $(2,12)$ \\
+  $\vdots$ & $\vdots$  & $\vdots$ \\
+  $(n,3n)$ & $(3n,6n)$ & $(n,6n)$ \\
+  $\vdots$ & $\vdots$  & $\vdots$ \\
+\end{tabular}
+\end{center}
+\begin{center}
+Figure O
+\end{center}
+
+\item[Question 7.16:] For each pair of sequences (b) and (b$'$) through (e) and (e$'$) given in this chapter, show that the second is a subsequence of the first. Your answers should be analogous to Example 7.15 and should include figures analogous to Figure O.
+
+\item[Question 7.17:] For the following pairs of sequences, decide whether or not the second is a subsequence of the first. Justify your answers.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $1, -1, 1, -1, \cdots$ ; and $-1, -1, 1, 1, \cdots$.
+  \item $1 , 2, 3, 4, \cdots$ ; and $3, 3, 3, 3, \cdots$.
+  \item $\frac{1}{2}, \frac{1}{4}, \frac{1}{6}, \frac{1}{8}, \cdots$ ; and $\frac{1}{3}, \frac{1}{5}, \frac{1}{7}, \frac{1}{9}, \cdots$.
+  \item $1, -1, 2, -2, \cdots$ ; and $1, 2, 3, 4, \cdots$.
+\end{enumerate}
+
+\end{description}
+
+
+
+
+\chapter*{Chapter 8: Sequential Limit Points and Separability}
+\markboth{Chapter 8}{Chapter 8}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter 8: Sequential Limit Points and Separability}
+
+
+The concept of sequential limit point is basic to the study of the real number line. In particular, it is possible to characterize limit points of point sets in $Re$, and continuous functions $F: (Re, \prec) \rightarrow (Re, \prec)$, using sequential limit points. Neither of these assertions remains true if $(Re, \prec)$ is replaced by an arbitrary linearly ordered space $(S, \prec)$. Thus when studying sequential limit points in a linearly ordered space $(S, \prec)$, it is often helpful to assume that $(S, \prec)$ satisfies some additional condition. One such condition is called \emph{separability}. Like connectivity, \emph{separability} is one of the conditions which will be employed in the next chapter to characterize $(Re, \prec)$.
+
+\begin{description}
+
+\item[Definition 8.1:] Let $(Y,F) = q_{1}, q_{2}, q_{3}, \cdots$ be a sequence each element of which is a point (i.e., $Y \subseteq S$). ``The point $q$ is a \emph{sequential limit point} of $(Y,F)$'' means that for each open point set $U$ containing $q$, there exists a natural number $m$ such that for each natural number $n$ greater than $m$, the point $q_{n}$ is in $U$.
+
+\item[Question 8.2:] Complete the following: ``the point $q$ is \emph{not a sequential limit point} of the sequence $(Y,F)$'' means ... ?
+
+\item[Question 8.3:] In $(Re, \prec)$, find the sequential limit points, if any, of the following sequences:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $1, 1, 1, 1, \cdots$ 
+  \item $1, -1, 1, -1, \cdots$ 
+  \item $1, \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \cdots$ 
+  \item $2, 4, 6, 8, \cdots$
+  \item $\frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \frac{4}{5}, \cdots$
+  \item $\frac{3}{2}, -\frac{2}{3}, \frac{5}{4}, -\frac{4}{5}, \cdots$
+  \item $\frac{3}{2}, \frac{2}{3}, \frac{5}{4}, \frac{4}{5}, \cdots$
+\end{enumerate}
+
+\item[124.] \_\_\_ If $q$ is a point, then there exists a sequence each element of which is a point having $q$ as a sequential limit point.
+
+\item[125.] \_\_\_ If $q$ is a sequential limit point of a sequence, each element of which is a point, and $U$ is an open point set containing $q$, then all but a finite number of points of the given sequence are in $U$.
+
+\item[126.] \_\_\_ If the point $q$ is a sequential limit point of the sequence $q_{1}, q_{2}, q_{3}, \cdots$, each element of which is a point, then no other point is a sequential limit point of $q_{1}, q_{2}, q_{3}, \cdots$.
+
+\item[127.] \_\_\_ If the point $q$ is a sequential limit point of the sequence $(Y,F)$ each element of which is a point, then $q$ is a limit point of the point set $Y$.
+
+\item[128.] \_\_\_ If the point $q$ is a sequential limit point of the sequence $(Y,F)$ of distinct points, then $q$ is a limit point of the point set $Y$.
+
+\item[129.] \_\_\_ Let $(Y,F) = q_{1}, q_{2}, q_{3}, \cdots$ be a sequence of distinct points, and for each natural number $n$, let $Y_{n}$ be the point set $\{ q_{n}, q_{n+1}, q_{n+2}, \cdots \}$. If the point $q$ is a sequential limit point of $(Y,F)$, then $q$ is a limit point of each point $Y_{n}$.
+
+\item[130.] \_\_\_ If $q$ is the sequential point of a sequence $(Y,F)$, each element of which is a point, then $q$ is either a point or limit point of $Y$.
+
+\item[131.] \_\_\_ If $p$ is a sequential limit point of the sequences $p_{1}, p_{2}, p_{3}, \cdots$ and $\ \ \ \ \ $ $r_{1}, r_{2}, r_{3}, \cdots$, where each $p_{n}$ and each $r_{n}$ is a point, and if $q_{1}, q_{2}, q_{3}, \cdots$ is a sequence each element of which is a point such that $q_{n}$ is between $p_{n}$ and $r_{n}$ for each natural number $n$, then $p$ is a sequential limit point of $q_{1}, q_{2}, q_{3}, \cdots$.
+
+\item[132.] \_\_\_ If $q$ is a sequential limit point of the sequence $q_{1}, q_{2}, q_{3}, \cdots$, each element of which is a point, then $q$ is a sequential limit point of each subsequence of $q_{1}, q_{2}, q_{3}, \cdots$.
+
+\item[Definition 8.4:] ``The sequence $(Y,F)$, each element of which is a point, is \emph{bounded above}'' means that the point set $Y$ is bounded above.
+
+\item[Question 8.5:] Complete the following: ``the sequence $(Y,F)$, each element of which is a point, is \emph{not bounded above}'' means ... ?
+
+\item[Question 8.6:] Give the analogous definition for \emph{bounded below}. Give an appropriate definition for a \emph{bounded sequence}.
+
+\item[Definition 8.7:] ``The sequence $q_{1}, q_{2}, q_{3}, \cdots$, each element of which is a point, is \emph{increasing}'' means that $q_{1} \prec q_{2} \prec q_{3} \prec \cdots$.
+
+\item[Question 8.8:] Complete the following: ``the sequence $q_{1}, q_{2}, q_{3}, \cdots$, each element of which is a point, is \emph{not increasing}'' means ... ?
+
+\item[Question 8.9:] Give the analogous definition for \emph{decreasing} sequence. For each statement below which involves an increasing sequence, settle the analogous statement for a decreasing sequence.
+
+\item[133.] \_\_\_ If $q_{1}, q_{2}, q_{3}, \cdots$ is a bounded increasing sequence of points, then $\ \ \ \ \ $ $q_{1}, q_{2}, q_{3}, \cdots$ has a sequential limit point.
+
+\item[134.] \_\_\_ If $S$ is connected, and $q_{1}, q_{2}, q_{3}, \cdots$ is a bounded increasing sequence of points, then $q_{1}, q_{2}, q_{3}, \cdots$ has a sequential limit point.
+
+\item[135.] \_\_\_ If $q_{1}, q_{2}, q_{3}, \cdots$ is a sequence, each element of which is a point, and which has a sequential limit point, then $q_{1}, q_{2}, q_{3}, \cdots$ is bounded.
+
+\item[136.] \_\_\_ If $F: (S, \prec) \rightarrow (S', \prec ')$ is continuous, and $q$ is a sequential limit point of the sequence $q_{1}$, $q_{2}$, $q_{3}$, $\cdots$, each element of which is a point in $S$, then $F(q)$ is a sequential limit point of the sequence $F(q_{1})$, $F(q_{2})$, $F(q_{3})$, $\cdots$.
+
+\item[Definition 8.10:] ``The point set $X$ is \emph{dense} in the point set $Y$'' means that $X \subseteq Y$, and each point in $Y$ is a point or a limit point of $X$.
+
+\item[Question 8.11:] Complete the following: ``the point set $X$ is \emph{not dense} in the point set $Y$'' means ... ?
+
+\item[Definition 8.12:] ``The point set $Y$ is \emph{separable}'' means that there is a point set $X$ which is finite or countably infinite, such that $X$ is dense in $Y$.
+
+\item[Question 8.13:] Complete the following: ``the point set $Y$ is \emph{not separable}'' means ... ?
+
+\item[Question 8.14:] Which of the following linearly ordered spaces are separable? 
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $(Re, \prec)$, 
+  \item $(Rat, \prec)$, 
+  \item $(Irr, \prec)$, 
+  \item $(Int, \prec)$, and 
+  \item $(Sq, \prec)$.
+\end{enumerate}
+
+\item[137.] \_\_\_ $S$ is separable.
+
+\item[138.] \_\_\_ $S$ is not separable.
+
+\item[139.] \_\_\_ If $S$ is separable, and $F$ is a collection of open sets each pair of which are disjoint, then $F$ is finite or countably infinite.
+
+\item[140.] \_\_\_ If $S$ is connected and $X$ is a dense subset of $S$, then for each pair of points $p$ and $r$, there exists a point $q$ in $X$ such that $q$ is between $p$ and $r$.
+
+\item[141.] \_\_\_ If $S$ is separable, and $q$ is a limit point of the point set $X$, then there is a sequence $q_{1}, q_{2}, q_{3}, \cdots$ of distinct points in $X$ having $q$ as its sequential limit point.
+
+\item[Question 8.15:] Discuss the importance of the assumption that $S$ is separable in 141.
+
+\item[142.] \_\_\_ If $S$ is connected and separable, and $q$ is a point in $S$, then there exist sequences of points $p_{1}, p_{2}, p_{3}, \cdots$ and $q_{1}, q_{2}, q_{3}, \cdots$, such that the first is increasing and the second is decreasing and both have $q$ as a sequential limit point.
+
+\item[143.] \_\_\_ Let $S$ be connected and separable. If $p$ is a point, then there exists a sequence $U_{1}, U_{2}, U_{3}, \cdots$ of open sets, such that (a) each $U_{n}$ contains $p$, (b) $p$ is the only point which belongs to each $U_{n}$, (c) $cl(U_{n+1}) \subseteq U_{n}$ for each natural number $n$, and (d) if $V$ is any open point set containing $p$, then there exists a natural number $n$ such that $U_{n} \subseteq V$.
+
+\item[144.] \_\_\_ Let $S$ be connected and separable. There exists a countably infinite collection $F$ of open point sets, such that if $p$ is any point and $V$ is any open set containing $p$, then there exists an element $U$ in $F$ such that $p$ is in $U$ and $U \subseteq V$.
+
+\item[Question 8.16:] The previous proposition asserts an important property of $(Re, \prec)$. It is reasonable to ask if the proposition remains true without the assumptions of connectivity and separability.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item Give an example of a connected linearly ordered space for which the conclusion of 144 fails.
+  \item Give an example of a separable linearly ordered space for which the conclusion of 144 fails.
+\end{enumerate}
+
+\item[145.] \_\_\_ $S$ is separable if and only if there exists a sequence $(Y,F)$, each element of which is a point, such that each point is either a point in $Y$ or the sequential limit point of some subsequence of $(Y,F)$.
+
+\item[146.] \_\_\_ Let $S$ be separable. The function $F: (S, \prec) \rightarrow (S', \prec ')$ is continuous if and only if for each point $p$ in $S$ and each sequence $p_{1}, p_{2}, p_{3}, \cdots$ each element of which is a point in $S$, if the point $p$ is a sequential limit point of the sequence $p_{1}, p_{2}, p_{3}, \cdots$, then $F(p)$ is a sequential limit point of $F(p_{1}), F(p_{2}), F(p_{3}), \cdots$.
+
+\item[Question 8.17:] Discuss the importance of the assumption that $S$ be separable in 146.
+
+\item[147.] \_\_\_ If $S$ is separable, and $F: (S, \prec) \rightarrow (S', \prec ')$ is continuous, then $S'$ is separable.
+
+\item[Definition 8.18:] ``The collection $F$ each element of which is a point set \emph{covers} the point set $X$'' means that each point in $X$ belongs to some point set in $F$.
+
+\item[Question 8.19:] Complete the following: ``the collection $F$ each element
+of which is a point set does \emph{not cover} the point set $X$'' means ... ?
+
+\item[148.] \_\_\_ If $S$ is connected and separable and $F$ is a collection of open point sets which covers $S$, then there is a subcollection $G$ of $F$ such that $G$ is a finite or countably infinite and $G$ covers $S$.
+
+\item[149.] \_\_\_ If $S$ is connected, $S$ has a first point and a last point, and $F$ is a collection of open point sets which covers $S$, then there is a subcollection $G$ of $F$ such that $G$ is finite and $G$ covers $S$.
+
+\end{description}
+
+
+
+
+\chapter*{Chapter 9: A Characterization of the Real Number Line}
+\markboth{Chapter 9}{Chapter 9}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter 9: A Characterization of the Real Number Line}
+
+
+In this chapter, we obtain a characterization of the linearly ordered space $(Re, \prec)$. We have already studied the two main conditions which will be used to characterize $(Re, \prec)$; namely, connectivity and separability. It is easy to see that these two conditions alone do not characterize $(Re, \prec)$ since $([0,l], \prec)$ also satisfies these conditions and is not equivalent to $(Re, \prec)$.
+
+\begin{description}
+
+\item[Question 9.1:] In light of the discussion above, and without reading further, can you guess what condition in addition to connectivity and separability is needed to characterize $(Re, \prec)$?
+
+\item[Remark 9.2:] Notice that the next statement characterizes the linearly ordered space $(Rat, \prec)$.
+
+\item[150.] \_\_\_ $(S, \prec)$ is isomorphic to $(Rat, \prec)$ if and only if the following conditions are satisfied:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item If $p$ and $r$ are points, then there exists a point $q$ between $p$ and $r$.
+  \item $S$ is countably infinite.
+  \item $S$ has no first point and no last point.
+\end{enumerate}
+
+\item[151.] \_\_\_ If $S$ is connected and separable, then there is a point set $X$ such that the following conditions are satisfied:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item If $p$ and $r$ are points, then there exists a point $q$ in $X$ between $p$ and $r$. 
+  \item $X$ is countably infinite.
+  \item $X$ has no first point and no last point.
+\end{enumerate}
+
+\item[Remark 9.3:] The next statement characterizes the linearly ordered space $\ \ $ $([0,l], \prec)$.
+
+\item[152.] \_\_\_ $(S, \prec)$ is isomorphic to $([0,1], \prec)$ if and only if the following conditions are satisfied:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $S$ is connected.
+  \item $S$ is separable.
+  \item $S$ has a first point and a last point.
+\end{enumerate}
+
+\item[Remark 9.4:] The next statement characterizes the linearly ordered space $\ \ $ $(Re, \prec)$.
+
+\item[153.] \_\_\_ $(S, \prec)$ is isomorphic to $(Re, \prec)$ if and only if the following conditions are satisfied:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $S$ is connected.
+  \item $S$ is separable.
+  \item $S$ has no first point and no last point.
+\end{enumerate}
+
+\item[Question 9.5:] Conditions (a), (b), and (c) given in 153 are \emph{independent} (i.e., no two of the conditions implies the remaining one). Prove this assertion by giving appropriate examples of linearly ordered spaces (e.g., give an example in which (a) and (b) hold and (c) does not). Do the same for the characterizations of $(Rat,\prec)$ and $([0,l],\prec)$.
+
+\item[Question 9.6:] Give characterizations of the linearly ordered spaces $(Nat,\prec)$ and $(Int,\prec)$.
+
+\end{description}
+
+
+
+
+\chapter*{Appendix: Topological Spaces}
+\markboth{Appendix}{Appendix}
+\addcontentsline{toc}{chapter}{\numberline{}Appendix: Topological Spaces}
+
+
+The study of linearly ordered spaces belongs to the branch of mathematics known as \emph{point set topology}. The objects of interest in point set topology are called \emph{topological spaces}. The reader should compare the following Axiom For Topological Spaces with our Axiom given in Chapter 2.
+
+\begin{description}
+
+\item[Axiom For Topological Spaces:] $S$ is a set, each undefined element of which is called a \emph{point}; and $T$ is a collection, each element of which is a subset of $S$ called an \emph{open point set}. In addition, the following conditions are satisfied: 
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $S$ belongs to $T$.
+  \item If $F$ is a collection each element of which belongs to $T$, then $\cup F$ belongs to $T$.
+  \item If $F$ is a finite collection each element of which belongs to $T$ and $\cap F$ exists, then $\cap F$ belongs to $T$.
+\end{enumerate}
+
+\end{description}
+
+Intuitively, the Axiom states that: 
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $S$ is open, 
+  \item the union of open point sets is open, and 
+  \item the intersection of finitely many open point sets is open.
+\end{enumerate}
+
+\begin{description}
+
+\item[Definition:] A pair $(S,T)$ where $S$ and $T$ satisfy the Axiom For Topological Spaces is called a \emph{topological spaces}.
+
+\end{description}
+
+If $(S, \prec)$ is a linearly ordered space, and $T$ is the collection of open point sets in $S$ (as defined in Definition 3.23), then $(S,T)$ is a topological space. In particular, (a) $S$ is open (by 29), (b) the union of open point sets is open (by 30), and (c) the intersection of finitely many open point sets is open (by 32). Thus, a linearly ordered space is a special kind of topological space.
+
+Notice that there need not be a definition of \emph{precede} (i.e., $\prec$) in a topological space. Consequently, the definitions of \emph{first point, open interval, cut property, bounded point set, order preserving function}, and other definitions which depend on the notion of \emph{precede}, do not make sense in arbitrary topological spaces. 
+
+On the other hand, definitions of \emph{limit point, closed point set, connected point set, continuous function, homeomorphism, separable point set}, and other definitions which depend on the notion of \emph{open point set}, do make sense in arbitrary topological spaces.
+
+Here is the definition of \emph{limit point} for topological spaces.
+
+\begin{description}
+
+\item[Definition:] ``The point $p$ is a \emph{limit point} of the point set $X$'' means that each open point set containing $p$ contains a point in $X$ which is different from $p$.
+
+\end{description}
+
+The reader should compare this definition with Definition 3.8 and item 40.
+
+The interested reader may wish (a) to give ``topological definitions'' for other concepts defined in this \emph{Monograph}, and (b) to settle statements which apply to topological spaces. If so, the term \emph{open interval} should always be replaced by the term \emph{open point set}, as was done in the definition of \emph{limit point}. We suggest that the reader assume, in addition to the Axiom For Topological Spaces, the following axiom, credited to Felix Hausdorff:
+
+\begin{description}
+
+\item[Axiom Of Hausdorff:] If $p$ and $q$ are points, then there exist disjoint open point sets, one containing $p$ and the other containing $q$.
+
+\end{description}
+
+Notice that each linearly ordered space satisfies the Axiom of Hausdorff, by item 12.
+
+
+
+\end{document}

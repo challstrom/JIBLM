@@ -1,0 +1,14 @@
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Preface}{i}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Chapter I: Generalization of the Theorem of Pappus}{1}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Chapter II: Embeddings of Planar Regions Which Must Contain Planar Points}{5}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Chapter III: A Surface Area Problem}{13}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Chapter IV: The Formula of Rodrigues}{15}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Chapter V: Surfaces of Revolution}{17}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Chapter VI: Spherical Curves}{21}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Chapter VII: Helices}{23}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Chapter VIII: Osculating Developables}{27}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Chapter IX: Constant Deformation of a Surface}{35}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Chapter X: A Family of Developables Associated with a Curve}{41}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Chapter XI: Spherical Image of a Curve}{45}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Chapter XII: Parallel Principal Curves on Developable Surfaces}{49}
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Chapter XIII: Miscellaneous Problems}{55}

@@ -1,0 +1,2703 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% Journal headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright Guilford College Journal of Undergraduate Mathematics} \cfoot{} \rfoot{ - at www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Elements of Geometry in Unitary Spaces}
+\author{Ali R. Amir-Moéz}
+\date{\vspace{3cm}
+\emph{Journal of Undergraduate Mathematics}
+  \\ Department of Mathematics
+  \\ Guilford College
+  \\ Greensboro, North Carolina 27410 
+  }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\thispagestyle{empty}
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+\section*{Preface}
+\addcontentsline{toc}{section}{\numberline{}Preface}
+\markboth{Preface}{Preface}
+
+\pagenumbering{roman}
+
+The study of unitary spaces through generalizations of geometrical configurations gives insight to understanding of many concepts in linear spaces and linear algebra. This monograph has been prepared for two essential purposes. First, to give a feeling for the meanings of ideas and concepts. Second, to show how one may generalize an idea which may turn into an interesting research problem.
+
+The monograph has six chapters, as seen in the table of contents. We have tried to keep the continuity in the subject matter in the first five chapters. Chapter Six consists of the study of a few geometrical problems and their generalization, solely for the sake of showing how one may generalize some ideas. The exercises have two basic natures; some are for learning ideas, and others are for research problems.
+
+The reader is expected to have had an elementary course in linear algebra and linear spaces.
+
+\begin{flushright}
+Ali R. Amir-Moéz
+\\ Texas Tech University
+\\ Lubbock, Texas 79409
+\end{flushright}
+
+
+\newpage
+
+\section{A Review of Unitary Spaces}
+\markboth{1. A Review of Unitary Spaces}{1. A Review of Unitary Spaces}
+
+\pagenumbering{arabic}
+
+A vector study of a Euclidean plane can be generalized to unitary spaces. Throughout this chapter, we shall give geometric interpretations of many propositions, in a Euclidean plane. In what follows, we only consider vector spaces over the field of real or complex numbers. Vectors will be denoted by Greek letters $\alpha, \beta, \gamma, \cdots$, and scalars by Latin letters $a, b, c, \cdots$.
+
+\subsection{Inner Product} %1.1
+
+Let $V$ be a vector space over the field of complex numbers $C$. We define a function $f$ on $V \times V$ into $C$ such that:
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item $f (\eta,\xi) = \overline{f (\xi,\eta)}$, where $\overline{f (\xi,\eta)}$ is the complex conjugate of $f (\xi,\eta)$;
+  \item $f (\xi,\xi) \geq 0$ and $f (\xi,\xi) = 0$ if and only if $\xi = \vec{0}$;
+  \item $f (a_{1} \xi_{1} + a_{2} \xi_{2}, \eta) = a_{1} f (\xi_{1},\eta) + a_{2} f (\xi_{2},\eta)$, for all $\xi_{1}, \xi_{2}, \eta$ in $V$ and $a_{1}, a_{2}$ in $C$.
+\end{enumerate}
+For convenience, we write $(\xi,\eta) = f (\xi,\eta)$. The norm of a vector $\xi$ will be defined by
+\begin{equation*}
+||\xi|| = (\xi,\xi)^1/2
+\end{equation*}
+In the case where $V$ is over the field of real numbers, the inner product is commutative; i.e., $(\xi,\eta) = (\eta,\xi)$.
+
+Let $V$ be the Euclidean plane. Then the inner product of $\xi$ and $\eta$ is
+\begin{equation*}
+(\xi,\eta) = ||\xi||\ ||\eta|| \cos t
+\end{equation*}
+where $t$ is the angle between $\xi$ and $\eta$. The reader may show that this inner product satisfies (1), (2), and (3).
+
+\subsection{Unitary Spaces} %1.2
+
+A vector space $V$ over the field of real or complex numbers is called \emph{unitary} if an inner product is defined for $V$. Such a space is also called an \emph{inner product space}.
+
+A unitary space over the field of complex numbers will be denoted by $E$, and over the field of real numbers by $\Re$. When the space is finite-dimensional, we denote it by $E_{n}$ if it is complex, and by $\Re_{n}$ if it is real unitary space. Here, $n$ is the dimension of the space. 
+
+We shall state some basic theorems without proof.
+
+\subsection{Theorem} %1.3
+
+Let $\xi \in E$, and $c$ be a complex number. Then
+\begin{equation*}
+||c \xi|| = |c|\ ||\xi||
+\end{equation*}
+
+We leave the geometric interpretation in $\Re_{2}$ as an exercise.
+
+\subsection{Theorem (Schwarz inequality)} %1.4
+
+Let $\xi,\eta \in E$. Then
+\begin{equation*}
+|(\xi,\eta)| \leq ||\xi||\ ||\eta||
+\end{equation*}
+
+\subsection{Theorem (Triangle inequality)} %1.5
+
+Let $\xi,\eta \in E$. Then
+\begin{equation*}
+||\xi+\eta|| \leq ||\xi|| + ||\eta||
+\end{equation*}
+
+\subsection{Orthogonality} %1.6
+
+A vector $\xi$ is orthogonal to $\eta$ if and only if $(\xi,\eta) = 0$. Since $(\eta,\xi) = 0$ implies $(\eta,\xi) = 0$, whenever $\xi$ is orthogonal to $\eta$, then $\eta$ is also orthogonal to $\xi$. It is clear that $\vec{0}$ is orthogonal to every vector. A set of vectors is said to be \emph{orthogonal} if and only if each vector of the set is orthogonal to every other vector of the set. An orthogonal set is called \emph{orthonormal} if each vector of the set has norm one.
+
+\subsection{Theorem} %1.7 
+
+Every finite set of non-zero orthogonal vectors is linearly independent.
+
+\subsection{Bessel's Inequality} %1.8
+
+Let $\{ \alpha_{1}, \cdots, \alpha_{n} \}$ be an orthonormal set in $E$, and $\xi \in E$. Then
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item $|(\xi,\alpha_{1})|^{2} + \cdots + |(\xi,\alpha_{n})|^{2} \leq ||\xi||^{2}$, and
+  \item $\eta = \xi - [ (\xi,\alpha_{1}) \alpha_{1} + \cdots + (\xi,\alpha_{n}) \alpha_{n} ]$
+\end{enumerate}
+is orthogonal to $\alpha_{i}$, $i = 1,\cdots,n$. This means $n$ is orthogonal to $[ \alpha_{1}, \cdots, \alpha_{n} ]$; i.e., the subspace spanned by $\alpha_{1}, \cdots, \alpha_{n}$.
+
+\subsubsection*{Geometric interpretation}
+
+Let us consider $\Re_2$ and the orthonormal set $\{ \alpha_{1} \}$; i.e., the set consisting of one unit vector (Fig. 1).
+
+\begin{center}
+%TeXCAD Picture [fig1.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(55.25,39.5)(0,0)
+\put(2.75,10.5){\line(1,0){52.5}}
+%\dashline{1}(11.5,26.75)(44.75,26.75)
+\put(11.43,26.68){\line(1,0){.978}}
+\put(13.39,26.68){\line(1,0){.978}}
+\put(15.34,26.68){\line(1,0){.978}}
+\put(17.3,26.68){\line(1,0){.978}}
+\put(19.25,26.68){\line(1,0){.978}}
+\put(21.21,26.68){\line(1,0){.978}}
+\put(23.17,26.68){\line(1,0){.978}}
+\put(25.12,26.68){\line(1,0){.978}}
+\put(27.08,26.68){\line(1,0){.978}}
+\put(29.03,26.68){\line(1,0){.978}}
+\put(30.99,26.68){\line(1,0){.978}}
+\put(32.94,26.68){\line(1,0){.978}}
+\put(34.9,26.68){\line(1,0){.978}}
+\put(36.86,26.68){\line(1,0){.978}}
+\put(38.81,26.68){\line(1,0){.978}}
+\put(40.77,26.68){\line(1,0){.978}}
+\put(42.72,26.68){\line(1,0){.978}}
+%\end
+\put(11.5,33){\line(0,-1){27}}
+%\dashline{1}(43.75,26.75)(43.75,10.5)
+\put(43.68,26.68){\line(0,-1){.956}}
+\put(43.68,24.77){\line(0,-1){.956}}
+\put(43.68,22.86){\line(0,-1){.956}}
+\put(43.68,20.94){\line(0,-1){.956}}
+\put(43.68,19.03){\line(0,-1){.956}}
+\put(43.68,17.12){\line(0,-1){.956}}
+\put(43.68,15.21){\line(0,-1){.956}}
+\put(43.68,13.3){\line(0,-1){.956}}
+\put(43.68,11.39){\line(0,-1){.956}}
+%\end
+\put(11.5,10.5){\vector(2,1){32}}
+\put(11.5,23.25){\vector(0,1){3}}
+\put(11.5,16){\vector(0,1){3}}
+\put(16.99,10.49){\vector(1,0){3}}
+\put(39.97,10.49){\vector(1,0){3}}
+\put(28.5,1.75){\makebox(0,0)[cc]{Fig. 1}}
+\put(18.75,8.25){\makebox(0,0)[cc]{$\alpha_1$}}
+\put(8.25,18){\makebox(0,0)[cc]{$\alpha_2$}}
+\put(8.25,26.25){\makebox(0,0)[cc]{$\eta$}}
+\put(42.25,8.5){\makebox(0,0)[cc]{$\zeta$}}
+\put(46.25,26){\makebox(0,0)[cc]{$\xi$}}
+\end{picture}
+\end{center}
+
+We observe that $\zeta = (\xi,\alpha_{1}) \alpha_{1}$ is the orthogonal projection of $\xi$ on the axis whose unit vector is $\alpha_{1}$. Thus
+\begin{equation*}
+||\zeta||^{2} = |(\xi,\alpha_{1})|^{2} \leq ||\xi||^{2}
+\end{equation*}
+It is clear that $\eta = \xi - \zeta = \xi - (\xi,\alpha_{1}) \alpha_{1}$ is orthogonal to $\alpha_{1}$.
+
+If we consider the orthonormal set $\{ \alpha_{1}, \alpha_{2} \}$, we obtain
+\begin{equation*}
+||\zeta||^{2} + ||\eta||^{2} = |(\xi,\alpha_{1})|^{2} + |(\xi,\alpha_{2})|^{2} = ||\xi||^{2}
+\end{equation*}
+
+\subsection{Complete orthonormal set} %1.9
+
+An orthonormal set of vectors in $E$ is called \emph{complete} in $E$ if and only if the only vector in $E$ that is orthogonal to all elements of the set, is the zero vector.
+
+\subsection{Theorem} %1.10
+
+Let $\{ \alpha_{1}, \cdots, \alpha_{n} \}$ be an orthonormal set in a unitary space $E$. Then the following statements are equivalent:
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item $\{ \alpha_{1}, \cdots, \alpha_{n} \}$ is complete.
+  \item If $(\xi,\alpha_{i}) = 0$ for $i = 1,\cdots,n$, then $\xi = \vec{0}$.
+  \item The linear subspace spanned by $\{ \alpha_{1}, \cdots, \alpha_{n} \}$ is $E$ itself.
+  \item For any $\xi \in E$, $\displaystyle \xi = \sum_{i=1}^{n} (\xi,\alpha_{i}) \alpha_{i}$.
+  \item For a pair $\xi,\eta \in E$, $\displaystyle (\xi,\eta) = \sum_{i=1}^{n} (\xi,\alpha_{i}) (\alpha_{i},\eta)$. (This is called the \emph{Parseval identity}).
+  \item For any $\xi \in V$, $\displaystyle ||\xi||^{2} = \sum_{i=1}^{n} |(\xi,\alpha_{i})|^{2}$.
+\end{enumerate}
+
+\subsubsection*{Geometric interpretation}
+
+Let $\{ \alpha_{1}, \alpha_{2} \}$ be an orthonormal set in $\Re_{2}$ (Fig. 2).
+
+\begin{center}
+%TeXCAD Picture [fig2.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(55.25,33)(0,0)
+\put(2.75,10.5){\line(1,0){52.5}}
+%\dashline{1}(11.5,26.75)(44.75,26.75)
+\put(11.43,26.68){\line(1,0){.978}}
+\put(13.39,26.68){\line(1,0){.978}}
+\put(15.34,26.68){\line(1,0){.978}}
+\put(17.3,26.68){\line(1,0){.978}}
+\put(19.25,26.68){\line(1,0){.978}}
+\put(21.21,26.68){\line(1,0){.978}}
+\put(23.17,26.68){\line(1,0){.978}}
+\put(25.12,26.68){\line(1,0){.978}}
+\put(27.08,26.68){\line(1,0){.978}}
+\put(29.03,26.68){\line(1,0){.978}}
+\put(30.99,26.68){\line(1,0){.978}}
+\put(32.94,26.68){\line(1,0){.978}}
+\put(34.9,26.68){\line(1,0){.978}}
+\put(36.86,26.68){\line(1,0){.978}}
+\put(38.81,26.68){\line(1,0){.978}}
+\put(40.77,26.68){\line(1,0){.978}}
+\put(42.72,26.68){\line(1,0){.978}}
+%\end
+\put(11.5,33){\line(0,-1){27}}
+%\dashline{1}(43.75,26.75)(43.75,10.5)
+\put(43.68,26.68){\line(0,-1){.956}}
+\put(43.68,24.77){\line(0,-1){.956}}
+\put(43.68,22.86){\line(0,-1){.956}}
+\put(43.68,20.94){\line(0,-1){.956}}
+\put(43.68,19.03){\line(0,-1){.956}}
+\put(43.68,17.12){\line(0,-1){.956}}
+\put(43.68,15.21){\line(0,-1){.956}}
+\put(43.68,13.3){\line(0,-1){.956}}
+\put(43.68,11.39){\line(0,-1){.956}}
+%\end
+\put(11.5,10.5){\vector(2,1){32}}
+\put(11.5,23.25){\vector(0,1){3}}
+\put(11.5,16){\vector(0,1){3}}
+\put(16.99,10.49){\vector(1,0){3}}
+\put(39.97,10.49){\vector(1,0){3}}
+\put(28.5,1.75){\makebox(0,0)[cc]{Fig. 2}}
+\put(18.75,8.25){\makebox(0,0)[cc]{$\alpha_1$}}
+\put(8.25,18){\makebox(0,0)[cc]{$\alpha_2$}}
+\put(46.25,26){\makebox(0,0)[cc]{$\xi$}}
+\end{picture}
+\end{center}
+
+It is clear that the only vector of the plane orthogonal to $\alpha_{1}$ and $\alpha_{2}$ is the zero vector. Indeed, $\{ \alpha_{1}, \alpha_{2} \}$ is a basis for $\Re_{2}$.
+
+It is clear that $\xi$ is the sum of its two orthogonal projections on the two axes, i.e.
+\begin{equation*}
+\xi = (\xi, \alpha_{1}) \alpha_{1} + (\xi, \alpha_{2}) \alpha_{2}
+\end{equation*}
+
+Let $\eta \in \Re_{2}$. Then
+\begin{equation*}
+\eta = (\xi,\alpha_{1}) \alpha_{1} + (\eta,\alpha_{2}) \alpha_{2}
+\end{equation*}
+
+To explain (5), we observe that the set of components of $\xi$ is
+\begin{equation*}
+( (\xi,\alpha_{1}), (\xi,\alpha_{2}) )
+\end{equation*}
+
+The set of components of $\eta$ is
+\begin{equation*}
+( (\eta,\alpha_{1}), (\eta,\alpha_{2}) )
+\end{equation*}
+
+Thus the inner product of $\xi$ and $\eta$ is
+\begin{align*}
+(\xi,\eta) & = (\xi,\alpha_{1}) \overline{(\eta,\alpha_{1})} + (\xi,\alpha_{2}) \overline{(\eta,\alpha_{2})} \\
+           & = (\xi,\alpha_{1}) (\alpha_{1},\eta) + (\xi,\alpha_{2}) (\alpha_{2},\eta)
+\end{align*}
+
+The equality (6) simply indicates that the square of the norm of $\xi$ is the sum of squares of its components (Pythagoras Theorem).
+
+\subsection{Theorem} %1.11
+
+Let $E_{n}$ be an $n$-dimensional unitary space, $n \geq 1$. Then there exist complete orthonormal sets in $E_{n}$, and every complete orthonormal set contains exactly $n$ elements. 
+
+\subsection{The Gram-Schmidt process} %1.12
+
+Let $\{ \xi_{1}, \cdots, \xi_{n} \}$ be a set of linearly independent vectors in $E$. Then one can construct a complete orthonormal set $\{ \alpha_{1}, \cdots, \alpha_{n} \}$ such that each $\alpha_{i}$, $i = 1,\cdots,n$ is a linear combination of $\xi_{1}, \cdots, \xi_{n}$.
+
+\subsubsection*{Geometric interpretation}
+
+Consider the set of linearly independent vectors $\{ \xi_{1}, \xi_{2} \}$ in $\Re_{2}$ (Fig. 3). 
+
+\begin{center}
+%TeXCAD Picture [fig3.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(58.5,33)(0,0)
+\put(2.75,10.5){\line(1,0){52.5}}
+%\dashline{1}(11.5,26.75)(44.75,26.75)
+\put(11.43,26.68){\line(1,0){.978}}
+\put(13.39,26.68){\line(1,0){.978}}
+\put(15.34,26.68){\line(1,0){.978}}
+\put(17.3,26.68){\line(1,0){.978}}
+\put(19.25,26.68){\line(1,0){.978}}
+\put(21.21,26.68){\line(1,0){.978}}
+\put(23.17,26.68){\line(1,0){.978}}
+\put(25.12,26.68){\line(1,0){.978}}
+\put(27.08,26.68){\line(1,0){.978}}
+\put(29.03,26.68){\line(1,0){.978}}
+\put(30.99,26.68){\line(1,0){.978}}
+\put(32.94,26.68){\line(1,0){.978}}
+\put(34.9,26.68){\line(1,0){.978}}
+\put(36.86,26.68){\line(1,0){.978}}
+\put(38.81,26.68){\line(1,0){.978}}
+\put(40.77,26.68){\line(1,0){.978}}
+\put(42.72,26.68){\line(1,0){.978}}
+%\end
+\put(11.5,33){\line(0,-1){27}}
+%\dashline{1}(43.75,26.75)(43.75,10.5)
+\put(43.68,26.68){\line(0,-1){.956}}
+\put(43.68,24.77){\line(0,-1){.956}}
+\put(43.68,22.86){\line(0,-1){.956}}
+\put(43.68,20.94){\line(0,-1){.956}}
+\put(43.68,19.03){\line(0,-1){.956}}
+\put(43.68,17.12){\line(0,-1){.956}}
+\put(43.68,15.21){\line(0,-1){.956}}
+\put(43.68,13.3){\line(0,-1){.956}}
+\put(43.68,11.39){\line(0,-1){.956}}
+%\end
+\put(11.5,10.5){\vector(2,1){32}}
+\put(11.5,23.25){\vector(0,1){3}}
+\put(11.5,16){\vector(0,1){3}}
+\put(16.99,10.49){\vector(1,0){3}}
+\put(39.97,10.49){\vector(1,0){3}}
+\put(52.47,10.49){\vector(1,0){3}}
+\put(28.5,1.75){\makebox(0,0)[cc]{Fig. 3}}
+\put(18.75,8.25){\makebox(0,0)[cc]{$\alpha_1$}}
+\put(8.25,18){\makebox(0,0)[cc]{$\alpha_2$}}
+\put(8.25,26.25){\makebox(0,0)[cc]{$\xi$}}
+\put(42.25,8.5){\makebox(0,0)[cc]{$\eta$}}
+\put(46.25,26){\makebox(0,0)[cc]{$\xi_2$}}
+\put(58.5,9.5){\makebox(0,0)[cc]{$\xi_1$}}
+\end{picture}
+\end{center}
+
+Here we let $\alpha_{1}$ be a unit vector on $\alpha_{1}$; i.e., we choose
+\begin{equation*}
+\alpha_{1} = \frac{\xi_{1}}{||\xi_{1}||}
+\end{equation*}
+
+Then we observe that $\xi = \xi_{2} - (\xi_{2},\alpha_{1}) \alpha_{1}$ is orthogonal to $\alpha_{1}$. Thus we choose
+\begin{equation*}
+\alpha_{2} = \frac{\xi}{||\xi||}
+\end{equation*}
+
+In this manner, the set $\{ \alpha_{1}, \alpha_{2} \}$ is orthonormal, and
+\begin{equation*}
+\alpha_{1} = \frac{1}{||\xi_{1}||} \xi_{1}
+\end{equation*}
+
+\begin{equation*}
+\alpha_{2} = \frac{ \xi_{2}-(\xi_{2},\alpha_{1})\alpha_{1} }{ ||\xi_{2}-(\xi_{2},\alpha_{1})\alpha_{1}|| }
+\end{equation*}
+
+\subsubsection*{The process}
+
+First, for example, we set
+\begin{equation*}
+\alpha_{1} = \frac{\xi_{1}}{||\xi_{1}||}
+\end{equation*}
+
+Then we set
+\begin{equation*}
+\alpha_{2} = \frac{ \xi_{2}-(\xi_{2},\alpha_{1})\alpha_{1} }{ ||\xi_{2}-(\xi_{2},\alpha_{1})\alpha_{1}|| }
+\end{equation*}
+
+Now, suppose that $\alpha_{1}, \cdots, \alpha_{k}$ have been defined so that they form an orthonormal set and each $\alpha_{i}$, $i = 1,\cdots,k$ is a linear combination of $\xi_{1}, \cdots, \xi_{n}$. Then we note that
+\begin{equation*}
+\beta_{k+1} = \xi_{k+1} - [ (\xi_{k+1},\alpha_{1}) + \cdots + (\xi_{k+1},\alpha_{k}) ]
+\end{equation*}
+is orthogonal to $\alpha_{i}$, $i = 1,\cdots,k$. Thus we set
+\begin{equation*}
+\alpha_{k+1} = \frac{\beta_{k+1}}{||\beta_{k+1}||}
+\end{equation*}
+
+Therefore $\{ \alpha_{1}, \cdots, \alpha_{k+1} \}$ is orthonormal, and each element of it is a linear combination of $\xi_{1}, \cdots, \xi_{n}$. This establishes the step of the induction, and thus the construction of the set.
+
+\subsection*{Exercise 1}
+\addcontentsline{toc}{subsection}{\numberline{}Exercise 1}
+
+\begin{enumerate}[\hspace{1cm}(1)]
+
+  \item Let $\alpha,\beta$ be any two distinct elements of an orthonormal set in $E$. Show that $||\alpha-\beta|| = \sqrt{2}$.
+
+  \item Let $\{ \alpha_{1}, \alpha_{2} \}$ be a set of linearly independent vectors in $\Re_{2}$. Obtain a set of orthogonal vectors $\{ \beta_{1}, \beta_{2} \}$ in $\Re_{2}$, such that for each $\xi \in \Re_{2}$ for which
+    \begin{align*}
+      \xi & = a_{1} \alpha_{1} + a_{2} \alpha_{2}, \\
+      a_{1} & + a_{2} = 1, \\
+      a_{1} & > 0, \\
+      a_{2} & > 0
+    \end{align*}
+    we also have
+    \begin{align*}
+      \xi & = b_{1} \beta_{1} + b_{2} \beta_{2}, \\
+      b_{1} & + b_{2} = 1, \\
+      b_{1} & > 0, \\
+      b_{2} & > 0.
+    \end{align*}
+
+  \item Give a geometric interpretation of (2).
+
+  \item Generalize (2) to $n$ vectors in $E_{n}$.
+
+  \item Let $\{ \alpha_{1}, \cdots, \alpha_{k} \}$ be a set of linearly independent vectors in $E$. Find a set of orthogonal vectors $\{ \gamma_{1}, \cdots, \gamma_{k} \}$ which span the same subspace as $\{ \alpha_{1}, \cdots, \alpha_{k} \}$ does, $||\gamma_{i}|| = ||\gamma_{j}||$ for all $i,j$, and for each
+    \begin{align*}
+      \xi & = \sum_{i=1}^{k} a_{i} \alpha_{i}, \\
+      \sum_{i=1}^{k} & a_{i} = 1, \\
+      a_{i} & > 0, \\
+      i & = 1,\cdots,k
+    \end{align*}
+    we also have
+    \begin{align*}
+      \xi & = \sum_{i=1}^{k} c_{i} \gamma_{i}, \\
+      \sum_{i=1}^{k} & c_{i} = 1, \\
+      c_{i} & > 0, \\
+      i & = 1,\cdots,k
+    \end{align*}
+
+  \item Give a geometric interpretation of (5) in $\Re_{2}$.
+
+  \item Let $\{ \alpha_{1},\cdots,\alpha_{k} \}$ be a set of linearly independent vectors in $E$, and let
+    \begin{align*}
+      \xi & = \sum_{i=1}^{k} a_{i} \alpha_{i}, \\
+      \sum_{i=1}^{k} & a_{i} = 1, \\
+      a_{i} & > 0, \\
+      i & = 1,\cdots,k
+    \end{align*}
+    Show that there exists an orthogonal set of vectors $\{ \beta_{1},\cdots,\beta_{k} \}$ such that
+    \begin{align*}
+      \xi & = \sum_{i=1}^{k} b_{i} \beta_{i}, \\
+      \sum_{i=1}^{k} & b_{i} = 1, \\
+      b_{i} & > 0, \\
+      i & = 1,\cdots,k
+    \end{align*}
+    and
+    \begin{align*}
+      \frac{\xi,\beta_{i}}{||\beta_{i}||} & = \frac{\xi,\beta_{j}}{||\beta_{j}||}, \\
+      i,j & = 1,\cdots,k
+    \end{align*}
+
+  \item Give a geometric interpretation of (7) in $\Re_{2}$.
+
+  \item Show that two vectors $\xi,\eta \in \Re$ are orthogonal if and only if $||\xi+\eta||^{2} = ||\xi||^{2} + ||\eta||^{2}$.
+
+  \item Is (9) true if $\xi,\eta \in E$? 
+
+  \item Let $||\xi|| = ||\eta|| \neq 0$, and $\xi,\eta \in \Re$. Show that $\xi-\eta$ and $\xi+\eta$ are orthogonal.
+
+  \item Give geometric interpretations for (9) and (11).
+
+  \item Let $\xi,\eta \in E$. Show that
+    \begin{equation*}
+    ||\xi+\eta||^{2} + ||\xi-\eta||^{2} = 2 ||\xi||^{2} + 2 ||\eta||^{2}
+    \end{equation*}
+
+  \item Give a geometric interpretation of (13) in $\Re_{2}$.
+
+  \item Let $V$ be a vector space over the field of real numbers, where the norm of $\xi \in V$ is defined ($V$ is called a \emph{normed linear space}). Show that a necessary and sufficient condition for $V$ to be an inner product space with $||\xi||^{2} = (\xi,\xi)$, is that
+    \begin{equation*}
+    ||\xi+\eta||^{2} + ||\xi-\eta||^{2} = 2 ||\xi||^{2} + 2 ||\eta||^{2}
+    \end{equation*}
+    (This proposition usually employs many properties of the real numbers for its proof.) The reader may look into the geometric interpretation of it in $\Re_{2}$.
+
+\end{enumerate}
+
+
+\newpage
+
+\section{Rectilinear Configurations}
+\markboth{2. Rectilinear Configurations}{2. Rectilinear Configurations}
+
+In this chapter, we give vector proofs for some theorems of geometric nature. Then we generalize them to a unitary space. Indeed, some of the ideas have already been studied in Chapter 1. Most of the proofs are left to the reader.
+
+\subsection{Law of cosines} %2.1
+
+Let $\{ \alpha,\beta \}$ be a set of linearly independent vectors in $\Re_{2}$ (Fig. 4).
+
+\begin{center}
+%TeXCAD Picture [fig4.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(64.25,32.25)(0,0)
+%\vector(7.25,17)(23.25,29.25)
+\put(23.25,29.25){\vector(4,3){.07}}\multiput(7.25,17)(.043956044,.033653846){364}{\line(1,0){.043956044}}
+%\end
+%\vector(7.25,17)(61.75,24)
+\put(61.75,24){\vector(4,1){.07}}\multiput(7.25,17)(.26201923,.03365385){208}{\line(1,0){.26201923}}
+%\end
+%\dashline{1}(23,29.75)(61.75,24.5)
+\multiput(22.93,29.68)(.2422,-.0328){4}{\line(1,0){.2422}}
+\multiput(24.87,29.42)(.2422,-.0328){4}{\line(1,0){.2422}}
+\multiput(26.8,29.15)(.2422,-.0328){4}{\line(1,0){.2422}}
+\multiput(28.74,28.89)(.2422,-.0328){4}{\line(1,0){.2422}}
+\multiput(30.68,28.63)(.2422,-.0328){4}{\line(1,0){.2422}}
+\multiput(32.62,28.37)(.2422,-.0328){4}{\line(1,0){.2422}}
+\multiput(34.55,28.1)(.2422,-.0328){4}{\line(1,0){.2422}}
+\multiput(36.49,27.84)(.2422,-.0328){4}{\line(1,0){.2422}}
+\multiput(38.43,27.58)(.2422,-.0328){4}{\line(1,0){.2422}}
+\multiput(40.37,27.32)(.2422,-.0328){4}{\line(1,0){.2422}}
+\multiput(42.3,27.05)(.2422,-.0328){4}{\line(1,0){.2422}}
+\multiput(44.24,26.79)(.2422,-.0328){4}{\line(1,0){.2422}}
+\multiput(46.18,26.53)(.2422,-.0328){4}{\line(1,0){.2422}}
+\multiput(48.12,26.27)(.2422,-.0328){4}{\line(1,0){.2422}}
+\multiput(50.05,26)(.2422,-.0328){4}{\line(1,0){.2422}}
+\multiput(51.99,25.74)(.2422,-.0328){4}{\line(1,0){.2422}}
+\multiput(53.93,25.48)(.2422,-.0328){4}{\line(1,0){.2422}}
+\multiput(55.87,25.22)(.2422,-.0328){4}{\line(1,0){.2422}}
+\multiput(57.8,24.95)(.2422,-.0328){4}{\line(1,0){.2422}}
+\multiput(59.74,24.69)(.2422,-.0328){4}{\line(1,0){.2422}}
+%\end
+%\dashline{1}(61.75,24)(47.5,11.5)
+\multiput(61.68,23.93)(-.0375,-.032895){19}{\line(-1,0){.0375}}
+\multiput(60.25,22.68)(-.0375,-.032895){19}{\line(-1,0){.0375}}
+\multiput(58.83,21.43)(-.0375,-.032895){19}{\line(-1,0){.0375}}
+\multiput(57.4,20.18)(-.0375,-.032895){19}{\line(-1,0){.0375}}
+\multiput(55.98,18.93)(-.0375,-.032895){19}{\line(-1,0){.0375}}
+\multiput(54.55,17.68)(-.0375,-.032895){19}{\line(-1,0){.0375}}
+\multiput(53.13,16.43)(-.0375,-.032895){19}{\line(-1,0){.0375}}
+\multiput(51.7,15.18)(-.0375,-.032895){19}{\line(-1,0){.0375}}
+\multiput(50.28,13.93)(-.0375,-.032895){19}{\line(-1,0){.0375}}
+\multiput(48.85,12.68)(-.0375,-.032895){19}{\line(-1,0){.0375}}
+%\end
+%\vector(7.25,16.75)(47.75,11.75)
+\put(47.75,11.75){\vector(4,-1){.07}}\multiput(7.25,16.75)(.27181208,-.03355705){149}{\line(1,0){.27181208}}
+%\end
+\put(4.25,16.75){\makebox(0,0)[cc]{$C$}}
+\put(22,32.25){\makebox(0,0)[cc]{$\alpha$}}
+\put(24.5,27.25){\makebox(0,0)[cc]{$A$}}
+\put(60,28.5){\makebox(0,0)[cc]{$B$}}
+\put(64.25,23.75){\makebox(0,0)[cc]{$\xi$}}
+\put(50.5,10.75){\makebox(0,0)[cc]{$\beta$}}
+\put(30.75,3){\makebox(0,0)[cc]{Fig. 4}}
+\end{picture}
+\end{center}
+
+Let $\xi = \alpha + \beta$. Then we observe that
+\begin{align}
+||\xi||^{2} & = ||\alpha+\beta||^{2} = (\alpha+\beta, \alpha+\beta) \tag{1} \\
+            & = ||\alpha||^{2} + ||\beta||^{2} + 2(\alpha,\beta) \notag
+\end{align}
+
+If we consider the triangle $ABC$ according to Figure 4, we observe that
+\begin{align*}
+||\xi|| & = a, \\
+||\alpha|| & = b, \\
+||\beta|| & = c
+\end{align*}
+and
+\begin{equation*}
+(\alpha,\beta) = ||\alpha||\ ||\beta||\ \cos t
+\end{equation*}
+where $t$ is the angle between $\alpha$ and $\beta$. Note that the angle $A$ is $\pi - t$. Thus (1) can be written as
+\begin{equation*}
+a^{2} = b^{2} + c^{2} - 2 b c \cos A
+\end{equation*}
+
+\subsection{Theorem (Generalization of 2.1)} %2.2
+
+Let $\{ \alpha_{1},\cdots,\alpha_{k} \}$ be a set of linearly independent vectors in $E$, and
+\begin{equation*}
+\beta = \sum_{i=1}^{k} \alpha_{i}
+\end{equation*}
+
+Then
+\begin{equation} %(2)
+||\beta||^{2} = \sum_{i=1}^{k} ||\alpha_{i}||^{2} + 2 \sum_{i \neq 1}^{k} \Re (\alpha_{i},\alpha_{j}) \tag{2}
+\end{equation}
+where $\Re(a)$ means the real part of $a$. Since the proof is straightforward, we leave it as an exercise.
+
+If $\{ \alpha_{1},\cdots,\alpha_{k} \}$ is orthogonal, then (2) becomes
+\begin{equation*}
+||\beta||^{2} = \sum_{i=1}^{k} ||\alpha_{i}||^{2}
+\end{equation*}
+which is a generalization of Pythagoras theorem.
+
+\subsection{Lemma} %2.3
+
+Let $x_{1},\cdots,x_{k}$ be $k$ non-zero numbers, real or complex; and let $a_{1},\cdots,a_{k}$ be numbers such that
+\begin{equation*}
+\sum_{i=1}^{k} a_{i} = 1
+\end{equation*}
+and
+\begin{equation*}
+a_{1} x_{1} = \cdots = a_{k} x_{k} = y \neq 0
+\end{equation*}
+
+Then
+\begin{equation*}
+\frac{1}{y} = \sum_{i=1}^{k} \frac{1}{x_i}
+\end{equation*}
+
+The proof is very easy. The lemma has been stated since it will be used often.
+
+\subsection{Corollary} %2.4
+
+Let $a_{1},\cdots,a_{k}$ be positive, and let $x_{1},\cdots,x_{k}$ be real numbers, with
+\begin{equation*}
+\sum_{i=1}^{k} a_{i} = 1
+\end{equation*}
+
+Then $0 \neq a_{i} x_{i} < y \neq 0$, $i=1,\cdots,k$ implies
+\begin{equation*}
+\frac{1}{y} < \sum_{i=1}^{k} \frac{1}{x_i}
+\end{equation*}
+
+and $0 \neq a_{i} x_{i} > y \neq 0$ implies
+\begin{equation*}
+\frac{1}{y} > \sum_{i=1}^{k} \frac{1}{x_i}
+\end{equation*}
+
+The proof is quite easy, and will be omitted.
+
+\subsection{Theorem (Altitude of a right triangle)} %2.5
+
+Let $\{ \xi_{1},\xi_{2} \}$ be a set of non-zero orthogonal vectors (Fig. 5).
+
+\begin{center}
+%TeXCAD Picture [fig5.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(60.5,27.25)(0,0)
+\put(6.25,8.25){\line(1,0){52}}
+%\vector(15.5,27.25)(6.25,8.25)
+\put(6.25,8.25){\vector(-1,-2){.07}}\multiput(15.5,27.25)(-.033636364,-.069090909){275}{\line(0,-1){.069090909}}
+%\end
+\put(15.5,27.25){\vector(0,-1){19}}
+%\vector(15.5,27)(58,8.5)
+\put(58,8.5){\vector(2,-1){.07}}\multiput(15.5,27)(.077413479,-.033697632){549}{\line(1,0){.077413479}}
+%\end
+\put(3.75,8.5){\makebox(0,0)[cc]{$\xi_1$}}
+\put(18.25,11){\makebox(0,0)[cc]{$\eta$}}
+\put(60.5,8.25){\makebox(0,0)[cc]{$\xi_2$}}
+\put(26.25,2.5){\makebox(0,0)[cc]{Fig. 5}}
+\end{picture}
+\end{center}
+
+Let $\eta = a_{1} \xi_{1} + a_{2} \xi_{2}$, $a_{1} + a_{2} = 1$. Then
+\begin{equation*}
+(\eta, \xi_{1}-\xi_{2}) = 0
+\end{equation*}
+if and only if
+\begin{equation} %(3)
+\frac{1}{||\eta||^{2}} = \frac{1}{||\xi_{1}||^{2}} + \frac{1}{||\xi_{2}||^{2}} \tag{3}
+\end{equation}
+
+This means that the vector $\eta$ is on the altitude of the right triangle formed by $\xi_{1}$ and $\xi_{2}$ if and only if (3) is true.
+
+\subsubsection*{Proof}
+
+We note that $(\eta, \xi_{1}-\xi_{2}) = 0$ implies that
+\begin{equation*}
+(\eta,\xi_{1}) = (\eta,\xi_{2})
+\end{equation*}
+
+Now we observe that
+\begin{equation} %(4)
+(\eta,\xi_{1}) = a_{1} ||\xi_{1}||^{2} = a_{2} ||\xi_{2}||^{2} = (n,\xi_{2}) \tag{4}
+\end{equation}
+
+On the other hand,
+\begin{equation*}
+||\eta||^{2} = (a_{1}\xi_{1}+a_{2}\xi_{2}, a_{1}\xi_{1}+a_{2}\xi_{2}) = a_{1}^{2} ||\xi_{1}||^{2} + a_{2}^{2} ||\xi_{2}||^{2}
+\end{equation*}
+
+Employing (4), we obtain
+\begin{align*}
+||\eta|| & = a_{1} a_{1} ||\xi_{1}||^{2} + a_{2} a_{2} ||\xi_{2}||^{2} \\
+         & = a_{1} ||\xi_{1}||^{2} (a_{1} + a_{2}) \\
+         & = a_{1} ||\xi_{1}||
+\end{align*}
+
+Thus
+\begin{align*}
+\frac{1}{||\xi_{1}||^{2}} & = \frac{a_{1}}{||\eta||^{2}}, \\
+\frac{1}{||\xi_{2}||^{2}} & = \frac{a_{2}}{||\eta||^{2}}
+\end{align*}
+
+This implies that
+\begin{equation*}
+\frac{1}{||\xi_{1}||^{2}} + \frac{1}{||\xi_{2}||^{2}} = \frac{a_{1}+a_{2}}{||\eta||^{2}} = \frac{1}{||\eta||^{2}}
+\end{equation*}
+
+Now let (3) be true. Suppose $(\eta, \xi_{1}-\xi_{2}) \neq 0$. Then there exists $\zeta = b_{1} \xi_{1} + b_{2} \xi_{2}$, $b_{1} + b_{2} = 1$, such that
+\begin{equation*}
+(\zeta, \xi_{1}-\xi_{2}) = 0
+\end{equation*}
+
+Thus by the first part, we have
+\begin{equation*}
+\frac{1}{||\zeta||^{2}} = \frac{1}{||\xi_{1}||^{2}} + \frac{1}{||\xi_{2}||^{2}}
+\end{equation*}
+
+This implies that
+\begin{equation*}
+||\zeta|| = ||\eta||
+\end{equation*}
+
+By (4), we have
+\begin{equation*}
+||\zeta||^{2} = b_{1} ||\xi_{1}||^{2} = b_{2} ||\xi_{2}||^{2}
+\end{equation*}
+
+Thus
+\begin{align*}
+(\zeta,\eta) & = (b_1 \xi_1 + b_2 \xi_2 , a_1 \xi_1 + a_2 \xi_2) \\
+             & = b_1 a_1 ||\xi||^2 + b_2 a_2 ||\xi_2||^2 \\
+             & = (a_1 + a_2) [ b_1 ||\xi||^2 ] \\
+             & = b_1 ||\xi||^2  =  b_2 ||\xi||^2  =  ||\xi||^2
+\end{align*}
+
+Also, one obtains
+\begin{equation*}
+(\eta,\zeta) = ||\eta||^2
+\end{equation*}
+
+Thus
+\begin{equation*}
+||\zeta-\eta||^2 = (\zeta-\eta, \zeta-\eta) = ||\zeta||^2 - (\zeta,\eta) - (\eta,\zeta) + ||\eta||^2 = 0
+\end{equation*}
+
+This implies that $\zeta = \eta$.
+
+\subsection{Theorem (Generalization of 2.5)} %2.6
+
+Let $\{ \alpha_1,\cdots,\alpha_k \}$ be an orthogonal set of non-zero vectors in $E$. Let $\alpha_1,\cdots,\alpha_k$ be positive numbers such that
+\begin{equation*}
+\sum_{i=1}^k a_i = 1
+\end{equation*}
+and
+\begin{equation*}
+\xi = \sum_{i=1}^n a_i \alpha_i
+\end{equation*}
+
+Then
+\begin{align*}
+(\xi, \alpha_i-\alpha_j) & = 0 \\
+i,j & = 1,\cdots,k
+\end{align*}
+if and only if
+\begin{equation*}
+\frac{1}{||\xi||^2} = \sum_{i=1}^k \frac{1}{||\alpha_i||^2}
+\end{equation*}
+
+\subsection{Theorem (Angle bisector)} %2.7
+
+Let $\{ \alpha_1,\alpha_2 \}$ be a set of non-zero orthogonal vectors in $\Re_2$ (Fig. 6).
+
+\begin{center}
+%TeXCAD Picture [fig6.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(60.5,27.25)(0,0)
+\put(6.25,8.25){\line(1,0){52}}
+%\vector(15.5,27.25)(6.25,8.25)
+\put(6.25,8.25){\vector(-1,-2){.07}}\multiput(15.5,27.25)(-.033636364,-.069090909){275}{\line(0,-1){.069090909}}
+%\end
+%\vector(15.5,27)(58,8.5)
+\put(58,8.5){\vector(2,-1){.07}}\multiput(15.5,27)(.077413479,-.033697632){549}{\line(1,0){.077413479}}
+%\end
+\put(3.75,8.5){\makebox(0,0)[cc]{$\alpha_1$}}
+\put(18.25,11){\makebox(0,0)[cc]{$\xi$}}
+\put(60.5,8.25){\makebox(0,0)[cc]{$\alpha_2$}}
+\put(26.25,2.5){\makebox(0,0)[cc]{Fig. 6}}
+%\vector(15.5,27)(22.5,8.5)
+\put(22.5,8.5){\vector(1,-3){.07}}\multiput(15.5,27)(.03365385,-.08894231){208}{\line(0,-1){.08894231}}
+%\end
+\end{picture}
+\end{center}
+
+Let $\xi$ be the vector which represents the bisector of the right angle, i.e., 
+\begin{align*}
+      \xi & = a_1 \alpha_1 + a_2 \alpha_2 \\
+a_1 + a_2 & = 1
+\end{align*}
+and
+\begin{equation*}
+\left( \xi, \frac{\alpha_1}{||\alpha_1||} \right) = \left( \xi, \frac{\alpha_2}{||\alpha_2||} \right)
+\end{equation*}
+Then
+\begin{equation*}
+\frac{\sqrt{2}}{||\xi||} = \frac{1}{||\alpha_1||} + \frac{1}{||\alpha_2||}
+\end{equation*}
+
+\subsubsection*{Proof}
+
+It is clear that
+\begin{equation*}
+\left( \xi, \frac{\alpha_1}{||\alpha_1||} \right) = \left( \xi, \frac{\alpha_2}{||\alpha_2||} \right)
+\end{equation*}
+implies
+\begin{equation} %(5)
+a_1 ||\alpha_1|| = a_2 ||\alpha_2||  \tag{5}
+\end{equation}
+
+Now, we observe that
+\begin{equation*}
+||\xi||^2 = ( a_1 \alpha_1 + a_2 \alpha_2 ,\ a_1 \alpha_1 + a_2 \alpha_2 ) = a_1^2 ||\alpha_1||^2 = a_2^2 ||\alpha_2||^2
+\end{equation*}
+
+Considering (5), we obtain
+\begin{equation*}
+||\xi||^2 = 2 a_1^2 ||\alpha_1||^2 = 2 a_2^2 ||\alpha_2||^2
+\end{equation*}
+
+Thus
+\begin{equation*}
+||\xi|| = \sqrt{2} a_{1} ||\alpha_{1}|| = \sqrt{2} a_{2} ||\alpha_{2}||
+\end{equation*}
+which implies
+\begin{equation*}
+\frac{\sqrt{2}}{||\xi||} = \frac{1}{||\alpha_{1}||} + \frac{1}{||\alpha_{2}||}
+\end{equation*}
+
+\subsection{Theorem (Equisector)} %2.8
+
+Let $\{ \alpha_{1},\cdots,\alpha_{k} \}$ be a set of non-zero orthogonal vectors in $E$. Let $a_{1},\cdots,a_{k}$ be positive numbers such that
+\begin{equation*}
+\sum_{i=1}^{k} a_{1} = 1
+\end{equation*}
+and
+\begin{equation*}
+\xi = \sum_{i=1}^{k} a_{i} \alpha_{i}
+\end{equation*}
+
+Then
+\begin{equation*}
+( \xi, \frac{\alpha_{i}}{||\alpha_{i}||} ) = ( \xi, \frac{\alpha_{j}}{||\alpha_{j}||} ),\ i,j=1,\cdots,k
+\end{equation*}
+implies
+\begin{equation*}
+\frac{\sqrt{k}}{||\xi||} = \sum_{i=1}^{k} \frac{1}{||\alpha_{1}||}
+\end{equation*}
+
+The proof follows the one of 2.7.
+
+\subsection{Theorem} %2.9
+
+Let $\{ \alpha_{1},\alpha_{2} \}$ be a set of linearly independent vectors in $\Re_{2}$. Let the angle between $\alpha_{1}$ and $\alpha_{2}$ be $\frac{2\pi}{3}$ (Fig. 7).
+
+\begin{center}
+%TeXCAD Picture [fig7.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(75.75,29.75)(0,0)
+\put(6.5,11.25){\line(1,0){66.75}}
+\put(73.25,11.25){\line(0,1){0}}
+%\vector(28,29.75)(6.5,11.5)
+\put(6.5,11.5){\vector(-4,-3){.07}}\multiput(28,29.75)(-.03974122,-.033733826){541}{\line(-1,0){.03974122}}
+%\end
+%\vector(28.25,29.75)(30.75,11.5)
+\put(30.75,11.5){\vector(1,-4){.07}}\multiput(28.25,29.75)(.0333333,-.2433333){75}{\line(0,-1){.2433333}}
+%\end
+%\vector(28.25,29.75)(73.25,11.5)
+\put(73.25,11.5){\vector(3,-1){.07}}\multiput(28.25,29.75)(.083179298,-.033733826){541}{\line(1,0){.083179298}}
+%\end
+\put(5,10.5){\makebox(0,0)[cc]{$\alpha_1$}}
+\put(30.5,8.75){\makebox(0,0)[cc]{$\xi$}}
+\put(75.75,10.75){\makebox(0,0)[cc]{$\alpha_2$}}
+\put(37.75,3){\makebox(0,0)[cc]{Fig. 7}}
+\end{picture}
+\end{center}
+
+Let $\xi$ be on the bisector of the angle between $\alpha_{1}$ and $\alpha_{2}$, and end on the line through the endpoints of $\alpha_{1}$ and $\alpha_{2}$. Then
+\begin{equation*}
+\frac{1}{||\xi||} = \frac{1}{||\alpha_{1}||} + \frac{1}{||\alpha_{2}||}
+\end{equation*}
+
+The proof is quite simple.
+
+\subsection{Corollary} %2.10
+
+Let $\alpha_{1}$, $\alpha_{2}$, and $\xi$ be the same as in 2.9. Let $\beta_{1}$ and $\beta_{2}$ be orthogonal projections of $\alpha_{1}$ and $\alpha_{2}$ on the line containing $\xi$ (Fig. 8). Then
+
+\begin{center}
+%TeXCAD Picture [fig8.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(75.75,38.5)(0,0)
+\put(6.5,20.21){\line(1,0){66.75}}
+\put(73.25,20){\line(0,1){0}}
+%\vector(28,38.5)(6.5,20.25)
+\put(6.5,20.25){\vector(-4,-3){.07}}\multiput(28,38.5)(-.03974122,-.033733826){541}{\line(-1,0){.03974122}}
+%\end
+%\vector(28.25,38.5)(30.75,20.25)
+\put(30.75,20.25){\vector(1,-4){.07}}\multiput(28.25,38.5)(.0333333,-.2433333){75}{\line(0,-1){.2433333}}
+%\end
+%\vector(28.25,38.5)(73.25,20.25)
+\put(73.25,20.25){\vector(3,-1){.07}}\multiput(28.25,38.5)(.083179298,-.033733826){541}{\line(1,0){.083179298}}
+%\end
+\put(5,19.25){\makebox(0,0)[cc]{$\alpha_1$}}
+\put(33,22.5){\makebox(0,0)[cc]{$\xi$}}
+\put(75.75,19.5){\makebox(0,0)[cc]{$\alpha_2$}}
+\put(37.75,3){\makebox(0,0)[cc]{Fig. 8}}
+%\emline(31,20.25)(32.5,8)
+\multiput(31,20.25)(.0333333,-.2722222){45}{\line(0,-1){.2722222}}
+%\end
+%\dashline{1}(73,20.25)(31.75,14.75)
+\multiput(72.93,20.18)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(71.01,19.92)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(69.09,19.67)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(67.17,19.41)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(65.26,19.16)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(63.34,18.9)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(61.42,18.64)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(59.5,18.39)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(57.58,18.13)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(55.66,17.88)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(53.74,17.62)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(51.83,17.37)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(49.91,17.11)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(47.99,16.85)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(46.07,16.6)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(44.15,16.34)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(42.23,16.09)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(40.31,15.83)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(38.39,15.58)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(36.48,15.32)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(34.56,15.06)(-.2398,-.032){4}{\line(-1,0){.2398}}
+\multiput(32.64,14.81)(-.2398,-.032){4}{\line(-1,0){.2398}}
+%\end
+%\dashline{1}(6.25,20.25)(30.25,23.75)
+\multiput(6.18,20.18)(.2308,.0337){4}{\line(1,0){.2308}}
+\multiput(8.03,20.45)(.2308,.0337){4}{\line(1,0){.2308}}
+\multiput(9.87,20.72)(.2308,.0337){4}{\line(1,0){.2308}}
+\multiput(11.72,20.99)(.2308,.0337){4}{\line(1,0){.2308}}
+\multiput(13.56,21.26)(.2308,.0337){4}{\line(1,0){.2308}}
+\multiput(15.41,21.53)(.2308,.0337){4}{\line(1,0){.2308}}
+\multiput(17.26,21.8)(.2308,.0337){4}{\line(1,0){.2308}}
+\multiput(19.1,22.06)(.2308,.0337){4}{\line(1,0){.2308}}
+\multiput(20.95,22.33)(.2308,.0337){4}{\line(1,0){.2308}}
+\multiput(22.8,22.6)(.2308,.0337){4}{\line(1,0){.2308}}
+\multiput(24.64,22.87)(.2308,.0337){4}{\line(1,0){.2308}}
+\multiput(26.49,23.14)(.2308,.0337){4}{\line(1,0){.2308}}
+\multiput(28.33,23.41)(.2308,.0337){4}{\line(1,0){.2308}}
+%\end
+\put(27.5,26.5){\makebox(0,0)[cc]{$\beta_2$}}
+\put(29,15){\makebox(0,0)[cc]{$\beta_1$}}
+%\vector(29.54,29.33)(30.38,23.76)
+\put(30.38,23.76){\vector(1,-4){.07}}\multiput(29.54,29.33)(.033636,-.222838){25}{\line(0,-1){.222838}}
+%\end
+%\vector(31.32,17.76)(31.64,14.51)
+\put(31.64,14.51){\vector(0,-1){.07}}\multiput(31.32,17.76)(.03153,-.32585){10}{\line(0,-1){.32585}}
+%\end
+\end{picture}
+\end{center}
+
+\begin{equation*}
+\frac{2}{||\xi||} = \frac{1}{||\beta_{1}||} + \frac{1}{||\beta_{2}||}
+\end{equation*}
+
+Here, the end point of $\xi$ is called the \emph{harmonic conjugate} of the origin with respect to end points of $\beta_{1}$ and $\beta_{2}$. The proof is left as an exercise.
+
+\subsection{Theorem (Generalization of 2.9)} %2.11
+
+Let $\{ \alpha_{1},\cdots,\alpha_{k} \}$ be a set of linearly independent vectors in $\Re$. Let $a_{1},\cdots,a_{k}$ be positive numbers such that
+\begin{equation*}
+\sum_{i=1}{k} a_{i} = 1
+\end{equation*}
+and
+\begin{equation*}
+\xi = \sum_{i=1}^{k} a_{i} \alpha_{i}
+\end{equation*}
+
+Let
+\begin{align*}
+\left( \frac{\alpha_i}{||\alpha_i||},\ \frac{\alpha_j}{||\alpha_j||} \right) & = - \frac{1}{k}, \\
+i,j & = 1,\cdots,k, \\
+i & \neq j
+\end{align*}
+and
+\begin{align*}
+\left( \xi,\ \frac{\alpha_i}{||\alpha_i||} \right) & = \left( \xi,\ \frac{\alpha_j}{||\alpha_j||} \right), \\
+i,j & = 1,\cdots,k
+\end{align*}
+
+Then
+\begin{equation*}
+\frac{1}{||\xi||} = \sum_{i=1}^{k} \frac{1}{||\alpha_{1}||}
+\end{equation*}
+
+\subsection{Corollary} %2.12
+
+Let $\alpha_{i}$ and $\xi$ be the same as in 2.11.
+
+Define
+\begin{equation*}
+\beta_{i} = \left( \alpha_{i},\ \frac{\xi}{||\xi||} \right) \frac{\xi}{||\xi||}
+\end{equation*}
+
+Then
+\begin{equation*}
+\frac{k}{||\xi||} = \sum_{i=1}^{k} \frac{1}{||\beta_{i}||}
+\end{equation*}
+
+The vector $\xi$ is defined to be the \emph{harmonic conjugate} of the zero vector with respect to $\{ \beta_{1},\cdots,\beta_{k} \}$.
+
+\subsection*{Exercise 2}
+\addcontentsline{toc}{subsection}{\numberline{}Exercise 2}
+
+\begin{enumerate}[\hspace{1cm}(1)]
+
+  \item Let $\{ \alpha_{1},\alpha_{2} \}$ be linearly independent in $\Re_{2}$, and
+    \begin{align*}
+    \xi & = a_{1} \alpha_{1} + a_{2} \alpha_{2}, \\
+    a_{1} & + a_{2} = 1
+    \end{align*}
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item Show that there is a unique vector $\xi \in \Re_{2}$ such that $(\xi, \alpha_{1}-\alpha_{2}) = 0$.
+      \item What is the geometric meaning of (i)?
+      \item Obtain an expression for $||\xi||$ independent of $a_{1}$ and $a_{2}$.
+      \item Show that there exists $\eta \in \Re_{2}$ such that
+        \begin{equation*}
+        \left( \eta, \frac{\alpha_{1}}{||\alpha_{1}||} \right) = \left( \eta, \frac{\alpha_{2}}{||\alpha_{2}||} \right)
+        \end{equation*}
+      \item Give a geometric interpretation of (iv).
+      \item Obtain an expression for $||\eta||$ independent of $a_{1}$ and $a_{2}$.
+      \item Show that there is $\zeta \in \Re_{2}$ such that
+        \begin{equation*}
+        ||\zeta - \alpha_{1}|| = ||\zeta - \alpha_{2}||
+        \end{equation*}
+      \item Give a geometric interpretation of (vii).
+      \item Find $||\zeta||$ in terms $||\alpha_{1}||$, $||\alpha_{2}||$, and $||\xi||$.
+    \end{enumerate}
+
+  \item Generalize (1) to $\Re_{n}$.
+
+  \item Generalize (1) to $E_{n}$.
+
+  \item Generalize 2.11 and 2.12 to the complex spaces.
+
+  \item Let $\{ \alpha_{1},\alpha_{2} \}$ be a set of non-zero orthogonal vectors in $\Re_{2}$.
+
+    Let $\xi = a_{1} \alpha_{1} + a_{2} \alpha_{2}$ with $a_{1} + a_{2} = 1$ and $(\xi, \alpha_{1}-\alpha_{2}) = 0$.
+
+    Show that
+    \begin{equation*}
+    ||\alpha_{1}||\ ||\alpha_{2}|| = ||\xi||\ ||\alpha_{1}+\alpha_{2}||
+    \end{equation*}
+
+  \item Give a geometric interpretation of (5).
+
+  \item In (5), show that $||\alpha_{1} + \alpha_{2}||$ is the diameter of the circumscribed circle of the triangle formed by $\alpha_{1}$ and $\alpha_{2}$.
+
+  \item Generalize (5) to the case where $\{ \alpha_{1},\alpha_{2} \}$ is linearly independent.
+
+  \item Generalize (5) to $\Re_{n}$, and obtain inequalities.
+
+  \item Study other properties of a right triangle, and generalize the idea to a set of non-zero orthogonal vectors in $E$.
+
+\end{enumerate}
+
+
+\newpage
+
+\section{The Space of Linear Transformations}
+\markboth{3. Space of Linear Transform.}{3. Space of Linear Transform.}
+
+In this chapter, we study some metric properties of linear transformations on a unitary space $E_{n}$ of dimension $n$.
+
+\subsection{Preliminaries} %3.1
+
+Let $A$ be a linear transformation on $E_{n}$. Then the adjoint of $A$ is denoted by $A^*$, and is defined by
+\begin{align*}
+(A\xi, \eta) & = (\xi, A^* \eta), \\
+\xi,\eta & \in E_{n}
+\end{align*}
+
+If $A^* = A$, then $A$ is called a \emph{Hermitian transformation} or a \emph{self-adjoint transformation}. If $A^*A = A A^*$, then $A$ is called a \emph{normal transformation}. If $A^*A = A A^* = I$, then $A$ is a \emph{unitary transformation}. A Hermitian transformation $A$ is called \emph{positive} (\emph{positive definite}) if for every $\xi \neq 0$, $\xi \in E_{n}$, we have $(A \xi, \xi) > 0$. A Hermitian transformation $A$ is called \emph{non-negative} (\emph{positive semidefinite}) if for every $\xi \in E$, we have $(A \xi, \xi) \geq 0$. 
+
+Now, we shall review a few theorems without proof. Proper values of a positive (non-negative) transformation are positive (non-negative). Let $m_{1},\cdots,m_{n}$ be proper values of a Hermitian transformation $A$. Then there exists an orthonormal basis $\{ a_{1},\cdots,a_{n} \}$ such that
+\begin{align*}
+A \alpha_{i} & = m_{i} a_{i}, \\
+i & = 1,\cdots,n
+\end{align*}
+
+Whenever necessary, we shall state other theorems.
+
+\subsection{Theorem (Fischer)} %3.2
+
+Let $A$ be a Hermitian transformation on $E_{n}$ with proper values $m_{1} > \cdots > m_{n}$. Then
+\begin{equation}
+m_{1} = \sup_{||\xi_{1}|| = 1} (A \xi, \xi)  \tag{1}
+\end{equation}
+and
+\begin{equation}
+m_{n} = \inf_{||\xi_{1}|| = 1} (A \xi, \xi)  \tag{2}
+\end{equation}
+
+\subsubsection*{Proof}
+
+Let $\{ \alpha_{1},\cdots,\alpha_{n} \}$ be an orthonormal set of proper vectors of $A$ such that
+\begin{align*}
+A \alpha_{i} & = m_{i} \alpha_{i}, \\
+i = 1,\cdots,n
+\end{align*}
+
+Then for any $\xi \in E_{n}$ by 1.10 (4), we have
+\begin{equation*}
+\xi = (\xi,\alpha_{1}) \alpha_{1} + \cdots + (\xi,\alpha_{n}) \alpha_{n}
+\end{equation*}
+and
+\begin{equation*}
+A \xi = m_{1} (\xi, \alpha_{1}) \alpha_{1} + \cdots + m_{n} (\xi, \alpha_{n}) \alpha_{n}
+\end{equation*}
+
+Therefore
+\begin{equation*}
+(A \xi, \xi) = m_{1} |(\xi,\alpha_{1})|^{2} + \cdots + m_{n} |(\xi,\alpha_{n})|^{2}
+\end{equation*}
+
+To prove (1), we observe that
+\begin{equation*}
+(A \xi, \xi) \leq m_{1} [ |(\xi,\alpha_{1})|^{2} + \cdots + |(\xi,\alpha_{n})|^{2} ]
+\end{equation*}
+
+Now if we let $||\xi|| = 1$, by 1.10 (6), we have
+\begin{equation*}
+1 = ||\xi||^{2} = |(\xi,\alpha_{1})|^{2} + \cdots + |(\xi,\alpha)|^{2}
+\end{equation*}
+
+Therefore
+\begin{equation*}
+(A \xi, \xi) \leq m_{1}
+\end{equation*}
+
+But when $\xi = \alpha_{1}$, we obtain
+\begin{equation*}
+(A \xi, \xi) = (A \alpha_{1}, \alpha_{1}) = (m_{1} \alpha_{1}, \alpha_{1}) = m_{1}
+\end{equation*}
+
+Thus
+\begin{equation*}
+\sup_{||\xi|| = 1} (A \xi, \xi) = m_{1}
+\end{equation*}
+
+Now to prove (2), one notes that
+\begin{equation*}
+(A \xi, \xi) \geq m_{n} [ |(\xi,\alpha_{1})|^{2} + \cdots + |(\xi,\alpha_{n})|^{2} ]
+\end{equation*}
+
+If we let $||\xi|| = 1$, we obtain
+\begin{equation*}
+(A \xi, \xi) > m_{n}
+\end{equation*}
+
+Again for $\xi = \alpha_{n}$, we have
+\begin{equation*}
+(A \xi, \xi) = (A \alpha_{n}, \alpha_{n}) = (m_{n} \alpha_{n}, \alpha_{n}) = m_{n}
+\end{equation*}
+
+Consequently
+\begin{equation*}
+\inf_{||\xi|| = 1} (A \xi, \xi) = m_{n}
+\end{equation*}
+
+Many generalizations may be found in the literature. Since we do not use them, we shall not pursue that direction.
+
+\subsection{Theorem} %3.3
+
+Let $A$ be a linear transformation on $E_{n}$. Then $A^*A$ and $A A^*$ are both non-negative, and have the same proper values.
+
+\subsection{Definition (Square roots)} %3.4
+
+We shall only define the non-negative square roots for non-negative transformations. Let $A$ be a non-negative transformation on $E_{n}$ with proper values $h_{1} \geq \cdots \geq h_{n}$. Let $\{ \alpha_{1},\cdots,\alpha_{n} \}$ be an orthonormal basis in $E_{n}$ such that
+\begin{align*}
+A \alpha_{i} & = h_{i} \alpha_{i}, \\
+i & = 1,\cdots,n
+\end{align*}
+
+Then the matrix of $A$ with respect to this basis is
+\begin{equation*}
+\begin{pmatrix}
+h_{1} &        &   0   \\
+      & \ddots &       \\
+  0   &        & h_{n} 
+\end{pmatrix}
+\end{equation*}
+which is in diagonal form. We define the linear transformation $B$ on $E_{n}$ whose matrix with respect to $\{ \alpha_{1},\cdots,\alpha_{n} \}$ is
+\begin{equation*}
+\begin{pmatrix}
+\sqrt{h_{1}} &        &      0      \\
+             & \ddots &             \\
+      0      &        & \sqrt{h_{n}}
+\end{pmatrix}
+\end{equation*}
+
+Then $B$ is called the \emph{non-negative square root} of $A$, and will be denoted by $\sqrt{A}$. It is clear that $\sqrt{A}$ is non-negative, and has the same proper vectors as $A$.
+
+\subsection{Definition (Singular values)} %3.5
+
+Let $A$ be a linear transformation on $E_{n}$, and let $a_{1},\cdots,a_{n}$ be proper values of $A^*A$. Then the set $\{ \sqrt{a_{1}},\cdots,\sqrt{a_{n}} \}$ is called the set of \emph{absolute singular values} of $A$. Note that we have only considered positive square roots. In what follows, whenever we say singular values, we mean absolute singular values.
+
+Here, we may easily show that the absolute singular values of $A$ are the same as the proper values of $\sqrt{A^*A}$ or the proper values of $\sqrt{AA^*}$. We leave the proof as an exercise.
+
+\subsection{The Hilbert Norm} %3.6
+
+Let $A$ be a linear transformation on $E_{n}$. Then the Hilbert norm of $A$ is defined by
+\begin{equation*}
+||A||_{H} = \sup_{||\xi|| = 1} ||A \xi||
+\end{equation*}
+
+One can express this norm in terms of singular values of $A$. Let $a$ be the largest singular value of $A$. Then we observe that $a^{2}$ is a proper value of $A^*A$. Then by (3.2) (1), we have
+\begin{equation*}
+\sup_{||\xi|| = 1} (A^*A \xi, \xi) = a^{2}
+\end{equation*}
+
+But
+\begin{equation*}
+(A^*A \xi, \xi) = (A \xi, A \xi) = ||A \xi||^{2}
+\end{equation*}
+
+Therefore
+\begin{equation*}
+||A||_{H}^{2} = \sup_{||\xi|| = 1} ||A \xi||^{2} = a^{2}
+\end{equation*}
+
+This implies that
+\begin{equation*}
+||A||_{H} = a
+\end{equation*}
+
+\subsection{Frobenius inner product} %3.7
+
+Let $A$ and $B$ be linear transformations on $E_{n}$. Let $\mathcal{B} = \{ \alpha_{1},\cdots,\alpha_{n} \}$ be an orthonormal basis in $E_{n}$. Let $(a_{ij})$ and $(b_{ij})$ be respectively the matrices of $A$ and $B$ with respect to $\mathcal{B}$. Then we define the Frobenius inner product of $A$ and $B$ by
+\begin{equation*}
+(A,B)_{F} = \sum_{i,j=1}^{n} a_{ij} \bar{b}_{ij}
+\end{equation*}
+
+For example, let
+\begin{equation*}
+[A] = 
+\begin{pmatrix}
+a_{11} & \cdots & a_{1n} \\
+\cdots &        & \cdots \\
+a_{n1} & \cdots & a_{nn}
+\end{pmatrix}
+\end{equation*}
+and
+\begin{displaymath}
+[B] = 
+\begin{pmatrix}
+b_{11} & \cdots & b_{1n} \\
+\cdots &        & \cdots \\
+b_{n1} & \cdots & b_{nn}
+\end{pmatrix}
+\end{displaymath}
+
+Then
+\begin{equation*}
+(A,B)_{F} = a_{11} \bar{b}_{11} + a_{12} \bar{b}_{12} + \cdots + a_{nn} \bar{b}_{nn}
+\end{equation*}
+
+This inner product introduces the Frobenius norm for $A$; i.e.,
+\begin{equation*}
+||A||_{F}^2 = (A,A)_{F} = \sum_{i,j=1}^{n} (a_{ij})^{2}
+\end{equation*}
+
+The next theorem will show that this inner product is well-defined; i.e., it is independent of the choice of the basis.
+
+\subsection{Theorem} %3.8
+
+Let $A$ and $B$ be linear transformations on $E_{n}$. Then
+\begin{equation*}
+(A,B)_{F} = \text{trace } A B^*
+\end{equation*}
+
+\subsection{Theorem} %3.9
+
+Let $A$ be a linear transformation on $E_{n}$. Let $a_{1},\cdots,a_{n}$ be singular values of $A$. Then
+\begin{equation*}
+||A||_{F} = \left( \sum_{i=1}^{n} a_{i}^{2} \right)^{1/2}
+\end{equation*}
+
+\subsection*{Exercise 3}
+\addcontentsline{toc}{subsection}{\numberline{}Exercise 3}
+
+\begin{enumerate}[\hspace{1cm}(1)]
+
+  \item Obtain all the singular values of
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item
+        \begin{equation*}
+        \begin{pmatrix}
+          1 & i \\
+          0 & 3
+        \end{pmatrix}
+        \end{equation*}
+      \item
+        \begin{equation*}
+        \begin{pmatrix}
+          2i & -2i \\
+          -1 & 1
+        \end{pmatrix}
+        \end{equation*}
+    \end{enumerate}
+
+  \item Find the singular values of
+    \begin{equation*}
+    \begin{pmatrix}
+      \frac{1-i}{2} & \frac{1+i}{2} \\
+      & \\
+      \frac{1+i}{2} & \frac{1-i}{2}
+    \end{pmatrix}
+    \end{equation*}
+
+  \item Let $A$ be a Hermitian transformation with proper values $m_{1} \geq \cdots \geq m_{n}$. Prove that
+    \begin{equation*}
+    m_{k} = \sup_{ \stackrel{M}{\text{dim} M=k} } \ \inf_{ \stackrel{||\xi|| = 1}{\xi \in M} } \ (A \xi, \xi)
+    \end{equation*}
+    where $M$ ranges over all subspaces of dimension $k$ of $E_{n}$. (This proposition is called \emph{Fischer's Minimax principle}.)
+
+  \item Consider the Frobenius inner product. Express Schwartz inequality in terms of proper values and singular values of $A$, $B$, $A^*$, $B^*$, or other combinations.
+
+  \item Using Frobenius inner product, obtain the law of cosines.
+
+  \item Generalize 2.5 for the space of linear transformations, using Frobenius inner product.
+
+  \item Generalize (6) for $k$ linear transformations.
+
+  \item Generalize 2.7 for the space of linear transformations, using Frobenius inner product.
+
+  \item Generalize (8) for $k$ linear transformations.
+
+  \item Generalize 2.9 for linear transformations, using Frobenius inner product.
+
+  \item Generalize 2.10 for linear transformations,$\ $ using Frobenius inner product.
+
+  \item Give generalizations of (10) and (11) for $k$ linear transformations.
+
+\end{enumerate}
+
+
+\newpage
+
+\section{Some Geometric Properties of Linear Transformations}
+\markboth{4. Properties of Lin. Transform.}{4. Properties of Lin. Transform.}
+
+The Hilbert norm for linear transformations does not induce an inner product on the space of linear transformations. But we may use other kinds of products, and study many configurations of geometric nature consisting of linear transformations.
+
+\subsection{Adjoint products} %4.1
+
+Let $A$ and $B$ be linear transformations. We define $A*B$ to be the adjoint product or $*$-product of $A$ and $B$. This product does not have all the properties of an inner product. But one may study problems of geometrical natures using this product.
+
+\subsection{Theorem} %4.2
+
+Let $\{ A_1,\cdots,A_k \}$, $k<n$, be a set of linear transformations on $E_n$ with a common null space, such that
+\begin{align*}
+A_i*A_j & = 0 \\
+      i & < j \\
+    i,j & = 1,\cdots,k
+\end{align*}
+
+Let $a_1,\cdots,a_k$ be positive numbers such that
+
+Suppose
+\begin{equation*}
+m_{1} \geq \cdots \geq m_{p} > m_{p+1} = \cdots = m_{n} = 0
+\end{equation*}
+are singular values of $B$, and
+\begin{equation}
+h_{i1} \geq \cdots \geq h_{ip} > h_{i(p+1)} = \cdots = h_{in} = 0  \tag{1}
+\end{equation}
+be singular values of $A_i$, $i = 1,\cdots,k$.
+
+Then
+\begin{align}
+  B*(A_{i}-A_{j}) & = 0, \tag{2} \\
+  i,j & = 1,\cdots,k \notag
+\end{align}
+if and only if
+\begin{align*}
+  \frac{1}{ m_{q}^{2} } & = \sum_{i=1}^{k} \frac{1}{ h_{iq^2} }, \\
+  q & = 1,\cdots,p
+\end{align*}
+
+(Note that this is another generalization of 2.5.)
+
+\subsection{Theorem} %4.3
+
+Let $\{ A_{1},\cdots,A_{k} \}$, $k < n$ be a set of linear transformations on $E_n$ with a common null space such that
+\begin{align*}
+A_{i} * A_{j} & = 0, \\
+i & < j, \\
+i,j & = 1,\cdots,k
+\end{align*}
+
+Let $a_{1},\cdots,a_{k}$ be positive numbers such that
+\begin{align*}
+\sum_{i=1}^{k} & a_{i} = 1, \\
+B & = \sum_{i=1}^{k} a_{i} A_{i}
+\end{align*}
+
+Suppose
+\begin{equation*}
+m_{1} \geq \cdots \geq m_{p} > m_{p+1} = \cdots = m_{n} = 0
+\end{equation*}
+are singular values of $B$, and
+\begin{equation*}
+h_{i1} \geq \cdots \geq h_{ip} > h_{i(p+1)} = \cdots = h_{in} = 0
+\end{equation*}
+are singular values of $A_{i}$, $i = 1,\cdots,k$.
+
+Then
+\begin{align}
+  \frac{1}{h_{iq}} & B*A_{i} = \frac{1}{h_{jq}} B*A_{j}, \tag{3} \\
+  i,j & = 1,\cdots,k \notag
+\end{align}
+and $q = 1,\cdots,p$ implies that
+\begin{equation*}
+\frac{\sqrt{k}}{|m_q|} = \sum_{i=1}^{k} \frac{1}{h_{iq}}
+\end{equation*}
+
+(Note that this theorem is another generalization of 2.7.)
+
+\subsection{Definition (Reciprocals)} %4.4
+
+We shall only define reciprocals (generalized inverses) for Hermitian transformations.
+Let $A$ be a Hermitian transformation on $E_{n}$ with proper values
+\begin{equation*}
+h_{1} \geq h_{2} \geq \cdots \geq h_{n}
+\end{equation*}
+
+Let, for example,
+\begin{equation*}
+h_{k} = h_{k+1} = \cdots = h_{p} = 0
+\end{equation*}
+and the rest be non-zero. Let $\{ \alpha_{1},\cdots,\alpha_{n} \}$ be an orthonormal basis for $E_{n}$ such that
+\begin{align*}
+A \alpha_{i} & = h_{i} \alpha_{i}, \\
+i & = 1,\cdots,n
+\end{align*}
+
+Thus the matrix of $A$ with respect to this basis is
+\begin{equation*}
+\begin{pmatrix}
+h_{1} &        &         &   &        &   &         &        &   0   \\
+      & \ddots &         &   &        &   &         &        &       \\
+      &        & h_{k-1} &   &        &   &         &        &       \\
+      &        &         & 0 &        &   &         &        &       \\
+      &        &         &   & \ddots &   &         &        &       \\
+      &        &         &   &        & 0 &         &        &       \\
+      &        &         &   &        &   & h_{p+1} &        &       \\
+      &        &         &   &        &   &         & \ddots &       \\
+  0   &        &         &   &        &   &         &        & h_{n} 
+\end{pmatrix}
+\end{equation*}
+
+We define the linear transformation $B$ on $E_{n}$ whose matrix with respect to $\{ \alpha_{1},\cdots,\alpha_{1} \}$ is
+\begin{equation*}
+\begin{pmatrix}
+1/h_{1} &        &           &   &        &   &           &        &    0    \\
+        & \ddots &           &   &        &   &           &        &         \\
+        &        & 1/h_{k-1} &   &        &   &           &        &         \\
+        &        &           & 0 &        &   &           &        &         \\
+        &        &           &   & \ddots &   &           &        &         \\
+        &        &           &   &        & 0 &           &        &         \\
+        &        &           &   &        &   & 1/h_{p+1} &        &         \\
+        &        &           &   &        &   &           & \ddots &         \\
+   0    &        &           &   &        &   &           &        & 1/h_{n} 
+\end{pmatrix}
+\end{equation*}
+
+It is clear that $B$ is Hermitian, and has the same proper vectors as $A$. We observe that
+\begin{equation*}
+AB = BA = P
+\end{equation*}
+where $P$ is the orthogonal projection on the range of $A$. Here we define $B$ to be the \emph{reciprocal} of $A$, and write $B = A^{-}$. It is clear that when $A$ is non-singular, then $A^{-} = A^{-1}$, the inverse of $A$.
+
+\subsection{Theorem} %4.5
+
+Here we formulate Theorem 4.3 in terms of transformations. Let $\{ A_{1},\cdots,A_{k} \}$, $k<n$ be a set of linear transformations on $E_{n}$, with a common null space such that
+\begin{align*}
+A_{i} * A_{j} & = 0, \\
+i & < j, \\
+i,j & = i,\cdots,k
+\end{align*}
+
+Let $a_{1},\cdots,a_{k}$ be positive numbers such that
+\begin{align*}
+\sum_{i=1}^{k} & a_{i} = 1, \\
+B & = \sum_{i=1}^{k} a_{i} A_{i}
+\end{align*}
+
+Then
+\begin{align} %(4)
+  B * A_{i} & \left( \sqrt{ A_{i} * A_{i} } \right)^{-} = B * A_{j} \left( \sqrt{ A_{j} * A_{j} } \right)^{-},  \tag{4} \\
+  i,j & = 1,\cdots,k \notag
+\end{align}
+implies that
+\begin{equation*}
+  \frac{\sqrt{k}}{m_q} = \sum_{i=1}^{k} \frac{1}{h_{iq}}
+\end{equation*}
+where $m_{q}$ and $h_{iq}$, $i = 1,\cdots,k$, $q = 1,\cdots,p$ are the same as in 4.3.
+
+\subsection*{Exercise 4}
+\addcontentsline{toc}{subsection}{\numberline{}Exercise 4}
+
+\begin{enumerate}[\hspace{1cm}(1)]
+
+  \item Obtain an analogue of 2.9 using $*$-product.
+
+  \item Generalize 2.10 using $*$-product.
+
+  \item Generalize 2.11 for linear transformations using $*$-product.
+
+  \item Using $*$-product, generalize 2.12.
+
+  \item Using $*$-product, what can be said similar to Schwarz inequality?
+
+  \item Same as (5) for Triangle inequality.
+
+  \item Using $*$-product, obtain an analogue of Bessel's inequality.
+
+  \item Obtain an analogue of Parseval identity using $*$-product.
+
+  \item Supply a proof for 4.5.
+
+  \item Let $\xi$ be a vector in $E_{n}$ such that $||\xi|| = a > 0$. Then $\xi$ describes a sphere in $E_{n}$. Using the ideas of norm and $*$-product, define a sphere in the space of linear transformations.
+
+  \item In (10), the sphere had its center at the $\vec{0}$. Write the equation of the sphere whose center is described by $\alpha \epsilon E_{n}$.
+
+  \item Do (11) for linear transformations.
+
+\end{enumerate}
+
+
+\newpage
+
+\section{Quadrics}
+\markboth{5. Quadrics}{5. Quadrics}
+
+As the reader is already acquainted, the theory of quadratic forms with real variables is closely related to the theory of symmetric matrices and Hermitian transformations. In this chapter, we shall review these ideas. Then we extend the theory to \emph{quadrics}.
+
+\subsection{Quadratic forms in two variables} %5.1
+
+Let $x$ and $y$ be two real variables, and $a,b,c$ be real numbers. Then we observe that the quadratic form
+\begin{equation*}
+q = ax^{2} + 2bxy + cy^{2}
+\end{equation*}
+can be written as
+\begin{equation*}
+(q) = 
+\begin{pmatrix}
+  x & y
+\end{pmatrix}
+\begin{pmatrix}
+  a & b \\
+  b & c 
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y 
+\end{pmatrix}
+\end{equation*}
+
+Let $\{ \alpha_{1},\alpha_{2} \}$ be the orthonormal basis with respect to which $q$ has been written. Then we may say $\xi = x \alpha_{1} + y \alpha_{2}$, and there is a linear transformation $A$ on $\Re_{2}$ whose matrix is
+\begin{equation*}
+\begin{pmatrix}
+  a & b \\
+  b & c 
+\end{pmatrix}
+\end{equation*}
+
+Thus $A \xi$ is represented by
+\begin{equation*}
+\begin{pmatrix}
+  x & y
+\end{pmatrix}
+\begin{pmatrix}
+  a & b \\
+  b & c 
+\end{pmatrix}
+\end{equation*}
+
+And $q$ can be written as
+\begin{equation}
+(A\xi, \xi) = (\xi, A\xi)  \tag{1}
+\end{equation}
+
+Therefore, in general, given a linear transformation $A$ on $E_{n}$, we define $(A\xi, \xi)$ to be the quadratic form corresponding to $A$. The equality (1) can be written if and only if $A$ is Hermitian.
+
+\subsection{Reduction of a quadratic form} %5.2
+
+Let
+\begin{equation}
+q = (A \xi, \xi)  \tag{2}
+\end{equation}
+be a quadratic form on $E_{n}$, where $A$ is Hermitian. It is well-known that there is an orthonormal basis in $E_{n}$ with respect to which $q$ has the form
+\begin{equation}
+q = m_{1} y_{1}^{2} + \cdots + m_{n} y_{n}^{2}  \tag{3}
+\end{equation}
+where $m_{1},\cdots,m_{n}$ are proper values of $A$. The form (3) is called the \emph{canonical form} or the \emph{reduced form} of (2).
+
+\subsection{Quadrics in $R_{n}$} %5.3
+
+Let us look at the equation
+\begin{equation}
+ax^{2} + 2bxy + cy^{2} + 2rx + 2sy + t = 0  \tag{4}
+\end{equation}
+
+This is the equation of a conic section in its general form. Now we shall consider homogeneous coordinates. A position vector $\xi$ corresponds to a row matrix $\begin{pmatrix}x & y & 1\end{pmatrix}$, and a direction vector corresponds to $\begin{pmatrix}\ell & m & 0\end{pmatrix}$. Thus (4) can be written as
+
+\begin{equation}
+\begin{pmatrix}
+  x & y & 1
+\end{pmatrix}
+\begin{pmatrix}
+  a & b & r \\
+  b & c & s \\
+  r & s & t
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y \\
+  1 
+\end{pmatrix}
+=
+\begin{pmatrix}
+  0
+\end{pmatrix}
+\tag{5}
+\end{equation}
+
+Finally, here we can write (5) in the form of
+\begin{equation}
+(A \xi, \xi) = 0  \tag{6}
+\end{equation}
+where $\xi$ is represented in its homogeneous form.
+
+Note that the inner product should be treated carefully. So in general, (6) is defined to be a quadric, where $\xi$ is represented by
+\begin{equation*}
+(x_{1} \cdots x_{n} 1)
+\end{equation*}
+and $(x_{1},\cdots,x_{n})$ is the set of components of $\xi$ with respect to an orthonormal basis in $\Re$.
+
+In what follows, $A$ represents the matrix of the quadric. Each quadric has a quadratic form. For example, in (4),
+\begin{equation*}
+ax^{2} + abxy + cy^{2}
+\end{equation*}
+is the quadratic form of it. We shall denote the matrix of the quadratic form of a quadric by $Q$. Let $\delta$ be a direction vector. One can easily show that
+\begin{equation*}
+(A\delta,\delta) = (Q\delta,\delta)
+\end{equation*}
+where in the left-hand side, $\delta$ is given by $(\ell_{1} \cdots \ell_{n})$, and in the right-hand side by the matrix $(\ell_{1} \cdots \ell_{n})$.
+
+\subsection{Straight lines in $R_{n}$} %5.4
+
+It is well-known that the parametric equation of a straight line in $\Re_{2}$ is
+\begin{equation}
+\begin{cases}
+x = x_{0} + t \ell  
+y = y_{0} + t m
+\end{cases}
+\tag{7}
+\end{equation}
+where $(x_{0},y_{0})$ represents a fixed point and $(\ell,m)$ represents a fixed direction. 
+
+It is clear that (7) can be written as
+\begin{center}
+$\xi = \eta + t \delta$
+\end{center}
+where $\xi$ is the vector whose set of components is $(x,y)$, $\eta$ corresponds to $(x_{0},y_{0})$, and $\delta$ stands for $(\ell,m)$.
+
+In general, we may write
+\begin{equation}
+\xi = \eta + t \delta  \tag{8}
+\end{equation}
+for a straight line in $\Re_{n}$. If $\{ \alpha_{1},\cdots,\alpha_{n} \}$ is an orthonormal basis, then
+\begin{align*}
+\xi & = x_{1} \alpha_{1} + \cdots + x_{n} \alpha_{n}, \\
+\eta & = x_{01} \alpha_{1} + \cdots + x_{0n} \alpha_{n}, \\
+\delta & = \ell_{1} \alpha_{1} + \cdots + \ell_{n} \alpha_{n}
+\end{align*}
+
+We may write (8) as
+\begin{equation*}
+(x_{1} \cdots x_{n} \ 1) = (x_{01} \cdots x_{0n} \ 1) + t (\ell_{1} \cdots \ell_{n} \ 0)
+\end{equation*}
+in its homogeneous form. Note that the direction vector $\delta$ has been expressed by $(\ell_{1} \cdots \ell_{n} \ 0)$.
+
+\subsection{Intersection of a straight line and a quadric} %5.5
+
+Let $(A \xi, \xi) = 0$ be a quadric, and $\xi = \eta + t \delta$ be a straight line in $\Re_{n}$. Then the points of intersection of the two are solutions of
+\begin{equation*}
+\begin{cases}
+(A \xi, \xi) = 0 \\
+\xi = \eta + t \delta
+\end{cases}
+\end{equation*}
+
+Eliminating $\xi$, we obtain
+\begin{equation*}
+(A \delta, \delta) t^{2} + 2 (A \eta, \delta) t + (A \eta, \eta) = 0
+\end{equation*}
+
+This can be written as
+\begin{equation}
+(Q \delta, \delta) t^{2} + 2 (A \eta, \delta) t + (A \eta, \eta) = 0  \tag{9}
+\end{equation}
+
+Clearly (9) is a second degree equation in $t$, and one may consider different cases:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item If $(Q \delta, \delta) \neq 0$, then the line intersects the quadric in two points, real or complex, conjugate or coincident.
+  \item If $(Q \delta, \delta) = 0$, $(A \eta, \delta) \neq 0$, then the line and quadric intersect in one point.
+  \item If $(Q \delta, \delta) = 0$, $(A \eta, \delta) = 0$, and $(A \eta, \eta) \neq 0$, then the line does not intersect the quadric.
+  \item If (9) is an identity, then the line is on the quadric.
+\end{enumerate}
+
+\subsection{A center of a quadric} %5.6
+
+A vector $\eta$ is said to end at a center of a quadric $(A \xi, \xi) = 0$ if for any $\xi_{1}$ satisfying $(A \xi_{1}, \xi_{1}) = 0$, there is a $\xi_{2}$ satisfying $(A \xi_{2}, \xi_{2}) = 0$ such that
+\begin{equation}
+\eta = \frac{1}{2} (\xi_{1}+\xi_{2})  \tag{10}
+\end{equation}
+
+The reader may look at the definition for $\Re_{2}$, and show that a center is a solution of
+\begin{equation*}
+\begin{pmatrix}
+  x_{1} & \cdots & x_{n} 1
+\end{pmatrix}
+\begin{pmatrix}
+  h_{11} & \cdots & h_{1n} \\
+  h_{1n} & \cdots & h_{nn} \\
+  p_{1}  & \cdots & p_{n}
+\end{pmatrix}
+=
+\begin{pmatrix}
+  0 & \cdots & 0
+\end{pmatrix}
+\end{equation*}
+
+Here, the matrix is obtained from $A$ by eliminating the last column.
+
+Indeed, the problem of the existence of centers is the problem of existence of solutions of $n$ linear equations in $n$ unknowns. We shall only mention that if the determinant of $Q$ is different from zero, then there is a unique center.
+
+There are many interesting problems concerning quadrics. We shall state a few as exercises.
+
+\subsection*{Exercise 5}
+\addcontentsline{toc}{subsection}{\numberline{}Exercise 5}
+
+\begin{enumerate}[\hspace{1cm}(1)]
+
+  \item Change $3x^{2} - 8xy + 7y^{2}$ to a canonical form, and obtain the matrix of change of basis.
+
+  \item Given an $n \times n$ matrix $A$ with real entries, show that the quadratic form $(A\xi,\xi)$ can be expressed in terms of a symmetric matrix.
+
+  \item Give a condition for a straight line tangent to a quadric.
+
+  \item Using Exercise 3, obtain tangent plane of a quadric at a given point on it.
+
+  \item Define and obtain diametral plane of a quadric.
+
+  \item Define and obtain principal planes of a quadric.
+
+  \item Define and obtain vertices of a quadric.
+
+  \item Define \emph{pole} and \emph{polar} with respect to a quadric, and obtain the polar of a point with respect to the quadric.
+
+  \item Give several numerical examples in $\Re_{2}$.
+
+  \item Do exercise (9) for $\Re_{3}$.
+
+\end{enumerate}
+
+
+\newpage
+
+\section{Some Problems and Generalizations}
+\markboth{6. Problems and Generalizations}{6. Problems and Generalizations}
+
+In this chapter, we shall study a few ideas related to $\Re_2$, and then we try to generalize them. The purpose is acquiring the sense of generalizations.
+
+\subsection{Inversions} %6.1
+
+Let $0$ be a fixed point, and $k > 0$ be a real number. An inversion with center $0$ and power $k$ is a function on the Euclidean plane onto itself, such that $f(A) = B$ means that $0$, $A$, and $B$ are co-linear and $(0A) (0B) = k$. We shall express this in terms of vectors. Let $0$ end at the zero vector $\vec{0}$, $A$ at $\xi$, and $B$ at $\eta$. Then $\xi$ and $\eta$ are non-zero vectors, and $a > 0$, such that
+\begin{equation*}
+\eta = a \xi
+\end{equation*}
+and
+\begin{equation*}
+||\xi||\ ||\eta|| = k
+\end{equation*}
+
+This implies that
+\begin{equation*}
+||\xi||\ |a|\ ||\xi|| = k
+\end{equation*}
+
+Thus
+\begin{equation*}
+|a|  = \frac{k}{||\xi||^{2}}
+\end{equation*}
+
+Thus the equation of this inversion will be
+\begin{align}
+f(\xi) & = \eta = \frac{k\xi}{||\xi||^{2}}, \tag{1} \\
+\xi & \neq 0 \notag
+\end{align}
+
+In terms of coordinates, we may let
+\begin{equation*}
+\xi = (x,y)
+\end{equation*}
+and
+\begin{equation*}
+\eta = (x',y')
+\end{equation*}
+
+Thus (1) can be written as
+\begin{equation}
+\begin{cases}
+  x' = \frac{kx}{x^2+y^2} \\
+  y' = \frac{ky}{x^{2} + y^{2}}, \\
+  x^{2} + y^{2} \neq 0
+\end{cases}
+\tag{2}
+\end{equation}
+
+Indeed, (1) is independent of the dimension of the space. Thus, it can be defined as the equation of an inversion in $\Re_{n}$.
+
+One may show that the inverse function of (1) exists, and also show that the circle $x^{2} + y^{2} = k$ is pointwise invariant under (2). We shall leave it as an exercise.
+
+\subsection{Quadric inversions} %6.2
+
+We shall generalize (2) to
+\begin{equation}
+\begin{cases}
+x' = \frac{kx}{ ax^{2} + 2bxy + cy^{2} } \\
+y' = \frac{ky}{ ax^{2} + 2bxy + cy^{2} }, \\
+ax^{2} + 2bxy + cy^{2} \neq 0
+\end{cases}
+\tag{3}
+\end{equation}
+
+Here we can easily see that the conic
+\begin{equation*}
+ax^{2} + 2bxy + cy^{2} = k
+\end{equation*}
+is invariant under (3).
+
+Now, we shall express (3) in terms of vectors and matrices. Note that 
+\begin{equation}
+ax^{2} + 2bxy + cy^{2}  \tag{4}
+\end{equation}
+can be written as
+\begin{equation*}
+\begin{pmatrix}
+  x & y
+\end{pmatrix}
+\begin{pmatrix}
+  a & b \\
+  b & c 
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y 
+\end{pmatrix}
+\end{equation*}
+
+Let $A$ be a linear transformation on $\Re_{2}$ whose matrix with respect to an orthonormal basis in $\Re_{2}$ is $\begin{pmatrix} a & b \\ b & c \end{pmatrix}$, and $\xi = (x,y)$. Then the quadratic form can be written as $(A\xi,\xi)$. Thus (3) can be written as
+\begin{align*}
+\eta & = \frac{k\xi}{(A\xi,\xi)}, \\
+(A\xi,\xi) & \neq 0
+\end{align*}
+where $\eta = (x',y')$.
+
+Now we are in the position of defining a quadric inversion on $E_{n}$ as a function on $E_{n}$ defined by
+\begin{align*}
+f (\xi) & = \frac{k\xi}{(A\xi,\xi)}, \\
+(A\xi,\xi) & \neq 0
+\end{align*}
+
+Here, $A$ does not have to be Hermitian, and $k$ may be a complex number.
+
+\subsection{Properties of quadric inversions} %6.3
+
+The quadric inversion with the equation
+\begin{align}
+\eta = f(\xi) & = \frac{p\xi}{A\xi,\xi)}, \tag{5} \\
+(A\xi,\xi) & \neq 0 \notag
+\end{align}
+transforms a hyperplane (co-set) to a quadric of the form
+\begin{equation}
+a(A\xi, \xi) + b(\xi,\delta) = 0  \tag{6}
+\end{equation}
+which passes through the origin.
+
+The proof is left as an exercise.
+
+\subsection{An inversion with center at $\alpha$} %6.4
+
+In 6.1, if we move the center of inversion to the end point of the fixed vector $\alpha$, the equation of the inversion will become
+\begin{align*}
+\eta = f(\xi) & = \frac{k(\xi-\alpha)}{||\xi-\alpha||^2} + \alpha, \\
+\xi-\alpha & \neq \vec{0} 
+\end{align*}
+
+Indeed, when $\alpha = \vec{0}$, we obtain (1) of 6.1. We leave the proof as an exercise.
+
+\subsection{Theorem} %6.5
+
+An \emph{inversion} is a conformal transformation; i.e., for non-zero $\xi,\eta \in E_{n}$, the value of $\frac{(\xi,\eta)}{||\xi||\ ||\eta||}$ is invariant under an inversion.
+
+\subsection{Problem} %6.6
+
+Consider two circles $(C_{1})$ and $(C_{2})$ (Fig.9). Let the radii of $(C_{1})$ and $(C_{2})$ be $r_{1}$ and $r_{2}$ respectively.
+
+\begin{center}
+%TeXCAD Picture [fig9.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(69.57,40)(0,0)
+%\circle(56.75,24.75){25.63}
+\put(69.57,24.75){\line(0,1){.662}}
+\put(69.55,25.41){\line(0,1){.66}}
+\put(69.5,26.07){\line(0,1){.656}}
+\put(69.41,26.73){\line(0,1){.651}}
+\multiput(69.29,27.38)(-.0305,.12883){5}{\line(0,1){.12883}}
+\multiput(69.14,28.02)(-.03093,.1059){6}{\line(0,1){.1059}}
+\multiput(68.96,28.66)(-.03116,.08929){7}{\line(0,1){.08929}}
+\multiput(68.74,29.28)(-.03126,.07661){8}{\line(0,1){.07661}}
+\multiput(68.49,29.9)(-.03127,.06657){9}{\line(0,1){.06657}}
+\multiput(68.21,30.5)(-.0312,.05838){10}{\line(0,1){.05838}}
+\multiput(67.89,31.08)(-.03106,.05154){11}{\line(0,1){.05154}}
+\multiput(67.55,31.65)(-.03368,.04987){11}{\line(0,1){.04987}}
+\multiput(67.18,32.2)(-.0332,.04406){12}{\line(0,1){.04406}}
+\multiput(66.78,32.72)(-.032702,.039032){13}{\line(0,1){.039032}}
+\multiput(66.36,33.23)(-.032197,.034628){14}{\line(0,1){.034628}}
+\multiput(65.91,33.72)(-.033942,.032919){14}{\line(-1,0){.033942}}
+\multiput(65.43,34.18)(-.038334,.033517){13}{\line(-1,0){.038334}}
+\multiput(64.93,34.61)(-.040014,.031493){13}{\line(-1,0){.040014}}
+\multiput(64.41,35.02)(-.04505,.03183){12}{\line(-1,0){.04505}}
+\multiput(63.87,35.4)(-.05088,.03214){11}{\line(-1,0){.05088}}
+\multiput(63.31,35.76)(-.05771,.03242){10}{\line(-1,0){.05771}}
+\multiput(62.74,36.08)(-.0659,.03266){9}{\line(-1,0){.0659}}
+\multiput(62.14,36.38)(-.07594,.03287){8}{\line(-1,0){.07594}}
+\multiput(61.54,36.64)(-.08861,.03303){7}{\line(-1,0){.08861}}
+\multiput(60.92,36.87)(-.10523,.03315){6}{\line(-1,0){.10523}}
+\multiput(60.28,37.07)(-.12816,.03321){5}{\line(-1,0){.12816}}
+\multiput(59.64,37.24)(-.1621,.0332){4}{\line(-1,0){.1621}}
+\put(58.99,37.37){\line(-1,0){.655}}
+\put(58.34,37.47){\line(-1,0){.659}}
+\put(57.68,37.53){\line(-1,0){.661}}
+\put(57.02,37.56){\line(-1,0){.662}}
+\put(56.36,37.56){\line(-1,0){.661}}
+\put(55.7,37.52){\line(-1,0){.658}}
+\put(55.04,37.45){\line(-1,0){.654}}
+\multiput(54.39,37.35)(-.12945,-.02778){5}{\line(-1,0){.12945}}
+\multiput(53.74,37.21)(-.10653,-.02869){6}{\line(-1,0){.10653}}
+\multiput(53.1,37.04)(-.08992,-.02927){7}{\line(-1,0){.08992}}
+\multiput(52.47,36.83)(-.07725,-.02964){8}{\line(-1,0){.07725}}
+\multiput(51.85,36.59)(-.07562,-.03359){8}{\line(-1,0){.07562}}
+\multiput(51.25,36.32)(-.06559,-.03329){9}{\line(-1,0){.06559}}
+\multiput(50.66,36.02)(-.0574,-.03297){10}{\line(-1,0){.0574}}
+\multiput(50.08,35.69)(-.05057,-.03263){11}{\line(-1,0){.05057}}
+\multiput(49.53,35.34)(-.04475,-.03226){12}{\line(-1,0){.04475}}
+\multiput(48.99,34.95)(-.039713,-.031872){13}{\line(-1,0){.039713}}
+\multiput(48.47,34.53)(-.035299,-.03146){14}{\line(-1,0){.035299}}
+\multiput(47.98,34.09)(-.033627,-.03324){14}{\line(-1,0){.033627}}
+\multiput(47.51,33.63)(-.031866,-.034932){14}{\line(0,-1){.034932}}
+\multiput(47.06,33.14)(-.032329,-.039341){13}{\line(0,-1){.039341}}
+\multiput(46.64,32.63)(-.03278,-.04437){12}{\line(0,-1){.04437}}
+\multiput(46.25,32.1)(-.03321,-.05019){11}{\line(0,-1){.05019}}
+\multiput(45.88,31.54)(-.03363,-.05702){10}{\line(0,-1){.05702}}
+\multiput(45.55,30.97)(-.03064,-.05868){10}{\line(0,-1){.05868}}
+\multiput(45.24,30.39)(-.03063,-.06687){9}{\line(0,-1){.06687}}
+\multiput(44.96,29.79)(-.03053,-.07691){8}{\line(0,-1){.07691}}
+\multiput(44.72,29.17)(-.03031,-.08958){7}{\line(0,-1){.08958}}
+\multiput(44.51,28.54)(-.02992,-.10619){6}{\line(0,-1){.10619}}
+\multiput(44.33,27.91)(-.02927,-.12912){5}{\line(0,-1){.12912}}
+\put(44.18,27.26){\line(0,-1){.652}}
+\put(44.07,26.61){\line(0,-1){.657}}
+\put(43.99,25.95){\line(0,-1){.66}}
+\put(43.95,25.29){\line(0,-1){.662}}
+\put(43.93,24.63){\line(0,-1){.662}}
+\put(43.96,23.97){\line(0,-1){.659}}
+\put(44.02,23.31){\line(0,-1){.656}}
+\multiput(44.11,22.65)(.0313,-.1625){4}{\line(0,-1){.1625}}
+\multiput(44.23,22)(.03172,-.12854){5}{\line(0,-1){.12854}}
+\multiput(44.39,21.36)(.03193,-.10561){6}{\line(0,-1){.10561}}
+\multiput(44.58,20.73)(.03201,-.08899){7}{\line(0,-1){.08899}}
+\multiput(44.81,20.1)(.03199,-.07631){8}{\line(0,-1){.07631}}
+\multiput(45.06,19.49)(.0319,-.06627){9}{\line(0,-1){.06627}}
+\multiput(45.35,18.9)(.03175,-.05809){10}{\line(0,-1){.05809}}
+\multiput(45.67,18.31)(.03155,-.05124){11}{\line(0,-1){.05124}}
+\multiput(46.01,17.75)(.03131,-.04542){12}{\line(0,-1){.04542}}
+\multiput(46.39,17.21)(.03361,-.04374){12}{\line(0,-1){.04374}}
+\multiput(46.79,16.68)(.033071,-.03872){13}{\line(0,-1){.03872}}
+\multiput(47.22,16.18)(.032524,-.03432){14}{\line(0,-1){.03432}}
+\multiput(47.68,15.7)(.034253,-.032595){14}{\line(1,0){.034253}}
+\multiput(48.16,15.24)(.038651,-.033151){13}{\line(1,0){.038651}}
+\multiput(48.66,14.81)(.04367,-.0337){12}{\line(1,0){.04367}}
+\multiput(49.18,14.41)(.04535,-.0314){12}{\line(1,0){.04535}}
+\multiput(49.73,14.03)(.05118,-.03166){11}{\line(1,0){.05118}}
+\multiput(50.29,13.68)(.05802,-.03187){10}{\line(1,0){.05802}}
+\multiput(50.87,13.36)(.06621,-.03204){9}{\line(1,0){.06621}}
+\multiput(51.47,13.07)(.07625,-.03215){8}{\line(1,0){.07625}}
+\multiput(52.08,12.82)(.08892,-.03219){7}{\line(1,0){.08892}}
+\multiput(52.7,12.59)(.10554,-.03215){6}{\line(1,0){.10554}}
+\multiput(53.33,12.4)(.12847,-.03199){5}{\line(1,0){.12847}}
+\multiput(53.98,12.24)(.1624,-.0316){4}{\line(1,0){.1624}}
+\put(54.63,12.11){\line(1,0){.655}}
+\put(55.28,12.02){\line(1,0){.659}}
+\put(55.94,11.96){\line(1,0){.662}}
+\put(56.6,11.93){\line(1,0){.662}}
+\put(57.26,11.94){\line(1,0){.661}}
+\put(57.92,11.99){\line(1,0){.657}}
+\put(58.58,12.07){\line(1,0){.653}}
+\multiput(59.23,12.18)(.12918,.02901){5}{\line(1,0){.12918}}
+\multiput(59.88,12.32)(.10626,.0297){6}{\line(1,0){.10626}}
+\multiput(60.52,12.5)(.08964,.03012){7}{\line(1,0){.08964}}
+\multiput(61.14,12.71)(.07697,.03037){8}{\line(1,0){.07697}}
+\multiput(61.76,12.95)(.06693,.0305){9}{\line(1,0){.06693}}
+\multiput(62.36,13.23)(.05874,.03052){10}{\line(1,0){.05874}}
+\multiput(62.95,13.53)(.05709,.03351){10}{\line(1,0){.05709}}
+\multiput(63.52,13.87)(.05026,.0331){11}{\line(1,0){.05026}}
+\multiput(64.07,14.23)(.04444,.03268){12}{\line(1,0){.04444}}
+\multiput(64.61,14.63)(.039408,.032248){13}{\line(1,0){.039408}}
+\multiput(65.12,15.04)(.034998,.031794){14}{\line(1,0){.034998}}
+\multiput(65.61,15.49)(.03331,.033558){14}{\line(0,1){.033558}}
+\multiput(66.08,15.96)(.031533,.035234){14}{\line(0,1){.035234}}
+\multiput(66.52,16.45)(.031954,.039647){13}{\line(0,1){.039647}}
+\multiput(66.93,16.97)(.03235,.04468){12}{\line(0,1){.04468}}
+\multiput(67.32,17.5)(.03273,.0505){11}{\line(0,1){.0505}}
+\multiput(67.68,18.06)(.03309,.05733){10}{\line(0,1){.05733}}
+\multiput(68.01,18.63)(.03342,.06552){9}{\line(0,1){.06552}}
+\multiput(68.31,19.22)(.03,.06716){9}{\line(0,1){.06716}}
+\multiput(68.58,19.83)(.0298,.07719){8}{\line(0,1){.07719}}
+\multiput(68.82,20.44)(.02946,.08986){7}{\line(0,1){.08986}}
+\multiput(69.03,21.07)(.02891,.10647){6}{\line(0,1){.10647}}
+\multiput(69.2,21.71)(.02805,.12939){5}{\line(0,1){.12939}}
+\put(69.34,22.36){\line(0,1){.653}}
+\put(69.45,23.01){\line(0,1){.658}}
+\put(69.52,23.67){\line(0,1){1.079}}
+%\end
+%\dashline{1}(60.42,37.04)(51.92,8.29)
+\multiput(60.35,36.97)(-.03047,-.10305){9}{\line(0,-1){.10305}}
+\multiput(59.8,35.11)(-.03047,-.10305){9}{\line(0,-1){.10305}}
+\multiput(59.25,33.26)(-.03047,-.10305){9}{\line(0,-1){.10305}}
+\multiput(58.7,31.4)(-.03047,-.10305){9}{\line(0,-1){.10305}}
+\multiput(58.16,29.55)(-.03047,-.10305){9}{\line(0,-1){.10305}}
+\multiput(57.61,27.7)(-.03047,-.10305){9}{\line(0,-1){.10305}}
+\multiput(57.06,25.84)(-.03047,-.10305){9}{\line(0,-1){.10305}}
+\multiput(56.51,23.99)(-.03047,-.10305){9}{\line(0,-1){.10305}}
+\multiput(55.96,22.13)(-.03047,-.10305){9}{\line(0,-1){.10305}}
+\multiput(55.41,20.28)(-.03047,-.10305){9}{\line(0,-1){.10305}}
+\multiput(54.87,18.42)(-.03047,-.10305){9}{\line(0,-1){.10305}}
+\multiput(54.32,16.57)(-.03047,-.10305){9}{\line(0,-1){.10305}}
+\multiput(53.77,14.71)(-.03047,-.10305){9}{\line(0,-1){.10305}}
+\multiput(53.22,12.86)(-.03047,-.10305){9}{\line(0,-1){.10305}}
+\multiput(52.67,11)(-.03047,-.10305){9}{\line(0,-1){.10305}}
+\multiput(52.12,9.15)(-.03047,-.10305){9}{\line(0,-1){.10305}}
+%\end
+%\dashline{1}(51.75,8.5)(51.75,8.5)
+\put(51.68,8.43){\line(0,1){0}}
+%\end
+%\circle(16.25,25.75){23.56}
+\put(28.03,25.75){\line(0,1){.619}}
+\put(28.02,26.37){\line(0,1){.617}}
+\put(27.97,26.99){\line(0,1){.614}}
+\put(27.89,27.6){\line(0,1){.609}}
+\multiput(27.77,28.21)(-.02901,.12037){5}{\line(0,1){.12037}}
+\multiput(27.63,28.81)(-.02941,.0989){6}{\line(0,1){.0989}}
+\multiput(27.45,29.4)(-.02963,.08333){7}{\line(0,1){.08333}}
+\multiput(27.24,29.99)(-.02972,.07145){8}{\line(0,1){.07145}}
+\multiput(27.01,30.56)(-.03343,.06979){8}{\line(0,1){.06979}}
+\multiput(26.74,31.12)(-.03293,.06039){9}{\line(0,1){.06039}}
+\multiput(26.44,31.66)(-.03245,.05272){10}{\line(0,1){.05272}}
+\multiput(26.12,32.19)(-.03198,.04631){11}{\line(0,1){.04631}}
+\multiput(25.77,32.7)(-.0315,.04085){12}{\line(0,1){.04085}}
+\multiput(25.39,33.19)(-.03361,.03914){12}{\line(0,1){.03914}}
+\multiput(24.98,33.66)(-.032876,.034452){13}{\line(0,1){.034452}}
+\multiput(24.56,34.1)(-.03464,.032678){13}{\line(-1,0){.03464}}
+\multiput(24.11,34.53)(-.03933,.03338){12}{\line(-1,0){.03933}}
+\multiput(23.63,34.93)(-.04103,.03127){12}{\line(-1,0){.04103}}
+\multiput(23.14,35.31)(-.04649,.03171){11}{\line(-1,0){.04649}}
+\multiput(22.63,35.65)(-.05291,.03215){10}{\line(-1,0){.05291}}
+\multiput(22.1,35.98)(-.06058,.03258){9}{\line(-1,0){.06058}}
+\multiput(21.56,36.27)(-.06998,.03303){8}{\line(-1,0){.06998}}
+\multiput(21,36.53)(-.08185,.03349){7}{\line(-1,0){.08185}}
+\multiput(20.42,36.77)(-.0835,.02915){7}{\line(-1,0){.0835}}
+\multiput(19.84,36.97)(-.09907,.02884){6}{\line(-1,0){.09907}}
+\multiput(19.24,37.14)(-.12053,.02832){5}{\line(-1,0){.12053}}
+\put(18.64,37.29){\line(-1,0){.609}}
+\put(18.03,37.4){\line(-1,0){.614}}
+\put(17.42,37.47){\line(-1,0){.617}}
+\put(16.8,37.52){\line(-1,0){1.238}}
+\put(15.56,37.51){\line(-1,0){.617}}
+\put(14.95,37.46){\line(-1,0){.613}}
+\put(14.33,37.37){\line(-1,0){.608}}
+\multiput(13.73,37.26)(-.1202,-.0297){5}{\line(-1,0){.1202}}
+\multiput(13.12,37.11)(-.09873,-.02997){6}{\line(-1,0){.09873}}
+\multiput(12.53,36.93)(-.08316,-.0301){7}{\line(-1,0){.08316}}
+\multiput(11.95,36.72)(-.07128,-.03013){8}{\line(-1,0){.07128}}
+\multiput(11.38,36.48)(-.06187,-.03007){9}{\line(-1,0){.06187}}
+\multiput(10.82,36.21)(-.0602,-.03328){9}{\line(-1,0){.0602}}
+\multiput(10.28,35.91)(-.05253,-.03275){10}{\line(-1,0){.05253}}
+\multiput(9.76,35.58)(-.04613,-.03224){11}{\line(-1,0){.04613}}
+\multiput(9.25,35.23)(-.04067,-.03174){12}{\line(-1,0){.04067}}
+\multiput(8.76,34.85)(-.035953,-.031227){13}{\line(-1,0){.035953}}
+\multiput(8.29,34.44)(-.034263,-.033073){13}{\line(-1,0){.034263}}
+\multiput(7.85,34.01)(-.032479,-.034827){13}{\line(0,-1){.034827}}
+\multiput(7.43,33.56)(-.03316,-.03953){12}{\line(0,-1){.03953}}
+\multiput(7.03,33.08)(-.03103,-.04121){12}{\line(0,-1){.04121}}
+\multiput(6.66,32.59)(-.03145,-.04667){11}{\line(0,-1){.04667}}
+\multiput(6.31,32.07)(-.03185,-.05309){10}{\line(0,-1){.05309}}
+\multiput(5.99,31.54)(-.03224,-.06076){9}{\line(0,-1){.06076}}
+\multiput(5.7,31)(-.03263,-.07017){8}{\line(0,-1){.07017}}
+\multiput(5.44,30.43)(-.03302,-.08204){7}{\line(0,-1){.08204}}
+\multiput(5.21,29.86)(-.03345,-.09761){6}{\line(0,-1){.09761}}
+\multiput(5.01,29.28)(-.02827,-.09923){6}{\line(0,-1){.09923}}
+\multiput(4.84,28.68)(-.02763,-.12069){5}{\line(0,-1){.12069}}
+\put(4.7,28.08){\line(0,-1){.61}}
+\put(4.59,27.47){\line(0,-1){.615}}
+\put(4.52,26.85){\line(0,-1){1.237}}
+\put(4.47,25.61){\line(0,-1){.619}}
+\put(4.49,25){\line(0,-1){.617}}
+\put(4.55,24.38){\line(0,-1){.613}}
+\multiput(4.64,23.77)(.03,-.1518){4}{\line(0,-1){.1518}}
+\multiput(4.76,23.16)(.03039,-.12003){5}{\line(0,-1){.12003}}
+\multiput(4.91,22.56)(.03054,-.09856){6}{\line(0,-1){.09856}}
+\multiput(5.09,21.97)(.03058,-.08299){7}{\line(0,-1){.08299}}
+\multiput(5.31,21.39)(.03053,-.07111){8}{\line(0,-1){.07111}}
+\multiput(5.55,20.82)(.03042,-.06169){9}{\line(0,-1){.06169}}
+\multiput(5.82,20.26)(.03362,-.06001){9}{\line(0,-1){.06001}}
+\multiput(6.13,19.72)(.03305,-.05234){10}{\line(0,-1){.05234}}
+\multiput(6.46,19.2)(.03251,-.04594){11}{\line(0,-1){.04594}}
+\multiput(6.81,18.69)(.03197,-.04049){12}{\line(0,-1){.04049}}
+\multiput(7.2,18.21)(.031433,-.035774){13}{\line(0,-1){.035774}}
+\multiput(7.61,17.74)(.033269,-.034073){13}{\line(0,-1){.034073}}
+\multiput(8.04,17.3)(.035012,-.032279){13}{\line(1,0){.035012}}
+\multiput(8.49,16.88)(.03971,-.03293){12}{\line(1,0){.03971}}
+\multiput(8.97,16.49)(.04515,-.0336){11}{\line(1,0){.04515}}
+\multiput(9.47,16.12)(.04685,-.03118){11}{\line(1,0){.04685}}
+\multiput(9.98,15.77)(.05327,-.03154){10}{\line(1,0){.05327}}
+\multiput(10.52,15.46)(.06095,-.03189){9}{\line(1,0){.06095}}
+\multiput(11.06,15.17)(.07036,-.03222){8}{\line(1,0){.07036}}
+\multiput(11.63,14.91)(.08223,-.03255){7}{\line(1,0){.08223}}
+\multiput(12.2,14.69)(.0978,-.03289){6}{\line(1,0){.0978}}
+\multiput(12.79,14.49)(.11927,-.03324){5}{\line(1,0){.11927}}
+\multiput(13.39,14.32)(.1511,-.0337){4}{\line(1,0){.1511}}
+\put(13.99,14.19){\line(1,0){.61}}
+\put(14.6,14.08){\line(1,0){.615}}
+\put(15.22,14.01){\line(1,0){.618}}
+\put(15.83,13.98){\line(1,0){.619}}
+\put(16.45,13.97){\line(1,0){.618}}
+\put(17.07,14){\line(1,0){.616}}
+\put(17.69,14.06){\line(1,0){.612}}
+\multiput(18.3,14.15)(.1516,.0309){4}{\line(1,0){.1516}}
+\multiput(18.91,14.27)(.11985,.03107){5}{\line(1,0){.11985}}
+\multiput(19.51,14.43)(.09838,.0311){6}{\line(1,0){.09838}}
+\multiput(20.1,14.61)(.08281,.03105){7}{\line(1,0){.08281}}
+\multiput(20.68,14.83)(.07093,.03094){8}{\line(1,0){.07093}}
+\multiput(21.24,15.08)(.06152,.03078){9}{\line(1,0){.06152}}
+\multiput(21.8,15.36)(.05383,.03057){10}{\line(1,0){.05383}}
+\multiput(22.33,15.66)(.05215,.03335){10}{\line(1,0){.05215}}
+\multiput(22.86,15.99)(.04575,.03277){11}{\line(1,0){.04575}}
+\multiput(23.36,16.36)(.04031,.0322){12}{\line(1,0){.04031}}
+\multiput(23.84,16.74)(.035593,.031637){13}{\line(1,0){.035593}}
+\multiput(24.31,17.15)(.033882,.033463){13}{\line(1,0){.033882}}
+\multiput(24.75,17.59)(.032077,.035197){13}{\line(0,1){.035197}}
+\multiput(25.16,18.05)(.0327,.0399){12}{\line(0,1){.0399}}
+\multiput(25.56,18.52)(.03334,.04534){11}{\line(0,1){.04534}}
+\multiput(25.92,19.02)(.03091,.04703){11}{\line(0,1){.04703}}
+\multiput(26.26,19.54)(.03124,.05345){10}{\line(0,1){.05345}}
+\multiput(26.57,20.07)(.03154,.06113){9}{\line(0,1){.06113}}
+\multiput(26.86,20.62)(.03182,.07054){8}{\line(0,1){.07054}}
+\multiput(27.11,21.19)(.03208,.08242){7}{\line(0,1){.08242}}
+\multiput(27.34,21.77)(.03233,.09799){6}{\line(0,1){.09799}}
+\multiput(27.53,22.35)(.03256,.11946){5}{\line(0,1){.11946}}
+\multiput(27.69,22.95)(.0328,.1513){4}{\line(0,1){.1513}}
+\put(27.83,23.56){\line(0,1){.611}}
+\put(27.93,24.17){\line(0,1){.615}}
+\put(27.99,24.78){\line(0,1){.967}}
+%\end
+%\emline(57.5,6.25)(1.75,23.25)
+\multiput(57.5,6.25)(-.110615079,.033730159){504}{\line(-1,0){.110615079}}
+%\end
+\put(16.25,24.75){\line(0,1){0}}
+\put(15.25,25.75){\line(1,0){2}}
+\put(55.75,24.75){\line(1,0){2}}
+\put(16.25,26.63){\line(0,-1){2}}
+\put(56.75,25.63){\line(0,-1){2}}
+\put(15.25,22.25){\makebox(0,0)[cc]{$C_2$}}
+\put(59.75,22.75){\makebox(0,0)[cc]{$C_1$}}
+\put(33.75,3){\makebox(0,0)[cc]{Fig. 9}}
+\put(61,40){\makebox(0,0)[cc]{$P$}}
+\end{picture}
+\end{center}
+
+Let $P$ be a point on $(C_{1})$. Choose an inversion of center $P$ and power equal to $PC_{2}^{2} - r_{2}^{2}$. Show that $(C_{2})$ changes to a straight line. Show that the distance from $C_{1}$ to this straight line is independent of the choice of $P$.
+
+The solution is left as an exercise.
+
+\subsection{Problem} %6.7
+
+Consider a circle of radius $r$, and a point $0$ inside the circle (Fig. 10). Through $0$, we draw two perpendicular lines.
+
+\begin{center}
+%TeXCAD Picture [fig10.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(49.3,53)(0,0)
+%\circle(24.75,30){34.71}
+\put(42.11,30){\line(0,1){.834}}
+\put(42.09,30.83){\line(0,1){.832}}
+\put(42.03,31.67){\line(0,1){.828}}
+\multiput(41.93,32.49)(-.02794,.16449){5}{\line(0,1){.16449}}
+\multiput(41.79,33.32)(-.02984,.1358){6}{\line(0,1){.1358}}
+\multiput(41.61,34.13)(-.03114,.11503){7}{\line(0,1){.11503}}
+\multiput(41.39,34.94)(-.03205,.09923){8}{\line(0,1){.09923}}
+\multiput(41.13,35.73)(-.0327,.08673){9}{\line(0,1){.08673}}
+\multiput(40.84,36.51)(-.03314,.07656){10}{\line(0,1){.07656}}
+\multiput(40.51,37.28)(-.03344,.06807){11}{\line(0,1){.06807}}
+\multiput(40.14,38.03)(-.03362,.06085){12}{\line(0,1){.06085}}
+\multiput(39.74,38.76)(-.033694,.054614){13}{\line(0,1){.054614}}
+\multiput(39.3,39.47)(-.033688,.049151){14}{\line(0,1){.049151}}
+\multiput(38.83,40.15)(-.03361,.04431){15}{\line(0,1){.04431}}
+\multiput(38.32,40.82)(-.033469,.039979){16}{\line(0,1){.039979}}
+\multiput(37.79,41.46)(-.033272,.03607){17}{\line(0,1){.03607}}
+\multiput(37.22,42.07)(-.033024,.032517){18}{\line(-1,0){.033024}}
+\multiput(36.63,42.66)(-.03658,.03271){17}{\line(-1,0){.03658}}
+\multiput(36.01,43.21)(-.040492,.032847){16}{\line(-1,0){.040492}}
+\multiput(35.36,43.74)(-.044825,.032921){15}{\line(-1,0){.044825}}
+\multiput(34.68,44.23)(-.049666,.032924){14}{\line(-1,0){.049666}}
+\multiput(33.99,44.69)(-.055128,.032845){13}{\line(-1,0){.055128}}
+\multiput(33.27,45.12)(-.06136,.03267){12}{\line(-1,0){.06136}}
+\multiput(32.54,45.51)(-.06858,.03238){11}{\line(-1,0){.06858}}
+\multiput(31.78,45.87)(-.07706,.03196){10}{\line(-1,0){.07706}}
+\multiput(31.01,46.19)(-.08723,.03135){9}{\line(-1,0){.08723}}
+\multiput(30.23,46.47)(-.09971,.03052){8}{\line(-1,0){.09971}}
+\multiput(29.43,46.71)(-.1155,.02936){7}{\line(-1,0){.1155}}
+\multiput(28.62,46.92)(-.16349,.03328){5}{\line(-1,0){.16349}}
+\multiput(27.8,47.09)(-.2061,.0317){4}{\line(-1,0){.2061}}
+\put(26.98,47.21){\line(-1,0){.83}}
+\put(26.15,47.3){\line(-1,0){.833}}
+\put(25.32,47.35){\line(-1,0){.834}}
+\put(24.48,47.35){\line(-1,0){.834}}
+\put(23.65,47.32){\line(-1,0){.831}}
+\put(22.82,47.25){\line(-1,0){.827}}
+\multiput(21.99,47.14)(-.16404,-.03048){5}{\line(-1,0){.16404}}
+\multiput(21.17,46.98)(-.13532,-.03194){6}{\line(-1,0){.13532}}
+\multiput(20.36,46.79)(-.11454,-.03292){7}{\line(-1,0){.11454}}
+\multiput(19.56,46.56)(-.09872,-.03358){8}{\line(-1,0){.09872}}
+\multiput(18.77,46.29)(-.0776,-.03063){10}{\line(-1,0){.0776}}
+\multiput(17.99,45.99)(-.06912,-.0312){11}{\line(-1,0){.06912}}
+\multiput(17.23,45.64)(-.06191,-.03162){12}{\line(-1,0){.06191}}
+\multiput(16.49,45.26)(-.055683,-.031896){13}{\line(-1,0){.055683}}
+\multiput(15.76,44.85)(-.050223,-.032068){14}{\line(-1,0){.050223}}
+\multiput(15.06,44.4)(-.045382,-.032147){15}{\line(-1,0){.045382}}
+\multiput(14.38,43.92)(-.041049,-.032148){16}{\line(-1,0){.041049}}
+\multiput(13.72,43.4)(-.037136,-.032078){17}{\line(-1,0){.037136}}
+\multiput(13.09,42.86)(-.033576,-.031946){18}{\line(-1,0){.033576}}
+\multiput(12.49,42.28)(-.032002,-.033523){18}{\line(0,-1){.033523}}
+\multiput(11.91,41.68)(-.03214,-.037082){17}{\line(0,-1){.037082}}
+\multiput(11.36,41.05)(-.032216,-.040995){16}{\line(0,-1){.040995}}
+\multiput(10.85,40.39)(-.032223,-.045328){15}{\line(0,-1){.045328}}
+\multiput(10.37,39.71)(-.032152,-.050169){14}{\line(0,-1){.050169}}
+\multiput(9.92,39.01)(-.031989,-.05563){13}{\line(0,-1){.05563}}
+\multiput(9.5,38.29)(-.03172,-.06186){12}{\line(0,-1){.06186}}
+\multiput(9.12,37.55)(-.03132,-.06907){11}{\line(0,-1){.06907}}
+\multiput(8.77,36.79)(-.03076,-.07754){10}{\line(0,-1){.07754}}
+\multiput(8.47,36.01)(-.03,-.0877){9}{\line(0,-1){.0877}}
+\multiput(8.2,35.22)(-.03311,-.11448){7}{\line(0,-1){.11448}}
+\multiput(7.97,34.42)(-.03216,-.13527){6}{\line(0,-1){.13527}}
+\multiput(7.77,33.61)(-.03075,-.16399){5}{\line(0,-1){.16399}}
+\put(7.62,32.79){\line(0,-1){.826}}
+\put(7.5,31.96){\line(0,-1){.831}}
+\put(7.43,31.13){\line(0,-1){1.668}}
+\put(7.4,29.46){\line(0,-1){.833}}
+\put(7.45,28.63){\line(0,-1){.83}}
+\multiput(7.53,27.8)(.0314,-.2062){4}{\line(0,-1){.2062}}
+\multiput(7.66,26.98)(.03301,-.16355){5}{\line(0,-1){.16355}}
+\multiput(7.82,26.16)(.02917,-.11555){7}{\line(0,-1){.11555}}
+\multiput(8.03,25.35)(.03035,-.09976){8}{\line(0,-1){.09976}}
+\multiput(8.27,24.55)(.03121,-.08728){9}{\line(0,-1){.08728}}
+\multiput(8.55,23.77)(.03183,-.07711){10}{\line(0,-1){.07711}}
+\multiput(8.87,22.99)(.03227,-.06863){11}{\line(0,-1){.06863}}
+\multiput(9.23,22.24)(.03257,-.06142){12}{\line(0,-1){.06142}}
+\multiput(9.62,21.5)(.032753,-.055183){13}{\line(0,-1){.055183}}
+\multiput(10.04,20.79)(.03284,-.049721){14}{\line(0,-1){.049721}}
+\multiput(10.5,20.09)(.032845,-.04488){15}{\line(0,-1){.04488}}
+\multiput(10.99,19.42)(.032779,-.040547){16}{\line(0,-1){.040547}}
+\multiput(11.52,18.77)(.032649,-.036635){17}{\line(0,-1){.036635}}
+\multiput(12.07,18.14)(.032462,-.033078){18}{\line(0,-1){.033078}}
+\multiput(12.66,17.55)(.036014,-.033332){17}{\line(1,0){.036014}}
+\multiput(13.27,16.98)(.039923,-.033536){16}{\line(1,0){.039923}}
+\multiput(13.91,16.45)(.044254,-.033684){15}{\line(1,0){.044254}}
+\multiput(14.57,15.94)(.045821,-.031519){15}{\line(1,0){.045821}}
+\multiput(15.26,15.47)(.05066,-.031372){14}{\line(1,0){.05066}}
+\multiput(15.97,15.03)(.06079,-.03372){12}{\line(1,0){.06079}}
+\multiput(16.7,14.62)(.06801,-.03355){11}{\line(1,0){.06801}}
+\multiput(17.45,14.25)(.0765,-.03327){10}{\line(1,0){.0765}}
+\multiput(18.21,13.92)(.08668,-.03284){9}{\line(1,0){.08668}}
+\multiput(18.99,13.63)(.09918,-.03222){8}{\line(1,0){.09918}}
+\multiput(19.79,13.37)(.11498,-.03133){7}{\line(1,0){.11498}}
+\multiput(20.59,13.15)(.13575,-.03007){6}{\line(1,0){.13575}}
+\multiput(21.4,12.97)(.16444,-.02821){5}{\line(1,0){.16444}}
+\put(22.23,12.83){\line(1,0){.828}}
+\put(23.06,12.73){\line(1,0){.832}}
+\put(23.89,12.66){\line(1,0){1.668}}
+\put(25.55,12.66){\line(1,0){.832}}
+\put(26.39,12.72){\line(1,0){.828}}
+\multiput(27.22,12.82)(.16454,.02766){5}{\line(1,0){.16454}}
+\multiput(28.04,12.96)(.13585,.02961){6}{\line(1,0){.13585}}
+\multiput(28.85,13.14)(.11509,.03095){7}{\line(1,0){.11509}}
+\multiput(29.66,13.35)(.09928,.03189){8}{\line(1,0){.09928}}
+\multiput(30.45,13.61)(.08679,.03255){9}{\line(1,0){.08679}}
+\multiput(31.23,13.9)(.07661,.03302){10}{\line(1,0){.07661}}
+\multiput(32,14.23)(.06812,.03333){11}{\line(1,0){.06812}}
+\multiput(32.75,14.6)(.06091,.03351){12}{\line(1,0){.06091}}
+\multiput(33.48,15)(.05467,.033602){13}{\line(1,0){.05467}}
+\multiput(34.19,15.44)(.049207,.033605){14}{\line(1,0){.049207}}
+\multiput(34.88,15.91)(.044366,.033536){15}{\line(1,0){.044366}}
+\multiput(35.55,16.41)(.040035,.033402){16}{\line(1,0){.040035}}
+\multiput(36.19,16.94)(.036126,.033211){17}{\line(1,0){.036126}}
+\multiput(36.8,17.51)(.032572,.032969){18}{\line(0,1){.032969}}
+\multiput(37.39,18.1)(.032771,.036526){17}{\line(0,1){.036526}}
+\multiput(37.94,18.72)(.032914,.040437){16}{\line(0,1){.040437}}
+\multiput(38.47,19.37)(.032996,.04477){15}{\line(0,1){.04477}}
+\multiput(38.97,20.04)(.033007,.049611){14}{\line(0,1){.049611}}
+\multiput(39.43,20.74)(.032937,.055073){13}{\line(0,1){.055073}}
+\multiput(39.86,21.45)(.03277,.06131){12}{\line(0,1){.06131}}
+\multiput(40.25,22.19)(.0325,.06852){11}{\line(0,1){.06852}}
+\multiput(40.61,22.94)(.03209,.07701){10}{\line(0,1){.07701}}
+\multiput(40.93,23.71)(.0315,.08718){9}{\line(0,1){.08718}}
+\multiput(41.21,24.5)(.03068,.09966){8}{\line(0,1){.09966}}
+\multiput(41.46,25.29)(.02955,.11545){7}{\line(0,1){.11545}}
+\multiput(41.66,26.1)(.03356,.16343){5}{\line(0,1){.16343}}
+\multiput(41.83,26.92)(.0321,.2061){4}{\line(0,1){.2061}}
+\put(41.96,27.74){\line(0,1){.83}}
+\put(42.05,28.57){\line(0,1){1.428}}
+%\end
+\put(24.75,30){\line(-1,0){10.5}}
+\put(14.25,30){\line(0,1){0}}
+\put(25.75,53){\line(0,1){0}}
+\put(8.5,18.25){\line(0,1){0}}
+%\vector(14.75,30)(37,42.5)
+\put(37,42.5){\vector(2,1){.07}}
+\multiput(14.75,30)(.059973046,.033692722){371}{\line(1,0){.059973046}}
+%\end
+\put(22.81,29.96){\vector(1,0){1.79}}
+%\vector(8.93,18.18)(21.02,43.52)
+\put(21.02,43.52){\vector(1,2){.07}}
+\multiput(8.93,18.18)(.033670992,.070562687){359}{\line(0,1){.070562687}}
+%\end
+%\emline(17.97,37.21)(24.7,51.19)
+\multiput(17.97,37.21)(.03363586,.06989951){200}{\line(0,1){.06989951}}
+%\end
+%\emline(3.68,34.27)(49.3,16.19)
+\multiput(3.68,34.27)(.085109385,-.033729987){536}{\line(1,0){.085109385}}
+%\end
+%\vector(26.7,25.12)(29.96,23.76)
+\put(29.96,23.76){\vector(2,-1){.07}}
+\multiput(26.7,25.12)(.079475,-.0333282){41}{\line(1,0){.079475}}
+%\end
+\put(27,30){\makebox(0,0)[cc]{$\delta$}}
+\put(31.25,26.25){\makebox(0,0)[cc]{$\alpha_1$}}
+\put(39.25,44.75){\makebox(0,0)[cc]{$\xi$}}
+\put(23.5,42.25){\makebox(0,0)[cc]{$\alpha_2$}}
+\put(13.5,33.5){\makebox(0,0)[cc]{$0$}}
+\put(6.75,20.25){\makebox(0,0)[cc]{$D$}}
+\put(5.75,36.75){\makebox(0,0)[cc]{$C$}}
+\put(44,15.75){\makebox(0,0)[cc]{$A$}}
+\put(26.75,50.5){\makebox(0,0)[cc]{$B$}}
+\put(24.25,4.75){\makebox(0,0)[cc]{Fig. 10}}
+\end{picture}
+\end{center}
+
+They intersect the circle in $A$, $B$, $C$, and $D$. Show that
+\begin{equation*}
+(0A)^{2} + (0B)^{2} + (0C)^{2} + (0D)^{2}
+\end{equation*}
+is independent of the position of $D$ and the orientation of the lines.
+
+\subsubsection*{Solution}
+
+Let $\delta$ be a fixed vector ending at the center of the circle. The equation of the circle is
+\begin{equation*}
+||\xi-\delta|| = r
+\end{equation*}
+
+Let $\{ \alpha_{1},\alpha_{2} \}$ be an orthonormal set such that $\alpha_{1}$ is on the line $0A$, and $\alpha_{2}$ is on the line $0B$. Thus the equation of the line $0A$ is
+\begin{equation*}
+\xi = x \alpha_{1}
+\end{equation*}
+and the equation of the line $0B$ is
+\begin{equation*}
+\xi = y \alpha_{2}
+\end{equation*}
+
+In order to obtain the point $A$ and $C$, we must solve
+\begin{equation*}
+\begin{cases}
+||\xi - \delta|| = r \\
+\xi = x \alpha_{1}
+\end{cases}
+\end{equation*}
+
+Eliminating $\xi$, we obtain
+\begin{equation}
+x^{2} ||\alpha_{1}||^{2} - 2x(\delta,\alpha_{1}) + ||\delta||^{2} - r^{2} = 0  \tag{7}
+\end{equation}
+
+Let $x_{1}$ correspond to $A$, and $x_{2}$ to $C$. Then
+\begin{equation*}
+(0A) = x_{1}^{2}
+\end{equation*}
+and
+\begin{equation*}
+(0C) = x_{2}^{2}
+\end{equation*}
+
+One observes that
+\begin{equation*}
+x_{1} + x_{2} = (x_{1} + x_{2}) - 2x_{1} x_{2}
+\end{equation*}
+where $x_{1}$ and $x_{2}$ are roots of (7). Thus
+\begin{equation*}
+(0A)^{2} + (0C)^{2} = [ 2(\delta,\alpha_{1}) ]^{2} - 2 ||\delta||^{2} + 2r^{2}
+\end{equation*}
+
+Similarly, for $B$ and $D$, we must solve
+\begin{equation*}
+\begin{cases}
+||\xi-\delta|| = r \\
+\xi = y \alpha_{2}
+\end{cases}
+\end{equation*}
+
+This implies
+\begin{equation*}
+(0B)^{2} + (0D)^{2} = [ 2(\delta,\alpha_{2}) ]^{2} - 2 ||\delta||^{2} + 2r^{2}
+\end{equation*}
+
+Therefore
+\begin{equation*}
+(0A)^2 + (0C)^2 + (0B)^2 + (0D)^2 = 4 [ (\delta,\alpha_1)^2 + (\delta,\alpha_2)^2 ] - 4 ||\delta||^2 + 4r^2
+\end{equation*}
+
+Note that $(\delta,\alpha_{1})$ and $(\delta,\alpha_{2})$ are components of $\delta$ with respect to the orthonormal set $\{ \alpha_{1},\alpha_{2} \}$. Thus
+\begin{equation*}
+(\delta,\alpha_{1}) + (\delta,\alpha_{2}) = ||\delta||^{2}
+\end{equation*}
+
+This implies that
+\begin{equation*}
+(0A)^{2} + (0C)^{2} + (0B)^{2} + (0D)^{2} = 4r^{2}
+\end{equation*}
+
+\subsection{A generalization of 6.7} %6.8
+
+Consider the sphere $||\xi-\delta|| = r$ in $E_{n}$. Let $\{ \alpha_{1},\cdots,\alpha_{n} \}$ be orthonormal. Then
+\begin{equation}
+\begin{cases}
+||\xi-\delta|| = r \\
+\xi = x_{i} \alpha_{i}, \\
+i = 1,\cdots,n
+\end{cases}
+\tag{8}
+\end{equation}
+produces $2n$ vectors $n_{1},\cdots,n_{2n}$, such that
+\begin{equation*}
+\sum_{i=1}^{2n} ||\eta_{i}||^{2}
+\end{equation*}
+is independent of the orientation of $\{ \alpha_{1},\cdots,\alpha_{n} \}$.
+
+To prove this, we follow the ideas of 6.7, and obtain
+\begin{equation*}
+\sum_{i=1}^{n} (x_{i1}^{2} + x_{i2}^{n}) = 2nr^{2} + (4-2n) ||\delta||^{2}
+\end{equation*}
+
+where solutions $x_{i1}$, $x_{i2}$ correspond to two $\eta$s on $\alpha_{i}$. Note that if we put $n = 2$, we obtain the results of 6.6.
+
+\subsection*{Exercise 6}
+\addcontentsline{toc}{subsection}{\numberline{}Exercise 6}
+
+\begin{enumerate}[\hspace{1cm}(1)]
+
+  \item Study inversion for $k$ being a complex number.
+
+  \item In 6.2 (3), the denominator is a bilinear form. Generalize 6.2 (3) for a multilinear form.
+
+  \item Study quadric inversion when $k$ is a complex number and $A$ is any linear transformation on $E_{n}$.
+
+  \item Let $A$ be a positive transformation on $E$. Consider the quadric inversion corresponding to $A$. Show that
+    \begin{equation*}
+    \frac{(\xi,\eta)}{ \sqrt{(A\xi,\xi)}\sqrt{(A\eta,\eta)} }
+    \end{equation*}
+    is invariant under this inversion.
+
+  \item Generalize exercise (4) for any $A$ and $k$.
+
+  \item Consider the quadric inversion of 6.3 (5). Consider a vector $\eta$ on which 6.3 (5) becomes inversion. Show that $\eta$ is a proper vector of $A$.
+
+  \item Generalize 6.7 to $E_{n}$.
+
+  \item Generalize 6.7 using the space of linear transformations under the Frobenius inner product.
+
+  \item Generalize exercise (8) using the space of linear transformation with $*$-products.
+
+  \item Let $A$ be a linear transformation on $E_{n}$ such that
+    \begin{align*}
+      \frac{(A\xi,A\xi)}{||A\xi||\ ||A\xi||} & = \frac{(\xi, \eta)}{||\xi||\ ||\eta||}, \\
+      ||A\xi|| & \neq 0, \\
+      ||A\eta|| & \neq 0
+    \end{align*}
+    for non-zero $\xi$ and $\eta$ in $E_{n}$. Then $A$ is called a \emph{conformal linear transformation}. Study $A$ restricted to $\Re_{2}$. In general, show that $A$ is conformal if and only if $A = cU$, where $c$ is a complex number and $U$ is a unitary transformation. 
+
+\end{enumerate}
+
+
+\newpage
+
+\section*{Bibliography}
+\addcontentsline{toc}{section}{\numberline{}Bibliography}
+\markboth{Bibliography}{Bibliography}
+
+\begin{enumerate}[\hspace{1cm}(1)]
+
+  \item A1i R. Amir-Moéz; Alfred Horn. \emph{Singular Values of a Matrix}. Amer. Math. Monthly, Vol. LXV (1958), No. 10, p 752-748.
+
+  \item A. L. Fass. \emph{Elements of Linear Space}. Pergamon Press (1961), p 132-142.
+
+  \item (unknown author). \emph{Quadrics in a Unitary Space}. L'Enseignement Mathematique, tom. VII (1961), p 250-257.
+
+  \item (unknown author). \emph{Adjoint Geometry of Linear Transformations}. Monatshefte fur Mathematik, Vol. 67 (1963), No. 3, p 193-199.
+
+  \item (unknown author). \emph{Quasi-inversions on a Unitary Space}. Mathematick Vesnik, Vol. 3 (18), (1966), p 204-207.
+
+  \item Jean Dieudonne. \emph{La Géométrie Des Group C1assique}. Ergebnisse der Mathematik und Ihrer Grenzgebiete, Berlin, (1955), p 17-18.
+
+  \item K. Fan; A. J. Hoffman. \emph{Metric inequalities in the space of matrices}. Proc. Am. Math. Soc., Vol. 6 (1955), p 111-116.
+
+  \item P. R. Ha1mos. \emph{Finite-dimensional Vector Space}. D. Van Nostrand Co. Inc. (1958).
+
+  \item H. L. Hamburger; M. E. Grimshaw. \emph{Linear transformations in $n$-dimensional vector space}. Cambridge University Press (1951).
+
+  \item C. C. MacDuffee. \emph{The theory of matrices}. Chelsea Publishing Co. (1946).
+
+  \item M. Marcus. \emph{Basic theorems in matrix theory}. U. S. Dept. of Commerce, NBS AMS, Series 57.
+
+  \item L. Mirsky. \emph{An introduction to linear algebra}. Oxford University Press (1955).
+
+  \item R. Penrose. \emph{A Generalized Inverse for Matrices}. Proc. Cambridge Philo. Soc., Vol. 51 (1953), p 406-413.
+
+  \item H. Wey1. \emph{Inequalities between the two kinds of eigenvalues of a linear transformation}. Proc. Nat. Acad. Sci., Vol. 35 (1949), p 408-411.
+
+\end{enumerate}
+
+\end{document}

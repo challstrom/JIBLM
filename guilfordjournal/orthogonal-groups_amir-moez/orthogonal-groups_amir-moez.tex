@@ -1,0 +1,725 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% Journal headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright Guilford College Journal of Undergraduate Mathematics} \cfoot{} \rfoot{ - at www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Orthogonal Groups}
+\author{Ali R. Amir-Moéz}
+\date{\vspace{3cm}
+\emph{Journal of Undergraduate Mathematics}
+  \\ Department of Mathematics
+  \\ Guilford College
+  \\ Greensboro, North Carolina 27410 
+  }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+\section*{Introduction}
+\addcontentsline{toc}{section}{\numberline{}Introduction}
+\markboth{Introduction}{Introduction}
+
+\pagenumbering{roman}
+
+In a two-dimensional Euclidean space, the set of rotations about the origin is a commutative group under multiplication. This is easily proved through their matrices. One may observe that an orthogonal transformation $A$ on an $n$-dimensional Euclidean space is a rotation if $\det A = 1$. We shall study these rotations and suggest some problems.
+
+
+\section{Notation}
+\markboth{1. Notation}{1. Notation}
+
+\pagenumbering{arabic}
+
+We shall use the standard notation of linear spaces. An $n$-dimensional Euclidean space will be denoted by $R_n$. Vectors will be denoted by Greek letters. The inner product of two vectors will be indicated by ($\xi$, $\eta$). The expression $\vert \vert \xi \vert \vert$ means the norm of $\xi$. 
+
+A linear transformation will be denoted by a capital letter. The determinant of $A$ will be indicated by $\det A$, and $A*$ is the Hermitian adjoint of $A$. Let $T$ be a subspace of $R_n$, and $A$ be a linear transformation on $R_n$. Then $A \ \vert \ T$ means $A$ restricted to $T$. 
+
+The direct sum of two subspaces $S$ and $T$ of $R_n$ will be denoted by $S \oplus T$. Whenever there is no confusion, matrices will also be denoted by capital letters.
+
+
+\section{Rotations on $R_2$}
+\markboth{2. Rotations on $R_2$}{2. Rotations on $R_2$}
+
+It is well-known that the matrix of a rotation about the origin through an angle $\theta$, with respect to an orthonormal basis, is
+\begin{equation}
+A = 
+\begin{pmatrix}
+  \cos \theta & - \sin \theta \\
+  \sin \theta & \cos \theta
+\end{pmatrix}
+\end{equation}
+
+The proper values of $A$ are $e^{i\theta}$ and $e^{-i\theta}$, but they are complex numbers; but the entries in (1) are real. So one has to extend the field so that the proper values belong to it. We shall discuss this later.
+
+One can easily see that
+\begin{equation}
+\begin{pmatrix}
+  \frac{1}{\sqrt{2}} &  \frac{i}{\sqrt{2}} \\
+  \frac{1}{\sqrt{2}} & \frac{-i}{\sqrt{2}}
+\end{pmatrix}
+\begin{pmatrix}
+  \cos\theta & -\sin\theta \\
+  \sin\theta & \cos\theta
+\end{pmatrix}
+\begin{pmatrix}
+  \frac{1}{\sqrt{2}}  & \frac{1}{\sqrt{2}} \\
+  \frac{-i}{\sqrt{2}} & \frac{i}{\sqrt{2}}
+\end{pmatrix}
+ =
+\begin{pmatrix}
+  e^{i\theta} & 0 \\
+  0           & e^{-i\theta}
+\end{pmatrix}
+\end{equation}
+
+So
+\begin{equation}
+U = 
+\begin{pmatrix}
+  \frac{1}{\sqrt{2}}  & \frac{1}{\sqrt{2}} \\
+  \frac{-i}{\sqrt{2}} & \frac{i}{\sqrt{2}}
+\end{pmatrix}
+\end{equation}
+changes (1) to a diagonal form which does not have real entries.
+
+
+\section{Extension of the Spaces}
+\markboth{3. Extension of the Spaces}{3. Extension of the Spaces}
+
+Let $A$ be an orthogonal transformation on $R_n$. Let $m$ be a proper value of $A$. Then either $m=1$ or $m=-1$, or $m$ has the form $\cos t + i \sin t$, $0<t<2\pi$, $t \ne \pi$, but the third proper value is not in the field of the real numbers. Thus we extend the field so that all proper values belong to it. To do so, we extend the space.
+
+Let
+\begin{equation}
+C = \{ \xi+i\eta: \xi,\eta \in R \}.
+\end{equation}
+
+We define
+\begin{equation}
+(\xi_1+i\eta_1)+(\xi_2+i\eta_2) = (\xi_1+\xi_2)+i(\eta_1+\eta_2)
+\end{equation}
+and
+\begin{equation}
+(a+ib)(\xi+i\eta) = a\xi-b\eta+i(b\xi+a\eta).
+\end{equation}
+
+One can easily prove that $C$ is a vector space over the field of complex numbers. This is sometimes called complexification of the space [3]. The space $C$ is unitary, and the inner product is defined as
+\begin{equation}
+(\xi+i\eta,\alpha+i\beta) = (\xi,\alpha)+(\eta,\beta)-i[(\xi,\beta)-(\eta,\beta)].
+\end{equation}
+
+
+\section{Extension of Transformations}
+\markboth{4. Extension of Transformations}{4. Extension of Transformations}
+
+Let $A$ be an orthogonal transformation on $R$. Then we define $U$ on $C$ by
+\begin{equation}
+U(\xi+i\eta) = A\xi+iA\eta.
+\end{equation}
+
+Since $A$ is orthogonal, $U$ will be unitary on $C$. This can easily be verified. We leave the proof to the reader. Now let $\cos t + i \sin t$ be a proper value of $U$, and $(\alpha+i\beta)$ be a corresponding proper vector of it. Then
+\begin{align}
+U(\alpha+i\beta) & = A\alpha+iA\beta \\
+                 & = (\cos t)\alpha-(\sin t)\beta+i[(\sin t)\alpha+(\cos t)\beta]. \notag
+\end{align}
+
+This implies that
+\begin{equation}
+\begin{cases}
+A\alpha & = (\cos t)\alpha - (\sin t)\beta \\
+A\beta  & = (\sin t)\alpha + (\cos t)\beta
+\end{cases}
+\end{equation}
+
+From this set of equalities, we obtain
+\begin{equation}
+U(\alpha-i\beta) = (\cos t-i\sin t)(\alpha-i\beta).
+\end{equation}
+
+Thus $\cos t - i\sin t$ is also a proper value of $U$, and the corresponding proper vector is $\alpha - i\beta$. Since $U$ is unitary, we have
+\begin{equation}
+0= (\alpha+i\beta,\alpha-i\beta) = \vert \vert \alpha \vert \vert ^2 - \vert \vert \beta \vert \vert ^2 + i[(\alpha,\beta)+(\beta,\alpha)].
+\end{equation}
+
+This implies that
+\begin{equation}
+\vert \vert \alpha \vert \vert = \vert \vert \beta \vert \vert \quad \text{and} \quad (\alpha,\beta)=0.
+\end{equation}
+
+
+\section{A Geometric Interpretation}
+\markboth{5. A Geometric Interpretation}{5. A Geometric Interpretation}
+
+Let $A$ be an orthogonal transformation on $R$. Let
+\begin{align}
+S & = \{ \xi: A\xi = \xi \} \\
+T & = \{ \xi: A\xi = -\xi \}
+\end{align}
+
+Then
+\begin{equation}
+B = A \ \vert \ (S \oplus T)
+\end{equation}
+is a symmetry on $S \oplus T$. Indeed, $S \oplus T$ is invariant under $A$. Now consider $U$ of Section 4, and let $e^{it}$ be a proper value of $U$.
+
+Let
+\begin{align}
+    S_t & = \{ \xi: \xi=\alpha+\beta \} \\
+A\alpha & = (\cos t)\alpha - (\sin t)\beta \\
+A\beta  & = (\sin t)\alpha + (\cos t)\beta
+\end{align}
+
+Here $t$, $\alpha$, and $\beta$ are the ones described in Section 4. Then
+\begin{equation}
+B_t = A \ \vert \ S_t
+\end{equation}
+is a rotation through an angle $t$ about the origin. This may be proved as follows. Let $\xi=\alpha+\beta$. Then
+\begin{equation}
+\frac{(\xi,B_t\xi)}{ \vert \vert \xi \vert \vert \ \vert \vert B_t\xi \vert \vert } = \frac{1}{\vert \vert \xi \vert \vert ^2} \{ \cos t[ \vert \vert \alpha \vert \vert ^2 + \vert \vert \beta \vert \vert ^2] + \sin t[ \vert \vert \alpha \vert \vert ^2 - \vert \vert \beta \vert \vert ^2] \} = \cos t
+\end{equation}
+
+It is clear that $S_t$ is invariant under $A$. Thus
+\begin{equation}
+A = B + \sum_{t} B_t
+\end{equation}
+
+
+\section{Finite Dimensional Cases}
+\markboth{6. Finite Dimensional Cases}{6. Finite Dimensional Cases}
+
+In the Euclidean space $R_n$, one can choose a basis with respect to which the matrix of $A$ is of the form
+\begin{equation}
+\left(
+\begin{array}{cccccccccccc}
+1 & \      & \ & \  & \      & \  & \        & \         & \      & \        & 0         \\
+\ & \ddots & \ & \  & \      & \  & \        & \         & \      & \        & \         \\
+\ & \      & 1 & \  & \      & \  & \        & \         & \      & \        & \         \\
+\ & \      & \ & -1 & \      & \  & \        & \         & \      & \        & \         \\
+\ & \      & \ & \  & \ddots & \  & \        & \         & \      & \        & \         \\
+\ & \      & \ & \  & \      & -1 & \        & \         & \      & \        & \         \\
+\ & \      & \ & \  & \      & \  & \cos t_1 & -\sin t_1 & \      & \        & \         \\
+\ & \      & \ & \  & \      & \  & \sin t_1 & \cos t_1  & \      & \        & \         \\
+\ & \      & \ & \  & \      & \  & \        & \         & \ddots & \        & \         \\
+\ & \      & \ & \  & \      & \  & \        & \         & \      & \cos t_r & -\sin t_r \\
+0 & \      & \ & \  & \      & \  & \        & \         & \      & \sin t_r & \cos t_r
+\end{array}
+\right)
+\end{equation}
+
+If this matrix is called $[A]$, then there exists a unitary change of basis $U$ which changes $[A]$ to
+\begin{equation}
+\left( 
+\begin{array}{cccccccccccc}
+1 & \      & \ & \  & \      & \  & \        & \         & \      & \        & 0         \\
+\ & \ddots & \ & \  & \      & \  & \        & \         & \      & \        & \         \\
+\ & \      & 1 & \  & \      & \  & \        & \         & \      & \        & \         \\
+\ & \      & \ & -1 & \      & \  & \        & \         & \      & \        & \         \\
+\ & \      & \ & \  & \ddots & \  & \        & \         & \      & \        & \         \\
+\ & \      & \ & \  & \      & -1 & \        & \         & \      & \        & \         \\
+\ & \      & \ & \  & \      & \  & e^{it_1} & \         & \      & \        & \         \\
+\ & \      & \ & \  & \      & \  & \        & e^{-it_1} & \      & \        & \         \\
+\ & \      & \ & \  & \      & \  & \        & \         & \ddots & \        & \         \\
+\ & \      & \ & \  & \      & \  & \        & \         & \      & e^{it_r} & \         \\
+0 & \      & \ & \  & \      & \  & \        & \         & \      & \        & e^{-it_r} 
+\end{array} 
+\right)
+\end{equation}
+
+One may see that the matrix of $U$ is
+\begin{equation}
+\left( \begin{array}{cccccccccccc}
+1 & \      & \ & \  & \      & \  & \                  & \                   & \      & \                  & 0                   \\
+\ & \ddots & \ & \  & \      & \  & \                  & \                   & \      & \                  & \                   \\
+\ & \      & 1 & \  & \      & \  & \                  & \                   & \      & \                  & \                   \\
+\ & \      & \ & -1 & \      & \  & \                  & \                   & \      & \                  & \                   \\
+\ & \      & \ & \  & \ddots & \  & \                  & \                   & \      & \                  & \                   \\
+\ & \      & \ & \  & \      & -1 & \                  & \                   & \      & \                  & \                   \\
+\ & \      & \ & \  & \      & \  & \frac{1}{\sqrt{2}} & \frac{i}{\sqrt{2}}  & \      & \                  & \                   \\
+\ & \      & \ & \  & \      & \  & \frac{1}{\sqrt{2}} & \frac{-i}{\sqrt{2}} & \      & \                  & \                   \\
+\ & \      & \ & \  & \      & \  & \                  & \                   & \ddots & \                  & \                   \\
+\ & \      & \ & \  & \      & \  & \                  & \                   & \      & \frac{1}{\sqrt{2}} & \frac{i}{\sqrt{2}}  \\
+0 & \      & \ & \  & \      & \  & \                  & \                   & \      & \frac{1}{\sqrt{2}} & \frac{-i}{\sqrt{2}}
+\end{array} \right)
+\end{equation}
+
+This is true since the proper directions of $A \ \vert \ S_t$, where $S_t$ is of dimension of two, is $(1,i)$ and $(1,-i)$.
+
+
+\section{The Matrix of a Rotation in $R_3$}
+\markboth{7. The Matrix of a Rotation in $R_3$}{7. The Matrix of a Rotation in $R_3$}
+
+Let
+\begin{equation}
+\alpha=(a,b,c), \quad \vert \vert \alpha \vert \vert =1
+\end{equation}
+be a unit vector on the axis of a rotation through an angle of $\theta$. Let $\xi=(x,y,z)$ be any vector. Then the orthogonal projection of $\xi$ on $\alpha$ will be
+\begin{equation}
+\gamma=(\xi,\alpha)\alpha
+\end{equation}
+
+\begin{center}
+%TeXCAD Picture [orthogonal-groups-picture.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(78.25,59.75)(0,70)
+%\vector(10.5,88.25)(36.25,102.25)
+\put(36.25,102.25){\vector(2,1){.07}}\multiput(10.5,88.25)(.062048193,.03373494){415}{\line(1,0){.062048193}}
+%\end
+%\emline(57.25,113.5)(78.25,124.75)
+\multiput(57.25,113.5)(.062874251,.033682635){334}{\line(1,0){.062874251}}
+%\end
+\bezier{1466}(51,129.75)(38.63,100)(70.75,99.25)
+\bezier{1466}(18.25,112.5)(5.88,82.75)(38,82)
+\put(3.5,84.75){\line(2,1){7}}
+%\dashline{1}(15.5,105.5)(49.25,125.75)
+\multiput(15.43,105.43)(.052734,.031641){16}{\line(1,0){.052734}}
+\multiput(17.12,106.44)(.052734,.031641){16}{\line(1,0){.052734}}
+\multiput(18.8,107.45)(.052734,.031641){16}{\line(1,0){.052734}}
+\multiput(20.49,108.47)(.052734,.031641){16}{\line(1,0){.052734}}
+\multiput(22.18,109.48)(.052734,.031641){16}{\line(1,0){.052734}}
+\multiput(23.87,110.49)(.052734,.031641){16}{\line(1,0){.052734}}
+\multiput(25.55,111.5)(.052734,.031641){16}{\line(1,0){.052734}}
+\multiput(27.24,112.52)(.052734,.031641){16}{\line(1,0){.052734}}
+\multiput(28.93,113.53)(.052734,.031641){16}{\line(1,0){.052734}}
+\multiput(30.62,114.54)(.052734,.031641){16}{\line(1,0){.052734}}
+\multiput(32.3,115.55)(.052734,.031641){16}{\line(1,0){.052734}}
+\multiput(33.99,116.57)(.052734,.031641){16}{\line(1,0){.052734}}
+\multiput(35.68,117.58)(.052734,.031641){16}{\line(1,0){.052734}}
+\multiput(37.37,118.59)(.052734,.031641){16}{\line(1,0){.052734}}
+\multiput(39.05,119.6)(.052734,.031641){16}{\line(1,0){.052734}}
+\multiput(40.74,120.62)(.052734,.031641){16}{\line(1,0){.052734}}
+\multiput(42.43,121.63)(.052734,.031641){16}{\line(1,0){.052734}}
+\multiput(44.12,122.64)(.052734,.031641){16}{\line(1,0){.052734}}
+\multiput(45.8,123.65)(.052734,.031641){16}{\line(1,0){.052734}}
+\multiput(47.49,124.67)(.052734,.031641){16}{\line(1,0){.052734}}
+%\end
+%\dashline{1}(62.25,99.75)(29,82.5)
+\multiput(62.18,99.68)(-.060897,-.031593){14}{\line(-1,0){.060897}}
+\multiput(60.47,98.8)(-.060897,-.031593){14}{\line(-1,0){.060897}}
+\multiput(58.77,97.91)(-.060897,-.031593){14}{\line(-1,0){.060897}}
+\multiput(57.06,97.03)(-.060897,-.031593){14}{\line(-1,0){.060897}}
+\multiput(55.36,96.14)(-.060897,-.031593){14}{\line(-1,0){.060897}}
+\multiput(53.65,95.26)(-.060897,-.031593){14}{\line(-1,0){.060897}}
+\multiput(51.95,94.37)(-.060897,-.031593){14}{\line(-1,0){.060897}}
+\multiput(50.24,93.49)(-.060897,-.031593){14}{\line(-1,0){.060897}}
+\multiput(48.54,92.6)(-.060897,-.031593){14}{\line(-1,0){.060897}}
+\multiput(46.83,91.72)(-.060897,-.031593){14}{\line(-1,0){.060897}}
+\multiput(45.13,90.83)(-.060897,-.031593){14}{\line(-1,0){.060897}}
+\multiput(43.42,89.95)(-.060897,-.031593){14}{\line(-1,0){.060897}}
+\multiput(41.72,89.06)(-.060897,-.031593){14}{\line(-1,0){.060897}}
+\multiput(40.01,88.18)(-.060897,-.031593){14}{\line(-1,0){.060897}}
+\multiput(38.31,87.3)(-.060897,-.031593){14}{\line(-1,0){.060897}}
+\multiput(36.6,86.41)(-.060897,-.031593){14}{\line(-1,0){.060897}}
+\multiput(34.9,85.53)(-.060897,-.031593){14}{\line(-1,0){.060897}}
+\multiput(33.19,84.64)(-.060897,-.031593){14}{\line(-1,0){.060897}}
+\multiput(31.49,83.76)(-.060897,-.031593){14}{\line(-1,0){.060897}}
+\multiput(29.78,82.87)(-.060897,-.031593){14}{\line(-1,0){.060897}}
+%\end
+%\vector(26.25,97)(29.25,82.75)
+\put(29.25,82.75){\vector(1,-4){.07}}\multiput(26.25,97)(.0337079,-.1601124){89}{\line(0,-1){.1601124}}
+%\end
+%\vector(26.5,97)(15.75,105.25)
+\put(15.75,105.25){\vector(-4,3){.07}}\multiput(26.5,97)(-.043877551,.033673469){245}{\line(-1,0){.043877551}}
+%\end
+%\vector(26.5,97)(48.5,124.75)
+\put(48.5,124.75){\vector(3,4){.07}}\multiput(26.5,97)(.033690658,.042496172){653}{\line(0,1){.042496172}}
+%\end
+%\vector(26.75,96.75)(61.5,99.75)
+\put(61.5,99.75){\vector(1,0){.07}}\multiput(26.75,96.75)(.3904494,.0337079){89}{\line(1,0){.3904494}}
+%\end
+\put(43.5,126.5){\makebox(0,0)[cc]{$\xi$}}
+\put(35.5,72.75){\makebox(0,0)[cc]{Figure 1}}
+\put(62,93.75){\makebox(0,0)[cc]{$A\xi$}}
+\put(26,79.75){\makebox(0,0)[cc]{$\lambda$}}
+\put(11.5,97.75){\makebox(0,0)[cc]{$\theta$}}
+\put(13.75,110.5){\makebox(0,0)[cc]{$\delta$}}
+\put(36,104.5){\makebox(0,0)[cc]{$\alpha$}}
+%\dashline{1}(49.25,124.25)(60,115)
+\multiput(49.18,124.18)(.037719,-.032456){19}{\line(1,0){.037719}}
+\multiput(50.61,122.95)(.037719,-.032456){19}{\line(1,0){.037719}}
+\multiput(52.05,121.71)(.037719,-.032456){19}{\line(1,0){.037719}}
+\multiput(53.48,120.48)(.037719,-.032456){19}{\line(1,0){.037719}}
+\multiput(54.91,119.25)(.037719,-.032456){19}{\line(1,0){.037719}}
+\multiput(56.35,118.01)(.037719,-.032456){19}{\line(1,0){.037719}}
+\multiput(57.78,116.78)(.037719,-.032456){19}{\line(1,0){.037719}}
+\multiput(59.21,115.55)(.037719,-.032456){19}{\line(1,0){.037719}}
+%\end
+%\dashline{1}(60,115)(62,100.25)
+\multiput(59.93,114.93)(.0313,-.2305){4}{\line(0,-1){.2305}}
+\multiput(60.18,113.09)(.0313,-.2305){4}{\line(0,-1){.2305}}
+\multiput(60.43,111.24)(.0313,-.2305){4}{\line(0,-1){.2305}}
+\multiput(60.68,109.4)(.0313,-.2305){4}{\line(0,-1){.2305}}
+\multiput(60.93,107.55)(.0313,-.2305){4}{\line(0,-1){.2305}}
+\multiput(61.18,105.71)(.0313,-.2305){4}{\line(0,-1){.2305}}
+\multiput(61.43,103.87)(.0313,-.2305){4}{\line(0,-1){.2305}}
+\multiput(61.68,102.02)(.0313,-.2305){4}{\line(0,-1){.2305}}
+%\end
+%\vector(36.5,102.25)(60,115)
+\put(60,115){\vector(2,1){.07}}\multiput(36.5,102.25)(.062169312,.033730159){378}{\line(1,0){.062169312}}
+%\end
+\put(57.25,122){\makebox(0,0)[cc]{$\gamma$}}
+\end{picture}
+\end{center}
+
+Let
+\begin{equation}
+\delta = \xi-\gamma
+\end{equation}
+
+Note that $\delta$ is perpendicular to $\alpha$ (Fig. 1). Suppose that the rotation is $A$. Since $\gamma$ is on the axis of the rotation,
+\begin{equation}
+A\gamma = \gamma
+\end{equation}
+
+Let
+\begin{equation}
+A\delta = \lambda
+\end{equation}
+
+Then
+\begin{equation}
+\begin{cases}
+(\lambda,\alpha)                & = 0 \\
+\vert \vert \lambda \vert \vert & = \vert \vert \delta \vert \vert \\
+(\lambda,\delta)                & = \vert \vert \delta \vert \vert ^2 \cos \theta \\
+\end{cases}
+\end{equation}
+
+Moreover,
+\begin{equation}
+A\xi=\gamma+\lambda
+\end{equation}
+
+We observe that if $\xi = (1,0,0)$, then from (28) we obtain the corresponding $\gamma$ as
+\begin{equation}
+\gamma=(a^2,ab,ac)
+\end{equation}
+
+From (29) we obtain the corresponding $\delta$; that is,
+\begin{equation}
+\delta=(1-a^2,-ab,-ac)
+\end{equation}
+and
+\begin{eqnarray}
+\vert \vert \delta \vert \vert ^2 & = (1-a^2)^2+a^2b^2+a^2c^2 & = 1-2a^2+a^4+a^2b^2+a^2c^2 \\
+                                  & = 1-2a^2+a^2(a^2+b^2+c^2) & = 1-a^2
+\end{eqnarray}
+
+Let $\lambda=(r,s,t)$. Then by (36), we have
+\begin{equation}
+\vert \vert \lambda \vert \vert ^2 = \vert \vert \delta \vert \vert ^2 = 1-a^2
+\end{equation}
+
+Now $(\lambda,\alpha)=0$ and $(\lambda,\delta) = \vert \vert \delta \vert \vert ^2 \cos \theta$ imply that
+\begin{equation}
+\begin{cases}
+    ar + bs + ct & = 0 \\
+(1-a^2)r-abs-act & = (1-a^2) \cos \theta
+\end{cases}
+\end{equation}
+
+These equations give
+\begin{equation}
+r = (1-a^2) \cos \theta
+\end{equation}
+
+Now we observe that
+\begin{equation}
+\lambda \times \delta = k \alpha, \quad  k = \vert \vert \lambda \times \delta \vert \vert = (1-a^2) \sin \theta
+\end{equation}
+
+We also note that
+\begin{equation}
+\lambda \times \delta = (-acs+abt, [1-a^2]t+acr, -abr-[1-a^2]s)
+\end{equation}
+
+From (40) and (41), we obtain
+\begin{equation}
+\begin{cases}
+     -acs+abt & = a(1-a^2) \sin \theta \\
+ (1-a^2)t+acr & = b(1-a^2) \sin \theta \\
+-abr-(1-a^2)s & = c(1-a^2) \sin \theta
+\end{cases}
+\end{equation}
+
+Considering (39) and (42), we get
+\begin{equation}
+t = b\sin\theta-ac\cos\theta \quad \text{and} \quad s = -c\sin\theta-ab\cos\theta
+\end{equation}
+
+So for $(1,0,0)$, we obtain
+\begin{equation}
+\lambda = ([1-a^2]\cos\theta, -c\sin\theta-ab\cos\theta, b\sin, \theta-ac\cos\theta)
+\end{equation}
+
+Consequently
+\begin{equation*}
+A(1,0,0) = \gamma+\lambda
+\end{equation*}
+\begin{equation}
+ = (a^2+[1-a^2]\cos\theta, ab[1-\cos\theta]-c\sin\theta-c\sin\theta, ac[1-cos\theta]+b\sin\theta)
+\end{equation}
+
+Therefore, we have the first column of the matrix of $A$. Similarly, one can obtain $A(0,1,0)$ and $A(0,0,1)$. The matrix of $A$ will be
+
+$A = $
+\begin{equation}
+\begin{pmatrix}
+a^2+(b^2+c^2)\cos\theta      & ab(1-\cos\theta)+c\sin\theta & ac(1-\cos\theta)-b\sin\theta \\
+ba(1-\cos\theta)-c\sin\theta & b^2+(c^2+a^2)\cos\theta      & bc(1-\cos\theta)+a\sin\theta \\
+ca(1-\cos\theta)+b\sin\theta & cb(1-\cos\theta)-a\sin\theta & c^2+(a^2+b^2)\cos\theta
+\end{pmatrix}
+\end{equation}
+
+Note that in the matrix, we have used
+\begin{equation}
+1-a^2 = b^2+c^2
+\end{equation}
+
+The reader may verify that
+\begin{equation}
+A*A = AA* = I \quad \text{and} \quad \det A=1
+\end{equation}
+
+An interesting case occurs when $\theta=\pi$. Then $A$ will become a Hermitian involution; that is, $A*=A$ and $A^2=I$. There are two ways of looking at it. One may set $\theta=\pi$ in (46) and verify it by suffering through the matrix multiplication. The other is looking at it geometrically; that is, $A$ is a symmetry with respect to the axis of rotation.
+
+
+\section{The Axis of a Rotation}
+\markboth{8. The Axis of a Rotation}{8. The Axis of a Rotation}
+
+Let
+\begin{equation}
+R = 
+\begin{pmatrix}
+r_{11} & r_{12} & r_{13} \\
+r_{21} & r_{22} & r_{23} \\
+r_{31} & r_{32} & r_{33}
+\end{pmatrix}
+\end{equation}
+satisfy the properties of $A$ in (46); that is,
+\begin{equation}
+R*R = RR* = I \quad \text{and} \quad \det R = 1
+\end{equation}
+
+Then $R$ is a rotation. Comparing (49) with (48), we obtain
+\begin{equation}
+\text{trace } R = r_{11} + r_{22} + r_{33} = 1 + 2 \cos \theta
+\end{equation}
+where $\theta$ is the angle of rotation. Thus
+\begin{equation}
+\cos \theta = \frac{1}{2} (\text{trace } R-1)
+\end{equation}
+
+The characteristic values of $R$ are
+\begin{equation}
+1, \cos\theta+i\sin\theta, \cos\theta-\sin\theta
+\end{equation}
+
+So the axis of rotation is the characteristic vector corresponding to $1$. One can easily show that
+\begin{equation}
+A 
+\begin{pmatrix}
+  a \\
+  b \\
+  c
+\end{pmatrix}
+=
+\begin{pmatrix}
+  a \\
+  b \\
+  c
+\end{pmatrix}
+\end{equation}
+
+
+\section{The Rotation Group}
+\markboth{9. The Rotation Group}{9. The Rotation Group}
+
+Let $R$ and $S$ be the rotations through the angles $\theta$ and $\varphi$, respectively. Then $RS$ and $SR$ are also rotations, since
+\begin{equation}
+(RS)*(RS)=I \quad \text{and} \quad \det (RS)=[\det R][\det S]=1.
+\end{equation}
+
+In general, $RS \ne SR$. The proof is straightforward by using the matrix forms of $R$ and $S$ similar to (46).
+
+The set of all rotations on a three-dimensional Euclidean space is a group under multiplication. The proof is simple and will be omitted.
+
+
+\section{Commutative Subsets}
+\markboth{10. Commutative Subsets}{10. Commutative Subsets}
+
+We shall test subsets of the rotation group of Section 9.
+
+First suppose the rotations $R$ and $S$ have a common axis. Without loss of generality, one may choose the common axis to be the $z$-axis; that is, $(0,0,1)$. Then $R$ and $S$ in matrix forms will be
+\begin{equation}
+R=
+\begin{pmatrix}
+  \cos \theta & \sin \theta & 0 \\
+ -\sin \theta & \cos \theta & 0 \\
+            0 &           0 & 1
+\end{pmatrix}
+\quad \text{and} \quad
+S=
+\begin{pmatrix}
+  \cos \varphi & \sin \varphi & 0 \\
+ -\sin \varphi & \cos \varphi & 0 \\
+             0 &            0 & 1
+\end{pmatrix}
+\end{equation}
+
+It is clear that $RS=SR$. In fact,
+\begin{equation}
+SR = RS =
+\begin{pmatrix}
+  \cos(\theta+\varphi) & \sin(\theta+\varphi) & 0 \\
+ -\sin(\theta+\varphi) & \cos(\theta+\varphi) & 0 \\
+                     0 &                    0 & 1
+\end{pmatrix}
+\end{equation}
+
+Let
+\begin{equation}
+RS=SR
+\end{equation}
+
+Without a loss of generality, one may choose the axis of $S$ to be $(0,0,1)$, and the axis of $R$ to be $(a,b,c), a^2+b^2+c^2=1$. Let
+\begin{equation}
+S=
+\begin{pmatrix}
+  \cos \varphi & \sin \varphi & 0 \\
+ -\sin \varphi & \cos \varphi & 0 \\
+             0 &            0 & 1
+\end{pmatrix}
+\end{equation}
+and $R$ be the same as (46). Let also
+\begin{equation}
+RS=(a_{ij}) \quad \text{and} \quad SR=(b_{ij})
+\end{equation}
+
+One obtains
+\begin{equation}
+\begin{cases}
+a_{11} & = [a^2+(b^2+c^2)\cos\theta]\cos\varphi - [ab(1-\cos\theta)+c\sin\theta]\sin\varphi \\
+a_{12} & = [a^2+(b^2+c^2)\cos\theta]\sin\varphi + [ab(1-\cos\theta)+c\sin\theta]\cos\varphi \\
+a_{13} & = ac(1-\cos\theta)-b\sin\theta
+\end{cases}
+\end{equation}
+
+We shall not need other terms.
+
+Now we obtain some entries of $(b_{ij})$.
+\begin{equation}
+\begin{cases}
+b_{11} & = [a^2+(b^2+c^2)\cos\theta]\cos\varphi + [ba(1-\cos\theta)-c\sin\theta]\sin\varphi \\
+b_{12} & = [ab(1-\cos\theta)+\sin\theta]\cos\varphi + [b^2+(c^2+a^2)\cos\theta]\sin\varphi \\
+b_{13} & = [ac(1-\cos\theta)-b\sin\theta]\cos\varphi + [bc(1-\cos\theta)+a\sin\theta]\sin\varphi
+\end{cases}
+\end{equation}
+
+By considering $a_{11}=b_{11}$, we obtain
+\begin{equation}
+ab=0
+\end{equation}
+
+Now from $a_{12}=b_{12}$, we get
+\begin{equation}
+a^2=b^2
+\end{equation}
+
+Comparing(63) and (64), we obtain
+\begin{equation}
+a=b=0, \quad \text{and} \quad c=1
+\end{equation}
+
+This is, indeed, for $\theta \ne \pi$ and $\varphi \ne \pi$. The reader may examine (61) and (62) for other commutative subsets when $\theta=\pi$ and $\varphi=\pi$. We shall omit the details.
+
+
+\section{Rotations in $R_4$}
+\markboth{11. Rotations in $R_4$}{11. Rotations in $R_4$}
+
+In $R_4$, there are two kinds of rotations. By a proper choice of base, one may write their matrices as follows.
+
+Either we have
+\begin{equation}
+\begin{pmatrix}
+  \cos \theta & - \sin \theta & \            & 0             \\
+  \sin \theta & \cos \theta   & \            & \             \\
+  \           &               & \cos \theta  & - \sin \theta \\
+  0           & \             & \sin \varphi & \cos \varphi
+\end{pmatrix}
+\end{equation}
+or
+\begin{equation}
+\begin{pmatrix}
+  1 & 0 & \            & 0              \\
+  0 & 1 & \            & \              \\
+  \ & \ & \cos \varphi & - \sin \varphi \\
+  0 & \ & \sin \varphi & \cos \varphi   
+\end{pmatrix}
+\end{equation}
+
+If we choose an orthogonal change of basis, we can change (66) to (67) to a general form, but a direct approach to obtaining the matrices of these rotations will be an interesting exercise.
+
+We may call (66) a rotation about the origin, and (67) a rotation about a two-dimensional subspace of $R_4$. For a rotation about a subspace, one can choose an orthonormal set $\{ \alpha,\beta \}$, $\alpha=(a,b,c)$, $\beta=(r,s,t)$, $\vert \vert \alpha \vert \vert = \vert \vert \beta \vert \vert =1$. Then, with a similar technique to the one in Section 7, obtain the matrix of this rotation. This also will be an interesting exercise. For a rotation about the origin, one can also choose an orthonormal set $\{ \alpha_1,\alpha_2,\alpha_3,\alpha_4 \}$ and considering rotations through $\theta$ and $\varphi$ in subspaces $[\alpha_1,\alpha_2]$ and $[\alpha_3,\alpha_4]$. This will be another interesting exercise.
+
+
+\section{Rotations in $R_n$}
+\markboth{12. Rotations in $R_n$}{12. Rotations in $R_n$}
+
+One may generalize the ideas of Section 11 to $R_n$. Either rotations about the origin may be studied, or rotations about a subspace. One may choose an orthonormal set $\{ \alpha_1,\cdots,\alpha_k \}$, $k<n$ in $R_n$, and keep the subspace $[\alpha_1,\cdots,\alpha_k]$ invariant. In case $n$ is odd, one may study the case of rotation about an axis or a subspace of odd dimension. All of these ideas are interesting studies.
+
+
+\section*{References}
+\addcontentsline{toc}{section}{\numberline{}References}
+\markboth{References}{References}
+
+\begin{enumerate}[1.]
+  \item Amir-Moéz, A. R. and Fass, A. L., \emph{Elements of Linear Spaces}, Pergamon Press, Oxford, England (1962).
+  \item Amir-Moéz, A. R., \emph{The Rotation Group, Axes and Angles of Rotations}, The Toth-Maotian Review, Vol. 8, No. 4 (1990), pp. 4305-4310.
+  \item Shafi-iha, M. H., \emph{Linear Algebra, Tensors, Riemannian Geometry, Cartan Algebra, Spinnors, Quaternions}, (1965), pp. 229-309.
+\end{enumerate}
+
+\end{document}
+

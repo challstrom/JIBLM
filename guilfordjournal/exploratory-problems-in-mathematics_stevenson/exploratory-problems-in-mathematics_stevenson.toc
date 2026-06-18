@@ -1,0 +1,8 @@
+\contentsline {section}{\hbox to\@tempdima {\hfil }Introduction}{i}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Exploratory Problem 1}{1}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Exploratory Problem 2}{3}
+\contentsline {section}{\hbox to\@tempdima {\hfil }More Exploratory Problems}{6}
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Exploratory Problem 3}{6}
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Exploratory Problem 4}{7}
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Exploratory Problem 5}{8}
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Exploratory Problem 6}{10}

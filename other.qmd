@@ -14,10 +14,20 @@ Modules are intended:
 
 Instructors are encouraged to contact authors for guidance in the use of Modules.
 
-[List of Available Modules](modules/modules.qmd)
+### [List of Available Modules](modules/modules.qmd)
 
 ## Unrefereed Course Notes
 
+These two collections of notes are offered free of charge and may be reproduced and distributed provided that no charge is levied to the users beyond the cost of reproduction.
+
+
+### [Individual Contributions](unrefereed_notes/unrefereed_notes.qmd)
+
 These notes were obtained by one of the original editors prior to the inception of JIBLM. Many have been used for years, if not decades, and are (in our opinion) excellent notes. JIBLM encourages instructors using these notes to modify them as needed to suit their own courses and then submit them to JIBLM for consideration as refereed publications. Special designations for authoring notes created by one individual and adapted to a course by a second are described in the Joint Authorship section of the Information for Authors of Course Notes.
 
-[List of Available Materials](unrefereed_notes/unrefereed_notes.qmd)
+<!-- [List of Available Materials](unrefereed_notes/unrefereed_notes.qmd) -->
+
+### [Guilford College Collection](guilfordjournal/guilford.qmd)
+
+These notes come from "Monographs in Undergraduate Mathematics," founded by J. R. Boyd and developed by the faculty of the Department of Mathematics at Guilford College over the period from 1969 to 1994. When this series became inactive, these notes were donated under the condition that they remain unaltered and protected by Guilford copyright.
+

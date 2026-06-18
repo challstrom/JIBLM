@@ -1,0 +1,832 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% Journal headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright Guilford College Journal of Undergraduate Mathematics} \cfoot{} \rfoot{ - at www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Exploratory Problems in Mathematics}
+\author{Fred Stevenson}
+\date{\vspace{3cm}
+\emph{Journal of Undergraduate Mathematics}
+  \\ Department of Mathematics
+  \\ Guilford College
+  \\ Greensboro, North Carolina 27410 
+  \vspace{3cm}
+  \\ The publication of this \emph{Monograph} was 
+  \\ partially supported by a gift from 
+  \\ Professor Ali R. Amir-Moéz, Texas Tech University.
+  }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+\section*{Introduction}
+\addcontentsline{toc}{section}{\numberline{}Introduction}
+\markboth{Introduction}{Introduction}
+
+\pagenumbering{roman}
+
+This \emph{Monograph} is intended to introduce to the reader the concept of exploratory problems in mathematics. As the name suggests, an exploratory problem is a problem that is designed to encourage exploration, independence, individuality, and imagination. The idea is not a new one, and there are several books of problems that challenge the ingenuity of even the best mathematics students. Our concern here, however, is not so much to challenge the gifted student, but rather to involve the average student. The average student in mathematics does not usually have a spirit of adventure, or for that matter, even a feeling of confidence. Therefore the kind of problem that would be appropriate for such a student must necessarily be conceptually easier and mathematically more basic than the brain teasers we see in the Olympiad books. Nevertheless, the problem should lead the student on an odyssey in mathematical thinking.
+
+A good exploratory problem for the average student -- whether he/she is in junior high, high school, or college -- should satisfy three criteria. It should be: 
+\begin{enumerate}[\hspace{1cm}i)]
+  \item loosely stated; 
+  \item conceptually simple; and 
+  \item mathematically sound. 
+\end{enumerate}
+
+The first condition looks out of place for a mathematical problem; after all, mathematics is supposed to be an exact science, with well-formulated definitions, theorems, and hypotheses. And so it is. We are suggesting that the student himself provide these well-formulations. What we are ruling out here are problems that admit a single answer or a short answer, or even a complete answer. In other words, a good exploratory problem should be open-ended, and should allow for the student to proceed in several directions. 
+
+The second criterion rules out problems that are logically complex or that need several definitions to set up. In fact, an ideal problem should be understood by a junior high student without difficulty. Nevertheless, it should be rich enough so that a college mathematics major might not be able to complete an investigation to his liking. 
+
+The third condition is the most important one. While exploring, the student should be engaged in sound mathematics. This is to say that the student should study concepts from courses in the mainstream of mathematics, such as algebra, geometry, and analysis. We therefore rule out most game or puzzle type problems.
+
+These exploratory problems are part of a series of problems that the author and Shmuel Avital have experimented with in classrooms. It is hoped that these problems can teach a lesson: Mathematics is not a subject with just right or wrong answers. It is a subject that allows for experimentation, inductive reasoning, and discovery. Furthermore, it can be explored by even average students at a young age.
+
+While doing an exploratory problem, the student should be: 
+\begin{enumerate}[\hspace{1cm}i)]
+  \item reviewing basic mathematical skills; 
+  \item organizing data; 
+  \item formulating hypotheses; 
+  \item recognizing the need for proof; 
+  \item asking further questions; and 
+  \item creating his own mathematics. 
+\end{enumerate}
+This is a large order to fill, and we do not pretend to have reached the ideal. Here are two exploratory problems that we examine in detail. It is hoped that they illustrate the properties of a good exploratory problem.
+
+\begin{flushright}
+Fred Stevenson \\
+University of Arizona
+\end{flushright}
+
+
+\newpage
+
+\section*{Exploratory Problem 1}
+\addcontentsline{toc}{section}{\numberline{}Exploratory Problem 1}
+\markboth{Exploratory Problem 1}{Exploratory Problem 1}
+
+\pagenumbering{arabic}
+
+\begin{description}
+
+  \item[The Problem:] What can be said about the sum of consecutive integers?
+
+  \item[] First, we notice that this is indeed loosely stated. There are a number of possible directions that we can go. For example: even a grade-school student can notice that when two consecutive numbers are added ($8+9=17$, $5+6=11$), the result is an odd number. This might lead a student to ask the question of whether the sum of two consecutive integers is always odd. If the answer is yes, and it surely seems so, then perhaps a proof is necessary. (Here is the essence of a proof: $n+(n+1) = 2n+1$, an odd number.) Then again, perhaps a proof is not necessary. The converse question could also be asked. Is every odd number representable as the sum of two consecutive integers? Naturally, for some students, these questions are not of interest; for some, they are of interest but are too difficult to formulate; for some, the theorem could be formulated: ``A number is odd if and only if it can be written as the sum of two consecutive integers'', but not proved; and for some, the theorem could be stated and proved easily.
+
+  \item[] Here is another direction that could be explored. What can you say about the sums of consecutive integers that begin with the number $1$? For example, $1+2+3 = 6$; $1+2+3+4+5 = 15$. Most high-school algebra courses include the formula for the sum of an arithmetic series, and in particular, $1+2+3+\cdots+n = \frac{n(n+l)}{2}$. The proof of this can be accomplished in different ways, and need not be attempted at all. The finding of this formula alone is a challenging problem for most high-school students who have not studied arithmetic series.
+
+  \item[] We will pursue a third direction in some detail here. Our question is this: ``What can you say about the sum of $n$ consecutive integers for a fixed $n$?'' For example, let $n=3$. Here is some data: $3+4+5=12$; $7+8+9=24$; $-3 + -2 + -1 = -6$; $12+13+14=39$. It appears that all of the sums are divisible by three. But is this really true? More examples provide further evidence of this, but a proof would clinch it.
+
+  \item[Exercise 1:] Prove that a number is divisible by $3$ if and only if the number can be written as the sum of three consecutive integers.
+
+  \item[] At this point, some students might ask whether the sum of $n$ consecutive integers is always divisible by $n$. Quick recollection shows this is not true; the sum of $2$ consecutive integers is odd. Furthermore, the sum of $4$ consecutive integers is easily seen to yield numbers not divisible by $4$; for example, $3+4+5+6 = 18$. But how about $n = 5$? Examples here indicate that the sum of $5$ consecutive integers is divisible by $5$: $4+5+6+7+8 = 30$; $9+10+11+12+13 = 55$. A student could try to prove this, or instead ask still another question: ``Is the sum of $7$ consecutive integers divisible by $7$?'' Let's see. $-2 + -1 + 0 + 1 + 2 + 3 + 4 = 7$; $1+2+3+4+5+6+7 = 28$; $9+10+11+12+13+14+15 = 98$. It looks like the answer is yes. 
+
+  \item[] It would seem natural to formulate the following hypothesis: If m is odd, the sum of $m$ consecutive integers is always divisible by m. Even formulating such a statement is a formidable hurdle for many students. For some, the truth of the hypothesis would rest on gathering more corroborating data for various odd numbers $m$. For some students, a formal proof would be necessary. Also, the converse of the hypothesis could be attempted; if $k$ is a number divisible by the odd number $m$, then $k$ can be represented by the sum of $m$ consecutive integers. The formulation itself is a mouthfull, and a proof would be a challenge for a good high-school student. Nevertheless, the average student could surely present convincing data.
+
+  \item[Exercise 2:] Prove that $n$ is divisible by an odd number $m$ if and only if $n$ can be written as the sum of $m$ consecutive integers.
+
+  \item[] There are more questions yet. What about the sums of an even number of numbers? The persevering student will discover that the sum of $4$ consecutive integers is always even, i.e. divisible by $2$; and the sum of $6$ consecutive integers is always divisible by $3$. We leave it to the reader to formulate a hypothesis and prove it.
+
+  \item[Exercise 3:] State and prove a theorem concerning the sum of an even number of consecutive integers. Examine the converse of your theorem.
+
+  \item[] There are even more directions that we can pursue with this problem. For example, consider the number $45$. Now, $45 = 22+23$ (the sum of $2$ consecutive integers). Also, $45 = 14+15+16$ (sum of $3$ consecutive integers), and $7+8+9+10+11$ (sum of $5$ consecutive integers), and $5+6+7+8+9+10$ (sum of $6$ consecutive integers), and $1+2+3+4+5+6+7+8+9$ (sum of $9$ consecutive integers), and $-4 + -3 + \cdots +10$ (sum of $15$ consecutive integers), and on and on. The question is this: How many ways can one write the number $45$ as the sum of consecutive integers? We have found seven ways, and there are a few more. Here are some general questions along this line. Let $N(k)$ stand for the number of ways that $k$ can be written as the sum of consecutive integers.
+
+  \item[Exercise 4:] Which numbers between $2$ and $100$ can be represented in the most ways? In the least number of ways? Restatement: Find numbers $k$ such that $N(k)$ is maximum and $N(k)$ minimum for $2 \leq k \leq 100$.
+
+  \item[Exercise 5:] State and prove some theorems about the relationship of $N(k)$ to $N(m)$ for related numbers $k$ and $m$. For example, find the relationship between $N(k)$ and $N(2k)$.
+
+  \item[Exercise 6:] Given the number $k$, find a formula for $N(k)$.
+
+  \item[Exercise 7:] Consider Exercises 4, 5, and 6 again, using $N^{+} (k)$ instead of $N(k)$, where $N^{+} (k)$ stands for the number of ways $k$ can be written as the sums of consecutive integers.
+
+  \item[] These are some of the directions that can be followed with this exploratory problem. It is hoped that while working on such problems, other problems and questions will arise. Of course, not every question is a good question; some will have easy answers, some will have difficult answers, some will have no answers at all, and some will not make any sense in the first place.
+
+  \item[] In reviewing this exploratory problem, as we mentioned at the outset, it certainly satisfies the first criterion for such problems; it is loosely stated. As for the second and third criteria -- simplicity of concept and soundness of mathematics -- the problem satisfies these in perhaps an unsatisfying way. The problem is so elementary that only the basic mathematical skills of addition, subtraction, multiplication, and division, and the basic concepts of multiplier and divisor, were used. While the problem could surely be addressed by a junior-high student, it would be nice if it were able to admit more sophisticated content along the way.
+
+\end{description}
+
+
+\section*{Exploratory Problem 2}
+\addcontentsline{toc}{section}{\numberline{}Exploratory Problem 2}
+\markboth{Exploratory Problem 2}{Exploratory Problem 2}
+
+\begin{description}
+
+  \item[The Problem:] What can you say about the path of a diagonal through a rectangle partitioned into unit squares?
+
+  \item[] Here is a picture of what we mean. Consider the example of a $2$ by $3$ rectangle, with the diagonals passing from the lower left to the upper right. What can you say about its path? One thing we can say is that it passes through four unit squares. Two of the passages (exit from square $1$ and entrance to square $2$; also exit square $3$, entrance square $4$) are through vertical sides. One passage (exit square $2$, entrance square $3$) is through a horizontal side. 
+
+\begin{center}
+%TeXCAD Picture [exploratory-fig1.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 0.5mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(66,44.5)(0,0)
+\put(4.5,5){\framebox(20.5,19.75)[cc]{1}}
+\put(4.5,24.75){\framebox(20.5,19.75)[cc]{}}
+\put(25,24.75){\framebox(20.5,19.75)[cc]{3}}
+\put(45.5,24.75){\framebox(20.5,19.75)[cc]{4}}
+\put(25,5.06){\framebox(20.5,19.75)[cc]{2}}
+\put(45.5,5.06){\framebox(20.5,19.75)[cc]{}}
+%\emline(66,44.25)(4.5,5)
+\multiput(66,44.25)(-.0528350515,-.0337199313){1164}{\line(-1,0){.0528350515}}
+%\end
+\end{picture}
+\end{center}
+
+  \item[] These observations will determine the direction we will go in analyzing this problem. Specifically, we will address the problem: How many unit squares are pierced by the diagonal of an $n$ by $m$ rectangle? First, we shall analyze further data. The pictures show that if the dimensions are $3$ by $4$, the number of squares pierced is 6; if the dimensions are $2$ by $5$, the number is also $6$; and if the dimensions are $3$ by $5$, the number is $7$.
+
+\begin{center}
+%TeXCAD Picture [exploratory-fig2.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(97,55.95)(0,0)
+\put(13.15,36){\framebox(10,10)[cc]{3}}
+\put(57.15,11.75){\framebox(10,10)[cc]{3}}
+\put(57.06,36){\framebox(10,10)[cc]{2}}
+\put(3.25,36){\framebox(10,10)[cc]{}}
+\put(47.25,11.75){\framebox(10,10)[cc]{}}
+\put(47.16,36){\framebox(10,10)[cc]{1}}
+\put(23.05,36){\framebox(10,10)[cc]{4}}
+\put(67.05,11.75){\framebox(10,10)[cc]{4}}
+\put(66.96,36){\framebox(10,10)[cc]{3}}
+\put(32.95,36){\framebox(10,10)[cc]{}}
+\put(76.95,11.75){\framebox(10,10)[cc]{5}}
+\put(86.95,11.75){\framebox(10,10)[cc]{}}
+\put(76.85,36){\framebox(10,10)[cc]{}}
+\put(86.85,36){\framebox(10,10)[cc]{}}
+\put(13.15,45.95){\framebox(10,10)[cc]{}}
+\put(57.15,21.7){\framebox(10,10)[cc]{}}
+\put(57.06,45.95){\framebox(10,10)[cc]{}}
+\put(3.25,45.95){\framebox(10,10)[cc]{}}
+\put(47.25,21.7){\framebox(10,10)[cc]{}}
+\put(47.16,45.95){\framebox(10,10)[cc]{}}
+\put(23.05,45.95){\framebox(10,10)[cc]{5}}
+\put(67.05,21.7){\framebox(10,10)[cc]{}}
+\put(66.96,45.95){\framebox(10,10)[cc]{4}}
+\put(32.95,45.95){\framebox(10,10)[cc]{6}}
+\put(76.95,21.7){\framebox(10,10)[cc]{6}}
+\put(86.95,21.7){\framebox(10,10)[cc]{7}}
+\put(76.85,45.95){\framebox(10,10)[cc]{5}}
+\put(86.85,45.95){\framebox(10,10)[cc]{6}}
+\put(13.15,26.08){\framebox(10,10)[cc]{2}}
+\put(57.15,1.83){\framebox(10,10)[cc]{2}}
+\put(3.25,26.08){\framebox(10,10)[cc]{1}}
+\put(47.25,1.83){\framebox(10,10)[cc]{1}}
+\put(23.05,26.08){\framebox(10,10)[cc]{}}
+\put(67.05,1.83){\framebox(10,10)[cc]{}}
+\put(32.95,26.08){\framebox(10,10)[cc]{}}
+\put(76.95,1.83){\framebox(10,10)[cc]{}}
+\put(86.95,1.83){\framebox(10,10)[cc]{}}
+%\emline(43,55.75)(3,26)
+\multiput(43,55.75)(-.0453514739,-.0337301587){882}{\line(-1,0){.0453514739}}
+%\end
+\put(3,26){\line(0,1){0}}
+%\emline(96.75,55.75)(47.25,36)
+\multiput(96.75,55.75)(-.08447099,-.033703072){586}{\line(-1,0){.08447099}}
+%\end
+%\emline(97,31.5)(47.25,1.75)
+\multiput(97,31.5)(-.0564058957,-.0337301587){882}{\line(-1,0){.0564058957}}
+%\end
+\end{picture}
+\end{center}
+
+  \item[] This data leads us to the hypothesis: In an $n$ by $m$ rectangle, the number of unit squares pierced is $n+m-1$. The following example shows that our hypothesis is false. The number of squares pierced in the $2$ by $4$ rectangle is $4$, not $5$. 
+
+\begin{center}
+%TeXCAD Picture [exploratory-fig3.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 0.5mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(86.5,44.5)(0,0)
+\put(4.5,5){\framebox(20.5,19.75)[cc]{1}}
+\put(4.5,24.75){\framebox(20.5,19.75)[cc]{}}
+\put(25,24.75){\framebox(20.5,19.75)[cc]{}}
+\put(45.5,24.75){\framebox(20.5,19.75)[cc]{3}}
+\put(66,24.75){\framebox(20.5,19.75)[cc]{4}}
+\put(25,5.06){\framebox(20.5,19.75)[cc]{2}}
+\put(45.5,5.06){\framebox(20.5,19.75)[cc]{}}
+\put(66,5.06){\framebox(20.5,19.75)[cc]{}}
+%\emline(86.5,44.5)(4.5,5.25)
+\multiput(86.5,44.5)(-.0704467354,-.0337199313){1164}{\line(-1,0){.0704467354}}
+%\end
+\put(4.5,5.25){\line(0,1){0}}
+\end{picture}
+\end{center}
+
+  \item[] Further analysis shows that if the diagonal passes through a corner (in the interior) as in the example above, the result is always less than $n+m-l$. We will omit the pictures, but the following data is easily gathered.
+
+\begin{tabular}{ccc}
+Dimension of rectangle  &  \# of squares pierced  &  \# of corners pierced \\
+ 2 by  4  &   4  &  1 \\
+ 9 by  6  &  12  &  2 \\
+ 8 by 12  &  16  &  3 \\
+12 by 20  &  28  &  3
+\end{tabular}
+
+  \item[] Observing this, we offer a new hypothesis: In an $n$ by $m$ rectangle, the number of squares pierced is $n+m-c-1$, where $c$ is the number of interior corners passed through. In struggling with a proof of this hypothesis, a relationship between $n$ and $m$ and $c$ must be found.
+
+  \item[Exercise 8:] Find a relationship between $m$, $n$, and $c$.
+
+  \item[] Let us take another view. Here is a $12$ by $20$ rectangle. Notice that the diagonal will follow a path through four $3$ by $5$ rectangles. In each $3$ by $5$ rectangle, $3+5-1=7$ are squares pierced. So the answer for the $12$ by $20$ rectangle is $7 \cdot 4 = 28$.
+
+\begin{center}
+%TeXCAD Picture [exploratory-fig4.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength .75mm % = 2.13pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(124.86,77.15)(0,0)
+\put(5,5.12){\framebox(6,6)[cc]{}}
+\put(5,41.12){\framebox(6,6)[cc]{}}
+\put(64.9,41.12){\framebox(6,6)[cc]{}}
+\put(64.9,5.06){\framebox(6,6)[cc]{}}
+\put(5,23.16){\framebox(6,6)[cc]{}}
+\put(5,59.16){\framebox(6,6)[cc]{}}
+\put(64.9,59.16){\framebox(6,6)[cc]{}}
+\put(64.9,23.09){\framebox(6,6)[cc]{}}
+\put(34.96,23.16){\framebox(6,6)[cc]{}}
+\put(34.96,59.16){\framebox(6,6)[cc]{}}
+\put(94.86,59.16){\framebox(6,6)[cc]{}}
+\put(94.86,23.09){\framebox(6,6)[cc]{}}
+\put(34.96,5.12){\framebox(6,6)[cc]{}}
+\put(34.96,41.12){\framebox(6,6)[cc]{}}
+\put(94.86,41.12){\framebox(6,6)[cc]{}}
+\put(94.86,5.06){\framebox(6,6)[cc]{}}
+\put(5,11.11){\framebox(6,6)[cc]{}}
+\put(5,47.11){\framebox(6,6)[cc]{}}
+\put(64.9,47.11){\framebox(6,6)[cc]{}}
+\put(64.9,11.05){\framebox(6,6)[cc]{}}
+\put(5,29.14){\framebox(6,6)[cc]{}}
+\put(5,65.14){\framebox(6,6)[cc]{}}
+\put(64.9,65.14){\framebox(6,6)[cc]{}}
+\put(64.9,29.08){\framebox(6,6)[cc]{}}
+\put(34.96,29.14){\framebox(6,6)[cc]{}}
+\put(34.96,65.14){\framebox(6,6)[cc]{}}
+\put(94.86,65.14){\framebox(6,6)[cc]{}}
+\put(94.86,29.08){\framebox(6,6)[cc]{}}
+\put(34.96,11.11){\framebox(6,6)[cc]{}}
+\put(34.96,47.11){\framebox(6,6)[cc]{}}
+\put(94.86,47.11){\framebox(6,6)[cc]{}}
+\put(94.86,11.05){\framebox(6,6)[cc]{}}
+\put(5,17.12){\framebox(6,6)[cc]{}}
+\put(5,53.12){\framebox(6,6)[cc]{}}
+\put(64.9,53.12){\framebox(6,6)[cc]{}}
+\put(64.9,17.06){\framebox(6,6)[cc]{}}
+\put(5,35.15){\framebox(6,6)[cc]{}}
+\put(5,71.15){\framebox(6,6)[cc]{}}
+\put(64.9,71.15){\framebox(6,6)[cc]{}}
+\put(64.9,35.09){\framebox(6,6)[cc]{}}
+\put(34.96,35.15){\framebox(6,6)[cc]{}}
+\put(34.96,71.15){\framebox(6,6)[cc]{}}
+\put(94.86,71.15){\framebox(6,6)[cc]{}}
+\put(94.86,35.09){\framebox(6,6)[cc]{}}
+\put(34.96,17.12){\framebox(6,6)[cc]{}}
+\put(34.96,53.12){\framebox(6,6)[cc]{}}
+\put(94.86,53.12){\framebox(6,6)[cc]{}}
+\put(94.86,17.06){\framebox(6,6)[cc]{}}
+\put(11,5.12){\framebox(6,6)[cc]{}}
+\put(11,41.12){\framebox(6,6)[cc]{}}
+\put(70.9,41.12){\framebox(6,6)[cc]{}}
+\put(70.9,5.06){\framebox(6,6)[cc]{}}
+\put(11,23.16){\framebox(6,6)[cc]{}}
+\put(11,59.16){\framebox(6,6)[cc]{}}
+\put(70.9,59.16){\framebox(6,6)[cc]{}}
+\put(70.9,23.09){\framebox(6,6)[cc]{}}
+\put(40.96,23.16){\framebox(6,6)[cc]{}}
+\put(40.96,59.16){\framebox(6,6)[cc]{}}
+\put(100.86,59.16){\framebox(6,6)[cc]{}}
+\put(100.86,23.09){\framebox(6,6)[cc]{}}
+\put(40.96,5.12){\framebox(6,6)[cc]{}}
+\put(40.96,41.12){\framebox(6,6)[cc]{}}
+\put(100.86,41.12){\framebox(6,6)[cc]{}}
+\put(100.86,5.06){\framebox(6,6)[cc]{}}
+\put(11,11.11){\framebox(6,6)[cc]{}}
+\put(11,47.11){\framebox(6,6)[cc]{}}
+\put(70.9,47.11){\framebox(6,6)[cc]{}}
+\put(70.9,11.05){\framebox(6,6)[cc]{}}
+\put(11,29.14){\framebox(6,6)[cc]{}}
+\put(11,65.14){\framebox(6,6)[cc]{}}
+\put(70.9,65.14){\framebox(6,6)[cc]{}}
+\put(70.9,29.08){\framebox(6,6)[cc]{}}
+\put(40.96,29.14){\framebox(6,6)[cc]{}}
+\put(40.96,65.14){\framebox(6,6)[cc]{}}
+\put(100.86,65.14){\framebox(6,6)[cc]{}}
+\put(100.86,29.08){\framebox(6,6)[cc]{}}
+\put(40.96,11.11){\framebox(6,6)[cc]{}}
+\put(40.96,47.11){\framebox(6,6)[cc]{}}
+\put(100.86,47.11){\framebox(6,6)[cc]{}}
+\put(100.86,11.05){\framebox(6,6)[cc]{}}
+\put(11,17.12){\framebox(6,6)[cc]{}}
+\put(11,53.12){\framebox(6,6)[cc]{}}
+\put(70.9,53.12){\framebox(6,6)[cc]{}}
+\put(70.9,17.06){\framebox(6,6)[cc]{}}
+\put(11,35.15){\framebox(6,6)[cc]{}}
+\put(11,71.15){\framebox(6,6)[cc]{}}
+\put(70.9,71.15){\framebox(6,6)[cc]{}}
+\put(70.9,35.09){\framebox(6,6)[cc]{}}
+\put(40.96,35.15){\framebox(6,6)[cc]{}}
+\put(40.96,71.15){\framebox(6,6)[cc]{}}
+\put(100.86,71.15){\framebox(6,6)[cc]{}}
+\put(100.86,35.09){\framebox(6,6)[cc]{}}
+\put(40.96,17.12){\framebox(6,6)[cc]{}}
+\put(40.96,53.12){\framebox(6,6)[cc]{}}
+\put(100.86,53.12){\framebox(6,6)[cc]{}}
+\put(100.86,17.06){\framebox(6,6)[cc]{}}
+\put(17,5.12){\framebox(6,6)[cc]{}}
+\put(17,41.12){\framebox(6,6)[cc]{}}
+\put(76.9,41.12){\framebox(6,6)[cc]{}}
+\put(76.9,5.06){\framebox(6,6)[cc]{}}
+\put(17,23.16){\framebox(6,6)[cc]{}}
+\put(17,59.16){\framebox(6,6)[cc]{}}
+\put(76.9,59.16){\framebox(6,6)[cc]{}}
+\put(76.9,23.09){\framebox(6,6)[cc]{}}
+\put(46.96,23.16){\framebox(6,6)[cc]{}}
+\put(46.96,59.16){\framebox(6,6)[cc]{}}
+\put(106.86,59.16){\framebox(6,6)[cc]{}}
+\put(106.86,23.09){\framebox(6,6)[cc]{}}
+\put(46.96,5.12){\framebox(6,6)[cc]{}}
+\put(46.96,41.12){\framebox(6,6)[cc]{}}
+\put(106.86,41.12){\framebox(6,6)[cc]{}}
+\put(106.86,5.06){\framebox(6,6)[cc]{}}
+\put(17,11.11){\framebox(6,6)[cc]{}}
+\put(17,47.11){\framebox(6,6)[cc]{}}
+\put(76.9,47.11){\framebox(6,6)[cc]{}}
+\put(76.9,11.05){\framebox(6,6)[cc]{}}
+\put(17,29.14){\framebox(6,6)[cc]{}}
+\put(17,65.14){\framebox(6,6)[cc]{}}
+\put(76.9,65.14){\framebox(6,6)[cc]{}}
+\put(76.9,29.08){\framebox(6,6)[cc]{}}
+\put(46.96,29.14){\framebox(6,6)[cc]{}}
+\put(46.96,65.14){\framebox(6,6)[cc]{}}
+\put(106.86,65.14){\framebox(6,6)[cc]{}}
+\put(106.86,29.08){\framebox(6,6)[cc]{}}
+\put(46.96,11.11){\framebox(6,6)[cc]{}}
+\put(46.96,47.11){\framebox(6,6)[cc]{}}
+\put(106.86,47.11){\framebox(6,6)[cc]{}}
+\put(106.86,11.05){\framebox(6,6)[cc]{}}
+\put(17,17.12){\framebox(6,6)[cc]{}}
+\put(17,53.12){\framebox(6,6)[cc]{}}
+\put(76.9,53.12){\framebox(6,6)[cc]{}}
+\put(76.9,17.06){\framebox(6,6)[cc]{}}
+\put(17,35.15){\framebox(6,6)[cc]{}}
+\put(17,71.15){\framebox(6,6)[cc]{}}
+\put(76.9,71.15){\framebox(6,6)[cc]{}}
+\put(76.9,35.09){\framebox(6,6)[cc]{}}
+\put(46.96,35.15){\framebox(6,6)[cc]{}}
+\put(46.96,71.15){\framebox(6,6)[cc]{}}
+\put(106.86,71.15){\framebox(6,6)[cc]{}}
+\put(106.86,35.09){\framebox(6,6)[cc]{}}
+\put(46.96,17.12){\framebox(6,6)[cc]{}}
+\put(46.96,53.12){\framebox(6,6)[cc]{}}
+\put(106.86,53.12){\framebox(6,6)[cc]{}}
+\put(106.86,17.06){\framebox(6,6)[cc]{}}
+\put(23,5.12){\framebox(6,6)[cc]{}}
+\put(23,41.12){\framebox(6,6)[cc]{}}
+\put(82.9,41.12){\framebox(6,6)[cc]{}}
+\put(82.9,5.06){\framebox(6,6)[cc]{}}
+\put(23,23.16){\framebox(6,6)[cc]{}}
+\put(23,59.16){\framebox(6,6)[cc]{}}
+\put(82.9,59.16){\framebox(6,6)[cc]{}}
+\put(82.9,23.09){\framebox(6,6)[cc]{}}
+\put(52.96,23.16){\framebox(6,6)[cc]{}}
+\put(52.96,59.16){\framebox(6,6)[cc]{}}
+\put(112.86,59.16){\framebox(6,6)[cc]{}}
+\put(112.86,23.09){\framebox(6,6)[cc]{}}
+\put(52.96,5.12){\framebox(6,6)[cc]{}}
+\put(52.96,41.12){\framebox(6,6)[cc]{}}
+\put(112.86,41.12){\framebox(6,6)[cc]{}}
+\put(112.86,5.06){\framebox(6,6)[cc]{}}
+\put(23,11.11){\framebox(6,6)[cc]{}}
+\put(23,47.11){\framebox(6,6)[cc]{}}
+\put(82.9,47.11){\framebox(6,6)[cc]{}}
+\put(82.9,11.05){\framebox(6,6)[cc]{}}
+\put(23,29.14){\framebox(6,6)[cc]{}}
+\put(23,65.14){\framebox(6,6)[cc]{}}
+\put(82.9,65.14){\framebox(6,6)[cc]{}}
+\put(82.9,29.08){\framebox(6,6)[cc]{}}
+\put(52.96,29.14){\framebox(6,6)[cc]{}}
+\put(52.96,65.14){\framebox(6,6)[cc]{}}
+\put(112.86,65.14){\framebox(6,6)[cc]{}}
+\put(112.86,29.08){\framebox(6,6)[cc]{}}
+\put(52.96,11.11){\framebox(6,6)[cc]{}}
+\put(52.96,47.11){\framebox(6,6)[cc]{}}
+\put(112.86,47.11){\framebox(6,6)[cc]{}}
+\put(112.86,11.05){\framebox(6,6)[cc]{}}
+\put(23,17.12){\framebox(6,6)[cc]{}}
+\put(23,53.12){\framebox(6,6)[cc]{}}
+\put(82.9,53.12){\framebox(6,6)[cc]{}}
+\put(82.9,17.06){\framebox(6,6)[cc]{}}
+\put(23,35.15){\framebox(6,6)[cc]{}}
+\put(23,71.15){\framebox(6,6)[cc]{}}
+\put(82.9,71.15){\framebox(6,6)[cc]{}}
+\put(82.9,35.09){\framebox(6,6)[cc]{}}
+\put(52.96,35.15){\framebox(6,6)[cc]{}}
+\put(52.96,71.15){\framebox(6,6)[cc]{}}
+\put(112.86,71.15){\framebox(6,6)[cc]{}}
+\put(112.86,35.09){\framebox(6,6)[cc]{}}
+\put(52.96,17.12){\framebox(6,6)[cc]{}}
+\put(52.96,53.12){\framebox(6,6)[cc]{}}
+\put(112.86,53.12){\framebox(6,6)[cc]{}}
+\put(112.86,17.06){\framebox(6,6)[cc]{}}
+\put(29,5.12){\framebox(6,6)[cc]{}}
+\put(29,41.12){\framebox(6,6)[cc]{}}
+\put(88.9,41.12){\framebox(6,6)[cc]{}}
+\put(88.9,5.06){\framebox(6,6)[cc]{}}
+\put(29,23.16){\framebox(6,6)[cc]{}}
+\put(29,59.16){\framebox(6,6)[cc]{}}
+\put(88.9,59.16){\framebox(6,6)[cc]{}}
+\put(88.9,23.09){\framebox(6,6)[cc]{}}
+\put(58.96,23.16){\framebox(6,6)[cc]{}}
+\put(58.96,59.16){\framebox(6,6)[cc]{}}
+\put(118.86,59.16){\framebox(6,6)[cc]{}}
+\put(118.86,23.09){\framebox(6,6)[cc]{}}
+\put(58.96,5.12){\framebox(6,6)[cc]{}}
+\put(58.96,41.12){\framebox(6,6)[cc]{}}
+\put(118.86,41.12){\framebox(6,6)[cc]{}}
+\put(118.86,5.06){\framebox(6,6)[cc]{}}
+\put(29,11.11){\framebox(6,6)[cc]{}}
+\put(29,47.11){\framebox(6,6)[cc]{}}
+\put(88.9,47.11){\framebox(6,6)[cc]{}}
+\put(88.9,11.05){\framebox(6,6)[cc]{}}
+\put(29,29.14){\framebox(6,6)[cc]{}}
+\put(29,65.14){\framebox(6,6)[cc]{}}
+\put(88.9,65.14){\framebox(6,6)[cc]{}}
+\put(88.9,29.08){\framebox(6,6)[cc]{}}
+\put(58.96,29.14){\framebox(6,6)[cc]{}}
+\put(58.96,65.14){\framebox(6,6)[cc]{}}
+\put(118.86,65.14){\framebox(6,6)[cc]{}}
+\put(118.86,29.08){\framebox(6,6)[cc]{}}
+\put(58.96,11.11){\framebox(6,6)[cc]{}}
+\put(58.96,47.11){\framebox(6,6)[cc]{}}
+\put(118.86,47.11){\framebox(6,6)[cc]{}}
+\put(118.86,11.05){\framebox(6,6)[cc]{}}
+\put(29,17.12){\framebox(6,6)[cc]{}}
+\put(29,53.12){\framebox(6,6)[cc]{}}
+\put(88.9,53.12){\framebox(6,6)[cc]{}}
+\put(88.9,17.06){\framebox(6,6)[cc]{}}
+\put(29,35.15){\framebox(6,6)[cc]{}}
+\put(29,71.15){\framebox(6,6)[cc]{}}
+\put(88.9,71.15){\framebox(6,6)[cc]{}}
+\put(88.9,35.09){\framebox(6,6)[cc]{}}
+\put(58.96,35.15){\framebox(6,6)[cc]{}}
+\put(58.96,71.15){\framebox(6,6)[cc]{}}
+\put(118.86,71.15){\framebox(6,6)[cc]{}}
+\put(118.86,35.09){\framebox(6,6)[cc]{}}
+\put(58.96,17.12){\framebox(6,6)[cc]{}}
+\put(58.96,53.12){\framebox(6,6)[cc]{}}
+\put(118.86,53.12){\framebox(6,6)[cc]{}}
+\put(118.86,17.06){\framebox(6,6)[cc]{}}
+%\emline(124.75,77)(5,5)
+\multiput(124.75,77)(-.0747970019,-.0449718926){1601}{\line(-1,0){.0747970019}}
+%\end
+\thicklines
+\put(5.62,5.5){\framebox(28.75,17)[cc]{}}
+\put(35.5,23.75){\framebox(28.75,17)[cc]{}}
+\put(65.5,41.5){\framebox(28.75,17)[cc]{}}
+\put(95.5,59.75){\framebox(28.75,17)[cc]{}}
+\end{picture}
+\end{center}
+
+  \item[] Another argument in support of this hypothesis analyzes the vertical and horizontal passages through which the diagonal must pass. Since there are $11$ horizontal lines and $19$ vertical lines that can be passed through by the diagonal inside the $12$ by $20$ rectangle, the diagonal must pass through $30$ vertical and horizontal lines altogether. Of course, when it passes through a corner, it passes through the horizontal and vertical sides simultaneously, so we must subtract $3$ from $30$, getting $27$. Finally, we add one back, because our first square is entered without passage from a previous square. These observations for the example of the $12$ by $20$ rectangle can easily be made into a convincing argument for the general case.
+
+  \item[Exercise 9:] State and prove a theorem regarding the number of squares pierced by the diagonal of an $n$ by $m$ rectangle. Give your formula strictly in terms of $n$ and $m$.
+
+  \item[] A good exploratory problem always raises at least as many questions as it answers. This is true for the problem we have just studied. Here are some related questions.
+
+  \item[Exercise 10:] Let us say that the diagonal ``touches'' a unit square if it pierces it or passes through a corner of it. State and prove a theorem regarding the number of squares touched by the diagonal of an $n$ by $m$ rectangle.
+
+  \item[Exercise 11:] In an $m$ by $n$ by $p$ three-dimensional rectangle (technically called a rectangular parallelepiped), what can you say about the path of the diagonal?
+
+  \item[Exercise 12:] What can you say about the $n$-dimensional analogue of this problem?
+
+  \item[Exercise 13:] Instead of drawing the diagonal of an $n$ by $m$ rectangle, suppose that you draw a line from the lower left corner at an angle $45 \deg$ to the horizontal. Suppose further that when the line meets the side of the rectangle, it bounces off as a billiard ball would. If the line meets a corner of the rectangle, it stops. What can you say about the path of such a line? In particular: 
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item For what dimensions $n$ and $m$ will all unit squares be pierced? 
+      \item For what $n$ and $m$ will all squares be touched? 
+      \item Given $n$ and $m$, what corner will the line end in? How many `bounces' will occur before it ends in a corner?
+    \end{enumerate}
+
+\end{description}
+
+
+\section*{More Exploratory Problems}
+\addcontentsline{toc}{section}{\numberline{}More Exploratory Problems}
+\markboth{More Exploratory Problems}{More Exploratory Problems}
+
+Here are four more exploratory problems. The problems are arranged in increasing order of difficulty. We will not discuss these problems in detail, but instead we list a series of exercises that will provide the students with a guide to help them pursue their investigations.
+
+
+\subsection*{Exploratory Problem 3}
+\addcontentsline{toc}{subsection}{\numberline{}Exploratory Problem 3}
+\markboth{Exploratory Problem 3}{Exploratory Problem 3}
+
+\begin{description}
+
+  \item[] Consider an $n$ by $m$ rectangle, filled with unit squares formed by drawing the horizontal and vertical lines through the rectangle. Our aim is to travel from one corner to the opposite corner of this rectangle, using as our streets only the horizontal and vertical lines that form the edges of the unit squares (see diagram). Call a path ``\emph{efficient}'' if it is a shortest path to the destination.
+
+\begin{center}
+%TeXCAD Picture [exploratory-fig5.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(64.25,24.03)(0,0)
+\put(4.25,4){\framebox(10,10)[cc]{}}
+\put(34.25,4){\framebox(10,10)[cc]{}}
+\put(14.25,4){\framebox(10,10)[cc]{}}
+\put(44.25,4){\framebox(10,10)[cc]{}}
+\put(24.25,4){\framebox(10,10)[cc]{}}
+\put(54.25,4){\framebox(10,10)[cc]{}}
+\put(4.25,14.03){\framebox(10,10)[cc]{}}
+\put(34.25,14.03){\framebox(10,10)[cc]{}}
+\put(14.25,14.03){\framebox(10,10)[cc]{}}
+\put(44.25,14.03){\framebox(10,10)[cc]{}}
+\put(24.25,14.03){\framebox(10,10)[cc]{}}
+\put(54.25,14.03){\framebox(10,10)[cc]{}}
+\thicklines
+%\vector[middle](64.25,23.5)(54.25,23.5)
+\put(59.25,23.5){\vector(-1,0){.07}}\put(64.25,23.5){\line(-1,0){10}}
+%\end
+%\vector[middle](54.25,23.5)(44.62,23.62)
+\put(49.44,23.5){\vector(-1,0){.07}}\put(54.25,23.5){\line(-1,0){10}}
+%\end
+%\vector[middle](44.62,23.62)(44.62,13.75)
+\put(44.62,18.5){\vector(0,-1){.07}}\put(44.62,23.5){\line(0,-1){10}}
+%\end
+%\vector[middle](44.62,13.75)(34.25,13.62)
+\put(39.44,13.65){\vector(-1,0){.07}}\put(44.62,13.65){\line(-1,0){10}}
+%\end
+%\vector[middle](34.25,13.62)(24.62,13.62)
+\put(29.44,13.65){\vector(-1,0){.07}}\put(34.62,13.65){\line(-1,0){10}}
+%\end
+%\vector[middle](24.62,13.62)(24.62,4.75)
+\put(24.62,8.44){\vector(0,-1){.07}}\put(24.62,13.65){\line(0,-1){9}}
+%\end
+%\vector[middle](24.62,4.75)(14.25,4.75)
+\put(19.44,4.75){\vector(-1,0){.07}}\put(24.62,4.75){\line(-1,0){10}}
+%\end
+%\vector[middle](14.25,4.75)(4.25,4.87)
+\put(9.44,4.75){\vector(-1,0){.07}}\put(14.62,4.75){\line(-1,0){10}}
+%\end
+\end{picture}
+\end{center}
+
+  \item[The Problem:] Explore the number of different efficient paths in an $n$ by $m$ rectangle.
+
+  \item[] Here is a guide to the problem.
+
+  \item[Exercise 14:] Draw several different rectangles, and determine the number of efficient paths. Try to use the results you gather from rectangles of smaller dimension, to help answer the question for larger rectangles.
+
+  \item[Exercise 15:] Label the vertices of the unit squares within the rectangle, with numbers. Each number represents the number of efficient paths from that point to your corner of destination. Where do the points labeled $1$ lie? Where do the points labeled $2$ lie? How about $3$?, $4$?. Do you notice a pattern? What is it? (Try to use the numbers that label the vertices to build your pattern.)
+
+  \item[Exercise 16:] Expand the following: $(x+y)^{2}$, $(x+y)^{3}$, $(x+y)^{4}$. How do the coefficients of these expansions relate to your findings of Exercises 14 and 15?
+
+  \item[] Draw an $n$ by $m$ rectangle, with $(0,0)$ in the lower left corner and $(m,n)$ in the upper right corner. Begin your journey at $(m,n)$, and trace a path to your destination of $(0,0)$. Label each of the vertices $(a,b)$ (where $0 \leq a \leq m$, $0 \leq b \leq n$) with numbers, as in Exercise 15. That is, the number represents the number of different paths to $(0,0)$.
+
+  \item[] What relationship do you see between these 1abe11ings, the coordinates of the points, and the coefficients of the terms $x^{k} y^{n-k}$ in your expansion of $(x+y)^{n}$? Try to explain any relationship that you find.
+
+  \item[Exercise 17:] In the rectangles that you drew in Exercise 14, let us label the efficient paths that you drew in the new way. For example, in the $3$ by $4$ rectangle pictured here, the path drawn can be written as $x, x, y, y, x, y, x$. Here, $x$ indicates one move parallel to the $x$-axis (a horizontal move), and $y$ indicates one move parallel to the $y$-axis (a vertical move). Relating different strings of $x$s and $y$s to different paths, address the original exploratory problem again.
+
+\begin{center}
+%TeXCAD Picture [exploratory-fig6.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(44.25,34.03)(0,0)
+\put(4.25,4){\framebox(10,10)[cc]{}}
+\put(34.25,4){\framebox(10,10)[cc]{}}
+\put(14.25,4){\framebox(10,10)[cc]{}}
+\put(24.25,4){\framebox(10,10)[cc]{}}
+\put(4.25,14.03){\framebox(10,10)[cc]{}}
+\put(34.25,14.03){\framebox(10,10)[cc]{}}
+\put(14.25,14.03){\framebox(10,10)[cc]{}}
+\put(24.25,24.03){\framebox(10,10)[cc]{}}
+\put(4.25,24.03){\framebox(10,10)[cc]{}}
+\put(24.25,14.03){\framebox(10,10)[cc]{}}
+\put(34.25,24.03){\framebox(10,10)[cc]{}}
+\put(14.25,24.03){\framebox(10,10)[cc]{}}
+\thicklines
+%\vector[middle](44.25,33.5)(34.25,33.5)
+\put(39.25,33.5){\vector(-1,0){.07}}\put(44.25,33.5){\line(-1,0){10}}
+%\end
+%\vector[middle](34.25,33.5)(24.62,33.62)
+\put(29.44,33.56){\vector(-1,0){.07}}\put(34.25,33.5){\line(-1,0){10}}
+%\end
+%\vector[middle](24.62,33.62)(24.62,23.75)
+\put(24.62,28.69){\vector(0,-1){.07}}\put(24.62,33.62){\line(0,-1){10}}
+%\end
+%\vector[middle](24.62,24)(24.62,14.12)
+\put(24.62,19.06){\vector(0,-1){.07}}\put(24.62,24){\line(0,-1){10.37}}
+%\end
+%\vector[middle](24.62,13.5)(14.62,13.5)
+\put(19.44,13.5){\vector(-1,0){.07}}\put(24.62,13.5){\line(-1,0){10.37}}
+%\end
+%\vector[middle](14.62,13.62)(14.62,4.75)
+\put(14.62,9.18){\vector(0,-1){.07}}\put(14.62,13.62){\line(0,-1){9}}
+%\end
+%\vector[middle](14.25,4.75)(4.25,4.87)
+\put(9.25,4.81){\vector(-1,0){.07}}\put(14.62,4.75){\line(-1,0){10}}
+%\end
+\end{picture}
+\end{center}
+
+  \item[Exercise 18:] Investigate the same exploratory problem in three dimensions. Thus we have a rectangle parallelepiped of dimensions $n$ by $m$ by $p$, filled with unit cubes. You may travel from one corner to the opposite corner along the edges of the unit cube only. How many different ways can this be done?
+
+  \item[Exercise 19:] Explore the same problem in higher dimensions.
+
+\end{description}
+
+
+\subsection*{Exploratory Problem 4}
+\addcontentsline{toc}{subsection}{\numberline{}Exploratory Problem 4}
+\markboth{Exploratory Problem 4}{Exploratory Problem 4}
+
+\begin{description}
+
+  \item[] The \emph{composite index} of a number $n$ is the sum of the divisors of $n$, excluding $n$ itself. For example, the composite index of $10$ is $\frac{(1 + 2 + 5)}{10}$. This equals $\frac{8}{10}$, or $\frac{4}{5}$. We shall write the composite index of $n$ as $c(n)$.
+
+  \item[The Problem:] What can you say about the composite index of the number $n$?
+
+  \item[Exercise 20:] Find the composite index of the first fifty positive integers $\geq 2$. What is the smallest index? What is the largest? Are there any numbers whose index is $1$?
+
+  \item[Exercise 21:] Using your findings of Exercise 20 as a guide, formulate a conjecture about the index of numbers of certain types. In each case, try to prove your conjectures. Specifically, find $c(n)$ if $n$ is: 
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item a prime number, 
+      \item a power of $2$, 
+      \item a power of $3$, 
+      \item a power of a prime.
+    \end{enumerate}
+
+  \item[Exercise 22:] Find a formula for $c(pq)$ where $p$ and $q$ are primes. Do the same for $c(pqr)$ where $p$, $q$, and $r$ are primes. Find a formula for the composite index of $n$ distinct primes.
+
+  \item[Exercise 23:] Find the smallest composite index. If you cannot find it, can you find a positive value $m$ such that $c(n)$ is never less than $m$? Why?
+
+      Find the largest composite index. If you cannot find it, can you find a positive value $M$ such that $c(n)$ is never greater than $M$? Why?
+
+  \item[Exercise 24:] In Exercise 20, you found two numbers whose index was $1$. Such numbers are called \emph{perfect numbers}. Write these numbers as products of prime powers. In general, find the index of numbers of the form $2^{n}p$. Search for other numbers whose index is $1$. Find a formula that generates perfect numbers.
+
+  \item[Exercise 25:] Find $c(n)$ if $n = p^{s} q^{t}$ where $p$ and $q$ are primes. Next, find a formula for the composite index of any number. (Hint: Develop a formula for the sum of all divisors of $n$ (including $n$ itself), and then subtract off $n$ when finding the composite index.)
+
+  \item[Exercise 26:] A number is called ``\emph{deficient}'' if $c(n)<1$; it is called ``\emph{abundant}'' if $c(n)>1$. What can you say about the product of: two deficient numbers? two abundant numbers? a deficient number and an abundant number?
+
+  \item[Exercise 27:] A number is called ``\emph{pluperfect}'' if $c(n) = k$, and $k$ is an integer greater than $1$. Find example of pluperfect numbers.
+
+\end{description}
+
+
+\subsection*{Exploratory Problem 5}
+\addcontentsline{toc}{subsection}{\numberline{}Exploratory Problem 5}
+\markboth{Exploratory Problem 5}{Exploratory Problem 5}
+
+\begin{description}
+
+  \item[] Given a sequence of numbers $a_{0}, a_{1}, \cdots, a_{n}, \cdots$, what can you say about the existence of a function $f$ such that $f(0) = a_{0}$, $f(1) = a_{1}$, and in general, $f(n) = a_{n}$?
+
+  \item[] Here is one way to attack this problem. Consider the successive differences of the terms of the sequence. Here is an example:
+  \item[] \begin{tabular}{ccccccccccccccccc}
+                                     & $a_{0}$     &             & $a_{1}$     &             & $a_{2}$     &             & $a_{3}$     &             & $a_{4}$     &              & $a_{5}$     &              & $a_{6}$     &              & $a_{7}$ \\
+                                     & $1$         &             & $3$         &             & $7$         &             & $13$        &             & $21$        &              & $31$        &              & $43$        &              & $57$    \\
+      {\small$\bigtriangleup     =$} &             & {\small$2$} &             & {\small$4$} &             & {\small$6$} &             & {\small$8$} &             & {\small$10$} &             & {\small$12$} &             & {\small$14$} &         \\
+      {\small$\bigtriangleup^{2} =$} &             &             & {\small$2$} &             & {\small$2$} &             & {\small$2$} &             & {\small$2$} &              & {\small$2$} &              & {\small$2$} &              &         
+    \end{tabular}
+  \item[] Here, $\bigtriangleup$ represents the sequence of differences of successive terms, e.g., $a_{1} - a_{0} = 3 - 1 = 2$, $a_{2} - a_{1} = 7 - 3 = 4$, and so on. Also, $\bigtriangleup^{2}$ represents the sequence of differences between successive terms of $\bigtriangleup$. Notice that in our example, $\bigtriangleup^{2}$ is the constant sequence $2$. Let us begin by examining difference tables for known functions.
+
+  \item[Exercise 28:] Let $f(x) = x^{2}$, and write out the first six terms; $f(0), f(1), \cdots$. Construct the sequence of differences $\bigtriangleup$, and also the subsequent sequence of differences $\bigtriangleup^{2}$, $\bigtriangleup^{3}$, and so on, until you reach a constant sequence. What did you find? Try other quadratic functions, and notice your table. State and prove a general theorem about quadratic functions: $ax^{2} + bx + c$, and their table of differences.
+
+  \item[Exercise 29:] Examine linear functions: $f(x) = ax + b$. what can you say about their table of differences?
+
+  \item[Exercise 30:] Examine cubic functions; for example, $f(x) = x^{3}$, and others. State and prove a theorem about the differences table for a general cubic. (In your theorem, be sure to say how many successive differences were needed before a constant is reached, and furthermore, what the constant value is.)
+
+  \item[Exercise 31:] State and prove a general theorem about the difference table of a polynomial function.
+
+  \item[Exercise 32:] Consider the sequence where $a_{0} = 0$, $a_{1} = 1$, $a_{2} = 1+2$, $a_{3} = 1+2+3$, and in general, $a_{n} = 1+2+3+\cdots+n$. Find a function $f$ such that $f(n) = a_{n}$. Do the same for the following sequences: $b_{n} = 1^{2} + 2^{2} + 3^{2} + \cdots + n^{2}$ ; $c_{n} = 1^{3} + 2^{3} + 3^{3} + \cdots + n^{3}$.
+
+  \item[Exercise 33:] Let $f_{1}(n) = n$. Let $\displaystyle{ f_{2}(n) = \Sigma^{n}_{k=1} f_{1}(k) }$. Write out $f_{2}(0), \cdots,$ $f_{2}(6)$. Write out the difference sequences until a constant is reached. Find a formula for $f_{2}(n)$. Do the same for $f_{3}$ where $\displaystyle{ f_{3}(n) = \Sigma^{n}_{k=1} f_{2}(k) }$. Write $f_{3}$ in as simple a form as you can. Do the same for $f_{4}$ where $\displaystyle{ f_{4}(n) = \Sigma^{n}_{k=1} f_{3}(k) }$. Do you notice anything curious about the difference tables of $f_{i} ; i=1,2,3,4$? Define $f_{m}$ by $\displaystyle{ f_{m}(n) = \Sigma^{n}_{k=1} f_{m-1}(k) }$. Find a general formula for $f_{m}$. How is its difference table particularly interesting?
+
+  \item[Exercise 34:] Examine the difference tables for the following functions: $f(n) = 2^{n}$, $f(n) = 3^{n}$, $f(n) = \frac{1}{n}$, $f(n) = *n$. Formulate and prove some theorems about difference tables for some non-polynomial functions.
+
+      Try to create functions that will yield interesting difference tables. For example, try to find a function that generates the sequence: $1, 1, 2, 3, 5, 8,$ $13,$ $21,$ $34,$ $\cdots$.
+
+\end{description}
+
+
+\subsection*{Exploratory Problem 6}
+\addcontentsline{toc}{subsection}{\numberline{}Exploratory Problem 6}
+\markboth{Exploratory Problem 6}{Exploratory Problem 6}
+
+\begin{description}
+
+  \item[] What can you say about the number of triangles with sides of integral length and with perimeter $n$?
+
+  \item[Exercise 35:] Make a list of the number of equilateral, isosceles, scalene triangles there are with sides of integral length and perimeter $n$, where $n = 1, 2, \cdots, 50$. Look for patterns. Make some conjectures and extend your table of perimeters to $n = 60$.
+
+  \item[Exercise 36:] Are there any two different perimeters $n$ for which the numbers in your table are exactly the same? Which ones? State and prove a theorem about this.
+
+  \item[Exercise 37:] Is there a periodic aspect to your table? Can you explain it?
+
+  \item[Exercise 38:] Given an odd number $n$, find a formula for the number of equilateral plus the number of isosceles triangles of perimeter $n$. (You may need two cases.) Try to prove your formulas work. Extend your formulas to all perimeters $n$ both even and odd.
+
+  \item[Exercise 39:] Do you see any relationship between the total number of equilateral, isosceles, and scalene triangles for some $n$, and the number of scalene triangles for another perimeter $m$? State and prove a theorem concerning this.
+
+  \item[Exercise 40:] State and prove a theorem expressing the number of scalene triangles of perimeter $n$ in terms of the number equilateral plus isosceles triangles for the appropriate smaller perimeters.
+
+  \item[Exercise 41:] Write a general formula for the number of equilateral, the number of isosceles, and the number of scalene triangles of perimeter $n$. You may need more than one formula to cover different perimeters $n$.
+
+\end{description}
+
+
+\end{document}
+

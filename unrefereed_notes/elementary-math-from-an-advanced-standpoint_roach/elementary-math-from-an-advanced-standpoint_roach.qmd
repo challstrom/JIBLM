@@ -25,6 +25,7 @@ tibble(note_entries, note_data) |>
 
 
 ```
-- [Download File](./elementary-math-from-an-advanced-standpoint_roach.pdf)
 
-This course guide was donated to a collection originally gathered by MathNerds. The author retains copyright. You are free to use these materials for your classes. 
+-   [Download File](./elementary-math-from-an-advanced-standpoint_roach.pdf)
+
+This course guide was donated to a collection originally gathered by MathNerds. The author retains copyright. You are free to use these materials for your classes.

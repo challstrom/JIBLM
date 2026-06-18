@@ -1,0 +1,873 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% Journal headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright Guilford College Journal of Undergraduate Mathematics} \cfoot{} \rfoot{ - at www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Real Analysis}
+\author{Elwood G. Parker}
+\date{\vspace{3cm}
+\emph{Journal of Undergraduate Mathematics}
+  \\ Department of Mathematics
+  \\ Guilford College
+  \\ Greensboro, North Carolina 27410 
+  }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+\section{Preliminaries}
+\markboth{1. Preliminaries}{1. Preliminaries}
+
+\pagenumbering{arabic}
+
+\emph{Analysis} can be considered the study of functions between sets, where the sets have topological and algebraic structures. In this monograph, the primary subject is \emph{Real Analysis}, so the sets used are subsets of the real numbers $\Re$; generalizations of this context are given in chapter supplements.
+
+Three kinds of structure are assumed for $\Re$, giving the topology and algebra: I. metric structure, II. order structure, and III. algebraic field structure. These are discussed below, and the properties given can be assumed.
+
+
+\subsubsection*{I. Metric Structure}
+
+For $a,b \in \Re$, $|a-b|$ gives the ``distance'' between $a$ and $b$, and has the following three properties which make ``absolute value of differences'' a metric: For all $a,b,c \in \Re$,
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item $|a-b| = 0$ iff $a = b$; 
+  \item $|a-b| = |b-a|$;
+  \item $|a-b| \leq |a-c| + |c-b|$.
+\end{enumerate}
+
+
+\subsubsection*{II. Order Structure}
+
+Properties of the usual ``less than'' relation on $\Re$ make the reals a linearly ordered topological space: For all $a,b,c \in \Re$,
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item either $a = b$, $a < b$, or $b < a$; 
+  \item if $a < b$ and $b < c$, then $a < c$.
+    
+    Three additional properties characterize $\Re$ among all linearly ordered spaces:
+  \item $\Re$ has no first or last point; i.e., there exists no $u \in \Re$ such that $r \leq u$ for all $r \in \Re$, and there exists no $v \in \Re$ such that $v \leq r$ for all $r \in \Re$;
+  \item $\Re$ is connected; i.e., if $\Re = A \cup B$ such that $a < b$ for all $a \in A$ and $b \in B$, then either there exists $p \in A$ such that $a \leq p$ for all $a \in A$, or there exists $q \in B$ such that $q \leqslant b$ for all $b \in B$;
+  \item $\Re$ is separable; i.e., there exists a countable subset $D$ of $\Re$ such that, for all $a,b \in \Re$ with $a < b$, there exists $d \in D$ such that $a < d < b$. (The rationals are one such $D$.)
+\end{enumerate}
+
+The metric and order structures generate topologies on $\Re$ by determining which subsets of $\Re$ are to be considered ``open''. In the metric structure, open sets are unions of neighborhoods of the form $N_\epsilon (p) = \{ x\ :\ |x-p| < \epsilon \}$, where $\epsilon \in \Re$, $\epsilon > 0$, and $p$ is a point in $\Re$. In the order structure, open sets are unions of open intervals $(a,b) = \{ x\ :\ a < x < b \}$.
+
+\begin{description}
+
+  \item[Question 1:] Show that the ``metric open'' sets are the same as the ``order open'' sets in $\Re$.
+
+  \item[Definition:] $p \in \Re$ is a \emph{limit point} of $A \subseteq \Re$ iff for every $\epsilon > 0$, $N_\epsilon (p)$ contains a point $A$ different from $p$. A subset $E$ of $\Re$ is \emph{closed} iff $E$ contains all of its limit points.
+
+  \item[Question 2:] Give an equivalent ``order structure'' definition of ``limit point''.
+
+  \item[Definition:] $E \subseteq \Re$ is \emph{connected} iff $E = A \cup B$ with $A \cap B = \phi$ implies either $A$ contains a limit point of $B$, or $B$ contains a limit point of $A$.
+
+  \item[Question 3:] If $E = \Re$ in the definition of ``connected'' above, does this definition agree with that given in II.(4) above?
+
+  \item[Question 4:] What are all of the connected subsets of $\Re$?, the closed connected subsets of $\Re$? The order structure allows definition of the important, though not strictly topological, property of boundedness:
+
+  \item[Definition:] For $E \subseteq \Re$, $p$ is an \emph{upper (lower) bound} of $E$ iff $a \leq p$ ($p \leq a$) for all $a \in E$. $E$ is \emph{bounded above (below)} iff $E$ has an upper (lower) bound. $E$ is \emph{bounded} iff $E$ is bounded above and below. $q \in \Re$ is the \emph{least upper bound (greatest lower bound)}, denoted $\text{lub} E$ ($\text{glb} E$), iff $q$ is an upper (lower) bound for $E$ and $q \leq p$ ($p \leq q$) for all upper (lower) bounds $p$ of $E$.
+
+  \item[Question 5:] Devise an equivalent definition of ``bounded'' which uses absolute value and is suitable for more general metric structures.
+
+\end{description}
+
+
+\subsubsection*{III. Algebraic Field Structure}
+
+$\Re$ is equipped with two binary operations, addition and multiplication, whose properties give $\Re$ algebraic structure:
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item $\Re$, with addition, is an abelian group; i.e., addition is associative, commutative, has an identity element $0$, and each real number has an additive inverse (its negative);
+  \item $\Re$, also with multiplication, is a field; i.e., multiplication is associative, commutative, distributes over addition, has identity element $1$, and each non-zero real number has a multiplicative inverse;
+  \item $\Re$ is an ordered field; i.e., addition and multiplication interact with the order so that for $a,b,c \in R$, if $a < b$, then $a+c < b+c$; and if $a < b$, $c > 0$ ($c < 0$), then $ac < bc$ ($ac > bc$);
+  \item $\Re$ is a complete ordered field; i.e., is algebraically a field, is linearly ordered (``$<$'' satisfies II.(1),(2) above), and is complete in the sense that ``every subset of $\Re$ which is bounded above has a least upper bound''.
+\end{enumerate}
+
+\begin{description}
+
+  \item[Question 6:] Is the completeness property given in III above implied by the additional order properties given in II.(3),(4),(5)?, equivalent to any one of the additional order properties?
+
+  \item[Question 7:] To consider interaction of the algebraic and order structures, determine the validity of the following, substituting inequality for equality where the former holds but the latter does not. For $A,B \subseteq \Re$,
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $\text{lub}A + \text{lub}B = \text{lub}(A \oplus B)$ where $A \oplus B = \{ a+b\ :\ a \in A,\ b \in B \}$;
+      \item $\text{glb}A + \text{glb}B = \text{glb}(A \oplus B)$;
+      \item $\text{lub}A \cdot \text{lub}B = \text{lub}(A \odot B)$ where $A \odot B = \{ a \cdot b\ :\ a \in A,\ b \in B \}$;
+      \item $\text{glb}A \cdot \text{glb}B = \text{glb}(A \odot B)$.
+    \end{enumerate}
+
+  \item[Question 8:] To consider the interaction between the metric and algebraic structures of $\Re$, answer the following:
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item If $N_\epsilon (a+b)$ is a neighborhood of $a+b$, do there exist neighborhoods $N_\delta (a)$ and $N_\gamma (b)$ such that if $p \in N_\delta (a)$ and $q \in N_\gamma (b)$, then $(p+q) \in N (a+b)$?
+      \item If $N_\epsilon (a \cdot b)$ is a neighborhood of $a \cdot b$, do there exist neighborhoods $N_\delta (a)$ and $N_\gamma (b)$ such that if $p \in N_\delta (a)$ and $q \in N_\gamma (b)$, then $(p \cdot q) \in N (a \cdot b)$?
+      \item If $p$ is a limit point of $A$ and $q$ is a limit point of $B$, is $(p+q)'$ a limit point of $A \oplus B$?, is $p \cdot q$ a limit point of $A \odot B$?
+    \end{enumerate}
+
+\end{description}
+
+
+\subsection*{Chapter Supplements}
+
+
+\subsubsection*{A. The Complex Numbers}
+
+\begin{description}
+
+  \item[] The complex numbers $C$ have a metric structure where the distance between $a+bi$ and $c+di$ is given by $\sqrt{(a-c)^2 + (b-d)^2}$. $C$, with usual addition and multiplication, is algebraically a field. Yet there is no natural order structure as in $\Re$, since the geometrical model for $C$ is a plane rather than a line.
+
+  \item[Question 9:] Which of the definitions in Chapter I remain meaningful for $C$?
+
+  \item[Question 10:] What results obtained (or given) in Chapter I are also valid in $C$ with its metric and algebraic structures?
+
+\end{description}
+
+
+\subsubsection*{B. Metric Spaces}
+
+\begin{description}
+
+  \item[] A \emph{metric} on a set $X$ is a function $d\ :\ X \times X \rightarrow R$ such that for $x,y,z \in X:$
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $0 \leq d(x,y)$ and $d(x,y) = 0$ iff $x = y$; 
+      \item $d(x,y) = d(y,x)$; 
+      \item $d(x,y) \leq d(x,z) + d(z,y)$.
+    \end{enumerate}
+    From this function, neighborhoods of points $p \in X$ are defined by $N_\epsilon (p) = \{ x\ :\ d(x,p) < \epsilon \}$ for $\epsilon \in \Re$, $\epsilon > 0$, analogous to the absolute value metric on $\Re$.
+
+  \item[Question 11:] For each of the following, either show that the definition given in Chapter I is applicable to metric structures in general, or generalize the definition to any metric structure:
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item connected;
+      \item separable;
+      \item bounded;
+      \item limit point.
+    \end{enumerate}
+
+  \item[Question 12:] Given below are topological properties that $\Re$ has. Decide if each property holds in any metric structure. Prove that $\Re$ satisfies (3), (4), and (5).
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item connected;
+      \item separable;
+      \item for any $p \in \Re$, there exists a countable collection of neighborhoods $N_{\epsilon_{i}} (p)$ such that if $N_\delta (p)$ is any neighborhood of $p$, there exists $i \in Z^+$ such that $N_{\epsilon_{i}} (p) \subseteq N_\delta (p)$;
+      \item there exists a countable collection of neighborhoods of points of $\Re$ such that every open set is the union of members of that collection;
+      \item if $E$ is a closed and bounded subset of $\Re$, and $\mathcal{U}$ is a collection of neighborhoods of points of $E$ such that $\displaystyle E \subseteq \bigcup_{N \in \mathcal{U}} N$, then there exists a finite subcollection $\mathcal{U}'$ of $\mathcal{U}$ such that $\displaystyle E \subseteq \bigcup_{N \in \mathcal{U}'} N$.
+    \end{enumerate}
+
+\end{description}
+
+
+
+\newpage
+
+\section{Sequences}
+\markboth{2. Sequences}{2. Sequences}
+
+\begin{description}
+
+  \item[] One of the basic tools in analysis is sequences; considering sequences begins an examination of the notion of limit.
+
+  \item[Definition:] A \emph{sequence} in $\Re$ is a function $\alpha\ :\ Z^+ \rightarrow \Re$. If $\beta\ :\ Z^+ \rightarrow Z^+$ is an order-preserving function ($n < m$ implies $\beta(n) < \beta(m)$), then $\alpha \circ \beta$ is a \emph{subsequence} of $\alpha$. Letting $a_n = \alpha(n)$, $a_n$ is called the $n$th term of the sequence, and the sequence is denoted by $\{ a_n \}$. Letting $n_k = \beta(n)$, $a_{n_k}$ is the $k$th term of the subsequence, and the subsequence is denoted by $\{ a_{n_k} \}$.
+
+  \item[Definition:] A sequence $\{ a_n \}$ \emph{converges} to $p \in \Re$, denoted $a_n \rightarrow p$ or $\displaystyle \lim_{k \to \infty} a_n = p$, iff for all $\epsilon \in \Re$, $\epsilon > 0$, there exists $N \in Z^+$ such that $|a_n - p| < \epsilon$ for all $n > N$. In this case, $p$ is called the \emph{sequential limit} of $\{ a_n \}$. If $\{ a_{n_k} \}$ is a subsequence of $\{ a_n \}$, and $\displaystyle a_{n_k} \rightarrow q \left( \lim_{k \to \infty} a_{n_k} = p \right)$, then $q$ is called a \emph{sequential limit} of $\{ a_n \}$.
+
+  \item[Question 1:] Are sequential limits unique?, subsequential limits?
+
+  \item[Question 2:] Is a sequential limit of $\{ a_n \}$ a limit point of the subset $\{ a_n\ :\ n \in Z^+ \}$ of $\Re$?, a subsequential limit of $\{ a_n \}$? Conversely, if $p$ is a limit point of $A \subseteq \Re$, is there a sequence with terms in $A$ which converges to $p$?
+
+  \item[Question 3:] Find condition(s) on a sequence that guarantee its convergence, but do not mention the existence of a sequential limit. Conversely, do convergent sequences always satisfy the condition(s)?
+
+  \item[Definition:] A sequence $\{ a_n \}$ \emph{accumulates} at $p \in \Re$, denoted $a_n \propto p$, iff for all $\epsilon \in \Re$, $\epsilon > 0$, and all $N \in Z^+$, there exists $n > N$ such that $|a_n - p| < \epsilon$. The \emph{accumulation set} of $\{ a_n \}$ is given by $\text{Acc} \{ a_n \} = \{ p\ :\ a_n \propto p \}$.
+
+  \item[Question 4:] What can be said about $\text{Acc} \{ a_n \}$ when $\{ a_n \}$ converges? Is the converse true?
+
+  \item[Question 5:] Is every subsequential limit of $\{ a_n \}$ an element of $\text{Acc} \{ a_n \}$? Conversely?
+
+  \item[Question 6:] What properties does $\text{Acc} \{ a_n \}$ have? What subsets of $\Re$ are accumulation sets of some sequence?
+
+  \item[] Having an ordered structure on $\Re$ allows special kinds of sequences which are ``well-behaved'', and can be used to advantage in some instances:
+
+  \item[Definition:] A sequence $\{ a_n \}$  is \emph{increasing} iff $n < m$ implies $a_n \geq a_m$, is \emph{decreasing} iff $n < m$ implies $a_m \geq a_n$, and is \emph{monotone} iff $\{ a_n \}$ is either increasing or decreasing.
+
+  \item[Question 7:] Does every sequence have a monotone subsequence?
+
+  \item[Question 8:] What can be said about monotone sequences that fail to converge?
+
+  \item[Question 9:] Do sequential (subsequential) limits maintain comparative order of sequences?, i.e., if $a_n \to p$ and $b_n \to q$ ($a_n \propto p$ and $b_n \propto q$) with $a_n < b_n$ for all $n$, is $p \leq q$? If $a_n < c_n < b_n$ for all $n$, and $a_n \to p$ and $b_n \to p$ ($a_n \propto p$ and $b_n \propto p$), must $\{ c_n \}$ converge to (accumulate at) $p$?
+
+  \item[] With the algebraic structure on $\Re$, sequences can be added, multiplied, etc. term-by-term, producing questions about the relationship between the algebra and convergence and accumulation.
+
+  \item[Question 10:] Consider the validity of the following: For sequences $\{ a_n \}$ and $\{b_n\}$,
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $\lim (a_n \pm\ a_n) = \lim a_n \pm  \lim b_n $;
+      \item $\lim (a_n \cdot a_n) = \lim a_n \cdot  \lim b_n $;
+      \item $\lim \left( \frac{a_n}{a_n} \right) = \frac{\lim a_n}{\lim b_n}$.
+    \end{enumerate}
+
+  \item[Question 11:] Suppose $a_n \propto p$ and $b_n \propto q$. Does:
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $a_n \pm b_n\ \propto\ p \pm q$?
+      \item $a_n \cdot b_n\ \propto\ p \cdot q$?
+      \item $\frac{a_n}{b_n} \propto \frac{p}{q}$?
+    \end{enumerate}
+
+  \item[Definition:] A sequence $\{ a_n \}$ is \emph{bounded} iff there exists $M \in \Re$ such that $|a_n| \leqslant M$ for all $n \in Z^+$.
+
+  \item[Question 12:] Are convergent sequences bounded? Conversely? Are sequences which accumulate bounded? Conversely?
+
+  \item[Question 13:] How is the convergence (accumulation) of $\{ a_n \}$ related to that of $\{|a_n|\}$?
+
+  \item[] Sequential limits of sequences may fail to exist for basically two reasons. (What are they?) The following definition associates a ``limit'' of sorts with each bounded sequences. The resulting concept is a useful tool in analysis:
+
+  \item[Definition:] For a bounded sequence $\{ a_n \}$, construct sequences $\{ b_k \}$ and $\{ c_k \}$, by letting $b_k = \text{lub} \{ a_n\ :\ k \leq n \}$, and $c_k \text{glb} \{ a_n\ :\ k \leq n \}$, for all $k \in Z^+$. The sequential limit of $\{ b_k \}$ is called the \emph{limit suprenum} of $\{ a_n \}$, denoted $\lim \sup a_n$; the sequential limit of $\{ c_k \}$ is called the \emph{limit infinum} of $\{ a_n \}$, denoted $\lim \inf a_n$.
+
+  \item[Question 14:] Show that $\lim \sup a_n$ and $\lim \inf a_n$ always exist for bounded sequences $\{ a_n \}$; i.e., that $\{b_k\}$ and $\{c_k\}$, as given in the definition above, converge.
+
+  \item[Question 15:] How are $\lim \sup a_n$ and $\lim \inf a_n$ related to $\text{Acc} \{ a_n \}$?
+
+  \item[Question 16:] Characterize convergence of $\{ a_n \}$ using $\lim \sup a_n$ and $\lim \inf a_n$.
+
+  \item[Question 17:] For bounded sequences $\{ a_n \}$ and $\{ b_n \}$ with $a_n < b_n$ for all $n$, what comparisons exist among $\lim \sup a_n$, $\lim \inf a_n$, $\lim \sup b_n$, $\lim \inf b_n$? Are there necessary and sufficient conditions for any equalities?
+
+  \item[Question 18:] For bounded sequences $\{ a_n \}$ and $\{ b_n \}$, investigate the validity of the following, substituting inequality for equality when the former holds but the latter does not:
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $\lim \sup (a_n \pm b_n) = \lim \sup a_n \pm \lim \sup b_n$;
+      \item $\lim \sup (a_n \cdot\ b_n) = \lim \sup a_n \cdot\ \lim \sup b_n$;
+      \item $\lim \sup \left( \frac{a_n}{b_n} \right) = \frac{\lim \sup a_n}{\lim \sup b_n}$.
+    \end{enumerate}
+    Do likewise for $\lim \inf$.
+
+  \item[] Many questions in analysis involve ``infinite summation''; that is, adding up the terms in a sequence. Here, the algebraic structure (adding) and the topological structure (limits) are combined.
+
+  \item[Definition:] For a sequence $\{ a_n \}$, form the \emph{sequence of partial sums} $\{ S_k \}$ of $\{ a_n \}$ by letting $s_k = a_1 + a_2 + \cdots + a_k =$ $\displaystyle \sum_{n=1}^k a_n$ for each $k \in Z^+$. The pair $( \{ a_n \} , \{ S_n \} )$ is called a \emph{series}, denoted $\sum a_n$. The series $\sum a_n$ is said to \emph{converge} iff $\displaystyle \lim_{k \to \infty} S_k$ exists, or is said to \emph{diverge} otherwise. If $\sum a_n$ converges, then $\{ a_n \}$ is said to be \emph{summable}, and $\displaystyle S = \lim_{k \to \infty} S_k$ is called the \emph{sum} of $\sum a_n$.
+
+  \item[Question 19:] Explain why the definition of ``infinite summation'' given above appropriately generalizes finite addition.
+
+  \item[Question 20:] Does the elimination of a finite number of terms from a sequence affect summability?
+
+  \item[Question 21:] Where appropriate, apply results concerning convergence of sequences, to sequences of partial sums of series, to get theorems about convergence (or divergence) of series.
+
+  \item[Question 22:] If $\{ a_n \}$ converges, does $\sum a_n$ converge? Conversely?
+
+  \item[Question 23:] Is every subsequence of a summable sequence also summable?
+
+  \item[Question 24:] Investigate the validity of the following:
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $\sum (a_n \pm b_n) = \sum a_n \pm \sum b_n$;
+      \item $\sum c a_n = c \sum a_n$, where $c$ is a constant;
+      \item $\sum a_n = \sum b_n + \sum c_n$, where $a_n = b_n + c_n$ for each $n$.
+    \end{enumerate}
+
+  \item[Question 25:] Why does it make no sense to consider $\sum a_n \cdot b_n = (\sum a_n) \cdot (\sum b_n)$? Find conditions on $\{ a_n \}$ and $\{ b_n \}$ which guarantee the summability of $\{ a_n \cdot b_n \}$, without guaranteeing the summability of $\{ a_n \}$ or of $\{ b_n \}$. (Look ahead to the next question, so that its answer is a corollary to the answer of this question.)
+
+  \item[Question 26:] For $a_n > 0$ for all $n$, $\sum (-1)^n \cdot a_n$ is called an \emph{alternating series}. What properties of $\{ a_n \}$ guarantee convergence of an alternating series $\sum (-1)^n \cdot a_n$?
+
+  \item[Question 27:] Give a legitimate definition of $(\sum a_n) \cdot (\sum b_n)$ consistent with finite sums. That is, if $\sum c_n$ represents $(\sum a_n) \cdot (\sum b_n)$, what is $c_n$ for each $n$? Under this definition, if $\sum a_n = A$ and $\sum b_n = B$, is $\sum c_n = A \cdot B$?
+
+  \item[] When all of the terms of a sequence $\{ a_n \}$ are positive or all are negative, then the sequence of partial sums of $\sum a_n$ is ``well-behaved'', simplifying the question of convergence. Any series can be broken down into the sum of two series, each of which has all terms with the same ``sign'', so that the original series can be investigated in terms of these two series. Also, associated with any series is a series all of whose terms are non-negative, obtained by taking the absolute value of each term in the original series. These ideas are involved in the concept of absolute convergence.
+
+  \item[Question 28:] If the terms of a series are all positive (or all negative), what can be said about the sequence of partial sums of the series? What are necessary and sufficient conditions for the convergence of a series of positive terms (negative terms)? Where convergence holds, what is the sum?
+
+  \item[Question 29:] Given a sequence $\{ a_n \}$, find a way to express $a_n = a_n^+ + a_n^-$, where each $a_n^+$ is non-negative and each $a_n^-$ is non-positive. What is the relationship between $\sum a_n$ and $\sum a_n^+$ and $\sum a_n^-$?, between $\sum |a_n|$ and $\sum a_n^+$ and $\sum a_n^-$?
+
+  \item[Definition:] A series $\sum a_n$ \emph{converges absolutely} iff $\sum |a_n|$ converges. In this case, $\{ a_n \}$ is said to be \emph{absolutely summable}.
+
+  \item[Question 30:] Is an absolutely convergent series convergent? Conversely?
+
+  \item[Question 31:] Where appropriate, reconsider the results of previous questions on series, with ``convergence'' replaced by ``absolute convergence``, and determine if any answers change.
+
+  \item[] The commutative property of addition allows for arbitrary reordering of the terms in a finite sum, the result being unchanged. The following formalizes the same idea for infinite summation:
+
+  \item[Definition:] Suppose $\{ a_n \}$ is a sequence, and $\rho\ :\ Z^+ \to Z^+$ is a bijection (one-to-one and onto). Then the series $\sum a_{\rho(n)}$ is called a \emph{rearrangement} of $\sum a_n \cdot \sum a_n$ is said to \emph{converge unconditionally} iff all rearrangements of $\sum a_n$ converge, and converge to the same sum.
+
+  \item[Question 32:] How are convergent, absolutely convergent, and unconditionally convergent related?
+
+  \item[Question 33:] For a sequence $\{ a_n \}$, let $\mathcal{R} (\sum a_n) = \{ S\ :\ \sum a_{\rho (n)} = S$ for some bijection $\rho\ :\ Z^+ \to Z^+ \}$ be the set of rearrangement sums of $\sum a_n$. What subsets of $\Re$ can $\mathcal{R} (\sum a_n)$ be?
+
+  \item[] It is usually difficult to find a ``formula'' for the partial sums of a series, so determining convergence by direct consideration of the limit of the sequence of partial sums is seldom possible. Thus, tests for convergence of a series are needed. One such technique compares a series with another which is known to converge or diverge.
+
+  \item[Definition:] Suppose $\{ a_n \}$ and $\{ b_n \}$ are sequences. If there exist $N \in Z^+$ and $K \in \Re$ such that for all $n > N$, $|a_n| \leq K \cdot |b_n|$, then $\{ b_n \}$ is said to \emph{dominate} $\{ a_n \}$.
+
+  \item[Question 34:] Construct a ``dominance test'' for convergence and divergence of a series, depending on the series being dominated by or dominating a series known to converge or diverge.
+
+  \item[] For a series to converge, not only must its terms get smaller, but they must get small ``fast enough''. Measures of how fast ``fast enough'' is for convergence (or ``too slow'' for divergence) can be obtained by considering ratios of consecutive terms, or $n$th roots of $n$th terms.
+
+  \item[Question 35:] With appropriate use of $\lim \sup \left| \frac{a_{n+1}}{a_n} \right|$ and / or $\lim \inf \left| \frac{a_{n+1}}{a_n} \right|$, construct a ``ratio test'' for convergence and divergence of series $\sum a_n$.
+
+  \item[Question 36:] With appropriate use of $\lim \sup \sqrt{|a_n|}$ and / or $\lim \inf \sqrt{|a_n|}$, construct a ``root test'' for convergence and divergence of series $\sum a_n$.
+
+  \item[Question 37:] Which is the better test, the ratio test or the root test?
+
+\end{description}
+
+
+\subsection*{Chapter Supplements}
+
+
+\subsubsection*{A. Two Additional Series Problems}
+
+\begin{description}
+
+  \item[Question 38:] \textbf{[R]} For a sequence $\{ a_n \}$, let the \emph{subsequential sums} of $\{ a_n \}$ be the set $\text{Sub} (\sum a_n) = \{ S\ :$ there exists a subsequence $\{ a_{n_k} \}$ of $\{ a_n \}$ such that $\sum a_{n_k} = S\ \}$. Investigate the possible sets of subsequential sums.
+
+  \item[Question 39:] For a series $( \{ a_n \} , \{ S_k \} )$, define for all $k \in Z^+$, where $S_k' =$ $\frac{(S_1 + S_2 + \cdots + S_k)}{k}$. If $\{ S_k' \}$ converges, then $\{ a_n \}$ is said to be \emph{$(C,1)$-summable}, and $\displaystyle S' = \lim_{k \to \infty} S_k'$ is called the \emph{$(C,1)$-sum} of $( \{ a_n \} , \{ S_k \} )$. Is every summable sequence also $(C,1)$-summable? If so, are the sum and $(C,1)$-sum the same? Conversely? How might $(C,m)$-summability of a sequence be defined for any $m \in Z^+$? Under this definition, what relationships exists between $(C,i)$-summability and $(C,j)$-summability for $i > j$? Also, is every sequence $(C,m)$-summable for some $m$?
+
+\end{description}
+
+
+\subsubsection*{B. Sequences of Complex Numbers}
+
+\begin{description}
+
+  \item[] Since $C$ topologically has metric structure, and algebraically is a field, many of the results obtained for sequences of real numbers should carry over to sequences of complex numbers, excepting those dependent on the order structure in $\Re$.
+
+  \item[Question 40:] What results for sequences in $\Re$ obtained in Chapter II also hold for sequences in $C$? That is, which results are dependent on particular properties of $\Re$? What are these particular properties, and can they be circumvented?
+
+  \item[Question 41:] For series of complex numbers $\sum (a_n + i b_n)$, one approach is to consider the series as $\sum a_n + i \cdot \sum b_n$, and appeal to results for series of real numbers $\sum a_n$ and $\sum b_n$. When does this approach work?
+
+  \item[Question 42:] Absolute convergence can be defined analogously for complex series as for real series, by letting the absolute value (called ``modulus'' or ``norm'') of a complex number $a+bi$ be given by $\sqrt{a^2 + b^2}$. Then questions of absolute convergence of complex series become one of convergence of real series. With this definition, do results involving absolute convergence carry over from $\Re$ to $C$.
+
+\end{description}
+
+
+\subsubsection*{C. Sequence in Metric Spaces; Completeness}
+
+\begin{description}
+
+  \item[] Questions in Chapter II which do not involve use of the algebraic structure can be asked about sequences in any metric space (set with a metric structure). Of course, questions about series are eliminated in absence of any algebraic structure.
+
+  \item[Question 43:] What results obtained in Chapter II hold in every metric space?
+
+  \item[] One of the problems that arises in working in metric spaces in general is that a sequence may behave like a convergent sequence, but have no limit to which to converge. (A simple example: $\Re - \{ 0 \}$ with $d(x,y) = |x-y|$ is a metric space, and $\left\{ \frac{1}{n} \right\}$ should converge, but without $0$, has nothing to converge to.) A solution to this problem is to enlarge the space, extending the given metric structure to the larger space, and insuring that every sequence which should converge has a point to converge to. That is, complete the space. As a particular example, completing the rationals $Q$ should result in the reals $\Re$.
+
+  \item[Question 44:] Using sequences (answers to Question 3 may be helpful), devise a method by which any metric space can be completed (in the sense described above).
+
+\end{description}
+
+
+\subsubsection*{D. Topological Properties Through Sequences}
+
+\begin{description}
+
+  \item[] Since topological structure is determined by open sets which determine limit points, whenever limit points can be determined by sequences, sequences can be used to define topological properties. A sequential characterization of a topological property is often helpful in analysis.
+
+  \item[Question 45:] Sequences are said to suffice iff every limit point of a set is the sequential limit of a sequence in the set. Do sequences suffice in all metric spaces?
+
+  \item[Question 46:] A closed and bounded subset of $\Re$ is said to be \emph{compact}. Determine an equivalent definition of compactness using sequences.
+
+  \item[Question 47:] Can connectedness be defined sequentially? Why is a sequential characterization of separability not asked for?
+
+\end{description}
+
+
+\subsubsection*{E. The Linear Spaces $l^P$}
+
+\begin{description}
+
+  \item[] For any $p \in \Re$, $1 \leq p$, $\ell^P$ is the set of all sequences $\{ a_n \}$ such that $\sum |a_n|^P$ converges. Algebraic structure on $\ell^P$ comes from the usual notion of addition sequences. Metric structure on $\ell^P$ comes from a norm defined by $|| \{ a_n \} ||_P = (\sum |a_n|^P)^{1/P}$. Two well-known inequalities are concerned with this norm:
+
+  \item[Holder's Inequality:] If $\{a_n\} \in \ell^P$ and $\{b_n\} \in \ell^q$ with $1/P + 1/q = 1, $then:
+    \begin{equation*}
+    \sum |a_n \cdot b_n| \leq ||\{a_n\}||_P \cdot\ ||\{b_n\}||_q
+    \end{equation*}
+
+  \item[Minkowski's Inequality:] For $\{ a_n \}$ and $\{ b_n \}$ in $\ell^P$, $||\{a_n + b_n\}||_P \leq$ $||\{a_n\}||_P$ $+ ||\{b_n\}||_P$.
+
+  \item[Question 48:] Prove Holder's and Minkowski's inequalities.
+
+  \item[Question 49:] Show that $\ell^P$ is a linear space; i.e., if $\{ a_n \} , \{ b_n \} \in \ell^P$ and $c,d \in \Re$, then $c \{ a_n \} + d \{ b_n \} = \{ c a_n + d b_n \} \in \ell^P$.
+
+  \item[Question 50:] Does the norm on $\ell^P$ lead to a metric structure? i.e., for $\{ a_n \},$ $\{ b_n \},$ $\{ c_n \}$ $\in \ell^P$, is: 
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $||\{a_n\} - \{b_n\}|| = 0$ iff $\{ a_N \} = \{ b_n \}$;
+      \item $||\{a_n\} - \{b_n\}|| = ||\{b_n\} - \{a_n\}||$; and
+      \item $||\{a_n\} - \{b_n\}|| \leq ||\{a_n\} - \{c_n\}|| + ||\{b_n\} - \{c_n\}||$?
+    \end{enumerate}
+    If $\ell^P$ is a metric space, is $\ell^P$ complete in the sense of Question 44?
+
+\end{description}
+
+
+
+\newpage
+
+\section{Limits and Continuity}
+\markboth{3. Limits and Continuity}{3. Limits and Continuity}
+
+\begin{description}
+
+  \item[] The central question in the study of limit functions is: given a function $f\ :\ E \to \Re$ with $E \subseteq \Re$, and a point $p$ which is a limit point of $E$, what does $f(x)$ get ``close'' to, as $x$ gets ``close'' to $p$?
+
+  \item[Question 1:] For $f\ :\ E \to R$, and $p$ a limit point of $E$ or a point of $E$, define the \emph{accumulation set} of $f$ at $p$, denoted $\text{Acc} (f;p)$, such that $q \in \text{Acc} (f;p)$ iff $f(x)$ gets ``close'' to $q$ as $x$ gets ``close'' to $p$.
+
+  \item[Question 2:] \textbf{[B]} What properties do accumulation sets of functions at points always have? How ``large'' or ``small'' can an accumulation set be? What subsets of $\Re$ can be accumulation sets?
+
+  \item[Definition:] If $f\ :\ E \to R$ is a function, and $p$ is a limit point of $E$, then $f$ is said to have a \emph{limit} iff there exists $q \in \Re$ such that for each $\epsilon > 0$, $\epsilon \in \Re$, there exists $\delta > 0$, $\delta \in \Re$, such that if $0 < |x-p| < \delta$, then $|f(x) - q| < \epsilon$. When such a $q$ exists, the notation $\displaystyle \lim_{x \to p} f(x) = q$ is used.
+
+  \item[Question 3:] Can $\displaystyle \lim_{x \to p} f(x) = q$ be characterized by using $\text{Acc} (f;p)$?
+
+  \item[Question 4:] Can $\displaystyle \lim_{x \to p} f(x) = q$ be defined sequentially?
+
+  \item[Question 5:] If $\displaystyle \lim_{x \to p} f(x)$ exists, is it unique?
+
+  \item[Question 6:] Consider the relation between limits and the algebraic structure of $\Re$ by investigating the validity of the following:
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $\displaystyle \lim_{x \to p} (f(x) \pm g(x)) = \lim_{x \to p} f(x) \pm \lim_{x \to p} g(x)$;
+      \item $\displaystyle \lim_{x \to p} (f(x) \cdot g(x)) = \lim_{x \to p} f(x) \cdot \lim_{x \to p} g(x)$;
+      \item $\displaystyle \lim_{x \to p} \left( \frac{f(x)}{g(x)} \right) = \frac{ \lim_{x \to p} f(x) }{ \lim_{x \to p} g(x) }$;
+      \item $\displaystyle \lim_{x \to p} (f(g(x)) = q$, where $\lim_{x \to p} g(x) = r$ and $\lim_{x \to r} f(x) = q$;
+      \item $\displaystyle \left[ \lim_{x \to p} f(x) \right]^{\lim\limits_{x \to p} g(x)} = \lim_{x \to p} \left[ f(x)^{g(x)} \right]$.
+    \end{enumerate}
+
+  \item[Question 7:] Are there other results from limits of sequences which carry over to limits of functions in general?
+
+  \item[] Because of the order structure on $\Re$, there are at most two ``directions'' from which $x$ can get ``close'' to $p$ in a limit problem $\displaystyle \lim_{x \to p} f(x)$. These are ``from the right'', where only $x$s smaller than $p$ are considered (denoted $\displaystyle \lim_{x \to p^-} f(x)$).
+
+  \item[Question 8:] By analogy with the previous definitions, define one-sided accumulation sets $\text{RAcc} (f;c)$ and $\text{LAcc} (f;p)$, and one-sided limits $\displaystyle \lim_{x \to p^+} f(x)$ and $\displaystyle \lim_{x \to p^-} f(x)$. Are the ``one-sided'' results analogous to the ``two-sided'' ones already obtained?
+
+  \item[Question 9:] Define $\displaystyle \lim_{x \to +\infty} f(x) = q$, $\displaystyle \lim_{x \to -\infty} f(x) = q$, $\displaystyle \lim_{x \to p} f(x) = +\infty$, and $\displaystyle \lim_{x \to p} f(x) = -\infty$, where ``$\to \pm \infty$''  means ``gets arbitrarily large''. Which previously obtained results hold when $p$ is replaced by $\pm \infty$?, when $q$ is replaced by $\pm \infty$? Define $\text{Acc} (f; +\infty)$ and $\text{Acc} (f; -\infty)$. Do previous results carry over to this situation?
+
+  \item[Question 10:] When $f(x)$ is defined for all positive $x$, $a_n = f(n)$ for $n \in Z^+$ produces a sequence. Under what conditions does $\displaystyle \lim_{x \to \infty} a_n$ determine $\displaystyle \lim_{x \to \infty} f(x)$? Does the converse hold?
+
+  \item[Definition:] A function $f\ :\ E \to \Re$ is \emph{bounded at a point} $p \in \Re$ iff there exists $\delta > 0$, $\delta \in \Re$ such that the set $\{ f(x)\ :\ |x-p| < \delta,\ c \in E \}$ is bounded. If $f$ is bounded at each point of $E$, then $f$ is said to be \emph{locally bounded} on $E$. If the set $\{ f(x)\ :\ x \in E \}$ is bounded, then $f$ is said to be a \emph{bounded function} on $E$.
+
+  \item[Question 11:] Is every bounded function locally bound? Conversely? If not, find conditions on the domain which make the implication hold.
+
+  \item[Question 12:] What can be said about $\text{Acc} (f;p)$ when $f$ is bounded at $p$?, about $\displaystyle \lim_{x \to p} f(x)$? Do converses hold?
+
+  \item[Question 13:] What previous questions are vacuous when $f$ is assumed to be bounded? What questions have different answers?
+
+  \item[Definition:] Suppose $f: E \to \Re$ is a function and $p$ is a limit point of $E$. Then the \emph{limit superior} of $f$ at $p$, denoted $\lim \sup (f;p)$, is given by $\displaystyle \lim_{\delta \to 0} [\text{lub} \{ f(x)\ :\ |x-p| < \delta,\ x \in E \}]$; and the \emph{limit inferior} of $f$ at $p$, denoted $\lim \inf (f;p)$, is given by $\displaystyle \lim_{\delta \to 0} [\text{glb} \{ f(x)\ :\ |x-p| < \delta,\ x \in E \}]$.
+
+  \item[Question 14:] How are $\lim \sup (f;p)$ and $\lim \inf (f;p)$ related to $\text{Acc} (f;p)$?
+
+  \item[Question 15:] Can $\lim \sup (f;p)$ and $\lim \inf (f;p)$ be defined equivalently using $\lim \sup$ and $\lim \inf$ of sequences?
+
+  \item[Question 16:] Are there necessary and sufficient conditions involving $\lim$ $\sup$ $(f;p)$ and $\lim$ $\inf$ $(f;p)$ for $\displaystyle \lim_{x \to p} f(x)$ to exist?
+
+  \item[Question 17:] Consider the validity of the following:
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $\lim \sup (f;p) + \lim \sup (g;p) = \lim \sup (f + g ; p)$;
+      \item $[\lim \sup (f;p)] \cdot [\lim \sup (g;p)] = \lim \sup (f \cdot g ; p)$;
+      \item $\frac{ [\lim \sup (f;p)] }{ [\lim \sup (g;p)] } = \lim sup \left( \frac{f}{g} ; p \right)$;
+    \end{enumerate}
+    And similarly for $\lim \inf$.
+
+  \item[] One of the most important concepts in analysis is continuity of functions, which is a matter of limits at points in domains of functions existing and of those limits being the ``best possible values'', namely the values of the functions at the points approached.
+
+  \item[Definition:] Suppose $f\ :\ E \to \Re$ is a function, and $p \in E$. Then $f$ is \emph{continuous} at $p$ iff for all $\epsilon > 0$, $\epsilon \in \Re$, there exists $\delta > 0$, $\delta \in \Re$, such that if $|x-p| < \delta$, $|f(x) - f(p)| < \epsilon$. If $f$ is not continuous at a point $q \in E$, then $f$ is said to be \emph{discontinuous} at $q$, and $q$ is called a \emph{discontinuity} of $f$. If $f$ is continuous at each point of $E$, then $f$ is said to be a \emph{continuous} function on $E$.
+
+  \item[Question 18:] Can $\displaystyle \lim_{x \to p} f(x)$ exist when $f$ is discontinuous at $p$? If $p \in E$, but $p$ is not limit point of $E$, what can be said about the continuity of $f$ at $p$?
+
+  \item[Question 19:] Use previously obtained results about limits to get characterizations of continuity.
+
+  \item[Question 20:] Are sums, differences, products, quotients, compositions, absolute values, and inverses of continuous functions, also continuous?
+
+  \item[] Discontinuities of a function $f$ can be categorized according to whether or not one-sided limits exist. To simplify notation, let $f(p+)$ and $f(p-)$ denote respectively the right and left hand limits of $f$ at $p$.
+
+  \item[Definition:] For $f\ :\ E \to \Re$ and $p \in E$ a discontinuity of $f$: 
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $f$ has a \emph{simple discontinuity} at $p$ iff $f(p+)$ and $f(p-)$ exist; $p$ is called a \emph{removable discontinuity} iff $f(p+) = f(p-)$, and a \emph{jump discontinuity} iff $f(p+) \neq f(p-)$;
+      \item $f$ has a \emph{discontinuity of the second kind} iff one of $f(p+)$ or $f(p-)$ does not exist.
+    \end{enumerate}
+
+  \item[Question 21:] What can be said about $\text{Acc} (f;p)$ when $p$ is removable discontinuity?, a jump discontinuity?, a discontinuity of the second kind?
+
+  \item[Question 22:] Monotone functions are those which increase ($x < y$ implies $f(x) \leq f(y)$) or decrease ($x < y$ implies $f(y) \leq f(x)$). What kinds of discontinuities can monotone functions have? Have many discontinuities?
+
+  \item[Question 23:] What can be said about the discontinuity of $f + g$, $f \cdot g$, and $\frac{f}{g}$ at a point $p$ under the following assumptions?
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $p$ is a simple discontinuity for both $f$ and $g$;
+      \item $p$ is a discontinuity of the second kind for both $f$ and $g$;
+      \item $p$ is a simple discontinuity for one of $f$ and $g$, and a discontinuity of the second kind for the other;
+      \item $p$ is a discontinuity for one of $f$ and $g$, and the other is continuous at $p$.
+    \end{enumerate}
+
+  \item[Question 24:] How discontinuous can a function be? That is: Can a function be discontinuous at every point, and if so, what kind of discontinuities does it have? Can a function be continuous at exactly one of an uncountable number of points, at exactly countably infinitely many points, at exactly the rationals, but discontinuous at all other points?, etc?
+
+  \item[] Continuity of functions is an important hypothesis in many theorems in analysis; two particular ones are:
+
+  \item[Maximum/Minimum Value Theorem:] Suppose $f\ :\ [a,b] \to \Re$ is continuous, and let $\alpha = \text{lub} \{ f(x)\ :\ x \in [a,b] \}$ and $\beta = \text{glb} \{ f(x)\ :\ x \in [a,b] \}$. Then there exists $c,d \in [a,b]$ such that $f(c) = \alpha$ and $f(d) = \beta$.
+
+  \item[Intermediate Value Theorem:] Suppose $f\ :\ [a,b] \to R$ is continuous, $c,d \in [a,b]$, $u = f(c)$, $v = f(d)$, and $u < v$. Then, if $u < y < v$, there exists $x \in [a,b]$ such that $f(x) = y$.
+
+  \item[] Both theorems are concerned with the behavior of continuous function on closed intervals; closed intervals are closed, bounded, and connected subsets of $\Re$.
+
+  \item[Question 25:] Consider the validity of the following statement when the blanks are filled in by each of the properties listed below: ``If $f\ :\ E \to R$ is continuous, and $E$ is \underline{\ \ \ \ \ \ \ \ \ \ \ \ }, then $f(E)$ is \underline{\ \ \ \ \ \ \ \ \ \ \ \ }.''
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item closed;
+      \item bounded;
+      \item closed and bounded;
+      \item connected.
+    \end{enumerate}
+
+  \item[Question 26:] Prove the Maximum/Minimum Value Theorem, and the Intermediate Value Theorem. Can the hypotheses be weakened and obtain the same conclusions?
+
+  \item[Question 27:] If $E$ fails to be both closed and bounded, does there always exist a continuous $f\ :\ E \to \Re$ such that $f$ is not bounded?, bounded but having no maximum (minimum)? Can closed and bounded subsets of $\Re$ be characterized by the behavior of all continuous functions defined on them?
+
+  \item[] In the definition of continuity, given $\epsilon$, the associated $\delta$ depends not only on $\epsilon$, but also on the point $p$ at which continuity is being considered. To eliminate the dependence of $\delta$ on $p$ for a given function would mean that the same $\delta$ could be chosen for the entire domain of the function; i.e., that if $x$ and $y$ are ``$\delta$-close'', then $f(x)$ and $f(y)$ are ``$\epsilon$-close'' no matter where $x$ and $y$ are located in the domain. Thus, the continuity is ``uniformly'' the same over the whole domain.
+
+  \item[Definition:] A function $f\ :\ E \to \Re$ is \emph{uniformly continuous} on $E$ iff, given $\epsilon > 0$, $\epsilon \in \Re$, there exists $\delta > 0$, $\delta \in \Re$ such that if $x,y \in E$ and $|x-y| < \delta$, then $|f(x) - f(y)| < \epsilon$.
+
+  \item[Question 28:] Are uniformly continuous functions continuous? Conversely? If not, find conditions on the domain $E$ so that the implication holds. If $E$ does not satisfy these conditions, does there always exist a continuous function on $E$ which is not uniformly continuous?
+
+\end{description}
+
+
+\subsection*{Chapter Supplements}
+
+
+\subsubsection*{A: Variation at a Point}
+
+\begin{description}
+
+  \item[] For $f\ :\ E \to \Re$ a bounded function, a measure of how much $f$ varies at a point $x \in E$ can be defined by $J(x) = \lim \sup (f;x) - \lim \inf (f;x)$. $J(x)$ is called the \emph{jump} of $f$ at $x$, and the function $J\ :\ E \to \Re$ is called the \emph{jump function} of $f$. Letting $J^0 = f$, $J^1 = J$, $J^2 =$ the jump function of $J$, $J^3 =$ the jump function of $J^2$, etc.; $J^n$, the $n$th \emph{jump function} of $f$, can be defined inductively for all $n \in Z^+$.
+
+  \item[Question 29:] \textbf{[P$_3$]} Characterize continuity in terms of the behavior of the first jump function. What can be said about the first and second jump functions at points of discontinuity, simple and of the second kind?
+
+  \item[Question 30:] Are there functions for which $J^0 = J^1$?, $J^0 \neq J^1$?, $J^0 = J^1 = J^2$?, $J^1 \neq J^2$?, etc.? Is there an integer $k$ such that for any function, $J^n = J^k$ for all $k \leq n$?
+
+\end{description}
+
+
+\subsubsection*{B: Variation over an Interval}
+
+\begin{description}
+
+  \item[] A function $f\ :\ [a,b] \to \Re$ is of \emph{bounded variation} on $[a,b]$ iff $f = g - h$ where $g$ and $h$ are monotone. Bounded variation is supposed to indicate that the total amount that the function varies over the interval is finite, so the definition given above is not helpful in measuring variation over an interval.
+
+  \item[Question 31:] Find a way of defining variation of a function $f$ over an interval $[a,b]$, which gives a numerical ``measure'' of the variation so that when the ``measure'' is finite, $f$ is of bounded variation as defined above. (Example: An increasing function $f$ should have variation over $[a,b]$ of $f(b) - f(a)$; $f(x) = \sin x$ should have variation of $4$ over $[0, 2\pi]$.)
+
+  \item[Question 32:] Are continuous functions on closed intervals always of bounded variation? How continuous must functions of bounded variation be?
+
+  \item[] Absolute continuity is a form of continuity which guarantees that functions cannot ``vary much'' over ``small'' intervals: $f\ :\ [a,b] \to \Re$ is \emph{absolutely continuous} on $[a,b]$ iff given $\epsilon > 0$, $\epsilon \in \Re$, there exists $\delta > 0$, $\delta \in \Re$ such that if $\{ (a_i,b_i)\ :\ 1 \leq i \leq n \}$ is any collections of open intervals with $a_i,b_i \in [a,b]$ for $1 \leq i \leq n$, and $(a_i,b_i) \cap (a_j,b_j) = \phi$ for $i \neq j$, $1 \leq i,j \leq n$, then $\displaystyle \sum_{i=1}^n |f(b_i) - f(a_i)|$ is less than $\epsilon$.
+
+  \item[Question 33:] What is the relationship between absolute continuity and continuity?, between absolutely continuous functions and functions of bounded variation?
+
+\end{description}
+
+
+\subsubsection*{C: Limits and Continuity in Metric Spaces}
+
+\begin{description}
+
+  \item[Question 34:] Which of the definitions given in Chapter III can be generalized to any metric space?, which to the particular metric space $C$? What results from Chapter III remain valid in these settings?
+
+\end{description}
+
+
+
+\newpage
+
+\section{Differentiability}
+\markboth{4. Differentiability}{4. Differentiability}
+
+\begin{description}
+
+  \item[Definition:] For $f\ :\ [a,b] \to \Re$ and $p \in (a,b)$, $f$ is \emph{differentiable} at $p$ iff $\displaystyle \lim_{h \to 0} \frac{[f(p+h) - f(p)]}{h}$ exists. If the limit exists, its value is called the \emph{derivative} of $f$ at $p$, denoted $f'(p)$. If $f$ is differentiable at each $p \in (a,b)$, then $f$ is a \emph{differentiable function}, and the associated function $f'$ is called the \emph{derivative} of $f$.
+
+  \item[Question 1:] Give a sequential definition of differentiability at a point. How can right and left derivatives be defined? Can differentiability be defined for functions with domains more general than intervals?
+
+  \item[Question 2:] Find an equivalent definition of differentiability which does not involve quotients.
+
+  \item[Question 3:] Are differentiable functions continuous? How non-differentiable can continuous functions be?
+
+  \item[Question 4:] Is the derivative of a differentiable function a continuous functions? If not, what kinds of discontinuities can the derivative have?
+
+  \item[Question 5:] If $f$ is differentiable on $[a,b]$, does $f'$ satisfy the intermediate value property on $[a,b]$?, is $f'$ bounded on $[a,b]$, and if so, does $f'$ assume a maximum (minimum) on $[a,b]$?
+
+  \item[Question 6:] Suppose $f$ and $g$ are differentiable at $p$. Which of the following are also differentiable at $p$, and how can their derivatives be found from the derivatives of $f$ and $g$?
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $f \pm g$;
+      \item $f \cdot g$;
+      \item $\frac{f}{g}$;
+      \item the composition of $f$ and $g$;
+      \item $|f|$;
+      \item the inverse of $f$.
+    \end{enumerate}
+
+  \item[] The best-known theorem in differential calculus is the mean value theorem, which is a tool for proving results to determine the behavior of differentiable functions:
+
+  \item[Mean Value Theorem:] If $f$ is a differentiable on $(a,b)$ and continuous on $[a,b]$, then there exists $p \in (a,b)$ such that $f'(p) = \frac{[f(b) - f(a)]}{(b - a)}$.
+
+  \item[Generalized Mean Value Theorem:] If $f$ and $g$ are differentiable on $(a,b)$ and continuous on $[a,b]$, then there exists $p \in (a,b)$ such that $\frac{f'(p)}{g'(p)} = \frac{[f(b) - f(a)]}{[g(b) - g(a)]}$.
+
+  \item[Question 7:] Prove the Mean Value Theorem and the Generalized Mean Value Theorem. Show that the former is a special case of the latter.
+
+  \item[Definition:] For $f\ :\ [a,b] \to \Re$, $p$ is a \emph{local maximum} (\emph{local minimum}) for $f$ iff there exists $\delta > 0$, $\delta \in \Re$, such that $f(x) \leq f(p)$ ($f(p) \leq f(x)$) for all $x$ with $|x-p| < \delta$. If $f$ is differentiable, a point $c$ is called a \emph{critical value} of $f$ iff $f'(c) = 0$.
+
+  \item[Question 8:] For differentiable functions, is every local maximum (local minimum) a critical value? Conversely? How many critical values can a non-constant differentiable function have?
+
+  \item[Question 9:] If $f$ is a differentiable function, what implications exist between each of the following pairs of statements?
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $f'(x) = 0$ for all $x \in (a,b)$ AND $f$ is constant on $(a,b)$;
+      \item $f'(x) > 0$ for all $x \in (a,b)$ AND $f$ increases on $(a,b)$;
+      \item $f'(x) < 0$ for all $x \in (a,b)$ AND $f$ decreases on $(a,b)$.
+    \end{enumerate}
+
+  \item[Question 10:] Prove L'Hospital's Rule: If $f$ and $g$ are differentiable on $(a,c)$ (or on $(c,b)$), and $\displaystyle \lim_{x \to c} f(x) = 0 = \lim_{x \to c} g(x)$, then $\displaystyle \lim_{x \to c} \left[ \frac{f(x)}{g(x)} \right] = q$ whenever $\displaystyle \lim_{x \to c} \left[ \frac{f'(x)}{g'(x)} \right] = q$.
+
+  \item[Definition:] If $f$ is a differentiable function whose derivative $f'$ is differentiable, then $f$ is said to be \emph{differentiable of order} $2$; and the derivative of $f'$, denoted by $f^{(2)}$, is called the \emph{second derivative} of $f$. Continuing inductively, the derivative of $f^{(2)}$, denoted $f^{(3)}$, is called the \emph{third derivative} of $f$, etc. If $n \in Z^+$, and $f^{(n)}$ exists, then $f$ is said to be \emph{differentiable of order} $n$, and $f^{(n)}$ is called the $n$th \emph{derivative} of $f$.
+
+  \item[Question 11:] Define the ``second derivative of a function'' as the limit of quotients in a form analogous to that in the definition of the first derivative.
+
+  \item[Question 12:] If $f$ is differentiable of order $2$, and $c$ is a critical value of $f$, what can be said about $c$ when $f^{(2)}(c) > 0$?, when $f^{(2)}(c) < 0$?, when $f^{(2)}(c) = 0$? Are the converses true?
+
+  \item[Question 13:] Prove Taylor's Theorem: If $n \in Z^+$, $f\ :\ [a,b] \to \Re$ is differentiable of order $n$ on $(a,b)$, and $f^{(i)}$ is continuous on $[a,b]$ for $0 \leq i \leq n$, then there exists $p \in (a,b)$ such that $\displaystyle f(b) = \sum_{k=0}^{n-1} \left[ \frac{ f^{(k)}(a) }{k!} \right] \cdot (b-a)^k + \left[ \frac{ f^{(n)}(p) }{n!} \right] \cdot (b-a)^n$. Taylor's Theorem is sometimes called the Extended Mean Value Theorem; why?
+
+  \item[Question 14:] Suppose $f$ is differentiable of order $n$ for all $n \in Z^+$ on $[0,1]$. Using Taylor's Theorem, the series $\displaystyle \sum_{k=0}^\infty \frac{ f^{(k)}(0) }{k!}$ can be generated. Will this series always converge, and if it converges, is it $\sum f(1)$?
+
+  \item[Definition:] A function $F$ is an \emph{antiderivative} of a function $f$, provided that $F$ is differentiable and $F' = f$.
+
+  \item[Question 15:] What functions always have antiderivatives? Are antiderivatives of functions unique when they exist?
+
+\end{description}
+
+
+
+\subsection*{Chapter Supplements}
+
+
+\subsubsection*{A: More on Higher Order Derivatives}
+
+\begin{description}
+
+  \item[Question 16:] Suppose $f\ :\ [a,b] \to \Re$ is differentiable of order $n$, and $f^{(i)}(c) = 0$ for $1 \leq i < n$. What can be said about $c$ when $f^{(n)}(c) > 0$?, when $f^{(n)}(c) < 0$?, when $f^{(n)}(c) = 0$?
+
+\end{description}
+
+
+\subsubsection*{B: Newton-Raphson Sequences}
+
+\begin{description}
+
+  \item[] For $f\ :\ [a,b] \to \Re$ differentiable, choose $P_0 \in (a,b)$, and for $n \in Z^+$, let $P_n = P_{n-1} - \left[ \frac{ f(p_{n-1}) }{ f'(p_{n-1}) } \right]$. Call the sequence $\{ p_n \}$ a \emph{Newton-Raphson sequence}.
+
+  \item[Question 17:] In what situations will Newton-Raphson sequences converge? When they converge, what do they converge to?
+
+\end{description}
+
+
+\subsubsection*{C: Generalizing Differentiability}
+
+\begin{description}
+
+  \item[Question 18:] Why must algebraic structure always be present in order to define differentiability? How can differentiability be defined for functions from $C$ to $\Re$?, from $C$ to $C$?
+
+\end{description}
+
+
+
+\newpage
+
+\section{Integration}
+\markboth{5. Integration}{5. Integration}
+
+\begin{description}
+
+  \item[Definition:] Let $f\ :\ [a,b] \to \Re$ be bounded, and let $P = \{ x_0, x_1, \cdots, x_n \}$ be a subset of $[a,b]$ such that $a = x_0 < x_1 < \cdots < x_n = b$. ($P$ is called a \emph{partition} of $[a,b]$.) For $1 \leq i \leq n$, let:
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $\triangle x_i = x_i - x_{i-1}$;
+      \item $M_i = \text{lub} \{ f(x)\ :\ x_{i-1} \leq x \leq x_i \}$; and $\displaystyle U_a^b (P,f) = \sum_{i=1}^n M_i \cdot \triangle X_i$;
+      \item $m_i = \text{glb} \{ f(x)\ :\ x_{i-1} \leq x \leq x_i \}$; and $\displaystyle L_a^b (P,f) = \sum_{i=1}^n m_i \cdot \triangle X_i$.
+    \end{enumerate}
+    Then $U_a^b (P,f)$ and $L_a^b (P,f)$ are respectively called the \emph{upper} and \emph{lower Riemann sums} of $f$ over $p$. And $U \int_a^b f dx = \text{glb} \{ U_b^a (P,f)\ :\ P$ is a partition of $[a,b] \}$ and $L \int_a^b f dx = \text{lub} \{ L_b^a (P,f)\ :\ P$ is a partition of $[a,b] \}$, are called respectively the \emph{upper} and \emph{lower Riemann integrals} of $f$ over $[a,b]$. If $U \int_a^b f dx = L \int_a^b f dx$, then $f$ is said to be \emph{Riemann integrable} over $[a,b]$, and the common value, denoted $\int_a^b f dx$, is called the \emph{definite Riemann integral} of $f$ over $[a,b]$.
+
+  \item[Question 1:] Do upper and lower Riemann integrals always exist? If so, how do they compare? Find a non-integrable function.
+
+  \item[Question 2:] Write the following as a rigorous statement and consider its validity: A bounded function $f$ is integrable over $[a,b]$ iff there exist upper and lower sums which are ``arbitrarily close'' in value. Can the ``close'' upper and lower sums be taken over the same partition?
+
+  \item[] The only difference between upper and lower sums is the difference between $M_i$ and $m_i$. To consider integrability through one set of sums rather than two, for bounded $f\ :\ [a,b] \to \Re$ and partition $P = \{ x_0, x_1, \cdots, x_n \}$ of $[a,b]$, let the \emph{mesh} of $P$ be given by $\mu(P) = \text{lub} \{ \triangle x_i\ :\ 1 \leq i \leq n \}$, choose $t_i \in [x_{i-1},x_i]$ for $1 \leq i \leq n$, and let $\displaystyle S(P,f) = \sum_{i=1}^n f(t_i) \cdot \triangle x_i$.
+
+  \item[Question 3:] Give a definition for $\displaystyle \lim_{\mu(P) \to 0} S(P,f)$. If $f$ is bounded on $[a,b]$, and $\displaystyle \lim_{\mu(P) \to 0} S(P,f)$ exists, is $f$ Riemann-integrable on $[a,b]$? Conversely?
+
+  \item[] A \emph{step function} $\psi\ :\ [a,b] \to \Re$ is a function which has at most a finite number of values $\{ y_1, y_2, \cdots, y_k \}$ such that $\psi^{-1}(y_j)$ is an interval $I_j$ ($[a_j,b_j]$, $(a_j,b_j]$, $[a_j,b_j)$, or $(a_j,b_j)$, including the degenerate case $[a_j,b_j]$ where $a_j = b_j$) for $1 \leq j \leq k$. The integral of such a step function can be defined by $\displaystyle \int_a^b \psi dx = \sum_{j=1}^k y_j \cdot \ell(I_j)$, where $\ell(I_j) = b_j - a_j$.
+
+  \item[Question 4:] Is the definition of the integral of a step function given above, a special case of the definition of the integral of any bounded function?
+
+  \item[Question 5:] Define $U \int_a^b f dx = \text{glb} \{ \int_a^b \phi dx\ :\ \phi$ is a step function, $f(x) \leq \phi(x)$ for $a \leq x \leq b \}$, and $L \int_a^b f dx = \text{lub} \{ \int_a^b \phi dx\ :\ \phi$ is a step function, $\phi(x) \leq f(x)$ for $a \leq x \leq b \}$. Do these definitions agree with the definitions of upper and lower integrals given at the beginning of the chapter?
+
+  \item[Question 6:] Can integration be done sequentially; that is, is there a process, not dependent on the function, of choosing a sequence of sums (or integrals of step functions) such that a function is integrable iff the sequence converges?
+
+  \item[Question 7:] Suppose $f$ is integrable on $[a,b]$.
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item If $[c,d] \subseteq [a,b]$, is $f$ integrable on $[c,d]$? If $a < c < b$, is $\int_a^b f dx = \int_a^c f dx + \int_c^b f dx$?
+      \item Is $f$ integrable on $[a,b]$? If so, is $\int_a^b |f| dx = \left| \int_a^b f dx \right|$?
+      \item Is $\lim \sup (f;x)$ integrable on $[a,b]$?, $\lim \inf (f;x)$?
+    \end{enumerate}
+
+  \item[Question 8:] Are sums, products, quotients, and compositions of integrable functions integrable? If so, what formulas like $\int_a^b f dx + \int_a^b g dx = \int_a^b (f+g) dx$ hold?
+
+  \item[Question 9:] \textbf{[C, P$_3$]} Show that continuous functions are always integrable. How discontinuous can a function be and still be integrable?
+
+  \item[Definition:] Suppose $f$ is integrable on $[a,b]$. For each $x \in [a,b]$, let $F(x) = \int_a^x f dt$. Then $F$ is called the \emph{indefinite Reimann integral} of $f$ on $[a,b]$.
+
+  \item[Question 10:] Is the indefinite integral $F$ of an integrable function $f$ a continuous function?, a differentiable function? If not, find properties of $f$ which make the answers yes. If $F$ is differentiable, is $F$ an antiderivative of $f$?
+
+  \item[Question 11:] For a function $f$ which has an antiderivative $G$, $G$ can be used to find $\int_a^b f dx$. How? That is, state (and prove) the Fundamental Theorem of Calculus.
+
+\end{description}
+
+
+\subsection*{Chapter Supplements}
+
+
+\subsubsection*{A. Mean Value Theorems for Integrals}
+
+\begin{description}
+
+  \item[First Mean Value Theorem:] If $f$ is continuous on $[a,b]$, then there exists $c$ in $(a,b)$ such that $\int_a^b f dx = f(c) \cdot (b-a)$.
+
+  \item[Second Mean Value Theorem:] If $f$ and $g$ are continuous on $[a,b]$, and $0 \leq g(x)$ for all $x \in [a,b]$, then there is $c \in [a,b]$ such that $\int_a^b f \cdot g dx = f(c) \cdot \int_a^b g dx$.
+
+\end{description}
+
+
+\subsubsection*{B. The Stieltjes Integral}
+
+\begin{description}
+
+  \item[] The Riemann integral of a function is ``with respect to $x$''; the Riemann-Stieltjes integral is integration of a function with respect to another function. To define the Stieltjes integral, make the following changes in the definition of the Riemann integral: Let $\alpha$ be an increasing function on $[a,b]$, and let $\triangle \alpha_i = \alpha(x_i) - \alpha(x_{x-1})$. Replace $\triangle x_i$ with $\triangle \alpha_i$, and adopt the following notation changes: $U_a^b (P,f,\alpha)$ for $U_a^b (P,f)$, and similarly for $L_a^b (P,f)$; $U \int_a^b f d \alpha$ for $U\int_a^b f dx$, and similarly for $L \int_a^b f dx$; and $\int_a^b f d \alpha$ for $\int_a^b f dx$. $\int_a^b f d \alpha$ is called the \emph{Riemann-Stieltjes integral} of $f$ with respect to $\alpha$ on $[a,b]$.
+
+  \item[Question 13:] Show that the Riemann integral is a special case of the Stieltjes integral. What results proved for Riemann integral also hold for Stieltjes integrals?
+
+  \item[Question 14:] Assuming $f$ is bounded and $\alpha$ is increasing, find condition on $f$ and / or $\alpha$ such that $f$ is always integrable with respect to $\alpha$.
+
+  \item[Question 15:] If $f$ is Riemann integrable on $[a,b]$, find conditions on $\alpha$ so that the Stieltjes integral $\int_a^b f d \alpha$ reduces to a Riemann integral of the form $\int_a^b f \cdot ? dx$.
+
+  \item[Question 16:] The integration-by-parts formula uses Stieltjes integrals: $\int_a^b f d \alpha$ $= f(b) \cdot \alpha(b) - f(a) \cdot \alpha(a) - \int_a^b \alpha d f$. Supply hypotheses in order to prove the integration-by-parts formula.
+
+  \item[Question 17:] The substitution method for Riemann integration comes from a change-of-variable theorem which has as its conclusion that $\int_a^b f dx = \int_{\phi(a)}^{\phi(b)} f(\psi) d\psi$, involving a Stieltjes integral. Supply hypotheses in order to prove a change-of-variable theorem with this conclusion.
+
+  \item[Question 18:] Is there a Fundamental Theorem for Stieltjes integrals?
+
+\end{description}
+
+
+
+\newpage
+
+\section{Sequences of Functions}
+\markboth{6. Sequences of Functions}{6. Sequences of Functions}
+
+\begin{description}
+
+  \item[Definition:] Given $f_n\ :\ E \to \Re$ for each $n \in Z^+$, suppose that $\{ f_n(x) \}$ converges for all $x \in E$. Then $f_n\ :\ E \to \Re$ given by $\displaystyle f(x) = \lim_{n \to \infty} f_n(x)$ is called the \emph{limit function} of $\{ f_n \}$, and $\{ f_n \}$ is said to \emph{converge pointwise} to $f$, denoted $f_n \to f$.
+
+  \item[Question 1:] What results for sequences of real numbers carry over to sequences of functions? Particularly consider accumulation and subsequences.
+
+  \item[Question 2:] \textbf{[P$_1$, P$_2$]} ``If $f_n \to f$, and each $f_n$ is \underline{\ \ \ \ \ \ \ \ \ \ \ \ }, then $f$ is \underline{\ \ \ \ \ \ \ \ \ \ \ \ }.'' Fill in the blanks with each of the following, and decide if the statement is true. If it is not true, find additional conditions that do make it true, particulary considering stronger forms of $f_n \to f$.
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item bounded;
+      \item continuous;
+      \item differentiable;
+      \item integrable.
+    \end{enumerate}
+
+  \item[Question 3:] Part (2) of Question 2 asks: $\displaystyle \lim_{x \to p} [\lim_{n \to \infty} f_n(x)] = \lim_{n \to \infty} [\lim_{x \to p} f_n(x)]$? Part (3) asks: {\scriptsize $\displaystyle \lim_{h \to 0} \left[ \lim_{n \to \infty} \frac{( f_n(x+h) - f_n(x) )}{h} \right] = \lim_{n \to \infty} \left[ \lim_{h \to 0} \frac{( f_n(x+h) - f_n(x) )}{h} \right]$}? Part (4) asks: $\displaystyle \lim_{n \to \infty} \int_a^b f_n dx = \int_a^b \lim_{n \to \infty} f_n dx$? In each case, the question is one of whether or not the order in which limits are taken can be interchanged. Is there a general theorem which tell when limits can be interchanged?
+
+  \item[Definition:] For a sequence $\{ a_k \}$, $k \in Z^+ \cup \{ 0 \}$, let $\displaystyle f(x) = \sum_{k=0}^\infty a_k \cdot x^k$. Then $f$ is called a \emph{power series}.
+
+  \item[Question 4:] Devise a way to find the domain of a power series, determining when the series converges absolutely.
+
+  \item[Question 5:] The partial sums of a power series are polynomials $\displaystyle p_n(x) = \sum_{k=0}^\infty a_k \cdot x^k$. What can be said about the convergence of $\{ p_n \}$ to $f$?
+
+  \item[Question 6:] Given a function $f\ :\ E \to \Re$, under what conditions is $f$ a power series?
+
+  \item[Definition:] A collection of functions $\mathcal{A}$, all defined on $E \subseteq \Re$, is an \emph{algebra} of functions iff for all $f,g \in \mathcal{A}$ and $c \in \Re$, $f+g$, $f \cdot g$, and $c \cdot f$ are in $\mathcal{A}$.
+
+  \item[Question 7:] Which of the following are algebras of functions?
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item all polynomials on a set $E$;
+      \item all continuous functions on $E$;
+      \item all differentiable functions on $E$;
+      \item all step functions on $[a,b]$;
+      \item all integrable functions on $[a,b]$;
+      \item all power series which converge on an interval.
+    \end{enumerate}
+
+  \item[] Responses to Question 2 and 3 should have produced new notions of convergence of $\{ f_n \}$ to $f$. The blanks in the following definition and questions should be filled in with the names given to these notions.
+
+  \item[Definition:] Suppose $\mathcal{A}$ is an algebra of functions on a set $E$. The \underline{\ \ \ \ \ \ \ \ \ \ \ \ } \emph{closure} of $\mathcal{A}$ consists of all $f$ defined on $E$ such that there exists $\{ f_n \}$ in $\mathcal{A}$, with $f$ the \underline{\ \ \ \ \ \ \ \ \ \ \ \ } limit of $\{ f_n \}$.
+
+  \item[Question 8:] What is the \underline{\ \ \ \ \ \ \ \ \ \ \ \ } closure of the algebras given in Question 6? Concentrate particularly on (2) and (4).
+
+  \item[Question 9:] What properties must any algebra have in order for its \underline{\ \ \ \ \ \ \ \ \ \ \ \ } closure to be all continuous functions?, all integrable functions?, other collections of functions sharing a property?
+
+\end{description}
+
+
+\subsection*{Chapter Supplements}
+
+
+\subsubsection*{A. Equicontinuity}
+
+\begin{description}
+
+  \item[Definition:] A family $\mathcal{D}$ of functions $f\ :\ E \to R$ is \emph{equicontinuous} on $E$ iff every $\epsilon > 0$, there exists $\delta > 0$ such that if $x,y \in E$, $f \in \mathcal{D}$, and $|x-y| < \delta$, then $|f(x)-f(y)| < \epsilon$.
+
+  \item[Question 10:] Is every member of an equicontinuous family continuous?, uniformly continuous?
+
+  \item[Question 11:] Considering all notions of convergence of $\{ f_n \}$ to $f$, if $f_n \to f$, is $\{ f_n \}$ an equicontinuous family? If not, find conditions which give an answer of ``yes''.
+
+  \item[Question 12:] Does every infinite equicontinuous family contain a convergent sequence of distinct functions? If not, find conditions which give an answer of ``yes''.
+
+\end{description}
+
+
+\subsubsection*{B. Generalizations}
+
+\begin{description}
+
+  \item[Question 13:] In what more general situations (e.g., metric spaces) do results from chapter VI hold?
+
+\end{description}
+
+
+
+\newpage
+
+\section*{Addendum}
+\addcontentsline{toc}{section}{\numberline{}Addendum}
+\markboth{Addendum}{Addendum}
+
+Papers published in the \emph{Journal of Undergraduate Mathematics} in response to questions in this monograph:
+
+\begin{description}
+  \item[B:] Boone, Kenneth. \emph{Filling the plane}. J. U. M., Vol. 11, 1979, p 43.
+  \item[C:] Cozart, David L. \emph{Some results on Riemann integrability}. J. U. M., Vol. 3, 1971, p 41.
+  \item[P$_1$:] Parker, G. Edgar. \emph{Alternatives to uniform convergence}. J. U. M., Vol 1, 1969, p 13.
+  \item[P$_2$:] Parker, G. Edgar. \emph{More on alternatives to uniform convergence}. J. U. M., Vol. 2, 1970, p 9.
+  \item[P$_3$:] Parker, G. Edgar. \emph{A criterion for Riemann integrability}. J. U. M., Vol. 4, 1972, p 1.
+  \item[R:] Redner, Richard A. \emph{The subsequential sums of a sequence}. J. U. M., Vol. 11, 1979, p 43.
+\end{description}
+
+
+\end{document}

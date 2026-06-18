@@ -1,0 +1,2627 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% Journal headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright Guilford College Journal of Undergraduate Mathematics} \cfoot{} \rfoot{ - at www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Spaces of Functions and Sets}
+\author{R. B. Sher}
+\date{\vspace{3cm}
+\emph{Journal of Undergraduate Mathematics}
+ \\ Department of Mathematics
+ \\ Guilford College
+ \\ Greensboro, North Carolina 27410 
+ }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+\thispagestyle{empty}
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+\section*{Introduction}
+\addcontentsline{toc}{section}{\numberline{}Introduction}
+\markboth{Introduction}{Introduction}
+
+\pagenumbering{roman}
+
+Chapters II - IV of this monograph consist of some notes rather loosely based on a talk entitled ``Spaces of Functions and Sets'' given at the \emph{Conference on Undergraduate Mathematics}, Guilford College, Greensboro, N.C., Nov. 15, 1975. The underlying theme is that structures (topological in this case) on sets can lead to structures on certain associated sets (e.g. sets of functions, subsets, etc.), that this can often be done in many ways, and that what results is sometimes of great interest. These notes are, of course, only intended to be a brief introduction. A complete treatment of this topic could not be undertaken in so slim a volume. For the reader who wishes to pursue matters further, I have included a bibliography, again incomplete.
+
+The most complementary term which might be applied to the writing style found herein is ``terse''. For the most part, the reader will encounter definitions, statements of theorems, and problems. There are a few examples and fewer proofs of theorems. The intention is that the notes be used by an \emph{active}, rather than a passive, reader. That is, the reader is to learn the material by \emph{doing}, rather than by being shown. The theorems and problems range from the ridiculously easy, to the almost impossibly difficult. The reader who is able to work his/her way through a significant portion of this material should be well-equipped to undertake any subsequent project along these general lines.
+
+For those who have not been introduced to basic topology, or whose preparation has been inadequate, I have included in Chapter I an introduction to general topology, written in the same style as the rest of the notes. Some readers will be able to skip this chapter, perhaps only skimming it to establish notations and terminology.
+
+The monograph could be used by individuals having an interest in the material presented here, as supplementary reading for a class, as a directed study project, as a guide for an undergraduate research project, or in a seminar. In addition, the inclusion of Chapter I makes the monograph suitable as the basis for an introductory topology course taught along the lines of the ``Moore method''.
+
+I would like to thank Guilford College for its sponsorship of the \emph{Journal of Undergraduate Mathematics} and the \emph{Conference on Undergraduate Mathematics}. Additional thanks are due to J. R. Boyd, who arranged for the typing and publication of the manuscript.
+
+\begin{flushright}
+R. B. Sher \\
+University of North Carolina at Greensboro \\
+Greensboro, N.C. \\
+1976
+\end{flushright}
+
+
+\newpage
+
+\section{Introductory Topology}
+\markboth{I. Introductory Topology}{I. Introductory Topology}
+
+\pagenumbering{arabic}
+
+
+\subsection{Introduction}
+\markboth{I.1. Introduction}{I.1. Introduction}
+
+One of the most basic and important ideas in mathematics is that of \emph{continuity}. Roughly speaking, a function is  \emph{continuous} if it maps points which are ``close together'' to points which are ``close together''. But if we are to be more precise, we must seek a meaning for ``close together''. Of course, for functions having their domain and range lying in the set of real numbers, the meaning has been made explicit in elementary calculus, via the familiar $\epsilon$-$\delta$ definition of continuity. But such real-valued functions of a real variable do not exhaust all interesting and important possibilities. Indeed, many functions have come about in a rather natural way, in the study of ``real'' mathematical questions, for which the meaning of ``close together'' is less transparent. In fact, consideration of such questions has brought about the formation of an important and vital area of mathematics. This modern study of ``closeness'' and its implications is called \emph{topology}.
+
+Many readers will already be familiar with the basic ideas and notions of topology. Those who feel comfortable with such ideas may proceed directly to Chapter II. For those who remain, the current chapter contains a whirlwind introduction to the subject. Few proofs are given, but those not may be found in nearly any introductory text dealing with this material. Some of these are listed in the bibliography. The reader is \emph{strongly} encouraged, however, to work out as much of the theory as possible \emph{without seeking help}.
+
+
+\subsection{Sets and Functions}
+\markboth{I.2. Sets and Functions}{I.2. Sets and Functions}
+
+
+We assume that the reader is familiar with the basic facts of elementary set theory; see P. Halmos, \emph{Naive Set Theory}, Springer-Verlag, New York, 1974.
+
+
+\subsubsection*{Sets}
+
+Intuitively, a \emph{set} is a well-defined collection of objects referred to as its \emph{elements} (sometimes \emph{members}, \emph{points}, etc.). We shall not attempt to define these terms; you are, however, probably familiar with them through the study of such sets as
+    \begin{itemize}
+      \item $J$: the integers;
+      \item $J^{+}$: the positive integers;
+      \item $Q$: the rational numbers;
+      \item $\Re$: the real numbers;
+      \item $\Re^{2}$: the Cartesian plane;
+      \item $\emptyset$: the empty set.
+    \end{itemize}
+
+If $A$ is a set, and $a$ is an element of $A$, we write $a \in A$. In general, whenever we use a notation such as this, a ``slash'' will be used to denote negation. Thus, for example, $a \notin A$ means ``$a$ is not an element of $A$''.
+
+We shall generally use one of two notations to specify the elements of a set. The first is to simply list the elements of the set, or at least enough of the elements to make the meaning clear. For example, using this notation we would write $\{ 1, 2, 3 \}$ for the set whose elements are the integers $1$, $2$, and $3$. We would write $\{ 1, 2, 3, \cdots \}$ for $J^{+}$, $\{ 2, 4, 6, \cdots \}$ for the even elements of $J^{+}$, etc. The second notation specifies the members of a set by requiring a certain property, say $P$, to hold. We write $\{ x\ |\ P(x) \}$ in this case. For example, in this notation, we write $\{x \in J\ |\ x > 0 \}$ for $J^{+}$, $\{ x \in J^{+}\ |\ x = 2n$ for some $n \in J \}$ for the even elements of $J^{+}$, etc. Notice that such notations are not unique.
+
+The set $A$ is said to be a \emph{subset} of the set $B$ if and only if each element of $A$ is an element of $B$. That is, $x \in A$ implies $x \in B$. In this case, we write $A \subset B$ or $B \supset A$. We say that $A$ is a \emph{proper subset} of the set $B$ if $A \subset B$ and $A \neq B$.
+
+Let $A$ and $B$ be sets. The \emph{union} of $A$ and $B$ is the set $A \cup B = \{ x\ |\ x \in A$ or $x \in B \}$, and the \emph{intersection} of $A$ and $B$ is the set $A \cap B = \{ x\ |\ x \in A$ and $x \in B \}$. The \emph{complement} of $B$ in $A$ is the set $A-B = \{ x \in A\ |\ x \notin B \}$. If $A \cap B = \emptyset$, we say $A$ and $B$ are \emph{disjoint} or \emph{mutually exclusive}.
+
+A set of the form $\{ a \}$ having exactly one element is called a \emph{singleton}, or more precisely, the singleton of $a$.
+
+
+\subsubsection*{Functions}
+
+A \emph{function} from $A$ to $B$ is a rule of correspondence which assigns a unique member of $B$ to each member of $A$. If $F$ denotes such a function, we write $f\ :\ A \rightarrow B$, and write $f(a)$ for that element of $B$ which is assigned to $a \in A$ by $f$. $A$ is the \emph{domain} of $f$, and $B$ is the \emph{range} of $f$. Functions $f\ :\ A \rightarrow B$ and $g\ :\ C \rightarrow D$ are equal, written $f=g$, if and only if $A=C$, $B=D$, and $f(x)=g(x)$ for all $x \epsilon A$.
+
+\textbf{(I.2.1) Examples}
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item If $A$ is a set, then the \emph{identity} function on $A$ is the function $\text{id}_A\ :\ A \rightarrow A$, where $\text{id}_A(x) = x$ for all $x \in A$. Sometimes, if the meaning is clear, we write ``$\text{id}$'' for ``$\text{id}_A$''.
+    \item If $f\ :\ A \rightarrow B$ is a function, and $c \subset A$, then $f$ determines a function $f|C\ :\ C \rightarrow B$ given by $(f|C)(x) = f(x)$ for all $x \in C$. $f|C$ is called the \emph{restriction} of $f$ to $C$.
+    \item If $A \subset B$, then the \emph{inclusion} of $A$ in $B$ is the function $\text{id}_B|A\ :\ A \rightarrow B$. We usually denote the inclusion by $\text{i}_A$. Note that $\text{i}_B = \text{id}_B$, but that if $A$ is a proper subset of $B$, then $\text{i}_A \neq \text{id}_A$.
+    \item The function $f\ :\ A \rightarrow B$ is \emph{constant} with \emph{value} $b$ if $f(x) = b$ for every $x \in A$.
+  \end{enumerate}
+
+Let $f\ :\ A \rightarrow B$ be a function, let $A' \subset A$, and let $B' \subset B$. The \emph{image} of $A'$ under $f$ is the set $f(A') = \{ b \in B\ |\ b = f(a)$ for some $a \in A' \}$. The \emph{inverse image} of $B'$ under $f$ is the set $f{^-1}(B') = \{ a \in A,\ f(a) \in B' \}$. $f$ is \emph{injective} (1-to-1) if for each $b \in B$, $f{^-1}(b)$ is either $\emptyset$ or a singleton. (We are abusing notation slightly and using $f^{-1}( \{ b \} )$.) $f$ is \emph{surjective} (onto) if $f(A) = B$. If $f$ is both injective and surjective, we say that $f$ is a \emph{bijection} (1-to-1 correspondence).
+
+Let $f\ :\ A \rightarrow B$ and $g\ :\ B \rightarrow C$ be functions. The \emph{composition} of $f$ and $g$ is the function $gf\ :\ A \rightarrow C$, defined by $gf(x) = g[f(x)]$.
+
+Recall that if $f\ :\ A \rightarrow B$ is a function, then $f$ is a \emph{bijection} if and only if there exists a function $g\ :\ B \rightarrow A$ such that $gf = \text{id}_A$ and $fg = \text{id}_B$. Such a $g$ is unique, and will be denoted by $f^{-1}$.
+
+
+\subsubsection*{Families of Sets}
+
+Frequently we shall encounter the situations in which the members of a set are themselves sets. We shall usually refer to such a set as a \emph{family} (\emph{class}, \emph{collection}, etc.) of sets, rather than a ``set of sets''. An example of such a family is the \emph{power set} of the set $A$. It is $P(A) = \{ B\ |\ B \subset A \}$.
+
+Suppose $A$ is a set. An \emph{indexed family} of subsets of $A$, with \emph{indexing set} $M$ ($M \neq \emptyset$), is a function $F\ :\ M \rightarrow P(A)$. If $\alpha \in M$, we sometimes write $A_{\alpha}$ for $F(\alpha)$ and $\{ A_{\alpha}\ |\ \alpha \in M \}$ for $F$.
+
+If $\{ A_{\alpha}\ | \alpha \in M \}$ is an indexed family, we define the \emph{union} and \emph{intersection} of the family as
+\begin{equation*}
+\cup_{\alpha \in M} A_{\alpha} = \{ x\ |\ x \in A_\alpha \text{ for some } \alpha \in M \}
+\end{equation*}
+and
+\begin{equation*}
+\cup_{\alpha \in M} A_{\alpha} = \{ x\ |\ x \in A_\alpha \text{ for all } \alpha \in M \}
+\end{equation*}
+If $M = \{ 1, 2, \cdots, n \}$, other notations for these are $\cup^n_{i=1} A_i$ or $A_1 \cup A_2 \cup \cdots \cup A_n$, and $\cap^n_{i=1} A_i$ or $A_1 \cap A_2 \cap \cdots \cap A_n$.
+
+
+\subsubsection*{Set Equivalence}
+
+Sets $A$ and $B$ are \emph{equivalent} (of the same \emph{cardinality}) if there exists a bijection from $A$ to $B$ (or, equivalently, from $B$ to $A$). A set $A$ is \emph{finite} if it is either empty or equivalent to the set $\{ 1, 2, \cdots, n \}$ for some $n \in J^+$. Otherwise, $A$ is \emph{infinite}. $A$ is \emph{countably infinite} if it is equivalent to $J^+$. We shall say that $A$ is \emph{countable} if it is finite or countably infinite. Otherwise, $A$ is \emph{uncountable}.
+
+
+\subsubsection*{Products}
+
+Let $F = \{ A_{\alpha}\ |\ \alpha \in M \}$ be an indexed family of sets. The \emph{Cartesian product} of the family $F$, denoted $\pi_{\alpha \in M} A_{\alpha}$, is the set $\{ f\ :\ M \rightarrow \cup_{\alpha \in M} A_{\alpha}\ |\ f(a) \in A_{\alpha} \}$. In other words, $\pi_{\alpha \in M} A_{\alpha}$ is the set of all functions $f$ from $M$ into $\cup_{\alpha \in M} A_{\alpha}$ such that $f(a)$ is an element of the set $F(\alpha)$. In the case $M = \{ 1, 2, \cdots, n \}$, we usually write the product as $\pi^n_{i=1} A_i$ or $A_1 \times A_2 \times \cdots \times A_n$. If $A_{\alpha} = B$ for all $\alpha \in M$, we usually write the product as $B^M$. Hence, $B^M = \{ f\ :\ M \rightarrow B \}$. In the case $M = \{ 1, 2, \cdots, n \}$, this is sometimes written as $B^n$.
+
+\textbf{(I.2.2) Examples}
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item Recall that $\Re^2 = \{ (x,y)\ |\ x,y \in \Re \}$; that is, $\Re^2$ is the set of all ordered pairs of real numbers. What is the meaning of \emph{order} here? One can think of the order as being determined by a function $f\ :\ \{ 1,2 \} \rightarrow \Re$, where $f(1)$ is the \emph{first} member of the ordered pair, and $f(2)$ is the \emph{second}. In other words $\Re^2$, as usually defined in elementary analytic geometry, is the same as $\Re \times \Re$ as defined above. We shall also adopt this familiar notation for Cartesian product in the case $M = \{ 1, 2, \cdots, n \}$. That is, we shall write $(a_1, a_2, \cdots, n)$ for $f \epsilon \pi^n_{i=1} A_i$ where $f(i) = a_i$.
+  \item Let $n$ be a positive integer. In the notation of (a), $R^n = \{ (x_1, x_2, \cdots,$ $x_n)\ |\ x_i \in \Re \}$. We shall adopt a similar notation when $M = J^+$, and write $\Re^\infty = \{ (x_1, x_2, \cdots, x_n)\ |\ x_i \in \Re \}$. An element of $\Re^\infty$ is sometimes call a \emph{real-valued sequence}. If $A$ is a set, a sequence with terms in $A$ is an element of $A^\infty = A^{J^{+}}$.
+\end{enumerate}
+
+Let $F = \{ A_{\alpha}\ |\ \alpha \in M \}$, and let $\beta \in M$. The $\beta$th \emph{projection} is the function $\pi_{\beta}\ :\ \pi_{\beta \in M} A_\alpha \rightarrow A_\beta$ given by $\pi_\beta(f) = f(\beta)$ for all $f \in \pi_{\beta}$. The \emph{diagonal injection} is the function $d\ :\ A \rightarrow A^M$ given by $[d(a)](\alpha) = a$ for $a \in A$, $\alpha \in M$. That is, if $a \in A$, $d(a)$ is the constant function on $M$ with value $a$.
+
+\textbf{(I.2.3) Example}: In the case $M = \{ 1, 2, \cdots, n \}$, $\pi_i$ is given by $\pi_i (x_1, x_2,$ $\cdots, x_n) = x_i$, $i = 1, 2, \cdots, n$. $d$ is given, in this case, by $d(a) = (a, a, \cdots, a) \in A^n$.
+
+Let $F = \{ A_\alpha\ |\ \alpha \in M \}$, $G = \{ B_\alpha\ |\ \alpha \in M \}$ be indexed families of sets, and let $f_\alpha\ :\ A_\alpha \rightarrow B_\alpha$ be a function, where $\alpha \in M$. Then $\pi_{\alpha \in M}f_\alpha\ :\ \pi_{\alpha \in M}A_\alpha \rightarrow \pi_{\alpha \in M}B_\alpha$ is the function given by $[(\pi_{\alpha \in M}f_\alpha)(f)](\beta) = f_\beta \pi_\beta(f)$, where $\beta in M$, $f \in \pi_{\alpha \in M} A_\alpha$.
+
+\textbf{(I.2.4) Example}: In the case $M = 1, 2, \cdots, n$, $\pi^n_{i=1}f_i$ is given by $(\pi^n_{i=1}f_i)$ $(x_1, x_2, \cdots, x_n) = ( f_1(x_1), f_2(x_2), \cdots, f_n(x_n) )$.
+
+
+\subsubsection*{Equivalence Relations and Quotients}
+
+Let $A$ be a set. A \emph{relation} on $A$ is a subset $\sim$ of $A \times A$. If $(x,y) \in \sim$, we sometimes write $x \sim y$. A relation $\sim$ is an \emph{equivalence relation} on $A$ if and only if the following three conditions hold:
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item (reflexivity) $x \sim x$ for all $x \in A$,
+  \item (symmetry) $x \sim y$ implies $y \sim x$ for all $x,y \in A$, and
+  \item (transitivity) $x \sim y$ and $y \sim z$ implies $x \sim z$ for all $x,y,z \in A$. 
+\end{enumerate}
+
+We write $[x]$ for the set $\{ y \in A\ |\ x \sim y \}$. $[x]$ is the \emph{equivalence class} of $x$ with respect to $\sim$.
+
+The basic result on equivalence relations follows.
+
+\textbf{(I.2.5) Theorem}: Let $\sim$ be an equivalence relation on the set $A$. Then the equivalence classes of $\sim$ partition $A$ into pairwise disjoint subsets. (That is, $A = \cup_{x \in A}[x]$, and $[x]$ and $[y]$ are either equal or disjoint for all $x,y \in A$.) Conversely, suppose $A = \cup_{x \in M} A_\alpha$, where $A_\alpha \neq \emptyset$ and $A_\alpha \cap A_\beta = \emptyset$ if $\alpha,\beta \in M$ and $\alpha \neq \beta$. Then there exists an equivalence relation $\sim$ on $A$ such that the equivalence classes of $\sim$ are precisely the sets $A_\alpha$.
+
+A collection of sets such as $\{ A_\alpha | \alpha \in M \}$ in the statement of Theorem I.2.5 is said to form a \emph{partition} of $A$. The set of equivalence classes of an equivalence relation $\sim$ on $A$ is called the $quotient$ of $A$ by $\sim$, and is usually denoted $A/\sim$. Thus, $A/\sim = \{ [x]\ |\ x \in A \}$. The \emph{projection} or \emph{natural map} from $A$ to $A/\sim$ is the function $\pi$, where $\pi(x) = [x]$. $\pi$ is surjective, but fails to be injective unless, trivially, $\sim$ is the relation of equality.
+
+
+\subsection*{Problems}
+\addcontentsline{toc}{subsection}{\numberline{1.P1}Problems}
+\markboth{I.P1. Problems}{I.P1. Problems}
+
+\begin{description}
+
+  \item[(I.1)] Let $f\ :\ A \rightarrow B$ be a function, let $A_1,A_2 \subset A$, and let $B_1,B_2 \subset B$. Show
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item $f(A_1 \cup A_2) = f(A_1) \cup f(A_2)$.
+      \item $f(A_1 \cap A_2) \subset f(A_1) \cap f(A_2)$.
+      \item $f(A_1 - A_2) \supset f(A_1) - f(A_2)$.
+      \item $f^{-1}(B_1 \cup B_2) = f^{-1}(B_1) \cup f^{-1}(B_2)$.
+      \item $f^{-1}(B_1 \cap B_2) = f^{-1}(B_1) \cap f^{-1}(B_2)$.
+      \item $f^{-1}(B_1 - B_2) = f^{-1}(B_1) - f^{-1}(B_2)$.
+      \item $f^{-1}[f(A_1)] \supset A_1$.
+      \item $f[f^{-1}(B_1)] \subset B_1$.
+    \end{enumerate}
+    Do the reverse inclusions hold in (b), (c), (g), (h)? If not, are there some reasonable conditions on $f$ which will assure that they do?
+
+  \item[(I.2)] Let $f\ :\ A \rightarrow B$ and $g\ :\ G \rightarrow C$ be functions, let $A' \subset A$, and let $C' \subset C$. Show
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item $gf(A') = g[f(a')]$.
+      \item $(gf)^{-1}(C') = f^{-1}[g^{-1}(C')]$.
+      \item $gf$ is injective if both $f$ and $g$ are injective.
+      \item $gf$ is surjective if both $f$ and $g$ are surjective.
+      \item $f$ is injective if $gf$ is injective.
+      \item $f$ is surjective if $gf$ is surjective.
+    \end{enumerate}
+    Do the converses of (c), (d), (e), and (f) hold?
+
+  \item[(I.3)] Let $A$, $B$, and $C$ be sets. Is it true that $A \cup (B-C) = (A \cup B) - (A \cup C)$ and $A \cap (B-C) = (A \cap B) - (A \cap C)$?
+
+  \item[(I.4)] Let $A$ and $B$ be sets. The \emph{symmetric difference} of $A$ and $B$, denoted $A \triangle B$, is the set $(A-B) \cup (B-A)$. Show that $A \triangle B = (A \cup B) - (A \cap B)$, $A \triangle A = \emptyset$, and $A \triangle \emptyset = A$.
+
+  \item[(I.5)] Which of the following are true? ($A$, $B$, and $C$ are sets.)
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item $A \triangle (B \triangle C) = (A \triangle B) \triangle C$.
+      \item $A \triangle B = B \triangle A$.
+      \item $A \cup (B \triangle C) = (A \cup B) \triangle (A \cup C)$.
+      \item $A \cap (B \triangle C) = (A \cap B) \triangle (A \cap C)$.
+      \item $A \triangle (B \cup C) = (A \triangle B) \cup (A \triangle C)$.
+      \item $A \triangle (B \cap C) = (A \triangle B) \cap (A \triangle C)$.
+    \end{enumerate}
+
+  \item[(I.6)] If $A = \{ 1, 2, \cdots, n \}$, show that $P(A)$ contains precisely $2^n$ elements. Exhibit a bijection between the set $P(A)$ and the Cartesian power $\{ 1,2 \}^A$.
+
+  \item[(I.7)] The complex numbers, $\mathbb{C}$, may be defined to be the set of forms $\{ a+bi\ |\ a,b \in \Re \}$. Show that $\mathbb{C}$ is equivalent to $\Re^2$.
+
+  \item[(I.8)] Which of the following sets are countable?
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item $\{ (x,y) \in \Re^2\ |\ x,y \in Q \}$.
+      \item $\{ (x_1, x_2, \cdots, x_n) \in \Re^n\ |\ x_i \in Q,\ i = 1, 2, \cdots, n \}$.
+      \item $\{ (x_1, x_2, \cdots) \in \Re^\infty\ |\ X_i \in Q,\ i = 1, 2, \cdots \}$.
+      \item $\{ (x,y) \in \Re^2\ |\ x^2 + y^2 = 1 \}$.
+    \end{enumerate}
+
+  \item[(I.9)] Show that $(0,1)$ is equivalent to $\Re$. Show that $[0,1)$ is equivalent to $\Re$.
+
+  \item[(I.10)] Let $F$ be a family of sets. If $X,Y \in F$, let $X \sim Y$ if and only if $X$ and $Y$ are equivalent. Show that $\sim$ is an equivalence relation.
+
+  \item[(I.11)] Prove that the diagonal injection is injective. Prove that the projections $\pi_\beta$ are surjective. Prove that if $d\ :\ A \rightarrow A^m$ is the diagonal, and $\beta \in M$, then $\pi_\beta d = \text{id}_A$.
+
+  \item[(I.12)] Let $A,B \subset C$, and $D,E \subset F$. Show that $(A \times D) \cap (B \times E) = (A \cap B) \times (D \cap E)$. (Both are subsets of $C \times F$.) What holds true if $\cap$ is replaced by $\cup$?
+
+  \item[(I.13)] Let $A_1, A_2$ be sets, and $a_2 \in A_2$. Define $f\ :\ A_1 \rightarrow A_1 \times A_2$ by $f(a) = (a, a_2)$. Prove that $f$ is injective, and that $\pi_1 f = \text{id}_{A_1}$. Generalize to $\pi^\infty_{i=1} A_i$ and $\pi_{\alpha \in M} A_\alpha$.
+
+  \item[(I.14)] Prove that $\pi_{\alpha \in M} f_\alpha$ is injective. Does the same hold for subjectivity?
+
+  \item[(I.15)] Give some examples of equivalence relations. Give an example of a relation which fails to precisely satisfy condition (1) of the definitions of equivalence relation. Do the same for condition (2) and condition (3). Give an example which satisfies only condition (1) of the definition of equivalence relation. Do the same for condition (2) and condition (3).
+
+  \item[(I.16)] Let $A$ be the set of all straight lines in the plane $\Re^2$, and define the relation $\sim$ on $A$ by $\ell_1 \sim \ell_2$ if and only if $\ell_1$ and $\ell_2$ are parallel. Prove that $\sim$ is an equivalence relation, and that $A/\sim$ is equivalent to $\Re$.
+
+\end{description}
+
+
+\subsection{Spaces, Bases, and Sub-Bases}
+\markboth{I.3. Spaces, Bases, and Sub-Bases}{I.3. Spaces, Bases, and Sub-Bases}
+
+\textbf{(I.3.1) Definition}: Let $X$ be a set. A \emph{topology} on $X$ is a
+subset $\sigma$ of $P(X)$ satisfying the following four conditions:
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item $\emptyset \in \sigma$.
+  \item $X \in \sigma$.
+  \item If $U_1,U_2 \in \sigma$, then $U_1 \cap U_2 \in \sigma$.
+  \item If $U_\alpha \in \sigma$, $\alpha \in M$, then $U_{\alpha \in M} U_{\alpha} \in \sigma$.
+\end{enumerate}
+The pair $(X, \sigma)$ is a \emph{topological space}, and the elements of $\sigma$ are the \emph{open subsets} of the topological space. We shall sometimes simply say ``$X$ is a topological space'' or just ``$X$ is a space'' when $\sigma$ is understood. We must however exercise some care when doing this, since (as we shall see below) a given set can have many topologies.
+
+\textbf{(I.3.2) Example}: $\ $
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item Let $X$ be a set, and $\tau = \{ \emptyset, X \}$. Then $\tau$ is a topology on $X$, and is called the \emph{trivial topology}. $X$ with this topology is called a \emph{trivial space}.
+  \item Let $X$ be a set, and $\sigma = P(X)$. Then $\sigma$ is a topology on $X$, and is called the \emph{discrete topology}. $X$ with this topology is called a \emph{discrete space}.
+  \item Let $X$ be a set, and $\sigma = \{ U \subset X\ |\ X-U$ is finite $\} \cup \{ \emptyset \}$. Then $\sigma$ is a topology on $X$, and is called the \emph{finite complement topology}.
+  \item Let $\tau = \{ U \subset \Re\ |\ U$ is a union of open intervals $\}$. (As a convention, we allow empty unions. Hence, $\emptyset \in \tau$.) Then $\tau$ is a topology on $\Re$, and is called the \emph{usual topology}.
+\end{enumerate}
+
+\textbf{(I.3.3) Theorem}: If $X$ is a space, and $U_1, U_2, \cdots, U_n$ are open in $X$, then $\cap^n_{i=1} U_i$ is open in $X$.
+
+\textbf{(I.3.4) Definition}: Let $(X,\sigma)$ be a topological space. Then $\beta \subset \sigma$ is a \emph{basis} for $(X,\sigma)$ if each member of $\sigma$ is a union of members of $\beta$. Notice that, by I.3.1 (2), $X = \cap_{U \in \beta} U$. Now, $\alpha \subset \sigma$ is a \emph{sub-basis} for $(X,\sigma)$ if the sets $\{ U_1 \cap U_2 \cap \cdots \cap U_n\ |\ U_k \in \alpha,\ k=1,2,\cdots,n \}$ is a basis for $(X,\sigma)$.
+
+\textbf{(I.3.5) Theorem}: Let $(X,\sigma)$ be a topological space, and $\beta \subset \sigma$. Then $\beta$ is a basis for $(X,\sigma)$ if and only if whenever $x \in U \in \sigma$, there exists $V \in \beta$ such that $x \in V \subset U$.
+
+\textbf{(I.3.6) Examples}: Consider $\Re$ with the usual topology (I.3.4(d)). Then $\beta = \{ (a,b)\ |\ a < b \}$ is a basis for $\Re$. Another basis for $\Re$ is $\{ (a,b)\ |\ a < b;\ a,b \in Q \}$. Since $(a,b) = (a,\infty) \cap (-\infty,b)$, the set $\{ (a,\infty)\ |\ a \in Q \} \cup \{ (-\infty,b)\ |\ b \in Q \}$ is a sub-basis for $\Re$.
+
+\textbf{(I.3.7) Theorem}: Let $X$ be a set, and $\beta \subset P(X)$, such that
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item $X = \cup_{U \in \beta} U$, and
+  \item if $V,W \in \beta$, there exists $\alpha \subset \beta$ such that $V \cap W = \cup_{U \in \alpha} U$.
+\end{enumerate}
+Then $\sigma = \{ U\ :\ U$ is a union of elements of $\beta \}$ is a topology on $X$, and $\beta$ is a basis for $(X,\sigma)$.
+
+\textbf{(I.3.8) Examples}: $\ $
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item Let $X$ be a set, and $\gamma \subset P(X)$, such that $X = \cup_{U \in \gamma} U$. Let $\beta = \{ U_1 \cap U_2 \cap \cdots \cap U_k\ |\ U_i \in \gamma,\ i=1,2,\cdots,k \}$. Then $\beta$ satisfies the conditions of Theorem (I.3.7). The topology $\sigma$ of that theorem is called the \emph{topology generated by} $\gamma$. Note that $\gamma$ is a sub-basis of $\sigma$.
+  \item Let $\beta = \{ [a,b)\ |\ a,b \in \Re \}$. Then $\beta$ satisfies conditions (1) and (2) of (I.3.7). The topology generated by $\beta$ is called the \emph{half-open interval topology} on $\Re$.
+\end{enumerate}
+
+\subsection{Closed Sets and Limit Points}
+\markboth{I.4. Closed Sets and Limit Points}{I.4. Closed Sets and Limit Points}
+
+\textbf{(I.4.1) Definition}: Let $X$ be a space. Then $F \subset X$ is \emph{closed} if and only if $X-F$ is open.
+
+Notice that a set need not be either open or closed. For example, in $\Re$ with the usual topology, $[a,b)$ is neither open nor closed. By I.3.1 (1) and (2), $\emptyset$ and $X$ are both open and closed.
+
+If $A$ and $B$ are subsets of the set $C$, then $C(A \cup B)$ = $(C-A) \cap (C-B)$, and $C - (A \cap B) = (C-A) \cup (C-B)$. Thus there is a sort of duality between open and closed sets in a space. Using this, we see that we could have just as well defined a topological space in terms of closed rather than open sets. The conditions corresponding to I.3.1 (1) - (4) are:
+\begin{enumerate}[\hspace{1cm}(1)']
+  \item $X$ is closed.
+  \item $\emptyset$ is closed.
+  \item If $F_1$ and $F_2$ are closed, then $F_1 \cup F_2$ is closed.
+  \item If $F_\alpha$ is closed, $\alpha \in M$, then $\cap_{\alpha \in M} F_\alpha$ is closed.
+\end{enumerate}
+
+In this approach, given the closed sets, we would then define a set to be open if and only if its complement is closed.
+
+\textbf{(I.4.2) Definition}: Let $X$ be a space and $A \subset X$. The point $p$ is a \emph{limit point} of $A$ if each open set containing $p$ contains a point of $A - \{ p \}$.
+
+\textbf{(I.4.3) Examples}: $\ $
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item In $\Re$ with the usual topology, $0$ is a limit point (in fact, the only limit point) of the set $\{ 1/i\ |\ i \in j^+ \}$.
+  \item In $\Re$ with the usual topology, every point of $[0,1]$ is a limit point of $[0,1]$.
+\end{enumerate}
+
+\textbf{(I.4.4) Theorem}: Let $X$ be a space, and $A \subset X$. Then $A$ is closed if and only if no limit point of $A$ lies in $X-A$.
+
+\textbf{(I.4.5) Definition}: Let $X$ be a space, and $A \subset X$. We define the \emph{interior}, \emph{exterior}, and \emph{frontier} of $A$ in $X$ as, respectively, $\text{Int}_X(A) = \{ x \in X\ |$ there is an open set $U$ such that $x \in U \subset A \}$; $\text{Ext}_X(A) = \{ x \in X\ |$ there is an open set $U$ such that $x \in U \subset X-A \}$; $\text{Fr}_X(A) = X - [\text{Int}_X(A) \cup \text{Ext}_X(A)]$. We sometimes write $\text{Int}(A)$, $\text{Ext}(A)$, and $\text{Fr}(A)$ for these sets when the meaning is clear.
+
+\textbf{(I.4.6) Theorem}: Let $X$ be a space, and $A \subset X$. Then
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $\text{Int}(A)$ is open, and $\text{Int}(A) \subset A$.
+  \item $\text{Ext}(A)$ is open, and $\text{Ext}(A) \subset X-A$.
+  \item $x \in \text{Fr}(A)$ if and only if each open set containing $x$ intersects both $A$ and $X-A$.
+  \item the sets $\text{Int}(A)$, $\text{Ext}(A)$, and $\text{Fr}(A)$ form a partition of $X$.
+  \item $A$ is open if and only if $A = \text{Int}(A)$.
+  \item $A$ is closed if and only if $A = \text{Int}(A) \cup \text{Fr}(A)$.
+  \item if $U \subset A$, and $U$ is open, then $U \subset \text{Int}(A)$.
+  \item if $A \subset F$, and $F$ is closed, then $U \subset \text{Int}(A) \cup \text{Fr}(A) \subset F$.
+\end{enumerate}
+
+\textbf{(I.4.7) Definition}: Let $X$ be a space, and $A \subset X$. The \emph{closure} of $A$ in $X$, denoted $\text{Cl}_X(A)$ (or just $\text{Cl}(A)$) is the set $\text{Int}(A) \cup \text{Fr}(A)$.
+
+By I.4.6 (f), $A$ is closed if and only if $A = \text{Cl}(A)$. By I.4.6 (b) and (d), $\text{Cl}(A)$ is closed for all $A \subset X$. We paraphrase I.4.6 (g) and (h) by saying that $\text{Int}(A)$ is the \emph{largest} open set lying in $A$, while $\text{Cl}(A)$ is the \emph{smallest} closed set containing $A$.
+
+\textbf{(I.4.8) Theorem}: Let $X$ be a space, and $A \subset X$. Then $\text{Cl}(A) = \{ x \in X\ |$ every open set containing $x$ intersects $A \}$.
+
+\textbf{(I.4.9) Theorem}: Let $X$ be a space, and $A \subset X$. Then $\text{Int}(A) = \cup \{ U \subset X\ |\ U$ is open and $U \subset A \}$, and $\text{Cl}(A) = \cap \{ F \subset X\ |\ F$ is closed and $A \subset F \}$.
+
+
+\subsection{Metric Spaces}
+\markboth{I.5. Metric Spaces}{I.5. Metric Spaces}
+
+\textbf{(I.5.1) Definition}: Let $X$ be a set. A \emph{metric} (distance function) on $X$ is a function $d\ :\ X \times X \rightarrow \Re$ such that
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item for all $x,y \in X$, $d(x,y) \geq 0$, and $d(x,y) = 0$, if and only if $x = y$;
+  \item for all $x,y \in X$, $d(x,y) = d(y,x)$; and
+  \item for all $x,y,z \in X$, $d(x,y) + d(y,z) \geq d(x,z)$.
+\end{enumerate}
+If $x \in X$ and $\epsilon > 0$, let $N(x,\epsilon) = \{ y \in X\ |\ d(x,y) < \epsilon \}$. $N(x, \epsilon)$ is called the \emph{open ball} with center $x$ and radius $\epsilon$. Let $\beta = \{ N(X,\epsilon)\ |\ x \in X,\ \epsilon > 0 \}$. Then $\beta$ satisfies the conditions of Theorem I.3.7. The topology $\delta_d = \{ U\ |\ U$ is a union of elements of $\beta \}$ is the \emph{metric topology} on $X$ induced by $d$, and $(X,\delta_d)$ is called a \emph{metric space}. As a convention, ``$X$ is a metric space'' shall mean that there is an underlying metric $d$ inducing the metric topology on $X$.
+
+\textbf{(I.5.2) Examples}: $\ $
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item Let $X$ be a set, and let $d\ :\ X \times X \rightarrow \Re$ be defined by
+    \begin{equation*}
+      d(x,y) = 
+      \begin{cases}
+      0 \text{ if } x = y \\
+      1 \text{ if } x \neq y
+      \end{cases}
+    \end{equation*}
+    In this case, $\sigma_d$ is the discrete topology on $X$.
+  \item Let $d\ :\ \Re \times \Re \rightarrow \Re$ be defined $d(x,y) = |x-y|$. Then $\sigma_d$ is the usual topology on $\Re$.
+  \item Let $d\ :\ \Re^n \times \Re^n \rightarrow \Re$ be defined by $\displaystyle d(x,y) = [\sum^n_{i=1} (x_i - y_i)^2]^{1/2}$, where $x = (x_1,x_2,\cdots,x_n)$ and $y = (y_1,y_2,\cdots,y_n)$. $( \Re^n, \sigma_d )$ is called \emph{$n$-dimensional Euclidean space}. We usually identify $\Re^1$ with $\Re$ in the obvious way.
+\end{enumerate}
+
+\textbf{(I.5.3) Definition}: Let $A$ and $B$ be subsets of the metric space $X$. The \emph{distance} from $A$ to $B$, denoted $\text{d}(A,B)$, is the greatest lower bound (GLB) of the set $\{ \text{d}(a,b)\ |\ a \in A,\ b \in B \}$. If $p \in X$, the \emph{distance} from $p$ to $A$, denoted $\text{d}(p,A)$, is $d( \{ p \}, A)$. Note that $d(A,B) \geq 0$, and that $d(A,B) = d(B,A)$.
+
+\textbf{(I.5.4) Theorem}: Let $X$ be a metric space, and $A \subset X$. Then $A$ is closed if and only if $\text{d}(p,A) > Q$ for all $p \in X-A$.
+
+\textbf{(I.5.5) Theorem}: Let $X$ be a metric space, and $A,B \subset X$. Then $\text{d}(A,B) = 0$ if $\text{Cl}(A) \cap \text{Cl}(B) \neq \emptyset$.
+
+Recall that a sequence of terms of $X$ is an element of $X^\infty$. We shall write $(p_i)^\infty_{i=1}$ for such a sequence, and $\{ p_i \}^\infty_{i=1}$ for its image. Note that $\{ p_i \}^\infty_{i=1}$ is a (not necessarily infinite) subset of $X$. For example, if $(p_i)^\infty_{i=1} = ( (-1)^i )^\infty_{i=1}$, then $\{ p_i \}^\infty_{i=1} = \{ 1, -1 \}$.
+
+\textbf{(I.5.6) Definition}: Let $(p_i)^\infty_{i=1}$ be a sequence of terms in the space $X$. Then $(p_i)^\infty_{i=1}$ is said to \emph{converge} to $p \in X$ if for each open set $U$ containing $p$, there exists an integer $N$ such that $i \geq N$ implies $p_i \in U$. That is, $(X-U) \cap \{ p_i \}^\infty_{i=1} = \emptyset$. A sequence is \emph{convergent} if and only if it converges to some point.
+
+\textbf{(I.5.7) Theorem}: Suppose $(p_i)^\infty_{i=1}$ converges to $p$ in the space $X$. Then $p \in \text{Cl} \{ p_i \}^\infty_{i=1}$.
+
+\textbf{(I.5.8) Theorem}: Suppose $(p_i)^\infty_{i=1}$ converges to $p$ in the space $X$. Then every subsequence of $(p_i)^\infty_{i=1}$ converges to $p$. (Exercise: Define \emph{subsequence}.)
+
+\textbf{(I.5.9) Theorem}: Let $(p_i)^\infty_{i=1}$ be a sequence of terms in the metric space $X$. Then $(p_i)^\infty_{i=1}$ converges to $p$ if and only if for each $\epsilon > 0$, there exists an integer $N$ (depending on $\epsilon$) such that if $i \geq N$, then $p_i \in N(p,\epsilon)$.
+
+\textbf{(I.5.10) Theorem}: No sequence in a metric space converges to each of two distinct points.
+
+\textbf{(I.5.11) Theorem}: Let $X$ be a metric space, and $A \subset X$. Then $p$ is a limit point of $A$ if and only if there exists a sequence of distinct points $A - \{ p \}$ converging to $p$.
+
+\textbf{(I.5.12) Theorem}: A finite subset of a metric space has no limit points. Hence, finite subsets of metric spaces are closed.
+
+\textbf{(I.5.13) Theorem}: In a metric space, a subset $A$ is closed if and only if each convergent sequence of terms in $A$ converges to a point of $A$.
+
+\textbf{(I.5.14) Theorem}: In a metric space, if $(p_i)^\infty_{i=1}$ converges to $p$, then $\{ p \} \cup \{ p_i \}^\infty_{i=1}$ is closed.
+
+
+\subsection{Subspaces}
+\markboth{I.6. Subspaces}{I.6. Subspaces}
+
+Suppose $(X,\sigma)$ is a topological space, and $Y \subset X$. Let $\sigma' = \{ y \cap U\ |\ U \in \sigma \}$.
+
+\textbf{(I.6.1) Theorem}: $\sigma'$ is a topology on $Y$.
+
+\textbf{(I.6.2) Definition}: $\sigma'$ is called the \emph{subspace topology on} $Y$, and $Y$ with this topology is said to be a \emph{subspace of} $X$.
+
+\textbf{(I.6.3) Theorem}: Let $Y$ \emph{be a subspace of the space} $X$. Then every open (closed) subspace of $Y$ is open (closed) in $X$ if and only if $Y$ is open (closed) in $X$.
+
+Hence, if $Y$ is open in $X$, then $\sigma' = \{ U \in \sigma\ |\ U \subset Y \}$. If $Y$ is closed in $X$, then $\sigma' = \{ Y-F\ |\ F \subset Y,\ X-F \in \sigma \}$.
+
+If $X$ is a metric space, then $d|Y \times Y = d'$ is a metric $Y$.
+
+\textbf{(I.6.4) Theorem}: If $X$ is a metric space and $Y \subset X$, then $\sigma' = \sigma_{d'}$.
+
+
+\subsection{Products and Quotients}
+\markboth{I.7. Products and Quotients}{I.7. Products and Quotients}
+
+\textbf{(I.7.1) Definition}: Let $X_\alpha$ be a space, $\alpha \in M$. If $U_{\alpha}$ is an open set in $X_\alpha$, define $U'_{\alpha}$ to be $\{ f \in \pi_{\alpha \in M} X_\alpha\ :\ f(\alpha) \in U_\alpha \}$, and let $\tau = \{ U'_\alpha\ |\ U_\alpha$ an open set in $X_\alpha,\ \alpha \in M \}$. The \emph{product topology} on $\pi_{\alpha \in M} X_\alpha$ is the topology generated by $\tau$. (see I.3.8(a)).
+
+In the special case where $M = \{ 1, 2, \cdots, n \}$, a basis for the product topology is $\{ U_1 \times U_2 \times \cdots \times U_n\ |\ U_i$ an open set in $X_i,\ i=1,2,\cdots,n \}$. In general, a basis is $\{ \pi_{\alpha \in M} U_\alpha\ |\ U_\alpha$ an open set in $X_alpha,\ U_\alpha = X_\alpha$ for all but finite number of $\alpha \in M \}$.
+
+If $X_i$ is a metric space (with metric $d_i$), then there is a function $d\ :\ (\pi^n_{i=1} X_i) \times (\pi^n_{i=1} X_i) \rightarrow \Re$ defined by $\displaystyle d(x,y) = [ \sum^n_{i=1} (d_i (x_i,y_i) )^2 ]^{1/2}$ where $x = (x_1,x_2,\cdots,x_n)$ and $y = (y_1,y_2,\cdots,y_n)$.
+
+\textbf{(I.7.2) Theorem}: The function $d$ is a metric on $\pi^n_{i=1} X_i$. The product topology is the same as the metric topology induced by $d$.
+
+\textbf{(I.7.3) Example}: Let $\Re$ have the usual topology. Then the product topology on $\pi^n_{i=1} \Re$ is the same as the metric topology on $\Re^n$ defined in I.5.2 (c). In each case, we have defined a basis. Geometrically, what do the basis elements look like?
+
+\textbf{(I.7.4) Definition}: Let $(X,\sigma)$ be a space, and $\sim$ be an equivalence relation on $X$. Let $\pi\ :\ X \rightarrow X/\sim$ be the projection. Let $\sigma' = \{ U \subset X/\sim\ |\ \pi^{-1}(U) \in \sigma \}$. Then $\sigma'$ is a topology on $X/\sim$, called the \emph{quotient topology}. $(X/\sim, \sigma')$ is called the \emph{quotient space} of $X$ by the relation $\sim$.
+
+
+\subsection*{Problems}
+\addcontentsline{toc}{subsection}{\numberline{1.P2}Problems}
+\markboth{I.P2. Problems}{I.P2. Problems}
+
+\begin{description}
+
+  \item[(I.17)] Find all topologies on the set $\{ a, b, c \}$.
+
+  \item[(I.18)] Let $X$ be a set, and $\sigma = \{ U \subset X$; $X-U$ is countable $\} \cup \{ \emptyset \}$. Is $\sigma$ a topology on $X$?
+
+  \item[(I.19)] Let $(X, \sigma_\alpha)$ be a topological space, $\alpha \in M$. Prove that $(X, \cap_{\alpha \in M} \sigma_\alpha)$ is a topological space.
+
+  \item[(I.20)] Let $\tau$ be as in I.3.8. Prove that the topology generated by $\tau$ is the intersection of the family of topologies $\jmath = \{ \sigma_\alpha\ |\ \tau \subset \sigma_\alpha \}$. ($\jmath \neq \emptyset$ since $P(X) \in \jmath$.)
+
+  \item[(I.21)] Let $(X, \sigma_\alpha)$ be a topological space, $\alpha \in M$. Then $\cap_{\alpha \in M} \sigma_\alpha$ is the \emph{largest} topology on $X$ contained in each $\sigma_\beta$. That is, $\cap_{\alpha \in M} \sigma_\alpha \subset \sigma_\beta$ for all $\beta \in M$, and if $\tau$ is a topology on $X$ such that $\tau \subset \sigma_\beta$ for all $\beta \in M$, then $\tau \subset \cap_{\alpha \in M} \sigma_\alpha$. Prove that this property characterizes $\cap_{\alpha \in M} \sigma_\alpha$. Also prove that there is a unique \emph{smallest} topology on $X$ which contains each $\sigma_\beta$.
+
+  \item[(I.22)] What topology on $\Re$ is generated by $\tau = \{ [a,\infty)\ |\ a \in \Re \}$? Same question for $\tau = \{ [a,b]\ |\ a,b \in \Re \}$.
+
+  \item[(I.23)] Prove that every open subset of $\Re$ (with the usual topology) is the union of a countable collection of open intervals, no two of which intersect. (Where we consider $(-\infty,a)$ and $(a,\infty)$ to be open intervals.)
+
+  \item[(I.24)] Describe the interior, frontier, and exterior of a subset of a discrete space. Do the same for a trivial space.
+
+  \item[(I.25)] Describe the interior, frontier, and exterior of each of the following sets in $\Re$ with the usual topology. Do the same for the finite complement topology and the half-open interval topology.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item $[0,1]$
+      \item $[0,1)$
+      \item $(0,1]$
+      \item $\{ 1/i \}^\infty_{i=1}$
+      \item $\{ 0 \} \cup \{ 1/i \}^\infty_{i=1}$
+    \end{enumerate}
+
+  \item[(I.26)] Show that unless $X$ is a singleton or empty, there does not exist a metric on $X$ which induces the trivial topology. 
+
+  \item[] Metrics $d$ and $d'$ on the set $X$ are said to be \emph{equivalent} if $\sigma_d = \sigma_d'$.
+
+  \item[(I.27)] Define $d'\ :\ \Re^n \times \Re^n \rightarrow \Re$ by $d'(x,y) = \max \{ |x_i-y_i|\ |\ i=1,2,\cdots,n \}$ where $x = (x_1, x_2, \cdots, x_n)$ and $y = (y_1, y_2, \cdots, y_n)$. Show that $d'$ is a metric, and that $d'$ is equivalent to the metric of I.5.7(c).
+
+  \item[(I.28)] Let $X$ be a metric space, with metric $d$. Define $d'\ :\ X \times X \rightarrow \Re$ by $d'(x,y) = d(x,y)/[1+d(x,y)]$. Show that $d'$ is a metric, and that $d'$ is equivalent to $d$. (Note that $d'$ has the property that $\{ d'(x,y)\ |\ x,y \in X \}$ is bounded. Such a metric is called a \emph{bounded metric}.)
+
+  \item[] A sequence $(p_i)^\infty_{i=1}$ in the metric space $X$ is a \emph{Cauchy sequence} if for each $\epsilon > 0$, there exists an integer $N$ such that $n,m \geq N$ implies $d(p_n,p_m) < \epsilon$. $X$ is a \emph{complete} metric space if and only if every Cauchy sequence in $X$ converges.
+
+  \item[(I.29)] Prove that every convergent sequence in a metric space is a Cauchy sequence.
+
+  \item[(I.30)] Prove that $\Re$ with its usual metric is a complete space.
+
+  \item[(I.31)] Prove that $(0,1)$, with the restriction of the usual metric on $\Re$, is not complete.
+
+  \item[(I.32)] Show that there is a metric $d'$ on $\Re$ which is equivalent to the usual metric, but with respect to $\Re$ is not complete.
+
+  \item[(I.33)] Show that the converse of Theorem I.5.5 is not true in general. Is it true in a complete space?
+
+  \item[(I.34)] Are Theorems I.5.10 - I.5.14 true in an arbitrary topological space?
+
+  \item[(I.35)] Let $(p_i)^\infty_{i=1}$ be a sequence of points in the product space $\pi_{\alpha \in M} X_\alpha$. Prove that $(p_i)^\infty_{i=1}$ converges to $p$ if and only if for each $\alpha \in M$, the sequence $(\pi_\alpha p_i)^\infty_{i=1}$ converges to $\pi_\alpha(p)$.
+
+\end{description}
+
+
+\subsection{Continuity}
+\markboth{I.8. Continuity}{I.8. Continuity}
+
+Recall from elementary calculus that $f\ :\ \Re \rightarrow \Re$ is ``continuous at $x$'' if given $\epsilon > 0$, there exists $\delta > 0$ (depending on $\epsilon$) such that $|f(x)-f(x')| < \epsilon$ whenever $|x-x'| < \delta$. This is equivalent to the following statement: For each open set $U$ containing $f(x)$, there exists an open set $V$ containing $x$ (and depending on $U$) such that $f(V) \subset U$ (where ``open'' means ``open with respect to the usual topology''.) This last statement allows us to generalize the notion of continuity to functions on topological spaces, as follows.
+
+\textbf{(I.8.1) Definition}: Let $X$ and $Y$ be spaces, and let $f\ :\ X \rightarrow Y$ be a function. Then $f$ is continuous at $x \in X$ if for each open set $U$ of $Y$ containing $f(x)$, there exists an open set $V$ of $X$ containing $x$ such that $f(V) \subset U$.
+
+\textbf{(I.8.2) Theorem}: Let $X$ and $Y$ be metric spaces (with metrics $d_X$ and $d_Y$ respectively). Then $f\ :\ X \rightarrow Y$ is continuous at $x \in X$ if and only if for each $\epsilon > 0$, there exists $\delta > 0$ (depending on $\epsilon$) such that $d_Y( f(x),f(x') ) < \epsilon$ whenever $d_X(x,x') < \delta$.
+
+\textbf{(I.8.3) Theorem}: Let $X$ and $Y$ be metric spaces. Then $f\ :\ X \rightarrow Y$ is continuous at $x \in X$ if and only if for each sequence $(p_i)^\infty_{i=1}$ in $X$ converging to $x$, the sequence $(f(p_i))^\infty_{i=1}$ converges to $f(x)$.
+
+\textbf{(I.8.4) Definition}: A \emph{map} (\emph{continuous function}) from the space $X$ to the space $Y$ is a function from $X$ to $Y$ which is continuous at each point of $X$.
+
+\textbf{(I.8.5) Examples}: A function is a map if its domain is a discrete space or if its range is a trivial space. The function $\text{id}\ :\ (X,\sigma) \rightarrow (X,\tau)$ is a map if and only if $\tau \subset \sigma$. 
+
+\textbf{(I.8.6) Theorem}: Let $X$ and $Y$ be spaces, and let $f\ :\ X \rightarrow Y$ be a function. Then the following are equivalent.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $f$ is a map.
+  \item $f^{-1}(U)$ is open for each open set $U \subset Y$.
+  \item There exists a basis $\beta$ for $Y$ such that $f^{-1}(U)$ is open for each $U \in \beta$.
+  \item There exists a sub-basis $\gamma$ for $Y$ such that $f^{-1}(U)$ is open for each $U \in \gamma$.
+  \item $f^{-1}(F)$ is closed for each closed set $F \subset Y$.
+\end{enumerate}
+
+\textbf{(I.8.7) Theorem}: Let $X,Y$ and $Z$ be spaces, and let $f\ :\ X \rightarrow Y$, $g\ :\ Y \rightarrow Z$ be maps. Then $gf\ :\ X \rightarrow Z$ is a map.
+
+
+\subsection{Topological Equivalence}
+\markboth{I.9. Topological Equivalence}{I.9. Topological Equivalence}
+
+\textbf{(I.9.1) Definition}: Let $X$ and $Y$ be spaces. A \emph{topological equivalence}, or \emph{homeomorphism}, from $X$ to $Y$ is a bijective map from $X$ to $Y$ whose inverse is a map.
+
+\textbf{(I.9.2) Examples}: $\ $
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item Let $\Re$ have the usual topology, and let $(-\pi/2,\pi/2)$ have the subspace topology. Then $\tan^{-1}: \Re \rightarrow (-\pi/2,\pi/2)$ is a homeomorphism.
+  \item Let $[0,2\pi)$ and $S^1 = \{ (x,y) \in \Re^2\ |\ x^2 + y^2 = 1 \}$ have their usual topologies (as subspaces of $\Re$ and $\Re^2$ with their usual topologies). Then $f\ :\ [0,2\pi) \rightarrow S^1$, given by $f(t) = (\cos t, \sin t)$, is a bijective map which is not a homeomorphism.
+\end{enumerate}
+
+\textbf{(I.9.3) Theorem}: Let $X$ and $Y$ be metric spaces, and let $f\ :\ X \rightarrow Y$ be a bijective map. Then $f$ is a homeomorphism if and only if for each $y \in Y$ and sequence $(p_i)^\infty_{i=1}$ converging to $y$, the sequence $(f^{-1}(p_i))^\infty_{i=1}$ converges to $f^{-1}(y)$.
+
+\textbf{(I.9.4) Definition}: Let $X$ and $Y$ be spaces, and let $f\ :\ X \rightarrow Y$ be a map. Then $f$ is \emph{open} (respectively, \emph{closed}) if and only if $f(U)$ is open (respectively, closed) for each open (respectively, closed) set $U \subset X$.
+
+\textbf{(I.9.5) Theorem}: Let $X$ and $Y$ be spaces, and let $f\ :\ X \rightarrow Y$ be a bijective map. Then the following statements are equivalent.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $f$ is a homeomorphism.
+  \item $f$ is open.
+  \item $f$ is closed.
+\end{enumerate}
+
+\textbf{(I.9.6) Definition}: Let $X$ and $Y$ be spaces. Then $X$ and $Y$ are \emph{topologically equivalent}, or \emph{homeomorphic}, if and only if there exists a homeomorphism from $X$ to $Y$. If this is the case, we write $X \simeq Y$.
+
+\textbf{(I.9.7) Theorem}: Let $\jmath$ be a family of spaces. Then $\simeq$ is an equivalence relation on $\jmath$.
+
+Roughly speaking (very roughly indeed), topology is the study of those properties of a space which are invariant under topological equivalence. We shall encounter some of these properties shortly.
+
+\textbf{(I.9.8) Example}: Consider the following subspaces of $\Re^2$.
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $K = \{ (x,y)\ |\ x^2 + y^2 \leq 1 \}$.
+  \item $L = \{ (x,y)\ |\ -1 \leq x \leq 1,\ -1 \leq y \leq 1 \}$.
+\end{enumerate}
+Geometrically, $K$ and $L$ seem quite different. (What are some of these differences?) Topologically, however, $K$ and $L$ are equivalent. (Prove this.)
+
+
+\subsection*{Problems}
+\addcontentsline{toc}{subsection}{\numberline{1.P3}Problems}
+\markboth{I.P3. Problems}{I.P3. Problems}
+
+\begin{description}
+
+  \item[(I.36)] Show that a constant function between spaces is always a map.
+
+  \item[(I.37)] $\ $
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item Let $\{ X_\alpha\ |\ \alpha \in M \}$ be spaces, and let $\pi_{\alpha \in M} X_\alpha$ be the product space. Show that each projection $\pi_\beta\ :\ \pi_{\alpha \in M} X_\alpha \rightarrow X_\beta$ is a map.
+      \item Let $X$ be a space, and let $M$ be a set. Show that the diagonal $d\ :\ X \rightarrow X^M$ is a map.
+      \item If $A_\alpha$ and $B_\alpha$ are spaces, $f_\alpha\ :\ A_\alpha \rightarrow B_\alpha$ is a map, and $\pi_{\alpha \in M} A_\alpha$ and $\pi_{\alpha \in M} B_\alpha$ are the product spaces, show that $\pi_{\alpha \in M} f_\alpha$ is a map.
+      \item Let $X$ be a space, $\sim$ be an equivalence relation on $X$, and $X/\sim$ be the quotient space. Show that the projection $\pi\ :\ X \rightarrow X/\sim$ is a map.
+    \end{enumerate}
+
+  \item[(I.38)] Does Theorem I.8.3 generalize (at least in part) to the case where $X$ and $Y$ are topological spaces?
+
+  \item[(I.39)] The \emph{graph} of a function $f\ :\ X \rightarrow Y$ is the set $\Gamma_f = \{ (x,f(x))\ |\ x \in X \} \subset X \times Y$. Let $\Re$ and $\Re^2$ have their usual topologies. Show that $f\ :\ \Re \rightarrow \Re$ is a map only if $\Gamma_f$ is closed in $\Re^2$. Does the converse hold? Does this generalize to metric spaces? Arbitrary spaces?
+
+  \item[(I.40)] Let $X$ be a set, $Y$ be a space, and $f\ :\ X \rightarrow Y$ be a function. Let $\sigma = \{ f^-1(U)\ |\ U$ open in $Y \}$.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item Prove that $\sigma$ is a topology on $X$. ($\sigma$ is said to be the topology \emph{induced} by $f$.)
+      \item Prove that $f\ :\ (X,\sigma) \rightarrow Y$ is a map.
+      \item Prove that $\sigma$ is the smallest topology on $X$ with respect to which $f$ is a map.
+    \end{enumerate}
+
+  \item[(I.41)] Generalizing I.40, consider the situation where $Y_\alpha$ is a space, $\alpha \in M$, and $f_\alpha\ :\ X \rightarrow Y_\alpha$ is a function. Let $\sigma$ be the topology generated by $U_{\alpha \in M} \{ f^{-1}_\alpha(U)\ |\ U$ open in $Y_\alpha \}$. Prove (b) and (c). ($\sigma$ is said to be the topology \emph{induced} by $\{ f_\alpha\ |\ \alpha \in M \}$.) Note that the product topology is the topology induced by the projections.
+
+  \item[(I.42)] Let $X$ be a space, $Y$ be a set, and $f\ :\ X \rightarrow Y$ be a function. Let $\tau = \{ U \subset Y\ |\ f^{-1}(U)$ is open in $X \}$.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item Prove that $\tau$ is a topology on $Y$. ($\tau$ is said to be the topology \emph{induced} by $f$.)
+      \item Prove that $f\ :\ X \rightarrow (Y,\tau)$ is a map.
+      \item Prove that $\tau$ is the largest topology on $Y$ with respect to which $f$ is a map.
+    \end{enumerate}
+    Note that the quotient topology is the topology induced by the projection.
+
+  \item[(I.43)] Prove that the restriction of a map to a subspace is a map.
+
+  \item[(I.44)] Give an example of a map which is open but not closed; closed but not open.
+
+  \item[(I.45)] Let $f\ :\ \Re^2 \rightarrow \Re^2$ be a homeomorphism (with respect to the usual metric topology). Show that $f$ need not preserve length, area, or angles.
+
+  \item[(I.46)] Show that the properties of being an interior point, frontier point, exterior point, or limit point are topological properties.
+
+\end{description}
+
+
+\subsection{Separation of Points}
+\markboth{I.10. Separation of Points}{I.10. Separation of Points}
+
+A topological space may have ``many'' open sets (as, for example, do the discrete spaces); or it may have ``few'' open sets (as, for example, do the trivial spaces). In studying the properties of spaces, we shall sometimes find it necessary (or convenient) to know that there are enough open sets to ``separate'' points or, sometimes, closed sets. This section, and the three which follow it, shall treat the notion of separation.
+
+\textbf{(I.10.1) Definition}: The space $X$ is a \emph{Fréchet space} if for any distinct points $x$ and $y$ of $X$, there exists an open set which contains $x$ but not $y$.
+
+\textbf{(I.10.2) Theorem}: $X$ is a Fréchet space if and only if each singleton of $X$ is closed.
+
+\textbf{(I.10.3) Corollary}: $X$ is a Fréchet space if and only if each finite subset of $X$ is closed. (See Theorem I.5.12)
+
+\textbf{(I.10.4) Corollary}: Every metric space is Fréchet.
+
+(Note: ``$X$ is Fréchet'' is shorthand for ``$X$ is a Fréchet space''. We shall use this convention henceforth.)
+
+\textbf{(I.10.5) Theorem}: If $X$ is a Fréchet space, $A \subset X$, and $X$ is a limit point of $A$, then each open set containing $x$ contains infinitely many points of $A$.
+
+\textbf{(I.10.6) Definition}: The space $X$ is a \emph{Hausdorff space} if for any distinct points $x$ and $y$ of $X$, there exist disjoint open sets $U$ and $V$ such that $x \in U$ and $y \in V$.
+
+\textbf{(I.10.7) Theorem}: Every Hausdorff space is Fréchet.
+
+\textbf{(I.10.8) Theorem}: No sequence in a Hausdorff space converges to each of two distinct points. (See Theorem I.5.14)
+
+\textbf{(I.10.9) Theorem}: In a Hausdorff space, if $(p_i)^\infty_{i=1}$ converges to $p$, then $\{ p \} \cup \{ p_i \}^\infty_{i=1}$ is closed. (See Theorem I.5.14)
+
+\textbf{(I.10.10) Theorem}: Every metric space is Hausdorff.
+
+\textbf{(I.10.11) Definition}: The space $X$ is a \emph{regular space} if for each point $x \in X$ and each open set $U$ containing $x$, there exists an open set $V$ such that $x \in V \subset \text{Cl}(V) \subset U$.
+
+\textbf{(I.10.12) Theorem}: Every regular Fréchet space is Hausdorff.
+
+\textbf{(I.10.13) Theorem}: Every metric space is regular.
+
+
+\subsection{The First and Second Axioms of Countability}
+\markboth{I.11. First \& Second Axioms of Countability}{I.11. First \& Second Axioms of Countability}
+
+\textbf{(I.11.1) Definition}: Let $X$ be a space, and $p \in X$. A collection of open sets $\alpha$ is a local basis at $p$ if $p \in U$ for each $U \in \alpha$, and if for each open set $V$ containing $p$ there exists $U \in \alpha$ such that $U \subset V$. $X$ is said to satisfy the \emph{first axiom of countability} if there is a countable local basis at each point of $X$. In this case, we shall say that $X$ is a \emph{first countable} space.
+
+\textbf{(I.11.2) Theorem}: If $X$ is a Fréchet space, $p \in X$, and $\alpha$ is a local basis at $p$, then $\cap_{U \in \alpha} U = \{ p \}$.
+
+\textbf{(I.11.3) Theorem}: Suppose $X$ is a first countable regular Fréchet space, and $p \in X$. Then there exist open sets $U_1, U_2, \cdots$ such that
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item $\{ p \} = \cap^\infty_{i=1} U_i$;
+  \item if $i \in J^+$, then $\text{Cl}(U_{i+1}) \subset U_i$; and
+  \item if $U$ is an open set and $p \in U$, then there exists $i \in J^+$ such that $\text{Cl}(U_{i}) \subset U$.
+\end{enumerate}
+
+\textbf{(I.11.4) Theorem}: Suppose $X$ is a first countable regular Fréchet space, and $A \subset X$. Then $p$ is a limit point of $A$ if and only if there exists a sequence of distinct points of $A - \{ p \}$ converging to $p$. (See Theorem I.5.11)
+
+\textbf{(I.11.5) Theorem}: Suppose $X$ is a first countable regular Fréchet space. Then $A \subset X$ is closed if and only if each convergent sequence of terms in $A$ converges to a point of $A$. (See Theorem I.5.13)
+
+\textbf{(I.11.6) Theorem}: Every metric space is first countable.
+
+\textbf{(I.11.7) Definition}: A space $X$ is said to satisfy the \emph{second axiom of countability} if $X$ has a countable basis. In this case, we shall say that $X$ is a \emph{second countable} space.
+
+\textbf{(I.11.8) Theorem}: Every second countable space is first countable.
+
+\textbf{(I.11.9) Theorem}: Suppose $X$ is a second countable space, $A \subset X$, and $A \subset U_{\alpha \in M} U_\alpha$, where $U_\alpha$ is open for all $\alpha \in M$. Then there exists a countable subset $M'$ of $M$ such that $A \subset U_{\alpha \in M'} U_\alpha$
+
+\textbf{(I.11.10) Theorem}: If $X$ is a second countable space, then there does not exist an uncountable collection of pairwise disjoint open subsets of $X$. (Note: $F$ is a collection of \emph{pairwise disjoint} sets if whenever $A,B \in F(A \neq B)$, then $A \cap B = \emptyset$.)
+
+
+\subsection{Separability}
+\markboth{I.12. Separability}{I.12. Separability}
+
+\textbf{(I.12.1) Definition}: Let $X$ be a space, and $A \subset B \subset X$. Then $A$ is \emph{dense} in $B$ if $B \subset \text{Cl}(A)$.
+
+\textbf{(I.12.2) Theorem}: Let $X$ be a space, and $A \subset B \subset X$. Then $A$ is dense in $B$ if and only if each open set which intersects $B$ intersects $A$.
+
+\textbf{(I.12.3) Definition}: The space $X$ is \emph{separable} if some countable subset of $X$ is dense in $X$.
+
+\textbf{(I.12.4) Theorem}: Every second countable space is separable.
+
+\textbf{(I.12.5) Theorem}: Every separable metric space is second countable.
+
+\textbf{(I.12.6) Theorem}: If $X$ is a separable space, then there does not exist an uncountable collection of pairwise disjoint open subsets of $X$.
+
+
+\subsection{Separation of Closed Sets}
+\markboth{I.13. Separation of Closed Sets}{I.13. Separation of Closed Sets}
+
+\textbf{(I.13.1) Definition}: The space $X$ is \emph{normal} if for each pair of disjoint non-empty closed sets $A$ and $B$ in $X$, there exist disjoint open sets $U$ and $V$ such that $A \subset U$ and $B \subset V$.
+
+\textbf{(I.13.2) Theorem}: The space $X$ is normal if and only if for each pair of disjoint nonempty closed sets $A$ and $B$ in $X$, there exist open sets $U$ and $V$ such that $A \subset U$, $B \subset V$, and $\text{Cl}(U) \cap \text{Cl}(V) = \emptyset$.
+
+\textbf{(I.13.3) Theorem}: Every normal Fréchet space is regular.
+
+\textbf{(I.13.4) Theorem}: Every regular second countable space is normal.
+
+\textbf{(I.13.5) Theorem}: Every metric space is normal.
+
+
+\subsection*{Problems}
+\addcontentsline{toc}{subsection}{\numberline{1.P4}Problems}
+\markboth{I.P4. Problems}{I.P4. Problems}
+
+\begin{description}
+
+  \item[(I.47)] In Sections 10 - 13, it was shown that each of the following properties of a space implies the one directly below it.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item metric
+      \item normal Fréchet
+      \item regular Fréchet
+      \item Hausdorff
+      \item Fréchet
+    \end{enumerate}
+    Does the reverse of any of these implications hold?
+
+  \item[(I.48)] Show that
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item A subspace of Fréchet space is Fréchet.
+      \item A product of Fréchet spaces is Fréchet.
+    \end{enumerate}
+    Do like statements hold for Hausdorff spaces, regular spaces, or normal spaces?
+
+  \item[(I.49)] If $X$ is a normal space, $A \subset X$ is closed, $U \subset X$ is open, and $A \subset U$, show that there is an open set $V$ such that $A \subset V \subset \text{Cl}(V) \subset U$. Does this property characterize normal spaces?
+
+  \item[(I.50)] If $X$ is a first countable space, and $x \in X$, show that there is a countable local basis $U_2, U_2, \cdots$ at $x$ such that $U_1 \supset U_2 \supset U_3 \supset \cdots$.
+
+  \item[(I.51)] Suppose $X$ is first countable, and $Y$ is a space. Then $f\ :\ X \rightarrow Y$ is continuous at $x \in X$ if and only if for each sequence $(p_i)^\infty_{i=1}$ in $X$ converging to $x$, the sequence $(f(p_i))^\infty_{i=1}$ converges to $f(x)$.
+
+  \item[(I.52)] Suppose $X$ is a second countable space, and $\beta$ is a basis for $X$. Show that there is a countable basis $\beta'$ for $X$ such that $\beta' \subset \beta$.
+
+  \item[(I.53)] Is every subspace of a first countable space first countable? Answer the same question for second countable spaces and separable spaces.
+
+  \item[(I.54)] Which of the properties discussed in Sections 10 - 13 are held by $\Re$ with the half-open interval topology?
+
+\end{description}
+
+
+\subsection{Urysohn's Lemma}
+\markboth{I.14. Urysohn's Lemma}{I.14. Urysohn's Lemma}
+
+The following result, known as Urysohn's Lemma, is one of the most important known results concerning normal spaces.
+
+\textbf{(I.14.1) Theorem}: Let $A$ and $B$ be nonempty disjoint closed subsets of the normal space $X$. Then there exists a map $f\ :\ X \rightarrow \Re$ such that $f(X) \subset [0,1]$, $f(A) = \{0\}$, and $f(b) = \{1\}$. 
+
+(Note: $\Re$, as a space, always has its usual topology unless otherwise stated. The same will hold for $\Re^n$, $[0,1]$, etc.)
+
+\textbf{Proof}: Let $D = \{ x \in Q\ |\ x = m/2^n;\ m,n \in J^+,\ m < 2^n \}$. For each $t \in D$, we shall define an open set $U_t$ such that if $t_1 < t_2$, then $A \subset U_{t_1} \subset \text{Cl}(U_{t_1}) \subset U_{t_2} \subset \text{Cl}(U_{t_2}) \subset X-B$. We shall define the $U_t$s inductively. By Problem I.49, there exists an open set $U_{1/2}$ such that $A \subset U_{1/2} \subset \text{Cl}(U_{1/2}) \subset X-B$. Inductively, suppose $U_{m/{2^n}}$ has been defined for all $n \in \{ 1,\cdots,k \}$ and $m \in j^+$ such that $m < 2^n$. We show below how to define $U_{m/{2^n}}$ for $n \in \{ 1,\cdots,k+1 \}$ and $m \in J^{+}$ such that $m < 2^n$.
+
+Now $U_{2/2^{k+1}} = U_{1/2^k}$ has already been defined. By Problem I.49, there exists an open set $U_{1/2^{k+1}}$ such that $A \subset U_{1/2^{k+1}} \subset U_{1/2^k}$. Similarly, there exists an open set $U_{(2^{k+1}-1)/2^{k+1}}$ such that $\text{Cl}(U_{(2^k-1)/2^k} \subset U_{(2^{k+1}-1)/2^{k+1}} \subset \text{Cl}(U_{(2^{k+1}-1)/2^{k+1}}) \subset X-B$. If $m \in J^+$ is odd and $1 < m < 2^{k+1}-1$, then we again apply Problem I.49 to find $U_{m/2^{k+1}}$ so that $\text{Cl}(U_{(m-1)/2^{k+1}}) \subset U_{m/2^{k+1}} \subset \text{Cl}(U_{m/2^{k+1}}) \subset U_{(m+1)/2^{k+1}}$.
+
+We are now ready to define $f$. If $X \in X$ and $X \in \cap_{t \in D} U_t$, then let $f(x) = 0$. Otherwise, let $C_x = \{ t \in D\ |\ x \notin U_t \}$, and let $f(x) = \text{LUB}(C_x)$. Clearly, $f(X) \subset [0,1]$, $f(A) = \{0\}$, and $f(B) = \{1\}$. To complete the proof, we need only show that $f$ is a map. With this in mind, let $x \in X$ and $\epsilon > 0$.
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item Suppose $f(x) = 0$. Then $x \in \cap_{t \in D} U_t$. There exists $t_0 \in D$ such that $t_0 < \epsilon$. Then, for all $y \in U_{t_0}$, $|f(x)-f(y)| = f(y) \leq t_0 < \epsilon$.
+  \item Suppose $f(x) = 1$. Then $x \notin U_t$ for all $t \in D$. There exists $t_0 \in D$ such that $1 - t_0 < \epsilon$. Then $X - \text{Cl}(U_{t_0})$ is an open set containing $x$, and for all $y \in U_{t_0} - \text{Cl}(U_{t_0})$, $|f(x)-f(y)| = |1-f(y)| = 1-f(y) \leq 1-t_0 < \epsilon$.
+  \item Suppose $0 < f(x) < 1$. There exist $t_1, t_2 \in D$ such that $f(x)-\epsilon/2 < t_1 < f(x) < t_2 < f(x)+\epsilon/2$. Then $U_{t_2} - \text{Cl}(U_{t_1})$ is an open set containing $x$, and $t_1 \leq f(y) \leq t_2$ for all $y \in U_{t_2} - \text{Cl}(U_{t_1})$, which implies that $|f(x)-f(y)| < \epsilon$.
+\end{enumerate}
+In any case, $f$ is continuous at $x$. So $f$ is a map, and the proof of the Theorem is complete.
+
+The following converse of Urysohn's Lemma is also true.
+
+\textbf{(I.14.2) Theorem}: Suppose $X$ is a space such that for each pair $(A,B)$ of nonempty disjoint closed subsets of $X$, there exists a map $f\ :\ X \rightarrow \Re$ such that $f(A) = \{0\}$ and $f(B) = \{1\}$. Then $X$ is normal.
+
+
+\subsection{The Urysohn Metrization Theorem}
+\markboth{I.15. The Urysohn Metrization Theorem}{I.15. The Urysohn Metrization Theorem}
+
+\textbf{(I.15.1) Definition}: The topological space $(X,\sigma)$ is said to be \emph{metrizable} if there is a metric $d$ on $X$ for which $\sigma_d = \sigma$.
+
+The ``metrization problem'' is: Under what conditions is the topological space $X$ metrizable? According to Problem I.26, some condition is required. The following classical result of Urysohn gives one answer to the metrization problem.
+
+\textbf{(I.15.2) Theorem}: Every second countable normal Fréchet space is metrizable.
+
+By Theorem I.13.3 and Theorem I.13.4, the following Theorem (also known as Urysohn's Theorem) is equivalent to Theorem I.15.2.
+
+\textbf{(I.15.3) Theorem}: Every second countable regular Fréchet space is metrizable.
+
+Urysohn's Theorem is an immediate consequence of Lemmas I.15.4 and I.15.5 below.
+
+Let $(X,\sigma)$ be a space satisfying the hypotheses of Theorems I.15.2 and I.15.3. Let $\beta$ be a countable basis for $X$, and let $G$ be the collection of all ordered pairs of the form $(U,V)$ where $U,V \in \beta$ and $Cl(U) \subset V$. (Suppose that $\emptyset \notin \beta$. This is so that our statement of Urysohn's Lemma will apply in the following construction.) By virtue of being a subset of $\beta \times \beta$, $G$ is countable. Hence, we may arrange the elements of $G$ in a sequence; say, $(U_1,V_1), (U_2,V_2), (U_3,V_3), \cdots$. (Note: If $G$ is finite, we allow repetitions in this sequence; the only requirement is that each element of $G$ is a pair $(U_i,V_i)$ for at least one $i \in j^+$.) For each $i \in J^+$, there is a map $f_i\ :\ X \rightarrow \Re$ such that $f_i(X) \subset [0,1]$, $f_i(\text{Cl}(U_i)) = \{0\}$, and $f_i(X-V_i) = \{1\}$.
+
+Now if $x,y \in X$, let $\displaystyle d(x,y) = \sum^\infty_{i=1} 1/2^i ( |f_i(x)-f_i(y)| )$.
+
+\textbf{(I.15.4) Lemma}: $d$ is a metric on $X$.
+
+\textbf{(I.15.5) Lemma}: $\sigma = \sigma_d$.
+
+
+\subsection{The Tietze Extension Theorem}
+\markboth{I.16. The Tietze Extension Theorem}{I.16. The Tietze Extension Theorem}
+
+Many problems in topology reduce to the following ``extension problem'': Given spaces $X$ and $Y$, a subspace $A$ of $X$, and a map $g\ :\ A \rightarrow Y$, does there exist a map $f\ :\ X \rightarrow Y$ such that $f|A = g$? (Such an $f$ is an \emph{extension} of $g$ to $X$.)
+
+\textbf{(I.16.1) Example}: Let $X = [0,1]$, $A = \{0,1\} = Y$, $g = \text{id}_A$. Then, by the intermediate-value theorem from ordinary calculus, $g$ has no extension to $X$. However, $g$ does extend to any proper subspace of $X$ which contains $\{ 0,1 \}$.
+
+A useful solution to the extension problem is given by the following result, usually referred to as Tietze's Extension Theorem.
+
+\textbf{(I.16.2) Theorem}: Suppose $X$ is normal, $A$ is a closed subspace of $X$, and $g\ :\ A \rightarrow [0,1]$ is a map. Then $g$ extends to $X$.
+
+Before giving the proof of Theorem I.16.2, we need to develop some machinery involving sequences and series of real-valued functions.
+
+\textbf{(I.16.3) Definition}: Suppose $X$ and $Y$ are spaces, and that $f_i\ :\ X \rightarrow Y$ is a function for each $i \in j^+$. The sequence of functions $(f_i)^\infty_{i=1}$ is said to \emph{converge} to the function $f\ :\ X \rightarrow Y$ if for each $x \in X$, the sequence $(f_i(x))^\infty_{i=1}$ converges to $f(x)$. If $Y$ is a metric space, then the sequence $(f_i)^\infty_{i=1}$ \emph{converges uniformly} to $f\ :\ X \rightarrow Y$ if for each $\epsilon > 0$, there exists an integer $N$ such that $d_Y(f(x),f_i(x)) < \epsilon$ for $i \geq N$ and $x \in X$ ($N$ independent of $x$).
+
+In the case $Y = \Re$, it also makes sense to define convergence of the \emph{series} $\displaystyle \sum^\infty_{i=1} f_i$. In this case, $\displaystyle \sum^\infty_{i=1} f_i$ \emph{converges} to $f\ :\ X \rightarrow \Re$ if the sequence of functions $\displaystyle \left( \sum^\infty_{j=1} f_j \right)^\infty_{i=1}$ converges to $f$, and $\displaystyle \sum^\infty_{i=1} f_i$ \emph{converges uniformly} to $f\ :\ X \rightarrow \Re$ if the sequence of functions $\displaystyle \left( \sum^\infty_{j=1} f_j \right)^\infty_{i=1}$ converges uniformly to $f$.
+
+\textbf{(I.16.4) Theorem}: Suppose $f_i\ :\ X \rightarrow Y$ is a map from the space $X$ to the metric space $Y$ such that $(f_i)^\infty_{i=1}$ converges uniformly to $f\ :\ X \rightarrow Y$. Then $f$ is a map.
+
+\textbf{Proof}: Suppose $x \in X$ and $\epsilon > 0$. Let $N$ be an integer such that $d_Y(f(z),f_i(z)) < \epsilon/3$ whenever $i \geq N$ and $z \in X$. Since $f_N$ is a map, there exists an open set $U \subset X$ such that $x \in U$ and $d_Y(f_N(x),f_N(z)) < \epsilon/3$ for all $z \in U$. If $z \in U$, then
+\begin{align*}
+d_Y(f(z),f(x)) & \leq d_Y(f(z),f_N(z)) + d_Y(f_N(z),f_N(x)) + d_Y(f_N(x),f(x)) \\
+               & < \epsilon/3 + \epsilon/3 + \epsilon/3 = \epsilon
+\end{align*}
+This shows that $f$ is continuous at $x$; hence, $f$ is a map.
+
+\textbf{(I.16.5) Corollary}: Suppose $f_i X \rightarrow \Re$ is a map from $X$ to $\Re$ such that $\displaystyle \sum^\infty_{i=1} f_i$ converges uniformly to $f\ :\ X \rightarrow \Re$. Then $f$ is a map.
+
+\textbf{Proof}: This follows from the above Theorem and the fact that a finite sum of real-valued maps is a map.
+
+\textbf{Proof of Theorem I.16.2}: Let $X$, $A$, and $g$ be as in the statement of the Theorem. For $i \in J^+$, we shall construct maps $g_i\ :\ A \rightarrow [0,1]$ and $f_i\ :\ X \rightarrow [0,1]$ inductively, as follows.
+
+Let $g_1 = g$. Now suppose that $g_1, f_1, g_2, f_2, \cdots, g_n$ have been defined. Let $A_n = g^{-1}_n ([0, (1/3)(2/3)^{n-1} ])$, and $B_n = g^{-1}_n ([ (2/3)(2/3)^{n-1}, 1])$. $A_n$ and $B_n$ are closed in $X$ by Theorem I.6.3. Since $X$ is normal, there exists a map $F_n\ :\ X \rightarrow [0,1]$ such that $f_n(A_n) = \{0\}$ and $f_n(B_n) = \{1\}$. Let $f_n(X) = (1/3)(2/3)^{n-1} F_n(x)$. Then let $g_{n+1}(x) = g_n(x) - f_n(x)$ for each $x \in A$. Obviously, $f_n$ maps $X$ into $[0,1]$; it needs to be verified that $g_{n+1}(x) \in [0,1]$. If $x \in A_n$, then $f_n(x) = 0$, so $g_{n+1}(x) = g_{n}(x) \in [0,1]$. If $x \notin A_n$, then $g_{n}(x) > (1/3)(2/3)^{n-1}$ and $f_n(x) \leq (1/3)(2/3)^{n-1}$; so $1 \geq g_n(x) \geq g_n(x)-f_n(x) > 0$.
+
+Now, if $x \in X$, the series of non-negative numbers $\displaystyle \sum^\infty_{i=1} f_i(x)$ is dominated by the convergent series $\displaystyle \sum^\infty_{i=1} (1/3)(2/3)^{n-1}$. So for each $x$, $\displaystyle \sum^\infty_{i=1} f_i(x)$ converges, say to $f(x)$. In fact, the inequality $f_n(x) \leq (1/3)(2/3)^{n-1}$, for all $x \in X$, shows that the convergence is uniform. Hence, by Corollary I.16.5, $f\ :\ X \rightarrow [0,1]$ is a map. The claim is that $f$ extends $g$.
+
+Let $x \in A$. We show first that $g_i(x) \leq (2/3)^{i-1}$. Evidently this is true if $i = 1$. Inductively, suppose that $g_n(x) \leq (2/3)^{n-1}$. Then $g_{n+1}(x) = g_n(x) - f_n(x)$. If $x \in B_n$, then $f_n(x) = (1/3)(2/3)^{n-1}$ and $g_{n+1}(x) = g_n(x) - (1/3)(2/3)^{n-1} \leq (2/3)^{n-1} - (1/3)(2/3)^{n-1} = (2/3)^{n}$. If $x \notin B_n$, then $g_n(x) < (2/3)(2/3)^{n-1}$ and $g_{n+1}(x) = g_n(x) - f_n(x) \leq g_n(x) < (2/3)(2/3)^{n-1} = (2/3)^{n}$. Thus, the desired result holds for all $i \in J^+$.
+
+Now, summing the equalities $g_{i+1}(x) = g_{i}(x) - f_{i}(x)$ for $i = 1,\cdots,n$, we get $\displaystyle \sum^n_{i=1} f_i(x) = g_1(x) - g_{n+1}(x) = g(x) - g_{n+1}(x)$. By the inequality of the previous paragraph, $(g_i(x))^\infty_{i=1}$ converges to $0$. Hence, the series $\displaystyle \sum^\infty_{i=1} f_i(x)$ converges to $g(x)$. By uniqueness of limit, $g(x) = f(x)$; thus $f$ is the desired extension of $g$.
+
+
+\subsection*{Problems}
+\addcontentsline{toc}{subsection}{\numberline{1.P5}Problems}
+\markboth{I.P5. Problems}{I.P5. Problems}
+
+\begin{description}
+
+  \item[(I.55)] If $Y$ is a metric space, then the function $f\ :\ X \rightarrow Y$ is \emph{bounded} if there exists $M \in J^+$ and $y \in Y$ such that $d(f(x),y) < M$ for all $x \in X$. Suppose $X$ is normal, $A$ is a closed subspace of $X$, and $g\ :\ A \rightarrow \Re^n$ is a bounded map. Then $g$ extends to $X$. (Hint: Use Tietze's Theorem to obtain the result in the case $n = 1$; then, in the general case, construct the extension coordinate-wise.)
+
+  \item[] If $X$ is a space, and $A$ is a subspace of $X$, then the map $r\ :\ X \rightarrow A$ is a \emph{retraction} of $X$ onto $A$ if $r(x) = X$ for each $x \in A$. In other words, a retraction is an extension to $X$ of $\text{id}_A$. We say that $A$ is a \emph{retract} of $X$ if there exists a retraction $r\ :\ X \rightarrow A$.
+
+  \item[(I.56)] $A$ is a retract of $X$ if and only if every map $g\ :\ A \rightarrow Z$ extends to $X$ for any space $Z$.
+
+  \item[(I.57)] If $A$ is a retract of the Hausdorff space $X$, then $A$ is closed in $X$.
+
+  \item[] Let $D^n = \{ x \in \Re^n\ |\ d(x,0) \leq 1\}$ and $S^{n-1} = \{ x \in D^n\ |\ d(x,0) \leq 1 \}$. It can be shown that $S^{n-1}$ is not a retract of $D^n$. We have already shown this when $n = 1$ (Example I.16.1). Think about the case $n = 2$.
+
+  \item[(I.58)] $S^{n-1}$ is a retract of any proper subspace of $D^n$ which contains $S^{n-1}$.
+
+\end{description}
+
+
+\subsection{Compactness}
+\markboth{I.17. Compactness}{I.17. Compactness}
+
+\textbf{(I.17.1) Definition}: Let $X$ be a space, and $A \subset X$. The collection of sets $\jmath = \{ C_\alpha\ |\ \alpha \in M \}$ is a \emph{cover} of $A$ if $A \subset U_{\alpha \in M} C_\alpha$. If each $C_\alpha$ is open (respectively, closed), then $\jmath$ is said to be an \emph{open cover} (respectively, \emph{closed cover}) of $A$. A \emph{subcover} of $\jmath$ is a subset $\jmath'$ of $\jmath$, which is itself a cover of $A$.
+
+\textbf{(I.17.2) Definition}: Suppose $X$ is a space, and $A \subset X$. Then $A$ is said to be a \emph{compact subset} of $X$ if each open cover of $A$ has a finite subcover. In the case $A = X$, we say that $X$ is a \emph{compact space}.
+
+The above definition is motivated by the classical Heine-Borel Theorem, here stated as Theorem I.17.3.
+
+\textbf{(I.17.3) Theorem}: $[a,b]$ is a compact subset of $\Re$.
+
+The following Theorem relates the notions of compact subset and compact space. Accordingly, most of our Theorems which are stated in terms of compact spaces can be restated in terms of compact subsets.
+
+\textbf{(I.17.4) Theorem}: Let $X$ be a space, and $A \subset X$. Then $A$ is a compact subset of $X$ if and only if $A$ with the subspace topology is a compact space.
+
+\textbf{(I.17.5) Theorem}: Suppose $X$ is a compact space, and $f\ :\ X \rightarrow Y$ is a map. Then $f(X)$ is a compact subset of $Y$.
+
+\textbf{(I.17.6) Corollary}: Compactness is a topological property.
+
+Compactness is not a hereditary property. That is, subsets of compact spaces need not be compact. (For example, $[0,1]$ is compact, while $[0,1)$ is not.) However, we do have the following result.
+
+\textbf{(I.17.7) Theorem}: Every closed subset of a compact space is compact.
+
+Recall that a set $A \subset \Re$ is \emph{bounded} if there exists a real number $M$ such that $|x| \leq M$ for every $x \in A$.
+
+\textbf{(I.17.8) Theorem}: $A \subset \Re$ is compact if and only if $A$ is closed and bounded.
+
+Finally, we note that while compact subsets of spaces need not be closed, we do have the following result.
+
+\textbf{(I.17.9) Theorem}: Every compact subset of a Hausdorff space is closed.
+
+\textbf{(I.17.10) Theorem}: Every compact Hausdorff space is normal.
+
+
+\subsection{Some Alternatives to Compactness}
+\markboth{I.18. Some Alternatives to Compactness}{I.18. Some Alternatives to Compactness}
+
+Another classical result from real analysis is the Bolzano-Weierstrass Theorem, here stated as Theorem I.18.1.
+
+\textbf{(I.18.1) Theorem}: Every bounded infinite subset of $\Re$ has a limit point.
+
+Another well-know result from classical analysis is the following.
+
+\textbf{(I.18.2) Theorem}: If $(p_i)^\infty_{i=1}$ is a bounded sequence of real numbers, then some subsequence of $(p_i)^\infty_{i=1}$ converges. (The sequence $(p_i)^\infty_{i=1}$ is \emph{bounded} if $\{p_i\}^\infty_{i=1}$ is a bounded set.)
+
+These two classical results lead us to consider the following definitions.
+
+\textbf{(I.18.3) Definition}: The subset $A$ of the space $X$ is \emph{countable compact} if every infinite subset of $A$ has a limit point in $A$. If $A = X$, then $X$ is a \emph{countably compact space}.
+
+\textbf{(I.18.4) Definition}: The subset $A$ of the space $X$ is \emph{sequentially compact} if every sequence of points in $A$ has a subsequence which converges to a point of $A$. If $A = X$, then $X$ is a \emph{sequentially compact space}.
+
+\textbf{(I.18.5) Theorem}: If $A \subset \Re$, then the following are equivalent:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $A$ is closed and bounded.
+  \item $A$ is compact.
+  \item $A$ is countably compact.
+  \item $A$ is sequentially compact.
+\end{enumerate}
+
+\textbf{(I.18.6) Theorem}: Every compact space is countably compact.
+
+\textbf{(I.18.7) Theorem}: Every sequentially compact space is countably compact.
+
+\textbf{(I.18.8) Problem}: Show that the only general relations between the notions of compactness, countable compactness, and sequential compactness are those given by Theorems I.18.6 and I.18.7.
+
+\textbf{(I.18.9) Theorem}: Every countably compact metric space is sequentially compact.
+
+\textbf{(I.18.10) Definition}: Let $X$ be a metric space, and $\emptyset \neq A \subset X$. Let $D_A = \{ d(x,y)\ |\ x,y \in A \} \subset \Re$. If $D_A$ is bounded, the \emph{diameter} of $A$ is $\text{LUB}(D_A)$. Otherwise, we say that the diameter of $A$ is $\infty$. We shall use $\text{Diam}(A)$ to denote the diameter of $A$. If $\epsilon > 0$, we say that $A$ is an \emph{$\epsilon$-set} if $\text{Diam}(A) \leq \epsilon$.
+
+\textbf{(I.18.11) Theorem}: Suppose $A \subset B \subset \text{Cl}(A)$ are subsets of the metric space $X$. Then $\text{Diam}(A) = \text{Diam}(B)$.
+
+\textbf{(I.18.12) Theorem}: Suppose $X$ is a sequentially compact metric space, and $\epsilon > 0$. Then there exists a finite collection of open $\epsilon$-subsets of $X$ whose union is $X$.
+
+\textbf{(I.18.13) Definition}: Suppose $X$ is a metric space, and $\jmath$ is a cover of $X$. Then a \emph{Lebesque number} for $\jmath$ is a number $\delta > 0$ such that each $\delta$-subset of $X$ lies in some member of $\jmath$.
+
+\textbf{(I.18.14) Theorem}: Suppose $X$ is a sequentially compact metric space, and $\jmath$ is an open cover of $X$. Then there exists a Lebesque number for $\jmath$.
+
+\textbf{(I.18.15) Theorem}: If $X$ is a metric space, then the following are equivalent:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $X$ is compact.
+  \item $X$ is countably compact.
+  \item $X$ is sequentially compact.
+\end{enumerate}
+
+\textbf{(I.18.16) Corollary}: Theorems I.18.12 and I.18.14 hold for compact metric spaces.
+
+\textbf{(I.18.17) Definition}: The space $X$ is a \emph{Lindelöf space} if every open cover of $X$ has a countable subcover.
+
+Hence, by Theorem I.11.9, every second countable space is a Lindelöf space.
+
+\textbf{(I.18.18) Theorem}: Every countable open cover of a sequentially compact space has a finite subcover.
+
+\textbf{(I.18.19) Corollary}: Every sequentially compact Lindelöf space is compact.
+
+
+\subsection{Some Nice Things About Compactness}
+\markboth{I.19. Some Nice Things About Compactness}{I.19. Some Nice Things About Compactness}
+
+We begin by showing that the converse of Theorem I.5.5 holds if one of the sets $\text{Cl}(A)$ or $\text{Cl}(B)$ is compact.
+
+\textbf{(I.19.1) Theorem}: Suppose $A$ and $B$ are disjoint nonempty closed subsets of the metric space $X$, one of which is compact. Then $d(A,B) > 0$.
+
+\textbf{(I.19.2) Definition}: If $X$ and $Y$ are metric spaces, then the function $f\ :\ X \rightarrow Y$ is \emph{uniformly continuous} if for each $\epsilon > 0$, there exists $\delta > 0$ such that $d_Y(f(x),f(y)) < \epsilon$ whenever $d_X(x,y) < \delta$.
+
+Note that a uniformly continuous function is a map. The converse does not hold, however.
+
+\textbf{(I.19.3) Theorem}: Suppose $X$ and $Y$ are metric spaces, and $X$ is compact. Then every map from $X$ into $Y$ is uniformly continuous.
+
+\textbf{(I.19.4) Theorem}: Suppose $f\ :\ X \rightarrow Y$ is a bijective map from the compact Hausdorff space $X$ onto the Hausdorff space $Y$. Then $f$ is a homeomorphism.
+
+\textbf{(I.19.5) Theorem}: Every compact metric space is separable.
+
+\textbf{(I.19.6) Corollary}: Every compact metric space is second countable.
+
+
+\subsection*{Problems}
+\addcontentsline{toc}{subsection}{\numberline{1.P6}Problems}
+\markboth{I.P6. Problems}{I.P6. Problems}
+
+\begin{description}
+
+  \item[(I.59)] Prove that the space $X$ is compact if and only if $X$ has the following property: If $\jmath$ is a family of closed subsets of $X$ such that $\cap_{C \in \jmath} C = \emptyset$, then there exists a finite set $\jmath' \subset \jmath$ such that $\cap_{C \in \jmath'} C = \emptyset$.
+
+  \item[(I.60)] Prove that $A \subset \Re^n$ is compact if and only if $A$ is closed and bounded. ($A$ is \emph{bounded} if there exists a real number $M$ such that $d(x,0) \leq M$ for every $x \in A$. Show that $A \neq \emptyset$ is bounded if and only if $\text{Diam}(A) \neq \infty$.)
+
+  \item[(I.61)] Show that the ``boundedness'', as defined previously, is not a topological property. That is, show that there is a metric $d'$ on $\Re^n$ ($n \geq 1$) which is equivalent to the usual metric $d$, such that the identity homeomorphism does not preserve boundedness of sets. In fact, show that there is a metric $d'$ on $\Re^n$ ($n \geq 1$) which is equivalent to the usual metric, such that some closed and bounded (with respect to $d'$) subset fails to be compact.
+
+  \item[(I.62)] Is it true that compact subsets of $\Re^n$ must be bounded with respect to any metric equivalent to the usual one?
+
+  \item[(I.63)] Let $f\ :\ \Re \rightarrow \Re$ be a bounded function. (That is, $f(\Re)$ is bounded in the usual metric.) Show that $f$ is a map if and only if $\Gamma_f$ is closed on $\Re^2$. (See Problem I.39.)
+
+  \item[(I.64)] Verify the statement, made earlier, that compact subsets of spaces need not be closed.
+
+  \item[(I.65)] Let $f$ be a real-valued map defined on the compact space $X$. Show that there exist points $x_1$ and $x_2$ in $X$ such that $f(x_1) \leq f(x) \leq f(x_2)$ for every $x \in X$.
+
+  \item[(I.66)] Show that if $A$ and $B$ are disjoint nonempty compact subsets of the Hausdorff space $X$, then there exist disjoint open sets $U$ and $V$ such that $A \subset U$ and $B \subset V$.
+
+  \item[] We state as a problem the following well-know theorem.
+
+  \item[(I.67) (Tychonoff's Theorem)] The product of compact spaces is compact. (This theorem is known to be equivalent to the Axiom of Choice.)
+
+\end{description}
+
+
+\subsection{Connectivity}
+\markboth{I.20. Connectivity}{I.20. Connectivity}
+
+\textbf{(I.20.1) Definition}: Let $A$ and $B$ be nonempty subsets of the space $X$. Then $A$ and $B$ are \emph{mutually separated} if $A \cap \text{Cl}(B) = \emptyset = B \cap \text{Cl}(A)$. If $C \subset X$, then $C$ is a \emph{connected subset} of $X$ if $C$ is not the union of two mutually separated sets. In the case $C = X$, we say that $X$ is a \emph{connected space}.
+
+\textbf{(I.20.2) Theorem}: $[a,b]$ is a connected subset of $\Re$; $\Re$ is a connected space.
+
+\textbf{(I.20.3) Theorem}: Let $X$ be a space, and $C \subset X$. Then $C$ is a connected subset of $X$ if and only if $C$ with the subspace topology is a connected space.
+
+\textbf{(I.20.4) Theorem}: Suppose $X$ is a connected space, and $f\ :\ X \rightarrow Y$ is a map. Then $f(X)$ is a connected subset of $Y$.
+
+\textbf{(I.20.5) Corollary}: Connectedness is a topological property.
+
+The following two results characterize connected spaces in terms of their topologies.
+
+\textbf{(I.20.6) Theorem}: The space $X$ is connected if and only if $X$ is not the union of two nonempty disjoint open sets.
+
+\textbf{(I.20.7) Theorem}: The space $X$ is connected if and only if $X$ and $\emptyset$ are the only subsets of $X$ which are both open and closed.
+
+\textbf{(I.20.8) Theorem}: If $A$ and $B$ are mutually separated subsets of the space $X$, and $C$ is a connected subset of $X$ lying in $A \cup B$, then $C \subset A$ or $C \subset B$.
+
+\textbf{(I.20.9) Theorem}: If $C$ is a connected subset of the space $X$, and $C \subset D \subset \text{Cl}(C)$, then $D$ is a connected subset of $X$.
+
+\textbf{(I.20.10) Theorem}: If $C_\alpha$, $\alpha \in M$, is a connected subset of the space $X$, and $\cap_{\alpha \in M} C_\alpha \neq \emptyset$, then $\cup_{\alpha \in M} C_\alpha$ is a connected subset of $X$.
+
+\textbf{(I.20.11) Theorem}: Each nonconnected open (closed) subset of the space $X$ is the union of mutually separated open (closed) subsets of $X$.
+
+
+\subsection{Components}
+\markboth{I.21. Components}{I.21. Components}
+
+\textbf{(I.21.1) Definition}: Let $X$ be a space, and $A \subset X$. A \emph{component} of $A$ is a maximal connected subset of $A$. That is, $C \subset A$ is a component of $A$ if in the subspace topology, $C$ is a connected subset of $A$, and $C$ is not a proper subset of any connected subset of $A$.
+
+\textbf{(I.21.2) Theorem}: If $X$ is a space, and $x \in A \subset X$, then there exists a component of $A$ containing $x$.
+
+\textbf{(I.21.3) Theorem}: If $X$ is a space, and $A \subset X$, then the components of $A$ form a partition of $A$.
+
+\textbf{(I.21.4) Corollary}: If $X$ is a space, and $A \subset X$, then $A$ is connected if and only if $A$ has a single component.
+
+\textbf{(I.21.5) Theorem}: The components of a space are closed.
+
+\textbf{(I.21.6) Theorem}: If $X$ and $Y$ are connected nonempty spaces, then $X \times Y$ is connected.
+
+\textbf{(I.21.7) Corollary}: $\Re^n$ is connected.
+
+
+\subsection{Continua}
+\markboth{I.22. Continua}{I.22. Continua}
+
+\textbf{(I.22.1) Definition}: A \emph{continuum} is a nonempty compact connected metric space.
+
+\textbf{(I.22.2) Theorem}: If $A$ is a nonempty closed proper subset of the continuum $X$, then $A$ contains a limit point of each component of $X-A$.
+
+\textbf{(I.22.3) Theorem}: No nondegenerate continuum is the union of a countable collection of pairwise disjoint closed subsets. (A space is \emph{nondegenerate} if it contains at least two points.)
+
+\textbf{(I.22.4) Definition}: A subset $A$ of the space $X$ is \emph{totally disconnected} if each component of $A$ is a singleton.
+
+\textbf{(I.22.5) Example}: The familiar ``middle-third'' Cantor set is a totally disconnected subset of $\Re$.
+
+\textbf{(I.22.6) Theorem}: No nondegenerate continuum is the union of a countable collection of totally disconnected sets.
+
+
+\subsection{Path Connectivity}
+\markboth{I.23. Path Connectivity}{I.23. Path Connectivity}
+
+\textbf{(I.23.1) Definition}: Let $X$ be a space, and $A \subset X$. A \emph{path} in $A$ is a map $f\ :\ [0,1] \rightarrow X$ such that $f(x) \in A$ for all $x \in [0,1]$. We also say that $f$ is a \emph{path} in $A$ from $f(0)$ to $f(1)$. $A$ is \emph{path connected} (\emph{pathwise connected}) if for each pair of distinct points $a,b \in A$, there exists a path in $A$ from $a$ to $b$. If such a path can be chosen so as to be injective, then $A$ is \emph{arc connected} (\emph{arcwise connected}). (Note: An \emph{arc} is a space homeomorphic to $[0,1]$.) Evidently, each arc connected set is path connected. We shall later state the appropriate results to show that the converse also holds. A \emph{path component} (\emph{arc component}) of a set is a maximal path connected (arc connected) subset. The path (arc) components of a space form a partition of the space.
+
+\textbf{(I.23.2) Theorem}: Each path connected subset of a space is connected.
+
+\textbf{(I.23.3) Theorem}: Each connected open subset of $\Re^n$ is arc connected.
+
+
+\subsection*{Problems}
+\addcontentsline{toc}{subsection}{\numberline{1.P7}Problems}
+\markboth{I.P7 Problems}{I.P7 Problems}
+
+\begin{description}
+
+  \item[(I.68)] Classify the connected subsets of $\Re$.
+
+  \item[(I.69)] If $A$ and $B$ are connected subsets of the space $X$, show that $A \cup B$ is connected if and only if $A$ and $B$ fail to be mutually separated.
+
+  \item[(I.70)] Show that the space $X$ is connected if and only if every map from $X$ into a discrete space is a constant map.
+
+  \item[(I.71)] Use some of the results of this chapter to prove the following classical theorems:
+    \begin{description}
+      \item[(Intermediate-value Theorem)] If $f\ :\ [0,1] \rightarrow \Re$ is a map, and $y$ is a real number between $f(0)$ and $f(1)$, then there exists $x \in [0,1]$ such that $f(x) = y$.
+      \item[(Fixed-point Theorem for the unit interval)] If $f\ :\ [0,1] \rightarrow [0,1]$ is a map, then there exists $x \in [0,1]$ such that $f(x) = x$.
+    \end{description}
+
+  \item[(1.72)] A family $\jmath$ of sets is \emph{unicoherent} if for any two subfamilies $\jmath_1$ and $\jmath_2$ such that $\jmath = \jmath_1 \cup \jmath_2$, some element of $\jmath_1$ intersects some element of $\jmath_2$. Show that the union of a unicoherent family of connected subsets of a space is connected.
+
+  \item[(I.73)] Prove or disprove:
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item Each component of a closed subset of a space so closed.
+      \item Each component of an open subset of a space is open.
+    \end{enumerate}
+
+  \item[(I.74)] Generalize Theorem I.21.6 to arbitrary products of connected spaces.
+
+  \item[(I.75)] Prove that the continuous image of a path connected space is path connected.
+
+  \item[(I.76)] Is the converse of Theorem I.23.2 true?
+
+\end{description}
+
+
+\subsection{Local Compactness}
+\markboth{I.24. Local Compactness}{I.24. Local Compactness}
+
+\textbf{(I.24.1) Definition}: Let $X$ be a space, and $C \subset X$. Then $C$ is a \emph{locally compact subset} of $X$ if for each point $x \in X$, there exists an open set $U$ containing $x$ such that $\text{Cl}(U) \cap C$ is compact. If $C = X$, then $X$ is said to be a \emph{locally compact space}.
+
+\textbf{(I.24.2) Theorem}: Each closed subset of a locally compact space is locally compact.
+
+\textbf{(I.24.3) Theorem}: Every locally compact Hausdorff space is regular.
+
+\textbf{(I.24.4) Corollary}: Each open subset of a locally compact Hausdorff space is locally compact.
+
+\textbf{(I.24.5) Theorem}: No locally compact Hausdorff space $X$ is the union of a countable family $\jmath$ of closed subsets such that if $F \in \jmath$, each point of $F$ is a limit point of $X-F$.
+
+\textbf{(I.24.6) Definition}: Let $A$ and $B$ be subsets of the space $X$. Then $a$ is \emph{nowhere dense} in $B$ if each open set intersecting $B$ contains an open set which intersects $B$ but not $A$. If $B = X$, then $A$ is simply said to be a \emph{nowhere dense subset} of $X$.
+
+\textbf{(I.24.7) Theorem}: The subset $A$ of the space $X$ is nowhere dense if and only if $\text{Int}(\text{Cl}(A)) = \emptyset$.
+
+\textbf{(I.24.8) Theorem}: $\ $
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item If $A$ is nowhere dense in the space $X$, then $X-A$ is dense in $X$.
+  \item If the closed set $A$ is dense in the space $X$, then $X-A$ is nowhere dense in $X$.
+\end{enumerate}
+
+\textbf{(I.24.9) Definition}: The space $X$ is said to be of \emph{first category} if $X$ is the union of a countable family of nowhere dense subsets. Otherwise, $X$ is said to be of \emph{second category}.
+
+\textbf{(I.24.10) Theorem}: Each locally compact Hausdorff space is of second category.
+
+\textbf{(I.24.11) Theorem}: Each complete metric space is of second category.
+
+\textbf{(I.24.12) Theorem}: If $X$ is a locally compact Hausdorff space, and $\jmath$ is a countable family of closed subsets of $X$ whose union is $X$, then some member of $\jmath$ contains on open set.
+
+\textbf{(I.24.13) Theorem}: If $X$ is a locally compact Hausdorff space, and $\jmath$ is a countable family of dense open subsets of $X$, then $\cap_{U \in \jmath} U$ is dense in $X$.
+
+
+\subsection{Compactifications}
+\markboth{I.25. Compactifications}{I.25. Compactifications}
+
+\textbf{(I.25.1) Definition}: An \emph{embedding} of the space $X$ into the space $Y$ is a map $f\ :\ X \rightarrow Y$, which is a homeomorphism when regarded as a map from $X$ onto the subspace $f(X)$ of $Y$. If $X$ is noncompact, a \emph{compactification} of $X$ is a pair $(Y,f)$ where
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item $Y$ is a compact space;
+  \item $f\ :\ X \rightarrow Y$ is an embedding; and
+  \item $f(X)$ is dense in $Y$.
+\end{enumerate}
+It is sometimes convenient to simply say ``$Y$ is a compactification of $X$'' when no reference to $f$ is necessary. Also, we frequently regard $X$ as a subspace of $Y$ via identification of $X$ with $f(X)$.
+
+\textbf{(I.25.2) Examples}: $\ $ 
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item Let $X = (0,1)$, $y = [0,1]$, $f(x) = x$. Since $(0,1) \simeq \Re$, this example yields a compactification of $\Re$ in the obvious way. This compactification of $\Re$ is sometimes referred to as the \emph{extended reals}.
+  \item Let $X = (0,1)$, $Y = S^1$, $f(x) = (\cos 2 \pi x, \sin 2 \pi x)$.
+\end{enumerate}
+
+\textbf{(I.25.3) Definition}: Let $X$ be a noncompact space, and let $\infty$ denote a point not in $X$. Define a subset $U$ of $X \cup \{ \infty \}$ to be ``open'' if:
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item $U \subset X$, and $U is open in X$; or
+  \item $\infty \in U$, and $(X \cup \{ \infty \} ) - U$ is a closed compact subset of $X$.
+\end{enumerate}
+
+\textbf{Claim}: The ``open sets'' defined above form a topology on $X \cup \{ \infty \}$.
+
+\textbf{Claim}: $(X \cup \{ \infty \}, i_X)$ is a compactification of $X$.
+
+$X \cup \{ \infty \}$ is called the \emph{one-point compactification} of $X$. It is well-defined up to topological equivalence.
+
+While the one-point compactification is defined for all noncompact spaces, it does not have nice properties unless the original space is locally compact. For example, consider the following result.
+
+\textbf{(I.25.4) Theorem}: $X \cup \{ \infty \}$ is Hausdorff if and only if $X$ is locally compact and Hausdorff.
+
+As an example of the usefulness of the one-point compactification, we point out the following corollary to Urysohn's Lemma.
+
+\textbf{(I.25.5) Theorem}: Let $A$ be a compact subset of the locally compact Hausdorff space $X$, and let $U$ be a proper open subset of $X$ containing $A$. Then there exists a map $f\ :\ X \rightarrow [0,1]$, such that $f(x) = 0$ if $x \in A$, and $f(x) = 1$ if $x \in X-U$.
+
+
+\subsection{Local Connectivity}
+\markboth{I.26. Local Connectivity}{I.26. Local Connectivity}
+
+\textbf{(I.26.1) Definition}: The space $X$ is said to be \emph{locally connected} if for each point $x \in X$, and each open set $U$ containing $x$, there exists a connected open set $V$ such that $x \in V \subset U$. As usual, a \emph{locally connected subset} of a space is a subset which is locally connected relative to the subspace topology.
+
+\textbf{(I.26.2) Theorem}: Every open subspace of a locally connected space is locally connected.
+
+\textbf{(I.26.3) Theorem}: A space is locally connected if and only if components of open subsets are open.
+
+\textbf{(I.26.4) Theorem}: Every continuous image of a locally connected continuum in a Hausdorff space is locally connected.
+
+\textbf{(I.26.5) Corollary}: If a continuum $X$ is the continuous image of $[0,1]$, then $X$ is locally connected.
+
+We shall state the following pair of results without proof.
+
+\textbf{(I.26.6) Theorem}: Every locally connected continuum is arc connected.
+
+\textbf{(I.26.7) Theorem}: A continuum is locally connected if and only if it is the continuous image of $[0,1]$.
+
+\textbf{(I.26.8) Corollary}: A continuum is path connected if and only if it is arc connected.
+
+
+\subsection{Remarks}
+\markboth{I.27. Remarks}{I.27. Remarks}
+
+In the spirit of the above definitions, one can define and study other local properties such as local separability, local path connectivity, etc. We shall be content here to define two such notions which are of particular importance. The resulting spaces are important generalizations of Euclidean space $\Re^n$.
+
+\textbf{(I.27.1) Definition}: A \emph{locally Euclidean space} of dimension $n$ is a metrizable space $X$ such that if $x \in X$, there exists an open set $U$ containing $x$ such that $U \simeq \Re^n$.
+
+\textbf{(I.27.2) Definition}: An \emph{$n$-dimensional (topological) manifold} is a metrizable space $X$ such that if $x \in X$, there exists an open set $U$ containing $x$ such that $\text{Cl}(U) \simeq D^n ( \simeq I^n )$.
+
+It should be remarked that the above definitions may vary slightly from ones given by other sources.
+
+
+\subsection*{Problems}
+\addcontentsline{toc}{subsection}{\numberline{1.P8}Problems}
+\markboth{I.P8. Problems}{I.P8. Problems}
+
+\begin{description}
+
+  \item[(I.77)] Prove that if $X$ is a locally compact Hausdorff space, then the collection of all open sets in $X$ having compact closure is a basis for the topology of $X$.
+
+  \item[(I.78)] Does the analog of Theorem I.17.4 hold for locally compact spaces?
+
+  \item[(I.79)] Does the analog of Theorem I.20.3 hold for locally connected spaces?
+
+  \item[(I.80)] Find some compactifications of $(0,1)$ different from those given in Example I.25.2.
+
+\end{description}
+
+
+
+\newpage
+
+\section{Spaces of Functions}
+\markboth{II. Spaces of Functions}{II. Spaces of Functions}
+
+
+\subsection{Introduction}
+\markboth{II.1. Introduction}{II.1. Introduction}
+
+There are many instances in mathematics in which the idea of ``closeness'' arises in a very natural way. (We shall make little effort to give examples to illustrate the utility of this idea.) Suppose, for example, that $f\ :\ [0,1] \rightarrow \Re^2$ is a path from $p$ to $q$. For many purposes, it would be useful to know that $f$ can be approximated by a differentiable path from $p$ to $q$. The figure below illustrates some possibilities.
+
+\begin{center}
+%TeXCAD Picture [fig2.1.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(86,54.25)(0,0)
+\put(11.75,10.5){\line(0,1){43.75}}
+\put(42.25,10.5){\line(0,1){43.75}}
+\put(74.25,10.5){\line(0,1){43.75}}
+\put(1,26.75){\line(1,0){21.25}}
+\put(31.5,26.75){\line(1,0){21.25}}
+\put(63.5,26.75){\line(1,0){21.25}}
+\thicklines
+%\emline(3,47)(4.75,45)
+\multiput(3,47)(.0336538,-.0384615){52}{\line(0,-1){.0384615}}
+%\end
+%\emline(33.5,47)(35.25,45)
+\multiput(33.5,47)(.0336538,-.0384615){52}{\line(0,-1){.0384615}}
+%\end
+%\emline(65.5,47)(67.25,45)
+\multiput(65.5,47)(.0336538,-.0384615){52}{\line(0,-1){.0384615}}
+%\end
+%\emline(4.75,45)(6.5,44)
+\multiput(4.75,45)(.058333,-.033333){30}{\line(1,0){.058333}}
+%\end
+%\emline(35.25,45)(37,44)
+\multiput(35.25,45)(.058333,-.033333){30}{\line(1,0){.058333}}
+%\end
+%\emline(67.25,45)(69,44)
+\multiput(67.25,45)(.058333,-.033333){30}{\line(1,0){.058333}}
+%\end
+%\emline(6.5,44)(9.25,43.75)
+\multiput(6.5,44)(.34375,-.03125){8}{\line(1,0){.34375}}
+%\end
+%\emline(37,44)(39.75,43.75)
+\multiput(37,44)(.34375,-.03125){8}{\line(1,0){.34375}}
+%\end
+%\emline(69,44)(71.75,43.75)
+\multiput(69,44)(.34375,-.03125){8}{\line(1,0){.34375}}
+%\end
+\put(9.25,43.75){\line(1,0){3.5}}
+\put(39.75,43.75){\line(1,0){3.5}}
+\put(71.75,43.75){\line(1,0){3.5}}
+%\emline(12.75,43.75)(15.75,44)
+\multiput(12.75,43.75)(.375,.03125){8}{\line(1,0){.375}}
+%\end
+%\emline(43.25,43.75)(46.25,44)
+\multiput(43.25,43.75)(.375,.03125){8}{\line(1,0){.375}}
+%\end
+%\emline(75.25,43.75)(78.25,44)
+\multiput(75.25,43.75)(.375,.03125){8}{\line(1,0){.375}}
+%\end
+%\emline(15.75,44)(17.5,45.25)
+\multiput(15.75,44)(.0460526,.0328947){38}{\line(1,0){.0460526}}
+%\end
+%\emline(46.25,44)(48,45.25)
+\multiput(46.25,44)(.0460526,.0328947){38}{\line(1,0){.0460526}}
+%\end
+%\emline(78.25,44)(80,45.25)
+\multiput(78.25,44)(.0460526,.0328947){38}{\line(1,0){.0460526}}
+%\end
+\put(17.5,45.25){\line(0,-1){2.75}}
+\put(48,45.25){\line(0,-1){2.75}}
+\put(80,45.25){\line(0,-1){2.75}}
+%\emline(17.5,42.5)(18.25,41.25)
+\multiput(17.5,42.5)(.032609,-.054348){23}{\line(0,-1){.054348}}
+%\end
+%\emline(48,42.5)(48.75,41.25)
+\multiput(48,42.5)(.032609,-.054348){23}{\line(0,-1){.054348}}
+%\end
+%\emline(80,42.5)(80.75,41.25)
+\multiput(80,42.5)(.032609,-.054348){23}{\line(0,-1){.054348}}
+%\end
+%\emline(18.25,41.25)(20.25,39.75)
+\multiput(18.25,41.25)(.0444444,-.0333333){45}{\line(1,0){.0444444}}
+%\end
+%\emline(48.75,41.25)(50.75,39.75)
+\multiput(48.75,41.25)(.0444444,-.0333333){45}{\line(1,0){.0444444}}
+%\end
+%\emline(80.75,41.25)(82.75,39.75)
+\multiput(80.75,41.25)(.0444444,-.0333333){45}{\line(1,0){.0444444}}
+%\end
+%\emline(20.25,39.75)(21.75,40)
+\multiput(20.25,39.75)(.1875,.03125){8}{\line(1,0){.1875}}
+%\end
+%\emline(50.75,39.75)(52.25,40)
+\multiput(50.75,39.75)(.1875,.03125){8}{\line(1,0){.1875}}
+%\end
+%\emline(82.75,39.75)(84.25,40)
+\multiput(82.75,39.75)(.1875,.03125){8}{\line(1,0){.1875}}
+%\end
+%\emline(21.75,40)(22.75,42.5)
+\multiput(21.75,40)(.033333,.083333){30}{\line(0,1){.083333}}
+%\end
+%\emline(52.25,40)(53.25,42.5)
+\multiput(52.25,40)(.033333,.083333){30}{\line(0,1){.083333}}
+%\end
+%\emline(84.25,40)(85.25,42.5)
+\multiput(84.25,40)(.033333,.083333){30}{\line(0,1){.083333}}
+%\end
+\put(22.75,42.5){\line(0,1){2.5}}
+\put(53.25,42.5){\line(0,1){2.5}}
+\put(85.25,42.5){\line(0,1){2.5}}
+%\emline(22.75,45)(19.75,45.25)
+\multiput(22.75,45)(-.375,.03125){8}{\line(-1,0){.375}}
+%\end
+%\emline(53.25,45)(50.25,45.25)
+\multiput(53.25,45)(-.375,.03125){8}{\line(-1,0){.375}}
+%\end
+%\emline(85.25,45)(82.25,45.25)
+\multiput(85.25,45)(-.375,.03125){8}{\line(-1,0){.375}}
+%\end
+%\emline(19.75,45.25)(18.5,43.75)
+\multiput(19.75,45.25)(-.0328947,-.0394737){38}{\line(0,-1){.0394737}}
+%\end
+%\emline(50.25,45.25)(49,43.75)
+\multiput(50.25,45.25)(-.0328947,-.0394737){38}{\line(0,-1){.0394737}}
+%\end
+%\emline(82.25,45.25)(81,43.75)
+\multiput(82.25,45.25)(-.0328947,-.0394737){38}{\line(0,-1){.0394737}}
+%\end
+\put(18.5,43.75){\line(-1,-6){1}}
+\put(49,43.75){\line(-1,-6){1}}
+\put(81,43.75){\line(-1,-6){1}}
+%\emline(17.5,37.75)(18,35)
+\multiput(17.5,37.75)(.033333,-.183333){15}{\line(0,-1){.183333}}
+%\end
+%\emline(48,37.75)(48.5,35)
+\multiput(48,37.75)(.033333,-.183333){15}{\line(0,-1){.183333}}
+%\end
+%\emline(80,37.75)(80.5,35)
+\multiput(80,37.75)(.033333,-.183333){15}{\line(0,-1){.183333}}
+%\end
+%\emline(18,35)(18.25,33.5)
+\multiput(18,35)(.03125,-.1875){8}{\line(0,-1){.1875}}
+%\end
+%\emline(48.5,35)(48.75,33.5)
+\multiput(48.5,35)(.03125,-.1875){8}{\line(0,-1){.1875}}
+%\end
+%\emline(80.5,35)(80.75,33.5)
+\multiput(80.5,35)(.03125,-.1875){8}{\line(0,-1){.1875}}
+%\end
+%\emline(18.25,33.5)(17,32.5)
+\multiput(18.25,33.5)(-.041667,-.033333){30}{\line(-1,0){.041667}}
+%\end
+%\emline(48.75,33.5)(47.5,32.5)
+\multiput(48.75,33.5)(-.041667,-.033333){30}{\line(-1,0){.041667}}
+%\end
+%\emline(80.75,33.5)(79.5,32.5)
+\multiput(80.75,33.5)(-.041667,-.033333){30}{\line(-1,0){.041667}}
+%\end
+\put(17,32.5){\line(-1,0){2}}
+\put(47.5,32.5){\line(-1,0){2}}
+\put(79.5,32.5){\line(-1,0){2}}
+%\emline(15,32.5)(17,30)
+\multiput(15,32.5)(.0333333,-.0416667){60}{\line(0,-1){.0416667}}
+%\end
+%\emline(45.5,32.5)(47.5,30)
+\multiput(45.5,32.5)(.0333333,-.0416667){60}{\line(0,-1){.0416667}}
+%\end
+%\emline(77.5,32.5)(79.5,30)
+\multiput(77.5,32.5)(.0333333,-.0416667){60}{\line(0,-1){.0416667}}
+%\end
+%\emline(17,30)(18,28.75)
+\multiput(17,30)(.033333,-.041667){30}{\line(0,-1){.041667}}
+%\end
+%\emline(47.5,30)(48.5,28.75)
+\multiput(47.5,30)(.033333,-.041667){30}{\line(0,-1){.041667}}
+%\end
+%\emline(79.5,30)(80.5,28.75)
+\multiput(79.5,30)(.033333,-.041667){30}{\line(0,-1){.041667}}
+%\end
+\put(18,28.75){\line(0,-1){3.25}}
+\put(48.5,28.75){\line(0,-1){3.25}}
+\put(80.5,28.75){\line(0,-1){3.25}}
+%\emline(18,25.5)(15.25,22)
+\multiput(18,25.5)(-.0335366,-.0426829){82}{\line(0,-1){.0426829}}
+%\end
+%\emline(48.5,25.5)(45.75,22)
+\multiput(48.5,25.5)(-.0335366,-.0426829){82}{\line(0,-1){.0426829}}
+%\end
+%\emline(80.5,25.5)(77.75,22)
+\multiput(80.5,25.5)(-.0335366,-.0426829){82}{\line(0,-1){.0426829}}
+%\end
+%\emline(15.25,22)(14.5,18.25)
+\multiput(15.25,22)(-.032609,-.163043){23}{\line(0,-1){.163043}}
+%\end
+%\emline(45.75,22)(45,18.25)
+\multiput(45.75,22)(-.032609,-.163043){23}{\line(0,-1){.163043}}
+%\end
+%\emline(77.75,22)(77,18.25)
+\multiput(77.75,22)(-.032609,-.163043){23}{\line(0,-1){.163043}}
+%\end
+%\emline(14.5,18.25)(14.25,16.5)
+\multiput(14.5,18.25)(-.03125,-.21875){8}{\line(0,-1){.21875}}
+%\end
+%\emline(45,18.25)(44.75,16.5)
+\multiput(45,18.25)(-.03125,-.21875){8}{\line(0,-1){.21875}}
+%\end
+%\emline(77,18.25)(76.75,16.5)
+\multiput(77,18.25)(-.03125,-.21875){8}{\line(0,-1){.21875}}
+%\end
+%\emline(14.25,16.5)(15.75,14)
+\multiput(14.25,16.5)(.0333333,-.0555556){45}{\line(0,-1){.0555556}}
+%\end
+%\emline(44.75,16.5)(46.25,14)
+\multiput(44.75,16.5)(.0333333,-.0555556){45}{\line(0,-1){.0555556}}
+%\end
+%\emline(76.75,16.5)(78.25,14)
+\multiput(76.75,16.5)(.0333333,-.0555556){45}{\line(0,-1){.0555556}}
+%\end
+%\emline(15.75,14)(17.5,13.75)
+\multiput(15.75,14)(.21875,-.03125){8}{\line(1,0){.21875}}
+%\end
+%\emline(46.25,14)(48,13.75)
+\multiput(46.25,14)(.21875,-.03125){8}{\line(1,0){.21875}}
+%\end
+%\emline(78.25,14)(80,13.75)
+\multiput(78.25,14)(.21875,-.03125){8}{\line(1,0){.21875}}
+%\end
+%\emline(17.5,13.75)(20.25,15.25)
+\multiput(17.5,13.75)(.0611111,.0333333){45}{\line(1,0){.0611111}}
+%\end
+%\emline(48,13.75)(50.75,15.25)
+\multiput(48,13.75)(.0611111,.0333333){45}{\line(1,0){.0611111}}
+%\end
+%\emline(80,13.75)(82.75,15.25)
+\multiput(80,13.75)(.0611111,.0333333){45}{\line(1,0){.0611111}}
+%\end
+\put(2.5,49.25){\makebox(0,0)[cc]{$p$}}
+\put(33,49.25){\makebox(0,0)[cc]{$p$}}
+\put(65,49.25){\makebox(0,0)[cc]{$p$}}
+\put(22.25,15.75){\makebox(0,0)[cc]{$q$}}
+\put(52.75,15.75){\makebox(0,0)[cc]{$q$}}
+\put(84.75,15.75){\makebox(0,0)[cc]{$q$}}
+\put(16.5,51.5){\makebox(0,0)[cc]{$f$}}
+\put(47,51.5){\makebox(0,0)[cc]{$f$}}
+\put(79,51.5){\makebox(0,0)[cc]{$f$}}
+\put(17,9){\makebox(0,0)[cc]{$g_1$}}
+\put(47.5,9){\makebox(0,0)[cc]{$g_2$}}
+\put(79.5,9){\makebox(0,0)[cc]{$g_3$}}
+\thinlines
+\put(16.5,49.75){\vector(0,-1){4}}
+\put(47,49.75){\vector(0,-1){4}}
+\put(79,49.75){\vector(0,-1){4}}
+%\vector(16.25,10.5)(15,13)
+\put(15,13){\vector(-1,2){.07}}\multiput(16.25,10.5)(-.0328947,.0657895){38}{\line(0,1){.0657895}}
+%\end
+%\vector(46.75,10.5)(45.5,13)
+\put(45.5,13){\vector(-1,2){.07}}\multiput(46.75,10.5)(-.0328947,.0657895){38}{\line(0,1){.0657895}}
+%\end
+%\vector(78.75,10.5)(77.5,13)
+\put(77.5,13){\vector(-1,2){.07}}\multiput(78.75,10.5)(-.0328947,.0657895){38}{\line(0,1){.0657895}}
+%\end
+%\emline(3,47)(5.5,45.75)
+\multiput(3,47)(.0657895,-.0328947){38}{\line(1,0){.0657895}}
+%\end
+%\emline(5.5,45.75)(6.5,43.25)
+\multiput(5.5,45.75)(.033333,-.083333){30}{\line(0,-1){.083333}}
+%\end
+%\emline(6.5,43.25)(8,42.75)
+\multiput(6.5,43.25)(.1,-.033333){15}{\line(1,0){.1}}
+%\end
+%\emline(8,42.75)(11,45)
+\multiput(8,42.75)(.0447761,.0335821){67}{\line(1,0){.0447761}}
+%\end
+%\emline(11,45)(14,44.75)
+\multiput(11,45)(.375,-.03125){8}{\line(1,0){.375}}
+%\end
+\put(14,44.75){\line(0,-1){.25}}
+%\emline(14,44.5)(14.5,43)
+\multiput(14,44.5)(.033333,-.1){15}{\line(0,-1){.1}}
+%\end
+%\emline(14.5,43)(18.5,44)
+\multiput(14.5,43)(.133333,.033333){30}{\line(1,0){.133333}}
+%\end
+%\emline(18.5,44)(20,41.25)
+\multiput(18.5,44)(.0333333,-.0611111){45}{\line(0,-1){.0611111}}
+%\end
+%\emline(20,41.25)(23,40.5)
+\multiput(20,41.25)(.130435,-.032609){23}{\line(1,0){.130435}}
+%\end
+%\emline(23,40.5)(23.75,43.25)
+\multiput(23,40.5)(.032609,.119565){23}{\line(0,1){.119565}}
+%\end
+\put(23.75,43.25){\line(0,1){1.5}}
+%\emline(23.75,44.75)(21.5,44.25)
+\multiput(23.75,44.75)(-.15,-.033333){15}{\line(-1,0){.15}}
+%\end
+%\emline(21.5,44.25)(19.5,44.5)
+\multiput(21.5,44.25)(-.25,.03125){8}{\line(-1,0){.25}}
+%\end
+%\emline(19.5,44.5)(18.5,38.75)
+\multiput(19.5,44.5)(-.033333,-.191667){30}{\line(0,-1){.191667}}
+%\end
+%\emline(18.5,38.75)(16.75,36.5)
+\multiput(18.5,38.75)(-.0336538,-.0432692){52}{\line(0,-1){.0432692}}
+%\end
+%\emline(16.75,36.5)(18,32)
+\multiput(16.75,36.5)(.0328947,-.1184211){38}{\line(0,-1){.1184211}}
+%\end
+\put(18,32){\line(-1,0){1.75}}
+%\emline(16.25,32)(15.25,34)
+\multiput(16.25,32)(-.033333,.066667){30}{\line(0,1){.066667}}
+%\end
+%\emline(15.25,34)(14.25,32)
+\multiput(15.25,34)(-.033333,-.066667){30}{\line(0,-1){.066667}}
+%\end
+%\emline(14.25,32)(16,29.75)
+\multiput(14.25,32)(.0336538,-.0432692){52}{\line(0,-1){.0432692}}
+%\end
+%\emline(16,29.75)(18.75,25.75)
+\multiput(16,29.75)(.0335366,-.0487805){82}{\line(0,-1){.0487805}}
+%\end
+%\emline(18.75,25.75)(18.25,24.5)
+\multiput(18.75,25.75)(-.033333,-.083333){15}{\line(0,-1){.083333}}
+%\end
+%\emline(18.25,24.5)(17,22)
+\multiput(18.25,24.5)(-.0328947,-.0657895){38}{\line(0,-1){.0657895}}
+%\end
+%\emline(17,22)(14,20.75)
+\multiput(17,22)(-.0789474,-.0328947){38}{\line(-1,0){.0789474}}
+%\end
+%\emline(14,20.75)(13.75,19)
+\multiput(14,20.75)(-.03125,-.21875){8}{\line(0,-1){.21875}}
+%\end
+%\emline(13.75,19)(15.25,16.75)
+\multiput(13.75,19)(.0333333,-.05){45}{\line(0,-1){.05}}
+%\end
+%\emline(15.25,16.75)(14,15.5)
+\multiput(15.25,16.75)(-.0328947,-.0328947){38}{\line(0,-1){.0328947}}
+%\end
+%\emline(14,15.5)(14.75,13.5)
+\multiput(14,15.5)(.032609,-.086957){23}{\line(0,-1){.086957}}
+%\end
+%\emline(14.75,13.5)(16.5,15)
+\multiput(14.75,13.5)(.0388889,.0333333){45}{\line(1,0){.0388889}}
+%\end
+%\emline(16.5,15)(16.25,12.25)
+\multiput(16.5,15)(-.03125,-.34375){8}{\line(0,-1){.34375}}
+%\end
+%\emline(16.25,12.25)(17.75,16.75)
+\multiput(16.25,12.25)(.0333333,.1){45}{\line(0,1){.1}}
+%\end
+%\emline(17.75,16.75)(17,11.5)
+\multiput(17.75,16.75)(-.032609,-.228261){23}{\line(0,-1){.228261}}
+%\end
+%\emline(17,11.5)(19,17.25)
+\multiput(17,11.5)(.0333333,.0958333){60}{\line(0,1){.0958333}}
+%\end
+%\emline(19,17.25)(18.5,12)
+\multiput(19,17.25)(-.033333,-.35){15}{\line(0,-1){.35}}
+%\end
+%\emline(18.5,12)(19.75,15)
+\multiput(18.5,12)(.0328947,.0789474){38}{\line(0,1){.0789474}}
+%\end
+\put(33.5,47){\line(0,-1){.25}}
+%\emline(33.5,46.75)(38.25,45)
+\multiput(33.5,46.75)(.0913462,-.0336538){52}{\line(1,0){.0913462}}
+%\end
+%\emline(38.25,45)(39.5,43.25)
+\multiput(38.25,45)(.0328947,-.0460526){38}{\line(0,-1){.0460526}}
+%\end
+%\emline(39.5,43.25)(42.5,42.25)
+\multiput(39.5,43.25)(.1,-.033333){30}{\line(1,0){.1}}
+%\end
+%\emline(42.5,42.25)(43.25,43)
+\multiput(42.5,42.25)(.032609,.032609){23}{\line(0,1){.032609}}
+%\end
+%\emline(43.25,43)(44.75,44.5)
+\multiput(43.25,43)(.0333333,.0333333){45}{\line(0,1){.0333333}}
+%\end
+%\emline(44.75,44.5)(47,44.25)
+\multiput(44.75,44.5)(.28125,-.03125){8}{\line(1,0){.28125}}
+%\end
+%\emline(47,44.25)(47.25,43.75)
+\multiput(47,44.25)(.03125,-.0625){8}{\line(0,-1){.0625}}
+%\end
+%\emline(47.25,43.75)(49,44.75)
+\multiput(47.25,43.75)(.058333,.033333){30}{\line(1,0){.058333}}
+%\end
+\put(49,44.75){\line(-1,0){.25}}
+%\emline(48.75,44.75)(49.75,41.75)
+\multiput(48.75,44.75)(.033333,-.1){30}{\line(0,-1){.1}}
+%\end
+%\emline(49.75,41.75)(53,39.5)
+\multiput(49.75,41.75)(.0485075,-.0335821){67}{\line(1,0){.0485075}}
+%\end
+%\emline(53,39.5)(54,42.5)
+\multiput(53,39.5)(.033333,.1){30}{\line(0,1){.1}}
+%\end
+%\emline(54,42.5)(51.75,46)
+\multiput(54,42.5)(-.0335821,.0522388){67}{\line(0,1){.0522388}}
+%\end
+\put(51.75,46){\line(0,1){.25}}
+%\emline(51.75,46.25)(50,44)
+\multiput(51.75,46.25)(-.0336538,-.0432692){52}{\line(0,-1){.0432692}}
+%\end
+%\emline(50,44)(47.5,39.75)
+\multiput(50,44)(-.0333333,-.0566667){75}{\line(0,-1){.0566667}}
+%\end
+\put(47.5,39.75){\line(0,-1){3.75}}
+%\emline(47.5,36)(49.25,33)
+\multiput(47.5,36)(.0336538,-.0576923){52}{\line(0,-1){.0576923}}
+%\end
+%\emline(49.25,33)(45.5,31)
+\multiput(49.25,33)(-.0625,-.0333333){60}{\line(-1,0){.0625}}
+%\end
+%\emline(45.5,31)(47,29.25)
+\multiput(45.5,31)(.0333333,-.0388889){45}{\line(0,-1){.0388889}}
+%\end
+%\emline(47,29.25)(47.25,26.25)
+\multiput(47,29.25)(.03125,-.375){8}{\line(0,-1){.375}}
+%\end
+%\emline(47.25,26.25)(45.5,23.25)
+\multiput(47.25,26.25)(-.0336538,-.0576923){52}{\line(0,-1){.0576923}}
+%\end
+\put(45.5,23.25){\line(-1,-4){1.25}}
+%\emline(44.25,18.25)(44.5,26)
+\multiput(44.25,18.25)(.03125,.96875){8}{\line(0,1){.96875}}
+%\end
+%\emline(44.5,26)(43.75,25.25)
+\multiput(44.5,26)(-.032609,-.032609){23}{\line(0,-1){.032609}}
+%\end
+%\emline(43.75,25.25)(43.25,17.25)
+\multiput(43.75,25.25)(-.033333,-.533333){15}{\line(0,-1){.533333}}
+%\end
+%\emline(43.25,17.25)(44.75,14.5)
+\multiput(43.25,17.25)(.0333333,-.0611111){45}{\line(0,-1){.0611111}}
+%\end
+\put(44.75,14.5){\line(-1,0){1.25}}
+%\emline(43.5,14.5)(42,17.75)
+\multiput(43.5,14.5)(-.0333333,.0722222){45}{\line(0,1){.0722222}}
+%\end
+%\emline(42,17.75)(43,25.5)
+\multiput(42,17.75)(.033333,.258333){30}{\line(0,1){.258333}}
+%\end
+%\emline(43,25.5)(41,21.25)
+\multiput(43,25.5)(-.0333333,-.0708333){60}{\line(0,-1){.0708333}}
+%\end
+%\emline(41,21.25)(41.25,15.75)
+\multiput(41,21.25)(.03125,-.6875){8}{\line(0,-1){.6875}}
+%\end
+%\emline(41.25,15.75)(43.75,13.5)
+\multiput(41.25,15.75)(.0373134,-.0335821){67}{\line(1,0){.0373134}}
+%\end
+%\emline(43.75,13.5)(47.25,12.75)
+\multiput(43.75,13.5)(.152174,-.032609){23}{\line(1,0){.152174}}
+%\end
+%\emline(47.25,12.75)(49.25,13)
+\multiput(47.25,12.75)(.25,.03125){8}{\line(1,0){.25}}
+%\end
+%\emline(49.25,13)(51,15.25)
+\multiput(49.25,13)(.0336538,.0432692){52}{\line(0,1){.0432692}}
+%\end
+\put(51,15.25){\line(-1,0){.25}}
+%\emline(65.5,47)(68.75,45)
+\multiput(65.5,47)(.0541667,-.0333333){60}{\line(1,0){.0541667}}
+%\end
+%\emline(68.75,45)(70.25,43.5)
+\multiput(68.75,45)(.0333333,-.0333333){45}{\line(0,-1){.0333333}}
+%\end
+%\emline(70.25,43.5)(73.75,42.75)
+\multiput(70.25,43.5)(.152174,-.032609){23}{\line(1,0){.152174}}
+%\end
+%\emline(73.75,42.75)(76.25,44.5)
+\multiput(73.75,42.75)(.0480769,.0336538){52}{\line(1,0){.0480769}}
+%\end
+%\emline(76.25,44.5)(79.5,44)
+\multiput(76.25,44.5)(.216667,-.033333){15}{\line(1,0){.216667}}
+%\end
+%\emline(79.5,44)(80.75,43.5)
+\multiput(79.5,44)(.083333,-.033333){15}{\line(1,0){.083333}}
+%\end
+%\emline(80.75,43.5)(82.25,39.5)
+\multiput(80.75,43.5)(.0333333,-.0888889){45}{\line(0,-1){.0888889}}
+%\end
+%\emline(82.25,39.5)(84.75,39)
+\multiput(82.25,39.5)(.166667,-.033333){15}{\line(1,0){.166667}}
+%\end
+%\emline(84.75,39)(86,42.75)
+\multiput(84.75,39)(.0328947,.0986842){38}{\line(0,1){.0986842}}
+%\end
+\put(86,42.75){\line(0,1){.25}}
+%\emline(86,43)(83.75,44.5)
+\multiput(86,43)(-.05,.0333333){45}{\line(-1,0){.05}}
+%\end
+%\emline(83.75,44.5)(82.25,45.75)
+\multiput(83.75,44.5)(-.0394737,.0328947){38}{\line(-1,0){.0394737}}
+%\end
+%\emline(82.25,45.75)(81.5,43)
+\multiput(82.25,45.75)(-.032609,-.119565){23}{\line(0,-1){.119565}}
+%\end
+%\emline(81.5,43)(81,39.5)
+\multiput(81.5,43)(-.033333,-.233333){15}{\line(0,-1){.233333}}
+%\end
+%\emline(81,39.5)(79.5,38)
+\multiput(81,39.5)(-.0333333,-.0333333){45}{\line(0,-1){.0333333}}
+%\end
+%\emline(79.5,38)(79.25,36)
+\multiput(79.5,38)(-.03125,-.25){8}{\line(0,-1){.25}}
+%\end
+%\emline(79.25,36)(80.75,32.25)
+\multiput(79.25,36)(.0333333,-.0833333){45}{\line(0,-1){.0833333}}
+%\end
+%\emline(80.75,32.25)(77.75,30.5)
+\multiput(80.75,32.25)(-.0576923,-.0336538){52}{\line(-1,0){.0576923}}
+%\end
+%\emline(77.75,30.5)(77.25,29.75)
+\multiput(77.75,30.5)(-.033333,-.05){15}{\line(0,-1){.05}}
+%\end
+%\emline(77.25,29.75)(78.75,28.75)
+\multiput(77.25,29.75)(.05,-.033333){30}{\line(1,0){.05}}
+%\end
+%\emline(78.75,28.75)(79.5,26)
+\multiput(78.75,28.75)(.032609,-.119565){23}{\line(0,-1){.119565}}
+%\end
+%\emline(79.5,26)(79.25,21.75)
+\multiput(79.5,26)(-.03125,-.53125){8}{\line(0,-1){.53125}}
+%\end
+%\emline(79.25,21.75)(76,18.75)
+\multiput(79.25,21.75)(-.0365169,-.0337079){89}{\line(-1,0){.0365169}}
+%\end
+%\emline(76,18.75)(75.75,15.75)
+\multiput(76,18.75)(-.03125,-.375){8}{\line(0,-1){.375}}
+%\end
+%\emline(75.75,15.75)(77,13.75)
+\multiput(75.75,15.75)(.0328947,-.0526316){38}{\line(0,-1){.0526316}}
+%\end
+%\emline(77,13.75)(80,11.75)
+\multiput(77,13.75)(.05,-.0333333){60}{\line(1,0){.05}}
+%\end
+%\emline(80,11.75)(82.75,15.25)
+\multiput(80,11.75)(.0335366,.0426829){82}{\line(0,1){.0426829}}
+%\end
+\put(42.25,2.75){\makebox(0,0)[cc]{Fig. II.1}}
+\end{picture}
+\end{center}
+
+Which of $g_1, g_2, g_3$ appears to be ``closest'' to $f$? To answer this, we need to consider the problem of imposing the structure of a topological space on the set of paths in $\Re^2$.
+
+In this chapter, we shall consider the somewhat general problem of topologizing sets of functions. We shall see that there are a number of approaches to this problem, and we shall by no means exhaust all possibilities. As motivation, we begin with a very special case.
+
+
+\subsection{The Space $C(I,\Re)$}
+\markboth{II.2. The Space $C(I,\Re)$}{II.2. The Space $C(I,\Re)$}
+
+\textbf{(II.2.1) Definition}: Let $I = [0,1]$, and let $C(I,\Re) = \{f\ |\ \ f\ :\ I \rightarrow \Re$ is a map $\}$. Define $\hat{d}\ :\ C(I,\Re) \times C(I,\Re) \rightarrow \Re$ by $\hat{d}(f,g) = \text{LUB} \{ |f(x)-g(x)|\ |\ x \in I \}$.
+
+\textbf{(II.2.2) Lemma}: $\hat{d}$ is a metric on $C(I,\Re)$.
+
+Henceforth, we shall regard $C(I,\Re)$ as a topological space with topology induced by $\hat{d}$. The space $C(I,\Re)$ seems very natural. In what follows, we shall vastly generalize, and so we shall quickly pass on without studying $C(I,\Re)$ in detail. We do, however, give a proof that $C(I,\Re)$ is separable. This can be done in an explicit way (see Problem II.9), but we shall give a proof which will be applicable in a more general setting, and which will illustrate a useful technique. First, we require some preliminaries.
+
+\textbf{(II.2.3) Definition}: A relation $\preceq$ on a set $X$ is said to be a \emph{partial order} if for all $x,y,z \in X$, 
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item $x \preceq x$; 
+  \item $x \preceq y$ and $y \preceq x$ implies $x = y$; and 
+  \item $x \preceq y$ and $y \preceq z$ implies $x \preceq z$. 
+\end{enumerate}
+If $A \subset X$, then $a$ is the \emph{first point} of $A$ (relative to $\preceq$) if $a \in A$ and $a \preceq x$ for all $x \in A$. If every nonempty subset of $X$ has a first point, then $\preceq$ is said to be a \emph{well-ordering} of $X$, and $X$ is said to be \emph{well-ordered} by $\preceq$.
+
+The following is a useful fact. It is equivalent to the Axiom of Choice, and so may be regarded by the reader as an axiom. For a discussion of this and related matters of interest, see P. Halmos, \emph{Naïve Set Theory}, Springer-Verlag, New York, 1974.
+
+\textbf{(II.2.4) (Well-Ordering Theorem)}: Every set possesses a well-ordering.
+
+To establish the separability of $C(I,\Re)$, we shall require two auxiliary lemmas.
+
+\textbf{(II.2.5) Lemma}: If $X$ is a metric space, and each uncountable subset of $X$ has a limit point, then $X$ is separable.
+
+\textbf{Proof}: Suppose $\delta > 0$. We first show that there exists a set $\{X_i\}^\infty_{i=i}$ of points of $X$ such that $\{N(x_i,\delta)\}^\infty_{i=1}$ is a cover of $X$. To this end, choose a well-ordering of $X$, and let $x_1$ be the first point of $X$. If $X = N(x_1,\delta)$, then our claim is valid; if not, let $x_2$ be the first point of $X-N(X_1,\delta)$. If $X = N(x_1,\delta) \cup N(x_2,\delta)$, then our claim is valid; if not, let $x_3$ be the first point of $X - [ N(x_1,\delta) \cup N(x_2,\delta) ]$. 
+
+Continuing in this manner, $X$ must be covered by the $\delta$-neighborhoods of the chosen points after a countable number of steps. For if this were not the case, an uncountable set of points $K \subset X$ would be generated such that $d(p,q) > \delta$ for all $p,q \in K$, easily leading to a contradiction of our hypothesis.
+
+Now, if $i \in J^+$, let $G_i$ be a countable subset of $X$ constructed as above for $\delta = 1/i$. Then $\cup^\infty_{i=1} G_i$ is easily seen to be dense in $X$.
+
+\textbf{Remark}: The cautious reader will perhaps feel a bit uneasy about the above proof. In particular, there seems to be a questionable step involving the phrase ``continuing in this manner''. To make this step rigorous, one needs the notion of \emph{transfinite induction}. The reader who is not familiar with this process is referred to P. Halmos, \emph{Naïve Set Theory}, Springer-Verlag, New York, 1974.
+
+\textbf{(II.2.6) Lemma}: If $G$ is an uncountable subset of $C(I,\Re)$, and $\epsilon > 0$, then there exists $h \in G$ and an uncountable set $G' \subset G$ such that $G' \subset N(h,\epsilon)$.
+
+\textbf{Proof}: Let $G$ and $\epsilon$ be as in the statement of the Lemma. If $f \in C(I,\Re)$, then $f$ is uniformly continuous (Theorem I.19.3). Hence there exists $M(f,\epsilon) \in J^+$ such that $|f(x)-f(y)| < \epsilon/3$ whenever $x,y \in I$ and $|x-y| < 1/M(f,\epsilon)$. In effect, this choice defines a function $\Psi\ :\ C(I,\Re) \rightarrow J^+$. Since $G$ is uncountable, some member of $J^+$ must be the image under $\Psi$ of an uncountable subset of $G$. That is, there exists an uncountable set $\hat{G} \subset G$ and a positive integer $M$ such that $|f(x)-f(y)| < \epsilon/3$ whenever $x,y \in I$, $f \in \hat{G}$, and $|x-y| < 1/M$.
+
+Now choose $x_1,x_2,\cdots,x_n \in I$ such that $N(x_i,1/M)^n_{i=1}$ covers $I$. Select $f_1 \in \hat{G}$ such that there exists an uncountable set $G_1 \subset \hat{G}$ such that $f_1 \in G_1$ and $|f_1(x_1)-g(x_1)| < \epsilon/6$ for all $g \in G_1$. (This can be done, for if $A = \{ f(x_1)\ |\ f \in \hat{G} \}$ is countable, then there exists an uncountable set $\tilde{G} \subset \hat{G}$ such that $g(x_1) = g'(x_1)$ for all $g,g' \in \tilde{G}$, while if $A$ is uncountable, then $A$ has a condensation point, by Problem II.1.)
+
+Now suppose inductively that for $1 \leq i < n$, uncountable sets $G_i \subset G_{i-1} \subset \cdots \subset G_1 \subset \hat{G}$ and functions $f_1, f_2, \cdots, f_i$ have been selected such that if $1 \leq j \leq i$, then $f_j \in G_j$ and $|f_j(x_j)-g(x_j)| < \epsilon/6$ for all $g \in G_j$. Select $f_{i+1} \in G_i$ such that there exists an uncountable set $G_{i+1} \subset G_i$ such that $f_{i+1} \in G_{i+1}$ and $|f_{i+1}(x_{i+1}) - g(x_{i+1})| < \epsilon/6$ for all $g \in G_{i+1}$. This inductive construction yields uncountable sets $G_n \subset G_{n-1} \subset \cdots \subset G_1 \subset \hat{G}$ and functions $f_1,f_2,\cdots,f_n$ such that if $1 \leq j \leq n$, then $f_j \in G_j$ and $|f_j(x_j)-g(x_j)| < \epsilon/6$ for all $g \in G_j$. Now, let $h = f_n$ and $G' = G_n$.
+
+To complete the proof, it remains to be shown that $G' \subset N(h,\epsilon)$. To this end, let $g \in G'$. Note that if $1 \leq i \leq n$, then $|h(x_i)-g(x_i)| \leq |h(x_i)-f_i(x_i)| + |f_i(x_i)-g(x_i)| < \epsilon/6 + \epsilon/6 = \epsilon/3$. Now, let $x \in I$. Then there exists $i$ such that $1 \leq i \leq n$ and $x \in N(x_i,1/M)$. It follows that $|h(x)-g(x)| \leq |h(x)-h(x_i)| + |h(x_i)-g(x_i)| + |g(x_i)-g(x)| < \epsilon/3 + \epsilon/3 + \epsilon/3 = \epsilon$, and therefore that $\hat{d}(h,g) < \epsilon$. (For this latter conclusion, we note that by compactness, we may replace $\text{LUB}$ in Definition II.2.1 with $\text{MAX}$.) This shows that $G' \subset N(h,\epsilon)$, and the proof is complete.
+
+\textbf{(II.2.7) Theorem}: $C(I,\Re)$ is a separable metric space.
+
+\textbf{Proof}: By Lemma II.2.5, it suffices to show that each uncountable subset of $C(I,\Re)$ has a limit point. To this end, let $G_0$ be an uncountable subset of $C(I,\Re)$. Let $G_1 = \{f \in G_0\ |\ \hat{d}(f,g) < 1$ for uncountably many $g \in G_0 \}$. By Lemma II.2.6, $G_1$ exists and contains all but countably many members of $G_0$. Inductively, if $i > 1$, let $G_i = \{f \in G_{i-1}\ |\ \hat{d}(f,g) < 1/i$ for uncountably many $g \in g_{i-1} \}$. Since $G_{i-1} - G_i$ is countable for $i = 1,2,\cdots$, it follows that $\cap^\infty_{i=0} G_i$ is uncountable. 
+
+The claim is that if $f \in \cap^\infty_{i=0} G_i$, then $f$ is a limit point of $G_0$. To see this, let $\epsilon > 0$. Choose $M \in J^+$ so that $1/M < \epsilon$. Then $f \in G_M$, so there exist uncountably many members of $G_{M-1}$ lying in $N(f,1/M) \subset N(f,\epsilon)$. Since $G_{M-1} \subset G_0$, this implies that $f$ is a limit point (in fact, a condensation point) of $G_0$.
+
+
+\subsection*{Problems}
+\addcontentsline{toc}{subsection}{\numberline{2.P1}Problems}
+\markboth{II.P1. Problems}{II.P1. Problems}
+
+\begin{description}
+
+  \item[(II.1)] If $X$ is a space, and $A \subset X$, then $x$ is a \emph{condensation point} of $A$ if every open set containing $x$ contains uncountably many points of $A$. Prove that if $K$ is an uncountable subset of the separable metric space $X$, then at most countably many points of $K$ fail to be condensation points of $K$.
+
+  \item[(II.2)] Suppose $(f_i)^\infty_{i=1}$ is a sequence in $C(I,\Re)$, and $f \in C(I,\Re)$. Prove that $(f_i)^\infty_{i=1}$ converges in the metric space $C(I,\Re)$ to $f$ if and only if $(f_i)^\infty_{i=1}$ converges uniformly to $f$ in the sense of Definition I.16.3.
+
+  \item[(II.3)] Prove that $C(I,\Re)$ is complete.
+
+  \item[(II.4)] Define $\alpha\ :\ C(I,\Re) \times C(I,\Re) \rightarrow C(I,\Re)$ by $[\alpha(f,g)](t) = f(t) + g(t)$ for all $t \in I$. Define $\beta\ :\ \Re \times C(I,\Re) \rightarrow C(I,\Re)$ by $[\beta(a,f)](t) = a \cdot f(t)$ for all $t \in I$. Show that $\alpha$ and $\beta$ are continuous. (Remark: if we define an addition $+$ in $C(I,\Re)$ by $f+g = \alpha(f,g)$, and a ``scalar multiplication'' by $af + \beta(a,f)$, then $C(I,\Re)$ becomes a vector space. Since $\alpha$ and $\beta$ are continuous, $C(I,\Re)$ when equipped with this structure is said to be a \emph{topological vector space}.)
+
+  \item[(II.5)] Fix $t \in I$, and define $e_t\ :\ C(I,\Re) \rightarrow \Re$ by $e_t(f) = f(t)$. ($e_t$ is called the \emph{evaluation map} at $t$.) Show that $e_t$ is continuous.
+
+  \item[(II.6)] Note that (as sets) $C(I,\Re) \subset \Re^I$. Now, $\Re^I$ may be given the product topology (I.7.1). How does the topology induced on $C(I,\Re)$ as subspace of $\Re^I$ compare with the metric topology on $C(I,\Re)$? (i.e., larger? smaller? the same?)
+
+  \item[(II.7)] Let $B(\Re,\Re) = \{ f\ |\ \ f\ :\ \Re \rightarrow \Re$ is a bounded map $\}$ (cf. Problem I.55). Which results thusfar established hold with $C(I,\Re)$ replaced by $B(\Re,\Re)$?
+
+  \item[(II.8)] Let $A$ be a set, and let $BF(A,\Re) = \{ f\ |\ \ f\ :\ A \rightarrow \Re$ is a bounded function $\}$. Which results thusfar established hold with $C(I,\Re)$ replaced by $BF(A,\Re)$? What if $A$ is finite? Countable?
+
+  \item[(II.9)] Explicitly construct a countable dense subset of $C(I,\Re)$.
+
+  \item[(II.10)] If $n \in J^+$, let $A_n = \{ f \in C(I,\Re)\ |$ there exists $t$, $0 \leq t \leq 1-1/n$ such that if $0 < h < 1/n$, then $|[f(t+h)-f(t)]/h| \leq n \}$. Show that $A_n$ is closed and nowhere dense in $C(I,\Re)$.
+
+  \item[(II.11)] If $A_n$ is defined as in Problem II.10, show that $\cup^\infty_{i=1} A_i \neq C(I,\Re)$. (Hint: See Theorem I.25.11)
+
+  \item[(II.12)] Use the preceding two problems to show that there exists a member of $C(I,\Re)$ which fails to be differentiable at every point of $I$.
+
+  \item[(II.13)] Let $D(I,\Re)$ denote the differentiable functions from $I$ to $\Re$. Prove that $D(I,\Re)$ is dense in $C(I,\Re)$.
+
+\end{description}
+
+
+\subsection{Generalizations of $C(I,\Re)$}
+\markboth{II.3. Generalizations of $C(I,\Re)$}{II.3. Generalizations of $C(I,\Re)$}
+
+Suppose $X$ is a space, and $Y$ is a metrizable space. Let $C(X,Y) = \{ f\ |\ \ f\ :\ X \rightarrow Y$ is a map $\}$. Generalizing the work of Section 2, we wish to make $C(X,Y)$ into a metric space. It would, of course, be desirable to do this in such a way that the resulting topology depends only on the topology of $Y$, rather than on the choice of some particular metric generating the topology.
+
+But in trying to simply mimic Definition II.2.1, an immediate obstacle is encountered. For if $d$ is a metric on $Y$ and $f,g \in C(X,Y)$, then $\{ d(f(x),g(x))\ |\ x \in X \}$ need not be bounded. To remedy this, it is tempting to fix $d$ and let $B(X,Y)$ be the subset of $C(X,Y)$ whose members are bounded with respect to $d$ (cf. Problem II.8). But here, even the \emph{set} $B(X,Y)$ depends on $d$. For example, if $d$ is a bounded metric, then $B(X,Y) = C(X,Y)$, while in the general case, unbounded maps exist.
+
+Another approach to the problem is to fix a \emph{bounded} metric $d$ for $Y$ (see, e.g., Problem I.28), and to define $\hat{d}$ as before. Then $\hat{d}$ is a metric, as expected; and we would hope that if $d'$ were another bounded metric on $Y$, then $\hat{d}$ and $\hat{d}'$ would be equivalent. But, alas, this need not be so.
+
+\textbf{(II.3.1) Example}: There exist equivalent bounded metrics $d_1$ and $d_2$ on $\Re$ such that the induced metrics $\hat{d}_1$ and $\hat{d}_2$ on $C(\Re,\Re)$ are not equivalent.
+
+To verify this, let $d_i(x,y) = \min \{ 1, |x-y| \}$ and $d_2(x,y) = | [x/(1+|x|)] - [y/(1+|y|)] |$. The reader should verify that $d_1$ and $d_2$ are each equivalent to the usual metric. Now if $n \in J^+$, let $f_n\ :\ \Re \rightarrow \Re$ be defined by
+\begin{equation*}
+f_n(t) = 
+\begin{cases}
+t \text{ if } t \leq n \\
+n \text{ if } t \geq n
+\end{cases}
+\end{equation*}
+Then $\hat{d}_1 (\text{id},f_n) = 1$ for $n = 1,2,\cdots$, such that $(f_n)^\infty_{n=1}$ does not converge to $\text{id}$ in $(C(\Re,\Re), \sigma_{\hat{d}_1})$. But if $n \in J^+$, then $\hat{d}_2 (\text{id},f_n) < 1/n$. For if $z > n$, then $d_2(z,n) = | [z/(1+z)] - [n/(1+n)] | = [z-n] / [(1+z)(1+n)] < z / [(1+z)(1+n)] < 1/(n+1)$. It follows that $(f_n)\infty_{n=1}$ converges to $\text{id}$ in $( C(\Re,\Re), \sigma_{\hat{d}_2} )$, and so $\hat{d}_1$ and $\hat{d}_2$ are not equivalent.
+
+Any metric on a compact space is bounded. The following shows how compactness is useful in salvaging something from the above discussion.
+
+\textbf{(II.3.2) Theorem}: Suppose $X$ is a space, and $Y$ is a compact metrizable space. Then if $d_1$ and $d_2$ are metrics on $Y$, then $\hat{d}_1$ and $\hat{d}_2$ are equivalent metrics on $C(X,Y)$.
+
+\textbf{Proof}: Suppose $f \in C(X,Y)$, and $\epsilon > 0$. Let $N$ denote the $\epsilon$-neighborhood of $f$ with respect to the metric $\hat{d}_1$. To prove the Theorem, it suffices to find $\delta > 0$ such that the $\delta$-neighborhood of $f$ with respect to $\hat{d}_2$ lies in $N$. Let $G$ denote the open cover of $Y$ consisting of all $\epsilon/4$-neighborhoods with respect to $d_1$. Regarding $Y$ as a metric space with metric $d_2$, let $\delta > 0$ be a Lebesque number (I.18.13) for $G$. Then, if $x,y \in Y$ and $d_2(x,y) < \delta$, then $d_1(x,y) < \epsilon/2$. It is easily verified that the $\delta$-neighborhood of $f$ with respect to $\hat{d}_2$ lies in $N$.
+
+If $X$ is a compact space, and $Y$ is a metrizable space, then any map from $X$ to $Y$ is bounded with respect to any metric on $Y$. That is, fixing a metric $d$ on $Y$, bounded or not, we have $C(X,Y) = B(X,Y)$. In this case, also, $\hat{d}$ is a metric; and if $d'$ is any other metric on $Y$, then $\hat{d}_1$ and $\hat{d}_2$ are equivalent. We state this as a Theorem, but do not give a proof at this time, for the statement will be immediate from Theorem II.4.3.
+
+\textbf{(II.3.3) Theorem}: Suppose $X$ is a compact space, and $Y$ is a metrizable space. Then if $d_1$ and $d_2$ are metrics on $Y$, then $\hat{d}_1$ and $\hat{d}_2$ are equivalent metrics on $C(X,Y)$.
+
+
+\subsection*{Problems}
+\addcontentsline{toc}{subsection}{\numberline{2.P2}Problems}
+\markboth{II.P2. Problems}{II.P2. Problems}
+
+\begin{description}
+
+  \item[(II.14)] The work of Section 2 can easily be seen to show that $C(X,Y)$ is separable if $X$ is compact and $Y$ is a separable metric space. Does this hold if $X$ is separable and $Y$ is a compact metrizable space?
+
+  \item[(II.15)] Does the result of Problem II.2 hold for the function spaces considered in this section?
+
+  \item[(II.16)] Under what conditions on $X$ and $Y$ is $C(X,Y)$ complete?
+
+  \item[(II.17)] Is the evaluation map at $x$ continuous for the function spaces considered in this section? (cf. Problem II.5)
+
+  \item[(II.18)] Suppose $X$, $Y$, and $Z$ are spaces for which $C(X,Y)$ and $C(Y,Z)$ can be metrized as discussed in this section. The \emph{composition map} is the function $\alpha\ :\ C(X,Y) \times C(Y,Z) \rightarrow C(X,Z)$ defined by $\alpha(f,g) = gf$. Is $\alpha$ continuous? If not generally so, are there conditions on $X$ and/or $Y$ and/or $Z$ under which $\alpha$ is continuous?
+
+  \item[(II.19)] Suppose $X$, $Y$, and $Z$ are as in Problem II.18. Fix $f \in C(X,Y)$, and define $\beta\ :\ C(Y,Z) \rightarrow C(X,Z)$ by $\beta(g) = gf$. Is $\beta$ continuous? If not generally so, are there conditions on $X$ and/or $Y$ and/or $Z$ under which $\beta$ is continuous?
+
+  \item[(II.20)] Suppose $X$, $Y$, and $Z$ are as in Problem II.18. Fix $g \in C(Y,Z)$, and define $\gamma\ :\ C(X,Y) \rightarrow C(X,Z)$ by $\gamma(f) = gf$. Is $\gamma$ continuous? If not generally so, are there conditions on $X$ and/or $Y$ and/or $Z$ under which $\gamma$ is continuous?
+
+  \item[(II.21)] Is it true that $C(X,Y)$ is compact if $X$ is compact and $Y$ is compact and metrizable?
+
+  \item[(II.22)] Investigate the problem of determining when a closed subset of $C(X,Y)$ is compact, where $C(X,Y)$ denotes one of the functions spaces considered in this section.
+
+  \item[(II.23)] The map $f\ :\ X \rightarrow Y$ is an \emph{immersion} if for each $x \in X$, there exists a neighborhood $N$ of $x$ such that $f|N$ is an embedding. Let $\jmath(X,Y)$ denote the set of immersions of $X$ in $Y$. Prove that $\jmath(I,\Re^2)$ is dense in $C(I,\Re^2)$. Let $E(X,Y)$ denote the set of embeddings of $X$ into $Y$. Prove that $E(I,\Re^k)$ is dense in $C(I,\Re^k)$ if $k \geq 3$. Do these results hold for the differentiable immersions and embeddings?
+
+  \item[(II.24)] Let $H(X,X)$ denote the set of homeomorphisms of $X$ onto itself. Prove that $H(I,I)$ is not a connected subset of $C(I,I)$. What about $H(D^2,D^2)$? Is $H(I,I)$ closed in $C(I,I)$?
+
+\end{description}
+
+
+\subsection{The Compact-Open Topology}
+\markboth{II.4. The Compact-Open Topology}{II.4. The Compact-Open Topology}
+
+Letting $C(X,Y)$ denote the set of maps from $X$ to $Y$, where $X$ and $Y$ are spaces, there are several ways of imposing a topological structure on $C(X,Y)$. For example, we could regard $C(X,Y)$ as a subspace of the product space $Y^X$. Or, if $Y$ is metrizable, we could metrize $C(X,Y)$ as in Section 3. In this section, we consider a topology on $C(X,Y)$ which has proved to be of great use. This concluded, we move to the next chapter, pausing only to remark that our study of topologies on $C(X,Y)$ has been only an introduction; many interesting possibilities can be found by the reader who pursues the topic further.
+
+\textbf{(II.4.1) Definition}: If $X$ and $Y$ are spaces, $A \subset X$, and $B \subset Y$, let $[A,B] = \{ f \in C(X,Y)\ |\ f(A) \subset B \}$. Let $\beta = \{ [K,U]\ |\ K$ a compact subset of $X$, $U$ an open subset of $Y \}$. The topology on $C(X,Y)$ generated by $\beta$ is called the \emph{compact-open topology}.
+
+Henceforth, if we speak of the space $C(X,Y)$, we assume $C(X,Y)$ bears the compact-open topology. The following is easily verified.
+
+\textbf{(II.4.2) Theorem}: If $X \simeq X'$ and $Y \simeq Y'$, then $C(X,Y) \simeq C(X',Y')$.
+
+We now give a connection between the compact-open topology and the metric topology studied in Section 3.
+
+\textbf{(II.4.3) Theorem}: Suppose $X$ is compact and $Y$ is metrizable. Then, if $d$ is any metric for $Y$, the metric $\hat{d}$ generates the compact-open topology on $C(X,Y)$.
+
+\textbf{Proof}: Suppose $f \in C(X,Y)$, and $\epsilon > 0$. Let $N$ denote the $\epsilon$-neighborhood of $f$ with respect to the metric $\hat{d}$. We wish to find an open subset of $C(X,Y)$ lying in $N$ and containing $f$. Now, if $x \in X$, there exists an open set $U_x$ containing $x$ such that if $y \in U_x$, then $d(f(x),f(y)) < \epsilon/9$. Then $\text{Diam}(f(U_x)) < \epsilon/4$, and this implies $\text{Diam}(f(\text{Cl}(U_x))) < \epsilon/4$, since $f(\text{Cl}(U_x)) \subset \text{Cl}(f(U_x))$. Let $G = \{ U_X\ |\ x \in X \}$. Then $G$ is an open cover of $X$, and hence there exist $U_1,U_2,\cdots,U_n \in G$ such that $X \subset U^n_{i=1} U_i$. If $i = 1,2,\cdots,n$, let $V_i = \{ y \in Y\ |\ d(y,f(\text{Cl}(U_i))) < \epsilon/4 \}$. Then $V_i$ is open and $\text{Diam}(V_i) < 3\epsilon/4$. Let $W = \cap^n_{i=1} [\text{Cl}(U_i), V_I]$. Then $W$ is open in $C(X,Y)$, and it is easily verified that $f \in W \subset N$.
+
+Now suppose $W$ is an open subset of $C(X,Y)$, and $f \in W$. We wish to find $\epsilon > 0$ such that the $\epsilon$-neighborhood of $f$ with respect to $\hat{d}$ lies in $W$. By an easy argument, it suffices to consider the case where $W = [K,U] \in \beta$. Since $f(K)$ is compact and $f(K) \subset U$, then $d(f(K),Y-U) > 0$. Letting $2 \epsilon = d(f(K),Y-U)$ and letting $N$ be the $\epsilon$-neighborhood of $f$ with respect to $\hat{d}$, it is easily verified that $N \subset W$.
+
+
+\subsection*{Problems}
+\addcontentsline{toc}{subsection}{\numberline{2.P3}Problems}
+\markboth{II.P3. Problems}{II.P3. Problems}
+
+\begin{description}
+
+  \item[(II.25)] Does the analog of Theorem II.4.3 hold for the case in which $X$ is a space and $Y$ is a compact metrizable space?
+
+  \item[(II.26)] If $X$ and $Y$ are spaces, and $x \in X$, prove that $e_x\ :\ C(X,Y) \rightarrow Y$ is continuous ($e_x$ as in Problem II.5). Generalizing, the \emph{evaluation map} $e\ :\ C(X,Y) \times X \rightarrow Y$ is defined by $e(f,x) = f(x)$ for all $f \in C(X,Y)$ and $x \in X$. Prove that if $X$ is a locally compact Hausdorff space, then $e$ is continuous; and, in fact, that the compact-open topology is the topology induced by $e$. What is the situation if $X$ is not locally compact?
+
+  \item[(II.27)] If $X$ and $Y$ are spaces, and $y \in Y$, let $C_y\ :\ X \rightarrow Y$ denote the constant map with value $y$. Define $j\ :\ Y \rightarrow C(X,Y)$ by $j(y) = C_y$ for all $y \in Y$. Show that $j$ embeds $Y$ onto a closed subset of $C(X,Y)$.
+
+  \item[(II.28)] Prove that $C(X,Y)$ is a Hausdorff space if and only if $Y$ is a Hausdorff space. Does the analogous statement hold for Fréchet spaces? Regular spaces? Normal spaces?
+
+  \item[(II.29)] Prove that the composition map $\alpha\ :\ C(X,Y) \times C(Y,Z) \rightarrow C(X,Z)$ is continuous if $X$, $Y$, and $Z$ are Hausdorff spaces and $Y$ is locally compact. Can any (or all) of these hypotheses be weakened?
+
+  \item[(II.30)] Suppose $F\ :\ X \times Z \rightarrow Y$ is a map. If $z \in Z$, define $F_Z\ :\ X \rightarrow Y$ by $F_Z(x) = F(x,z)$. Define $F'\ :\ Z \rightarrow C(X,Y)$ by $F'(z) = F_z$. Prove that $F'$ is continuous. Conversely, if $G'\ :\ Z \rightarrow C(X,Y)$ is a map, define $G\ :\ X \times Z \rightarrow Y$ by $G(x,z) = [G'(z)](x)$. Prove that $G$ is continuous if $X$ is a locally compact Hausdorff space. What is the situation if $X$ is not locally compact?
+
+  \item[(II.31)] If $X$ is a space and $Y$ is a metric space, then the sequence $(f_n)^\infty_{n=1}$ of maps $X$ to $Y$ is said to \emph{converge} to $f\ :\ X \rightarrow Y$ \emph{uniformly on compacta} if for each compact $K \subset X$ and $\epsilon > 0$, there exists $N \in J^+$ such that $d(f(x),f_n(x)) < \epsilon$ whenever $x \in K$ and $n \leq N$. Prove that the sequence $(f_n)^\infty_{n=1}$ in $C(X,Y)$ converges to $f \in C(X,Y)$ if and only if $(f_n)^\infty_{n=1}$ converges to $f$ uniformly on compacta. (By virtue of this result, the compact-open topology is sometimes referred to as the \emph{topology of compact convergence}.)
+
+  \item[(II.32)] Let $\gamma = \{ [ \{x\},U ] \in C(X,Y)\ |\ x \in X,\ U$ an open subset of $Y \}$. The topology on $C(X,Y)$ generated by $\gamma$ is called the \emph{point-open topology}. Study the properties of this topology vis-a-vis the compact-open topology. (The point-open topology is sometimes referred to as the \emph{topology of pointwise convergence}; cf. Problem II.31.)
+
+  \item[(II.33)] Prove that there does not exist a metric $\rho$ on $C(I,\Re)$ such that the sequence $(f_i)^\infty_{i=1}$ converges to $f \in C(I,\Re)$ if and only if $(\rho(f_i,f))^\infty_{i=1}$ converges to $0$. (Caution: We do not mean to imply that $\rho$ should be a metric for $C(I,\Re)$ with the topology of pointwise convergence. It is possible for two \emph{different} topologies on a set to induce the same notion of convergence for sequence.)
+
+  \item[(II.34)] If $f,g \in C(\Re,\Re)$, let $A_n = \text{LUB} \{ |f(x)-g(x)| x \in [-n,n] \}$ for $n=1,2,\cdots$. Let $D(f,g) = \displaystyle \sum^\infty_{n=1} A_n/(2^n(1+A_n))$. Prove that $D$ is a metric, and that $D$ generates the compact-open topology on $C(\Re,\Re)$. Does there exist a bounded metric $d$ on $\Re$ for which $\hat{d}$ is equivalent to $D$? What is the situation for $C(\Re^k,\Re^j)$? Consider further generalizations.
+
+  \item[(II.35)] If $X$ is a locally compact Hausdorff space, show that $C(X,Y)$ is second countable if $X$ and $Y$ are second countable.
+
+  \item[(II.36)] Suppose $X$ and $Y$ are second countable Hausdorff spaces, and $X$ is compact. Prove that $C(X,Y)$ is metrizable if and only if $Y$ is regular.
+
+  \item[(II.37)] A \emph{homotopy} of $X \in Y$ is a family of maps $\{ f_t\ :\ X \rightarrow Y \}_{t \in I}$ such that the function $F\ :\ X \times I \rightarrow Y$ defined by $F(x,t) = f_t(x)$ is a map. Associated with any family of maps $\{ f_t\ :\ X \rightarrow Y \}_{t \in I}$ is a function $\alpha\ :\ I \rightarrow C(X,Y)$ defined by $\alpha(t) = f_t$. (In fact, according to our definition of ``indexed family'', $\alpha$ \emph{is} the family $\{ f_t\ :\ X \rightarrow Y \}_{t \in I}$.) Prove or disprove: $\{f_t\ :\ X \rightarrow Y \}_{t \in I}$ is a homotopy if and only if $\alpha$ is a path.
+
+\end{description}
+
+
+
+\newpage
+
+\section{Spaces of Sets}
+\markboth{III. Spaces of Sets}{III. Spaces of Sets}
+
+
+\subsection{Introduction}
+\markboth{III.1. Introduction}{III.1. Introduction}
+
+We now turn our attention to the problem of imposing a topology on certain collections of subsets of a topological space $X$. We have considered one such problem already, namely that involving the quotient topology on a partition of $X$. We consider here a much more general situation, beginning in Section 2 with a classical case first considered by F. Hausdorff (\emph{Grundzuge der Mengenlehre}, Leipzig, 1914).
+
+
+\subsection{The Hausdorff Metric}
+\markboth{III.2. The Hausdorff Metric}{III.2. The Hausdorff Metric}
+
+\textbf{(III.2.1) Notation}: If $X$ is a space, we let $2^X$ denote $\{ A \subset X\ |\ A \neq \emptyset$ and $A$ closed in $X \}$. We let $C(X) = \{ A \in 2^X\ |\ A$ is connected $\}$ and $X(n) = \{ A \in 2^X\ |\ A$ has at most $n$ points $\}$, $n = 1,2,\cdots$.
+
+\textbf{(III.2.2) Definition}: If $X$ is a metric space (with metric $d$), $A \subset X$, and $\epsilon > 0$, let $N(A,\epsilon) = \{ x \in X\ |\ d(x,A) < \epsilon \}$. $N(A,\epsilon)$ is called the \emph{$\epsilon$-neighborhood} of $A$.
+
+\textbf{(III.2.3) Definition}: Let $X$ be a metrizable space, and $d$ be a bounded metric on $X$. The \emph{Hausdorff metric} $\tilde{d}$ on $2^X$ (determined by $d$) is defined by $\tilde{d}(A,B) = \text{GLB} \{ \epsilon\ |\ A \subset N(B,\epsilon)$ and $B \subset N(A,\epsilon) \}$.
+
+The reader should verify that $\tilde{d}$ is a metric on $2^X$. (Of course, $\tilde{d}(C,D)$ would be defined whenever $C,D \in P(X) - \{ \emptyset \}$. But $\tilde{d}$ does not determine a metric on $P(X) - \{ \emptyset \}$, because $\tilde{d}(C,\text{Cl}(C)) = 0$ for all $C \neq \emptyset$.) Now, a situation arises here which is very much like that encountered in Section 3 of the preceding chapter. Namely, two \emph{equivalent} bounded metrics on $X$ may induce inequivalent metrics on $2^X$. (Try $X = \Re$ with metrics $d_1$ and $d_2$, as in Example II.3.1.) However, if $X$ is compact, then this sort of pathology does not occur. That is, if $X$ is compact and $d_1$ and $d_2$ are metrics on $X$, then $\tilde{d}_1$ and $\tilde{d}_2$ are equivalent (Problem III.2). Because of this, we shall henceforth usually restrict our attention to the study of $2^X$, $C(X)$, etc., \emph{when $X$ is compact}. 
+
+$2^X$, $C(X)$, etc., when equipped with the topology induced by the Hausdorff metric, are called \emph{hyperspaces}.
+
+\textbf{(III.2.4) Examples}: $\ $
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item It is easy to see that $X(1)$ with metric $\tilde{d}$, is isometric to $X$ with metric $d$.
+  \item $C(I) \simeq D^2$. To see this, note that $C(I)$ consists of all closed intervals (possibly degenerate) lying in $I = [0,1]$. If $[a,b] \in C(I)$, let $\Phi([a,b]) = (a,b) \in \Re^2$. Then $\Phi$ determines a homeomorphism of $C(I)$ onto the triangle in $\Re^2$ whose vertices are $(0,0)$, $(0,1)$, and $(1,1)$.
+  \item Let $I_i = [-1,1]$ for $i = 1,2,\cdots$, and let $Q = \Pi^\infty_{i=1} I_i$. Then $2^I \simeq Q$. ($Q$ is called the \emph{Hilbert cube}.) This is a deep result, long conjectured, but only recently proved, by R. Schori and J. West (Trans. Amer. Math. Soc., to appear; see also Bull. Amer. Math. Soc., 78 (1972), 402-406).
+\end{enumerate}
+
+
+\subsection*{Problems}
+\addcontentsline{toc}{subsection}{\numberline{3.P1}Problems}
+\markboth{III.P1. Problems}{III.P1. Problems}
+
+\begin{description}
+
+  \item[(III.1)] If $X$ is a compact metric space with metric $d$, show that $\tilde{d}(A,B) = \text{Max} \{ \text{LUB} \{ d(a,B)\ |\ a \in A \},$ $\text{LUB} \{ d(b,A)\ |\ b \in B \} \}$, where $A,B \in 2^X$. (This definition was given by D. Pompeju, Ann. de Toulouse, (2) 7 (1905).)
+
+  \item[(III.2)] Verify the assertion made above; that if $X$ is a compact metrizable space, then the Hausdorff topology on $2^X$ is independent of the choice of metric for $X$.
+
+  \item[(III.3)] The metric space $X$ is \emph{totally bounded} if for each $\epsilon > 0$, $X$ can be covered by finitely many open balls of radius $\epsilon$.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item Show that total boundedness is not a topological property of metric spaces.
+      \item Evidently, every compact metric space is totally bounded. Show that the converse fails.
+      \item Show that the metric space $X$ is compact if and only if $X$ is totally bounded and complete.
+      \item If $X$ is a compact metric space, show that $2^X$ is compact.
+    \end{enumerate}
+
+  \item[(III.4)] Suppose $X$ and $Y$ are compact metric spaces, and $f\ :\ X \rightarrow Y$ is a map.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item Define $f'\ :\ 2^X \rightarrow 2^Y$ by $f'(A) = f(A)$ for all $A \in 2^X$. Is $f'$ a map?
+      \item Define $f''\ :\ 2^Y \rightarrow 2^X$ by $f''(B) = f^{-1}(B)$ for all $B \in 2^Y$. Is $f''$ a map?
+    \end{enumerate}
+
+  \item[(III.5)] Prove that if $X$ is a compact metric space, then $C(X)$ is a closed subset of $2^X$. It follows, from this and from Problem III.3, that $C(X)$ is compact. What is the situation for $X(n)$, $n = 1,2,\cdots$?
+
+  \item[(III.6)] Prove that if $X$ is a locally connected continuum, then $2^X$ is connected. Does the converse hold? Is local connectedness required? Will $2^X$ be locally connected? What about $C(X)$?
+
+  \item[(III.7)] Let $B = \cup^\infty_{n=1} X(n)$, where $X$ is a compact metric space. Show that $B$ is dense in $2^X$. If $Z$ is a dense subset of $X$, let $B(Z) = \{ A \in B\ |\ A \subset Z \}$. Is $B(Z)$ dense in $X$? What about the situation when $X$ is not compact, but is equipped with a bounded metric; in particular, if $B$ is not dense in this situation, can we find a dense set $\tilde{B}$ of countable closed sets in $X$?
+
+  \item[(III.8)] Suppose $X$ is a compact metric space, and $\{ K_t \}_{t \in I}$ is a family of nonempty closed subsets of $X$ such that $0 \leq r \leq s \leq 1$ implies $K_r \subset K_s$. Under what conditions will $\{ K_t\ |\ t \in I \}$ be an arc in $2^X$? Use this idea to study arcwise connectedness in hyperspaces.
+
+  \item[(III.9)] Suppose $X$ is a metric space (not necessarily compact) with metric $d$. Let $C(X)$ be the set of all compact subsets of $X$, and show that $\tilde{d}$, as defined in the text, determines a metric on $C(X)$. Will equivalent metrics on $X$ yield equivalent metrics on $C(X)$?
+
+  \item[(III.10)] Letting $\Re^2$ be equipped with its usual metric, let $A$ be the set of all circles in $\Re^2$, regarded as a subspace of $C(\Re^2)$. Show that $A \simeq \Re^3$. (What is the closure of $A$ in $C(\Re^2)$?) Try to identify some other some other spaces of this sort; e.g., the set of all ellipses in $\Re^2$, triangles in $\Re^2$, spheres in $\Re^3$, etc.
+
+  \item[(III.11)] Letting $A$ be as in Problem III.10, identify some spheres, lines, arcs, planes, etc., in $A$. Find a hyperspace $C$ of sets in some Euclidean space, of dimension as small as you can, such that $C \simeq \Re^K$, $K = 4,5,\cdots$.
+
+  \item[(III.12)] Suppose $X$ is a space, and $(A_i)^\infty_{i=1}$ is a sequence of subsets of $X$. Let $\lim \sup (A_i)^\infty_{i=1} = \{ x \in X\ |$ each open set containing $x$ intersects infinitely many members of $(A_i)^\infty_{i=1} \}$, and $\lim \inf (A_i)^\infty_{i=1} = \{ x \in X\ |$ each open set containing $x$ intersects all but finitely many members of $(A_i)^\infty_{i=1} \}$. Note that $\lim \inf (A_i)^\infty_{i=1} \subset \lim \sup (A_i)^\infty_{i=1}$, but that equality need not hold. Now if $\lim \inf (A_i)^\infty_{i=1} = \lim \sup (A_i)^\infty_{i=1} = L$, then we say that $L$ is the \emph{limit} of $(A_i)^\infty_{i=1}$, and that $(A_i)^\infty_{i=1}$ \emph{converges} to $L$.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item Investigate the above notion in the context of hyperspaces. In particular, consider the following question: If $X$ is a compact metric space, and $(A_i)^\infty_{i=1}$ is a sequence in $2^X$, then is it true that $(A_i)^\infty_{i=1}$ converges to $A \in 2^X$ if $(A_i)^\infty_{i=1}$ converges to $A$ in the Hausdorff metric? Is the converse true?
+      \item Show that if $X$ is a compact metric space, and $G$ is an uncountable collection of closed sets in $X$, then some sequence of distinct elements of $G$ converges to an element of $G$.
+      \item A sequence $(A_i)^\infty_{i=1}$ of sets in the metric space $X$ is said to \emph{converge homeomorphically} to $A \subset X$ if 
+        \begin{enumerate}[\hspace{1cm}(1)]
+          \item $A_i \simeq A$ for $i = 1,2,\cdots$; and 
+          \item if $\epsilon > 0$, there exists $N \in J^+$ such that if $n \geq N$, there exists a homeomorphism $f\ :\ A_n \rightarrow A$ such that $d(x,f(x)) < \epsilon$. 
+        \end{enumerate}
+        Show that if $(A_i)^\infty_{i=1}$ converges homeomorphically to $A$, then $(A_i)^\infty_{i=1}$ converges to $A$; but not conversely.
+      \item Prove that if $X$ is a separable metric space, and $G$ is an uncountable collection of homeomorphic compacta in $X$, then some sequence of distinct elements of $G$ converges homeomorphically to an element of $G$.
+      \item A \emph{triod} is a space homeomorphic to the union of three segments having a common endpoint (i.e., a letter ``T''). Prove that there does not exist an uncountable family of pairwise disjoint triods in $\Re^2$.
+      \item A continuum $X$ is \emph{chainable} if for each $\epsilon > 0$, there exists an open cover $\{L_i\}^n_{i=1}$ of $X$ by $\epsilon$-sets such that if $1 \leq i$, $j \leq n$, then $L_j \cap L_j \neq \emptyset$ if and only if $|i-j| \leq 1$. Prove that if $X$ is a chainable continuum in $\Re^2$, then there exists an uncountable family $\{ X_\alpha \}_{\alpha \in M}$ of pairwise disjoint sets in $\Re^2$ such that $X_\alpha \simeq X$ for all $\alpha \in M$.
+      \item Seek a characterization of the compacta $A \subset \Re^2$ for which there does not exist an uncountable collection of pairwise disjoint copies of $A$ in $\Re^2$.
+    \end{enumerate}
+
+  \item[(III.13)] If $f \in C(I,\Re)$, let $\Phi(f) = \Gamma_f = \{ (t,f(t)) \in \Re^2\ |\ t \in I \}$. Let $G = \{ \Gamma_f\ |\ f \in C(I,\Re) \}$. Then $\Phi$ is a bijection of $C(I,\Re)$ onto $G$. Regarding $G$ as a subspace of $C(\Re^2)$, is $\Phi$ continuous? Is $\Phi$ a homeomerphism? If $(f_i)^\infty_{i=1}$ is a sequence in $C(I,\Re)$ converging to $f$, then does $(\Gamma_{f_i})^\infty_{i=1}$ converge (in the sense of definition of Problem III.12) to $\Gamma_f$? If so, is the convergence homeomorphic? What can be said in a more general setting?
+
+  \item[(III.14)] If $X$ is a compact metric space, then a \emph{Whitney map} on $2^X$ is a map $\mu\ :\ 2^X \rightarrow I$ such that 
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item $\mu(X) = 1$ and $\mu(\{x\}) = 0$ for all $x \in X$; and 
+      \item if $A,B \in 2^X$ and $A \stackrel{\subset}{\neq} B$, then $\mu(A) < \mu(B)$. 
+    \end{enumerate}
+    Whitney maps have played an important role in the development of the theory of hyperspaces. Show that Whitney maps exists.
+
+  \item[(III.15)] If $X$ is an arc, and $\mu\ :\ C(X) \rightarrow I$ is the restriction of a Whitney map to $C(x)$, show that $\mu^{-1}(t)$ is an arc in $C(X)$ whenever $0 \leq t < 1$. Are there other compacta $X$ for which $\mu^{-1}(t) \simeq X$ whenever $\mu\ :\ C(X) \rightarrow I$ is the restriction of a Whitney map and $0 \leq t < 1$?
+
+  \item[(III.16)] If $\mu\ :\ 2 \rightarrow I$ is a whitney map, then a \emph{segment} in $2^X$ is a map $h\ :\ I \rightarrow 2^X$ such that 
+    \begin{enumerate}[\hspace{1cm}(1)]
+      \item if $0 \leq t_1 < t_2 \leq 1$, then $h(t_1) \subset h(t_2)$; and 
+      \item if $0 \leq t \leq 1$, $\mu(h(t)) = (1-t) \mu(h(0)) + t \mu(h(1))$. 
+    \end{enumerate}
+    If $h$ is a segment, is $h(I)$ an arc? An \emph{order arc} in $2^X$ is an arc $A$ such that if $A,B \in A$, either $A \subset B$ or $B \subset A$. Investigate the relationship between the properties of being an order arc and being the image of a segment.
+
+  \item[(III.17)] Let $X$ be a continuum with metric $d$.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item If $A \in P(X)$, let $\phi(A) = \{ \{a\}\ |\ a \in A \} \in P(P(X))$. Show that $\phi$ determines a function from $2^X$ to $2^{2^X}$. Is $\phi$ a map?
+      \item If $B \in P(P(X))$, let $\Psi(B) = \cup_{A \in B} A \in P(X)$. Show that $\Psi$ determines a function from $2^{2^X}$ into $2^X$, and that if $K,L \in 2^{2^X}$, then $\tilde{\tilde{d}}(K,L) \geq \tilde{d}(\Psi(K),\Psi(L))$. (Thus $\Psi$ is a \emph{contraction} with respect to the metrics $\tilde{d}$ and $\tilde{\tilde{d}}$).
+      \item Show that if $r\ :\ 2^2X \rightarrow \phi(2^X)$ is defined by $r(A) = \phi(\Psi(A))$, then $r$ is a retraction.
+    \end{enumerate}
+
+  \item[(III.18)] ``Compute'' $C(T)$, where $T$ is a triod. (Interpret ``compute'' to mean: ``Find a subset of some Euclidean space homeomorphic to $C(T)$.'') Try generalizing by replacing $T$ by the union of a finite number of arcs having a common endpoint.
+
+\end{description}
+
+
+\subsection{Symmetric Products}
+\markboth{III.3. Symmetric Products}{III.3. Symmetric Products}
+
+If $X$ is a compact metric space, and $n \in J^+$, then the space $X(n)$ with Hausdorff metric is called the $n$th \emph{symmetric product} ($n$th \emph{symmetric power}, $n$th \emph{symmetric potency}) of $X$. This terminology stems from the following result.
+
+\textbf{(III.3.1) Theorem}: Suppose $X$ is a compact metric space, and $n \in J^+$. Let $\sim$ be the relation on $X^n$ defined by $(x_1,x_2,\cdots,x_n) \sim (y_1,y_2,\cdots,y_n)$ if and only if $\{ x_1,x_2,\cdots,x_n \} = \{ y_1,y_2,\cdots,y_n \}$. Then $X(n) \simeq x^{n}/\sim$.
+
+\textbf{(III.3.2) Theorem}: $S^1(2)$ is a Moebius band.
+
+\textbf{Proof}: We use Theorem III.3.1, by which we may regard $S^1(2)$ as $S^1 \times S^1$ ``folded symmetrically about its diagonal''. Now, $S^1 \times S^1$ is a torus (Figure III.1(a)), which we may represent as in Figure III.1(b). Of course, in Figure III.1(b) we are to identify the two edges of $I^2$ labeled $A_1$ and $A_2$, as well as the two edges labeled $B_1$ and $B_2$. Now by Theorem III.3.1 we may, using Figure III.1(b), represent $S^1(2)$ as in Figure III.2. Note that in the folding, $A_1$ and $B_1$ have been identified to obtain $C_1$, and $A_2$ and $B_2$ have been identified to obtain $C_2$.
+
+\begin{center}
+%TeXCAD Picture [fig3.1.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(85.25,42.75)(0,0)
+\qbezier(20.5,29.75)(16.75,29.38)(15,26.5)
+\qbezier(20.5,29.75)(24.25,29.38)(26,26.5)
+\qbezier(20.25,24.5)(27.63,25.5)(27.5,29.5)
+\qbezier(20.25,24.5)(12.88,25.5)(13,29.5)
+\qbezier(37.75,26.75)(37.5,37.63)(20.25,39)
+\qbezier(2.5,26.75)(2.75,37.63)(20,39)
+\qbezier(37.75,26.75)(37.5,15.88)(20.25,14.5)
+\qbezier(2.5,26.75)(2.75,15.88)(20,14.5)
+\put(50.75,14.25){\framebox(32,22)[cc]{}}
+%\emline(50.75,14.25)(82.75,36.25)
+\multiput(50.75,14.25)(.049004594,.033690658){653}{\line(1,0){.049004594}}
+%\end
+\put(62,36.25){\vector(1,0){4.75}}
+\put(50.75,23.5){\vector(0,1){4.75}}
+\put(82.75,23.5){\vector(0,1){4.25}}
+%\vector(63.25,14.25)(66.5,14.5)
+\put(66.5,14.5){\vector(1,0){.07}}\multiput(63.25,14.25)(.40625,.03125){8}{\line(1,0){.40625}}
+%\end
+\put(17.75,42.75){\makebox(0,0)[cc]{$S^1 \times S^1$}}
+\put(65.5,39.5){\makebox(0,0)[cc]{$B_1$}}
+\put(65.25,12.25){\makebox(0,0)[cc]{$B_2$}}
+\put(85.25,26.75){\makebox(0,0)[cc]{$A_1$}}
+\put(48.25,26.75){\makebox(0,0)[cc]{$A_2$}}
+\put(47.75,39.75){\makebox(0,0)[cc]{$I^2$}}
+\put(19.5,8.75){\makebox(0,0)[cc]{(a)}}
+\put(70.25,8.25){\makebox(0,0)[cc]{(b)}}
+\put(41.5,4){\makebox(0,0)[cc]{Figure III.1}}
+%\vector(15.75,41)(18.75,35.75)
+\put(18.75,35.75){\vector(1,-2){.07}}\multiput(15.75,41)(.0337079,-.0589888){89}{\line(0,-1){.0589888}}
+%\end
+%\vector(48.25,35.5)(55.25,31.75)
+\put(55.25,31.75){\vector(2,-1){.07}}\multiput(48.25,35.5)(.0625,-.03348214){112}{\line(1,0){.0625}}
+%\end
+\end{picture}
+\end{center}
+
+\begin{center}
+%TeXCAD Picture [fig3.2.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(54.5,34.75)(0,0)
+\put(2.5,11.75){\line(1,0){49.75}}
+\put(52.25,11.75){\line(0,1){0}}
+\put(52.25,11.75){\line(0,1){23}}
+\put(52.25,34.75){\line(0,1){0}}
+%\emline(52.25,34.75)(2.25,12)
+\multiput(52.25,34.75)(-.0740740741,-.0337037037){675}{\line(-1,0){.0740740741}}
+%\end
+%\vector(32.5,11.75)(37,12)
+\put(37,12){\vector(1,0){.07}}\multiput(32.5,11.75)(.5625,.03125){8}{\line(1,0){.5625}}
+%\end
+\put(52.25,18){\vector(0,1){4.5}}
+\put(25,25.75){\makebox(0,0)[cc]{$D$}}
+\put(54.5,22.5){\makebox(0,0)[cc]{$C_1$}}
+\put(34.5,9.5){\makebox(0,0)[cc]{$C_2$}}
+\put(38.5,19.75){\makebox(0,0)[cc]{$T$}}
+\put(26.25,5){\makebox(0,0)[cc]{Figure III.2}}
+\end{picture}
+\end{center}
+
+Then $S^1(2)$ is the space obtained from the triangle $T$, shown in Figure III.2, by identifying the edges labeled $C_1$ and $C_2$. The reader may find it instructive to attempt to carry out this identification physically, using a paper triangle. We shall instead use figures to illustrate the process. In Figure III.3, we first cut $T$ along the altitude $L$ (Figure III.3(a)) to obtain two triangles $T_1$ and $T_2$ with edges $L_1$ and $L_2$, to be identified as indicated by the arrows (Figure III.3(b)). Then $T_1$ and $T_2$ may be glued along $C_1$ and $C_2$ to yield the rectangle $S$ shown in Figure III.3(c).
+
+\begin{center}
+%TeXCAD Picture [fig3.3.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 0.9mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(132.5,58.25)(0,0)
+\put(2.25,17.5){\line(1,0){38}}
+\put(47.25,17.5){\line(1,0){38}}
+\put(40.25,55.5){\line(0,-1){38}}
+\put(87.5,58.25){\line(0,-1){38}}
+\put(40.25,17.5){\line(0,1){0}}
+\put(2,17.5){\line(0,1){0}}
+%\emline(2.25,17.5)(40.25,55.75)
+\multiput(2.25,17.5)(.033717835,.0339396628){1127}{\line(0,1){.0339396628}}
+%\end
+\put(40.25,55.75){\line(0,1){0}}
+\put(40.25,17.5){\line(-1,1){19.25}}
+\put(87.5,20.25){\line(-1,1){19.25}}
+\put(85.25,17.5){\line(-1,1){19.25}}
+\put(21,36.75){\line(0,1){0}}
+\put(68.5,39.25){\line(1,1){19}}
+\put(47.25,17.5){\line(1,1){19}}
+\put(47.25,17.75){\line(0,1){0}}
+\put(100.25,18.25){\framebox(30,30.25)[cc]{}}
+%\emline(100.25,18)(130.25,48.5)
+\multiput(100.25,18)(.0337078652,.0342696629){890}{\line(0,1){.0342696629}}
+%\end
+\put(130.25,48.5){\line(0,1){0}}
+\put(19.25,17.5){\vector(1,0){6.25}}
+\put(64.75,17.5){\vector(1,0){6.25}}
+\put(40.25,30.5){\vector(0,1){8}}
+\put(73.5,29.25){\vector(1,-1){4.25}}
+\put(76.5,31.25){\vector(1,-1){3.75}}
+\put(87.5,33.5){\vector(0,1){5.75}}
+\put(100.25,40.25){\vector(0,-1){6}}
+%\vector(115.5,33.75)(117.75,36)
+\put(117.75,36){\vector(1,1){.07}}\multiput(115.5,33.75)(.0335821,.0335821){67}{\line(0,1){.0335821}}
+%\end
+\put(130.25,28.5){\vector(0,1){6.25}}
+\put(23,44){\makebox(0,0)[cc]{$D$}}
+\put(31.25,29.75){\makebox(0,0)[cc]{$L$}}
+\put(42.5,40.25){\makebox(0,0)[cc]{$C_1$}}
+\put(20,15.25){\makebox(0,0)[cc]{$C_2$}}
+\put(66.25,25){\makebox(0,0)[cc]{$T_2$}}
+\put(80.5,40.75){\makebox(0,0)[cc]{$T_1$}}
+\put(75.25,51){\makebox(0,0)[cc]{$D_1$}}
+\put(54.5,30.25){\makebox(0,0)[cc]{$D_2$}}
+\put(76.75,34.75){\makebox(0,0)[cc]{$L_1$}}
+\put(89.75,44){\makebox(0,0)[cc]{$C_1$}}
+\put(66,15.25){\makebox(0,0)[cc]{$C_2$}}
+\put(98,37.25){\makebox(0,0)[cc]{$L_1$}}
+\put(133,36.5){\makebox(0,0)[cc]{$L_2$}}
+\put(115,52){\makebox(0,0)[cc]{$D_1$}}
+\put(115.25,15.25){\makebox(0,0)[cc]{$D_2$}}
+\put(121.75,25.5){\makebox(0,0)[cc]{$T_2$}}
+\put(107,41.25){\makebox(0,0)[cc]{$T_1$}}
+\put(118,41){\makebox(0,0)[cc]{$C_1$}}
+\put(123.25,37.75){\makebox(0,0)[cc]{$C_2$}}
+\put(22.25,9.5){\makebox(0,0)[cc]{(a)}}
+\put(68.25,9.5){\makebox(0,0)[cc]{(b)}}
+\put(116.5,9.5){\makebox(0,0)[cc]{(c)}}
+\put(65.5,3){\makebox(0,0)[cc]{Figure III.3}}
+\end{picture}
+\end{center}
+
+Now, the identification of $L_1$ and $L_2$ in $S$ yields a Moebius Band.
+
+\textbf{(III.3.3) Theorem}: If $n = 1$, $2$, or $3$, then $I(n) \simeq I^n$.
+
+\textbf{Proof}: The result is evident if $n = 1$. Since $I(2)$ is easily seen to be homeomorphic with $C(I)$, the result for $n = 2$ follows from Example III.2.4(b). We therefore need only consider the case $n = 3$.
+
+Let $P = \{ (x,y,z) \in \Re^3\ |\ 0 \leq x \leq y \leq z \leq 1 \}$. Let $\sim$ be the equivalence relation on $P$ such that $(a,a,b) \sim (a,b,b)$ whenever $0 \leq a < b \leq 1$, all other relationships being trivial. Let $P' = P/\sim$. Then $P' \simeq I^3$. (Elaboration: $P$ is the solid triangular cone whose vertex is $v_0 = (0,0,0)$ and whose base is the triangle $B$ spanned by $v_1 = (0,0,1)$, $v_2 = (1,1,1)$, and $v_3 = (0,1,1)$. The relation $\sim$ identifies the triangle $T_1$ spanned by $v_0$, $v_1$, and $v_2$, with the triangle $T_2$ spanned by $v_0$, $v_2$, and $v_3$. We may intuitively think of obtaining $P'$ by rotating $T_1$ about the edge spanned by $v_0$ and $v_2$ until it matches $T_2$. See Figure III.4.)
+
+\begin{center}
+%TeXCAD Picture [fig3.4.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(94.25,40.75)(0,0)
+\put(14.75,19){\vector(0,1){21.75}}
+\put(65,19){\vector(0,1){21.75}}
+\put(14.75,19){\vector(1,0){29.25}}
+\put(65,19){\vector(1,0){29.25}}
+%\emline(14.75,19.25)(34.5,34.25)
+\multiput(14.75,19.25)(.044382022,.033707865){445}{\line(1,0){.044382022}}
+%\end
+%\emline(65,19.25)(84.75,34.25)
+\multiput(65,19.25)(.044382022,.033707865){445}{\line(1,0){.044382022}}
+%\end
+\put(34.25,34.25){\line(-1,0){19.5}}
+\put(84.5,34.25){\line(-1,0){19.5}}
+%\vector(14.75,19.25)(2.5,9.5)
+\put(2.5,9.5){\vector(-4,-3){.07}}\multiput(14.75,19.25)(-.042387543,-.033737024){289}{\line(-1,0){.042387543}}
+%\end
+%\vector(65,19.25)(52.75,9.5)
+\put(52.75,9.5){\vector(-4,-3){.07}}\multiput(65,19.25)(-.042387543,-.033737024){289}{\line(-1,0){.042387543}}
+%\end
+%\emline(34.5,34.25)(20.25,28.75)
+\multiput(34.5,34.25)(-.08689024,-.03353659){164}{\line(-1,0){.08689024}}
+%\end
+%\emline(84.75,34.25)(70.5,28.75)
+\multiput(84.75,34.25)(-.08689024,-.03353659){164}{\line(-1,0){.08689024}}
+%\end
+%\emline(20.37,28.71)(14.87,34.36)
+\multiput(20.37,28.71)(-.03353709,.0344435){164}{\line(0,1){.0344435}}
+%\end
+%\emline(70.62,28.71)(65.12,34.36)
+\multiput(70.62,28.71)(-.03353709,.0344435){164}{\line(0,1){.0344435}}
+%\end
+\put(12,40.25){\makebox(0,0)[cc]{$z$}}
+\put(62.25,40.25){\makebox(0,0)[cc]{$z$}}
+\put(6,9.5){\makebox(0,0)[cc]{$x$}}
+\put(56.25,9.5){\makebox(0,0)[cc]{$x$}}
+\put(42,17){\makebox(0,0)[cc]{$y$}}
+\put(92.25,17){\makebox(0,0)[cc]{$y$}}
+\put(23.5,12.75){\makebox(0,0)[cc]{$P$}}
+\put(74.25,12.75){\makebox(0,0)[cc]{$P'$}}
+\put(24.75,37.5){\makebox(0,0)[cc]{$B$}}
+\put(75,37.5){\makebox(0,0)[cc]{$B'$}}
+%\vector(24.25,36)(22.5,32)
+\put(22.5,32){\vector(-1,-2){.07}}\multiput(24.25,36)(-.0336538,-.0769231){52}{\line(0,-1){.0769231}}
+%\end
+%\vector(74.5,36)(72.75,32)
+\put(72.75,32){\vector(-1,-2){.07}}\multiput(74.5,36)(-.0336538,-.0769231){52}{\line(0,-1){.0769231}}
+%\end
+%\dashline{1}(70.5,28.5)(65,19.25)
+\multiput(70.43,28.43)(-.032738,-.05506){14}{\line(0,-1){.05506}}
+\multiput(69.51,26.89)(-.032738,-.05506){14}{\line(0,-1){.05506}}
+\multiput(68.6,25.35)(-.032738,-.05506){14}{\line(0,-1){.05506}}
+\multiput(67.68,23.8)(-.032738,-.05506){14}{\line(0,-1){.05506}}
+\multiput(66.76,22.26)(-.032738,-.05506){14}{\line(0,-1){.05506}}
+\multiput(65.85,20.72)(-.032738,-.05506){14}{\line(0,-1){.05506}}
+%\end
+%\dashline{1}(65,19.25)(65,19.25)
+%\end
+%\emline(20.25,28.5)(14.75,19.25)
+\multiput(20.25,28.5)(-.03353659,-.05640244){164}{\line(0,-1){.05640244}}
+%\end
+\put(15,17.25){\makebox(0,0)[cc]{$v_0$}}
+\put(36.5,34.5){\makebox(0,0)[cc]{$v_3$}}
+\put(12,34.75){\makebox(0,0)[cc]{$v_1$}}
+\put(19.75,31.5){\makebox(0,0)[cc]{$v_2$}}
+\put(28,25){\makebox(0,0)[cc]{$T_2$}}
+\put(9.75,26.25){\makebox(0,0)[cc]{$T_1$}}
+%\vector(11.75,24.5)(17,26.5)
+\put(17,26.5){\vector(3,1){.07}}\multiput(11.75,24.5)(.0875,.0333333){60}{\line(1,0){.0875}}
+%\end
+%\vector(25.25,23.75)(21.75,27.25)
+\put(21.75,27.25){\vector(-1,1){.07}}\multiput(25.25,23.75)(-.03365385,.03365385){104}{\line(0,1){.03365385}}
+%\end
+%\emline(65,19)(63,29.5)
+\multiput(65,19)(-.0333333,.175){60}{\line(0,1){.175}}
+%\end
+\qbezier(63.25,28.75)(65.75,21.38)(78.25,29.5)
+\qbezier(65,34)(62.75,31)(63.5,28)
+\put(45.25,3){\makebox(0,0)[cc]{Figure III.4}}
+\end{picture}
+\end{center}
+
+Now suppose $\{ a,b,c \} \in I(3)$, where $a \leq b \leq c$. Then, if $\phi(\{a,b,c\}) = [(a,b,c)] \in P'$, $\phi$ defines a homeomorphism of $I(3)$ onto $P'$. (What subset of $I(3)$ corresponds to the boundary of $P'$?)
+
+\textbf{(III.3.4) Example}: Let $H_0 = \{ A \in I(3)\ |\ I \notin A \}$. Under the homeomorphism $\phi$ constructed in the proof of Theorem III.3.3, $H_0$ correspond to $P'-B'$, where $B'$ is the image of $B$ under the natural projection of $P$ onto $P'$. Now, if $H^3 = \{ (x,y,z) \in \Re^3\ |\ z \geq 0 \}$, it is easy to see that $H^3 \simeq P'-B' \simeq H_0$. Let $f\ :\ [0,1) \rightarrow S^1$ be a bijective map (cf. Example I.9.2(b)). Then $f$ induces a bijective map $\tilde{f}\ :\ H_0 \rightarrow S^1(3)$, where $\tilde{f}(A) = f(A)$ for all $A \in H_0$. It can be shown that $S^1(3) \simeq S^3$ (R. Bott, Fund. Math., 39 (1952), 264-268). (Use the preceding example to show that $S^1(3)$ is a $3$-manifold.) Thus there exists a bijective map of $H^3$ onto $S^3$.
+
+
+\subsection*{Problems}
+\addcontentsline{toc}{subsection}{\numberline{3.P2}Problems}
+\markboth{III.P2. Problems}{III.P2. Problems}
+
+\begin{description}
+
+  \item[(III.19)] Show that if $d_1$ and $d_2$ are equivalent metrics on $X$, then $\tilde{d}_1$ and $\tilde{d}_2$ are equivalent metrics on $X(n)$ for $n = 1,2,\cdots$. (Note that this shows that the space $H_0$ of Example III.3.4 may be identified with $( [0,1) )(3)$.)
+
+  \item[(III.20)] Is the hypothesis that $X$ be compact necessary in Theorem III.3.1?
+
+  \item[(III.21)] It is evident that $C(I) \simeq I(2)$. Does there exist another space $X$ for which there is a nice relationship between $C(X)$ and $X(n)$ for some $n \in J^+$?
+
+  \item[(III.22)] $I^2(2) \simeq I^4$. Try showing this. Does this imply that if $X$ is a $2$-manifold, then $X(2)$ is a $4$-manifold? Is $X(2)$ a $4$-manifold?
+
+  \item[(III.23)] If $T$ is a triod, ``compute'' $T(2)$ and $T(3)$.
+
+  \item[(III.24)] If $X = X_1 \cup X_2$, where $X$, $X_1$, and $X_2$ are compact metric spaces, and $X_1 \cap X_2$ is a singleton, ``compute'' $X(n)$ in terms of hyperspaces of $X_1$ and $X_2$ (cf Problem III.23).
+
+  \item[(III.25)] In Example III.3.5, it is shown that there exists a bijective map $f\ :\ H^3 \rightarrow S^3$. (This example is due to R. H. Bing and J. M. Martin; an earlier one was given by L. C. Glaser.) Try constructing such a map explicitly, not using hyperspaces. Try constructing a bijective map $f\ :\ H^k \rightarrow S^k$, where $H^k = \{ (x_1,x_2,\cdots,x_k) \in \Re^k\ |\ x_k \geq 0 \}$ for $k = 2,4,5,\cdots$.
+
+  \item[(III.26)] From Theorem III.3.3, it seems reasonable to conjecture that $I(n) \simeq I^n$ for $n \in J^+$. Investigate this conjecture.
+
+  \item[(III.27)] If $X$ is connected, is $X(n)$ connected? Is the connectedness of $X$ necessary for connectedness of $X(n)$? Investigate these and related questions concerning the transference of topological properties between $X$ and $X(n)$.
+
+\end{description}
+
+
+\subsection{The Vietoris Topology}
+\markboth{III.4. The Vietoris Topology}{III.4. The Vietoris Topology}
+
+We here generalize the notion of hyperspaces to a nonmetric setting. Suppose $X$ is a space, and $U_1, U_2, \cdots, U_k$ are nonempty open subsets of $X$. Letting $2^X$ denote the family of nonempty closed subsets of $X$, let $[U_1, U_2, \cdots, U_k] = \{ A \in 2^X\ |\ A \subset^k _{i=1}$ and $A \cap U_i \neq \emptyset$ for $i = 1, 2, \cdots, k \}$.
+
+\textbf{(III.4.1) Definition}: The \emph{Vietoris topology} (or \emph{finite topology}) on $2^X$ is the topology generated by $\{ [U_1,U_2,\cdots,U_k]\ |\ \emptyset \neq U_1$ open in $X$, $i=1,2,\cdots,k \}$. A subspace of $2^X$ is called a \emph{hyperspace} of $X$. (L. Vietoris, Monatsh. Math., 33 (1923), 49-62.)
+
+If $X$ is metrizable, the Vietoris topology is not generally the same as the topology induced by the Hausdorff metric -- in fact, as seen in Section 2, there are even inequivalent Hausdorff metrics in general, so it only makes sense to speak of ``the'' topology induced by the Hausdorff metric in the case in which $X$ is compact. In this case, we have the following result.
+
+\textbf{(III.4.2) Theorem}: If $X$ is a compact metric space, then the Hausdorff metric on $2^X$ generates the Vietoris topology.
+
+
+\subsection*{Problems}
+\addcontentsline{toc}{subsection}{\numberline{3.P3}Problems}
+\markboth{III.P3. Problems}{III.P3. Problems}
+
+\begin{description}
+
+  \item[(III.28)] Is the analog of Theorem III.4.2 true for $X(n)$? for $C(X)$?
+
+  \item[(III.29)] Show that $X$ is compact if and only if $2^X$ (with Vietoris topology) is compact. For what other topological properties (e.g. Hausdorff, regular, normal, separable, etc.) does this hold?
+
+  \item[(III.30)] If $f\ :\ X \rightarrow Y$ is a closed map, then $f$ defines a function $f'\ :\ 2^X \rightarrow 2^Y$ by $f'(A) = f(A)$ for all $A \in 2^X$. Is $f'$ a map? If $f\ :\ X \rightarrow Y$ is a map, then $f$ defines a function $f''\ :\ 2^Y \rightarrow 2^X$ by $f''(B) = f^{-1}(B)$ for all $B \in 2^Y$. Is $f''$ a map? (cf. Problem III.4)
+
+\end{description}
+
+
+
+\newpage
+
+\section{Decomposition Spaces}
+\markboth{IV. Decomposition Spaces}{IV. Decomposition Spaces}
+
+
+\subsection{Semicontinuous and Continuous Spaces}
+\markboth{IV.1. Semicontinuous and Continuous Spaces}{IV.1. Semicontinuous and Continuous Spaces}
+
+\textbf{(IV.1.1) Definition}: Suppose $G$ is a collection of nonempty compact subsets of the metric space $X$. Then $G$ is said to be:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item \emph{upper semicontinuous} if for each $g \in G$ and $\epsilon > 0$, there exists $\delta > 0$ such that if $g' \in G$ and $d(g,g') < \delta$, then $g' \subset N(g,\epsilon)$;
+  \item \emph{lower semicontinuous} if for each $g \in G$ and $\epsilon > 0$, there exists $\delta > 0$ such that if $g' \in G$ and $d(g,g') < \delta$, then $g \subset N(g',\epsilon)$;
+  \item \emph{continuous} if $G$ is both upper semicontinuous and lower semicontinuous (i.e. if both (a) and (b) hold).
+\end{enumerate}
+
+It is evident from the definition how to define \emph{upper semicontinuity} at $g \in G$, etc. If $G$ is a collection of compacta in $X$, we say that $G$ is a \emph{monotone} if each member of $G$ is connected.
+
+Here is an analogy which connects the above definition(s) with a more familiar situation.
+
+\textbf{$A_1$}: Suppose $f\ :\ D \rightarrow \Re$, where $D$ is a subset of a metric space $X$. Then $f$ is \emph{upper semiconinuous} (\emph{lower semicontinuous}, \emph{continuous}) at $x_0 \in D$ if for $\epsilon > 0$, there exists $\delta > 0$ such that $f(x) \leq f(x_0) + \epsilon$ ($f(x_0) \leq f(x) + \epsilon$, $f(x) \leq f(x_0) + \epsilon$, and $f(x_0) \leq f(x) + \epsilon$) whenever $x \in D$ and $d(x,x_0) < \delta$.
+
+\textbf{$A_2$}: Suppose $G$ is a collection of nonempty compact subsets of the metric space $X$. Then $G$ is \emph{upper semicontinuous} (\emph{lower semicontinuous}, \emph{continuous}) at $g_0 \in G$ if for $\epsilon > 0$, there exists $\delta > 0$ such that $g \subset N(g_0,\epsilon)$ ($g_0 \subset N(g_0,\epsilon)$, $g \subset N(g_0,\epsilon)$, and $g_0 \subset N(g,\epsilon)$) whenever $g \in G$ and $d(g,g_0) < \delta$.
+
+\textbf{(IV.1.2) Theorem}: If $G$ is an upper or lower semicontinuous collection of compact subsets of the metric space $X$, then the members of $G$ are pairwise disjoint.
+
+\textbf{(IV.1.3) Theorem}: Suppose either that $G$ is a collection of closed subsets of the compact metric space $X$, or that $G$ is a collection of continua in the locally compact metric space $X$. Then $G$ is upper semicontinuous if and only if for any sequence $(g_i)^\infty_{i=1}$ of members of $G$ such that $g \cap \lim \inf (g_i)^\infty_{i=1} \neq \emptyset$, where $g \in G$, then $\lim \sup (g_i)^\infty_{i=1} \subset g$.
+
+
+\subsection{Upper Semicontinuous Decompositions}
+\markboth{IV.2. Upper Semicontinuous Decompositions}{IV.2. Upper Semicontinuous Decompositions}
+
+\textbf{(IV.2.1) Definition}: If $X$ is a metric space, then $G$ is said to be an \emph{upper semicontinuous decomposition} of $X$ if $G$ is an upper semicontinuous collection of nonempty compact subsets of $X$ such that $X = U_{g \in G} g$.
+
+\textbf{(IV.2.2) Theorem}: Suppose $X$ is a metric space, and $G$ is a collection of pairwise disjoint nonempty compact subsets of $X$ such that $X = \cup_{g \in G} g$. Then $G$ is an upper semicontinuous decomposition of $X$ if and only if for each closed set $K \subset X$, $\cup \{ g \in G\ |\ g \cap K \neq \emptyset \}$ is closed in $X$.
+
+\textbf{(IV.2.3) Definition}: Suppose $G$ is an upper semicontinuous decomposition of the metric space $X$. Let $\sim$ be the equivalence relation on $X$ defined by $x \sim y$ if and only if there exists $g \in G$ such that $\{ x,y \} \subset g$. Then the \emph{decomposition space} of $G$ is defined to be $X/\sim$, with the quotient topology. This space will be denoted by $X/G$, and the natural projection of $X$ onto $X/G$ will be denoted by $\pi_G$.
+
+
+\subsection{Closed Maps and Induced Decompositions}
+\markboth{IV.3. Closed Maps and Induced Decompositions}{IV.3. Closed Maps and Induced Decompositions}
+
+\textbf{(IV.3.1) Theorem}: Suppose $G$ is an upper semicontinuous decomposition of the metric space $X$. Then $\pi_G$ is a closed map.
+
+Suppose $f\ :\ X \rightarrow Y$ is a surjective map of metric spaces. Define the equivalence relation $\sim_f$ on $X$ by $x \sim_f y$ if and only if $f(x) = f(y)$. We let the quotient space $X/\sim_f$ be denoted by $X/G_f$. There is a natural bijection $\alpha$ of $X/G_f$ onto $Y$ defined by $\alpha([x]) = f(x)$. Then $\alpha$ is continuous, but need not be a homeomorphism. However, we have the following.
+
+\textbf{(IV.3.2) Theorem}: Suppose $X$ and $Y$ are compact metric spaces, and $f\ :\ X \rightarrow Y$ is a surjective map. Then $G_f = \{ f^{-1}(y)\ |\ y \in Y \}$ is an upper semicontinuous decomposition of $X$, and the natural bijection $\alpha\ :\ X/G_f \rightarrow Y$ is a homeomorphism.
+
+
+\subsection*{Problems}
+\addcontentsline{toc}{subsection}{\numberline{4.P1}Problems}
+\markboth{IV.P1. Problems}{IV.P1. Problems}
+
+\begin{description}
+
+  \item[(IV.1)] In this chapter, we stated some theorems setting forth the elementary theory of upper semicontinuous collections and decompositions. What are the analogous results for lower semicontinuous collections and decompositions? What about continuous collections?
+
+  \item[(IV.2)] If $K$ is a compact subset of the metric space $X$, show that the components of $K$ form an upper semicontinuous collection.
+
+  \item[(IV.3)] The sequence $(A_i)^\infty_{i=1}$ of subsets of the metric space $X$ is said to be a \emph{null sequence} if the sequence ($\text{Diam}(A_i)^\infty_{i=1}$ converges to $0$. Show that if $(A_i)^\infty_{i=1}$ is a null sequence of pairwise disjoint compact sets in $X$, then $(A_i)^\infty_{i=1}$ is an upper semicontinuous collection.
+
+  \item[(IV.4)] Find a way of relaxing the hypothesis that $X$ be compact in Theorem IV.3.2.
+
+  \item[(IV.5)] Prove that if $X$ is a separable metric space, and $G$ is an upper semicontinuous decomposition of $G$, then $X/G$ is a separable metrizable space. Show that $X/G$ is locally compact if $X$ is locally compact and locally connected.
+
+  \item[(IV.6)] Prove that if $f\ :\ X \rightarrow Y$ is a surjective map of metric spaces, then the map $\alpha$ defined prior to Theorem IV.3.2 is a homeomorphism if $f$ is either open or closed.
+
+  \item[(IV.7)] If $A$ is a compact set in the metric space $X$, then $\{A\} \cup \{ \{X\}\ |\ x \in X-A \}$ is an upper semicontinuous decomposition of $X$. We denote the resulting decomposition space by $X/A$.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item If $A$ is a straight line interval in $\Re^k$, show that $\Re^k/A \simeq F^k$.
+      \item If $A$ is a circle in $\Re^2$, show that $\Re^2/A \not\simeq \Re^2$.
+    \end{enumerate}
+    (What is the situation if $A$ is a circle in $\Re^k$, $k \geq 3$?)
+
+  \item[(IV.8)] Let $G$ be a monotone upper semicontinuous decomposition of $\Re$. Show that $\Re/G \simeq \Re$.
+
+  \item[(IV.9)] Let $G$ be a monotone upper semicontinuous decomposition of the chainable continuum $X$. Show that $X/G$ is chainable.
+
+  \item[(IV.10)] A map $f\ :\ X \rightarrow Y$ is \emph{proper} if $f^{-1}(C)$ is compact whenever $C$ is a compact subset of $Y$.
+    \begin{enumerate}[\hspace{1cm}(a)]
+      \item Under what conditions on the metric spaces $X$ and $Y$ will a proper map be closed?
+      \item Under what conditions on the metric spaces $X$ and $Y$ will a closed map be proper?
+      \item Under what conditions on the metric space $X$ and the upper semicontinuous decomposition $G$ of $X$ will $\pi_G$ be proper?
+    \end{enumerate}
+
+  \item[(IV.11)] If $G$ is an upper semicontinuous decomposition of the compact metric space $X$, then $G \subset 2^X$. Hence $G$ can be topologized by the Hausdorff metric. How does the hyperspace topology compare with the quotient topology? What if $G$ is continuous?
+
+  \item[(IV.12)] If $G$ is an upper semicontinuous decomposition of the metric space $X$, and $Y$ is a metric space, let $G' = \{ g \times \{y\}\ |\ y \in Y \}$. Prove that $G'$ is an upper semicontinuous decomposition of $X \times Y$. Is there a relationship between $(X/G) \times Y$ and $(X \times Y) / G'$?
+
+  \item[(IV.13)] Suppose $A$ is a compact subset of $\Re^2$. Make a conjecture about a necessary and sufficient condition on $A$ for $\Re^2/A \simeq \Re^2$. Verify your conjecture.
+
+  \item[(IV.14)] Suppose $A$ is a compact subset of $I$. Under what condition(s) will there exists an upper semicontinuous decomposition $G$ of $I$ such that $A \in G$ and $I/G \simeq I$?
+
+  \item[(IV.15)] Let $G$ be an upper semicontinuous decomposition of $I$. Can $I/G$ be embedded in $\Re^2$? Characterize the decomposition spaces of upper semicontinuous decompositions on $I$.
+
+  \item[(IV.16)] Show that $D^n / S^{n-1} \simeq S^n$.
+
+  \item[(IV.17)] If $Y$ is a metric space, then the function $F\ :\ X \rightarrow C(Y)$ is said to be \emph{upper semicontinuous} at $x \in X$ if for any open set $U$ such that $F(x) \subset U$, there exists an open set $V$ containing $x$ such that $F(x') \subset U$ for all $x' \in V$. $F\ :\ X \rightarrow C(Y)$ is \emph{upper semicontinuous} if $F$ is upper semicontinuous at $x$ for all $x \in X$. What is the relationship, if any, between this idea (i.e. the idea of upper semicontinuous set-valued function) and the idea of upper semicontinuous collection? If $C(Y)$ is equipped with the Hausdorff metric, will an upper semicontinuous set-valued function $F\ :\ X \rightarrow C(Y)$ be continuous? What about the converse?
+
+  \item[(IV.18)] M.K. Fort, Jr. (J. Indian Math. Soc., 25 (1961), 103-107) has used the notion of upper semicontinuous set-valued function to prove the existence of bijective maps from certain spaces onto the Cantor set. There is, for example, a bijective map of the set of all irrational reals onto the Cantor set (this was shown earlier by W. Sierpinski). Find such a bijection.
+
+  \item[(IV.19)] How would the result of this section be affected if we considered upper semicontinuous collections of closed (rather than compact) subsets of a metric space? (If $G$ is a collection of closed sets in the space $X$, $G$ is \emph{upper semicontinuous} if for each $g \in G$ and open set $U$ containing $g$, there exists an open set $V$ containing $g$ such that if $g' \in G$ and $g' \cap V \neq \emptyset$, then $g' \subset U$.) What about the general (nonmetric) setting?
+
+\end{description}
+
+
+
+\newpage
+
+\section*{Bibliography}
+\addcontentsline{toc}{section}{\numberline{}Bibliography}
+\markboth{Bibliography}{Bibliography}
+
+It would not be appropriate to attempt a listing of all those books containing material relevant to the subject matter of this monograph. We make no such attempt. Rather, we list just a few books (chosen by personal bias, and not all of which are particularly related to our specific subject matter) which the interested reader may want to look into.
+
+\subsection*{Introductory Topology}
+\begin{enumerate}[1.]
+  \item Dan E. Christie. \emph{Basic Topology: A Developmental Course for Beginners}. MacMillan; New York, 1976.
+  \item Donald W. Kahn. \emph{Topology: An Introduction to the Point-Set and Algebraic Areas}. Williams and Wilkins; Baltimore, 1975.
+  \item Robert H. Kasriel. \emph{Undergraduate Topology}. Sauders; Philadelphia, 1971.
+  \item Sze-tsen Hu. \emph{Introduction to General Topology}. Holden-Day; San Francisco, 1966.
+  \item Bert Mendelson. \emph{Introduction to Topology}. Allyn and Bacon; Boston, 1966.
+  \item James R. Munkres. \emph{Topology: A First Course}. Prentice-Hall; Englewood Cliffs, 1975.
+\end{enumerate}
+
+\subsection*{Introductory Topology Using the ``Moore Method''}
+\begin{enumerate}[1.]
+  \item Robert A. Conover. \emph{A First Course in Topology}. Williams and Wilkins; Baltimore, 1975.
+  \item Philip Nazetta; George E. Strecher. \emph{Set Theory and Topology}. Bogden and Guigley; Tarrytown-on-Hudson, 1971.
+  \item L. E. J. Ward, Jr. \emph{Topology: an Outline For a First Course}. Dekker; New York, 1972.
+\end{enumerate}
+
+\subsection*{Books Treating Topology at a Bit Deeper Level than Those Previously Listed}
+\begin{enumerate}[1.]
+  \item Nicolas Bourbaki. \emph{Elements of Mathematics: General Topology}, Parts 1 and 2. Addison-Wesley; Reading, 1966.
+  \item James Dugundji. \emph{Topology}. Allyn and Bacon; Boston, 1966.
+  \item R. Engelking. \emph{Outline of General Topology}. Wiley; New York, 1968.
+  \item John L. Kelley. \emph{General Topology}. Springer-Verlag; New York, 1975.
+  \item K. Kuratowski. \emph{Topology}, vols. I and II. Academic Press; New York, 1966.
+  \item Jun-iti Nagata. \emph{Modern General Topology}. North-Holland, 1974.
+\end{enumerate}
+
+\subsection*{Some Good ``Popular'' Treatments of ``Geometrically Flavored'' Topology}
+\begin{enumerate}[1.]
+  \item Paul Alexandroff. \emph{Elementary Concepts of Topology}. Dover; New York 1962.
+  \item Maurice Fréchet; Ky Fan. \emph{Introduction to Combinatorial Topology}. Prindle, Weber, and Schmidt; Boston, 1965.
+  \item H. B. Griffiths. \emph{Surfaces}. Cambridge University Press; Cambridge, 1976.
+\end{enumerate}
+
+\subsection*{Introductory Treatments of Geometrically Flavored Topology}
+\begin{enumerate}[1.]
+  \item John G. Hocking; G. S. Young. \emph{Topology}. Addison-Wesley; Reading, 1961.
+  \item C. T. C. Wall. \emph{A Geometric Introduction to Topology}. Addison-Wesley; Reading, 1972.
+\end{enumerate}
+
+\subsection*{A Book in a Unique Category -- Loaded With Exotic Examples}
+\begin{enumerate}[1.]
+  \item Lynn A. Steen; J. Arthur Seebach, Jr. \emph{Counterexamples in Topology}. Holt, Rinehart, and Winston; 1970.
+\end{enumerate}
+
+
+\end{document}

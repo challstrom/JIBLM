@@ -1,0 +1,2870 @@
+\documentclass{book}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% Journal headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright Guilford College Journal of Undergraduate Mathematics} \cfoot{} \rfoot{ - at www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+% title page
+
+\thispagestyle{empty}
+\title{Problems In Classical Differential Geometry}
+\author{Martin Lewinter}
+\date{\vspace{3cm}
+  \emph{Journal of Undergraduate Mathematics}\\
+  Department of Mathematics\\
+  Guilford College\\
+  Greensboro, North Carolina 27410
+  }
+\maketitle
+
+% table of contents
+
+\thispagestyle{empty}
+\pagenumbering{roman}
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+
+\chapter*{Preface}
+\markboth{Preface}{Preface}
+\addcontentsline{toc}{chapter}{\numberline{}Preface}
+
+\pagenumbering{roman}
+
+\setcounter{equation}{0}
+
+I had several objectives in mind in writing this monograph. Firstly, I wished to generate enthusiasm among undergraduates in classical differential geometry, which is chiefly concerned with curves and surfaces in $R^{3}$. This kind of differential geometry is highly visual and doesn't require more than a good course in advanced calculus. It contains the seeds of modern differential geometry, while retaining much of the original flavor of the past two centuries.
+
+Secondly, I wanted to present a group of undergraduate and graduate research questions intermingled with various original and not-so-original results that I and my students have developed over the last few years in my differential geometry course at SUNY Purchase. All math seniors must complete an eight-credit thesis in order to obtain their undergraduate degrees, and quite a few of the theses which I have supervised are in differential geometry.
+
+Thirdly, in keeping with the philosophy of this monograph series, I felt that it would be useful to write expository material intertwined with exercises and research questions. The reader is urged to work at least in part on all the problems while reading through the chapters. The problems vary greatly in difficulty, and while only some were explicitly designed as research problems, most can lead a curious reader to formulate a research problem.
+
+The reader is assumed to have some knowledge of classical differential geometry. An excellent text in this regard, whose notation I follow, is J. J. Stoker's \emph{Differential Geometry}, published in 1969 by Wiley-Interscience.
+
+Throughout the text, capital letters in the latter part of the alphabet denote vectors, while $E$, $F$, $G$, $L$, $M$, and $N$ denote the coefficients of the first and second fundamental forms. The Gaussian curvature is, of course, denoted by $K$. The moving trihedral of a curve is denoted by $v_{i}, i = 1, 2, 3$, while the curvature and torsion are represented by the usual Greek letters. Principal curvatures are denoted by $k_{1}$ and $k_{2}$.
+
+I would like to thank Dr. Richard Sacksteder for his many fine suggestions. Among the multitude of students who deserve thanks are Daniel Gagliardi, Bert Casper, Michael Smith, Rikiya Matsuka, and Eric Grossman.
+
+\begin{flushright}
+Martin Lewinter \\
+Mathematics Department \\
+State University of NY \\
+at Purchase
+\end{flushright}
+
+
+\chapter*{Chapter I: Generalization of the Theorem of Pappus}
+\markboth{Chapter I}{Chapter I}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter I: Generalization of the Theorem of Pappus}
+
+\pagenumbering{arabic}
+
+\setcounter{equation}{0}
+
+The \textbf{Theorem of Pappus} states that if a region in the $x-y$ plane lying entirely above the $x$-axis is revolved about the $x$-axis, then the resulting volume is $2 \pi \bar{y} A$, where $A$ is the area of the region and $y$ is the ordinate of its centroid.
+
+The proof usually employs Green's Theorem in the plane, which states that for suitably defined planar regions and functions $P(x,y)$ and $Q(x,y)$,
+\begin{equation}
+\oint P dx + Q dy = \int \int (Q_{x} - P_{y}) dA
+\end{equation}
+where the line integral is taken counterclockwise around the boundary of the region, and the integral on the right is taken over the interior of the region.
+
+Since the volume of the revolved region $R$ of Figure 1 is given by $-\pi \oint y^{2} dx$, using (1) we have,
+\begin{equation}
+V = 2 \pi \int \int y dA = 2 \pi \bar{y} A
+\end{equation}
+
+The second equality in (2) follows from the definition of the centroid.
+
+\begin{center}
+%TeXCAD Picture [fig1.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(55.5,38.05)(0,0)
+\put(1.5,7.25){\line(1,0){54}}
+\qbezier(25.5,18.75)(11.63,20.63)(23.25,30)
+\qbezier(23.18,29.96)(33.31,36.96)(42.93,27.96)
+\qbezier(36.75,15)(30.88,19.63)(25.5,18.75)
+\put(30.5,21.5){\makebox(0,0)[cc]{$R$}}
+\put(27.25,2.75){\makebox(0,0)[cc]{Fig. 1}}
+\qbezier(42.99,27.85)(50.66,11.25)(36.89,14.82)
+\put(3.47,5.15){\line(0,1){32.9}}
+%\qbezvec(41.62,9.25)(39.94,11.46)(39.94,8.2)
+\put(39.94,8.2){\vector(0,-1){.07}}\qbezier(41.62,9.25)(39.94,11.46)(39.94,8.2)
+%\end
+\qbezier(39.94,6.52)(43.46,4.62)(41.73,9.04)
+\end{picture}
+\end{center}
+
+Observe that the centroid of $R$ traces a curve whose tangent is always orthogonal to $R$. Furthermore, the principal normal and binormal vectors of the curve have fixed positions in $R$. Finally, the motion of $R$ is free of self-intersections. The volume here is the product of the length of the curve and the area of $R$. In fact, the hypotheses just mentioned are sufficient for the volume to be computed so simply as (length of curve) $x$ (area of planar region), i.e. the curve along which the centroid of $R$ moves need not be a circle!
+
+\begin{description}
+\item[Theorem:] Given a planar region $R$ of area $A$, such that its centroid moves along a curve length $L$ so that
+  \begin{enumerate}[\hspace{1cm}a)]
+    \item $R$ is always orthogonal to the curve,
+    \item the principal normal and binormal vectors have fixed positions in $R$, and
+    \item the motion of the region is free of self-intersections, 
+  \end{enumerate}
+  then the volume swept out is $LA$.
+
+\item[Proof:] Representing the curve by $Y(s)$ where $s$ is an arc-length parameter, we denote its moving trihedral by $v_{i}(s), i = 1,2,3$. ($v_{1}$, $v_{2}$, and $v_{3}$ are the unit tangent, unit principal normal, and unit binormal, respectively, of $Y(s)$.)
+
+  Because of condition (b), we place a pair of orthogonal axes in $R$ with the origin at the centroid, such that their directions are those of the principal normal and the binormal. Every point in $R$ has $(t,r)$ cartesian coordinates with respect to these axes. Furthermore, the region whose volume we seek can be represented by the vector
+  \begin{equation}
+  X(s,t,r) = Y(s) + tv_{2}(s) + rv_{3}(s)
+  \end{equation}
+  where $0 \leq s \leq L$, and $(t,r)$ belongs to a subset $H$ of $R^{2}$. ($H$ is a copy of $R$.)
+
+  Denoting the first order partial derivatives of $X(s,t,r)$ by $X_{i}, i = 1, 2, 3$, we have, using the Frenet equations:
+  \begin{align}
+  X_{1} & = v_{1} + t (- \kappa v_{1} + \tau v_{3} ) - r \tau v{2} \notag \\
+  X_{2} & = v_{2} \\
+  X_{3} & = v_{3} \notag
+  \end{align}
+
+  The volume element, $dV$, is easily found using (4) and the scalar triple product of the $X_{i}$.
+  \begin{equation}
+  dV = (X_{1} X_{2} X_{3}) dt dr ds = (1 - \kappa t) dt dr ds
+  \end{equation}
+
+  (Recall that the scalar triple product in (5) is a determinant whose rows are the $X_{i}$, and is, therefore, the jacobian of $x$, $y$, and $z$ with respect to $s$, $t$, and $r$, thereby yielding the volume element.)
+
+  We substitute $dA$ for $dtdr$, as the latter expression is the area element of $R$. Integrating (5) yields
+  \begin{equation*}
+  V = \int_{0}^{L} \int \int_{H}  ( 1 - \kappa t )  dA ds = LA -  \left( \int_{0}^{L} \kappa ds \right)  \left( \int \int_{H} t dA \right)  = LA
+  \end{equation*}
+
+  The last double integral vanishes because the origin of the $t-r$ coordinate plane is the centroid of $H$, thereby completing the proof.
+\end{description}
+
+\begin{enumerate}[1.]
+  \item Since $(X_{1} X_{2} X_{3}) = 1 - \kappa t$, it follows that a necessary condition for the motion of $R$ to be free of self-intersections (condition (c)) is that max $\kappa (S)$ for $0 \leq s \leq L$ must be less than $\frac{1}{t}$ for all positive $t$ in $H$. Show that this condition is satisfied in the case of the Theorem of Pappus by the hypothesis that the region revolved around the $x$-axis lies entirely above the $x$-axis.
+  \item Can you derive an analogous formula for computing the surface area generated by the boundary of $R$ as the centroid traces the given curve? What restrictive hypotheses might be required?
+  \item Finally, discuss the situation in which hypothesis (b) in the theorem is deleted, i.e., the principal normal and binormal have no fixed positions in $R$. One way to deal with this situation is to permit a rotation of the $t-r$ axes in $H$ relative to the $x-y$ axes which are in the direction of the normals.
+
+        Begin with uncomplicated examples such as a square whose centroid moves in a straight line orthogonal to the square, while the square rotates around the line at a constant rate. Gradually move on to planar regions which are not symmetric about their centroids and consider curves with zero torsion, i.e. plane curves. Then remove this last restriction and finally solve the general problem by no longer restricting the rotation of $R$ relative to the normal plane of the curve.
+  \item Is the necessary condition given above for the motion of $R$ to be free of self-intersections also sufficient? If so, supply a proof. If not, develop sufficient conditions. Must the volume and surface area problems be handled separately in this regard?
+\end{enumerate}
+
+
+\chapter*{Chapter II: Embeddings of Planar Regions Which Must Contain Planar Points}
+\markboth{Chapter II}{Chapter II}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter II: Embeddings of Planar Regions Which Must Contain Planar Points}
+
+\setcounter{equation}{0}
+
+In his book on differential geometry, Stoker classifies points on a developable surface as follows:
+\begin{enumerate}[\hspace{1cm}a)]
+  \item \emph{Parabolic points} are points for which exactly one of the principal curvatures is zero. At such a point, although $LN - M^{2} = 0$, at least one of the quantities $L$, $M$, and $N$ is not zero.
+  \item \emph{Planar points} have both principal curvatures equal to zero. At a planar point, $L = M = N = 0$. (Notice that such a point is also an umbilical point, i.e., a point for which all normal curvatures have the same value. A sphere, for example, consists entirely of umbilical points - though they are not planar!)
+  \item \emph{Essentially parabolic points} are limits of sequences of parabolic points. All parabolic points are essentially parabolic, while the converse is false. A planar point can be the limit of a sequence of parabolic points, thereby being essentially parabolic.
+  \item \emph{Flat points} are planar points which are not essentially parabolic. It follows that a flat point has a neighborhood consisting entirely of planar points.
+\end{enumerate}
+
+Definitions (c) and (d) are important in that they divide planar points into two categories.
+
+\vspace{0.3cm}
+
+\begin{enumerate}[1.]
+  \item The cylinder whose equation in cartesian $3$-space is $y = sin x$ has no flat points. However, all points with $x$-coordinate $\pi n$ are planar, while the other points are parabolic. Show this.
+  \item Show that a surface consisting entirely of planar points is a plane.
+  \item While the main purpose of classifying points into planar and parabolic is the analysis of developable surfaces, such points can obviously also exist on other kinds of surfaces. Of course, the gaussian curvature at such points is zero. Find examples of surfaces whose gaussian curvature is not identically zero, yet they contain some planar and/or parabolic points. (Hint: consider a torus and the surface obtained by revolving the part of $y = x^{3}$ in quadrant I around the $y$-axis.)
+
+      Through a parabolic point on a developable surface, there is a unique straight line in the surface consisting entirely of parabolic points. Furthermore, through an essentially parabolic \emph{planar} point, there exists a unique straight line consisting entirely of essentially parabolic planar points. These straight lines are called \emph{generators}. (See \emph{Stoker's Differential Geometry}, Chapter V.)
+  \item On the cone $z^{2} = x^{2} + y^{2}, z > 0$, show that all points are parabolic. Find the equation of the generator through the point $(x_{0}, y_{0}, z_{0})$. Show that all points on this generator have the same tangent plane. This is characteristic of the generators of developable surfaces, of which the cone is an example.
+  \item Repeat the previous problem for the cylinder $x^{2} + y^{2} = 1$.
+
+      If $R$ is a developable surface consisting of essentially parabolic points, then $R$ is a ruled surface, i.e., a surface consisting of straight lines. (A ruled surface need not be developable. A hyperboloid of one sheet is a ruled surface with strictly negative gaussian curvature. Verify!)
+
+      We select a curve $X(t)$ on $R$ transverse to the generators. Let $Z(t)$ be a unit vector in the direction of the generator through $X(t)$, such that $Z(t)$ is twice differentiable. Then the curve $Z(t)$ on the unit sphere is called the \emph{generator spherical image} of $R$. See Figure 2.
+\end{enumerate}
+
+\begin{center}
+%TeXCAD Picture [fig2.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{6.7272}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(115.5,82.5)(0,0)
+\put(9,81.75){\line(0,-1){47.25}}
+\put(9,34.5){\line(1,0){45.25}}
+%\emline(9.05,34.75)(3.3,13.25)
+\multiput(9.05,34.75)(-.03362573,-.12573099){171}{\line(0,-1){.12573099}}
+%\end
+%\emline(67.62,34.9)(61.87,13.4)
+\multiput(67.62,34.9)(-.03362573,-.12573099){171}{\line(0,-1){.12573099}}
+%\end
+\thicklines
+%\emline(23,70)(33.75,82.5)
+\multiput(23,70)(.03369906,.039184953){319}{\line(0,1){.039184953}}
+%\end
+%\emline(29.25,55.75)(46,60)
+\multiput(29.25,55.75)(.13293651,.03373016){126}{\line(1,0){.13293651}}
+%\end
+\thinlines
+\put(67.75,81.75){\line(0,-1){47}}
+\put(67.75,34.75){\line(1,0){47.75}}
+\thicklines
+\put(68,34.75){\line(4,5){11}}
+%\emline(68,34.75)(84.25,39.75)
+\multiput(68,34.75)(.1090604,.03355705){149}{\line(1,0){.1090604}}
+%\end
+\thinlines
+\qbezier(34,82.5)(45.13,75.88)(45.75,59.75)
+\qbezier(38,58.25)(39.38,69.88)(28.25,76)
+\qbezier(23,70)(29.88,65.75)(29.25,55.5)
+%\qbezvec(52.75,73)(45.63,67.38)(38,69.25)
+\put(38,69.25){\vector(-4,1){.07}}\qbezier(52.75,73)(45.63,67.38)(38,69.25)
+%\end
+%\qbezvec(103.75,50.25)(88.75,49.75)(85.75,45.25)
+\put(85.75,45.25){\vector(-3,-4){.07}}\qbezier(103.75,50.25)(88.75,49.75)(85.75,45.25)
+%\end
+\put(56,74.25){\makebox(0,0)[cc]{$X(t)$}}
+\put(108.25,50.5){\makebox(0,0)[cc]{$Z(t)$}}
+\put(59.25,5.25){\makebox(0,0)[cc]{Fig. 2}}
+\qbezier(79.02,48.44)(86.27,46.76)(84.32,39.77)
+\end{picture}
+\end{center}
+
+\begin{enumerate}
+  \item[6.] Find the generator spherical image of the cone given in cylindrical coordinates by $z = mr$, where $z$, $m$, and $r$ are positive, and discuss your answer geometrically.
+  \item[7.] Repeat problem 6 for the cylinder $r = c$ (where $c$ is positive).
+  \item[8.] Must the generator spherical image always be a \emph{plane} curve? If not, find a counterexample. What can be said about a surface whose generator spherical image curve is its intersection with the unit sphere?
+\end{enumerate}
+
+\begin{description}
+\item[Lemma 1:] If $R$ is a developable surface consisting of essentially parabolic points, and if the generator curve $Z(t)$ is regular, then the geodesic curvature of $Z(t)$ vanishes $t_{0}$ if and only if the generator along $Z(t_{0})$ in $R$ consists entirely of planar points.
+
+\item[Proof:] Let $Z(u)$ be reparametrized by arc length. Then the condition that $R$ is developable is equivalent to the fact that $Z'(u)$ lies in the tangent plane of $R$. Of course, $Z(u)$ also lies in the tangent plane and is orthogonal to $Z'(U)$, since the derivative of a vector of constant magnitude is orthogonal to it. (Why is $Z'(u)$ also a unit vector?)
+
+  Denote the unit normal of $R$ by $X_{3}$, and in particular, since the surface unit normal of a developable is constant along a generator, we can denote the unit normal of $R$ by $X_{3}(u)$. Note that for each $u$, the frame $Z(u), Z'(u), X_{3}(u)$ is orthonormal.
+
+  Since $X_{3}(u) \cdot Z(u) = 0$, it follows that
+  \begin{equation}
+  X_{3}(u) \cdot Z'(u) + X'_{3}(u) \cdot Z(u) = 0 = X'_{3}(u) \cdot Z(u)
+  \end{equation}
+  where the first term in (1) vanishes, since $Z'(U)$ is in the tangent plane of $R$. Now $X'_{3}(u)$ is orthogonal to $X_{3}(u)$, which, taking into account equation (1), yields
+  \begin{equation}
+  X'_{3}(u) = a(u) Z'(u)
+  \end{equation}
+  in which $a(u)$ is a scalar function which vanishes if and only if the generator $Z(u)$ consists entirely of planar points.
+
+  The geodesic curvature of Z(u) is given by
+  \begin{equation}
+  k_{g}(u) = X_{3}(u) \cdot Z''(u).
+  \end{equation}
+
+  Now since $X_{3}(u) \cdot Z'(u) = 0$, we have
+  \begin{equation}
+  X_{3}(u) \cdot Z'(u) + X_{3}(u) \cdot Z''(u) = 0
+  \end{equation}
+  which, after taking note of (2) and (3), yields
+  \begin{equation}
+  k_{g}(u) = -a(u)
+  \end{equation}
+  so that the geodesic curvature will be zero exactly when the generator consists entirely of planar points, proving the lemma.
+\end{description}
+
+\begin{description}
+\item[Example:] If $P(u)$ is a curve on the unit sphere, then the surface $X(u,v) = vP(u)$, with $v > 0$, is a developable surface - a deleted cone. This surface has planar points precisely along the generators through inflection points of the curve $P(u)$. (The generators are the $u$-curves, i.e., the curves obtained by letting $u$ be constant in $X(u,v)$.)
+\end{description}
+
+\begin{enumerate}
+  \item[10.] Why is Lemma I of no help in finding the planar points of a cylinder?
+  \item[11.] Why is $a(u)$ in (2) zero if and only if the generator in the direction of $Z(u)$ consists of planar points?
+  \item[12.] Derive equation (3) by first showing that $Z''(u)$ is the curvature vector of the curve $Z(u)$, and then showing that the dot product in (3) is its projection on the tangent plane of the unit sphere (on which the curve $Z(u)$ lies).
+  \item[13.] Suppose $P(u)$ is a curve on a cylinder and that $P'(u)$ is orthogonal to $Z(u)$ for each $u$, i.e., $P(u)$ is an orthogonal trajectory of the generators. Verify that $P(u)$ is a principal curve. Show that a generator in the direction of $Z(u_{0})$ consists entirely of planar points if and only if $P''(u_{0}) = 0$.
+\end{enumerate}
+
+\begin{description}
+\item[Lemma 2:] A closed simple curve on the unit sphere with positive geodesic curvature at all of its points (a) is confined to a hemisphere, and (b) is globally convex, i.e., it bounds a region such that any two points in the region can be connected by a minor great circle arc lying entirely in the region.
+\end{description}
+
+\begin{enumerate}
+  \item[14.] The proof of Lemma 2 will make an interesting project. To prove part (a), one must show that a local support great circle is also a global support. For a planar region, a local support line through a boundary point $P$ is a straight line through $P$ such that for some sufficiently small neighborhood of $P$, all points of the region lie on one side of the line. A global support line at $P$ has the property that \emph{all} points of the region lie on one side of $P$. See Figure 3. If a connected compact region in the plane has a local support at each boundary point, then each local support is also a global support and the region is convex, i.e., given any two points in the region, the line segment they determine lies in the region. If the boundary of the region is a $C^{2}$ curve, then the hypothesis that a local support exists at each point may be replaced by the hypothesis that the geodesic curvature (i.e. the signed curvature) is everywhere of one sign. If the boundary curve is oriented counterclockwise, the sign is positive.
+\end{enumerate}
+
+\begin{center}
+%TeXCAD Picture [fig3.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(66.43,44.88)(0,0)
+\put(3.5,43.75){\line(0,-1){37.5}}
+%\emline(47.63,44.88)(55.88,14.38)
+\multiput(47.63,44.88)(.033673469,-.124489796){245}{\line(0,-1){.124489796}}
+%\end
+\qbezier(30.5,26)(19.88,14.5)(36.75,14)
+\qbezier(30.5,26)(34.25,33.63)(25,31.75)
+\qbezier(25.18,37.5)(19.31,31.88)(24.93,31.75)
+\qbezier(43.75,37)(61.13,26.88)(43,15.25)
+\put(33.25,3){\makebox(0,0)[cc]{Fig. 3}}
+%\emline(28.64,25.01)(24.4,14.94)
+\multiput(28.64,25.01)(-.03367175,-.07997041){126}{\line(0,-1){.07997041}}
+%\end
+\put(26.87,20.86){\circle*{.75}}
+\put(51.78,29.06){\circle*{.75}}
+\qbezier(25.19,37.48)(33.76,43.58)(43.75,36.95)
+\qbezier(36.77,13.97)(40.35,13.52)(43.05,15.2)
+%\emline(.42,10.72)(66.43,10.51)
+\multiput(.42,10.72)(9.43005,-.03003){7}{\line(1,0){9.43005}}
+%\end
+\end{picture}
+\end{center}
+
+Proving part (a) of Lemma 2 requires an analogous statement (and proof) for spherical regions. (A support line on the sphere is, of course, a great circle.) One must show that a local support great circle for the enclosed region of Lemma 2 is also a global support, in which case the region is confined to a hemisphere.
+
+It will then be possible to project the hemisphere orthogonally on the tangent plane of its pole. Part (b) follows easily from the known facts about convexity in the plane.
+
+\begin{enumerate}
+  \item[15.] Given two simple closed convex curves $C$ and $D$ in $R^{2}$ where curve $C$ lies in the interior of the region bounded by curve $D$, show that the area and boundary length of curve $C$ are less than the area and boundary length of curve $D$, respectively. Show why the area part of this problem is trivial and doesn't require the convexity hypothesis. Does the boundary length part require convexity of \emph{both} curves?
+  \item[16.] Construct a smooth curve of length $M$ lying entirely inside the unit circle, where $M$ is an arbitrarily large positive number.
+\end{enumerate}
+
+\begin{description}
+\item[Lemma 3:] Let $C$ be a simple closed convex curve on the unit sphere. If $C$ is inscribed in a geodesic polygon $T$ made of minor great circle arcs, then the length of $C$ is strictly less than length of $T$.
+
+\item[Corollary:] The length of a simple closed convex curve on the unit sphere is strictly less than $2 \pi$.
+\end{description}
+
+\begin{enumerate}
+  \item[17.] Prove the corollary of Lemma 3, using the observation that the curve is restricted to a hemisphere (by Lemma 2).
+  \item[18.] Prove Lemma 3.
+\end{enumerate}
+
+We now consider a closed and connected region $D$ of the $u-v$ plane. We embed $D$ into $R^3$ via the one-to-one vector function
+\begin{equation}
+X(u,v) = ( x(u,v), y(u,v), z(u,v) )
+\end{equation}
+which we assume for our purposes to have continuous third-order partial derivatives. The image of this mapping is a surface $S$ in $R^{3}$ which possesses everywhere a unit normal, $X_{3}(u,v)$, in the direction of $X_{l} \times X_{2}$. If areas, angles, and lengths in $D$ are preserved under the mapping to $S$, we call the mapping \emph{isometric}.
+
+From a geometric point of view, an isometric embedding of $D$ permits bending it, but not stretching or shrinking it.
+
+\begin{description}
+\item[Example:] The embedding $X(u,v) = (u, v, u^{2} + v^{2}), 0 \leq u, v \leq 1$, isn't isometric, while $X(u,v) = (\sin u, \cos u, v)$, with $0 \leq u \leq \frac{\pi}{2}$ and $0 \leq v \leq 1$, is an isometric embedding. Notice that the first embedding stretches the unit square into a section of a paraboloid, while the second embedding simply bends the given rectangle. The reader should at this point make up many examples of isometric and non-isometric embeddings.
+\end{description}
+
+\begin{enumerate}
+  \item[19.] Show that a necessary condition for (6) to be isometric, under the stated conditions, is that $K = 0$ identically on $S$. ($K$ is the gaussian curvature.) Construct an example that shows that this condition is not sufficient. Can you add hypotheses to obtain sufficient conditions? You might first recall that the coefficients of the first fundamental form, $E$, $F$, and $G$, determine area, angle, and curve length.
+  \item[20.] Show that the region of the $x-y$ plane given by $0 < x^{2} + y^{2} \leq 1$ cannot be embedded isometrically as a developable cone in $R^{3}$ consisting entirely of parabolic points, i.e. prove the following theorem:
+
+     \textbf{Theorem}: The punctured unit disk cannot be embedded isometrically as a developable cone in $R^{3}$ consisting entirely of parabolic points.
+
+     You will find Lemmas 1, 2, and 3 helpful in proving this theorem.
+  \item[21.] We turn our attention to the more complicated question of the possibility of embedding an annulus isometrically in $R^{3}$ as a developable surface consisting entirely of parabolic points (or, put another way, free of planar points). Needless to say, this can be accomplished at once if the annulus is mapped into a convex cylindrical surface, in which case all the generators of the embedded annulus will be parallel.
+
+     As this case is not interesting, we limit our inquiry to embeddings of an annulus that satisfy the following:
+  \begin{enumerate}[\hspace{1cm}1)]
+    \item The line segments of the planar annulus that are the preimages of the generators on the embedding extend from one boundary of the annulus to the other. See Figure 4.
+
+  \begin{center}
+%TeXCAD Picture [fig4.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(81.5,89.75)(0,0)
+%\circle(34,45){63.88}
+\put(65.94,45){\line(0,1){1.255}}
+\put(65.92,46.25){\line(0,1){1.253}}
+\multiput(65.84,47.51)(-.0308,.3123){4}{\line(0,1){.3123}}
+\multiput(65.72,48.76)(-.02868,.20721){6}{\line(0,1){.20721}}
+\multiput(65.55,50)(-.03154,.17651){7}{\line(0,1){.17651}}
+\multiput(65.33,51.24)(-.03365,.15324){8}{\line(0,1){.15324}}
+\multiput(65.06,52.46)(-.03171,.12144){10}{\line(0,1){.12144}}
+\multiput(64.74,53.68)(-.03315,.10918){11}{\line(0,1){.10918}}
+\multiput(64.37,54.88)(-.031655,.091212){13}{\line(0,1){.091212}}
+\multiput(63.96,56.06)(-.032699,.083477){14}{\line(0,1){.083477}}
+\multiput(63.51,57.23)(-.033557,.076653){15}{\line(0,1){.076653}}
+\multiput(63,58.38)(-.032243,.066419){17}{\line(0,1){.066419}}
+\multiput(62.45,59.51)(-.032893,.061484){18}{\line(0,1){.061484}}
+\multiput(61.86,60.62)(-.033426,.056979){19}{\line(0,1){.056979}}
+\multiput(61.23,61.7)(-.032245,.050324){21}{\line(0,1){.050324}}
+\multiput(60.55,62.76)(-.032643,.046791){22}{\line(0,1){.046791}}
+\multiput(59.83,63.79)(-.032958,.043495){23}{\line(0,1){.043495}}
+\multiput(59.07,64.79)(-.033198,.040409){24}{\line(0,1){.040409}}
+\multiput(58.28,65.76)(-.03337,.037511){25}{\line(0,1){.037511}}
+\multiput(57.44,66.69)(-.033479,.03478){26}{\line(0,1){.03478}}
+\multiput(56.57,67.6)(-.034819,.033438){26}{\line(-1,0){.034819}}
+\multiput(55.67,68.47)(-.03755,.033325){25}{\line(-1,0){.03755}}
+\multiput(54.73,69.3)(-.040449,.03315){24}{\line(-1,0){.040449}}
+\multiput(53.76,70.1)(-.043534,.032907){23}{\line(-1,0){.043534}}
+\multiput(52.76,70.85)(-.046829,.032588){22}{\line(-1,0){.046829}}
+\multiput(51.73,71.57)(-.050362,.032186){21}{\line(-1,0){.050362}}
+\multiput(50.67,72.25)(-.057018,.033359){19}{\line(-1,0){.057018}}
+\multiput(49.58,72.88)(-.061523,.032821){18}{\line(-1,0){.061523}}
+\multiput(48.48,73.47)(-.066457,.032165){17}{\line(-1,0){.066457}}
+\multiput(47.35,74.02)(-.076692,.033466){15}{\line(-1,0){.076692}}
+\multiput(46.2,74.52)(-.083516,.032601){14}{\line(-1,0){.083516}}
+\multiput(45.03,74.98)(-.09125,.031548){13}{\line(-1,0){.09125}}
+\multiput(43.84,75.39)(-.10922,.03302){11}{\line(-1,0){.10922}}
+\multiput(42.64,75.75)(-.12148,.03157){10}{\line(-1,0){.12148}}
+\multiput(41.43,76.06)(-.15328,.03347){8}{\line(-1,0){.15328}}
+\multiput(40.2,76.33)(-.17655,.03134){7}{\line(-1,0){.17655}}
+\multiput(38.96,76.55)(-.20725,.02844){6}{\line(-1,0){.20725}}
+\multiput(37.72,76.72)(-.3123,.0304){4}{\line(-1,0){.3123}}
+\put(36.47,76.84){\line(-1,0){1.253}}
+\put(35.22,76.92){\line(-1,0){2.51}}
+\put(32.71,76.91){\line(-1,0){1.253}}
+\multiput(31.45,76.84)(-.3122,-.0311){4}{\line(-1,0){.3122}}
+\multiput(30.21,76.71)(-.20718,-.02893){6}{\line(-1,0){.20718}}
+\multiput(28.96,76.54)(-.17647,-.03175){7}{\line(-1,0){.17647}}
+\multiput(27.73,76.32)(-.13618,-.03007){9}{\line(-1,0){.13618}}
+\multiput(26.5,76.05)(-.1214,-.03186){10}{\line(-1,0){.1214}}
+\multiput(25.29,75.73)(-.10914,-.03328){11}{\line(-1,0){.10914}}
+\multiput(24.09,75.36)(-.091175,-.031763){13}{\line(-1,0){.091175}}
+\multiput(22.9,74.95)(-.083438,-.032798){14}{\line(-1,0){.083438}}
+\multiput(21.73,74.49)(-.076613,-.033647){15}{\line(-1,0){.076613}}
+\multiput(20.58,73.99)(-.066381,-.032322){17}{\line(-1,0){.066381}}
+\multiput(19.46,73.44)(-.061446,-.032966){18}{\line(-1,0){.061446}}
+\multiput(18.35,72.84)(-.05694,-.033494){19}{\line(-1,0){.05694}}
+\multiput(17.27,72.21)(-.050286,-.032304){21}{\line(-1,0){.050286}}
+\multiput(16.21,71.53)(-.046752,-.032698){22}{\line(-1,0){.046752}}
+\multiput(15.18,70.81)(-.043456,-.033009){23}{\line(-1,0){.043456}}
+\multiput(14.18,70.05)(-.04037,-.033246){24}{\line(-1,0){.04037}}
+\multiput(13.22,69.25)(-.037472,-.033414){25}{\line(-1,0){.037472}}
+\multiput(12.28,68.42)(-.03474,-.03352){26}{\line(-1,0){.03474}}
+\multiput(11.38,67.55)(-.033396,-.034859){26}{\line(0,-1){.034859}}
+\multiput(10.51,66.64)(-.033281,-.03759){25}{\line(0,-1){.03759}}
+\multiput(9.67,65.7)(-.033103,-.040488){24}{\line(0,-1){.040488}}
+\multiput(8.88,64.73)(-.032855,-.043572){23}{\line(0,-1){.043572}}
+\multiput(8.12,63.73)(-.032533,-.046867){22}{\line(0,-1){.046867}}
+\multiput(7.41,62.69)(-.033733,-.05292){20}{\line(0,-1){.05292}}
+\multiput(6.73,61.64)(-.033292,-.057058){19}{\line(0,-1){.057058}}
+\multiput(6.1,60.55)(-.032748,-.061562){18}{\line(0,-1){.061562}}
+\multiput(5.51,59.44)(-.032087,-.066495){17}{\line(0,-1){.066495}}
+\multiput(4.97,58.31)(-.033376,-.076732){15}{\line(0,-1){.076732}}
+\multiput(4.47,57.16)(-.032502,-.083554){14}{\line(0,-1){.083554}}
+\multiput(4.01,55.99)(-.03144,-.091287){13}{\line(0,-1){.091287}}
+\multiput(3.6,54.81)(-.03289,-.10926){11}{\line(0,-1){.10926}}
+\multiput(3.24,53.6)(-.03143,-.12152){10}{\line(0,-1){.12152}}
+\multiput(2.93,52.39)(-.03329,-.15332){8}{\line(0,-1){.15332}}
+\multiput(2.66,51.16)(-.03113,-.17658){7}{\line(0,-1){.17658}}
+\multiput(2.44,49.93)(-.02819,-.20728){6}{\line(0,-1){.20728}}
+\multiput(2.27,48.68)(-.03,-.3123){4}{\line(0,-1){.3123}}
+\put(2.15,47.43){\line(0,-1){1.253}}
+\put(2.08,46.18){\line(0,-1){3.763}}
+\multiput(2.16,42.42)(.0315,-.3122){4}{\line(0,-1){.3122}}
+\multiput(2.29,41.17)(.02917,-.20715){6}{\line(0,-1){.20715}}
+\multiput(2.47,39.93)(.03196,-.17643){7}{\line(0,-1){.17643}}
+\multiput(2.69,38.69)(.03023,-.13614){9}{\line(0,-1){.13614}}
+\multiput(2.96,37.47)(.032,-.12137){10}{\line(0,-1){.12137}}
+\multiput(3.28,36.25)(.0334,-.1091){11}{\line(0,-1){.1091}}
+\multiput(3.65,35.05)(.03187,-.091138){13}{\line(0,-1){.091138}}
+\multiput(4.06,33.87)(.032896,-.0834){14}{\line(0,-1){.0834}}
+\multiput(4.52,32.7)(.033737,-.076573){15}{\line(0,-1){.076573}}
+\multiput(5.03,31.55)(.0324,-.066343){17}{\line(0,-1){.066343}}
+\multiput(5.58,30.42)(.033038,-.061407){18}{\line(0,-1){.061407}}
+\multiput(6.18,29.32)(.033561,-.0569){19}{\line(0,-1){.0569}}
+\multiput(6.81,28.24)(.032364,-.050248){21}{\line(0,-1){.050248}}
+\multiput(7.49,27.18)(.032753,-.046713){22}{\line(0,-1){.046713}}
+\multiput(8.21,26.15)(.03306,-.043417){23}{\line(0,-1){.043417}}
+\multiput(8.97,25.15)(.033293,-.040331){24}{\line(0,-1){.040331}}
+\multiput(9.77,24.19)(.033458,-.037432){25}{\line(0,-1){.037432}}
+\multiput(10.61,23.25)(.03356,-.034701){26}{\line(0,-1){.034701}}
+\multiput(11.48,22.35)(.034898,-.033355){26}{\line(1,0){.034898}}
+\multiput(12.39,21.48)(.037629,-.033237){25}{\line(1,0){.037629}}
+\multiput(13.33,20.65)(.040527,-.033055){24}{\line(1,0){.040527}}
+\multiput(14.3,19.86)(.043611,-.032804){23}{\line(1,0){.043611}}
+\multiput(15.31,19.1)(.046906,-.032477){22}{\line(1,0){.046906}}
+\multiput(16.34,18.39)(.05296,-.03367){20}{\line(1,0){.05296}}
+\multiput(17.4,17.71)(.057097,-.033225){19}{\line(1,0){.057097}}
+\multiput(18.48,17.08)(.0616,-.032676){18}{\line(1,0){.0616}}
+\multiput(19.59,16.5)(.066533,-.032008){17}{\line(1,0){.066533}}
+\multiput(20.72,15.95)(.076771,-.033285){15}{\line(1,0){.076771}}
+\multiput(21.87,15.45)(.083592,-.032404){14}{\line(1,0){.083592}}
+\multiput(23.04,15)(.091324,-.031333){13}{\line(1,0){.091324}}
+\multiput(24.23,14.59)(.1093,-.03276){11}{\line(1,0){.1093}}
+\multiput(25.43,14.23)(.12155,-.03128){10}{\line(1,0){.12155}}
+\multiput(26.65,13.92)(.15336,-.03311){8}{\line(1,0){.15336}}
+\multiput(27.88,13.65)(.17662,-.03092){7}{\line(1,0){.17662}}
+\multiput(29.11,13.44)(.24878,-.03354){5}{\line(1,0){.24878}}
+\put(30.36,13.27){\line(1,0){1.25}}
+\put(31.6,13.15){\line(1,0){1.253}}
+\put(32.86,13.08){\line(1,0){2.51}}
+\put(35.37,13.09){\line(1,0){1.253}}
+\multiput(36.62,13.17)(.3122,.0319){4}{\line(1,0){.3122}}
+\multiput(37.87,13.3)(.20711,.02942){6}{\line(1,0){.20711}}
+\multiput(39.11,13.47)(.1764,.03217){7}{\line(1,0){.1764}}
+\multiput(40.35,13.7)(.13611,.03039){9}{\line(1,0){.13611}}
+\multiput(41.57,13.97)(.12133,.03214){10}{\line(1,0){.12133}}
+\multiput(42.78,14.29)(.10907,.03353){11}{\line(1,0){.10907}}
+\multiput(43.98,14.66)(.0911,.031978){13}{\line(1,0){.0911}}
+\multiput(45.17,15.08)(.083361,.032994){14}{\line(1,0){.083361}}
+\multiput(46.34,15.54)(.07175,.031713){16}{\line(1,0){.07175}}
+\multiput(47.48,16.05)(.066305,.032478){17}{\line(1,0){.066305}}
+\multiput(48.61,16.6)(.061368,.03311){18}{\line(1,0){.061368}}
+\multiput(49.72,17.19)(.05686,.033628){19}{\line(1,0){.05686}}
+\multiput(50.8,17.83)(.05021,.032423){21}{\line(1,0){.05021}}
+\multiput(51.85,18.51)(.046675,.032808){22}{\line(1,0){.046675}}
+\multiput(52.88,19.24)(.043378,.033112){23}{\line(1,0){.043378}}
+\multiput(53.87,20)(.040292,.033341){24}{\line(1,0){.040292}}
+\multiput(54.84,20.8)(.037393,.033502){25}{\line(1,0){.037393}}
+\multiput(55.78,21.63)(.034661,.033601){26}{\line(1,0){.034661}}
+\multiput(56.68,22.51)(.033314,.034937){26}{\line(0,1){.034937}}
+\multiput(57.54,23.42)(.033192,.037668){25}{\line(0,1){.037668}}
+\multiput(58.37,24.36)(.033007,.040566){24}{\line(0,1){.040566}}
+\multiput(59.17,25.33)(.032753,.04365){23}{\line(0,1){.04365}}
+\multiput(59.92,26.34)(.032422,.046944){22}{\line(0,1){.046944}}
+\multiput(60.63,27.37)(.033608,.053){20}{\line(0,1){.053}}
+\multiput(61.3,28.43)(.033157,.057136){19}{\line(0,1){.057136}}
+\multiput(61.93,29.51)(.032603,.061639){18}{\line(0,1){.061639}}
+\multiput(62.52,30.62)(.03193,.06657){17}{\line(0,1){.06657}}
+\multiput(63.06,31.76)(.033195,.07681){15}{\line(0,1){.07681}}
+\multiput(63.56,32.91)(.032305,.08363){14}{\line(0,1){.08363}}
+\multiput(64.01,34.08)(.031225,.091361){13}{\line(0,1){.091361}}
+\multiput(64.42,35.27)(.03263,.10934){11}{\line(0,1){.10934}}
+\multiput(64.78,36.47)(.03114,.12159){10}{\line(0,1){.12159}}
+\multiput(65.09,37.68)(.03293,.1534){8}{\line(0,1){.1534}}
+\multiput(65.35,38.91)(.03071,.17666){7}{\line(0,1){.17666}}
+\multiput(65.57,40.15)(.03325,.24882){5}{\line(0,1){.24882}}
+\put(65.74,41.39){\line(0,1){1.25}}
+\put(65.85,42.64){\line(0,1){2.358}}
+%\end
+%\circle(34,44.75){30.61}
+\put(49.3,44.75){\line(0,1){.759}}
+\put(49.29,45.51){\line(0,1){.757}}
+\put(49.23,46.27){\line(0,1){.754}}
+\multiput(49.14,47.02)(-.0328,.187){4}{\line(0,1){.187}}
+\multiput(49,47.77)(-.03364,.14812){5}{\line(0,1){.14812}}
+\multiput(48.84,48.51)(-.02925,.10448){7}{\line(0,1){.10448}}
+\multiput(48.63,49.24)(-.03009,.09004){8}{\line(0,1){.09004}}
+\multiput(48.39,49.96)(-.03069,.07861){9}{\line(0,1){.07861}}
+\multiput(48.11,50.67)(-.03109,.06929){10}{\line(0,1){.06929}}
+\multiput(47.8,51.36)(-.03136,.06151){11}{\line(0,1){.06151}}
+\multiput(47.46,52.04)(-.03151,.05489){12}{\line(0,1){.05489}}
+\multiput(47.08,52.7)(-.03156,.049161){13}{\line(0,1){.049161}}
+\multiput(46.67,53.34)(-.031534,.04414){14}{\line(0,1){.04414}}
+\multiput(46.23,53.95)(-.033684,.042521){14}{\line(0,1){.042521}}
+\multiput(45.76,54.55)(-.033369,.038078){15}{\line(0,1){.038078}}
+\multiput(45.26,55.12)(-.033016,.034102){16}{\line(0,1){.034102}}
+\multiput(44.73,55.67)(-.034667,.032423){16}{\line(-1,0){.034667}}
+\multiput(44.17,56.18)(-.038648,.032707){15}{\line(-1,0){.038648}}
+\multiput(43.59,56.67)(-.043096,.032946){14}{\line(-1,0){.043096}}
+\multiput(42.99,57.14)(-.048114,.033135){13}{\line(-1,0){.048114}}
+\multiput(42.37,57.57)(-.05384,.03327){12}{\line(-1,0){.05384}}
+\multiput(41.72,57.97)(-.06046,.03333){11}{\line(-1,0){.06046}}
+\multiput(41.05,58.33)(-.06825,.03332){10}{\line(-1,0){.06825}}
+\multiput(40.37,58.67)(-.07757,.03322){9}{\line(-1,0){.07757}}
+\multiput(39.67,58.96)(-.08901,.03299){8}{\line(-1,0){.08901}}
+\multiput(38.96,59.23)(-.10348,.03261){7}{\line(-1,0){.10348}}
+\multiput(38.24,59.46)(-.12246,.03201){6}{\line(-1,0){.12246}}
+\multiput(37.5,59.65)(-.14868,.03108){5}{\line(-1,0){.14868}}
+\put(36.76,59.8){\line(-1,0){.75}}
+\put(36.01,59.92){\line(-1,0){.755}}
+\put(35.25,60){\line(-1,0){.758}}
+\put(34.5,60.05){\line(-1,0){.759}}
+\put(33.74,60.05){\line(-1,0){.759}}
+\put(32.98,60.02){\line(-1,0){.756}}
+\put(32.22,59.95){\line(-1,0){.752}}
+\multiput(31.47,59.84)(-.14913,-.02883){5}{\line(-1,0){.14913}}
+\multiput(30.72,59.7)(-.12293,-.03016){6}{\line(-1,0){.12293}}
+\multiput(29.99,59.52)(-.10396,-.03104){7}{\line(-1,0){.10396}}
+\multiput(29.26,59.3)(-.0895,-.03164){8}{\line(-1,0){.0895}}
+\multiput(28.54,59.05)(-.07807,-.03204){9}{\line(-1,0){.07807}}
+\multiput(27.84,58.76)(-.06874,-.03228){10}{\line(-1,0){.06874}}
+\multiput(27.15,58.44)(-.06096,-.03241){11}{\line(-1,0){.06096}}
+\multiput(26.48,58.08)(-.05434,-.03245){12}{\line(-1,0){.05434}}
+\multiput(25.83,57.69)(-.04861,-.032403){13}{\line(-1,0){.04861}}
+\multiput(25.2,57.27)(-.043589,-.03229){14}{\line(-1,0){.043589}}
+\multiput(24.59,56.82)(-.039138,-.032119){15}{\line(-1,0){.039138}}
+\multiput(24,56.34)(-.035153,-.031894){16}{\line(-1,0){.035153}}
+\multiput(23.44,55.83)(-.033528,-.033599){16}{\line(0,-1){.033599}}
+\multiput(22.9,55.29)(-.03182,-.035221){16}{\line(0,-1){.035221}}
+\multiput(22.39,54.73)(-.032036,-.039206){15}{\line(0,-1){.039206}}
+\multiput(21.91,54.14)(-.032198,-.043657){14}{\line(0,-1){.043657}}
+\multiput(21.46,53.53)(-.0323,-.048678){13}{\line(0,-1){.048678}}
+\multiput(21.04,52.89)(-.03233,-.05441){12}{\line(0,-1){.05441}}
+\multiput(20.65,52.24)(-.03228,-.06103){11}{\line(0,-1){.06103}}
+\multiput(20.3,51.57)(-.03214,-.06881){10}{\line(0,-1){.06881}}
+\multiput(19.98,50.88)(-.03187,-.07813){9}{\line(0,-1){.07813}}
+\multiput(19.69,50.18)(-.03145,-.08957){8}{\line(0,-1){.08957}}
+\multiput(19.44,49.46)(-.03082,-.10402){7}{\line(0,-1){.10402}}
+\multiput(19.22,48.73)(-.0299,-.12299){6}{\line(0,-1){.12299}}
+\multiput(19.04,47.99)(-.02851,-.14919){5}{\line(0,-1){.14919}}
+\put(18.9,47.25){\line(0,-1){.752}}
+\put(18.8,46.5){\line(0,-1){.756}}
+\put(18.73,45.74){\line(0,-1){1.518}}
+\put(18.7,44.22){\line(0,-1){.758}}
+\put(18.75,43.46){\line(0,-1){.755}}
+\put(18.83,42.71){\line(0,-1){.75}}
+\multiput(18.95,41.96)(.03139,-.14861){5}{\line(0,-1){.14861}}
+\multiput(19.11,41.22)(.03227,-.12239){6}{\line(0,-1){.12239}}
+\multiput(19.3,40.48)(.03283,-.10341){7}{\line(0,-1){.10341}}
+\multiput(19.53,39.76)(.03318,-.08894){8}{\line(0,-1){.08894}}
+\multiput(19.8,39.05)(.03338,-.0775){9}{\line(0,-1){.0775}}
+\multiput(20.1,38.35)(.03346,-.06817){10}{\line(0,-1){.06817}}
+\multiput(20.43,37.67)(.03346,-.06039){11}{\line(0,-1){.06039}}
+\multiput(20.8,37)(.03338,-.05377){12}{\line(0,-1){.05377}}
+\multiput(21.2,36.36)(.033236,-.048044){13}{\line(0,-1){.048044}}
+\multiput(21.63,35.73)(.033037,-.043026){14}{\line(0,-1){.043026}}
+\multiput(22.1,35.13)(.032789,-.038579){15}{\line(0,-1){.038579}}
+\multiput(22.59,34.55)(.032496,-.034598){16}{\line(0,-1){.034598}}
+\multiput(23.11,34)(.034172,-.032944){16}{\line(1,0){.034172}}
+\multiput(23.65,33.47)(.038148,-.033288){15}{\line(1,0){.038148}}
+\multiput(24.23,32.97)(.042592,-.033595){14}{\line(1,0){.042592}}
+\multiput(24.82,32.5)(.044206,-.031441){14}{\line(1,0){.044206}}
+\multiput(25.44,32.06)(.049228,-.031456){13}{\line(1,0){.049228}}
+\multiput(26.08,31.65)(.05495,-.03139){12}{\line(1,0){.05495}}
+\multiput(26.74,31.28)(.06158,-.03123){11}{\line(1,0){.06158}}
+\multiput(27.42,30.93)(.06935,-.03095){10}{\line(1,0){.06935}}
+\multiput(28.11,30.62)(.07867,-.03052){9}{\line(1,0){.07867}}
+\multiput(28.82,30.35)(.0901,-.0299){8}{\line(1,0){.0901}}
+\multiput(29.54,30.11)(.10454,-.02903){7}{\line(1,0){.10454}}
+\multiput(30.27,29.91)(.14819,-.03333){5}{\line(1,0){.14819}}
+\multiput(31.01,29.74)(.1871,-.0324){4}{\line(1,0){.1871}}
+\put(31.76,29.61){\line(1,0){.754}}
+\put(32.52,29.52){\line(1,0){.757}}
+\put(33.27,29.46){\line(1,0){1.518}}
+\put(34.79,29.47){\line(1,0){.757}}
+\put(35.55,29.52){\line(1,0){.753}}
+\multiput(36.3,29.62)(.1869,.0332){4}{\line(1,0){.1869}}
+\multiput(37.05,29.75)(.12337,.02829){6}{\line(1,0){.12337}}
+\multiput(37.79,29.92)(.10442,.02947){7}{\line(1,0){.10442}}
+\multiput(38.52,30.13)(.08997,.03028){8}{\line(1,0){.08997}}
+\multiput(39.24,30.37)(.07854,.03085){9}{\line(1,0){.07854}}
+\multiput(39.95,30.65)(.06922,.03124){10}{\line(1,0){.06922}}
+\multiput(40.64,30.96)(.06144,.03149){11}{\line(1,0){.06144}}
+\multiput(41.32,31.31)(.05482,.03162){12}{\line(1,0){.05482}}
+\multiput(41.97,31.69)(.049095,.031663){13}{\line(1,0){.049095}}
+\multiput(42.61,32.1)(.044073,.031627){14}{\line(1,0){.044073}}
+\multiput(43.23,32.54)(.03962,.031522){15}{\line(1,0){.03962}}
+\multiput(43.82,33.01)(.038008,.033449){15}{\line(1,0){.038008}}
+\multiput(44.39,33.52)(.034033,.033087){16}{\line(1,0){.034033}}
+\multiput(44.94,34.04)(.032349,.034735){16}{\line(0,1){.034735}}
+\multiput(45.46,34.6)(.032626,.038717){15}{\line(0,1){.038717}}
+\multiput(45.94,35.18)(.032855,.043165){14}{\line(0,1){.043165}}
+\multiput(46.4,35.79)(.033033,.048183){13}{\line(0,1){.048183}}
+\multiput(46.83,36.41)(.03315,.05391){12}{\line(0,1){.05391}}
+\multiput(47.23,37.06)(.0332,.06053){11}{\line(0,1){.06053}}
+\multiput(47.6,37.72)(.03318,.06832){10}{\line(0,1){.06832}}
+\multiput(47.93,38.41)(.03305,.07764){9}{\line(0,1){.07764}}
+\multiput(48.23,39.11)(.03281,.08908){8}{\line(0,1){.08908}}
+\multiput(48.49,39.82)(.0324,.10354){7}{\line(0,1){.10354}}
+\multiput(48.72,40.54)(.03176,.12253){6}{\line(0,1){.12253}}
+\multiput(48.91,41.28)(.03077,.14874){5}{\line(0,1){.14874}}
+\put(49.06,42.02){\line(0,1){.75}}
+\put(49.18,42.77){\line(0,1){.755}}
+\put(49.26,43.53){\line(0,1){1.222}}
+%\end
+\put(34,45){\line(0,1){42}}
+\put(34,45){\line(1,0){45}}
+%\emline(39.25,59.5)(50.75,72.25)
+\multiput(39.25,59.5)(.03372434,.037390029){341}{\line(0,1){.037390029}}
+%\end
+\put(50.75,72.25){\line(0,1){0}}
+%\emline(47.75,51.25)(64,56)
+\multiput(47.75,51.25)(.11524823,.03368794){141}{\line(1,0){.11524823}}
+%\end
+%\emline(64,56)(63.25,55.5)
+\multiput(64,56)(-.05,-.033333){15}{\line(-1,0){.05}}
+%\end
+%\emline(47.75,38)(60.5,27.75)
+\multiput(47.75,38)(.041940789,-.033717105){304}{\line(1,0){.041940789}}
+%\end
+%\emline(60.5,27.75)(60.25,27.5)
+\multiput(60.5,27.75)(-.03125,-.03125){8}{\line(0,-1){.03125}}
+%\end
+%\emline(44,33.25)(52,19)
+\multiput(44,33.25)(.03361345,-.05987395){238}{\line(0,-1){.05987395}}
+%\end
+\put(30.5,29.75){\line(0,-1){15.75}}
+%\emline(22.25,34.5)(2.5,40.25)
+\multiput(22.25,34.5)(-.11549708,.03362573){171}{\line(-1,0){.11549708}}
+%\end
+%\emline(19,49.75)(9.75,66)
+\multiput(19,49.75)(-.033636364,.059090909){275}{\line(0,1){.059090909}}
+%\end
+%\emline(28.75,59.5)(31.25,77)
+\multiput(28.75,59.5)(.0333333,.2333333){75}{\line(0,1){.2333333}}
+%\end
+\put(34,89.75){\makebox(0,0)[cc]{$v$}}
+\put(81.5,45){\makebox(0,0)[cc]{$u$}}
+\put(34.5,8){\makebox(0,0)[cc]{$r_{1} \leq u^{2} + v^{2} \leq r_{2}$}}
+\put(34.5,1.5){\makebox(0,0)[cc]{Fig. 4}}
+\end{picture}
+\end{center}
+
+    \item As a point traverses the inner circle of the annulus, the angle that the generator pre image through that point makes with a fixed ray in the plane of the annulus changes strictly monotonically through an angle of $2 \pi$. See Figure 4.
+    \item The embedding is the result of a continuous deformation of the annulus depending on a parameter $s$, such that the planar annulus corresponds to $s = 0$, the embedded annulus corresponds to $s = 1$, and for each value of $s$ between $0$ and $1$, the spherical image of the unit normal vectors of the surface determined by that $s$-value lies in a small neighborhood of the point on the unit sphere which represents the normal vector of the planar annulus. In other words, there exists a small positive number $c$ such that $\vert X_{3}(u,v,s) - X_{3}(u,v,0) \vert  < c$, for all points of the surface $X(u,v,s)$ for any fixed $s$ between $0$ and $1$.
+  \end{enumerate}
+  With the help of the previous lemmas, prove the following:
+
+     \textbf{Theorem}: An isometric embedding of an annulus in $R^{3}$, satisfying conditions 1, 2, and 3 above, cannot consist entirely of parabolic points.
+  \item[22.] Can the monotonicity condition on the above theorem be dispensed with?
+  \item[23.] Show that if condition 3 is dispensed with, the theorem is false, by first constructing a paper model of an annulus with a large inner circle and small width, and wrapping it twice around an axis. Then supply a mathematical explanation.
+\end{enumerate}
+
+
+
+\chapter*{Chapter III: A Surface Area Problem}
+\markboth{Chapter III}{Chapter III}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter III: A Surface Area Problem}
+
+\setcounter{equation}{0}
+
+Let $R$ be a star-like region of the $x-y$ plane whose boundary is given by the polar equation $r = g(\theta)$. (A star-like region contains the origin, and each ray intersects the boundary in just one point.) See Figure 5. 
+
+\begin{center}
+%TeXCAD Picture [fig5.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(86.5,79)(0,0)
+\put(43.5,79){\line(0,-1){72.5}}
+\put(43.5,6.5){\line(0,1){0}}
+\put(1.5,42.75){\line(1,0){85}}
+\qbezier(43.5,73.75)(62.13,71.75)(56.25,66.75)
+\qbezier(56.25,66.5)(54.38,65)(62,59.5)
+\qbezier(37.75,29.5)(16.5,23.88)(14.25,42.75)
+\put(14.25,42.75){\line(1,0){29.25}}
+%\emline(43.5,42.75)(62.5,59.5)
+\multiput(43.5,42.75)(.038229376,.033702213){497}{\line(1,0){.038229376}}
+%\end
+\put(56.75,57.5){\makebox(0,0)[cc]{$r$}}
+\put(51.75,46.25){\makebox(0,0)[cc]{$\theta$}}
+\put(43.75,2.5){\makebox(0,0)[cc]{Fig. 5}}
+\qbezier(62.05,59.4)(71.59,49.76)(67,42.6)
+\qbezier(67.18,42.6)(57.01,25.72)(48.61,29.7)
+\qbezier(48.44,29.7)(43.49,31.29)(37.83,29.34)
+\qbezier(43.66,73.54)(11.67,72.74)(14.32,42.6)
+\end{picture}
+\end{center}
+
+We construct a surface $S$ in the following manner. In each plane $z = v, 0 \leq v \leq h$, we place a copy of $R$ rotated by an angle $f(v)$, where $f(v)$ is a continuous monotonic function with $f(0) = 0$. Let $S$ be the union of the boundaries of the copies of $R$.
+
+
+\begin{enumerate}[1.]
+  \item Show that $S$ can be represented by
+    \begin{equation} 
+      X(\theta,v) = (g (\theta - f(v)) \cos \theta, g (\theta - f(v)) \sin \theta, v)
+    \end{equation}
+  \item Calculate $X_{1}$, $X_{2}$, and the unit surface normal $X_{3}$. Then compute $E$, $F$, and $G$, and derive an expression for the area of $S$, using the area element $\sqrt{EG - F^{2}} d \theta dv$. Assuming that $g'$ is bounded (what does this mean geometrically?), show that the area of $S$ can nevertheless be arbitrarily large, depending on the values of $f'(v)$. Show, however, that the volume inside $S$, between the planes $z = 0$ and $z = h$, is invariant with respect to $f(v)$. (See Chapter I, Problem 2.)
+  \item Find a lower bound for the area of $S$ which depends only on $g(\theta)$ and $h$.
+  \item Show that $X_{3}$ is always horizontal if and only if either $g(\theta)$ or $f(v)$ is a constant. What do these two cases have in common?
+  \item When is the gaussian curvature $K$ of $S$ identically zero? When $K \neq 0$, is it possible for $S$ to be a ruled surface, i.e., a surface consisting of straight lines?
+  \item Investigate the surface further. Derive the principal curves. Are there asymptotic curves? If so, find them. Find points of extreme gaussian curvature. Are there any classes of such surfaces which have special properties? Under what conditions can $S$ be convex? Is the convexity of $R$ sufficient to guarantee this?
+  \item Why is a polar equation for the boundary of $R$ particularly convenient for this surface? Can you derive a representation for $S$ if the boundary of $R$ in the $x-y$ plane is given by
+    \begin{align}
+      x & = x(t) \\
+      y & = y(t) \notag
+    \end{align}
+     with $0 \leq t \leq 1$?
+  \item Discuss the special case $f(v) = cv$, where $c$ is a positive constant.
+  \item Let $P$ be a fixed point on the boundary of $R$. Represent the curve on $S$ traced by $P$ as $R$ rotates and rises from $z = 0$ to $z = h$. Then calculate its curvature and torsion. Does this curve have any interesting properties? Is it a principal curve? Might it be a helix? Let $P'$ be another fixed point on the boundary of $R$. How does the curve it traces compare with the previous curve? Are there properties shared by all such curves?
+  \item Describe the $\theta$-constant curves on $S$. Are they ever straight lines? Are they ever vertical? Are they ever orthogonal to the $v$-constant curves? (The $v$-constant curves are horizontal cross-sections of $S$.)
+  \item Using Problem 10 above, determine when $S$ is a surface of revolution.
+\end{enumerate}
+
+
+
+\chapter*{Chapter IV: The Formula of Rodrigues}
+\markboth{Chapter IV}{Chapter IV}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter IV: The Formula of Rodrigues}
+
+\setcounter{equation}{0}
+
+The formula of Rodrigues states that if $X(t)$ is a principal curve with normal curvature $k(t)$, then denoting derivatives with respect to $t$ by primes, we have
+\begin{equation}
+X'_{3} + kX' = 0.
+\end{equation}
+
+\begin{enumerate}[1.]
+  \item Show, using (1), that all curves on a sphere have the same normal curvature. What is the gaussian curvature of a sphere of radius $r$?
+  \item Let $P(t)$ be a principal curve on a surface $S$ whose unit surface normal is denoted by $X_{3}$. Let $S^{*}$ be the surface given by
+    \begin{equation}
+      X(t,s) = P(t) + sX_{3}(t).
+    \end{equation}
+  Show that $S^{*}$ is a developable surface, i.e., that $K = 0$ for all of its points, by showing that $M$ and $N$ vanish identically. Can you think of other ways to show that $S^{*}$ is developable? (Hint: the $X_{3}$ vectors are in the generator directions. Apply (1) to show that the derivatives of these unit vectors lie in the tangent planes of $S^{*}$.)
+  \item Show that $P(t)$ is a principal curve of $S^{*}$. If the normal curvature of $P(t)$ with respect to $S$ is $k(t)$, while its curvature when viewed as a space curve is $\kappa (t)$, show that the geodesic curvature of $P(t)$ with respect to $S^{*}$ is $\pm k(t)$, and find its normal curvature with respect to $S^{*}$. Do any of the results of problems 2 and 3 hold if $P(t)$ is not a principal curve of $S$?
+  \item Find as many facts about $S^{*}$ as you can which depend on properties of $P(t)$. Find the edge of regression of $S^{*}$. What is its relation to $P(t)$?
+  \item If the principal curves of a surface are taken as its parameter curves, the formula of Rodrigues becomes
+    \begin{equation}
+      X_{3i} + k_{i} X_{i} = 0 \quad i=1,2
+    \end{equation}
+  where the subscript $i$ in $X_{3i}$ and $X_{i}$ denotes differentiation with respect to the surface coordinate $u_{i}$, and $k_{i}$ is the principal normal curvature of the $i$-th principal curve. Derive (3) from the Weingarten equations
+    \begin{equation}
+      X_{3i} = -L_{ij} g^{kj} X_{k} \quad i=1,2
+    \end{equation}
+  in which an index used both as a subscript and superscript implies summation from 1 to 2, and the $g^{kj}$ are the entries of the inverse matrix of the fundamental metric tensor whose entries are denoted $g_{kj}$. (The $g_{kj}$ are the coefficients $E$, $F$, and $G$ of the first fundamental form.) The $L_{ij}$ are the coefficients of the second fundamental form, and are often called $L$, $M$, and $N$. It may be useful to observe that the principal curves being parameter curves implies that on our surface
+    \begin{equation}
+      L_{12} = L_{21} = g_{12} = g_{21} = g^{12} = g^{21} = 0.
+    \end{equation}
+  As the fundamental metric tensor is a diagonal matrix by (5), it follows that $g^{ii} = \frac{1}{g_{ii}}$. Recall, also, that when the principal curves are parameter curves, $k_{i} = \frac{ L_{ii} }{ g_{ii} }$.
+  \item What can be said, using (1), about an asymptotic curve which is also a principal curve?
+  \item A straight line in a strictly negatively curved surface is clearly not a principal curve. Then $X_{3}$ is not constant along this line, but rather rotates around it. What determines the rate of rotation? Make this question precise and examine several examples before you attempt a solution.
+  \item Given a principal curve $P(t)$ along which the normal curvature is constant, can (1) be integrated with respect to t? Discuss.
+  \item Use the formula of Rodrigues to show that a meridian (or profile curve) of a surface of revolution is a principal curve.
+  \item What can be said about any curve along which the surface unit normal $X_{3}$ is constant? Can this ever happen on a strictly negative or on a strictly positive surface? Find an example of such a curve on a torus.
+\end{enumerate}
+
+
+
+\chapter*{Chapter V: Surfaces of Revolution}
+\markboth{Chapter V}{Chapter V}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter V: Surfaces of Revolution}
+
+\setcounter{equation}{0}
+
+A surface of revolution may be represented by
+\begin{equation}
+X(r,\theta) = (r \cos \theta, r \sin \theta, f(r))
+\end{equation}
+where $r$ and $\theta$ are polar coordinates, and the profile curve $z = f(r)$ is revolved around the $z$-axis. (If a vertical half-plane passing through the $z$-axis cuts the surface, the resulting profile curve may be graphed using a horizontal ray in the $x-y$ plane as $r$-axis, and the $z$-axis as itself.) See Figure 6.
+
+\begin{center}
+%TeXCAD Picture [fig6.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(86,67.25)(0,0)
+\put(5.5,64.5){\line(0,-1){56.75}}
+\put(3.75,10){\line(1,0){79.5}}
+\qbezier(14.5,29)(21.75,11.75)(54,43.5)
+\put(5.5,67.25){\makebox(0,0)[cc]{$z$}}
+\put(86,9.75){\makebox(0,0)[cc]{$r$}}
+\put(21.25,53.25){\makebox(0,0)[cc]{$z = f(r)$}}
+\put(43.5,4){\makebox(0,0)[cc]{Fig. 6}}
+\qbezier(77,48.75)(59.5,50.38)(54,43.5)
+\end{picture}
+\end{center}
+
+\begin{enumerate}[1.]
+  \item Describe geometrically the surface of revolution obtained when $f(r)$ is constant. What happens when $f(r)$ is linear? What surface is obtained when the profile curve is a vertical line?
+  \item Derive the first and second forms' coefficients, and show that the gaussian curvature is given by
+    \begin{equation}
+      K = \frac{ f' f'' }{ r (1 + f'^{2})^{2} }
+    \end{equation}
+    where primes denote differentiation with respect to $r$. Since $K = k_{1} k_{2}$, ``factor'' $K$ into the product of the extreme- normal curvatures. Recall that $k_{i} = \frac{L_{ii}}{g_{ii}}$ when the principal curves are parameter curves. Is this the case here? Prove it.
+  \item Show that the surface unit normal is given by
+    \begin{equation}
+      X_{3} = \frac{(- f' \cos \theta, - f' \sin \theta, 1)}{ \sqrt{1+f'^{2}} }
+    \end{equation}
+    When is $X_{3}$ vertical? When does it point toward (away) from the $z$-axis?
+  \item If $f'(r_{0}) = 0$, show that the curve $X(r_{0},\theta) = P(\theta)$ on the surface consists entirely of points of zero gaussian curvature. Show that this curve is an asymptotic curve. Are the points on this curve planar or parabolic? (Hint: it depends on $f''(r_{0})$.) Recall that while $LN - M2 = 0$ at points of zero gaussian curvature, at a planar point, $L = M = N = 0$, and both $k_{1}$ and $k_{2}$ vanish. At a parabolic point, $L^{2} + M^{2} + N^{2} \neq 0$, and exactly one of $k_{1}$ and $k_{2}$ doesn't vanish.
+  \item Use $E$, $F$, and $G$ to calculate the lateral surface area of a right circular cone.
+  \item Show how the gaussian curvature of the surface depends on the profile curve $z = f(r)$ using $(2)$. Give a geometric argument showing the connection between $K$ and the concavity of $f(r)$ in relation to the $z$-axis, i.e., whether $f(r)$ is concave toward or away from the $z$-axis. It may be useful to recall that at a point of positive gaussian curvature, the surface lies on one side of the tangent plane for all points in some neighborhood of the point of tangency, while this isn't true for points of negative gaussian curvature. (Consider the surfaces $z = x^{2} + y^{2}$ and $z = xy$, both of which are tangent to the $x-y$ plane at the origin. The first surface is positively curved, while the second is negatively curved.)
+  \item For what profile curve(s) is the gaussian curvature of the resulting surface of revolution a negative constant? (Hint: use the expression, valid for orthogonal coordinate systems,
+    \begin{equation}
+      K = - \left( \frac{1}{2} \sqrt{EG} \right) \left[ \left( \frac{(E_{2})}{(\sqrt{EG})} \right)_{2} + \left( \frac{ (G_{1} }{ (\sqrt{EG}) } \right)_{1} \right]
+    \end{equation}
+    and solve the resulting second order differential equation for $f(r)$.) Subscripts in (4) denote partial differentiation.
+  \item Why is the surface of revolution not regular when $r = 0$, unless $f'(0) = 0$? See Figure 7.
+
+\begin{center}
+%TeXCAD Picture [fig7.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(42.61,32.26)(0,0)
+\put(4.5,30.25){\line(0,-1){22.75}}
+\put(4.5,7.5){\line(1,0){36.5}}
+\thicklines
+\qbezier(4.75,11.5)(6.75,12.38)(8.75,19.75)
+\put(42.61,7.6){\makebox(0,0)[cc]{$r$}}
+\put(4.35,32.26){\makebox(0,0)[cc]{$z$}}
+\put(21,3){\makebox(0,0)[cc]{Fig. 7}}
+\thinlines
+\qbezier(17.39,25.12)(10.41,24.3)(8.77,19.62)
+\end{picture}
+\end{center}
+
+  \item Clearly, the representation (1) cannot be used for a surface of revolution whose profile curve has a vertical tangent or, which has more than one $z$ value for a given $r$, i.e., $f(r)$ is a multi-valued function. See Figure 8.
+
+\begin{center}
+%TeXCAD Picture [fig8.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(74,55.75)(0,0)
+\put(3.75,52.75){\line(0,-1){49.25}}
+\put(3.75,3.5){\line(0,1){0}}
+\put(2.25,5.75){\line(1,0){69}}
+\put(50,46.5){\line(0,-1){24.5}}
+\qbezier(44.5,44)(60.5,32.25)(28.5,14.5)
+\put(3.75,55.75){\makebox(0,0)[cc]{$z$}}
+\put(74,6){\makebox(0,0)[cc]{$r$}}
+\put(36,1.5){\makebox(0,0)[cc]{Fig. 8}}
+\end{picture}
+\end{center}
+
+    Assume that $r = g(z)$ is a single valued $C^{2}$ function, and represent the surface of revolution by
+    \begin{equation}
+      X(z,\theta ) = ( g(z) \cos \theta, g(z) \sin \theta , z)
+    \end{equation}
+    Repeat the analysis of this chapter using (5).
+  \item If $g'(z_{0}) = 0$, do the points of the curve $X(z_{0},\theta) = R(\theta)$ have zero gaussian curvature? Why or why not? Compare with Problem 4 in this chapter. What role does $g''(z_{0})$ play? Why can the points of $R(\theta)$ never be planar?
+  \item Show that the only ruled surface of revolution with negative gaussian curvature is the hyperboloid of one sheet.
+\end{enumerate}
+
+
+
+\chapter*{Chapter VI: Spherical Curves}
+\markboth{Chapter VI}{Chapter VI}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter VI: Spherical Curves}
+
+\setcounter{equation}{0}
+
+A curve on a sphere is called a spherical curve. Without loss of generality, we assume here that the curve is on a unit sphere.
+
+Let $X(s)$ be a curve on the unit sphere centered at the origin, such that $s$ is an arc length parameter. Then
+\begin{equation}
+X(s) = av_{2} + bv_{3} (a^{2} + b^{2} = 1)
+\end{equation}
+where $a$ and $b$ are scalar functions of $s$, and $X(s)$ is clearly a unit vector. Now $X'(s) = v_{1}$. We differentiate (1) and set the resulting coefficients of $v_{1}$, $v_{2}$, $v_{3}$ in the derivative of (1) to zero after transposing all terms to one side. We have
+\begin{align}
+v_{1} & = a'v_{2} + av'_{2} + b'v_{3} + bv'_{3} \\
+    0 & = - \kappa a - 1 \notag \\
+    0 & = a' - \tau b \notag \\
+    0 & = \tau a + b' \notag
+\end{align}
+
+where we have made use of the Frechet equations for $v_{i}', i=1,2,3$.
+
+\begin{enumerate}[1.]
+  \item Derive (1) and (2). How would these equations differ if the sphere had radius $r$?
+  \item If (1) represents a great circle, show that $a = -1$ and $b = 0$. Show that the torsion is zero, geometrically and analytically.
+  \item Show from (2) that
+    \begin{align}
+      a & = \frac{-1}{\kappa} \\
+      b & = \frac{\kappa'}{(\tau \kappa^{2})}. \notag
+    \end{align}
+    Then, squaring and adding both sides of (3), derive the first order differential equation
+    \begin{equation}
+      \kappa ' = \tau \kappa \sqrt{\kappa^{2}-1}
+    \end{equation}
+    valid for all sufficiently differentiable curves on the unit sphere.
+  \item Assume for a given spherical curve that its torsion is a positive constant $T$. Use (4) to show that for this curve,
+    \begin{equation}
+      \kappa = \sec (Ts + c)
+    \end{equation}
+    where $c$ is the inverse secant of the curvature of the point for which $s = 0$. Describe the curve using (5). Can its arc length be infinite? What else can you say about such curves of constant torsion on the unit sphere?
+  \item Assume that for some curve on the unit sphere the ratio of the torsion to the curvature is a constant, i.e., $\tau = w \kappa$, where $w$ is a constant. Insert this into (4) and solve the resulting differential equation. Discuss the curve on the basis of your solution. Such a curve is called a spherical helix.
+  \item Repeat the previous problem, assuming that the product (and not the ratio) of the torsion and curvature is constant. Derive equations for the curvature and the torsion as functions of $s$. These are called the intrinsic equations of a space curve.
+  \item Consider classes of spherical curves determined by various relationships between the curvature and torsion, i.e., types of functions $f$, where $\tau = f(\kappa)$. For example, $f$ can be monotonic, exponential, power function, sinusoidal, etc. Describe such classes as well as possible using (4). What conditions on $f$ guarantee a unique solution, except for Euclidean motion? (In this case, this means rotation on the unit sphere.)
+  \item Given a space curve $P(s)$, how can you tell whether it is a spherical curve? The sphere might not be centered at the origin! In general, given a surface $S$ and a space curve $C$, does $S$ contain a copy of $C$? For example, if $S$ is a sphere and $C$ is a straight line, the answer is no. If $S$ is a plane and $C$ is a curve of zero torsion, the answer is yes. If $S$ is a sphere and $C$ is a circle whose radius does not exceed the radius of the sphere, the answer is yes. Which ellipses, for example, lie on a right circular cylinder of radius $r$? The general question may be overwhelming, whereas partial answers concerning specific types of curves and surfaces may be relatively easily obtained. (There are no straight lines on positively curved surfaces, for instance.)
+\end{enumerate}
+
+
+
+\chapter*{Chapter VII: Helices}
+\markboth{Chapter VII}{Chapter VII}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter VII: Helices}
+
+\setcounter{equation}{0}
+
+A helix is a curve for which the ratio of its torsion to its curvature is constant, i.e.,
+\begin{equation}
+\frac{\tau(s)}{\kappa(s)} = c
+\end{equation}
+where $s$ an arclength parameter and $c$ is a constant. Such curves are also called curves of constant grade, for reasons which shall be made clear shortly. We must first recall several facts about the Darboux vector $D(s)$ of a space curve.
+
+The Darboux vector lies in the direction of the instantaneous axis of rotation of the moving trihedral $(v_{i}, i = 1,2,3)$ of a space curve. It is defined by
+\begin{equation}
+D(s) = \tau v_{1} + \kappa v_{3}
+\end{equation}
+and we will denote it as $D$, as its dependence on $s$ is understood.
+
+For a helix, we have upon inserting (1) in (2),
+\begin{equation}
+D = c \kappa v_{1} + \kappa v_{3} = \kappa(cv_{1} + v_{3}).
+\end{equation}
+
+It will be convenient to normalize $D$, i.e., to divide it by its magnitude in order to obtain a unit vector. We denote the unit Darboux vector by $d$. It is given for a helix by
+\begin{equation}
+d = \frac{ (cv_{1} + v_{3}) }{ \sqrt{c^{2} + 1} }
+\end{equation}
+
+Notice that the angle between the Darboux vector and the tangent vector is constant, as may by dotting $v_{1}$ with $d$. Denoting this angle by $\theta$, we have using (4),
+\begin{equation}
+\cos \theta = v_{1} \cdot d = \frac{c}{ \sqrt{c^{2} + 1} }.
+\end{equation}
+
+Even more interesting is the fact that the direction of the Darboux vector is fixed in space! To see this, we differentiate (4), yielding
+\begin{equation}
+\frac{(c \kappa v_{2} - \tau v_{2}) }{ \sqrt{c^{2} + 1} } = d' = 0
+\end{equation}
+implying that $d$ is a constant vector. If we rotate the axes of $R^{3}$ so that the positive $z$-axis is in the direction of $d$, then the tangent vector $v_{1}$ makes a constant angle with the ``vertical'' direction, thereby justifying the name ``curve of constant grade''. In fact, since $v_{1} \cdot (0,0,1) = \frac{dz}{ds}$ is constant, we have, using a time parameter $t$ and applying the chain rule,
+\begin{equation}
+\frac{dz}{dt} = \left( \frac{dz}{ds} \right) \left( \frac{ds}{dt} \right)
+\end{equation}
+so that a particle moving along the helix with constant speed ``rises'' at constant rate.
+
+\begin{enumerate}[1.]
+  \item Show that the geodesic curvature of \emph{any} space curve with respect to its rectifying developable equals zero, implying that if one were to ``roll out'' the developable on a plane, the space curve would be a straight line. Show that the rectifying developable of a helix is a cylinder whose generators are in the direction of the Darboux vector, i.e., in the so-called ``vertical'' direction. For example, the circular helix
+    \begin{equation}
+      X(t) = (a \cos t, a \sin t, bt)
+    \end{equation}
+    where $a$ and $b$ are constants, clearly lies on the cylinder $x^{2} + y^{2} = a^{2}$, whose generators are parallel to the $z$-axis. All the helices on this particular cylinder are of the form (8) as $b$ assumes different values (show this), except for vertical translations.
+  \item Given a cylinder with generators parallel to the $z$-axis, show it contains infinitely many helices which in fact form a one-parameter family of curves. A ``vertical'' cylinder may be represented by
+    \begin{equation}
+      X(u,v) = (f(u), g(u), h(v))
+    \end{equation}
+    whose generators may be obtained by setting $u$ equal to a constant (i.e., $u$-curves), and whose trace in the $x-y$ plane $X(u,v_{0})$, where $h(v_{0}) = 0$, is either a finite or infinite length (plane) curve. Derive a first order differential equation for the family of helices on the cylinder using (9). What is the significance of the expression $\sqrt{(f'^{2} + g'^{2})}$ which appears in the differential equation? (Hint: start by assuming that a helix on the cylinder has the representation, using (9),
+    \begin{equation}
+      Y(t) = X(u(t), v(t)) = \mathrm{ etc.}
+    \end{equation}
+    and then use the fact that $Y'(t)$ makes a constant angle with the $z$-axis.)
+  \item Solve the differential equation of Problem 2 for specific kinds of cylinders, e.g. elliptic, parabolic, hyperbolic, etc. Do any helices have interesting properties? Are any of their properties related to the trace of their cylinders in the $x-y$ plane? If so, can you generalize the connection to all helices?
+  \item Must the arclength of a helix be infinite? Can a helix ever be confined to the region of space $z_{1} \leq z \leq z_{2}$? In another words, can its height be bounded? Be sure to consider cylinders whose traces are spirals. Consider, also, spherical helices (see Chapter VI, Problem 5). We exclude cylinders whose traces consist of finite curves with distinct endpoints, as in Figure 9, as the answer is trivial.
+
+\begin{center}
+%TeXCAD Picture [fig9.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(58.25,47.75)(0,0)
+\put(5.5,44.5){\line(0,-1){39.75}}
+\qbezier(21.5,21)(28.88,28.38)(41.75,31.25)
+\put(.75,9.5){\line(1,0){53.75}}
+\put(54.5,9.5){\line(0,1){0}}
+\put(41.75,31){\circle*{1.8}}
+\put(21.5,21){\circle*{1.58}}
+\put(58.25,9.5){\makebox(0,0)[cc]{$x$}}
+\put(5.5,47.75){\makebox(0,0)[cc]{$y$}}
+\put(27,1.75){\makebox(0,0)[cc]{Fig. 9}}
+\end{picture}
+\end{center}
+
+  \item Discuss the class of helices on cylinders whose traces are simple closed curves.
+\end{enumerate}
+
+
+
+\chapter*{Chapter VIII: Osculating Developables}
+\markboth{Chapter VIII}{Chapter VIII}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter VIII: Osculating Developables}
+
+\setcounter{equation}{0}
+
+Given a one-parameter family of surfaces $X(u,v;p)$, where $p$ is the parameter, a surface $S$ is called the \emph{envelope} of the family if $S$ is not a member of the family and $S$ is covered by a one-parameter family of curves $C_{p}$ such that $S$ is tangent to the surface $X(u,v;p_{0})$ along the curve $C_{p_{0}}$. If $S$ exists, it must satisfy
+\begin{equation}
+(X_{u} X_{v} X_{p}) = 0
+\end{equation}
+where $( )$ denotes the scalar triple product.
+
+\begin{description}
+\item[Example:] Consider the family of hemispheres with centers on the $z$-axis given by
+  \begin{equation}
+  X(u,v;p) = (u, v, p - (\frac{p^{2}}{2} - u^{2} - v^{2})^{1/2})
+  \end{equation}
+  with $p > 0$. Solving (1) yields
+  \begin{equation*}
+  p = 2 \sqrt{ u^{2} + v^{2} }
+  \end{equation*}
+  which, when inserted into (2), gives the desired envelope
+  \begin{equation}
+  W(u,v) = (u, v, \sqrt{ u^{2} + v^{2} } )
+  \end{equation}
+\end{description}
+
+\begin{enumerate}[1.]
+  \item Verify the results of the above example. Describe the family of hemispheres in detail. What kind of surface is $W(u,v)$? Show that this surface is in fact covered by a family of curves (called characteristics) at which it is tangent to members of the family $X(u,v;p)$.
+  \item Give examp1es of one-parameter families, which have no envelopes. A simple example is
+    \begin{equation}
+      X(u,v;p) = (u, v, p)
+    \end{equation}
+    which represents a family of parallel planes. Show, using (1), that this family doesn't have an envelope, and then give a geometric argument.
+  \item Is the vanishing of $(X_{u} X_{v} X_{p})$ in some region of $R^{3}$ a sufficient condition for the existence of an envelope? If your answer is no, give examples. What can be responsible for the vanishing of the scalar triple product if no envelope exists?
+  \item Show that (1) is a necessary condition for the existence of an envelope using a jacobian argument. (Hint: the scalar triple product in (1) is the jacobian of $x,y,z$ with respect to $u,v,p$.)
+  \item Given a developable surface consisting entirely of essentially parabolic points (see page 3), show that it is the envelope of the family of its tangent planes. Find the characteristics. (Hint: all the points of a generator on a developable surface have the same tangent plane.)
+  \item Find the vector representation of the family of planes whose envelope is the cylinder $x^{2} + y^{2} = 1$. Do the same for the cone $x^{2} + y^{2} = z^{2}$.
+  \item If a surface is the envelope of a one-parameter family of planes, must it be a developable surface?
+  \item Consider the family of paraboloids
+      \begin{equation}
+      X(u,v;p) = (u, v, u^{2} + pv^{2}) \quad p > 0.
+    \end{equation}
+    Does this family have an envelope? Show that the solution to (1) for this family is a curve! What is the relevance of this curve in describing the paraboloids?
+  \item It is often useful to parametrize a surface $z = f(x,y)$ by
+    \begin{equation}
+      X(x,y) = (x, y, f(x,y))
+    \end{equation}
+    i.e., to use $x$ and $y$ as intrinsic coordinates. Calculate $E$, $F$, $G$, $L$, $M$, $N$, etc. from (6) and show that the area element is the familiar one used in multivariable calculus,
+    \begin{equation}
+      dA = \sqrt{ 1 + f_{x}^{2} + f_{y}^{2} } dx dy.
+    \end{equation}
+    Show that (6) is a developable surface if and only if
+    \begin{equation}
+      f_{xx} f_{yy} - f_{xy}^{2} = 0
+    \end{equation}
+    at all of its points. Explain how the left side expression in (8) is used to identify critical points as relative extrema or saddle points in advanced calculus.
+  \item A one-parameter family of surfaces of the form (6) can be represented by
+    \begin{equation}
+      X(x,y;p) = (x, y, f(x,y,p))
+    \end{equation}
+    or, more simply, by
+    \begin{equation}
+      z = f(x,y,p).
+    \end{equation}
+    Show that (1) becomes
+    \begin{equation}
+      \frac{\delta z}{\delta p} = 0.
+    \end{equation}
+    How does (11) simplify Problems 2 and 8?
+\end{enumerate}
+
+Let $P(s)$ be a space curve with non-zero curvature at all of its points. Then the family of osculating planes of $P(s)$ is given by
+\begin{equation}
+X(r,t;s) = P(s) + rv_{1}(s) + tv_{2}(s)
+\end{equation}
+where $s$ is obviously the parameter, i.e., fixing $s$ determines a particular osculating plane which is spanned by $v_{1}(s)$ and $v_{2}(s)$. We have
+\begin{align*}
+X_{r} & = v_{1} \\
+X_{t} & = v_{2} \\
+X_{s} & = (1 - \kappa t) v_{1} + r \kappa v_{2} + t \tau v_{3}
+\end{align*}
+so that (1) becomes
+\begin{equation}
+(X_{r} X_{t} X_{s}) = \tau t = 0.
+\end{equation}
+which for our space curve implies that $t = 0$.
+
+The envelope is found by setting $t = 0$ in (12), yielding
+\begin{equation}
+W(s,r) = P(s) + rv_{1}(s).
+\end{equation}
+
+We proceed to analyze (14). Computing the partials and unit surface normal along with the coefficients of the first and second fundamental forms yields
+\begin{align}
+W_{1} & = P(s) + rv'_{1}(s) = v_{1}(s) + r \kappa v_{2}(s) \\
+W_{2} & = v_{1}(s) \\
+W_{1} \times W_{2} & = r \kappa v_{2}(s) \times v_{1}(s) = - r \kappa v_{3}(s) \notag \\
+W_{3} & = - v_{3}(s) \\
+W_{11} & = - r \kappa^{2} v_{1}(s) + (\kappa + r \kappa ')v_{2}(s) + r \kappa \tau v_{3}(s) \notag \\
+W_{12} & = \kappa v_{2}(s) \notag \\
+W_{22} & = 0 \notag
+\end{align}
+\begin{equation}
+E = 1 + r^{2} \kappa^{2};\ F = 1;\ G = 1;\ L = - r \kappa \tau;\ M = N = 0
+\end{equation}
+so that $K = 0$ and (14) is a developable surface, called the \emph{osculating developable} of $P(s)$. The $s$-constant curves are straight lines in the direction of $v_{1}(s)$ and are the generators of the developable. Notice that $W_{3}$ is constant along these lines, as one would expect on a developable.
+
+\begin{enumerate}
+  \item[11.] Describe the family of osculating planes of a \emph{plane} curve. Why would the analysis of this chapter be absurd for such curves?
+  \item[12.] Why should the curvature of $P(s)$ not vanish? (What goes wrong if the curvature vanishes at various points of the curve?)
+  \item[13.] Show that the area element of the osculating developable (14) is given by
+    \begin{equation}
+      dA = r \kappa ds dr
+    \end{equation}
+    and give a geometric argument to render this plausible.
+  \item[14.] Show that the edge of regression of the osculating developable is the curve $P(s)$.
+\end{enumerate}
+
+To learn more about the osculating developable $W(s,r)$, we derive the principal curves orthogonal to the generators. The latter are, of course, also principal curves. The generators have zero normal curvature, while the ``non-generator'' principal curves which we seek have, in general, non-vanishing normal curvature, as we shall see.
+
+A curve on $W(s,r)$ transverse to the generators has the intrinsic equation
+\begin{equation}
+r = f(s)
+\end{equation}
+or, in vector form,
+\begin{equation}
+Y(s) = W(s,f(s)) = P(s) + f(s) v_{1}(s)
+\end{equation}
+which is obtained by inserting (20) into (14). Now, if $y(s)$ is orthogonal to the generators, it follows that $Y'(s)$ is orthogonal to $v_{1}(s)$, since the latter vector is in the generator direction. Computing $Y'(s)$ from (21) and dotting with $v_{1}(s)$ gives
+\begin{equation*}
+v_{1}(s) \cdot (v_{1}(s) + f'(s) v_{1}(s) + f(s) \kappa v_{2}(s)) = 0
+\end{equation*}
+or
+\begin{equation}
+f'(s) = - 1
+\end{equation}
+which, upon integrating, yields
+\begin{equation}
+r = f(s) = c - s
+\end{equation}
+where $c$ is a constant. Inserting (23) into (21) gives
+\begin{equation}
+Y(s) = P(s) + (c - s) v_{1}(s).
+\end{equation}
+
+Note that when $s = c$, (24) becomes $Y(c) = P(c)$, implying that (24) is the non-generator principal curve which meets the curve $P(s)$ at the point $P(c)$. There is, therefore, a one-to-one correspondence between points of $P(s)$ and non-generator principal curves. See Fig. 10.
+
+\begin{center}
+%TeXCAD Picture [fig10.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(102.75,83.5)(0,0)
+\qbezier(13.5,13)(32.63,58.38)(80.25,59.25)
+%\emline(17.5,22.25)(17.75,22)
+\multiput(17.5,22.25)(.03125,-.03125){8}{\line(0,-1){.03125}}
+%\end
+%\emline(17.75,22)(46,82)
+\multiput(17.75,22)(.0337112172,.0715990453){838}{\line(0,1){.0715990453}}
+%\end
+%\emline(26.75,35.25)(60.25,83.5)
+\multiput(26.75,35.25)(.0337361531,.0485901309){993}{\line(0,1){.0485901309}}
+%\end
+%\emline(57,55.75)(102.75,75)
+\multiput(57,55.75)(.080122592,.033712785){571}{\line(1,0){.080122592}}
+%\end
+\qbezier(44,49.5)(41.25,54.75)(31.5,57)
+\qbezier(49.5,52.75)(46,62.88)(35.5,64.5)
+\qbezier(66.25,58.25)(60.25,72)(42.25,80.75)
+%\qbezvec(22,69.25)(24.25,64.25)(32.5,64.25)
+\put(32.5,64.25){\vector(1,0){.07}}\qbezier(22,69.25)(24.25,64.25)(32.5,64.25)
+%\end
+%\qbezvec(40.5,30.25)(34.38,33.5)(33.75,38.75)
+\put(33.75,38.75){\vector(-1,4){.07}}\qbezier(40.5,30.25)(34.38,33.5)(33.75,38.75)
+%\end
+\put(16.25,73){\makebox(0,0)[cc]{$W(s,c - s) = Y(s)$}}
+\put(42.25,26.75){\makebox(0,0)[cc]{$P(s)$}}
+\put(50.5,49.5){\makebox(0,0)[cc]{$s=c$}}
+\put(36,3.25){\makebox(0,0)[cc]{Fig. 10}}
+%\emline(80.96,82.2)(38.01,45.96)
+\multiput(80.96,82.2)(-.0399597553,-.0337109047){1075}{\line(-1,0){.0399597553}}
+%\end
+\put(49.67,52.68){\circle*{1.77}}
+\end{picture}
+\end{center}
+
+\begin{enumerate}
+  \item[15.] Show that the distance along a generator from the point $Y(s_{0})$ on a non-generator principal curve to the edge of regression is $c - s_{0}$ where $c$ has the appropriate value determining the particular non-generator principal curve.
+  \item[16.] Calculate $Y'(s)$ from (24), and show that
+    \begin{equation}
+      Y'(s) = (c - s) \kappa v_{2}(s).
+    \end{equation}
+    Interpret (25) geometrically. 
+\end{enumerate}
+
+How can you deduce that the tangent planes of the osculating developable along a given generator are all coincident with the osculating plane of $P(s)$ at the point whose tangent is the generator? Of course this can easily be deduced from (17), but it is desirable in mathematics to be able to prove a fact in several ways!
+
+We denote the moving trihedral of $y(s)$ by $y_{i}, i = 1,2,3$, in order to avoid confusion with the $v_{i}$ of $P(s)$. From (25), one sees that
+\begin{equation}
+y_{1} = v_{2}
+\end{equation}
+and that $s$ is not an arclength parameter for $Y(s)$. Nevertheless, we calculate $y_{2}$ by normalizing (making unit length) $\frac{dy_{1}}{ds}$ (justify!), obtaining
+\begin{equation}
+y_{2} = \frac{(dy_{1} / ds)}{\vert dy_{1} / ds \vert} = \frac{(dv_{2}/ds)}{\vert dv_{2}/ds \vert} = -\frac{ (\kappa v_{1} + \tau v_{3}) }{ \sqrt{(\kappa ^{2} + \tau ^{2})} }.
+\end{equation}
+
+Since $y_{3} = y_{1} \times y_{2}$, we have
+\begin{equation}
+y_{3} = \frac{ (\tau v_{1} + \kappa v_{3}) }{ \sqrt{\tau ^{2} + \kappa ^{2}} }
+\end{equation}
+from which one sees that the binormals of the non-generator principal curves at the points where they intersect a fixed generator are all the same, in light of the fact that (28) doesn't depend on $c$. In fact, the moving trihedrals of the non-generator principal curves at the points where they intersect a fixed generator are all the same. Furthermore, their normal planes (determined by $y_{2}$ and $y_{3}$) all coincide along a fixed generator and are incident with the rectifying plane (determined by $v_{1}$ and $v_{3})$ of $P(s)$ at the point whose tangent is that particular generator.
+
+The reader may have noticed that the binormal (28) is the unit Darboux vector $d$ of $P(s)$! Can you explain why this is so? (This is not the same as asking for a proof.) We state this fact as a theorem.
+
+\begin{description}
+\item[Theorem:] The normalized instantaneous axis of rotation of the moving trihedral at a point $P$ on the edge of regression of a tangential developable is the common binormal vector of all the non-generator principal curves at the points where they cross the generator which is tangent to the edge of regression at $P$.
+\end{description}
+
+We denote an arclength parameter of $Y(s)$ by $z$. Then, from (25), it follows that
+\begin{equation}
+\frac{dz}{ds} = \kappa(c - s).
+\end{equation}
+
+To find the curvature $\bar{\kappa}$ of the non-generator principal curves, the magnitude of $\frac{dy_{1}}{dz}$ is required. Using the chain rule, we get
+\begin{equation}
+\frac{dy_{1}}{dz} = \left( \frac{dy_{1}}{ds} \right)  \left( \frac{ds}{dz} \right) = \left( \frac{dv_{2}}{ds} \right)  \left( \frac{ds}{dz} \right)
+\end{equation}
+by (26). Using (29), (30), and the Frenet equation for $\frac{dv_{2}}{ds}$, and taking magnitudes, we obtain
+\begin{equation}
+\bar{\kappa} = \frac{ \sqrt{\kappa ^{2} + \tau ^{2}} }{ \kappa (c - s) }.
+\end{equation}
+
+\begin{enumerate}
+  \item[17.] Verify (29) and (31). Give a plausible explanation for the dependence of (31) on $c$. Notice that it is an inverse relationship, i.e., $c$ is in the denominator (see Problem 15 of this chapter).
+  \item[18.] Find expressions for the normal and geodesic curvatures of $Y(s)$. Verify that the torsion of $Y(s)$ is given by
+    \begin{equation}
+      \tau = \frac{ (\kappa \tau ' - \tau \kappa ') }{ (c - s) \kappa (\kappa ^{2} + \tau ^{2}) }
+    \end{equation}
+    From your expression for the normal curvature of $Y(s)$, show that a generator consists entirely of planar points if and only if the torsion of $P(s)$ at its point of contact with the given generator is zero. Otherwise, the generator consists entirely of parabolic points.
+  \item[19.] Dividing (32) by (31) shows that the ratio of torsion to curvature of the non-generator curves at the points where they intersect a given generator doesn't depend on $c$, and is, therefore, invariant along the generator. We have
+    \begin{equation}
+      \frac{\bar{\tau}}{\bar{\kappa}} = \frac{(\kappa \tau ' - \tau \kappa ')}{(\kappa ^{2} + \tau ^{2})^{3/2}}.
+    \end{equation}
+    Use (33) to prove the following theorem.
+
+     \textbf{Theorem}: If one of the non-generator principal curves of an osculating developable is a helix, then so are the other non-generator principal curves.
+  \item[20.] Show that if $P(s)$ is a helix, then $\bar{\tau}$ is identically zero on all the non-generator principle curves, implying that they are plane curves! Moreover, show that the planes in which they lie are ``horizontal'', i.e., are orthogonal to the (constant) Darboux vector of the helix. (Hint: show that if $\frac{\tau (s)}{\kappa (s)}$ is constant, then the numerator of the right side of (32) vanishes.)
+  \item[21.] Illustrate Problem 20 for the circular helix
+    \begin{equation*}
+      X(t) = (\cos t, \sin t, t).
+    \end{equation*}
+    Verify that the normal vector $v_{2}$ for this helix is always horizontal. Is this true for all helices?
+\end{enumerate}
+
+
+
+\chapter*{Chapter IX: Constant Deformation of a Surface}
+\markboth{Chapter IX}{Chapter IX}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter IX: Constant Deformation of a Surface}
+
+\setcounter{equation}{0}
+
+Let $S$ be a regular surface represented by $X(u,v)$, with a unit surface normal $X_{3}(u,v)$ such that the parameter curves are principal curves. It follows (see (3) in Chapter IV) that
+\begin{equation}
+X_{3i} = - k_{i} X_{i} \quad i= 1,2.
+\end{equation}
+
+Define a surface $S'$ by
+\begin{equation}
+D(u,v) = X(u,v) + cX_{3}(u,v)
+\end{equation}
+where $c$ is a positive constant. We obtain the partial derivatives and unit surface normal of $S'$ with the help of (1). We have
+\begin{equation}
+D_{i} = X_{i} + cX_{3i} = X_{i} + c(- k_{i} X_{i}) = (1 - ck_{i}) X_{i}
+\end{equation}
+for $i = 1,2$. To compute the surface normal $D_{3}$, we observe that by (3),
+\begin{equation}
+D_{1} \times D_{2} = (1 - ck_{1}) (1 - ck_{2}) (X_{1} \times X_{2})
+\end{equation}
+from which it follows, upon normalizing $D_{1} \times D_{2}$, that
+\begin{equation}
+D_{3} = X_{3}
+\end{equation}
+provided that $c$ is small enough so that the scalars in (4) are positive.
+
+As a consequence of (5), $S$ and $S'$ have parallel tangent planes at corresponding points (i.e., points having the same $u-v$ coordinates) such that the distance between parallel tangent planes is constant. For this reason, we call $S'$ a \emph{constant deformation} of $S$.
+
+\begin{enumerate}
+  \item[1.] Obviously, a constant deformation of a sphere is a sphere. Is a constant deformation of a nonspherical ellipsoid an ellipsoid? Is a constant deformation of a surface of revolution also a surface of revolution?
+  \item[2.] From (4), what restrictions might be imposed on $c$ to ensure that $D(u,v)$ is regular? Are there situations which allow $c$ to be arbitrarily large? (Hint: under what conditions are $k_{1}$ and $k_{2}$ both negative? What relevance does this have to the problem?)
+  \item[3.] Show that a constant deformation of a cylinder is a cylinder.
+\end{enumerate}
+
+We denote the coefficients of $D(u,v)$ by $\bar{E}$, $\bar{F}$, and $\bar{G}$ to distinguish them from those of $X(u,v)$. With the help of (3), we have
+\begin{align}
+\bar{E} & = D_{1} \cdot D_{1} = (1 - ck_{1})^{2} E \notag \\
+\bar{F} & = D_{1} \cdot D_{2} = (1 - ck_{1}) (1 - ck_{2}) F = 0 \\
+\bar{G} & = D_{2} \cdot D_{2} = (1 - ck_{2})^{2} G \notag
+\end{align}
+where $F = 0$ in (6), since $u$ and $v$ are principal parameters on $X(u,v)$. Note that $M = 0$ for the same reason.
+
+To compute $\bar{L}$, $\bar{M}$, and $\bar{N}$, we require the $D_{ij}$, which are easily obtained from (3) as follows.
+\begin{align}
+D_{11} & = X_{11} (1 - ck_{1}) + pX_{1} \notag \\
+D_{12} & = X_{12} (1 - ck_{1}) + qX_{1} \\
+D_{22} & = X_{22} (1 - ck_{2}) + rX_{2} \notag
+\end{align}
+in which $p$, $q$, and $r$ are scalars which play no role in what is to follow. Now, using the fact that $D_{3} = X_{3}$, we obtain, upon crossing both sides of (7) with $D_{3}$,
+\begin{align}
+\bar{L} & = (1 - ck_{1}) L \notag \\
+\bar{M} & = (1 - ck_{1}) M = 0 \\
+\bar{N} & = (1 - ck_{2}) N. \notag
+\end{align}
+
+\begin{enumerate}
+  \item[4.] Show, using (6) and (8), that $u$ and $v$ are principal parameters on $D(u,v)$ as well as on $X(u,v)$. Then, denoting the principal curvatures by $\bar k_{i}$, show that
+    \begin{equation}
+      \bar{k_{i}} = \frac{ k_{i} }{ (1 - ck_{i}) } \quad \quad i = 1,2
+    \end{equation}
+    from which it follows that
+    \begin{equation}
+      \bar{K} = \frac{K}{ (1 - ck_{1}) (1 - ck_{2}) }
+    \end{equation}
+  \item[5.] Prove the following theorem.
+
+     \textbf{Theorem}: A constant deformation of a developable surface is also a developable surface.
+\end{enumerate}
+
+Given a curve $C$ on $S$ represented by
+\begin{equation}
+P(t) = X(u(t), v(t))
+\end{equation}
+its \emph{corresponding} curve on $S'$ is denoted $\bar{P}(t)$, and is represented
+\begin{equation*}
+\bar{P}(t) = P(t) + cX_{3}(u(t), v(t))
+\end{equation*}
+or, when there is no possible confusion, more simply as
+\begin{equation}
+\bar{P}(t) = P(t) + cX_{3}(t).
+\end{equation}
+
+Certainly, $C$ and $C'$ are equidistant at corresponding points, the distance being $c$. In general, however, their tangents at corresponding points are not parallel. Upon differentiating (11) and (12), we have, using (1),
+\begin{align}
+      P'(t) & = X_{1}u'(t) + X_{2}v'(t) \\
+\bar{P}'(t) & = X_{1} (1 - ck_{1}) u'(t) + X_{2} (1 - ck_{2}) v'(t).
+\end{align}
+
+\begin{enumerate}
+  \item[6.] Show that the principal curves on $S'$ correspond to the principal curves on $S$ (in the sense in which ``correspond'' is defined above).
+  \item[7.] If $S$ is a developable surface, show that the generators of $S'$ ``correspond'' to those of $S$. Show this in several ways.
+  \item[8.] Show that corresponding principal curves on $S$ and $S'$ are parallel, i.e., have parallel tangents at corresponding points. (Hint: the principal curves on $S$ and $S'$ have intrinsic equations $u =$ constant and $v =$ constant).
+  \item[9.] If curve $C$ on $S$ consists entirely of umbilical points (points for which $k_{1} = k_{2})$, show that it is parallel to its corresponding curve $C'$ on $S'$. What is the sign of the gaussian curvature on $C$?
+  \item[10.] Given a simply connected region $R$ on $S$ with corresponding region $R'$ on $S'$, how are their areas related? Are there situations which do not require integration? In other words, when is the area element $dA'$ a constant multiple of $dA$?
+  \item[11.] Consider the region of $R^{3}$ represented by
+    \begin{equation}
+      T(u,v,t) = X(u,v) + tX_{3}(u,v) \quad  0 \leq  t \leq c
+    \end{equation}
+    where $(u,v)$ belong to some subset $H$ of the $u-v$ parameter plane such that $X(u,v)$ represents a simply connected region of $S$. Describe the region given by (15). What are its boundaries? How can its volume be computed? (Hint: the volume element is given by the scalar triple product $(T_{u} T_{v} T_{t})$.) Are there circumstances which simplify the computation of the volume?
+  \item[12.] Discuss Problem 11 above for if $S$ is a developable surface. Justify the resulting integral for the volume. Also analyze Problem 10 for if $S$ is a developable surface. Discuss, for example, the volume between a portion of a cylinder and its corresponding portion on a constant deformation. What facts about the cylinder are important here?
+  \item[13.] Compute the volume of the region between concentric spheres of radii $r$ and $r + c$ respectively, and analyze your answer in light of Problem 11 above.
+\end{enumerate}
+
+In Problem 3, it is stated that a constant deformation of a cylinder is a cylinder. We now investigate a constant deformation of a tangential developable (osculating developable).
+
+Let $X(s,t)$ be a tangential developable given by
+\begin{equation}
+X(s,t) = P(s) + tv_{1}(s)
+\end{equation}
+where $P(s)$ is a space curve with moving trihedral $v_{i}(s)$ and nonvanishing curvature. 
+
+Let $D(u,v)$ be a constant deformation of (16), given by
+\begin{equation}
+D(s,t) = X(s,t) + cX_{3}(s,t) = P(s) + tv_{1} (s) - cv_{3}(s)
+\end{equation}
+using the fact that $X_{3} = - v_{3}$ (see Chapter VIII, (17) ).
+
+\vspace{0.3cm}
+
+\begin{enumerate}
+  \item[14.] Show that $D(s,t)$ is also a tangential developable. Find its edge of regression, which we denote by $Q(s)$. Show that $P(s)$, which is the edge of regression of $X(s,t)$, does not correspond to $Q(s)$. Show that, instead,
+    \begin{equation*}
+      Q(s) = P(s) - \frac{ c(\tau v_{1} + \kappa v_{3}) }{ \kappa }
+    \end{equation*}
+    or, upon denoting the Darboux vector of $P(s)$ by $D(s)$,
+    \begin{equation}
+      Q(s) = P(s) - \left( \frac{c}{\kappa} \right) D(s).
+    \end{equation}
+\end{enumerate}
+
+We summarize these results in the following theorem.
+
+\begin{description}
+\item[Theorem:] A constant deformation of a tangential developable is also a tangential developable, whose edge of regression is related to the edge of regression of the original surface by (18).
+\end{description}
+
+\begin{enumerate}
+  \item[15.] Why does the Darboux vector of $X(s,t)$ relate the two edges of regression in (18)? Why should it appear at all in this analysis?
+  \item[16.] Compare the properties of $P(s)$ with those of $Q(s)$. Find the Darboux vector of $Q(s)$. Does (18) entail a bilateral relationship between the two edges of regression? (Isn't $X(s,t)$ a constant deformation of $D(s,t)$? How is this reflected in (18)?).
+  \item[17.] Consider a constant deformation of a cone. Is the constant deformation a cone? To simplify matters, let the cone be represented by
+    \begin{equation}
+      X(r,s) = rZ(s) \quad r > 0
+    \end{equation}
+    where Z(s) is a simple curve on the unit sphere. The s-constant curves are the generators, while the $r$-constant curves are spherical curves. Let $s$ be an arclength parameter of the curve $X(1,s) = Z(s)$, so that $Z'(s)$ is a unit vector. We have
+    \begin{align}
+      X_{1} = rZ'(s) \notag \\
+      X_{2} = Z(s) \\
+      X_{3} = Z'(s) x Z(s). \notag
+    \end{align}
+    Notice that $Z'$ and $X_{3}$ span the tangent plane of the unit sphere at the point $X(1,s)$. Observe, also, that $X_{3}$ depends only on $s$, as we would expect, since the $s$-constant curves are the generators. Show that the area element is $r \cdot dr ds$, and explain why this is reasonable. Show that $r$ and $s$ are principal parameters. Show, by differentiating (20) and dotting with (21), that
+    \begin{align}
+      L & = rX_{3} \cdot Z'' = -r(ZZ' Z'') \\
+      M & = N = 0 \notag
+    \end{align}
+    from which it follows that
+    \begin{align}
+      k_{1} & = \frac{L}{E} = - \left( \frac{1}{r} \right) (ZZ' Z'') \\
+      k_{2} & = 0. \notag
+    \end{align}
+    Now when $r = 1$, i.e. at the intersection of the cone and the unit sphere, we have
+    \begin{equation}
+      k_{1}(1,s) = -(ZZ' Z'').
+    \end{equation}
+    Show that $k_{1}(1,s)$, which is the normal curvature of the spherical curve $Z(s)$ with respect to the cone, is also the geodesic curvature of $Z(s)$ with respect to the unit sphere. Why is this no surprise? (Hint: $Z(s)$ is the intersection of the cone and sphere, and their surface normals are $X_{3}$ and $Z$, respectively. As these surface normals are orthogonal, it follows that the cone and sphere intersect orthogonally.) Derive the geodesic curvature of $Z(s)$ with respect to the cone, using a similar argument. Then find the geodesic curvature of any $r$-constant curve. A clever way to do this is to ``roll out'' the cone on a plane, in which case the $r$-constant curves become arcs of circles of radius $r$. Of course, bending the cone leaves the geodesic curvature invariant.
+
+    We now come to the heart of Problem 17, and represent the deformation of the cone by
+    \begin{equation}
+      D(r,s) = rZ(s) + cX_{3}(s).
+    \end{equation}
+    Learn as much as possible about the surface (25), and determine when it is a cone. When it is not a cone, it must be a tangential developable. Find its edge of regression. The formula of Rodrigues will be helpful in computing things, as will the discussion of this chapter on constant deformations of developable surfaces. (For example, $r$ and $s$ are principal parameters on $D(r,s)$, the generators of $D(r,s)$ are the $s$-constant curves since they ``correspond'' to the generators of $X(r,s)$, etc.).
+\end{enumerate}
+
+
+
+\chapter*{Chapter X: A Family of Developables Associated with a Curve}
+\markboth{Chapter X}{Chapter X}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter X: A Family of Developables Associated with a Curve}
+
+\setcounter{equation}{0}
+
+Given a curve $R(s)$ with $s$ an arclength parameter, $0 \leq s \leq L$, and moving trihedral $v_{i}, i = 1,2,3$, we define a family of developable surfaces $X(s,t;h)$ with parameter $h$ as follows.
+
+\begin{equation}
+X(s,t;h) = R(s) + tZ(s,h)
+\end{equation}
+where $Z(s,h)$ is a unit vector orthogonal to $v_{1}(s)$ for each value of $h$. To insure that (1) is a developable, we require that
+\begin{equation}
+Z_{s}(s,h) = f(s,h) v_{1}(s)
+\end{equation}
+in which $f(s,h)$ is the geodesic curvature of $R(s)$ with respect to the surface (1) determined by the particular value of $h$. Notice that $R(s)$ is a principal curve on each surface, since the generators are in directions determined by $Z(s,h)$.
+
+Now $Z(s,h)$ is in the normal plane of $R(s)$. In particular, let $h$ be defined by
+\begin{equation}
+Z(0,h) = (\cos h) v_{2}(0) + (\sin h) v_{3}(0)
+\end{equation}
+which is clearly a unit vector. Geometrically, (3) implies that h is the angle between the initial $Z$ and $v_{2}(0)$. As $s$ increases, the angle between $Z$ and v$_{2}$ for the particular surface will usually change. Denote this angle by $\theta (s,h)$, so that $h = \theta (0,h)$ and
+\begin{equation}
+Z(s,h) = (\cos \theta) v_{2}(s) + (\sin \theta) v_{3}(s).
+\end{equation}
+
+\begin{enumerate}[1.]
+  \item Visualize the family (1) as best you can (see Figure 11), and verify all the statements above. 
+
+\begin{center}
+%TeXCAD Picture [fig11.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(106.5,64)(0,0)
+\qbezier(55,35.25)(69,64)(106,38.75)
+%\vector(12.75,12)(6,23.75)
+\put(6,23.75){\vector(-1,2){.07}}\multiput(12.75,12)(-.03358209,.05845771){201}{\line(0,1){.05845771}}
+%\end
+%\vector(12.75,11.5)(14.75,26)
+\put(14.75,26){\vector(1,4){.07}}\multiput(12.75,11.5)(.0333333,.2416667){60}{\line(0,1){.2416667}}
+%\end
+%\vector(12.76,11.36)(20.51,22.11)
+\put(20.51,22.11){\vector(3,4){.07}}\multiput(12.76,11.36)(.03369565,.04673913){230}{\line(0,1){.04673913}}
+%\end
+%\vector(55.01,36.69)(45.01,49.44)
+\put(45.01,49.44){\vector(-3,4){.07}}\multiput(55.01,36.69)(-.033670034,.042929293){297}{\line(0,1){.042929293}}
+%\end
+%\vector(55.5,36.25)(51.25,49.75)
+\put(51.25,49.75){\vector(-1,3){.07}}\multiput(55.5,36.25)(-.03373016,.10714286){126}{\line(0,1){.10714286}}
+%\end
+%\vector(55.5,36)(56.75,49.75)
+\put(56.75,49.75){\vector(0,1){.07}}\multiput(55.5,36)(.0328947,.3618421){38}{\line(0,1){.3618421}}
+%\end
+%\qbezvec(61.5,60)(53,54.13)(54.5,45.75)
+\put(54.5,45.75){\vector(1,-4){.07}}\qbezier(61.5,60)(53,54.13)(54.5,45.75)
+%\end
+%\qbezvec(78.5,25.25)(70,31.13)(73.5,46.5)
+\put(73.5,46.5){\vector(1,4){.07}}\qbezier(78.5,25.25)(70,31.13)(73.5,46.5)
+%\end
+%\qbezvec(17.25,41.25)(20,32.88)(15.75,19)
+\put(15.75,19){\vector(-1,-3){.07}}\qbezier(17.25,41.25)(20,32.88)(15.75,19)
+%\end
+\qbezier(14,17.5)(14.88,18.75)(16.25,16)
+\qbezier(53.25,42.75)(54.75,45.25)(56.25,42.75)
+\put(3.75,25.75){\makebox(0,0)[cc]{$v_{3}$}}
+\put(24,24.5){\makebox(0,0)[cc]{$v_{2}$}}
+\put(41.75,49.5){\makebox(0,0)[cc]{$v_{3}$}}
+\put(58.25,51){\makebox(0,0)[cc]{$v_{2}$}}
+\put(14.25,28){\makebox(0,0)[cc]{$z$}}
+\put(17,44.5){\makebox(0,0)[cc]{$h$}}
+\put(6.75,10){\makebox(0,0)[cc]{$s=0$}}
+\put(81.75,22.25){\makebox(0,0)[cc]{$R(s)$}}
+\put(106.5,35.75){\makebox(0,0)[cc]{$s=L$}}
+\put(50,50.25){\makebox(0,0)[cc]{$z$}}
+\put(65.5,62.75){\makebox(0,0)[cc]{$\theta (s,h)$}}
+\put(52,6.5){\makebox(0,0)[cc]{Fig. 11}}
+\qbezier(12.75,11.75)(27.75,2.38)(43.75,19.5)
+\qbezier(43.75,19.5)(47.5,23.13)(55.25,36.25)
+\end{picture}
+\end{center}
+
+    We now find $\theta (s,h)$. Differentiating (4) with respect to $s$, and using (2) yields
+    \begin{align}
+      \theta _{s}(s,h) & = - \tau (s) \\
+      f(s,h) & = - \kappa \cos \theta
+    \end{align}
+    from which it follows that
+    \begin{equation}
+      \theta (s,h) = - \int_{0}^{s} \tau (\sigma) d \sigma + g(h)
+    \end{equation}
+    where $g(h)$ is to be determined. To this end, we observe that from the fact that $h$ is missing in (5), it follows that
+    \begin{equation*}
+      ( \theta(s,h_{1}) - \theta(s,h_{2}) )_{s} = 0
+    \end{equation*}
+    so that
+    \begin{equation}
+      \theta(s,h_{1}) - \theta(s,h_{2}) = h_{1} - h_{2}
+    \end{equation}
+    since $\theta (0,h) = h$. As a consequence of (7) and (8), we have, finally, that $\theta _{h}(s,h) = 1$, and
+    \begin{equation}
+      \theta(s,h) = - \int_{0}^{s} \tau (\sigma) d \sigma + h.
+    \end{equation}
+  \item Derive equations (5) through (9).
+
+    To find the edge of regression of (1), we compute the $X_{i}, i = 1, 2$, keeping $h$ fixed, yielding
+    \begin{align}
+      X_{1} & = v_{1} + tZ_{s} = (1 + tf) v_{1} \\
+      X_{2} & = Z \\
+      X_{1} \times X_{2} & = (1+ tf) (v_{1} \times Z) \\
+      X_{3} & = v_{1} \times Z = Z_{h}
+    \end{align}
+    where the last equality in (13) follows by crossing both sides of (4) by $v_{1}$ and observing that $\theta _{h} = 1$.
+
+    From (12), the edge of regression of (1) is given by setting $t = - \frac{1}{f(s,h)}$, giving
+    \begin{equation}
+      Y(s,h) = X \left( s, -\frac{1}{f}; h \right) = R(s) - \frac{Z(s,h)}{f(s,h)}
+    \end{equation}
+    We wish to find the gaussian curvature of (14), to which end we compute $Y_{i}$ and $Y_{3}$ from (14), yielding
+    \begin{align}
+      Y_{1} & = v_{1} - \frac{Z_{s}}{f} + \left( \frac{f_{s}}{f^{2}} \right) Z = \left( \frac{f_{s}}{f^{2}} \right) Z \\
+      Y_{2} & = \left( \frac{f_{h}}{f^{2}} \right) Z - \frac{Z_{h}}{f} \\
+      Y_{1} \times Y_{2} & = - \left( \frac{f_{s}}{f^{3}} \right) (Z \times Z_{h}) = - \left( \frac{f_{s}}{f^{3}} \right) v_{1} \\
+      Y_{3} & = \pm v_{1}(s)
+    \end{align}
+    where (15) was obtained using (2). Verify the last equality in (17)!
+  \item Using (4), show that $Z_{hh} = - Z$. Recall that $\theta _{h} = 1$.
+
+     To see that $M = Y_{3} \cdot Y_{12} = 0$, note that $Y_{12}$ is a linear combination of $Z$ and $Z_{h}$, each of which is orthogonal to $Y_{3}$ by (18). Similarly, $N = Y_{3} \cdot Y_{22} = 0$, since $Y_{22}$ is a linear combination of $Z$ and $Z_{h}$ (note Problem 3). It follows that (14), henceforth called the \emph{regression surface} of (1), is a developable surface! We then have the following theorem.
+
+     \textbf{Theorem}: The union of the edges of regression of the family (1) is a developable surface.
+  \item Give an alternate proof of the above theorem that doesn't use the fact that $K = \frac{ (LN - M^{2}) }{ (EG - F^{2}) }$. (Hint: by (18), $Y_{3}$ is constant along an $s$-constant curve. Show that such a curve is a straight line.)
+  \item Find $f_{s}$ and $f_{h}$ from (6), and use them to express equations (15) through (17) without $f$, $f_{s}$, or $f_{h}$.
+  \item Discuss the regression surface. What kind of developable is it? (Is it a cone? cylinder? tangential developable?) What does this depend on? Discuss the special case in which $R(s)$ is a plane curve. Find the edge of regression of the regression surface, if it exists. Discuss the relationship between $R(s)$ and the generators of the edge of regression of the regression surface. Treat the special case in which $R(s)$ is a circle. Verify your results geometrically. What do the members of (1) look like in this case? Why can't one talk about the edge of regression of a member of (1) here?
+  \item Does (1) include all developable surfaces which contain $R(s)$? Does it include all developables on which it is a principal curve?
+  \item Devise an alternate method for deriving (6).
+  \item Find an expression for the normal curvature of $R(s)$ with respect to the developable obtained by giving $h$ a particular value in (1). Solve this problem in several different ways.
+  \item Is it possible to insure that the family (1) has no intersections other than the points of $R(s)$, i.e., is there a positive number $c$ which is small enough so that for $0 <  \vert t \vert  \leq c$, the developables of (1) are pairwise non-intersecting? Discuss fully.
+\end{enumerate}
+
+
+
+\chapter*{Chapter XI: Spherical Image of a Curve}
+\markboth{Chapter XI}{Chapter XI}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter XI: Spherical Image of a Curve}
+
+\setcounter{equation}{0}
+
+Let $X(s)$ be a space curve parametrized by its arclength. The curve on the unit sphere given by
+\begin{equation}
+Y(s) = X'(s) = v_{1}(s)
+\end{equation}
+is called the spherical image of $X(s)$. (The moving trihedral of $X(s)$ is denoted by $v_{i}$, while that of $Y(s)$ is $w_{i}$. The curvature and torsion of $Y(s)$ is denoted with bars to distinguish them from the curvature and torsion of $X(s)$. Finally; arclength on $Y(s)$ is denoted by $u$. From (1), $u$ and $s$ are related by
+\begin{equation}
+\frac{du}{ds} = \vert Y'(s) \vert = \kappa
+\end{equation}
+from which we get
+\begin{equation}
+u = \kappa s
+\end{equation}
+provided that $u = 0$ when $s = 0$, which entails no loss of generality.
+
+We find the $w_{i}$ as follows:
+\begin{align}
+    w_{1} & = \frac{dY}{du} = Y'(s)(\frac{ds}{du}) = v_{2} \\
+\frac{dw_{1}}{du} & = \left( \frac{dv_{2}}{ds} \right) \left( \frac{ds}{du} \right) = \frac{(-\kappa v_{1} + \tau v_{3})}{\kappa} \\
+    w_{2} & = \frac{(-\kappa v_{1} + \tau v_{3})}{ \sqrt{\kappa ^{2} + \tau ^{2}} } \\
+    w_{3} & = w_{1} \times w_{2} = \frac{(\tau v_{1} + \kappa v_{3})}{ \sqrt{\tau ^{2} + \kappa ^{2}} }
+\end{align}
+where the last equation shows that $w_{3}$ is the normalized Darboux vector of $X(s)$.
+
+\begin{enumerate}
+  \item Why is the binormal vector of the spherical image in the direction of the Darboux vector of the original curve? If the original curve is a helix, what can immediately be inferred from (7) about the spherical image? Is (7) really necessary for your answer? (Hint: use the fact that a helix is a curve of constant grade.)
+  \item Show that
+    \begin{align}
+      \bar{\kappa} & = \frac{ \sqrt{\kappa ^{2} + \tau ^{2}} }{\kappa} \\
+      \bar{\tau} & = \frac{ (\kappa \tau ' - \tau \kappa ') }{ \kappa (\kappa ^{2} + \tau ^{2}) }
+    \end{align}
+    and use these equations to check the inference in Problem 1.
+  \item Find the geodesic curvature of the spherical image relative to the unit sphere. An easy way to do this is to note that the normal curvature of a curve on the unit sphere is $-1$. Then use Euler's relation, i.e., that the square of the curvature equals the sum of the squares of the geodesic and normal curvatures. If $X(s)$ is a helix, what can be said about the geodesic curvature of the spherical image? Interpret geometrically.
+  \item If $X(s)$ is a plane curve, what can be said about the spherical image using (8)? Give an alternate argument.
+  \item What kind of curve has a spherical image consisting of a single point?
+  \item Show that the curvature of a circle is the reciprocal of its radius, from (3) and using other arguments.
+  \item Show that a plane curve of constant curvature is a circle. Is it true for space curves? Is this true for spherical curves?
+  \item Explain and justify the statement that the curvature of a curve is the ratio of the arclength element of its spherical image and its own arclength element. If curves $C_{1}$ and $C_{2}$ of equal length have spherical images $C'_{1}$ and $C'_{2}$, and if the curvature of $C_{1}$ exceeds the curvature of $C_{2}$ at corresponding points does there exist a relationship between the lengths of $C_{1}$ and $C_{2}$? Discuss fully, and add additional hypotheses where necessary. Consider, for example, the situation where $C_{1}$ and $C_{2}$ are circles of different radii.
+  \item Let $X(s)$ be a curve of everywhere positive torsion. Consider the curve on the unit sphere traced by the binormal $v_{3}$ of $X(s)$, i.e., consider the curve
+    \begin{equation}
+      Y(s) = v_{3}(s)
+    \end{equation}
+    and give it the same analysis as we gave the spherical image curve (1). Show that if the moving trihedral of (10) is denoted $u_{i}$ while that of the spherical image (1) is denoted by $w_{i}$, then
+    \begin{align}
+      u_{1} & = - w_{1} \notag \\
+      u_{2} & = - w_{2} \\
+      u_{3} & = w_{3} \notag
+    \end{align}
+    What is the ratio of the arclength element of (10) to the original curve $X(s)$? Find the curvature and torsion of (10), and make various inferences from them. What can be said about $X(s)$ if (10) is a single point? Show that if $X(s)$ is a helix, then the curve (10) has constant curvature.
+  \item Compare (1) and (10) in as many ways as you can. Visualize both of them on the unit sphere. Why are their trihedrals related as in (11)?
+  \item Repeat the analysis of this chapter for the normal vector $v_{2}$ of $X(s)$. Does this curve have any interesting properties? Compare with (1) and (10).
+  \item Must the spherical image of a simple closed curve be simple? (It must clearly be closed.) Conversely, if the spherical image is simple, must the original curve be simple?
+  \item Show that two curves with the same spherical image curve need not be obtainable from one another by Euclidean motion. What can be said, however, about the two curves? Are their trihedrals related? How about their curvature and torsion? Are their normalized Darboux vectors at corresponding points equal?
+  \item Discuss a curve whose spherical image yields the same curve (though not for corresponding points). (Hint: such a curve is on the unit sphere.)
+\end{enumerate}
+
+
+
+\chapter*{Chapter XII: Parallel Principal Curves on Developable Surfaces}
+\markboth{Chapter XII}{Chapter XII}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter XII: Parallel Principal Curves on Developable Surfaces}
+
+\setcounter{equation}{0}
+
+On a developable surface, one set of principal curves consists of the generators, since their normal curvature is identically zero. The generators are usually not parallel, unless, of course, the developable is a cylinder.
+
+The other set of principal curves are examined here, and it will be seen that these curves are ``parallel'' in two senses of the word. Firstly, they have parallel tangents at corresponding points, and secondly, they are equidistant along the generators.
+
+To begin with, let $Y(s)$ be a principal curve which is orthogonal to the generators of a developable. The orthogonality property follows from the fact that principal curves on any surface intersect orthogonally. If all the points of $Y(s)$ are essentially parabolic, then in some band around it, the surface may be represented by
+\begin{equation}
+X(s,t) = Y(s) + tZ(s)
+\end{equation}
+where $Z(s)$ is a unit vector in the direction of the generator through $Y(s)$. Let $s$ be an arclength parameter for $Y(s)$. It follows that $Y'(s)$ is a unit vector and
+\begin{equation}
+Y'(s) \cdot Z(s) = 0.
+\end{equation}
+
+See Figure 13. 
+
+\begin{center}
+%TeXCAD Picture [fig13.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(63.75,63.25)(0,0)
+%\emline(31.5,9)(1.75,37.5)
+\multiput(31.5,9)(-.0352071006,.0337278107){845}{\line(-1,0){.0352071006}}
+%\end
+\put(1.75,37.5){\line(0,1){0}}
+\qbezier(2,37.25)(24.75,63.25)(56.5,60.25)
+%\emline(56.5,60.25)(63.5,28.25)
+\multiput(56.5,60.25)(.03365385,-.15384615){208}{\line(0,-1){.15384615}}
+%\end
+\qbezier(63.75,28.5)(46.88,27.25)(31.5,9)
+\qbezier(59.75,46.5)(33.63,47.25)(17,23)
+%\emline(17.75,51.25)(39,17.5)
+\multiput(17.75,51.25)(.033730159,-.053571429){630}{\line(0,-1){.053571429}}
+%\end
+%\emline(39,17.5)(39.5,17)
+\multiput(39,17.5)(.033333,-.033333){15}{\line(0,-1){.033333}}
+%\end
+\put(48.75,54.75){\makebox(0,0)[cc]{$X(s,t)$}}
+\put(50,35.75){\makebox(0,0)[cc]{$Y(s)$}}
+\put(29,42.75){\makebox(0,0)[cc]{$Z(s)$}}
+%\qbezvec(48.25,38.75)(46.13,40)(45.5,43.25)
+\put(45.5,43.25){\vector(-1,4){.07}}\qbezier(48.25,38.75)(46.13,40)(45.5,43.25)
+%\end
+\thicklines
+%\vector(28,35.25)(24,42)
+\put(24,42){\vector(-2,3){.07}}\multiput(28,35.25)(-.03361345,.05672269){119}{\line(0,1){.05672269}}
+%\end
+%\vector(28,35.5)(33.75,39.75)
+\put(33.75,39.75){\vector(4,3){.07}}\multiput(28,35.5)(.04563492,.03373016){126}{\line(1,0){.04563492}}
+%\end
+\put(31.5,6){\makebox(0,0)[cc]{Fig. 13}}
+\end{picture}
+\end{center}
+
+We compute the first and second fundamental form coefficients with the help of the first and second order partials of $X(s,t)$ and its unit surface normal $X_{3}$, yielding
+\begin{align}
+X_{1} & = Y'(s) + tZ'(s) = (1 + tf(s))Y'(s) \\
+X_{2} & = Z(s) \\
+X_{1} \times X_{2} & = (1 + tf(s))(Y'(s) \times Z(s)) \\
+X_{3} & = Y'(s) \times Z(s)
+\end{align}
+where use was made in (3) of the fact that in order for (1) to be a developable surface, and not just a ruled surface, $Z'(s)$ is given by
+\begin{equation}
+Z'(s) = f(s)Y'(s).
+\end{equation}
+
+The scalar function f(s) in (7) is the geodesic curvature of $Y(s)$, as can be seen by differentiating (2) and using (7), yielding
+\begin{equation*}
+Y''(s) \cdot Z(s) + Y'(s) \cdot Z'(s) = 0
+\end{equation*}
+or
+\begin{equation}
+f(s) = - Y''(s) \cdot Z(s)
+\end{equation}
+where the right side of (8) is the projection of the curvature vector of $Y(s)$ on the tangent plane of $X(s, t)$.
+
+\begin{enumerate}
+  \item Why does (7) guarantee that (1) is a developable surface? (Hint: the direction of (5) must be invariant along an $s$-constant curve.)
+
+     We get $E$, $F$, and $G$ from (3) and (4).
+    \begin{align}
+      E & = (1 + tf(s))^{2} \\
+      F & = 0 \\
+      G & = 1.
+    \end{align}
+    The $X_{ij}$ are given by
+    \begin{align}
+      X_{11} & = (1 + tf'(s)) Y'(s) + (1 + tf(s)) Y''(s) \\
+      X_{12} & = X_{21} = Z'(s) \\
+      X_{22} & = 0
+    \end{align}
+    from which it follows that
+    \begin{align}
+      L & = - (1 + tf(s)) (Y' Y'' Z) \\
+      M & = N = 0
+    \end{align}
+    where (16) confirms the fact that the surface is developable.
+  \item Show that the scalar triple product in (15) is the normal curvature $k_{1}$ of $Y(s)$, i.e., show that
+    \begin{equation}
+      k_{1} (s,0) = - (Y' Y'' Z)
+    \end{equation}
+    (hint: from (6), equation (17) becomes
+    \begin{equation}
+      k_{1} (s,0) = Y'' \cdot X_{3}
+    \end{equation}
+    where the right side of this equation is the scalar projection of the curvature vector on the unit surface normal.)
+  \item Show, using (9), (15), and (17), and the observation that $s$ and $t$ are principal parameters (why?), that
+    \begin{equation}
+      k_{1}(s,t) = \frac{k_{1}(s,0)}{(1 + tf(s))}
+    \end{equation}
+    and interpret geometrically. Discuss implications. If $f(s)$ is positive, what happens to the surface as t goes to infinity for a fixed value of $s$? (In other words, what happens to the surface as we travel to infinity along a generator in the direction away from the edge of regression?)
+
+    The $t$-constant curves are principal curves on the developable which intersect the ($s$-constant) generators orthogonally. Setting $t = t_{0}$ in (1) and (3) yields a typical non-generator principal curve and its tangent. We have
+    \begin{align}
+      P(s) & = Y(s) + t_{0}Z(s) \\
+      P'(s) & = (1 + t_{0}f(s))Y'(s)
+    \end{align}
+    where (21) illustrates the ``parallelism'' of these principal curves, and (20) shows that $P(s) - Y(s)$ has constant magnitude $t_{0}$ along an $s$-constant generator, from which we deduce that any pair of nongenerator principal curves of the form (20) with $t$-values $t_{0}$ and $t_{1}$ are equidistant at corresponding pairs of points, with common distance $\vert t_{1} - t_{0} \vert$. See Figure 14.
+
+\begin{center}
+%TeXCAD Picture [fig14.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(53.25,69.38)(0,0)
+\qbezier(32.5,21.5)(37.63,37.13)(50.25,38.25)
+\qbezier(1.25,28)(12.13,69.38)(51.5,66.25)
+%\emline(39.25,33.25)(18.25,57.5)
+\multiput(39.25,33.25)(-.033707865,.038924559){623}{\line(0,1){.038924559}}
+%\end
+\qbezier(16.5,25.75)(22,52.5)(51.5,54.25)
+\put(26.75,57.25){\makebox(0,0)[cc]{$t_1-t_0$}}
+\put(53.25,66.25){\makebox(0,0)[lc]{$X(s,t_1)$}}
+\put(53.25,54){\makebox(0,0)[lc]{$X(s,t_0)$}}
+\put(52.75,38.25){\makebox(0,0)[lc]{$Y(s)=X(s,0)$}}
+\put(25.75,15.5){\makebox(0,0)[cc]{Fig. 14}}
+\end{picture}
+\end{center}
+
+  \item Find the area element of (1), and use it to find the area of the region given by $0 \leq s \leq L$ and $0 \leq t \leq c$. Note that this region is bounded by principal curves, one pair of which are generators. Your answer will involve the expression
+    \begin{equation}
+      \int_{0}^{L} f(s) ds.
+    \end{equation}
+    Assuming that $f(s)$ is strictly positive for $0 \leq s \leq L$, interpret (22) geometrically. Note that geodesic curvature, being an intrinsic quantity, is a ``bending'' invariant which can, therefore, be evaluated on the rolled out ``planar'' surface. What is the connection between (22) and the total angle through which the tangent of $Y(s)$ turns (in the rolled out planar surface)? Discuss this entire problem thoroughly.
+  \item Derive a relationship similar to (19) giving the geodesic curvature $k_{g}(s,t)$ of the nongenerator principal curves (i.e., the $t$-constant principal curves) in terms of the geodesic curvature $k_{g}(s,0)$ of $Y(s)$. Note that $k_{g}(s,0) = f(s)$. Do the same for the curvature and torsion.
+  \item Is a curve in the plane which is parallel to a parabola also a parabola? Before you answer, represent a curve parallel to $y = x^{2}$: a) using a parameter, and b) using the cartesian equation. Repeat the problem for a hyperbola, ellipse, circle, etc. What kind(s) of curve has the property that the family of curves parallel to it are of the same kind? (Straight lines have this property, for example.) Bear in mind that distance between curves is computed here, along common normals of pairs of corresponding points, i.e., points with parallel tangents. (Consider, for example, a pair of concentric circles.) See Figure 15. What sort of properties might a family of parallel curves share?
+
+\begin{center}
+%TeXCAD Picture [fig15.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(68,60.5)(0,0)
+\put(4.75,8.25){\line(0,1){49}}
+\put(4.75,57.25){\line(0,1){0}}
+\put(68,12.75){\line(0,1){0}}
+%\emline(13,36.75)(32,50.5)
+\multiput(13,36.75)(.046568627,.03370098){408}{\line(1,0){.046568627}}
+%\end
+%\emline(19.75,27.5)(38.75,41.25)
+\multiput(19.75,27.5)(.046568627,.03370098){408}{\line(1,0){.046568627}}
+%\end
+\put(32,50.5){\line(0,1){0}}
+%\emline(21.75,43)(28.75,33.5)
+\multiput(21.75,43)(.03365385,-.04567308){208}{\line(0,-1){.04567308}}
+%\end
+\put(28.75,33.5){\line(0,1){0}}
+\qbezier(12,28.13)(17,47.5)(42,49.38)
+\qbezier(21,23.75)(25.75,37)(43.5,39.25)
+\put(.25,13){\line(1,0){51.75}}
+\put(52,13){\line(0,1){0}}
+\put(21.5,43.25){\circle*{1.8}}
+\put(28.75,34){\circle*{1.8}}
+\put(25.75,5){\makebox(0,0)[cc]{Fig. 15}}
+\put(55,13){\makebox(0,0)[cc]{x}}
+\put(4.75,60.5){\makebox(0,0)[cc]{y}}
+\end{picture}
+\end{center}
+
+  \item Show that if two parallel curves (in the sense of Problem 6) are translations of each other, then they are both straight lines.
+  \item Use your answer to Problem 4 to verify that the lateral surface area of a frustrum of a right circular cone with radii $r_{1}$ and $r_{2}$ and slant height $h$ is $\pi h (r_{1} + r_{2})$.
+  \item Given a simple closed convex plane curve $C$ of perimeter $L$ and a parallel closed curve $C'$ in its exterior such that the distance between them is $c$, show that the area between the curves is
+    \begin{equation}
+      A = cL + \pi c^{2}
+    \end{equation}
+    and, after drawing a picture of this situation, interpret (23) geometrically. Note that $cL$ is the area of a rectangle of dimensions $c$ and $L$, while $\pi c^{2}$ is the area of a circle of radius $c$. It is quite interesting that the second term in the right side of (23) does not depend on $L$!
+  \item The arclength of $Y(s)$, $0 \leq s \leq L$, is clearly $L$, since $s$ is an arclength parameter. It is clear from (21), however, that s is not an arclength parameter on the principal curves parallel to $Y(s)$. Derive an expression for the arclength of $P(s) = X(s,t_{0})$ using (21), and interpret geometrically.
+  \item Show, using your answer to Problem 10, that the perimeter of the curve $C'$ in Problem 9 is $L + 2 \pi c$. Notice that the difference of the perimeters of curves $C$ and $C'$ is independent of the perimeter of either curve. Can you explain why?
+  \item Can you find an important connection between your answers to Problems 4 and 10, after letting $c = t_{0}$ in Problem 4, and then treating $t_{0}$ as a variable, thereby permitting differentiation with respect to $t_{0}$? Explain your answer geometrically.
+\end{enumerate}
+
+
+
+\chapter*{Chapter XIII: Miscellaneous Problems}
+\markboth{Chapter XIII}{Chapter XIII}
+\addcontentsline{toc}{chapter}{\numberline{}Chapter XIII: Miscellaneous Problems}
+
+\setcounter{equation}{0}
+
+\noindent \textbf{A.} 
+
+\vspace{0.3cm}
+
+The gaussian curvature of a surface $X(u,v)$ on which $u$ and $v$ are principal parameters is given by
+\begin{equation}
+K = - \frac{1}{2\sqrt{EG}} \left[ \left( \frac{E_{2}}{\sqrt{EG}} \right)_{2} + \left( \frac{G_{1}}{\sqrt{EG}} \right)_{1} \right] 
+\end{equation}
+where the numerical subscripts denote partial differentiation with respect to $u$ and $v$. (Actually, (1) holds as long as the parameter curves are orthogonal, i.e., when $F = 0$. It is not necessary that the parameter curves be principal curves.) Obviously, if $u$ and $v$ are cartesian coordinates of a plane, i.e., if
+\begin{equation}
+X(u,v) = (u, v, 0)
+\end{equation}
+then $E = G = 1$ and $F = 0$, and we get from (1) that $K = 0$. Explain why (1) yields $K = 0$ when
+\begin{equation}
+X(u,v) = (au + b, cv + d, 0)
+\end{equation}
+in which $a$, $b$, $c$, and $d$ are constants. (After verifying that (1) gives $K = 0$ here, explain the relation between (2) and (3). More generally, (1) yields $K = 0$ for
+\begin{equation}
+X(u,v) = (au + bv + c,  du + ev + f, 0)
+\end{equation}
+where $a$ through $f$ are constants such that $ab + de = 0$. Discuss fully. Using (1), what is the gaussian curvature of a surface for which $E = f(u)$, $F = 0$, and $G = g(v)$? Explain why your answer is reasonable. (Assume that $f$ and $g$ are continuous functions.) Show that new parameters $\bar{u}$ and $\bar{v}$ may be introduced, for which the first fundamental form becomes
+\begin{equation}
+ds^{2} = d \bar{u}^{2} + d \bar{v}^{2}
+\end{equation}
+and discuss the consequences.
+
+Recall that for the developable surface
+\begin{equation}
+X(u,v) = Y(u) + vZ(u)
+\end{equation}
+where $u$ is an arclength parameter for $Y$, and $Z$ is a unit vector in a generator direction such that $Z'(u) = f(u) Y'(u)$, we have
+\begin{align}
+E & = (1 + vf(u))^{2} \\
+F & = 0 \\
+G & = 1
+\end{align}
+which, when inserted into (1), confirms that $K = 0$.
+
+More generally, given a surface $X(u,v)$ for which
+\begin{align}
+E & = f(u,v) \\
+F & = 0 \\
+G & = 1
+\end{align}
+express $K$ in terms of $f(u,v)$ using (1) as simply as possible, and use your expression to formulate conditions on $f(u,v)$ that determine when $K$ is positive, negative, or zero. What can be said about a surface for which $E$, $F$, and $G$ are given by (9), (10), and (11)?
+
+\vspace{0.3cm}
+
+\noindent \textbf{B.} 
+
+\vspace{0.3cm}
+
+In this problem, $S$ is a surface of \emph{strictly negative guassian curvature}. It follows that through each point of $S$, there are exactly two directions of vanishing normal curvature (why?). If the resulting direction field is integrated, we get the asymptotic curves of the surface. Let the surface $S$ be represented by $X(u,v)$ where $u$ and $v$ are principal parameters, and let an \emph{asymptotic} curve on $S$ be given whose representation is
+\begin{equation}
+Y(s) = X( u(s), v(s) )
+\end{equation}
+in which $s$ is an arclength parameter for $Y(s)$.
+
+It follows that $Y'(s)$, clearly a unit vector, is given by
+\begin{equation}
+Y'(s) = X_{1} u'(s) + X_{2} v'(s)
+\end{equation}
+in which neither $u'(s)$ nor $v'(s)$ can vanish for any $s$ value (show this! Recall that $u$ and $v$ are principal parameters). Along $Y(s)$, the surface unit normal is a function of $s$, and is denoted $X_{3}(s)$. Let $v_{i}, i = 1,2,3$ be the moving trihedral of $Y(s)$, so that $Y'(s) = v_{1}(s)$. Show, using the Theorem of Rodrigues, that the $u$ and $v$ partials of $X_{3}$, denoted $X_{3i}, i = 1,2$, are found, upon letting $k_{1}$ and $k_{2}$ be the normal curvatures of the parameter curves (i.e., $k_{i}$ are the principal curvatures), to be $-k_{i} X_{i}$, so that $X'_{3}(s)$ is given by
+\begin{equation}
+X'_{3}(s) = - k_{1} X_{1} u'(s) - k_{2} X_{2} v'(s)
+\end{equation}
+and that neither of the $k_{i}$ vanish for any $s$ value. (Recall that $S$ has strictly negative curvature.)
+
+Let $k_{n}(s)$ be the normal curvature of $Y(s)$. By definition, of course, $k_{n}(s)$ is identically zero. Show that, by differentiating the equation
+\begin{equation}
+X_{3}(s) \cdot Y'(s) = 0
+\end{equation}
+with respect to $s$, and using the fact that for any curve, the normal curvature is the projection of its curvature vector on the surface unit normal, we get
+\begin{equation}
+k_{n}(s) = 0 = X_{3}(s) \cdot Y''(s) = - X'_{3}(s) \cdot Y'(s)
+\end{equation}
+which, upon inserting (13) and (14) into (16), becomes
+\begin{equation}
+Lu'^{2} + Nv'^{2} = 0
+\end{equation}
+at all points of $Y(s)$. Since $K < 0$ on $S$, it follows that $L$ and $N$ are never zero on $y(s)$ and are, in fact, of opposite sign. Show, as a consequence, that $X_{11}$ and $X_{22}$ point to different sides of the tangent plane at all points of $Y(s)$. Why can't $X_{11}$ and $X_{22}$ ``switch sides''? Note, incidentally, that $M = 0$ on $S$, since $u$ and $v$ are principal parameters, which explains why the term $2M du dv$ is absent from (17). Can anything be deduced about $X_{12}$ from this observation?
+
+Show that, from (16), we can deduce that $X_{3}(s) = v_{3}(s)$ along $Y(s)$.
+
+As a consequence, find an expression for the torsion of $y(s)$ and show that it must be of one sign. Show that the geodesic curvature of the spherical image curve of $v_{1}(s)$ has geodesic curvature of one sign (see problem 3, page 33). Does this mean that the spherical image curve of $v_{1}(s)$ must be convex if it is a closed curve? See Figure 16.
+
+\begin{center}
+%TeXCAD Picture [fig16.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(80.75,46.25)(0,0)
+\qbezier(1.75,19.5)(1.38,6.88)(12.5,10.75)
+\qbezier(1.75,19.75)(2.5,28.5)(9.25,34.25)
+\qbezier(22.5,26.75)(21.38,13.25)(12.75,10.75)
+\qbezier(22.5,26.5)(21.5,42.13)(9.5,34.25)
+\qbezier(44.5,37.75)(52.88,43.63)(57.75,34)
+\qbezier(57.75,34.25)(69.88,46.25)(75.5,35.25)
+\qbezier(57.75,34.25)(61,29.88)(59.25,22)
+\qbezier(57.5,34.25)(54,32)(53.5,22.75)
+\qbezier(53.58,22.51)(54.32,8.62)(59.22,21.77)
+\put(27.75,3.25){\makebox(0,0)[cc]{Fig. 16}}
+\qbezier(75.5,35)(80.75,22.88)(73,14.25)
+\qbezier(73,14.25)(49.63,-8.63)(38.75,19)
+\qbezier(44.25,37.5)(34,30.75)(38.75,19)
+\end{picture}
+\end{center}
+
+If $Y(s)$ is a closed curve (it has been conjectured that this is impossible!), then clearly so is the spherical image of $v_{1}(s)$. If the spherical image of $v_{1}(s)$ is simple (free of double points), why must it be confined to a hemisphere? (Hint: see Lemma 2 in Chapter II). Why can't the spherical image of the unit tangent of a closed space curve be confined to a hemisphere? Does this yield a contradiction, thereby ``proving'' that an asymptotic curve on a strictly negatively curved surface can't be closed? Discuss fully.
+
+\vspace{0.3cm}
+
+\noindent \textbf{C.} 
+
+\vspace{0.3cm}
+
+The \emph{mean curvature} $H$ of a surface is defined by
+\begin{equation}
+H = \frac{(k_{1} + k_{2})}{2}
+\end{equation}
+and is easily calculated using
+\begin{equation}
+H = \frac{(EN - 2FM + GL)}{2(EG - F^{2})}
+\end{equation}
+
+Derive (19). If a surface is parametrized by principal parameters, simplify (19).
+
+Show that if the asymptotic curves of a negatively curved surface are taken to be the parameter curves, then $L = N = 0$. Under this assumption, (19) becomes
+\begin{equation}
+H = - \frac{FM}{(EG - F^{2})}
+\end{equation}
+where $M \neq 0$ since the surface is negatively curved. Show that the mean curvature of a negatively curved surface vanishes at all its points if and only if the asymptotic curves intersect orthogonally. Explain why the qualification that the surface is negatively curved is not really necessary. (Hint: a positively curved surface can't have vanishing mean curvature, while a developable can only have zero mean curvature at planar points.) The plane is a trivial example of a surface with $H = 0$. Construct nontrivial examples.
+
+Show, using (9) in Chapter IX, that a constant deformation of a surface of identically zero mean curvature generally does not have this property. Express the mean curvature $\bar{H}$ of the new surface in terms of $H$, $K$, and $k_{i}$ (of the original surface), and state a necessary and sufficient condition for the identical vanishing of $\bar{H}$ when it is known that $H$ is identically zero. Is it possible to state how the change in mean curvature is related to the change in gaussian curvature (do not assume that $H = 0$ for this question)?
+
+Show that the mean curvature of a constant deformation of a developable surface is given by
+\begin{equation}
+\bar{H} = \frac{H}{(1 - ck_{1})}
+\end{equation}
+where $k_{1}$ is the nonvanishing normal curvature of the original surface.
+
+\vspace{0.3cm}
+
+\noindent \textbf{D.} 
+
+\vspace{0.3cm}
+
+Let $S$ be a surface of minimum area among the set of regular twice differentiable surfaces with a given closed boundary curve. Such a surface is called a minimal surface. For closed plane curves, this is obviously a trivial problem, since the solution is a plane segment whose boundary is the given curve. In general, it is a fact that the mean curvature $H$ of $S$ is identically zero! We give an outline here of the proof in Struik's ``Lectures on Classical Differential Geometry'', using the notation of this monograph.
+
+Let $S$ be represented by $X(u,v)$ and let a non-constant deformation of $S$ be represented by
+\begin{equation}
+\bar{X}(u,v) = X(u,v) + f(u,v) X_{3}(u,v)
+\end{equation}
+where $f(u,v)$ is a small scalar function giving the distance along $X_3$ between the two surfaces. Denote (22) by $\bar{S}$.
+
+Show that
+\begin{align}
+\bar{X}_{1} & = X_{1} + fX_{31} + f_{1}X_{3} \\
+\bar{X}_{2} & = X_{2} + fX_{32} + f_{2} X_{3}
+\end{align}
+which yields, if we neglect higher order terms in $f$,
+\begin{align}
+\bar{E} & = E - 2fL \\
+\bar{F} & = F - 2fM \\
+\bar{G} & = G - 2fN.
+\end{align}
+
+(Hint: it will be helpful to observe that differentiation of the equations $X_{i} \times X_{3} = 0$ yield
+\begin{align*}
+L & = - X_{1} \cdot X_{31} \\
+M & = - X_{1} \cdot X_{32} = - X_{2} \cdot X_{31} \\
+N & = - X_{2} \cdot X_{32}
+\end{align*}
+Note, in addition, that $X_{3} \times X_{3i} = 0$.) 
+
+Show, using (25) - (27), that
+\begin{equation}
+\bar{E} \bar{G} - \bar{F}^{2} = (EG - F^{2}) - 2f(EN - 2FM + GL)
+\end{equation}
+which, in light of (19), becomes
+\begin{equation}
+\bar{E} \bar{G} - \bar{F}^{2} = (EG - F^{2})(1 - 4fH).
+\end{equation}
+
+Show that after denoting the area elements of $S$ and $\bar{S}$ by $dA$ and $d \bar{A}$, and taking the square root of both sides of (29), we get the approximate relationship
+\begin{equation}
+\bar{dA} = (1 - 2fH)dA.
+\end{equation}
+
+(Use was made of the approximation for small $x$
+\begin{equation*}
+\sqrt{1 -x} = 1 - \frac{x}{2}
+\end{equation*}
+using Taylor's series.) 
+
+Denoting the areas of $S$ and $\bar{S}$ by $A$ and $\bar{A}$, and integrating both sides of (30), yields
+\begin{equation}
+\bar{A} - A = - 2 \int \int fHdA
+\end{equation}
+which gives the first variation of area enclosed by the given closed boundary curve (i.e., it gives the approximate difference in areas between the alleged solution $S$ and a small deformation $\bar{S}$. Recall that $S$ and $\bar{S}$ share the same boundary curve, or, put another way, $f(u,v)$ is identically zero on the boundary of $S$).
+
+Clearly, it follows from (31) that if a minimum surface exists, it must be a \emph{minimal} surface, i.e., a surface for which $H$ is identically zero, since the integral on the right side of (31) is then zero. This argument belongs to a fascinating area of mathematics called ``the calculus of variations''.
+
+\vspace{0.3cm}
+
+\noindent \textbf{E.}
+
+\vspace{0.3cm}
+
+Show that if two surfaces, $S$ and $\bar{S}$, have the same first fundamental form coefficients, then they have the same gaussian curvature. (Assume the surfaces have the representations $X(u,v)$ and $\bar{X}(u,v)$, and that $\bar{E} = E$, $\bar{F} = F$, and $\bar{G} = G$.) How are the gaussian curvatures related if their first fundamental coefficients are merely proportional? (i.e., $\frac{\bar{E}}{E} = \frac{\bar{F}}{F} = \frac{\bar{G}}{G} = c$, where $c$ is a positive constant). In the first case, we say that an isometric mapping exists from $S$ to $\bar{S}$. Discuss this geometrically. In the second case, a similitude exists between $S$ and $\bar{S}$. Again, discuss this situation geometrically.
+
+One example of a similitude is the case where $S$ is represented by $X(u,v)$; while $\bar{S}$ has the representation
+\begin{equation}
+\bar{X}(u,v) = cX(u,v)
+\end{equation}
+where $c$ is a positive constant. It follows that
+\begin{align}
+\bar{X}_{i} & = cX_{i} \quad i = 1,2 \\
+\bar{X}_{3} & = X_{3} \\
+\bar{X}_{ij} & = cX_{ij} \quad i,j = 1,2 \\
+\bar{E} & = c^{2}E , \quad \bar{F} = c^{2}F , \quad \bar{G} = c^{2}G \\
+\bar{L} & = c L , \quad \bar{M} = c M , \quad \bar{N} = c N \\
+\bar{K} & = \frac{K}{c^{2}}.
+\end{align}
+
+Derive (33) through (38), and draw a picture of both surfaces. Must two surfaces which obey the relations
+\begin{equation}
+\frac{\bar{E}}{E} = \frac{\bar{F}}{F} = \frac{\bar{G}}{G} = c^{2}
+\end{equation}
+satisfy the form (32) after suitable Euclidean motion?
+
+\vspace{0.3cm}
+
+\noindent \textbf{F.}
+
+\vspace{0.3cm}
+
+Given a surface $X(u,v)$, it is possible to find alternate representations using different parameters. Let $u$ and $v$ be such a pair satisfying
+\begin{align}
+\bar{u} & = \bar{u}(u,v) \\
+\bar{v} & = \bar{v}(u,v)
+\end{align}
+with a nonvanishing jacobian $J$ given by
+\begin{equation*}
+J =
+  \begin{vmatrix}
+    \delta \bar{u} / \delta u   &   \delta \bar{u} / \delta v \\
+    \delta \bar{v} / \delta u   &   \delta \bar{v} / \delta v
+  \end{vmatrix}
+\end{equation*}
+
+Show that the first fundamental form is invariant with respect to parameter change, even though the coefficients are not, i.e., show that
+\begin{equation}
+\bar{E} d \bar{u}^{2} + 2 \bar{F} d \bar{u} d \bar{v} + \bar{G} d \bar{v}^{2} = E d u^{2} + 2 F du dv + G d v^{2}.
+\end{equation}
+
+Explain why this is to be expected. Demonstrate the invariance of additional ``geometric'' objects such as principal curvatures, gaussian curvature, mean curvature, area element, second fundamental form, asymptotic curves, etc.
+
+Two surfaces which are related by a similitude might not exhibit this through the equations (39). Is there a way to reparametrize one of the surfaces so that (39) holds?
+
+If two surfaces have the same unit surface normal at corresponding points, are they ``similar''? If not, what can be said about them? Give examples. Be sure to consider a sphere and an ellipsoid.
+
+\vspace{0.3cm}
+
+\noindent \textbf{G.}
+
+\vspace{0.3cm}
+
+Given functions $E(u,v)$, $P(u,v)$, and $G(u,v)$, it is clearly not always possible to construct a surface with these functions as the coefficients of its first fundamental form. $E$ and $G$ must be positive, for example. Certainly, $EG - F^{2}$ must also be positive, as it yields the area element. If these functions satisfy certain basic conditions, how would you go about constructing a surface which ``realizes'' the implied metric? Can you construct a surface whose first fundamental form is
+\begin{equation}
+ds^{2} = du^{2} + e^{2u} dv^{2}
+\end{equation}
+which implies, using (1), that the surface has gaussian curvature everywhere equal to negative one?
+
+Show that $L$, $M$, and $N$ for such a surface have to satisfy the condition
+\begin{equation}
+LN - M^{2} = - e^{2u}.
+\end{equation}
+
+Are there other conditions which $L$, $M$, and $N$ would have to satisfy?
+
+\vspace{0.3cm}
+
+\noindent \textbf{H.}
+
+\vspace{0.3cm}
+
+If two surfaces are isometric, then by (1), they have the same gaussian curvature at corresponding points. Give examples of surfaces which have the same gaussian curvature at corresponding points but are not isometric. One pair of surfaces showing this is given by
+\begin{align}
+X(u,v) & = (u \cos v, u \sin v, 1 n u) \\
+\bar{X}(u,v) & = (u \cos v, u \sin v, v).
+\end{align}
+
+Show that (46) and (47) yield the same gaussian curvature, i.e., that
+\begin{equation}
+K(u,v) = \bar{K}(u,v) = - \frac{1}{(1 + u^{2})^{2}}.
+\end{equation}
+
+Which of (46) and (47) is a surface of revolution? (Compare to (1) in Chapter V.)
+
+The surface (47) is called a right helicoid. Describe the $u$-constant and $v$-constant curves geometrically. Show that they are the asymptotic curves and they intersect orthogonally. What does this imply? (See Problem C of this chapter.)
+
+\vspace{0.3cm}
+
+\noindent \textbf{I.}
+
+\vspace{0.3cm}
+
+The undergraduate student usually first encounters the concept of a conformal mapping in a course in complex variables. A mapping from the $x-y$ plane to the $u-v$ plane is represented by
+\begin{equation}
+w = u + iv = f(z) = f(x + iy)
+\end{equation}
+where $i = \sqrt{-1}$, and $z$ and $w$ are ``complex'' variables which represent points in the $x-y$ and $u-v$ planes respectively. The $x$ and $u$ axes are called ``real'' axes, while the $y$ and $v$ axes are called ``imaginary''. The function $f$ is a complex function which usually looks like a real one, e.g., $w = f(z) = z^{2}$.
+
+From (49), one can determine an equivalent expression for the mapping which doesn't require complex calculus, i.e.,
+\begin{align}
+u & = u(x,y) \\
+v & = v(x,y).
+\end{align}
+
+The mapping $w = z^{2}$, for example, is equivalent to
+\begin{align}
+u & = x^{2} - y^{2} \\
+v & = 2xy.
+\end{align}
+
+One is tempted to apply the methods of calculus to (49), yielding
+\begin{equation}
+dw = f'(z) dz
+\end{equation}
+and this is exactly what is done in complex calculus! One must bear in mind, however, that complex numbers have, being vectors in a sense, both magnitude (called ``absolute value'') and direction (called ``argument'', or ``arg'' for short). It is shown in complex variables texts that
+\begin{equation}
+\mathrm{arg}(z_{1} z_{2}) = \mathrm{arg} z_{1} + \mathrm{arg} z_{2}
+\end{equation}
+for suitably defined computations of the arguments. When (55) is applied to (54), the result is
+\begin{equation}
+\mathrm{arg} dw = \mathrm{arg} f'(z) + \mathrm{arg} dz
+\end{equation}
+from which it is deduced that as long as $f'(z_{0}) \neq 0$, the angle between two oriented curves $C$ and $D$ in the $z$ plane is preserved under the mapping $w = f(z)$, i.e., the angle between their image curves in the $w$ plane at $f(z_{0})$ is the same as that between $C$ and $D$. This follows since both tangents are rotated through an angle arg $f'(z_{0})$. See Figure 17. (Image curves are denoted by primes.)
+
+\begin{center}
+%TeXCAD Picture [fig17.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(116.5,57.5)(0,0)
+\put(6.75,8.25){\line(0,1){46}}
+\put(69,8.25){\line(0,1){46}}
+\put(2,13){\line(1,0){49.25}}
+\put(64.25,13){\line(1,0){49.25}}
+\put(80.75,27.75){\line(0,1){16}}
+\put(80.75,27.5){\line(1,1){10.5}}
+\qbezier(81,27.75)(88.25,35.38)(98.5,35.5)
+\qbezier(80.75,27.5)(80.38,41.5)(87.5,50.5)
+\qbezier(81,32.5)(84.25,35.5)(84.5,31.5)
+\put(84.25,36){\makebox(0,0)[cc]{$\theta$}}
+\put(101.5,35.25){\makebox(0,0)[cc]{$C'$}}
+\put(89,52.75){\makebox(0,0)[cc]{$D'$}}
+\put(80.75,25.25){\makebox(0,0)[cc]{$F(z_0)$}}
+\put(54.25,12.75){\makebox(0,0)[cc]{$x$}}
+\put(116.5,12.75){\makebox(0,0)[cc]{$u$}}
+\put(69,57.5){\makebox(0,0)[cc]{$iv$}}
+\put(28,9.5){\makebox(0,0)[cc]{$z$ plane}}
+\put(90.25,9.5){\makebox(0,0)[cc]{$w$ plane}}
+%\emline(20.25,34)(31.25,45.25)
+\multiput(20.25,34)(.033639144,.03440367){327}{\line(0,1){.03440367}}
+%\end
+\put(31.25,45.25){\line(0,1){0}}
+%\emline(20,33.75)(37.5,36.75)
+\multiput(20,33.75)(.1966292,.0337079){89}{\line(1,0){.1966292}}
+%\end
+\qbezier(20.25,33.75)(31.38,46.13)(40,47)
+\qbezier(20,33.75)(37.63,36.75)(41.75,31.75)
+\qbezier(24.5,38.25)(27.63,37.88)(26.25,35)
+\put(29,38.5){\makebox(0,0)[cc]{$\theta$}}
+\put(18,32.25){\makebox(0,0)[cc]{$z_0$}}
+\put(43.5,30.5){\makebox(0,0)[cc]{$C$}}
+\put(43,47.25){\makebox(0,0)[cc]{$D$}}
+\put(6.75,57.25){\makebox(0,0)[cc]{$iy$}}
+\put(59.25,3.5){\makebox(0,0)[cc]{Fig. 17}}
+\end{picture}
+\end{center}
+
+It was assumed in (54) that $f'(z)$ exists. This is not always the case, however. The function $f(z)$ must satisfy the so-called Cauchy-Riemann equations
+\begin{align}
+u_{x} & = v_{y} \\
+v_{x} & = - u_{y}.
+\end{align}
+
+A mapping which is angle-preserving is called \emph{conformal}. Now, in differential geometry, a mapping from one surface to another is also called conformal if it is angle-preserving.
+
+Let us assume, then, that we have two surfaces $S$ and $\bar{S}$, represented by $X(u,v)$ and $\bar{X}(u,v)$, with a point on $S$ being mapped to the point on $\bar{S}$ with the same $u$ and $v$ coordinates. Consider a curve $C$ on $S$ and its corresponding curve $\bar{C}$ on $\bar{S}$. If the mapping is conformal, then they make the same angle $\theta$ with the $v$-constant curves through corresponding points $P$ and $\bar{P}$ on $C$ and $\bar{C}$ respectively.
+
+Let $ds$ and $d \bar{s}$ denote arc length on $C$ and $\bar{C}$ respectively. We equate the expressions for $\cos \theta$ on both surfaces, obtained by dotting the tangent vectors to $C$ and $\bar{C}$ with $X_{1}$ and $\bar{X}_{1}$ and dividing by their magnitudes. We have, upon denoting increments on v-constant curves by Du to distinguish them from $du$ on $C$ and $\bar{C}$,
+\begin{equation}
+\cos \theta = \frac{ (E du Du + F dv Du) }{ ds \sqrt{E} Du } = \frac{ (\bar{E} du Du + \bar{F} dv Du) }{ d \bar{s} \sqrt{\bar{E}} Du }
+\end{equation}
+
+Since (59) holds for curves of arbitrary direction through $P$ (and their corresponding curves through $\bar{P}$), determined by $\frac{dv}{du}$, we deduce that the mapping is conformal if and only if
+\begin{equation}
+\frac{d \bar{s}}{ds} = f(u,v)
+\end{equation}
+or, equivalently,
+\begin{equation}
+\frac{\bar{E}}{E} = \frac{\bar{F}}{F} = \frac{\bar{G}}{G} = (f(u,v))^{2}.
+\end{equation}
+
+Notice that (60) implies that the ratio $\frac{d \bar{s}}{ds}$ depends only on the point $P$, and not on the direction of the curve $C$.
+
+Show that the conformal property holds if and only if (60) is valid, after first verifying (59). Show, also, the equivalence of (60) and (61).
+
+What can be said about a conformal mapping for which $f(u,v)$ in (61) is a constant? 
+
+Explain why very small polygons on $S$ are mapped to approximately similar polygons on $\bar{S}$ when the mapping is conformal. Why is this not true for large polygons (and other figures)? How are areas affected by conformal maps? Answer this question ``in the small'' and ``in the large''.
+
+Can you find a conformal mapping from a hemisphere to a region of a plane?
+
+Discuss the relationships among similitudes, conformal mappings, and isometries. Give examples.
+
+Why would conformal mappings be important to cartographers? Find out what a Mercator projection is, and analyse it in terms of conformal mappings. Extend your analysis to other techniques used in map making, such as stereographic projection.
+
+\vspace{0.3cm}
+
+\noindent \textbf{J.}
+
+\vspace{0.3cm}
+
+Let $S$ be a surface parametrized by $u$ and $v$ such that the $u$-constant and $v$-constant curves are the asymptotic curves. Let the surface be represented by $X(u,v)$, and note that the gaussian curvature of $S$ is given by
+\begin{equation}
+K(u,v) = - \frac{M^{2}}{(EG - F^{2})}
+\end{equation}
+since $L = N = 0$, which is a consequence of the fact that the parameter curves are the asymptotic curves of the surface. We assume that $M \neq 0$ at all points of $S$, which implies firstly that $K$ is strictly negative, and secondly that at every point of $S$ there are exactly two asymptotic directions, i.e., directions in which the normal curvature $k_{n}$ is zero.
+
+Let $C$ be an asymptotic curve obtained by fixing $v$, or in mathematical terms, by inserting into $X(u,v)$ the relationship
+\begin{align}
+u & = u(s) \\
+v & = v_{0}
+\end{align}
+where $s$ is arclength along $C$. Denoting $C$ by $P(s)$, we have
+\begin{align}
+P(s) & = X(u(s), v_{0}) \\
+P'(s) & = X_{1}u'(s)
+\end{align}
+or, upon noting that
+\begin{equation}
+\frac{du}{ds} = \frac{1}{\sqrt{E}}
+\end{equation}
+becomes
+\begin{equation}
+P'(s) = \frac{X_{1}}{\sqrt{E}}
+\end{equation}
+which is clearly a unit vector. 
+
+For the points of $C$, all surface parameters such as $E$, $F$, $G$, $X_{i}$, $X_{3}$, etc., are functions of $s$, in light of (63) and (64). In particular, the tangent planes along $C$ form a one-parameter family of planes whose envelope is a developable surface. The generators of this developable are in the direction of $P'(S)$, i.e., in the direction of $X_{1}$ which is the tangent of $C$! Put another way, the envelope of the tangent planes of the surface along an asymptotic curve is the tangential developable of the curve, provided that the asymptotic curve is not a straight line.
+
+This is entirely reasonable in light of the fact that the tangent plane at a point of an asymptotic curve coincides with its osculating plane, and the envelope of the latter is the tangential developable. Show that this is only the case for asymptotic curves.
+
+We proceed to find the envelope of the tangent planes of $C$. To this end, let the family of tangent planes of $X(u,v)$ at the points of $C$ be represented by
+\begin{equation}
+T(s;t,r) = P(s) + tX_{1} + rX_{2}
+\end{equation}
+in which s is the parameter. To find the desired envelope, we compute $(T_{1} T_{2} T_{3})$ and set it equal to zero, yielding
+\begin{align}
+T_{1} & = \frac{(X_{1} + tX_{11} + rX_{21})}{\sqrt{E}} \\
+T_{2} & = X_{1} \\
+T_{3} & = X_{2} \\
+(T_{1} T_{2} T_{3}) & = \frac{(tL + rM)}{\sqrt{E}} = \frac{rM}{\sqrt{E}} = 0
+\end{align}
+from which we conclude that $r = 0$, since $M$ in (73) can't vanish. Setting $r = 0$ in (69) gives the envelope which we denote $Y(s,t)$. We have
+\begin{equation}
+Y(s,t) = P(s) + tX_{1}
+\end{equation}
+which is clearly the tangential developable of $C$. Why must we assume here that $P(s)$ is not a straight line? If an asymptotic curve on a strictly negatively curved surface is a straight line, discuss the envelope of its tangent planes.
+
+From (74), we have
+\begin{align}
+Y_{1} & = \frac{(X_{1} + tX_{11})}{\sqrt{E}} \\
+Y_{2} & = X_{1} \\
+Y_{1} \times Y_{2} & = \frac{(X_{11} \times X_{1})t}{\sqrt{E}}
+\end{align}
+and we deduce from (77) that $Y_{3} = X_{3}$ (show this!), as one would expect. Observe that the direction of $Y_{1} \times Y_{2}$ is constant along the $s$-constant curves (in fact, straight line generators), again as one would expect.
+
+Let $X(u,v)$ represent any surface, and let $C$ be an arbitrary curve on it. Show that the envelope of the tangent planes of $X(u,v)$ along the points of $C$ is a developable surface, and determine a method for finding the generators. Notice that a generator will be in the tangent plane, and therefore will be expressible as a linear combination of the $X_{i}$. See if you can devise two different approaches which lead to the same answer. For method 1, express the family by
+\begin{equation}
+T(s;t,r) = P(s) + tX_{1} + rX_{2}
+\end{equation}
+and proceed as above, only this time without the simplifying assumptions about $P(s)$ and the surface $X(u,v)$ of the preceding discussion. Derive the envelope of (78), show that it is a developable, and find its generators.
+
+For method 2, define a unit vector in the tangent plane of the surface at a point of $P(s)$, which we denote $Z(s)$, by
+\begin{equation}
+Z(s) = a(s)X_{1} + b(s)X_{2}
+\end{equation}
+and consider the surface
+\begin{equation}
+Y(s,t) = P(s) + tZ(s).
+\end{equation}
+
+Find out how to define the scalar functions $a(s)$ and $b(s)$ so that (80) is a developable, and show that it is the desired envelope. These scalar functions must be chosen so that $Z(s)$ is a unit vector, and so that $(P'ZZ') = 0$ (why?) where primes denote derivatives with respect to $s$. Before attempting this ``general'' problem, be sure to verify all the arguments and equations of the discussion of Problems G, H, and I.
+
+Does anything interesting occur when $P(s)$ is a principal curve? (Hint: let $u$ and $v$ be principal parameters, so that $M = 0$. Let $C$ be the principal curve
+\begin{equation}
+P(s) = X(u(s), v_{0})
+\end{equation}
+with unit tangent
+\begin{equation*}
+P'(S) = \frac{X_{1}}{\sqrt{E}}
+\end{equation*}
+and proceed as was previously done for asymptotic curves. This time, instead of the last equation in (73) which yielded $r = 0$, we get $t = 0$, implying that the envelope is
+\begin{equation}
+Y(s,r) = P(s) + rX_{2}.
+\end{equation}
+
+Show that (82) is a developable whose generators are in the direction of the ``other'' set of principal curves (i.e., the $u$-constant curves) so that $P(s)$ is a principal curve on the envelope (as well as on the original surface $X(u,v)$). Discuss thoroughly, filling in the missing arguments.)
+
+Discuss the envelopes of the tangent planes of a sphere along various curves. What is the envelope if $C$ is a planar spherical curve (i.e., a circle)? Does it matter whether or not it is a great circle? If $C$ is a curve with nonzero torsion on the sphere, what role does the torsion play in determining the envelope? You may wish to review Chapters VI and VIII before answering these questions.
+
+\vspace{0.3cm}
+
+\noindent \textbf{K.}
+
+\vspace{0.3cm}
+
+Given a surface $X(u,v)$ with unit surface normal $X_{3}$ and a curve $P(s)$ on the surface with moving trihedral $v_{i}(s), i = 1,2,3$, we define a unit vector $T(s)$ in the tangent plane of the surface, such that
+\begin{equation}
+T(s) \cdot v_{1}(s) = 0
+\end{equation}
+and the vectors $v_{1}$, $T$, and $X_{3}$ form an orthonormal frame, i.e.
+\begin{equation}
+v_{1}(s) \times T(s) = X_{3}(s).
+\end{equation}
+
+Show that the geodesic curvature $k_{g}(s)$ of $P(s)$ is given by
+\begin{equation}
+k_{g}(s) = P''(s) \cdot T(s) = \kappa v_{2}(s) \cdot T(s).
+\end{equation}
+
+The reader is aware, no doubt, that the normal curvature $k_{n}(s)$ of $P(s)$ is given by
+\begin{equation}
+k_{n}(s) = P''(s) \cdot X_{3}(s) = \kappa v_{2}(s) \cdot X_{3}(s)
+\end{equation}
+so that $T(s)$ allows, together with $X_{3}(s)$, a decomposition of the curvature vector $P''(s)$ into its tangential and normal components by dot products, thereby yielding the normal and geodesic curvatures, i.e.,
+\begin{equation}
+P''(s) = k_{g}T + k_{n} X_{3}.
+\end{equation}
+
+Note that the normal plane of $P(s)$ contains several important vectors, such as $P''$, $T$, $X_{3}$, $v_{2}$, and $v_{3}$. See Figure 18.
+
+\begin{center}
+%TeXCAD Picture [fig18.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(58,84.9)(0,0)
+\thicklines
+\put(50.4,84.9){\line(0,-1){57.75}}
+\put(50.4,27.3){\line(-1,0){49.5}}
+\thinlines
+\put(50.25,71.25){\line(-1,0){33}}
+\put(17.25,71.25){\line(0,-1){43.75}}
+\put(50.38,27.5){\vector(-3,4){33}}
+%\vector[middle]{dash}{1}(36.75,45.75)(35.25,47.75)
+\put(36,46.75){\vector(-3,4){.07}}\multiput(36.68,45.68)(-.03125,.04167){12}{\line(0,1){.04167}}
+\multiput(35.93,46.68)(-.03125,.04167){12}{\line(0,1){.04167}}
+%\end
+\put(50.38,27.38){\vector(-1,-1){17.75}}
+%\vector{dash}{1}(50.25,46)(50.25,47.5)
+\put(50.25,47.5){\vector(0,1){.07}}\put(50.18,45.93){\line(0,1){.75}}
+%\end
+%\vector{dash}{1}(28,27.25)(25.5,27.25)
+\put(25.5,27.25){\vector(-1,0){.07}}\put(27.93,27.18){\line(-1,0){.833}}
+\put(26.26,27.18){\line(-1,0){.833}}
+%\end
+\put(27.25,64.5){\makebox(0,0)[cc]{$P''$}}
+\put(33.5,43.5){\makebox(0,0)[cc]{$v_{2}$}}
+\put(46.25,46.75){\makebox(0,0)[cc]{$X_{3}$}}
+\put(58,49.63){\makebox(0,0)[cc]{$k_{n}$}}
+\put(36,8){\makebox(0,0)[cc]{$v_{3}$}}
+\put(32.5,21.13){\makebox(0,0)[cc]{$k_{g}$}}
+\put(26.75,29.75){\makebox(0,0)[cc]{$T$}}
+\put(32.75,1.25){\makebox(0,0)[cc]{Fig. 18}}
+\put(17.25,27.38){\framebox(3,3.25)[cc]{}}
+\put(47.38,67.88){\framebox(3,3.25)[cc]{}}
+\qbezier(17.25,26.13)(17.5,24.5)(20.25,24.38)
+\qbezier(51.63,27.63)(53.25,27.88)(53.38,30.63)
+\qbezier(47.13,26.13)(46.88,24.5)(44.13,24.38)
+\qbezier(51.63,71.13)(53.25,70.88)(53.38,68.13)
+\qbezier(32.63,23.25)(32.38,24.88)(29.63,25)
+\qbezier(54.5,49.38)(52.88,49.13)(52.75,46.38)
+\qbezier(32.63,23.25)(32.88,24.88)(35.63,25)
+\qbezier(54.5,49.38)(52.88,49.63)(52.75,52.38)
+%\emline(20.38,24.38)(29.63,24.88)
+\multiput(20.38,24.38)(.616667,.033333){15}{\line(1,0){.616667}}
+%\end
+%\emline(44.13,24.38)(35.5,24.88)
+\multiput(44.13,24.38)(-.575,.033333){15}{\line(-1,0){.575}}
+%\end
+%\emline(52.75,46.63)(53.38,30.5)
+\multiput(52.75,46.63)(.032895,-.848684){19}{\line(0,-1){.848684}}
+%\end
+%\emline(52.75,52.25)(53.38,68.38)
+\multiput(52.75,52.25)(.032895,.848684){19}{\line(0,1){.848684}}
+%\end
+\end{picture}
+\end{center}
+
+The geodesic torsion $t_{g}(s)$ of $P(s)$ is defined by
+\begin{equation}
+t_{g}(s) = - T'(S) \cdot X_{3}(s)
+\end{equation}
+or, upon differentiating both sides of $T(s) \cdot X_{3}(s) = 0$, and substituting in (88), we have
+\begin{equation}
+t_{g}(s) = T(s) \cdot X'_{3}(s).
+\end{equation}
+
+Why does (88) provide a reasonable definition for ``geodesic'' torsion? (Hint: torsion for a space curve measures the instantaneous rate of change of $v_{3}$, which is a measure of how fast the osculating plane turns. This gives an indication of how much twisting the curve does.)
+
+Since $v_{1}$, $T$, and $X_{3}$ form an orthonormal frame, it follows that the derivatives of these vectors should be expressible in terms of the vectors in the frame, yielding an analogous system with the Frenet equations. Note, furthermore, that the derivative of a unit vector is orthogonal to the given vector, so that one gets
+\begin{align}
+v'_{1} & = \quad aT + bX_{3} \\
+T' & = cv_{1} \quad + dX_{3} \\
+X'_{3} & = ev_{1} + fT. \quad
+\end{align}
+
+Find the scalar functions $a$ through $f$, and explain why they are $\pm k_{g}$, $\pm k_{n}$, or $\pm t_{g}$. Compare (87) with (90).
+
+For what sort of curve is the geodesic curvature the same as the curvature (except possibly for sign)? For what sort of curve is the geodesic torsion the same as its torsion? What curve on a surface has identically zero geodesic torsion? What is the geodesic torsion of a spherical curve (a curve on a sphere)?
+
+It is an interesting fact that the geodesic curvature of a curve is a ``bending'' invariant, i.e., it is unaffected by bending a surface. (Show this!) Is the geodesic torsion also a bending invariant?
+
+Discuss the geodesic torsion of various curves on a developable surface.
+
+Since $T$ is in the tangent plane of the surface, it is expressible as a linear combination of $X_{1}$ and $X_{2}$. After doing this, reconcile $T'$ from your expression with the expression on the right side of (91). It will help you to use the fact that $T \cdot P' = 0$.
+
+\vspace{0.3cm}
+
+\noindent \textbf{L.}
+
+\vspace{0.3cm}
+
+The gaussian curvature of a surface has various forms of expression, including, for example,
+\begin{align*}
+K & = k_{1} k_{2} \\
+K & = \frac{(LN - M^{2})}{(EG - F^{2})}
+\end{align*}
+which are easily shown to be equivalent (show this).
+
+A particularly interesting definition is given by the vector equation
+\begin{equation}
+X_{31} \times X_{32} = K(X_{1} \times X_{2})
+\end{equation}
+which, upon taking magnitudes of both sides, implies that the gaussian curvature is the ratio of corresponding area elements of the spherical image of the unit surface normal $X_{3}(u,v)$ and the original surface $X(u,v)$. Furthermore, (93) implies that the sign of $K$ either preserves or reverses the orientation of curves on the unit sphere corresponding to curves (closed curves, that is) on the surface.
+
+To prove (93), note that $X_{31}$ and $X_{32}$ lie in the tangent plane, and can therefore be written in terms of $X_{1}$ and $X_{2}$ as
+\begin{align}
+X_{31} & = a_{11} X_{1} + a_{12} X_{2} \\
+X_{32} & = a_{21} X_{1} + a_{22} X_{2} \notag
+\end{align}
+
+Crossing the equations in (94) yields
+\begin{equation}
+X_{31} \times X_{32} = (a_{11} a_{22} - a_{12} a_{21}) (X_{1} \times X_{2}) .
+\end{equation}
+
+To evaluate the scalar expression in (95), we dot both sides of the equations in (94) by $X_{1}$ and $X_{2}$, obtaining four equations
+\begin{align*}
+- L & = a_{11}E + a_{12}F \\
+- M & = a_{11}E + a_{12}G \\
+- M & = a_{21}E + a_{22}F \\
+- N & = a_{21}F + a_{22}G
+\end{align*}
+which in matrix form becomes
+\begin{equation*}
+  \begin{bmatrix}
+    -L & -M \\
+    -M & -N
+  \end{bmatrix}
+=
+  \begin{bmatrix}
+    a_{11} & a_{12} \\
+    a_{21} & a_{22}
+  \end{bmatrix}
+  \begin{bmatrix}
+    E & F \\
+    F & G
+  \end{bmatrix}
+\end{equation*}
+
+Taking determinants of this last matrix equation, and recalling that the determinant of a product is the product of the determinants, gives us
+\begin{equation*}
+LN - M^{2} = (a_{11} a_{22} - a_{12} a_{21}) (EG - F^{2})
+\end{equation*}
+which, when inserted into (95), yields
+\begin{equation*}
+X_{31} \times X_{32} = K(X_{1} \times X_{2})
+\end{equation*}
+which is what was to be proven. Verify all of the steps in the proof. It will be useful to recall that $L$, $M$, and $N$ can be defined by
+\begin{align*}
+L & = - X_{31} \cdot X_{1} \\
+M & = - X_{31} \cdot X_{2} = - X_{32} \cdot X_{1} \\
+N & = - X_{32} \cdot X_{2}
+\end{align*}
+by differentiating $X_{3} \cdot X_{i} = 0$ with respect to $u$ and $v$.
+
+Explain the statement in Problem K that the gaussian curvature is the ratio of corresponding area elements of the spherical image of the unit surface normal $X_{3}(u,v)$ and the original surface $X(u,v)$. What can be said of the area of the region on the unit sphere which corresponds to a region on a developable surface? Explain why the mapping which associates to each point on $X(u,v)$ a point on the unit sphere -- i.e., $X_{3}(u,v)$ is, in general, not necessarily one-to-one -- and give examples. Show that this mapping (called the ``gauss mapping'') of an ovaloid (closed convex surface, such as an ellipsoid) \emph{is} one-to-one.
+
+Show that the unit surface normals of a paraboloid when placed at the origin (i.e., the spherical image of the paraboloid) form an open hemisphere. For what surfaces of revolution is this true? Discuss the relation between a surface of revolution and its spherical image. Is there a convenient method of determining the spherical image directly from the profile curve?
+
+Show that the unit surface normals of a torus cover the unit sphere twice. Each point of the unit sphere corresponds to two surface normals of the torus. At one point, $K$ is positive, while at the other point, $K$ is negative.
+
+\vspace{0.3cm}
+
+\noindent \textbf{M.}
+
+\vspace{0.3cm}
+
+An oval is a plane curve which is closed, simple, and convex. This last property, convexity, can be described by the statement that
+\begin{equation}
+k = \frac{d \theta}{ds} > 0
+\end{equation}
+for curves of counterclockwise orientation. The angle $\theta$ is, as Figure 19 shows, the angle between the unit tangent and the positive $x$-axis. We use $k$ here to denote the signed curvature which agrees in absolute value with the curvature, but which reflects the concavity of the curve, and is easily computed using (96).
+
+\begin{center}
+%TeXCAD Picture [fig19.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(62.25,61.75)(0,0)
+\put(5.5,7.75){\line(0,1){50.75}}
+\put(5.5,58.5){\line(0,1){0}}
+\put(1,12.25){\line(1,0){58.25}}
+\put(59.25,12.25){\line(0,1){0}}
+\qbezier(19,35.75)(21.5,49.5)(36,50.25)
+\qbezier(27.75,26.5)(39.25,27.13)(43.75,41.25)
+\qbezier(19,35.5)(18.13,26.75)(27.75,26.5)
+\qbezier(36,50.13)(45.63,49.63)(43.75,41.13)
+\put(24.25,46){\line(1,0){8}}
+\put(37,30.13){\line(1,0){8}}
+%\vector(37.13,30.25)(45.13,35.88)
+\put(45.13,35.88){\vector(3,2){.07}}\multiput(37.13,30.25)(.04790419,.03368263){167}{\line(1,0){.04790419}}
+%\end
+%\vector(24.13,45.88)(15.63,40.63)
+\put(15.63,40.63){\vector(-3,-2){.07}}\multiput(24.13,45.88)(-.05448718,-.03365385){156}{\line(-1,0){.05448718}}
+%\end
+\put(24.25,46){\circle*{1.03}}
+\put(37.25,30.13){\circle*{1.03}}
+\qbezier(40.25,30.13)(40.94,31.63)(39.88,32.13)
+\qbezier(26.5,45.88)(26.38,48.31)(23.25,48)
+\qbezier(23.25,48)(20.81,47.81)(21.63,44.38)
+%\vector(21.44,45.83)(21.65,44.46)
+\put(21.65,44.46){\vector(1,-4){.07}}\multiput(21.44,45.83)(.03003,-.19521){7}{\line(0,-1){.19521}}
+%\end
+%\vector(40.45,31.41)(39.82,32.36)
+\put(39.82,32.36){\vector(-2,3){.07}}\multiput(40.45,31.41)(-.033193,.04979){19}{\line(0,1){.04979}}
+%\end
+\put(62.25,12.25){\makebox(0,0)[cc]{$x$}}
+\put(5.5,61.75){\makebox(0,0)[cc]{$y$}}
+\put(42.75,32){\makebox(0,0)[cc]{$\theta$}}
+\put(30.5,4.25){\makebox(0,0)[cc]{Fig. 19}}
+\end{picture}
+\end{center}
+
+In the plane, we define $v_{2}$ to be orthogonal to $v_{1}$, as is done for space curves, but we choose its direction so that the sense of $v_{1}$ and $v_{2}$ is the same as the sense of the positive $x$-axis and the positive $y$-axis. (Think of this situation as requesting that $v_{1} \times v_{2}$ should point in the direction of the positive $z$-axis.) Compare this procedure with that used to determine the direction of $v_2$ for space curves.
+
+The modified Frenet equations have the form
+\begin{align}
+v'_{1} & = kv_{2} \\
+v'_{2} & = - kv_{1} \notag
+\end{align}
+where $k$ is the signed curvature defined by (96). Verify (97) and show that $k$ changes sign when the curve changes concavity.
+
+Now, given a point on an oval $P(s)$, we call the unique point whose tangent is parallel to the tangent of the first point its \emph{opposite} point. Figure 19 shows a pair of opposite points. If a pair of opposite points have $s$-values $s$ and $\bar{s}$, and $\theta$-values $\theta$ and $\bar{\theta}$, show that
+\begin{align}
+v_{1}(\bar{s}) & = - v_{1}(s) \notag \\
+v_{2}(\bar{s}) & = - v_{2}(s) \\
+\bar{\theta} & = \theta + \pi \notag
+\end{align}
+where the last equation in (98) requires a bit of thought. In fact, the reader should think about how $e$ is defined over portions of the oval in such a way that it remains continuous.
+
+Now define the width of the oval at $P(s)$, or for that matter, at $P(s)$, as the distance between the parallel tangents. The width, thusly defined, for a circle is constant and is obviously the diameter of the circle. Surprisingly, however, there are ovals which are not circles, but which have constant width. Investigate as many properties of these ovals as you can with the help of equations (97) and (98). Denoting the constant width by $d$, we have
+\begin{equation}
+P(\bar{s}) = P(s) + r(s) v_{1}(s) + dv_{2}(s).
+\end{equation}
+
+By differentiating (99), and performing a clever integration (after visualizing what (99) says), show that $r(s) = 0$ and that the perimeter is $\pi d$, which is in perfect agreement with the case of a circle. This last fact is called the Theorem of Barbier.
+
+Handle the general case, which will require slight modification of (99), and investigate the properties of ovals. One well-known result is the Four-Vertex Theorem, which says that an oval has at least four points at which $\frac{dk}{ds} = 0$. These points are termed vertices. Why must there always be an even number of vertices? Why must there be any vertices?
+
+
+\end{document}
+

@@ -1,0 +1,14 @@
+\contentsline {section}{\hbox to\@tempdima {\hfil }Introduction}{1}
+\contentsline {section}{\numberline {1}Notation}{1}
+\contentsline {section}{\numberline {2}Rotations on $R_2$}{1}
+\contentsline {section}{\numberline {3}Extension of the Spaces}{2}
+\contentsline {section}{\numberline {4}Extension of Transformations}{2}
+\contentsline {section}{\numberline {5}A Geometric Interpretation}{3}
+\contentsline {section}{\numberline {6}Finite Dimensional Cases}{3}
+\contentsline {section}{\numberline {7}The Matrix of a Rotation in $R_3$}{4}
+\contentsline {section}{\numberline {8}The Axis of a Rotation}{7}
+\contentsline {section}{\numberline {9}The Rotation Group}{7}
+\contentsline {section}{\numberline {10}Commutative Subsets}{7}
+\contentsline {section}{\numberline {11}Rotations in $R_4$}{9}
+\contentsline {section}{\numberline {12}Rotations in $R_n$}{9}
+\contentsline {section}{\hbox to\@tempdima {\hfil }References}{9}

@@ -1,0 +1,36 @@
+---
+title: "Guilford Course Notes"
+---
+
+```{r}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+library(gt)
+
+note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Abstract")
+
+note_data <- c("Beginner's Topology", "Jones, F. Burton", "topology", "66", "University of California at Riverside", "This guide contains the essentials of the author's course in topology of undergraduates, mostly from the first two years of college. Much of it is suitable for high school students, especially those who are willing to think and experiment. Mainly the course concerns the topology of the real line. To reduce the use of arithmetic (and algebra) to a purely descriptive role, a concrete space is constructed in which points are maps from natural numbers to the natural numbers, i.e., sequences of positive integers. The lexicographic order is defined and the space of all such functions is given the order topology. All this is done slowly, introducing the student gradually to certain types of infinite processes.")
+
+
+tibble(note_entries, note_data) |>
+  gt() |>
+  cols_align(align = "left") |>
+  tab_style(
+    style= cell_text(v_align = "top"),
+    locations = cells_body()
+  ) |>
+  tab_options( table.width = "80%", column_labels.hidden = TRUE)  
+
+
+```
+- [Download File](./beginners-topology_jones.pdf)
+
+This course guide was originally published by the Guilford College Journal of Undergraduate Mathematics as a volume in the Monographs on Undergraduate Mathematics series.
+
+This course guide may be reproduced and distributed if the following conditions are met:
+
+- State that it is the property of the Math Department of Guilford College, and is protected under copyright by Guilford.
+- Take no profit from its distribution. (You may recover copying costs if you are using these for a class.) 
+

@@ -1,0 +1,832 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% Journal headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{Voting Made Easy: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright Guilford College Journal of Undergraduate Mathematics} \cfoot{} \rfoot{ - at www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Voting Made Easy: \\ A Mathematical Theory of Election Procedures}
+\author{Lewis Lum \\ David C. Kurtz}
+\date{\vspace{3cm}
+  \emph{Journal of Undergraduate Mathematics}
+  \\ Department of Mathematics
+  \\ Guilford College
+  \\ Greensboro, North Carolina 27410
+  }
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+\section*{Preface}
+\addcontentsline{toc}{section}{\numberline{}Preface}
+\markboth{Preface}{Preface}
+
+\pagenumbering{roman}
+
+This monograph investigates some ``classical'' results in social choice theory; i.e., Arrow's theorem and variations of it. No previous exposure to the theory is assumed, and very little mathematical knowledge is required. All that is demanded of the reader is a modicum of that elusive quality, ``mathematical maturity''. We hope that economists and political scientists as well as mathematicians will find something of interest here. For the economists and political scientist, we have some simple (at least it seems so to us) proofs of variations of Arrow's theorem, and a unified notation that seems to be lacking in the literature. For the mathematician, we have some perhaps unfamiliar and surprising results about voting.
+
+Contained herein are numerous exercises and questions of varying difficulty. We hope readers will find this monograph suitable for use in an undergraduate seminar or independent study.
+
+The authors would like to thank Professor James Johnson (Salem College) for providing us with many references, and Ms. Pat Childress for painstakingly (and without complaint) typing the manuscript.
+
+\begin{flushright}
+Lewis Lum and David C. Kurtz \\
+Salem College \\
+Winston-Salem, N.C. 27108
+\end{flushright}
+
+
+\newpage
+
+\section{Introduction and Historical Background}
+\markboth{1. Introduction and Historical Background}{1. Introduction and Historical Background}
+
+\pagenumbering{arabic}
+
+When a group of individuals must make a choice between two or more courses of action, the members are usually polled on their respective preferences; i.e., a vote is taken. In this monograph, we investigate the following questions: In what form should the individual ballots be submitted? Once the ballots are tabulated, what procedure should be used to determine the social, or collective, choice of the group? 
+
+Of course, unless the electorate is unanimously in favor of one alternative over the others, some individuals will be dissatisfied by the outcome of any election procedure -- ``You can please some of the people $\cdots$''. But we seek a procedure, rather than an outcome, that will ``$\cdots$ please all of the people all the time''.
+
+To see that these questions are nontrivial, we first describe some of the election procedures commonly in use today, and illustrate their deficiencies.
+
+
+\subsection*{Plurality}
+
+Each voter indicates his first preference among the alternatives. The alternative with the most votes is declared the winner.
+
+This procedure is appropriate when there are only two alternatives, and an odd number of voters or a chairman to break ties, but is often ``unfair'' otherwise, as Example 1.1 illustrates.
+
+\textbf{Example 1.1}: The table below lists the individual preferences of 19 voters on 4 alternatives: A, B, C, and D. Interpret the first column to mean 4 voters prefer A over the other three, C over B and D, and B over D; other columns are interpreted similarly.
+\begin{center}
+\begin{tabular}{c|c|c|c}
+  A & B & C & D \\
+  C & A & A & B \\
+  B & C & B & A \\
+  D & D & D & C \\
+  \hline
+  4 & 4 & 5 & 6 \\
+\end{tabular}
+\end{center}
+The plurality winner is D. But does D fairly represent the ``will of the majority''? We think not, since 13 out of 19 voters consider D the most undesirable alternative.
+
+
+\subsection*{Borda Count}
+
+On June 16, 1770, Borda (Jean-Charles de Borda, 1733-1799) presented the first known paper on the mathematical theory of elections to the French Academy of Sciences. His election procedure used more than the first preference of each voter to determine the social choice.
+
+Each voter submits a linear ranking of all the alternatives (as in Example 1.1). Each alternative is assigned points ($\alpha$ points for first, $\beta$ points for second, etc.) according to its rank on each ballot. The alternative with the highest point total is declared the Borda winner.
+
+In Example 1.1, let us assign 4 points for first, 3 points for second, 2 points for third, and 1 point for fourth. Since A received 4 first-place votes, 9 seconds, and 6 thirds, its Borda count is 16 + 27 + 12 = 55. Similarly, the Borda counts of B, C, and D are 52, 46, and 37, respectively. Hence, A is the Borda winner.
+
+In addition to the obvious possibility of ties, the Borda count suffers from two major maladies. First note the natural bias in favor of mediocre alternatives; alternative A's lack of first place votes is more than compensated by its lack of last place votes. Secondly, the outcome can by altered by ``insincere'' voting. If, instead of voting their true preference, the second group of voters interchange the ranks of A and C, the Borda winner is B. Thus, that group of voters can manipulate the election in their favor by misrepresenting their preferences. When challenged on this point by his colleagues, Borda reportedly answered: ``My scheme is only for honest men.''
+
+\begin{description}
+
+\item[Example 1.2:] The Borda count is often used in competitions in which team as well as individual honors are awarded. The following remarkable paradox is due to E. V. Huntington [8]. Suppose four teams of three -- $A = \{ A_{1}, A_{2}, A_{3} \}$, $B = \{ B_{1}, B_{2}, B_{3} \}$, $C = \{ C_{1}, C_{2}, C_{3} \}$, and $D = \{ D_{1}, D_{2}, D_{3} \}$ -- compete in an annual mathematics contest. The individual teammembers' scores for two consecutive years, together with their Borda counts, are tabulated below.
+\begin{center}
+\begin{tabular}{cc |c| cc}
+          & Year I & Borda Count &         & Year II \\
+  \hline
+  $C_{1}$ &     99 &          12 & $C_{1}$ &      99 \\
+  $B_{1}$ &     98 &          11 & $B_{1}$ &      97 \\
+  $A_{1}$ &     94 &          10 & $A_{1}$ &      95 \\
+  $B_{2}$ &     93 &           9 & $B_{2}$ &      92 \\
+  $A_{2}$ &     89 &           8 & $D_{1}$ &      91 \\
+  $D_{1}$ &     88 &           7 & $A_{2}$ &      90 \\
+  $C_{2}$ &     87 &           6 & $D_{2}$ &      88 \\
+  $A_{3}$ &     85 &           5 & $C_{2}$ &      87 \\
+  $D_{2}$ &     84 &           4 & $A_{3}$ &      86 \\
+  $C_{3}$ &     81 &           3 & $C_{3}$ &      81 \\
+  $B_{3}$ &     80 &           2 & $B_{3}$ &      79 \\
+  $D_{3}$ &     78 &           1 & $D_{3}$ &      78 \\
+\end{tabular}
+\end{center}
+
+\end{description}
+
+We are concerned only with teams A and B. In passing from Year I to Year II, every member of Team A has improved his grade, while every member of Team B has lowered his grade. Yet, using the Borda count, A beats B in I (23 to 22) but loses to B in II (21 to 22)!
+
+
+\subsection*{Condorcet Criterion}
+
+Condorcet (Marie Jean Antoine Nicolas Caritat, Marquis de Condorcet, 1743-1794), like Borda, was a member of the French Academy of Sciences. His first paper on elections, using the new theory of probability, was presented to the Academy on July 17, 1784.
+
+The Condorcet winner is the alternative that would win over each of the others in a two-way race. In Example 1.1, B is preferred over A (by a vote of 10 to 9), B over C (10 to 9), B over D (13 to 6), A over C (14 to 5), A over D (13 to 6), and C over D (13 to 6). Thus, the Condorcet winner is B, A is second, C third, and D last.
+
+Note that the three election procedures just discussed yield three different winners on the same election.
+
+For those readers who prefer the Condorcet criterion, let us in Example 1.1 determine the point assignments $\alpha$, $\beta$, $\gamma$, and $\delta$ necessary for B to beat A in the Borda count. B and A receive $4\alpha + 6\beta + 9\gamma$ and $4\alpha + 9\beta + 6\gamma$ points, respectively. A little elementary algebra shows that B wins over A only if $\gamma > \beta$; that is, only if third place is worth more than second!
+
+\begin{description}
+
+\item[Example 1.3:] Conorcet was the first to recognize that his method may fail to produce a winner, as the following example of a \emph{cyclic majority} shows. The Condorcet criterion yields A over B (20 to 11), B over C (23 to 8), but C over A (19 to 12). That is, A beats B who beats C who beats A!
+  \begin{center}
+  \begin{tabular}{c|c|c}
+     A &  B &  C \\
+     B &  C &  A \\
+     C &  A &  B \\
+    \hline
+    12 & 11 &  8 \\
+  \end{tabular}
+  \end{center}
+
+\end{description}
+
+Procedural regulations in the U.S. House of Representatives require that votes be taken in pairs. In case of a cyclic majority, the order of the vote is very important. The alternative considered last in the above example will always win. Does the representative from your district know this interesting fact?
+
+Advocates of the Condorcet criterion argue that cyclic majorities are extreme cases and hence do not seriously detract from its value. In an 1876 pamphlet, the Rev. C. L. Dodgson answered this charge as follows:
+
+\begin{quote}
+``I am quite prepared to be told, with regard to the cases [cyclic majorities] I have here proposed, as I have already been told with regard to others, `Oh, that is an extreme case: it could never really happen!' Now I have observed that this answer is always given instantly, with perfect confidence, and without any examination of the details of the proposed case. It must therefore rest on some general principle: the mental process being probably something like this -- `I have formed a theory. This case contradicts my theory. Therefore this is an extreme case, and would never occur in practice'.''
+\end{quote}
+
+More recently, it has been shown that cyclic majorities are not extreme cases at all. In fact, for a large numbers of voters, as the number of alternatives increase, the probability of a cyclic majority approaches $1$. For example, for forty-five alternatives, the probability is greater than $0.8$. See [6] and [13] for further details.
+
+Four days after Condorcet's paper was presented, Borda again addressed the Academy on his theory. Soon after, his method was adopted to elect its membership. It was supplanted in 1800 when a new upstart member introduced his own ideas. That new member was Napoleon Bonaparte.
+
+
+\subsection*{Contributions of the Rev. C. L. Dodgson}
+
+Dodgson (1823-1898), better known as Lewis Carroll, independently rediscovered the results of Borda and Condorcet, and offered other methods in unpublished pamphlets (1873-1885). The reader is referred to [2], where a fascinating account of this period in Dodgson's life appears.
+
+One of his methods was essentially a generalization of the run-off system. Eliminate first the alternative(s) with the fewest number of first place votes. Repeat the process on those remaining until only one alternative, the winner, is left. In Example 1.1, A and B would be eliminated first, then D, leaving C the winner. We now have obtained four different winners in Example 1.1.
+
+In another pamphlet, he devised a method to resolve cyclic majorities. For each alternative, determine the minimum number of votes that must be changed in order to make it a clear Condorcet winner. For instance, in Example 1.3, C needs 8 vote changes between B and C to beat B, B needs 5 to beat A, and A needs only 4 to beat C. Alternatives A and C should be, according to Dodgson, resubmitted to the electorate. If enough are willing to change their vote between A and C, then A is the winner; otherwise, declare ``no election''.
+
+Dodgson's work was never widely circulated, and hence did not reach the attention of other scholars of the era. Interest in the theory did not resurface until the late 1940s. This was largely due to the separate work of economists Duncan Black and Kenneth Arrow.
+
+The next two sections are devoted to the results of Arrow [1], who shared the 1972 Nobel Prize in economics for his work. Perhaps motivated by paradoxes which known election procedures possess, Arrow approached the problem axiomatically. He took certain properties that a fair election procedure should possess as axioms, and investigated the theoretical relationships between them. His remarkable theorem states that \emph{no} election procedure can satisfy all of the axioms simultaneously.
+
+
+\section{Arrow's Theorem}
+\markboth{2. Arrow's Theorem}{2. Arrow's Theorem}
+
+In this section, we set down the notation and terminology necessary to state and prove a simplified version of Arrow's Theorem. Assertions made without proof are to be taken as exercises.
+
+Let $X$ denote the set of $m \geq 3$ alternatives; and $N = \{ 1,2,\cdots,n \}$ denote the set of voters, $n \geq 2$.
+
+Let $P$ denote a binary relation on $X$. For distinct alternatives $x$ and $y$, we write $xPy$ (respectively, $\sim xPy$) to mean $x$ precedes (respectively, does not precede) $y$ in the relation $P$. A \emph{strict preference relation} on $X$ is a binary relation $P$ possessing the following properties for all distinct alternatives $x, y, z \in X$:
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item completeness: $xPy$ or $yPx$,
+  \item asymmetry: if $xPy$, then $\sim yPx$, and
+  \item transitivity: if $xPy$, and $yPz$, then $xPz$.
+\end{enumerate}
+
+Let $OX$ denote the set of all strict preference relations on $X$, and $[OX]^{n}$ denote the $n$-fold Cartesian product on $OX$. An \emph{election procedure} is a function $f : \mathcal{D} \rightarrow OX$ where $\mathcal{D}$ is a nonempty subset of $[OX]^{n}$.
+
+Ordered $n$-tuples $(P_{1}, \cdots, P_{n}) \in \mathcal{D}$ can be interpreted as full votes of the society, $P_{i}$ being the individual ballot submitted by voter $i$. Thus $xP_{i}y$ means voter $i$ prefers alternative $x$ over alternative $y$. The function $f$ can be viewed as a voting machine; it tabulates any full vote $(P_{1}, \cdots, P_{n}) \in \mathcal{D}$ and produces a social ranking, or choice, $P = f(P_{1}, \cdots, P_{n})$ among the alternatives.
+
+Since the function $f$ can be quite arbitrary, it is necessary to impose some conditions on it before it will model a ``fair'' election procedure. Consider the following properties that an election procedure may, or may not, possess.
+
+\begin{description}
+
+\item[Condition I (Universality):] The election procedure provides a social ranking (strict preference relation) for all possible full votes; i.e., $\mathcal{D} = [OX]^{n}$.
+
+\item[Condition II (Independence of Irrevelant Alternatives):] Let $x,y \in X$ and $(P_{1}, \cdots , P_{n}), (P'_{1}, \cdots, P'_{n}) \in \mathcal{D}$. Suppose (a) $xP_{i}y$ implies $xP'_{i}y$, and (b) $xPy$. Then $xP'y$.
+
+  That is, the social choice of $x$ over $y$ is unaffected by changes in voter preferences among pairs of alternatives distinct from $x$ and $y$ and additional votes for $x$ over $y$ do not reverse the social choice of $x$ over $y$.
+
+\item[Condition III (Citizens' Sovereignty):] For all the distinct pairs $x,y \in X$, there exists a full vote $(P_{1}, \cdots, P_{n}) \in \mathcal{D}$ such that $xPy$; thus each alternative can win over any other.
+
+\item[Condition IV (Nondictatorship):] There does not exist an individual voter $k$ such that $xP_{k}y$ implies $xPy$, regardless of how other individuals vote. A voter with that much power is called, aptly, a \emph{dictator}.
+
+\item[Exercise 2.1:] Determine which of these conditions are satisfied by the Borda count; and which are satisfied by the Condorcet criterion.
+
+\end{description}
+
+To illustrate how weak the conditions are, consider a ``traditional society'', a society in which the social ranking is determined by tradition rather than by the individual preferences of the society.
+
+\begin{description}
+
+\item[Exercise 2.2:] A traditional society can be modelled by an election procedure which always produces the same social ranking; i.e., a constant function. A traditional society satisfies all the above conditions except citizens' sovereignty.
+
+\end{description}
+
+In some sense, then, these conditions should be viewed as necessary, but not sufficient, for a ``fair'' election procedure. On the other hand, surprisingly, taken together they are too strong to be consistent.
+
+\begin{description}
+
+\item[Theorem 2.3 (Arrow, circa 1950):] Conditions I - IV are inconsistent. In particular, if an election procedure satisfies Conditions I - III, then there exists a dictator.
+
+\end{description}
+
+The remainder of this section is devoted to the proof of Theorem 2.3. Hereafter, we assume an election procedure $f$ satisfying Conditions I - III. The letters $x$, $y$, and $z$, unless otherwise specified, denote distinct alternatives; $P$ and $P'$ denote the social rankings determined by $f$ from the full votes $(P_{1}, \cdots, P_{n})$ and $(P'_{1}, \cdots, P'_{n})$.
+
+\begin{description}
+
+\item[Lemma 2.4 (Unanimity):] If $xP_{i}y$ for all $i \in N$, then $xPy$.
+
+\end{description}
+
+This is certainly a reasonable consequence of the conditions. It states that if the voters unanimously prefer $x$ over $y$, then the social choice is indeed $x$ over $y$.
+
+\begin{description}
+
+\item[Definition 2.5:] A nonempty set $D \subseteq N$ of voters is \emph{decisive} on an ordered pair $(x,y)$ of distinct alternative, provided (a) $xP_{i}y$ for all $i \in D$, and (b) $yP_{j}x$ for all $j \in (N - D)$ implies $xPy$.
+
+\end{description}
+
+Observe that by Condition II, the social choice between $x$ and $y$ is completely determined by (a) and (b). Arrange in tabular form: $D$ is decisive on $(x,y)$ if $xPy$ whenever $(P_{1}, \cdots, P_{n})$ contains the \emph{partial ballot}:
+\begin{center}
+\begin{tabular}{c|c}
+  D & N-D \\
+  \hline 
+  x &  y  \\
+  y &  x  \\
+\end{tabular}
+\end{center}
+
+\begin{description}
+
+\item[Lemma 2.6:] The set $N$ of all voters is decisive on all pairs of distinct alternatives.
+
+\item[Lemma 2.7:] A nonempty set $D \subseteq N$ is decisive on $(x,y)$ if there exists a full vote $(P_{1}, \cdots, P_{n}) \in \mathcal{D}$ such that (a) $xPy$ for all $i \in \mathcal{D}$, (b) $yP_{j}x$ for all $j \in (N - D)$, and (c) $xPy$.
+
+\item[Lemma 2.8:] A single voter $k$ is a dictator if and only if $\{ k \}$ is decisive on all pairs of distinct alternatives.
+
+\end{description}
+
+Observe that if $D$ is decisive on $(x,y)$, it is not a priori decisive on $(y,x)$. However, this fact does follow from the the next lemma.
+
+\begin{description}
+
+\item[Lemma 2.9:] Let $D$ be decisive on $(x,y)$. If $z \in X$ is a third alternative, then $D$ is decisive on all pairs of distinct alternatives in $\{ x, y, z \}$.
+
+  Hint: Consider the following partial ballots:
+
+\begin{center}
+
+\begin{tabular}{|c|c|}
+  \hline
+  \multicolumn{2}{|c|}{I} \\
+  \hline
+  D & N-D \\
+  \hline
+  x &  y  \\
+  y &  z  \\
+  z &  x  \\
+  \hline
+\end{tabular}
+$\ \ \ $
+\begin{tabular}{|c|c|}
+  \hline
+  \multicolumn{2}{|c|}{II} \\
+  \hline
+  D & N-D \\
+  \hline
+  z &  y  \\
+  x &  z  \\
+  y &  x  \\
+  \hline
+\end{tabular}
+$\ \ \ $
+\begin{tabular}{|c|c|}
+  \hline
+  \multicolumn{2}{|c|}{III} \\
+  \hline
+  D & N-D \\
+  \hline
+  y &  z  \\
+  x &  y  \\
+  z &  x  \\
+  \hline
+\end{tabular}
+$\ \ \ $
+\begin{tabular}{|c|c|}
+  \hline
+  \multicolumn{2}{|c|}{IV} \\
+  \hline
+  D & N-D \\
+  \hline
+  y &  z  \\
+  z &  x  \\
+  x &  y  \\
+  \hline
+\end{tabular}
+$\ \ \ $
+\begin{tabular}{|c|c|}
+  \hline
+  \multicolumn{2}{|c|}{V} \\
+  \hline
+  D & N-D \\
+  \hline
+  z &  x  \\
+  y &  y  \\
+  x &  z  \\
+  \hline
+\end{tabular}
+
+\end{center}
+
+
+\item[Lemma 2.10:] If $D \subseteq N$ is decisive on some pair of distinct alternatives then $D$ is decisive on any such pair.
+
+\end{description}
+
+Lemma 2.10 is the crux of the proof of Arrow's Theorem. We complete the proof by considering the collection of all subsets of $N$ that are decisive on some pair of distinct alternatives. Let $D$ be such a set containing the fewest number of voters.
+
+\begin{description}
+
+\item[Lemma 2.11:] If $D$ is as above, then $D$ is a singleton $\{ k \}$, and voter $k$ is a dictator.
+
+  Hint: Suppose $D$ contains at least two voters. Choose $k \in D$. Then $D - \{ k \}$ is nonempty, and is decisive on no pair of alternatives.
+
+\end{description}
+
+This completes the proof of Theorem 2.3.
+
+
+
+\section{Arrow's Theorem Revisited}
+\markboth{3. Arrow's Theorem Revisited}{3. Arrow's Theorem Revisited}
+
+Arrow's original conditions for an election procedure were five in number, and more general in scope; he did not require universality, and permitted the voters to be indifferent between two or more alternatives. Six years after Arrow published his result, however, J.H. Blau observed that it was true only in the case when there were exactly three alternatives. In this section, we discuss weak preference relations, Arrow's original theorem, Blau's counterexamples, and modifications of the theorem due to Blau [3], Y. Murakami [11], and Arrow [1].
+
+\begin{description}
+
+\item[Definition 3.1:] A \emph{weak preference relation} on $X$ is a binary relation $R$ on $X$ possessing the following properties for all (not necessarily distinct) alternatives $x, y, z \in X$:
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item completeness: $xRy$ or $yRx$, and
+    \item transitivity: if $xRy$ and $yRz$, then $xRz$.
+  \end{enumerate}
+
+\item[Definition 3.2:] Let $R$ be a weak preference relation on $X$. Define relations $P$ (\emph{preference}) and $I$ (\emph{indifference}) on $X$ by
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item $xPy$ if and only if $xRy$ and $\sim yRx$, and
+    \item $xIy$ if and only if $xRy$ and $yRx$.
+  \end{enumerate}
+
+\item[Exercise 3.3:] Let $P$, $R$, and $I$ be as above, and $x,y,z \in X$. Then 
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item $\sim xPx$, 
+    \item $xIx$, 
+    \item if $xPy$, then $\sim yPx$ ($P$ is asymmetric), 
+    \item if $xPy$ and $yPz$, then $xPz$ ($P$ is transitive), 
+    \item if $xIy$ and $yIz$, then $xIz$ ($I$ is transitive), 
+    \item if $xIy$ and $yPz$, then $xPz$, 
+    \item if $xPy$ and $yIz$, then $xPz$, 
+    \item if $\sim xRy$, then $yPx$, and 
+    \item if $xPz$, then $xPy$ or $yPz$.
+  \end{enumerate}
+
+\item[Exercise 3.4:] Show that neither $P$ nor $I$ need be complete relations.
+
+\item[Exercise 3.5:] Suppose $P'$ is a relation on $X$ satisfying 3.3(c) and 3.3(i) in Exercise 3.3. Define $R'$ by $xR'y$ if and only if $\sim yP'x$, and define $I'$ by $xI'y$ if and only if $\sim xP'y$ and $\sim yP'x$. Show $R'$ is a complete transitive relation on $X$. From $R'$, we can define relations $P*$ and $I*$ as in Definition 3.2. Show $P' = P*$, and $I' = I*$.
+
+\end{description}
+
+Let $O'X$ denote the set of all weak preference relations on $X$. We now generalize the notion of election procedure by permitting voters to submit weak, rather than strict, preference relations on $X$.
+
+\begin{description}
+
+\item[Definition 3.6:] An \emph{election procedure} is a function $f: \mathcal{D} \rightarrow O'X$, where $\mathcal{D}$ is a nonempty subset of $[O'X]^{n}$.
+
+\end{description}
+
+One more definition is necessary before we can paraphrase Arrow's original conditions.
+
+\begin{description}
+
+\item[Definition 3.7:] Let $Y$ be a nonempty subset of $X$. A \emph{partial ballot} on $Y$ is a weak preference relation $T$ on $Y$. A ballot (weak preference relation) $R$ on $X$ \emph{contains} $T$ provided for all $x,y \in Y$, $xRy$ if and only if $xTy$. (In the proof of Lemma 2.9, we used partial ballots on $Y = \{ x,y,z \}$.)
+
+  Hereafter, $R$ and $R'$ denote the social rankings determined by $f$ from the full votes $(R_{1},\cdots,R_{n})$ and $(R'_{1},\cdots,R'_{n})$. Finally, $P_{i},I_{i}$ and $P,I$ denote the preference and indifference relations determined from $R_{i}$ and $R$.
+
+\item[Condition 1:] There exist three distinct alternatives $x,y,z \in X$ (a free triple) such that if $T_{1}, \cdots, T_{n}$ are partial ballots on $Y = \{ x,y,z \}$, then there exists a full vote $(R_{1},\cdots,R_{n}) \in \mathcal{D}$ such that each $R_{i}$ contains $T_{i}$.
+
+  This condition is weaker than \emph{universality} $(\mathcal{D} = [O'X]^{n})$. It does, however, require that voters may vote any way they choose on the alternatives $x$, $y$, and $z$.
+
+\item[Condition 2:] Let $x,y \in X$ and $(R_{1},\cdots,R_{n}), (R'_{1},\cdots,R'_{n}) \in \mathcal{D}$. Suppose for all $u,v \in X$ distinct from $x$:
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item $uR_{i}v$ if and only if $uR'_{i}v$,
+    \item if $xR_{i}v$, then $xR'_{i}v$, 
+    \item if $xP_{i}v$, then $xP'_{i}v$, and
+    \item $xPy$.
+  \end{enumerate}
+  Then $xP'y$.
+
+  That is, suppose that for each $i$, $x$ is ranked in $R'$ at least as high as in $R$, and all other relative rankings are unchanged. Then if society formerly preferred $x$ over $y$ ($xPy$), then it still does ($xP'y$).
+
+\item[Condition 3:] Let $x,y \in X$ and $(R_{1},\cdots,R_{n}),\ (R'_{1},\cdots,R'_{n}) \ \in \mathcal{D}$. Suppose (a) $xR_{1}y$ if and only if $xR'_{i}y$, and (b) $xPy$. Then $xP'y$.
+
+  It is Condition 3 that Arrow called ``independence of irrelevant alternatives''.
+
+\item[Exercise 3.8:] Show Condition 3 (a) implies $uP_{i}v$ if and only if $uP'_{i}v$.
+
+\item[Question 3.9:] Does Condition 3 imply Condition 2?
+
+\item[Condition 4:] For all distinct pairs $x,y \in X$, there exists a full vote $(R_{1}$, $\cdots$, $R_{n})$ $\in$ $\mathcal{D}$ such that $xPy$.
+
+\item[Condition 5:] There does not exist an individual voter $k$ such that $xP_{k}y$ implies $xPy$.
+
+\item[Exercise 3.10:] If $\mathcal{D} = [OX]^{n}$ and $f$ takes its values in $OX$, then Conditions 2 - 5 are equivalent to Conditions II - IV in Section 2.
+
+\item[``Theorem'' 3.11 (Arrow):] Conditions 1 - 5 are inconsistent.
+
+\end{description}
+
+As mentioned previously, this theorem is true only if the number of alternatives in $X$ is exactly three. We describe here the counterexamples of Blau.
+
+\begin{description}
+
+\item[Example 3.12:] Let $X = \{ a, b, c, d \}$ and $n = 2$. (The number of voters $n$ can easily be increased.) The set $\mathcal{D}$ consists of all full votes satisfying:
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item Each voter must rank $d$ first or last. Any partial ballot on $\{ a, b, c \}$ is permitted.
+    \item If voter 1 ranks $d$ first, then voter 2 ranks $d$ last; and conversely. That is, the two voters never agree on $d$.
+  \end{enumerate}
+
+\end{description}
+
+The social rankings are determined by allowing voter 1 to dictate all decisions between pairs of alternatives in $\{a, b, c\}$, and voter 2 to dictate all decisions involving $d$ (leaving voter 1 totally frustrated on these issues).
+
+The two types of full votes and the resulting social rankings are diagramed below; $T$ and $T'$ represent arbitrary partial ballots on $\{ a, b, c \}$. 
+
+\begin{center}
+\begin{tabular}{c|c}
+  1 & 2 \\
+  \hline
+  d & T$'$ \\
+  T & d \\
+\end{tabular}
+$\rightarrow$ 
+\begin{tabular}{c}
+  \\
+  T \\
+  d \\
+\end{tabular}
+$\ \ \ \ $
+\begin{tabular}{c|c}
+  1 & 2 \\
+  \hline
+  T & d \\
+  d & T$'$ \\
+\end{tabular}
+$\rightarrow$
+\begin{tabular}{c}
+  \\
+  T \\
+  d \\
+\end{tabular}
+\end{center}
+
+\begin{description}
+
+\item[Exercise 3.13:] Example 3.12 suggests there might exist a ``fair'' election procedure after all. However, we doubt anyone would consider the procedure defined fair in any sense of the word. Is there a more reasonable election procedure satisfying Conditions 1 - 5?
+
+\end{description}
+
+In [9], K. Inada ``proved'' that Conditions 2 and 4 implied \emph{unanimity}: if $xP_{i}y$ for all $i \in N$, then $xPy$. Blau, however, constructed the following example to show that unanimity doesn't even follow from Conditions 1 - 5.
+
+\begin{description}
+
+\item[Example 3.15:] Let $X = \{ a, b, c, d, e \}$ and $n = 2$. We use the tableau notation of Example 3.12 to list the full votes in $\mathcal{D}$ and the social rankings resulting from them, where again $T$ and $T'$ denote arbitrary partial ballots on $\{ a, b, c \}$.
+
+\begin{center}
+\begin{tabular}{c|c}
+  1 & 2 \\
+  \hline
+  T & e \\
+  d & d \\
+  e & T$'$ \\
+\end{tabular}
+$\rightarrow$ 
+\begin{tabular}{c}
+  \\
+  d \\
+  e \\
+  T \\
+\end{tabular}
+$\ \ \ \ $
+\begin{tabular}{c|c}
+  1 & 2 \\
+  \hline
+  d & T$'$ \\
+  e & d \\
+  T & e \\
+\end{tabular}
+$\rightarrow$ 
+\begin{tabular}{c}
+  \\
+  T \\
+  e \\
+  d \\
+\end{tabular}
+\end{center}
+
+\item[Exercise 3.16:] The election procedure in Example 3.15 satisfies Conditions 1 - 5, but not unanimity.
+
+\end{description}
+
+The proof of Arrow's ``Theorem'' 3.11 for exactly three alternatives is very similar to that given in Section 1, once the following extension of Condition 2 is obtained.
+
+\begin{description}
+
+\item[Exercise 3.17:] Assume the election procedure satisfies Conditions 1 - 4. Let $x,y \in X$, and $(R_{1},\cdots,R_{n}), (R'_{1},\cdots,R'_{n}) \in \mathcal{D}$. Suppose (a) $xR_{i}y$ implies $xP'_{i}y$, and (b) $xPy$. Then $xP'y$.
+
+\item[Exercise 3.18:] Prove ``Theorem'' 3.11 for exactly three alternatives. Note in this case, Condition 1 is equivalent to universality, $\mathcal{D} = [O'X]^{n}$.
+
+\end{description}
+
+In his proof of ``Theorem'' 3.11, Arrow incorrectly asserted that Condition 2 is \emph{hereditary} to subsets $Y \subseteq X$. That is, if $Y \subseteq X$, and (a) - (d) of Condition 2 hold for all $x,y \in Y$ and $u,v \in Y$ distinct from $x$, then $xP'y$. (Note that by Condition 3, the election procedure is uniquely determined on each subset.)
+
+\begin{description}
+
+\item[Exercise 3.19:] Use Example 3.15 to show that Conditions 2 and 5 are not hereditary.
+
+\end{description}
+
+Blau modified Conditions 1 and 2 as follows, to obtain a result which, in his words, ``preserves much of the impact of the original theorem''.
+
+\begin{description}
+
+\item[Condition 1$'$:] All triples are free.
+
+\item[Condition 2$'$:] Let $x,y \in X$ be distinct, and $(R_{1},\cdots,R_{n}), (R'_{1},\cdots,R'_{n}) \in \mathcal{D}$. Suppose (a) $xR_{i}y$ implies $xR'_{i}y$, (b) $xP_{i}y$ implies $xP'_{i}y$, and (c) $xPy$. Then $xP'y$.
+
+\item[Exercise 3.20:] Show that Condition 1$'$ does not imply universality.
+
+\item[Exercise 3.21:] Condition 2$'$ is hereditary and implies Condition 2.
+
+\item[Exercise 3.22:] In the presence of universality and Condition 3, Conditions 2 and 2$'$ are equivalent.
+
+\item[Question 3.23:] Do Condition 1$'$, 2$'$, 3, and 4 imply unanimity?
+
+\item[Exercise 3.24 (Blau's version of Arrow's Theorem):] Conditions 1$'$, 2$'$, $\ $ 3, 5, and unanimity are inconsistent.
+
+\end{description}
+
+Y. Murakami [11] obtained another version of the theorem, weakening the definition of a dictator and hence strengthening Condition 5 to Condition 5$'$ below.
+
+\begin{description}
+
+\item[Definition 3.25:] Let $x,y,z \in X$ be distinct. A nonempty set $d \subseteq N$ is \emph{dictatorial} on $\{ x,y,z \}$ if for all $u,v \in \{ x,y,z \}$, $uP_{i}v$ for all $i \in D$ implies $uPv$.
+
+\item[Condition 5$'$:] There exists a free triple $\{ x,y,z \}$ such that no individual is dictatorial on $\{ x,y,z \}$.
+
+\item[Exercise 3.26 (Murakami's version of Arrow's Theorem):] Conditions $\ $ 1, 2, 3, 5$'$, and unanimity are inconsistent.
+
+\end{description}
+
+In the second edition of his book [1], Arrow acknowledged the work of Blau and Murakami, and proved yet another version of the theorem.
+
+\begin{description}
+
+\item[Exercise 3.27 (Arrow's version of Arrow's Theorem):] Conditions 3 and 5, universality, and unanimity are inconsistent.
+
+\end{description}
+
+Thus, if universality is assumed, Condition 2$'$ is superfluous to the inconsistency. At first glance, one might guess that the proof of Exercise 3.27 is more intricate than the other versions since one cannot appeal to Conditions 2 or 2$'$; however, only minor modifications are necessary. We proceed with those modifications.
+
+\begin{description}
+
+\item[Lemma 3.28:] A nonempty set $D$ is decisive (see Definition 2.5) on $(x,y)$ if there exists a full vote $(R_{1},\cdots,R_{n}) \in \mathcal{D}$ such that (a) $xP_{i}y$ for all $i \in \mathcal{D}$, (b) $yP_{j}x$ for all $j \in N - D$, and (c) $xPy$.
+
+\item[Lemma 3.29:] If $D$ is decisive on $(x,y)$ and $z$ is a third alternative, then $D$ is dictatorial on $\{ x,y,z \}$.
+
+  Hint: Mimic the proof of Lemma 2.9. Suppose all $i \in D$ submit the partial ballot $xP_{i}y$ and $yP_{i}z$. Suppose further that all other voters prefer $y$ over both $x$ and $z$, but have ranked $x$ and $z$ in any way. Conclude from this vote that $xP_{i}z$ for all $i \in D$ implies $xPz$, regardless of the ballots of other individuals. (Compare this vote with vote I in Lemma 2.9.) Continue in this manner to obtain $D$ is dictorial on $\{ x,y,z \}$.
+
+\end{description}
+
+The remainder of the proof follows as in Section 2.
+
+
+
+\section{A Closer Examination of the Condorcet Criterion}
+\markboth{4. A Closer Examination of the Condorcet Criterion}{4. A Closer Examination of the Condorcet Criterion}
+
+Now what? We still have not found a ``fair'' election procedure. Arrow's seemingly mild conditions have been shown to be, in reality, too strong. Apparently they are not as reasonable as they first appeared. One condition challenged by critics of the significance of Arrow's Theorem is that the output of his election procedure must be a transitive binary relation on the set of alternatives. (Recall the crucial role transitivity played in the proof.) In this section, we first remove that requirement from our definition of an election procedure, and then develop a characterization of the Condorcet criterion, or method of majority decision, due to K. O. May [10].
+
+Let $R(X)$ denote the set of all binary relations on $X$ which are complete but not necessarily transitive. For $R \in R(X)$, we define the relations $P$ and $I$ as in Definition 3.2. Finally, we redefine an election procedure to be a function $f: \mathcal{D} \rightarrow R(X)$, where $\mathcal{D}$ is, as in Section 3, a nonempty subset of $[0'X]^{n}$. Note, then, that individual ballots are still required to be transitive.
+
+\begin{description}
+
+\item[Definition 4.1:] Let $x,y \in X$ and $(R_{1},\cdots,R_{n}) \in [0'X]^{n}$. Denote by $\#(xRy)$ [respectively, $\#(xPy)$] the number of voters $i \in N$ satisfying $xR_{i}y$ [respectively, $xP_{i}y$]. The method of majority decision is the election procedure defined by xRy if and only if $\#(xRy) \geq \#(yRx)$, or equivalently, $xRy$ if and only if $\#(xPy) \geq \#(yPx)$.
+
+  Compare the method of majority decision with the Condorcet criterion described in Section 1.
+
+\end{description}
+
+We now list conditions which characterize this election procedure.
+
+\begin{description}
+
+\item[Condition AN (Anonymity):] Let $i,j \in N$, and $(R_{1},\cdots,R_{n})$, $(R'_{1},\cdots,R'_{n})$ $\in \mathcal{D}$. If (a) $R_{i} = R'_{j}$, (b) $R_{j} = R'_{i}$, and (c) $R_{k} = R'_{k}$ for $k \neq i,j$, then $R = R'$.
+
+  This condition captures the essence of the ``one man-one vote'' principle; the outcome is determined by the ballots cast, and not who casts them.
+
+\item[Exercise 4.2:] Formally, Condition AN states if two voters interchange their ballots, the outcome is unchanged. Show that the conclusion remains true no matter how many voters interchange their ballots.
+
+\item[Condition N (Neutrality):] Let $x,y,u,v \in X$ (not necessarily distinct). If for all $i in N$, $xR_{i}y$ if and only if $uR'_{i}v$; then $xRy$ if and only if $uR'v$.
+
+  Here we demand that the alternatives are treated equally by the election procedure. If on each individual ballot $R_{i}$, the relative ranking of $x$ vis-a-vis $y$ is identical to the relative ranking of $u$ vis-a-vis $v$ on $R'_{i}$, then the social choice between $x$ and $y$ given by $R$ is the same as the social choice between $u$ and $v$ on $R'$.
+
+\end{description}
+
+For those readers familiar with the notion of a permutation on a set: Condition AN states that the election procedure is independent of permutations on the set of individual ballots $R_{1},\cdots,R_{n}$. Condition N states that a fixed permutation of the alternatives $X$ on each individual ballot induces the same permutation on the social ranking.
+
+\begin{description}
+
+\item[Exercise 4.3:] Condition N implies independence of irrelevant alternatives (see Section 3, Condition 3).
+
+\item[Condition PR (Positive Responsiveness):] Let $x,y \in X$, and $R_{1},\cdots,R_{n}$, $R'_{1},\cdots,R'_{n} \in \mathcal{D}$. Suppose (a) $xP_{i}y$ implies $xP'_{i}y$, (b) $xR_{i}y$ implies $xR'_{i}y$, and (c) there exists $k \in N$ such that $xI_{k}y$ and $xP'_{k}y$, or $yP_{k}x$ and $xR'_{k}y$. Then $xRy$ implies $xP'y$.
+
+  That is, if at least one voter ($k$) shifts his preference in favor of $x$ vis-a-vis $y$, and no voters reverse their preferences in favor of $y$, then the social choice shifts positively in favor of $x$.
+
+\item[Exercise 4.4:] The method of majority decision is an election procedure satisfying Conditions AN, N, PR, and universality.
+
+\item[Theorem 4.5 (May):] The only election procedure which satisfies AN, N, PR, and universality, is the method of majority decision.
+
+\item[Question 4.6:] Suppose Condition PR is weakened by deleting (c) from the hypotheses, and replacing its conclusion with ``if $xPy$ then $xP'y$, and if $xIy$ then $xR'y$''. This defines Condition NR (Nonegative Responsiveness); as long as $x$ does not go down in anyone's ballot, it will not go down in the social ranking. What can be said about election procedures satisfying Conditions AN, N, NR, and universality?
+
+\end{description}
+
+
+
+\section{One More Try}
+\markboth{5. One More Try}{5. One More Try}
+
+After reflecting on the negative result of Arrow's Theorem and pondering the ambiguities of the nontransitivity of Condorcet's criterion, one is tempted to consider a simpler election procedure. Surely it has occurred to the reader that the outcome of most elections is a single winning alternative rather than a ranking, transitive or otherwise, of all the alternatives. In this section, we explore the possibility that there exists a fair way to select a winner.
+
+We preserve most of the notation of the previous sections, but once again redefine an election procedure. This time, we require only that it be a ``winner-picker'' $w: [O'X]^{n} \rightarrow X$. The function $w$ determines, from full votes $\overline{R} = (R_{1}, \cdots R_{n})$ of the usual type, a single alternative $w(\overline{R})$ -- the winner.
+
+In order to facilitate our discussion of $w$, we introduce an operation on $[O'X]^{n}$.
+
+\begin{description}
+
+\item[Definition 5.1:] For $Y \subseteq X$, and $\overline{R} = (R_{1},\cdots,R_{n}) \in [O'X]^{n}$, define the \emph{full vote} $\overline{R}*Y = (R*_{1},\cdots,R*_{n}) \in [O'X]^{n}$ as follows: for all $i \in N$,
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item if $x \in Y$ and $y \in X-Y$, then $xP*_{i}y$; and 
+    \item if $x,y \in Y$ or $x,y \in X-Y$, then $xR*_{i}y$ if and only if $xR_{i}y$.
+  \end{enumerate}
+  Each individual ballot $R*_{i}$ in $\overline{R}*Y$ is obtained from $R_{i}$ in $\overline{R}$ by raising the alternatives in $Y$ to the ``top'' while preserving all other relative rankings.
+
+\item[Exercise 5.2:] Let $\overline{R} \in [O'X]^{n}$, and $x \in X$. Then (a) $\overline{R}*X = \overline{R}*\phi = \overline{R}$, and (b) $\overline{R} = \overline{R}* \{ x \}$ if and only if $x$ is the unanimous first choice of the voters (i.e., for each $i \in N$ and $y \in X$ distinct from $x$, $xP_{i}y$).
+
+\end{description}
+
+Let us now impose two very reasonable conditions on the election procedure $w$.
+
+\begin{description}
+
+\item[Condition A:] If $Y \subseteq X$ is nonempty and $\overline{R} \in [O'X]^{n}$ satisfies $\overline{R} = \overline{R}*Y$, then $w(\overline{R}) \in Y$.
+
+  That is, if some subset of alternatives is at the top of everyone's ballot, then the winner must be in that subset.
+
+\item[Exercise 5.3:] Condition A implies unanimity; i.e., if $\overline{R} = \overline{R}* \{ x \}$, then $w(\overline{R}) = x$.
+
+\item[Condition B:] Let $Y \subseteq X$, and $\overline{R} \in [O'X]^{n}$. If $w(\overline{R}) \in Y$, then $w(\overline{R}*Y) = w(\overline{R})$.
+
+  This means if the winner $w(\overline{R})$ is in a subset of alternatives, then raising that subset to the top of everyone's ballot will not change the winner.
+
+\item[Exercise 5.4:] Construct a full vote $\overline{R} \in [O'X]^{n}$ satisfying (a) there is a clear plurality (Borda, Condorcet) winner, and (b) one of Conditions A or B is not satisfied.
+
+\item[Definition 5.5:] A \emph{$w$-dictator} is an individual voter $k$ such that if $xP_{k}y$ for all $y \in X$ distinct from $x$, then $w(\overline{R}) = x$.
+
+  Note the difference between a $w$-dictator and a dictator in Arrow's sense.
+
+\item[Exercise 5.6:] Without looking, state Theorem 5.7.
+
+\item[Theorem 5.7 (Kurtz, Lum):] If the ``winner-picker'' $w$ satisfies Conditions A and B, then there exists a $w$-dictator.
+
+\end{description}
+
+The remainder of this section is devoted to the proof of Theorem 5.7. From the function $w$, we will construct an Arrow election procedure $f$. Then the Arrow-dictator guaranteed by Exercise 3.27 is shown to be the $w$-dictator. Hereafter, we assume $w$ satisfies Conditions A and B.
+
+\begin{description}
+
+\item[Definition 5.8:] Let $Y \subseteq X$, and $\overline{R}=(R_{1},\cdots,R_{n}), \overline{R'}=(R'_{1},\cdots,R'_{n}) \in [O'X]^{n}$. For each $i \in N$, let $T_{i}$ (respectively, $T'_{i}$) denote the partial ballot on $Y$ contained in $R_{i}$ (respectively, $R'_{i}$). We say $\overline{R}$ and $\overline{R'}$ \emph{agree} on $Y$ if (a) $\overline{R} = \overline{R}*Y$ and $\overline{R'} = \overline{R'}*Y$; and (b) for each $i \in N$, $T_{i} = T'_{i}$.
+
+\item[Exercise 5.9:] For those readers familiar with the notion, show that agreement on $Y$ is an equivalence relation on $[O'X]^{n}$.
+
+\item[Exercise 5.10:] Let $Z \subseteq Y \subseteq X$ be nonempty, and $\overline{R}, \overline{R'} \in [O'X]^{n}$. Then
+  \begin{enumerate}[\hspace{1cm}(a)]
+    \item $\overline{R}$ and $\overline{R'}$ agree on $\phi$, 
+    \item $\overline{R}$ and $\overline{R'}$ agree on $X$ if and only if $\overline{R} = \overline{R'}$,
+    \item if $\overline{R}$ and $\overline{R'}$ agree on $Y$, then $w(\overline{R}) \in Y$ and $w(\overline{R'}) \in Y$.
+    \item $(\overline{R}*Y)*Z$ and $\overline{R}*Z$ agree on $Z$.
+  \end{enumerate}
+
+  In Exercise 5.10 (c), it is not immediately obvious that $w(\overline{R}) = w(\overline{R'})$; however it does follow from Conditions A and B. We outline its proof below; however, we encourage the reader to try it without our assistance.
+
+\item[Lemma 5.11:] If $Y \subseteq X$ is nonempty, and $\overline{R}$ and $\overline{R'}$ agree on $Y$, then $w(\overline{R}) = w(\overline{R'})$.
+
+\end{description}
+
+Assume Lemma 5.11 is false. Choose a nonempty subset $Y \subseteq X$, and $\overline{R}, \overline{R'} \in [O'X]^{n}$, satisfying 
+\begin{enumerate}[\hspace{1cm}(a)]
+  \item $\overline{R}$ and $\overline{R'}$ agree on $Y$, 
+  \item $w(\overline{R}) = x \neq y = w(\overline{R'})$, and 
+  \item if $\overline{S}, \overline{S'} \in [O'X]^{n}$ agree on $Z \subseteq X$, and $Z$ properly contains $Y$, then $w(\overline{S}) = w(\overline{S'})$. 
+\end{enumerate}
+Observe that $Y \neq X$, and choose $z \in X-Y$. Now $\overline{S} = \overline{R}* \{ x,y,z \}$ and $\overline{S'} = \overline{R'}* \{ x,y,z \}$ agree on $Z = Y \bigcup \{ z \}$, hence $w(\overline{S}) = w(\overline{S'})$. But this is a contradiction, since $w(\overline{S}) = x$ and $w(\overline{S'}) = y$.
+
+\begin{description}
+
+\item[Lemma 5.12:] In the presence of Condition A, Condition B is equivalent to Condition B$'$: if $Z \subseteq Y \subseteq X$ and $w(\overline{R}*Y) \in Z$, then $w(\overline{R}*Z) = w(\overline{R}*Y)$.
+
+\end{description}
+
+We are now prepared to define an Arrow election procedure $f:[O'X]^{n} \rightarrow OX$ from $w$. Note the range of $f$ will be $OX$ rather than $O'X$.
+
+\begin{description}
+
+\item[Definition 5.13:] For each full vote $\overline{R} \in [O'X]^{n}$, define the relation $P = f(\overline{R})$ on $X$ by: $xPy$ if and only if $x \neq y$ and $x = w(\overline{R}* \{ x,y \} )$.
+
+\item[Lemma 5.14:] The relation $P$ is a strict preference relation on $X$; i.e., $P \in OX$.
+
+\item[Lemma 5.15:] The Arrow election procedure $f$ satisfies the hypotheses of Exercise 3.27, and hence there exists an Arrow-dictator, say $k$. Moreover, $k$ is a $w$-dictator.
+
+\end{description}
+
+This concludes the proof of Theorem 5.7. Thus we see that even picking a winner fairly is no easy task.
+
+\vspace{0.3cm}
+
+Another property which has been investigated in this context is \emph{manipulability} (see [5], [6], and [7]). This notion, mentioned in Section 1 and defined below, is closely related to Conditions A and B.
+
+\begin{description}
+
+\item[Definition 5.18:] The ``winner-picker'' $w$ is \emph{manipulable} if there exists a full vote $\overline{R} = (R_{1},\cdots,R_{k},\cdots,R_{n})$, a voter $k$, and an individual ballot $R*_{k}$ such that $w(R_{1},\cdots,R*_{k},\cdots,R_{n}) P_{k} (R_{1},\cdots,R_{k},\cdots,R_{n})$. That is, on the vote $\overline{R}$, voter $k$ can change the outcome in his favor by altering his true preferences; submitting $R*_{k}$ rather than $R_{k}$.
+
+\item[Exercise 5.19:] If $w$ satisfies Conditions A and B, then $w$ is not manipulable.
+
+\end{description}
+
+It has been shown ([7], [16]) that if a winner-picker $w$ is not manipulable, and for each $x \in X$ there exists $\overline{R} \in [O'X]$ such that $w(\overline{R}) = x$, then there is a $w$-dictator.
+
+\begin{description}
+
+\item[Exercise 5.20:] Use the above fact to show that such a function $w$ satisfies Conditions A and B.
+
+\end{description}
+
+Where does all this leave us? We have considered several mathematical models of election procedures, and proved undisputable facts about them. Translating these results into statements about the real world, however, lead us to disturbing conclusions: ``Democracy is logical impossibility'', or ``Why vote? - Just yield to the dictator.'' A more optimistic conclusion is, of course, that something is wrong with the model. The authors' opinion is that it is not reasonable to expect an election procedure to rank alternatives or pick a winner when the full vote is, in some sense, symmetric with respect to the alternatives. For example, in the vote
+\begin{center}
+\begin{tabular}{c|c|c}
+  A & B & C \\
+  B & C & A \\
+  C & A & B \\
+  \hline
+  1 & 1 & 1 \\
+\end{tabular}
+\end{center}
+a procedure which ranks one alternative above any other surely will be ``unreasonable'' in other ways also.
+
+\vspace{0.3cm}
+
+We conclude with an open problem. Find suitable restrictions on $\mathcal{D}$ which eliminate ``indecisive'' votes like the one above, and reasonable conditions on an election procedure that are consistent. We hope the reader has gained enough insight and interest to pursue this problem.
+
+
+\section*{Bibliography and Further Reading}
+\addcontentsline{toc}{section}{\numberline{}Bibliography and Further Reading}
+\markboth{Bibliography and Further Reading}{Bibliography and Further Reading}
+
+\begin{enumerate}[1.]
+  \item Arrow, K. J., \emph{Social Choice and Individual Values}, 2nd Edition, Wiley, New York, 1963.
+  \item Black, D., \emph{The Theory of Committees and Elections}, Cambridge Univ. Press, Cambridge, 1958.
+  \item Blau, J. H., \emph{The existence of a social welfare function}, Econometrica 25 (1957), 302-313.
+  \item Feldman, A. M., \emph{A very unsubtle version of Arrow's impossibility theorem}, Economic Inquiry (1974), 534-546.
+  \item unknown author(s), \emph{Manipulating voting procedures}, Working Paper No. 77-6, Dept. of Economics, Brown Univ., Providence, R.I.
+  \item Garman, M. and Kamien, M., \emph{The paradox of voting: probability calculations}, Behavorial Science 13 (1968).
+  \item Gibbard, A., \emph{Manipulation of voting schemes: a general result}, Econometrica 41 (1973), 587-601.
+  \item Huntington, E. V., \emph{A paradox in the scoring of competing teams}, Science 88 (1938), 287-288.
+  \item Inada, K., \emph{Alternative incompatible conditions for a social welfare function}, Econometrica 23 (1955), 396-399.
+  \item May, K. O., \emph{A set of independent necessary and sufficient conditions for a simple majority}, Econometrica 20 (1952) 680-684.
+  \item Murakami, Y., \emph{A note on the general possibility theorem of social functions}, Econometrica 29 (1961) 244-246.
+  \item unknown author(s), \emph{Logic and Social Choice}, Dover, New York, 1968.
+  \item Niemi, R. and Weisberg, H., \emph{A mathematical solution for the probability of the paradox of voting}, Behavior Sciences 13 (1968).
+  \item Riker, W., \emph{Voting and the summation of preferences: an interpretive bibliographic review of selected developments during the last decade}, American Political Science Review 55 (1961), 900-911.
+  \item Sen, A. K., \emph{Collective Choice and Social Welfare}, Holden, San Francisco, 1970.
+  \item Satterthwaite, M. A., \emph{Strategy-proofness and Arrow's conditions: existence and correspondence theorems for voting procedures and social welfare functions}, Journal of Economic Theory 10 (1975), 187-217.
+\end{enumerate}
+
+\end{document}
+

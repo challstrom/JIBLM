@@ -1,0 +1,36 @@
+---
+title: "Guilford Course Notes"
+---
+
+```{r}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+library(gt)
+
+note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Abstract")
+
+note_data <- c("Exploratory Problems in Mathematics", "Stevenson, Fred", "uncategorized", "14", "University of Arizona", "This guide is intended to introduce to the reader the concept of exploratory problems in mathematics. As the name suggests, an exploratory problem is a problem that is designed to encourage exploration, independence, individuality, and imagination. Our concern here is not so much to challenge the gifted student, but rather to involve the average student; to instill a feeling of confidence and lead them on an odyssey in mathematical thinking. These exploratory problems are part of a series of problems that the author and Shmuel Avital have experimented with in classrooms.")
+
+
+tibble(note_entries, note_data) |>
+  gt() |>
+  cols_align(align = "left") |>
+  tab_style(
+    style= cell_text(v_align = "top"),
+    locations = cells_body()
+  ) |>
+  tab_options( table.width = "80%", column_labels.hidden = TRUE)  
+
+
+```
+- [Download File](./exploratory-problems-in-mathematics_stevenson.pdf)
+
+This course guide was originally published by the Guilford College Journal of Undergraduate Mathematics as a volume in the Monographs on Undergraduate Mathematics series.
+
+This course guide may be reproduced and distributed if the following conditions are met:
+
+- State that it is the property of the Math Department of Guilford College, and is protected under copyright by Guilford.
+- Take no profit from its distribution. (You may recover copying costs if you are using these for a class.) 
+

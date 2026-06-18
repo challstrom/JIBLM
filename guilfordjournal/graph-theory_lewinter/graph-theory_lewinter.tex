@@ -1,0 +1,2441 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% Journal headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright Guilford College Journal of Undergraduate Mathematics} \cfoot{} \rfoot{ - at www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Graph Theory}
+\author{Martin Lewinter}
+\date{\vspace{3cm}
+\emph{Journal of Undergraduate Mathematics}
+  \\ Department of Mathematics
+  \\ Guilford College
+  \\ Greensboro, North Carolina 27410 
+  }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+
+\section*{Introduction}
+\addcontentsline{toc}{section}{\numberline{}Introduction}
+\markboth{Introduction}{Introduction}
+
+\pagenumbering{roman}
+
+Graph theory has assumed an increasingly important position in twentieth-century mathematics, due in large part to the birth of the computer and the advent of fields such as operations research.
+
+The applicability of graph theory in no way robs it of a rich body of theory which interacts with many other areas of math, such as matrix theory, algebra, geometry, and probability theory.
+
+The undergraduate student (and instructor) will be delighted to discover that research in graph theory is quite possible after familiarization with the basic concepts and technique, almost all of which are within the grasp of such a student. 
+
+The purpose of this monograph is, then, twofold. Firstly, it is intended to introduce the reader to elementary graph theory in a way which indicates the author's (hopefully contagious) enthusiasm and which gives the reader a good foundation in the basics. Secondly, the author hopes to point the interested student in various research directions. 
+
+Chapter I attempts to accomplish the first of these goals. The student is urged to work thorough the exercises which are generously distributed throughout the chapter In fact some of the exercises serve to introduce vital concepts. Moreover, doing the exercises will give ``research confidence'', and possibly even research ideas, to the diligent student. 
+
+Chapter II poses a multitude of research questions, usually to the accompaniment of some discussion. In many instances, one research question will, after much thought, lead the researcher to other interesting questions.
+
+\begin{flushright}
+Martin Lewinter
+
+Dept. of Mathematics
+
+State University of New York at Purchase
+
+Purchase, N.Y. 10577
+\end{flushright}
+
+
+\newpage
+
+
+\section*{Chapter I}
+\addcontentsline{toc}{section}{\numberline{}Chapter I}
+\markboth{Chapter I}{Chapter I}
+
+\pagenumbering{arabic}
+
+A graph is a set of points (often called vertices), and lines (or edges) connecting some pairs of points. If vertices $u$ and $v$ are connected by an edge, they are said to be \emph{adjacent}. The edge connecting them is called $uv$ and is said to be \emph{incident} with vertices $u$ and $v$. In graph $G$ of figure 1, $u$ and $v$ are adjacent, whereas $w$ and $u$ are not. The vertex set of $G$ is denoted $V(G)$, and the edge set is denoted $E(G)$. The size of $V(G)$, written $|V(G)|$, will be called $n$, and similarly the size of $E(G)$, denoted $|E(G)|$, will be called $e$. In graph $G$ of figure 1, $|V(G)|=6$ and $|E(G)|=6$.
+
+\begin{center}
+%TeXCAD Options
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(85,49)(36,106)
+\thicklines \put(37.5,120.25){\framebox(35,31.5)[cc]{}}
+%\emline(72.75,151.5)(96.75,136.75)
+\multiput(72.75,151.5)(.054794521,-.033675799){438}{\line(1,0){.054794521}}
+%\end
+%\emline(96.75,136.75)(72.5,120.25)
+\multiput(96.75,136.75)(-.049489796,-.033673469){490}{\line(-1,0){.049489796}}
+%\end
+\put(118,136.75){\makebox(0,0)[cc]{$t$}}
+\put(115,136.75){\circle{1.12}}
+\put(99.75,136.75){\makebox(0,0)[cc]{$y$}}
+\put(96.75,136.75){\circle{1}} 
+\put(37.5,117){\makebox(0,0)[cc]{$u$}}
+\put(37.5,120.25){\circle{1.12}}
+\put(72.5,117){\makebox(0,0)[cc]{$x$}}
+\put(72.5,120.25){\circle{1}} 
+\put(37.5,154.5){\makebox(0,0)[cc]{$v$}}
+\put(37.5,151.5){\circle{1}} 
+\put(72.5,154.5){\makebox(0,0)[cc]{$w$}}
+\put(72.5,151.5){\circle{1}}
+\put(68,110){\makebox(0,0)[cc]{Figure 1}}
+\end{picture}
+\end{center}
+
+A useful graph associated with $G$ is the \emph{complimentary} graph (cograph) denoted $G^C$. It has the same vertex set as $G$. But $uv$ is an edge of $G^C$ if and only if $uv$ is not an edge of $G$.
+
+\begin{description}
+\item[Problem 1:] Show that $(G^C)^C=G$.
+\end{description}
+
+The number of edges incident with a vertex is called the \emph{degree} of that vertex. The degree of vertex $v$ in figure 1 is $2$, or $d(v)=2$. A point of degree one is called an end vertex. A point of degree zero is called an isolated vertex.
+
+\begin{description}
+\item[Problem 2:] Show that the sum of the degree of the vertices of any graph is even.
+
+\item[Problem 3:] Show that the number of vertices of odd degree is even. (Such vertices are called ``odd'' vertices; ``even'' vertices are defined similarly.) 
+\end{description}
+
+Note that the important thing about a graph is the adjacency and incidence information it represents. The vertices may represent cities and the edges represent telephone connections between them. If two graphs contain the same information but are configurated differently in the plane, we call the graphs \emph{isomorphic}.
+
+Put more precisely, if $G$ and $H$ are graphs with vertex sets $u_1, u_2, \cdots, u_n$ and $v_1, v_2, \cdots, v_n$ respectively, such that $u_i u_j$ belongs to $E(G)$ if and only if $v_i v_j$ belongs to $E(H)$, then $G$ and $H$ are isomorphic, written $G \cong H$. Can you verify that $G$ and $H$ in figure 2 are isomorphic? In figure 3, the task is much harder because the graphs are unlabeled. Note that isomorphic graphs have the same number of vertices.
+
+\begin{center}
+%TeXCAD Picture [gt-fig2.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(106,36.25)(0,0)
+\put(9.25,16){\framebox(26.25,18.75)[cc]{}}
+\put(69.5,34.75){\line(0,-1){19}}
+%\emline(69.5,15.75)(102.25,26)
+\multiput(69.5,15.75)(.107730263,.033717105){304}{\line(1,0){.107730263}}
+%\end
+%\emline(102.25,26)(69.5,35)
+\multiput(102.25,26)(-.122659176,.033707865){267}{\line(-1,0){.122659176}}
+%\end
+\put(69.5,35){\line(4,-3){11}}
+%\emline(80.5,26.75)(81,26)
+\multiput(80.5,26.75)(.033333,-.05){15}{\line(0,-1){.05}}
+%\end
+%\emline(81,26)(69.5,15.75)
+\multiput(81,26)(-.037828947,-.033717105){304}{\line(-1,0){.037828947}}
+%\end
+\put(80.75,26.25){\circle{1}}
+\put(102,26){\circle{1}}
+\put(69.5,35){\circle{1}}
+\put(69.5,15.75){\circle{1}}
+\put(35,15.75){\circle{1}}
+\put(35.5,35){\circle{1}}
+\put(9.25,35){\circle{1}}
+\put(9.25,15.75){\circle{1}}
+\put(50.75,2){\makebox(0,0)[cc]{Figure 2}}
+\put(5,35.5){\makebox(0,0)[cc]{$u1$}}
+\put(40,35.5){\makebox(0,0)[cc]{$u2$}}
+\put(40,14.5){\makebox(0,0)[cc]{$u3$}}
+\put(5,14.5){\makebox(0,0)[cc]{$u4$}}
+\put(66.75,36.25){\makebox(0,0)[cc]{$u1$}}
+\put(84.5,26){\makebox(0,0)[cc]{$u2$}}
+\put(106,25.5){\makebox(0,0)[cc]{$u4$}}
+\put(66,14.5){\makebox(0,0)[cc]{$u3$}}
+\put(22.5,10){\makebox(0,0)[cc]{$G$}}
+\put(85.75,10){\makebox(0,0)[cc]{$H$}}
+\end{picture}
+\end{center}
+
+\begin{center}
+%TeXCAD Picture [gt-fig3.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(90.25,43.6)(0,0)
+\put(7.5,14){\line(1,0){13.75}}
+%\emline(21.25,14)(26.25,25)
+\multiput(21.25,14)(.03355705,.0738255){149}{\line(0,1){.0738255}}
+%\end
+\put(14.45,34.32){\circle{1}}
+\put(26.25,25){\circle{1}}
+\put(21.25,14){\circle{1}}
+\put(7.5,14){\circle{1}}
+\put(3,24.75){\circle{1}}
+\put(51.75,31.5){\line(1,0){38}}
+\put(71.07,43.1){\circle{1}}
+\put(89.75,31.5){\circle{1}}
+\put(51.63,31.5){\circle{1}}
+\put(57.5,9.25){\circle{1}}
+\put(83,9.25){\circle{1}}
+\put(39.5,2.25){\makebox(0,0)[cc]{Figure 3}}
+%\emline(7.46,13.98)(3.05,24.7)
+\multiput(7.46,13.98)(-.03370005,.08184297){131}{\line(0,1){.08184297}}
+%\end
+%\emline(3.05,24.7)(14.4,34.37)
+\multiput(3.05,24.7)(.039554361,.033694456){287}{\line(1,0){.039554361}}
+%\end
+%\emline(26.28,24.91)(14.4,34.27)
+\multiput(26.28,24.91)(-.042725402,.033650981){278}{\line(-1,0){.042725402}}
+%\end
+%\emline(57.5,9.25)(71,43.25)
+\multiput(57.5,9.25)(.033665835,.08478803){401}{\line(0,1){.08478803}}
+%\end
+%\emline(71,43.13)(83,9.38)
+\multiput(71,43.13)(.033707865,-.094803371){356}{\line(0,-1){.094803371}}
+%\end
+%\emline(51.61,31.43)(83.04,9.35)
+\multiput(51.61,31.43)(.047982448,-.033700047){655}{\line(1,0){.047982448}}
+%\end
+%\emline(89.75,31.38)(57.5,9.13)
+\multiput(89.75,31.38)(-.048863636,-.033712121){660}{\line(-1,0){.048863636}}
+%\end
+\end{picture}
+\end{center}
+
+\begin{description}
+
+\item[Problem 4:] Show that corresponding vertices of isomorphic graphs have the same degree.
+
+\item[Problem 5:] Show that the cographs of isomorphic graphs are isomorphic.
+
+\item[Problem 6:] Show that the sum of the degrees of vertex $v$ in $G$ and in $G^C$ is $n-1$ where $n=|V(G)|$.
+
+\end{description}
+
+If all pairs of vertices of a graph are adjacent, the graph is called \emph{complete}. The complete graph on $n$ vertices is denoted $K_n$. $K_1$ is called the \emph{trivial} graph. It consists of a single point.
+
+\begin{description}
+
+\item[Problem 7:] Describe $(K_n)^C$. It is called the empty graph on $n$ vertices.
+
+\item[Problem 8:] What is the degree of any vertex of $K_n$?
+
+\item[Problem 9:] Show that a graph on $n$ vertices with $e$ edges (called an $(n,e)$ graph) satisfies $e \leq \frac{(n^2-n)}{2}$.
+
+\item[Problem 10:] Show that the sum of the degrees of the vertices of $G$ is $2e$. (Unless otherwise stated, $G$ will represent any graph.)
+
+\end{description}
+
+A graph $G$ is called \emph{regular} if all of its vertices have the same degree. If the common degree is $k$, $G$ is called $k$-regular.
+
+\begin{description}
+
+\item[Problem 11:] Show that $G$ is regular if and only if $G^C$ is regular.
+
+\item[Problem 12:] Can a regular graph of odd degree have an odd number of vertices?
+
+\item[Problem 13:] Draw a $1$-regular graph on $2$, $4$, $6$, and $8$ points respectively. Generalize.
+
+\item[Problem 14:] What can be said about a $2$-regular graph?
+
+\end{description}
+
+The degree sequence of $G$ is the sequence of degrees of its vertices in descending order. The degree sequence of the graph of figure 4 is $(4,3,3,3,3,2,1,1)$.
+
+\begin{description}
+
+\item[Problem 15:] Show that the degree sequence of $G$ must contain a repeated degree.
+
+\item[Problem 16:] Are graphs with the same degree sequence isomorphic?
+
+\end{description}
+
+\begin{center}
+%TeXCAD Picture [gt-fig4.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(104.25,31.25)(0,0)
+%\emline(5.31,11.69)(7.56,23.69)
+\multiput(5.31,11.69)(.0335821,.1791045){67}{\line(0,1){.1791045}}
+%\end
+%\emline(7.56,23.69)(24.31,28.19)
+\multiput(7.56,23.69)(.125,.03358209){134}{\line(1,0){.125}}
+%\end
+%\emline(78.5,11.75)(103.5,27.5)
+\multiput(78.5,11.75)(.053533191,.03372591){467}{\line(1,0){.053533191}}
+%\end
+%\emline(30,11.5)(46.75,21.25)
+\multiput(30,11.5)(.057958478,.033737024){289}{\line(1,0){.057958478}}
+%\end
+%\emline(29.75,11.5)(61.75,16.75)
+\multiput(29.75,11.5)(.20512821,.03365385){156}{\line(1,0){.20512821}}
+%\end
+\put(3.81,10.69){\makebox(0,0)[cc]{$1$}}
+\put(5.31,24.44){\makebox(0,0)[cc]{$2$}}
+\put(23.75,31.25){\makebox(0,0)[cc]{$3$}}
+\put(47.75,23.5){\makebox(0,0)[cc]{$3$}}
+\put(63,19){\makebox(0,0)[cc]{$3$}}
+\put(77.75,14.75){\makebox(0,0)[cc]{$x$}}
+\put(79,8.75){\makebox(0,0)[cc]{$3$}}
+\put(104.25,24.75){\makebox(0,0)[cc]{$1$}}
+\put(101.75,29.5){\makebox(0,0)[cc]{$s$}}
+\put(29,9){\makebox(0,0)[cc]{$4$}}
+\put(5.31,11.75){\circle{1}}
+\put(29.7,11.43){\circle{1}}
+\put(24.25,28.25){\circle{1}}
+\put(7.81,23.69){\circle{1}}
+\put(47,21.25){\circle{1}}
+\put(61.32,16.91){\circle{1}}
+\put(78.38,11.75){\circle{1}}
+\put(103.25,27.25){\circle{1}}
+%\emline(24.25,28.13)(78.5,11.63)
+\multiput(24.25,28.13)(.110714286,-.033673469){490}{\line(1,0){.110714286}}
+%\end
+\put(29.73,11.45){\line(-1,3){5.57}}
+%\emline(29.85,11.46)(78.41,11.67)
+\multiput(29.85,11.46)(6.9374,.03003){7}{\line(1,0){6.9374}}
+%\end
+\put(41.25,2.75){\makebox(0,0)[cc]{Figure 4}}
+\end{picture}
+\end{center}
+
+A $u-v$ \emph{walk} is a sequence of vertices and edges beginning at $u$ and ending at $v$, such that vertices and edges alternate and each edge is incident with the vertices preceding and following it. We can denote a walk by listing the sequence of vertices since the edges are implied. A \emph{closed} walk begins and ends at the same vertex. In figure 5, $uvuwxsxt$ is a walk and $uwvzvu$ is a closed walk.
+
+%fig5
+\begin{center}
+%TeXCAD Options
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(100,49)(26,95)
+%\emline(25.75,129)(32.25,104.75)
+\multiput(25.75,129)(.03367876,-.12564767){193}{\line(0,-1){.12564767}}
+%\end
+\put(32.25,104.75){\line(1,0){54}}
+%\emline(63.25,104.75)(91.25,115)
+\multiput(63.25,104.75)(.092105263,.033717105){304}{\line(1,0){.092105263}}
+%\end
+%\emline(25.75,129)(76.75,136.5)
+\multiput(25.75,129)(.22869955,.03363229){223}{\line(1,0){.22869955}}
+%\end
+\put(76.75,136.5){\line(2,-3){14.5}}
+%\emline(76.75,136.75)(102.25,142.75)
+\multiput(76.75,136.75)(.14325843,.03370787){178}{\line(1,0){.14325843}}
+%\end
+%\emline(26,128.75)(47.25,121)
+\multiput(26,128.75)(.0923913,-.03369565){230}{\line(1,0){.0923913}}
+%\end
+%\emline(47.25,121)(32.25,104.5)
+\multiput(47.25,121)(-.033707865,-.037078652){445}{\line(0,-1){.037078652}}
+%\end
+\put(47.5,121.25){\line(1,-1){16.5}}
+%\emline(47.25,121)(76.25,136.5)
+\multiput(47.25,121)(.063043478,.033695652){460}{\line(1,0){.063043478}}
+%\end
+\put(102,142.75){\circle{1}} 
+\put(76.5,136.5){\circle{1}}
+\put(47.25,121){\circle{1}} 
+\put(26,128.75){\circle{1}}
+\put(32.25,104.5){\circle{1}} 
+\put(86,104.75){\circle{1}}
+\put(64,104.75){\circle{1}} 
+\put(91.25,114.75){\circle{1}}
+\put(120.5,124.75){\circle{1}}
+\put(125.5,125.75){\makebox(0,0)[cc]{$r$}}
+\put(105.75,142.75){\makebox(0,0)[cc]{$s$}}
+\put(23.25,131){\makebox(0,0)[cc]{$t$}}
+\put(28.75,102.25){\makebox(0,0)[cc]{$u$}}
+\put(63.75,108.75){\makebox(0,0)[cc]{$v$}}
+\put(46.75,125){\makebox(0,0)[cc]{$w$}}
+\put(76.25,139.75){\makebox(0,0)[cc]{$x$}}
+\put(95.25,113.5){\makebox(0,0)[cc]{$y$}}
+\put(88,102.5){\makebox(0,0)[cc]{$z$}}
+\put(61,97.5){\makebox(0,0)[cc]{Figure 5}}
+\end{picture}
+\end{center}
+
+The \emph{length} of a walk is the number of edges traversed. Each time an edge appears, it is counted. The length of walk $utuwuv$ in figure 5 is $5$. The length of $uwv$ is $2$. What is the shortest $u-v$ walk in figure $5$?
+
+\begin{description}
+
+\item[Problem 17:] List all the $u-v$ walks in figure 5 of length at most $4$. In which of these walks is no edge repeated?
+
+\item[Problem 18:] Why must any $u-v$ walk in figure 5 which contains vertex $s$ have length greater than or equal to $6$?
+
+\end{description}
+
+A \emph{trail} is a walk in which no edge is traversed more than once. A closed trail is called a \emph{circuit}. Note that a vertex may be repeated in a trail (or circuit). In figure 5, $uvyxwvz$ is a trail (of length $6$), while $uwxyvwtu$ is a circuit (of length $7$). On the other hand, $uwut$ is not a trail since edge $uw$ is repeated. 
+
+A \emph{path} is a trail in which no vertex is repeated. In figure 5, $uvwtxs$ is a $u-s$ path of length $5$. Note that $uwxs$ and $utxs$ are shorter $u-s$ paths (both of length $3$). A shortest $u-v$ path is called a \emph{geodesic}. Its length is called the \emph{distance} between $u$ and $v$, written $d(u,v)$. In figure 5, $d(u,s)=3$. Note that $d(u,r)$ is undefined as there are no $u-r$ paths. A graph containing a pair of vertices which have no path connecting them is called \emph{disconnected}. Otherwise, a graph is connected. The graph of figure 5 is disconnected. It has two \emph{components}. (Two vertices of a graph belong to the same component of the graph if and only if there is a path connecting them.)
+
+\begin{description}
+\item[Problem 19:] Show that at least one of $G$ and $G^C$ must be connected.
+\end{description}
+
+If $G$ is a path on $n$ vertices, it is denoted $P_n$.
+
+\begin{description}
+\item[Problem 20:] What is the length of the longest geodesic of $P_n$?
+\end{description}
+
+The \emph{diameter} of a connected graph is the length of a longest geodesic. Put another way, if $G$ is a connected graph, then the diameter of $G$, denoted $d(G)$, is $\text{max}d(u,v)$ for all pairs of vertices $u$ and $v$ in $V(G)$. If a graph is disconnected, its diameter equals infinity.
+
+\begin{description}
+
+\item[Problem 21:] Reconcile the two definitions of diameter in the above paragraph.
+
+\item[Problem 22:] Find the diameters of $K_n$, $P_n$, the graph of figure 4, each component of figure 5, and the empty graph on $n$ vertices.
+
+\item[Problem 23:] Find an upper bound for the diameter of a connected graph on $n$ vertices.
+
+\item[Problem 24:] Show that if a walk contains no repeated vertex, then it contains no repeated edge. Such a walk is then clearly a path. Thus ``path'' can be defined without mentioning ``trail''.
+
+\item[Problem 25:] What is the degree sequence of $P_n$? of $K_n$?
+
+\end{description}
+
+A \emph{cycle} is a closed trail in which no vertex is repeated (except the first vertex). A cycle is sometimes defined as a closed path. Of course the initial and final vertex are in a sense repeated. In figure 6, $uvstu$ is a cycle (of length $4$). A graph which is a cycle on $n$ vertices is denoted $C_n$. $C_3$ is usually called a triangle.
+
+%fig6
+\begin{center}
+%TeXCAD Options
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(97,36)(24,90)
+\put(25.5,102){\framebox(91.75,20.25)[cc]{}}
+\put(57,122){\line(0,-1){19.75}} 
+\put(86.25,122){\line(0,-1){20}}
+\put(117.5,122){\circle{1}}
+\put(25,125){\makebox(0,0)[cc]{$u$}}
+\put(25.5,122.25){\circle{1}} 
+\put(57,125){\makebox(0,0)[cc]{$v$}}
+\put(57,122.25){\circle{1}}
+\put(86.5,125){\makebox(0,0)[cc]{$w$}}
+\put(86.5,122){\circle{1}} 
+\put(120.75,125){\makebox(0,0)[cc]{$x$}}
+\put(25,99){\makebox(0,0)[cc]{$t$}}
+\put(25.5,102){\circle{1}}
+\put(57,99){\makebox(0,0)[cc]{$s$}}
+\put(57,102){\circle{1}} 
+\put(86.5,99){\makebox(0,0)[cc]{$z$}}
+\put(86.5,102){\circle{1}}
+\put(120.75,99){\makebox(0,0)[cc]{$y$}}
+\put(117.5,102){\circle{1}} 
+\put(71,93){\makebox(0,0)[cc]{Figure 6}}
+\end{picture}
+\end{center}
+
+\begin{description}
+
+\item[Problem 26:] Find all the cycles of figure 6.
+
+\item[Problem 27:] What is the degree sequence of $C_n$?
+
+\item[Problem 28:] Find $d(C_n)$.
+
+\item[Problem 29:] For what value(s) of $n$ is $(C_n)^C$ a cycle? Note that such a graph is isomorphic to its cograph. A graph which is isomorphic to its cograph is called \emph{self-complementary}.
+
+\item[Problem 30:] Show that every circuit contains a cycle.
+
+\item[Problem 31:] Show that if $u$ and $v$ belong to a common cycle, then there exists at least two independent $u-v$ paths. (Two $u-v$ paths are called \emph{independent} if the only points in common to them are $u$ and $v$.)
+
+\end{description}
+
+%fig7
+\begin{center}
+%TeXCAD Options
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(120,28)(14,108)
+\put(15.75,127.25){\line(1,0){32.75}}
+\put(70.25,127){\line(1,0){22.25}}
+%\emline(92.5,127)(101.5,132.25)
+\multiput(92.5,127)(.05769231,.03365385){156}{\line(1,0){.05769231}}
+%\end
+%\emline(92.5,127)(100.75,122.5)
+\multiput(92.5,127)(.06156716,-.03358209){134}{\line(1,0){.06156716}}
+%\end
+%\emline(100.5,122.5)(101.5,122.25)
+\multiput(100.5,122.5)(.125,-.03125){8}{\line(1,0){.125}}
+%\end
+%\emline(117,134.25)(133.5,119)
+\multiput(117,134.25)(.036504425,-.033738938){452}{\line(1,0){.036504425}}
+%\end
+\put(117,134){\circle{1}} 
+\put(133.5,134){\circle{1}}
+\put(133.5,119){\circle{1}} 
+\put(117.5,119){\circle{1}}
+\put(100.5,122.5){\circle{1}} 
+\put(100.5,132){\circle{1}}
+\put(92.75,127){\circle{1}} 
+\put(82,127){\circle{1}}
+\put(70.25,127){\circle{1}} 
+\put(48.25,127){\circle{1}}
+\put(40,127){\circle{1}} 
+\put(30.75,127){\circle{1}}
+\put(22.5,127){\circle{1}} 
+\put(15.75,127){\circle{1}}
+\put(32,117){\makebox(0,0)[cc]{$G$}}
+\put(84.75,117){\makebox(0,0)[cc]{$H$}}
+\put(125.75,117){\makebox(0,0)[cc]{$J$}}
+\put(70,110){\makebox(0,0)[cc]{Figure 7}}
+\end{picture}
+\end{center}
+
+A connected graph without cycles is called a \emph{tree}. Note that if $u$ and $v$ are vertices of a tree, then there is only one $u-v$ path. Moreover, the $u-v$ path is a geodesic whose length is, of course, $d(u,v)$. An $(n,e)$ tree, i.e. a tree on $n$ vertices with $e$ edges, must satisfy $e=n-1$. Why? 
+
+Observe that if a graph has $n$ vertices and fewer than $n-1$ edges, it must be disconnected. In this sense, a tree is often described as a minimally connected graph. Some example of trees are $K_1$, $K_2$, and $P_n$. In figure 7, all possible trees on $5$ vertices are exhibited.
+
+\begin{description}
+
+\item[Problem 32:] Show that every tree with more than $1$ vertex has at least two end vertices (vertices of degree $1$). Figure 7 demonstrates that a tree can have more than two end vertices.
+
+\item[Problem 33:] Show that any longest geodesic of a tree begins and ends with an end vertex.
+
+\item[Problem 34:] In figure 7, find $d(G)$, $d(H)$, and $d(J)$. Can you explain why the diameters differ? 
+
+\end{description}
+
+A graph $H$ is a \emph{subgraph} of graph $G$ if $V(H)$ is a subset of $V(G)$, and for any pair of vertices $u,v$ in $H$, $uv$ can be an edge of $H$ only if it is an edge of $G$. If the phrase ``only if'' in the abouve definition is replaced by ``if and only if'', then $H$ is called an \emph{induced} subgraph of $G$. If $H$ is a subgraph of $G$, such that $V(H)=V(G)$, then $H$ is called a \emph{spanning subgraph} of $G$. Of particular interest in graph theory are spanning subgraphs which are trees. They are called \emph{spanning trees}. Figure 8 shows various subgraphs of $G$.
+
+\begin{center}
+%TeXCAD Picture [gt-fig8.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(115.25,75)(10,70)
+\put(14.25,126.5){\framebox(22.75,15)[cc]{}}
+%\emline(14.25,126.5)(37.25,141.5)
+\multiput(14.25,126.5)(.051685393,.033707865){445}{\line(1,0){.051685393}}
+%\end
+\put(60.5,141.5){\line(1,0){19.75}}
+\put(60.25,141.5){\line(0,-1){15}}
+\put(107.5,141.5){\line(1,0){17.25}}
+\put(124.75,141.5){\line(-1,-1){15.5}}
+\put(107.25,124){\line(0,1){17.75}}
+\put(60.25,125){\line(0,1){1.75}}
+\put(37.75,107.75){\line(0,-1){18.25}}
+%\emline(37.75,89.5)(57.5,106.75)
+\multiput(37.75,89.5)(.038574219,.033691406){512}{\line(1,0){.038574219}}
+%\end
+%\emline(57.5,106.75)(58.5,107.75)
+\multiput(57.5,106.75)(.033333,.033333){30}{\line(0,1){.033333}}
+%\end
+\put(58.5,107.75){\line(-1,0){20.75}}
+\put(37.5,89.75){\line(1,0){20.5}}
+\put(81.5,107.5){\line(0,-1){18.75}}
+\put(81.5,88.75){\line(1,0){20}}
+%\emline(81.5,88.75)(100.5,106)
+\multiput(81.5,88.75)(.037109375,.033691406){512}{\line(1,0){.037109375}}
+%\end
+\put(101.25,88.5){\circle{1}}
+\put(81.5,88.5){\circle{1}}
+\put(81.5,107.5){\circle{1}}
+\put(58.5,107.5){\circle{1}}
+\put(38,107.5){\circle{1}}
+\put(37.5,89.75){\circle{1}}
+\put(57.75,89.5){\circle{1}}
+\put(37,126.75){\circle{1}}
+\put(37,141.25){\circle{1}}
+\put(14.75,141.25){\circle{1}}
+\put(14.25,126.75){\circle{1}}
+\put(60.25,125.5){\circle{1}}
+\put(100.25,105.75){\circle{1}}
+\put(60.25,141.75){\circle{1}}
+\put(80.5,141.5){\circle{1}}
+\put(107.5,141.5){\circle{1}}
+\put(107.25,124){\circle{1}}
+%\emline(107.25,124)(109.5,126.25)
+\multiput(107.25,124)(.0335821,.0335821){67}{\line(0,1){.0335821}}
+%\end
+\put(124.75,141.75){\circle{1}}
+\put(14.5,144.25){\makebox(0,0)[cc]{$y$}}
+\put(36.75,144.5){\makebox(0,0)[cc]{$z$}}
+\put(37,123.5){\makebox(0,0)[cc]{$w$}}
+\put(14.25,124){\makebox(0,0)[cc]{$x$}}
+\put(60.25,123){\makebox(0,0)[cc]{$x$}}
+\put(60.5,144.75){\makebox(0,0)[cc]{$y$}}
+\put(80.5,144.5){\makebox(0,0)[cc]{$z$}}
+\put(107.5,144.25){\makebox(0,0)[cc]{$y$}}
+\put(124.75,145){\makebox(0,0)[cc]{$z$}}
+\put(104.25,124.25){\makebox(0,0)[cc]{$x$}}
+\put(38,111){\makebox(0,0)[cc]{$y$}}
+\put(58.5,110.5){\makebox(0,0)[cc]{$z$}}
+\put(57.75,86.5){\makebox(0,0)[cc]{$w$}}
+\put(37,86.75){\makebox(0,0)[cc]{$x$}}
+\put(81.25,85.75){\makebox(0,0)[cc]{$x$}}
+\put(81.25,110.75){\makebox(0,0)[cc]{$y$}}
+\put(100.5,108.5){\makebox(0,0)[cc]{$z$}}
+\put(101.25,86){\makebox(0,0)[cc]{$w$}}
+\put(91.75,81){\makebox(0,0)[cc]{spanning tree}}
+\put(46.5,82){\makebox(0,0)[cc]{spanning subgraph}}
+\put(24.75,120.25){\makebox(0,0)[cc]{G}}
+\put(70.75,120.5){\makebox(0,0)[cc]{subgraph}}
+\put(112.5,119.25){\makebox(0,0)[cc]{induced subgraph}}
+\put(69.25,74){\makebox(0,0)[cc]{Figure 8}}
+\end{picture}
+\end{center}
+
+\begin{description}
+
+\item[Problem 35:] Find all the spanning trees of $G$ of figure 8. Do they all have the same diameter?
+
+\item[Problem 36:] Why is the induced spanning subgraph not a useful idea?
+
+\item[Problem 37:] Show that all the spanning trees of $C_n$ are isomorphic.
+
+\item[Problem 38:] Explain why a disconnected graph does not have a spanning tree.
+
+\item[Problem 39:] How many edges of an $(n,e)$ connected graph must be deleted to yield a spanning tree? (Deletion of an edge of a graph leaves the vertex set intact.) 
+
+\end{description}
+
+An edge of a graph which does not lie on a cycle is called a \emph{bridge}. In figure 5, edges $xs$ and $vz$ are the only bridges. $G$ of figure 8 has no bridges, i.e. every one of its edges lies on some cycle.
+
+\begin{description}
+
+\item[Problem 40:] Show that every edge of a tree is a bridge. Show also that a connected graph each of whose edges is a bridge is a tree.
+
+\item[Problem 41:] Show that if a connected graph has at least one cycle, then it has more than one spanning tree.
+
+\item[Problem 42:] Show that an edge of $G$ is a bridge if and only if its deletion increases the number of components of $G$.
+
+\item[Problem 43:] Show that if vertex $v$ of a connected graph $G$ does not lie on a cycle, then its degree in any spanning tree is the same as its degree in $G$.
+
+\item[Problem 44:] Describe a spanning tree $H$ of $K_n$ if $d(H)=2$. Assume $n$ is greater than two. 
+
+\end{description}
+
+The \emph{eccentricity} of a vertex $v$ of a connected graph $G$ is the maximum value of $d(v,x)$ for all vertices $x$ in $V(G)$. It is denoted $e(v)$. If the eccentricity of a vertex is small, it can reach the remaining vertices of $G$ via short geodesics. Then there is something ``central'' about such a vertex. With this motivation, the \emph{center} of a graph is the set of vertices with minimum eccentricity. This minimum eccentricity is called the \emph{radius} of $G$, denoted $r(G)$. The graph of figure 9 has a radius of $3$. The eccentricities are shown in the figure.
+
+\begin{center}
+%TeXCAD Picture [gt-fig9.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(87.75,36)(0,110)
+\put(2.75,132.75){\line(1,0){29.25}}
+\put(60.5,132.5){\line(1,0){26.75}}
+\put(60.5,132.5){\line(-3,-2){13.5}}
+%\emline(47,123.5)(32.25,132.75)
+\multiput(47,123.5)(-.053636364,.033636364){275}{\line(-1,0){.053636364}}
+%\end
+%\emline(60.25,132.5)(46.25,142.75)
+\multiput(60.25,132.5)(-.046052632,.033717105){304}{\line(-1,0){.046052632}}
+%\end
+%\emline(32.5,132.75)(46.75,142.5)
+\multiput(32.5,132.75)(.049307958,.033737024){289}{\line(1,0){.049307958}}
+%\end
+\put(46.75,142.5){\circle{1}}
+\put(60,132.5){\circle{1}}
+\put(87.25,132.5){\circle{1}}
+\put(74.25,132.5){\circle{1}}
+\put(47,123.5){\circle{1}}
+\put(32.25,132.75){\circle{1}}
+\put(2.75,132.5){\circle{1}}
+\put(17.5,132.75){\circle{1}}
+\put(47,119.5){\makebox(0,0)[cc]{$3$}}
+\put(32,136.5){\makebox(0,0)[cc]{$4$}}
+\put(17.25,136.5){\makebox(0,0)[cc]{$5$}}
+\put(2.75,136.5){\makebox(0,0)[cc]{$6$}}
+\put(60,136.5){\makebox(0,0)[cc]{$4$}}
+\put(74.25,136.5){\makebox(0,0)[cc]{$5$}}
+\put(87.75,136.5){\makebox(0,0)[cc]{$6$}}
+\put(46.5,146){\makebox(0,0)[cc]{$3$}}
+\put(46.5,111.75){\makebox(0,0)[cc]{Figure 9}}
+\end{picture}
+\end{center}
+
+\begin{description}
+
+\item[Problem 45:] Show that the maximum eccentricity in $G$ is the diameter.
+
+\item[Problem 46:] Draw graphs with centers consisting of $1$, $2$, $3$, $4$, and $5$ points.
+
+\item[Problem 47:] Describe the center of $P_n$.
+
+\item[Problem 48:] Can the center of a graph consist of all of its vertices? (Omit the trivial graph $K_1$.) The center of $G$ is denoted $C(G)$.
+
+\item[Problem 49:] Show that the eccentricities of all of the vertices of a tree are lowered by $1$ if all of its end vertices are deleted. (Deleting a vertex from a graph implies deletion of all edges incident with that vertex.) 
+
+\end{description}
+
+If the process of Problem 49 above is repeated often enough, one arrives either at two adjacent points of obviously equal eccentricity, or at one point. In either case, we have the center of $G$. Thus if $G$ is a tree, $C(G)$ consists of either two adjacent points or a single point. This theorem is credited to Jordan, who gave mathematics the Jordan Curve Theorem.
+
+\begin{description}
+
+\item[Problem 50:] For each of the trees of figure 7, find the radius, center, and diameter.
+
+\item[Problem 51:] Prove the following inequality: $r(G) \leq d(G) \leq 2r(G)$, for any connected graph $G$.
+
+\item[Problem 52:] Find the radius of $P_n$.
+
+\item[Problem 53:] Construct a graph whose radius and diameter are equal.
+
+\item[Problem 54:] Construct a graph $G$ such that $d(G)=2r(G)$.
+
+\end{description}
+
+A graph $G$ is \emph{bipartite} if its vertices may be divided into two sets of vertices (with an empty intersection) such that all edges of $G$ are incident to vertices belonging to different sets. In the symbolic language of graph theory, $G$ is bipartite if $V(G) = V_1 \cup V_2$, $V_1 \cap V_2 = \emptyset$, and $u$ and $v$ are adjacent only if either $u$ is in $V_1$ and $v$ is in $V_2$, or if $v$ is in $V_1$ and $u$ is in $V_2$. In plain English, an edge of bipartite graph is incident with vertices from two different sets.
+
+\begin{description}
+
+\item[Problem 55:] Show that every tree is bipartite.
+
+\item[Problem 56:] Which cycles are bipartite? 
+
+\end{description}
+
+In the bipartite graph $G$ of figure 10, $V_1=(a,b,c)$ and $V_2=(w,x,y,z)$. Notice that some permissible edges are not present, e.g. $cx$ or $ay$. If every vertex of $V_1$ is adjacent to every vertex of $V_2$ in a bipartite graph, it is called \emph{complete} and is denoted $K_{m,n}$ where $m=|V_1|$ and $n=|V_2|$. $K_{1,n}$ is called a \emph{star graph}, and is pictured in figure 11 for $n=5$.
+
+\begin{center}
+%TeXCAD Picture [gt-fig10.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(72.75,62)(-10,110)
+%\emline(0,159)(59.25,171.5)
+\multiput(0,159)(.159703504,.033692722){371}{\line(1,0){.159703504}}
+%\end
+%\emline(59.25,171.5)(0,139.5)
+\multiput(59.25,171.5)(-.0624341412,-.033719705){949}{\line(-1,0){.0624341412}}
+%\end
+%\emline(0,139.75)(59.5,121.75)
+\multiput(0,139.75)(.111423221,-.033707865){534}{\line(1,0){.111423221}}
+%\end
+\put(59.25,121.75){\line(-1,0){59.75}}
+%\emline(-.5,121.75)(59.5,139.75)
+\multiput(-.5,121.75)(.112359551,.033707865){534}{\line(1,0){.112359551}}
+%\end
+\put(59.5,139.75){\line(-1,0){59.5}}
+%\emline(.5,139.75)(59.5,154)
+\multiput(.5,139.75)(.139479905,.033687943){423}{\line(1,0){.139479905}}
+%\end
+%\emline(59.5,154)(0,159)
+\multiput(59.5,154)(-.39932886,.03355705){149}{\line(-1,0){.39932886}}
+%\end
+\put(59.25,171.5){\circle{1}}
+\put(59.5,153.75){\circle{1}}
+\put(59.25,139.75){\circle{1}}
+\put(59.25,121.5){\circle{1}}
+\put(-.5,121.75){\circle{1}}
+\put(.25,139.5){\circle{1}}
+\put(0,159){\circle{1}}
+\put(-3.75,159){\makebox(0,0)[cc]{$a$}}
+\put(-3.25,139.75){\makebox(0,0)[cc]{$b$}}
+\put(-3.75,122){\makebox(0,0)[cc]{$c$}}
+\put(62.5,121.75){\makebox(0,0)[cc]{$z$}}
+\put(62.75,139.75){\makebox(0,0)[cc]{$y$}}
+\put(62.75,154){\makebox(0,0)[cc]{$x$}}
+\put(62,171.5){\makebox(0,0)[cc]{$w$}}
+\put(28.25,115.25){\makebox(0,0)[cc]{Figure 10}}
+\end{picture}
+\end{center}
+
+\begin{description}
+
+\item[Problem 57:] Find $r(K_{1,n})$ and $d(K_{1,n})$. What is $C(K_{1,n})$?
+
+\item[Problem 58:] Show that the cycles of a bipartite graph are always of even length. (Cycles of even length are called \emph{even cycles}.)
+
+\item[Problem 59:] Describe $(K_{m,n})^C$. Show that it is disconnected.
+
+\item[Problem 60:] Which complete bipartite graphs are trees?
+
+\item[Problem 61:] Find the radius and diameter of $K_{m,n}$ if both $m$ and $n$ are greater than one.
+
+\item[Problem 62:] Show that $K_{m,n}$ has a spanning tree isomorphic to $P_{n+m}$.
+
+\end{description}
+
+\begin{center}
+%TeXCAD Picture [gt-fig11.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(36.75,40.25)(-20,110)
+\put(.5,134.5){\line(-1,-1){13}}
+\put(.75,134.25){\line(1,-1){11.75}}
+\put(.5,134.5){\line(0,1){15.5}}
+%\emline(.5,134.5)(16.75,142.75)
+\multiput(.5,134.5)(.066326531,.033673469){245}{\line(1,0){.066326531}}
+%\end
+%\emline(.25,134.75)(-14.75,141.5)
+\multiput(.25,134.75)(-.07462687,.03358209){201}{\line(-1,0){.07462687}}
+%\end
+\put(16.25,142.5){\circle{1}}
+\put(.5,149.75){\circle{1}}
+\put(-14.5,141.25){\circle{1}}
+\put(-12.25,121.5){\circle{1}}
+\put(12.25,122.5){\circle{1}}
+\put(.25,113.75){\makebox(0,0)[cc]{Figure 11}}
+\end{picture}
+\end{center}
+
+An interesting theorem in graph theory states that given a graph $G$ with six vertices, then either $G$ or $G^C$ contains a triangle. To prove this theorem, let $k$ be a vertex of $G$. Then $k$ is adjacent to the other five vertices either in $G$ or in $G^C$. For example, $k$ might be adjacent to three of the remaining vertices in $G$ and might be adjacent to the other two vertices in $G^C$. Without a loss of generality, assume $k$ is adjacent to vertices $r$, $s$, and $t$ in $G$. (Why is there no loss of generality here?) Now, if any two of $r$, $s$, and $t$ are adjacent in $G$, then together with $k$, they form a triangle in $G$. If no two vertices among $r$, $s$, and $t$ are adjacent in $G$, then they form a triangle in $G^C$ and the theorem is proved.
+
+The above theorem was presented to acquaint the reader with a typical line of reasoning in graph theory.
+
+\begin{description}
+
+\item[Problem 63:] Show that the above theorem is true for graphs with more than six vertices.
+
+\item[Problem 64:] Draw a graph on five vertices such that neither the graph nor its complement contains a triangle. 
+
+\end{description}
+
+A graph is called \emph{planar} if it can be drawn in the plane with no edges intersecting. Otherwise, it is called non-planar. It is often a difficult problem to determine whether or not a given graph is planar. Figure 12 shows that $K_4$ is planar. It is drawn with and without its edges intersecting. If a graph is drawn without intersecting edges, it is called a \emph{plane} graph. All graphs with fewer than five vertices are planar. The smallest non-planar graph is $K_5$, i.e. it is the non-planar graph with the least number of vertices. In applications, planarity is a very important concept. The edges of a graph might represent wires which must not touch one another.
+
+\begin{center}
+%TeXCAD Picture [gt-fig12.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(99.75,40.5)(-10,110)
+\put(-4.75,123.25){\framebox(25.25,23.5)[cc]{}}
+%\emline(70,150.25)(51.75,122.5)
+\multiput(70,150.25)(-.033733826,-.0512939){541}{\line(0,-1){.0512939}}
+%\end
+\put(51.75,122.5){\line(1,0){37.5}}
+%\emline(89.25,122.5)(70.25,150.5)
+\multiput(89.25,122.5)(-.033687943,.04964539){564}{\line(0,1){.04964539}}
+%\end
+\put(70.25,150.25){\line(0,-1){14.75}}
+%\emline(70.25,135.5)(52,122.75)
+\multiput(70.25,135.5)(-.048280423,-.033730159){378}{\line(-1,0){.048280423}}
+%\end
+%\emline(70.25,135.25)(89.25,122.5)
+\multiput(70.25,135.25)(.05026455,-.033730159){378}{\line(1,0){.05026455}}
+%\end
+\put(70.25,150){\circle{1}}
+\put(70.25,135.25){\circle{1}}
+\put(51.75,122.25){\circle{1}}
+\put(20.5,123.5){\circle{1}}
+\put(20.75,146.75){\circle{1}}
+\put(-4.75,147){\circle{1}}
+\put(-4.75,123.25){\circle{1}}
+\put(89.25,122.5){\circle{1}}
+\put(36.25,113){\makebox(0,0)[cc]{Figure 12}}
+\end{picture}
+\end{center}
+
+\begin{description}
+
+\item[Problem 65:] Show that all trees are planar.
+
+\item[Problem 66:] Show that $K_n$ is non-planar for all $n$ larger than four.
+
+\item[Problem 67:] Show that $K_{1,n}$ and $K_{2,n}$ are planar for all $n$.
+
+\item[Problem 68:] Show that $K_{3,3}$ is non-planar. Hint: begin by drawing $C_6$ and dividing its vertices into two sets $a,b,c$ and $x,y,z$, as shown in figure 13. To complete the graph, i.e. to draw $K_{3,3}$, three more edges have to be added: $az$, $by$, and $cx$. Show this can't be done without at least one pair of edges intersecting.
+
+\end{description}
+
+\begin{center}
+%TeXCAD Picture [gt-fig13.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(43,50)(-30,110)
+%\emline(-5,156.5)(-21.75,148)
+\multiput(-5,156.5)(-.066468254,-.033730159){252}{\line(-1,0){.066468254}}
+%\end
+\put(-21.75,148){\line(0,-1){15.5}}
+%\emline(-21.75,132.5)(-5.75,125.5)
+\multiput(-21.75,132.5)(.07692308,-.03365385){208}{\line(1,0){.07692308}}
+%\end
+%\emline(-5.75,125.5)(9.75,132.25)
+\multiput(-5.75,125.5)(.07711443,.03358209){201}{\line(1,0){.07711443}}
+%\end
+\put(9.75,132.25){\line(0,1){16}}
+%\emline(9.75,148.25)(-5,156.75)
+\multiput(9.75,148.25)(-.058531746,.033730159){252}{\line(-1,0){.058531746}}
+%\end
+\put(-4.75,156.25){\circle{1}}
+\put(-21.5,148){\circle{1}}
+\put(-21.75,132.5){\circle{1}}
+\put(-5.5,125.25){\circle{1}}
+\put(9.75,132){\circle{1}}
+\put(10,148.25){\circle{1}}
+\put(-4.75,160){\makebox(0,0)[cc]{$a$}}
+\put(13,148.5){\makebox(0,0)[cc]{$y$}}
+\put(13,132.25){\makebox(0,0)[cc]{$c$}}
+\put(-5.5,120.5){\makebox(0,0)[cc]{$z$}}
+\put(-25,132.75){\makebox(0,0)[cc]{$b$}}
+\put(-24.75,148){\makebox(0,0)[cc]{$x$}}
+\put(-5.25,113.25){\makebox(0,0)[cc]{Figure 13}}
+\end{picture}
+\end{center}
+
+\begin{description}
+\item[Problem 69:] Show that $K_{m,n}$ is non-planar for $n$ and $m$ greater than two. 
+\end{description}
+
+A \emph{cutpoint} of a graph is a point whose deletion increases the number of components of the graph. In the graph of figure 14. vertices $w$, $x$, $y$, and $z$ are cutpoints. A \emph{block} of a graph is a maximal connected subgraph which contains no cutpoints (relative to itself, not to the original graph). Figure 15 shows the blocks of the graph of figure 14.
+
+\begin{center}
+%TeXCAD Picture [gt-fig14.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(91.75,31.75)(0,60)
+\put(91.25,88.25){\circle{1}}
+\put(91.25,74){\circle{1}}
+\put(69.25,88.25){\circle{1}}
+\put(69,73.75){\circle{1}}
+\put(48.75,73.75){\circle{1}}
+\put(48.6,88.2){\circle{1}}
+\put(27.75,88.25){\circle{1}}
+\put(27.75,73.75){\circle{1}}
+\put(16,80.25){\circle{1}}
+\put(3.5,80.25){\circle{1}}
+\put(3.25,83.5){\makebox(0,0)[cc]{$a$}}
+\put(14.25,83.75){\makebox(0,0)[cc]{$w$}}
+\put(27.5,91.25){\makebox(0,0)[cc]{$x$}}
+\put(48.75,91.75){\makebox(0,0)[cc]{$y$}}
+\put(69,91.25){\makebox(0,0)[cc]{$z$}}
+\put(91.25,91){\makebox(0,0)[cc]{$f$}}
+\put(91.5,70.75){\makebox(0,0)[cc]{$e$}}
+\put(69.25,70.5){\makebox(0,0)[cc]{$d$}}
+\put(48.75,71.25){\makebox(0,0)[cc]{$c$}}
+\put(27.75,71.25){\makebox(0,0)[cc]{$b$}}
+\put(49,63){\makebox(0,0)[cc]{Figure 14}}
+\put(3.25,80.25){\line(1,0){12.75}}
+%\emline(16,80.25)(27.75,88.5)
+\multiput(16,80.25)(.047959184,.033673469){245}{\line(1,0){.047959184}}
+%\end
+\put(27.75,88.5){\line(0,1){0}}
+\put(27.75,74.5){\line(0,1){0}}
+\put(27.55,88.29){\line(0,-1){14.27}}
+%\emline(27.55,73.87)(15.95,80.12)
+\multiput(27.55,73.87)(-.06233747,.03356633){186}{\line(-1,0){.06233747}}
+%\end
+%\emline(27.55,88.29)(91.32,88.14)
+\multiput(27.55,88.29)(12.75425,-.02973){5}{\line(1,0){12.75425}}
+%\end
+\put(91.32,88.14){\line(0,1){0}}
+\put(91.32,73.72){\line(0,1){0}}
+\put(48.8,73.72){\line(1,0){20.22}}
+\put(69.02,73.57){\line(0,1){14.72}}
+\put(48.66,87.99){\line(0,-1){14.27}}
+\put(48.21,73.87){\line(0,1){0}}
+\put(91.17,88.14){\line(0,-1){14.27}}
+%\emline(91.17,73.87)(69.02,88.14)
+\multiput(91.17,73.87)(-.052361661,.033736372){423}{\line(-1,0){.052361661}}
+%\end
+\put(69.02,88.14){\line(0,1){0}}
+\end{picture}
+\end{center}
+
+\begin{center}
+%TeXCAD Picture [gt-fig15.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(118.25,30.5)(0,60)
+\put(4,77.75){\line(1,0){16.25}}
+%\emline(29.25,77.75)(41.75,86.25)
+\multiput(29.25,77.75)(.049603175,.033730159){252}{\line(1,0){.049603175}}
+%\end
+\put(41.75,86.25){\line(0,-1){14.5}}
+%\emline(41.75,71.75)(29.25,77.5)
+\multiput(41.75,71.75)(-.07309942,.03362573){171}{\line(-1,0){.07309942}}
+%\end
+\put(51.25,77.75){\line(1,0){14}}
+\put(73.75,73.5){\framebox(18.5,14)[cc]{}}
+\put(100.5,87.25){\line(0,-1){13.5}}
+\put(100.5,73.75){\line(0,-1){1.25}}
+%\emline(100.5,72.5)(114.25,86.5)
+\multiput(100.5,72.5)(.03370098,.034313725){408}{\line(0,1){.034313725}}
+%\end
+\put(114.5,87.25){\line(-1,0){14}}
+\put(4,77.75){\circle{1}}
+\put(20.25,77.5){\circle{1}}
+\put(29.25,77.5){\circle{1}}
+\put(41.5,86.25){\circle{1}}
+\put(41.5,72){\circle{1}}
+\put(51.25,77.75){\circle{1}}
+\put(65.25,77.75){\circle{1}}
+\put(73.75,87.25){\circle{1}}
+\put(73.75,73.75){\circle{1}}
+\put(92.25,73.25){\circle{1}}
+\put(92.5,87.25){\circle{1}}
+\put(100.75,87){\circle{1}}
+\put(100.75,72.75){\circle{1}}
+\put(115,87){\circle{1}}
+%\emline(115,87)(114,86.25)
+\multiput(115,87)(-.043478,-.032609){23}{\line(-1,0){.043478}}
+%\end
+\put(3.75,74.75){\makebox(0,0)[cc]{$a$}}
+\put(20.5,75){\makebox(0,0)[cc]{$w$}}
+\put(28.5,74.75){\makebox(0,0)[cc]{$w$}}
+\put(44.25,86.25){\makebox(0,0)[cc]{$x$}}
+\put(44,72.25){\makebox(0,0)[cc]{$b$}}
+\put(51,74.75){\makebox(0,0)[cc]{$x$}}
+\put(65,74.5){\makebox(0,0)[cc]{$y$}}
+\put(73.75,90.25){\makebox(0,0)[cc]{$y$}}
+\put(92.25,90.5){\makebox(0,0)[cc]{$z$}}
+\put(92.25,70.25){\makebox(0,0)[cc]{$d$}}
+\put(73.75,71){\makebox(0,0)[cc]{$c$}}
+\put(100.75,70){\makebox(0,0)[cc]{$e$}}
+\put(100.5,90.25){\makebox(0,0)[cc]{$z$}}
+\put(118.25,87.25){\makebox(0,0)[cc]{$f$}}
+\put(57.75,64){\makebox(0,0)[cc]{Figure 15}}
+\end{picture}
+\end{center}
+
+\begin{description}
+
+\item[Problem 70:] Which points of a tree are cutpoints?
+
+\item[Problem 71:] What do the blocks of a tree look like? How many blocks does a tree on $n$ vertices have?
+
+\item[Problem 72:] Does $C_n$ have any cutpoints? Why or why not?
+
+\item[Problem 73:] If edge $uv$ is a bridge of $G$, why must $u$ and $v$ be cutpoints of $G$?
+
+\item[Problem 74:] If $u$ is a cutpoint of $G$, and $x$ is any vertex adjacent to $u$, explain why edge $ux$ does not have to be a bridge of $G$. 
+
+\end{description}
+
+In many applications, it is useful to assign a color to each vertex. Thus a graph $G$ might have three blue vertices, two orange ones, and five red ones. For a variety of reasons (can you supply one or two?), adjacent vertices might not be permitted to have the same color. The minimum number of colors that will accomplish this for $G$ is called the \emph{chromatic} number of $G$ or $N(G)$. The distribution of colors using the minimum number of them might not be unique, but the chromatic number is determined by the graph. 
+
+A beautiful theorem of graph theory states that the chromatic number of a planar graph never exceeds four! Put another way, the Four Color Theorem says that all planar graphs are four-colorable. Determining the chromatic number of a large graph is a very difficult problem. The chromatic number of certain kinds of graphs are, however, quite easy to determine. Even cycles, for example, are two-colorable, i.e. $N(C_{2k})=2$.
+
+\begin{description}
+
+\item[Problem 75:] Show that odd cycles are three-colorable.
+
+\item[Problem 76:] Show that $N(G)=2$ if and only if $G$ is bipartite.
+
+\item[Problem 77:] Given a graph $G$ on $n$ vertices, how many edges does $G$ have if its chromatic number is as large as possible? What is $N(G)$ in that case?
+
+\item[Problem 78:] Characterize those graphs with chromatic number one.
+
+\item[Problem 79:] Why are all trees two-colorable? Is the converse true?
+
+\end{description}
+
+If a planar graph is drawn with no intersecting edges, it divides the plane into regions, called the \emph{faces} of the graph. If the graph has no cycles, it has only one face. (A tree illustrates this last fact.) The graph $G$ in figure 16 shows the three faces it determines, $F_1$, $F_2$, and $F_3$. $F_3$ is called the \emph{outer} face of $G$. In figure 17, the same graph is represented differently. Nevertheless, the number of faces remains three. Any planar representation of a planar graph has the same number of faces, which we denote by $F$. 
+
+Denoting the number of vertices by $V$, the number of edges by $E$, and the number of faces by $F$, we have the interesting theorem, due to Euler, that for planar connected graphs, $V-E+F=2$. (Verify this for $G$ of figure 16.) The proof is by induction on the number of vertices of a graph. If the graph has only one vertex (i.e. the trivial graph), the equation is clearly true, since $V=1$, $E=0$, and $F=1$. 
+
+Suppose it is true for a connected planar graph on $n$ vertices. If one adds a vertex and an edge, no new face is created, and the expression $(V+1)-(E+k)+(F+k-1)$ is clearly still two, and the inductive proof is complete. 
+
+This last proof illustrates a common method of reasoning in graph theory, and is an indespensable tool in the arsenal of techniques in the field.
+
+\begin{description}
+
+\item[Problem 80:] Show that a planar graph on $n$ vertices ($n$ larger than two) can have at most $3n-6$ edges. Hint: every edge of such a graph would belong to a triangle (why?); now use Euler's formula.
+
+\end{description}
+
+\begin{center}
+%TeXCAD Picture [gt-fig1617.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(117.75,35.25)(0,100)
+\put(10.25,112.25){\framebox(32.5,22.5)[cc]{}}
+%\emline(42.75,134.75)(61,124)
+\multiput(42.75,134.75)(.057210031,-.03369906){319}{\line(1,0){.057210031}}
+%\end
+%\emline(61,124)(42.75,112.25)
+\multiput(61,124)(-.052292264,-.033667622){349}{\line(-1,0){.052292264}}
+%\end
+\put(67.5,112){\framebox(44.25,22.75)[cc]{}}
+%\emline(111.5,134.75)(91.25,123.25)
+\multiput(111.5,134.75)(-.059384164,-.03372434){341}{\line(-1,0){.059384164}}
+%\end
+%\emline(91.25,123.25)(111.75,112.25)
+\multiput(91.25,123.25)(.062691131,-.033639144){327}{\line(1,0){.062691131}}
+%\end
+\put(10.25,134.75){\circle{1}}
+\put(10.25,112.25){\circle{1}}
+\put(43,112.25){\circle{1}}
+\put(43,134.5){\circle{1}}
+\put(61.25,124){\circle{1}}
+\put(67.75,134.5){\circle{1}}
+\put(67.5,112){\circle{1}}
+\put(91.25,123){\circle{1}}
+\put(112,134.5){\circle{1}}
+\put(111.75,112.25){\circle{1}}
+\put(26.5,123.25){\makebox(0,0)[cc]{$F_1$}}
+\put(5.25,123.75){\makebox(0,0)[cc]{$F_3$}}
+\put(49.25,123.75){\makebox(0,0)[cc]{$F_2$}}
+\put(78.75,123){\makebox(0,0)[cc]{$F_3$}}
+\put(105,122.5){\makebox(0,0)[cc]{$F_2$}}
+\put(117.75,122.5){\makebox(0,0)[cc]{$F_1$}}
+\put(25.5,104.25){\makebox(0,0)[cc]{Figure 16}}
+\put(87.25,104.25){\makebox(0,0)[cc]{Figure 17}}
+\end{picture}
+\end{center}
+
+\begin{description}
+
+\item[Problem 81:] Explain how the numbered faces in figures 16 and 17 correspond, i.e. why are the faces in figure 17 numbered the way they are? What is the same about $F_1$ in both figures?
+
+\item[Problem 82:] Draw the graph of figure 16 so that the outer face is bounded by a triangle. Why would it be logical to call this face $F_2$?
+
+\item[Problem 83:] Show that a connected planar graph can be drawn so that any of its faces is the outer face. Is this true for disconnected planar graphs?
+
+\item[Problem 84:] Modify Euler's formula if a planar graph has $k$ components.
+
+\item[Problem 85:] Show that for trees, $E=V-1$. Use Euler's formula.
+
+\item[Problem 86:] Show that for a cycle, $E=V$. Use Euler's formula.
+
+\end{description}
+
+If a planar graph can be drawn so that all of its vertices are touching the outer face, it is called \emph{outer planar}. The graph of figure 16 is clearly outer planar. This can be seen from figure 17 also, but it is harder to see it from the way the graph is drawn. One would have to visualize flipping the triangle bounding $F_2$ over the $4$-cycle which bounds $F_1$, thereby yielding the drawing in figure 16. An example of a planar graph which is not outer planar is provided by $K_4$. (See figure 12.)
+
+\begin{description}
+
+\item[Problem 87:] Show that all trees are outer planar.
+
+\item[Problem 88:] Show that all cycles are outer planar.
+
+\item[Problem 89:] Draw various non-outer-planar graphs (which are planar). In each case, present a proof that they are not outer planar. Include $K_4$ in your collection.
+
+\end{description}
+
+An important question about a connected graph is: how few points must be deleted to disconnect the graph? Alternatively, one often asks: how few edges must be deleted to disconnect the graph? Needless to say, this is crucial to maintain a communications network, or to keep traffic moving between various towns via the various roads interconnecting them.
+
+If a graph has a bridge, for example, then deleting the bridge will disconnect the graph and disrupt ``traffic'' between some pairs of vertices in the graph -- a very undesirable situation! A graph without bridges is more secure, in the sense that any single edge is dispensable. If one edge is deleted, there will exist a detour, i.e. another path connecting the vertices that were incident to the deleted edge.
+
+Similarly, if a graph has a cutpoint, its deletion will disconnect the graph. On the other hand, if a vertex is deleted from a graph having no cutpoints, no pair of vertices will be unable to ``communicate'' via some path.
+
+The \emph{point-connectivity} of a graph $G$, or $k(G)$ is the minimum number of points whose deletion yields either a disconnected graph or a trivial one. (The point-connectivity is usually shortened to the \emph{connectivity}.) For example, the connectivity of a graph with a cutpoint is $1$. The connectivity of a disconnected graph is $0$. The graphs $G$ and $H$ of figure 18, have connectivities $2$ and $3$ respectively.
+
+\begin{center}
+%TeXCAD Picture [gt-fig18.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(81.75,42.5)(-10,95)
+\put(-7,111){\framebox(25.25,24.5)[cc]{}}
+\put(37.5,114.5){\framebox(33.75,16)[cc]{}}
+\put(54.75,130.25){\line(0,-1){15.75}}
+%\emline(55,130)(71.25,114.5)
+\multiput(55,130)(.035326087,-.033695652){460}{\line(1,0){.035326087}}
+%\end
+\bezier{833}(37.5,130.5)(55.63,137.5)(71.25,130.5)
+\bezier{827}(37.75,114.25)(54.63,107.13)(71,114.5)
+\put(37.5,130.25){\circle{1}}
+\put(54.75,130.25){\circle{1}}
+\put(71,114.5){\circle{1}}
+\put(54.75,114.25){\circle{1}}
+\put(37.5,114.5){\circle{1}}
+\put(71.25,130.25){\circle{1}}
+\put(18.25,111){\circle{1}}
+\put(18.25,135.5){\circle{1}}
+\put(-6.75,135.25){\circle{1}}
+\put(-7,110.75){\circle{1}}
+\put(5.25,103.25){\makebox(0,0)[cc]{G}}
+\put(29.25,98.25){\makebox(0,0)[cc]{Figure 18}}
+\put(55.25,103.25){\makebox(0,0)[cc]{H}}
+\end{picture}
+\end{center}
+
+\begin{description}
+
+\item[Problem 90:] Find $k(C_n)$.
+
+\item[Problem 91:] Show that the minimum vertex degree of $G$ is larger than or equal to $k(G)$.
+
+\item[Problem 92:] Find $k(K_n)$ for $n$ larger than $1$.
+
+\item[Problem 93:] Find the connectivity of a connected graph which contains a bridge.
+
+\item[Problem 94:] Draw a graph which contains two subgraphs $G$ and $H$, such that $k(G)$ is less than, and $k(H)$ is greater than, respectively, the connectivity of the original graph.
+
+\item[Problem 95:] What is $k(K_{m,n})$?
+
+\item[Problem 96:] A wheel on $n$ vertices, denoted $W_n$, is obtained by adding a vertex to $C_{n-1}$ so that the added vertex is adjacent to each of the $n-1$ points of the cycle. Figure 19 shows $W_5$. The vertex $w$ is joined to $C_4$, and is adjacent to each of the vertices $a$, $b$, $c$, and $d$ of $C_4$. Find $k(C_n)$. Find $N(W_n)$.
+
+\item[Problem 97:] Show that $r(W_n)=1$ and $d(W_n)=2$ for $n$ larger than $3$.
+
+\item[Problem 98:] Find the center of $W_n$, i.e. $C(W_n)$.
+
+\item[Problem 99:] Find the minimum and the maximum radii among all possible spanning trees of $W_n$. Do the same thing for the diameters.
+
+\item[Problem 100:] Why does the definition of connectivity make reference to the trivial graph? (Why couldn't the definition read: ``$k(G)$ is the minimum number of points whose deletion yields a disconnected graph''?)
+
+\item[Problem 101:] Find the connectivities of the graphs of figures 4, 6, 8, 10, 12, 16, 18, and 19.
+
+\end{description}
+
+A graph $G$ on $n$ vertices can be described by an $n \times n$ binary matrix called the \emph{adjacency matrix} and denoted $A(G)$, or just $A$ when the context is clear. (A binary matrix has entries consisting only of ones or zeros. An example is the identity matrix.) If we denote the entry in the $i$-th row and the $j$-th column of $A$ by $a_{ij}$, then $a_{ij}=1$ if $v_i$ is adjacent to $v_j$. Otherwise, $a_{ij}=0$. $(V(G)=v_1, v_2, \cdots, v_n)$.
+
+Figure 20 shows a graph of $G$ and its adjacency matrix $A(G)$.
+
+\begin{center}
+%TeXCAD Picture [gt-fig1920.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(109.25,37)(0,100)
+\put(5.75,113.5){\framebox(29,18.25)[cc]{}}
+%\emline(6,131.75)(34.75,113.5)
+\multiput(6,131.75)(.053142329,-.033733826){541}{\line(1,0){.053142329}}
+%\end
+%\emline(5.75,113.5)(35,131.75)
+\multiput(5.75,113.5)(.054066543,.033733826){541}{\line(1,0){.054066543}}
+%\end
+\put(68.25,131.5){\line(-1,-1){8.75}}
+\put(59.5,122.75){\line(1,-1){8}}
+%\emline(67.5,114.75)(68.25,114)
+\multiput(67.5,114.75)(.032609,-.032609){23}{\line(0,-1){.032609}}
+%\end
+\put(68.25,114){\line(0,1){17.5}}
+\put(68.25,131.5){\line(1,-1){8.25}}
+%\emline(76.5,123.25)(77,122.75)
+\multiput(76.5,123.25)(.033333,-.033333){15}{\line(0,-1){.033333}}
+%\end
+\put(77,122.75){\line(-1,-1){8.75}}
+\put(89,136.75){\line(0,-1){26.5}}
+\put(89,110.25){\line(1,0){1.75}}
+\put(89.25,136.75){\line(1,0){1}}
+\put(90.25,136.75){\line(1,0){.25}}
+\put(91.75,132.75){\makebox(0,0)[cc]{0}}
+\put(91.75,126.75){\makebox(0,0)[cc]{1}}
+\put(91.75,119.75){\makebox(0,0)[cc]{1}}
+\put(91.75,111.75){\makebox(0,0)[cc]{0}}
+\put(96.75,132.75){\makebox(0,0)[cc]{1}}
+\put(96.75,126.75){\makebox(0,0)[cc]{0}}
+\put(96.75,119.75){\makebox(0,0)[cc]{1}}
+\put(96.75,111.75){\makebox(0,0)[cc]{1}}
+\put(102,132.75){\makebox(0,0)[cc]{1}}
+\put(102,126.75){\makebox(0,0)[cc]{1}}
+\put(102,119.75){\makebox(0,0)[cc]{0}}
+\put(102,111.75){\makebox(0,0)[cc]{1}}
+\put(106.75,132.75){\makebox(0,0)[cc]{0}}
+\put(106.75,126.75){\makebox(0,0)[cc]{1}}
+\put(106.75,119.75){\makebox(0,0)[cc]{1}}
+\put(106.75,111.75){\makebox(0,0)[cc]{0}}
+\put(109.25,110.5){\line(0,1){26.5}}
+\put(109.25,137){\line(-1,0){1.75}}
+\put(109,110.5){\line(-1,0){1}}
+\put(108,110.5){\line(-1,0){.25}}
+\put(100,105.75){\makebox(0,0)[cc]{$A(G)$}}
+\put(79.75,123){\makebox(0,0)[cc]{$v_4$}}
+\put(68.25,111.25){\makebox(0,0)[cc]{$v_2$}}
+\put(56.5,123){\makebox(0,0)[cc]{$v_1$}}
+\put(68.25,134.25){\makebox(0,0)[cc]{$v_3$}}
+\put(4,133.75){\makebox(0,0)[cc]{$a$}}
+\put(36.75,134){\makebox(0,0)[cc]{$b$}}
+\put(36.5,111){\makebox(0,0)[cc]{$c$}}
+\put(3.25,111.25){\makebox(0,0)[cc]{$d$}}
+\put(20.25,125.5){\makebox(0,0)[cc]{$w$}}
+\put(6,131.5){\circle{1}}
+\put(5.75,113.5){\circle{1}}
+\put(34.75,113.5){\circle{1}}
+\put(20.25,122.5){\circle{1}}
+\put(34.75,131.5){\circle{1}}
+\put(59.5,122.75){\circle{1}}
+\put(68.25,131){\circle{1}}
+\put(68.25,114){\circle{1}}
+\put(77,122.75){\circle{1}}
+\put(19.75,104.5){\makebox(0,0)[cc]{Figure 19}}
+\put(80.75,104.75){\makebox(0,0)[cc]{Figure 20}}
+\end{picture}
+\end{center}
+
+Observe that $a_{ij}=0$ since a vertex is not adjacent to itself, i.e. no edge of the graph goes from $v_i$ to itself. (In certain problems, such edges, called \emph{loops}, are permitted.) Put another way, the diagonal of $A(G)$ consists of zeros.
+
+Observe also that $a_{ij}=a_{ji}$, i.e. $A(G)$ is a symmetric matrix. This is so because $v_i$ is adjacent to $v_j$ if and only if $v_j$ is adjacent to $v_i$. (Adjacency is an example of a symmetric relationship.)
+
+There are various problems which require one-way adjacency, i.e. $v_i$ adjacent to $v_j$ not necessarily implying that $v_j$ is adjacent of $v_i$. A graph representing a flow of traffic along the roads of a graph of towns might have to represent one-way and two-way roads. A graph with directed edges is called a \emph{directed graph}, or digraph.
+
+A digraph is shown in figure 21. The arrows on the edges indicate the nature of the adjacencies. The adjacency matrix of a digraph is usually not symmetric. In figure 21, $v_2$ is adjacent to $v_3$, whereas $v_3$ is not adjacent to $v_2$. Then $a_{23}=1$, but $a_{32}=0$.
+
+\begin{center}
+%TeXCAD Picture [gt-fig21.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(103.06,32)(-10,120)
+%\vector[middle](-5.25,148.75)(19.75,148.75)
+\put(7.25,148.75){\vector(1,0){.07}}\put(-5.25,148.75){\line(1,0){25}}
+%\end
+%\vector[middle](19.75,148.75)(19.75,129)
+\put(19.75,138.88){\vector(0,-1){.07}}\put(19.75,148.75){\line(0,-1){19.75}}
+%\end
+%\vector[middle](19.75,129)(-5,129)
+\put(7.38,129){\vector(-1,0){.07}}\put(19.75,129){\line(-1,0){24.75}}
+%\end
+%\vector[middle](-5,129)(-5,148.75)
+\put(-5,138.88){\vector(0,1){.07}}\put(-5,129){\line(0,1){19.75}}
+%\end
+%\vector[middle](19.75,148.75)(44.5,148.75)
+\put(32.13,148.75){\vector(1,0){.07}}\put(19.75,148.75){\line(1,0){24.75}}
+%\end
+\put(19.75,129){\vector(1,0){11.75}}
+\put(44.25,129){\vector(-1,0){12.5}}
+%\vector[middle](44.25,148.75)(44.25,129)
+\put(44.25,138.88){\vector(0,-1){.07}}\put(44.25,148.75){\line(0,-1){19.75}}
+%\end
+%\vector[middle](69,148.5)(80.75,148.5)
+\put(74.88,148.5){\vector(1,0){.07}}\put(69,148.5){\line(1,0){11.75}}
+%\end
+%\vector[middle](92.5,148.5)(80.75,148.5)
+\put(86.63,148.5){\vector(-1,0){.07}}\put(92.5,148.5){\line(-1,0){11.75}}
+%\end
+\put(81.5,148.5){\line(-1,0){1.75}}
+\put(92.5,148.5){\circle{1.12}}
+\put(44.25,148.5){\circle{1}}
+\put(44.25,129.25){\circle{1}}
+\put(19.75,129){\circle{1}}
+\put(-5,129){\circle{1}}
+\put(-4.75,148.5){\circle{1}}
+\put(20,148.5){\circle{1}}
+%\vector[middle](44.25,148.75)(69,148.75)
+\put(56.63,148.75){\vector(1,0){.07}}\put(44.25,148.75){\line(1,0){24.75}}
+%\end
+%\vector[middle](69,148.75)(69,129)
+\put(69,138.88){\vector(0,-1){.07}}\put(69,148.75){\line(0,-1){19.75}}
+%\end
+%\vector[middle](69,129)(44,129)
+\put(56.5,129){\vector(-1,0){.07}}\put(69,129){\line(-1,0){25}}
+%\end
+\put(69.25,148.5){\circle{1.12}}
+\put(69,128.75){\circle{1}}
+\put(-5,151.5){\makebox(0,0)[cc]{$v_1$}}
+\put(-5,126){\makebox(0,0)[cc]{$v_9$}}
+\put(20,152){\makebox(0,0)[cc]{$v_2$}}
+\put(44.25,151.75){\makebox(0,0)[cc]{$v_3$}}
+\put(69.25,152){\makebox(0,0)[cc]{$v_4$}}
+\put(92.5,151.75){\makebox(0,0)[cc]{$v_5$}}
+\put(69,125.75){\makebox(0,0)[cc]{$v_6$}}
+\put(44,126.75){\makebox(0,0)[cc]{$v_7$}}
+\put(19.75,126.25){\makebox(0,0)[cc]{$v_8$}}
+\put(33,122){\makebox(0,0)[cc]{Figure 21}}
+\end{picture}
+\end{center}
+
+\begin{description}
+
+\item[Problem 102:] Find the adjacency matrix of the digraph of figure 21.
+
+\item[Problem 103:] For which ordered pairs of vertices in figure 21, is there no path from the first vertex of the pair to the second?
+
+\end{description}
+
+Many situations in graph theory call for the existence of more than one edge between two vertices. For example, there may be several modes of transportation between two cities, each mode being represented by an edge. A graph with multiple edges is called a \emph{multigraph}. The adjacency matrix of a multigraph is not binary.
+
+Figure 22 shows a multigraph and its adjacency matrix. If the edges of a multigraph are not directed, its adjacency matrix is symmetric.
+
+\begin{center}
+%TeXCAD Picture [gt-fig22.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(59.25,28.5)(-20,120)
+\put(-12.5,139){\line(5,2){17.5}}
+%\emline(-12.75,138.5)(3.75,131.75)
+\multiput(-12.75,138.5)(.08208955,-.03358209){201}{\line(1,0){.08208955}}
+%\end
+%\emline(3.75,131.75)(4.75,131.25)
+\multiput(3.75,131.75)(.066667,-.033333){15}{\line(1,0){.066667}}
+%\end
+\bezier{391}(4.75,145.75)(.25,140)(4.75,131.25)
+\bezier{377}(5,145.75)(9,140.88)(5,131.5)
+\put(25.5,148.25){\line(0,-1){18.25}}
+\put(25.5,130){\line(1,0){1}}
+\put(25.75,148.25){\line(1,0){.5}}
+\put(38.5,148.25){\line(1,0){.75}}
+\put(39.25,148.25){\line(0,-1){18.25}}
+\put(39.25,130){\line(-1,0){1}}
+\put(28.5,145.25){\makebox(0,0)[cc]{0}}
+\put(28.5,137.75){\makebox(0,0)[cc]{1}}
+\put(28.5,130.75){\makebox(0,0)[cc]{1}}
+\put(32.5,145.25){\makebox(0,0)[cc]{1}}
+\put(32.5,137.75){\makebox(0,0)[cc]{0}}
+\put(32.5,130.75){\makebox(0,0)[cc]{2}}
+\put(36,145.25){\makebox(0,0)[cc]{1}}
+\put(36,137.75){\makebox(0,0)[cc]{2}}
+\put(36,130.75){\makebox(0,0)[cc]{0}}
+\put(5,145.75){\circle{1}}
+\put(4.75,131.25){\circle{1}}
+\put(-12.75,138.75){\circle{1}}
+\put(4.5,127.25){\makebox(0,0)[cc]{$v_3$}}
+\put(4.75,148.5){\makebox(0,0)[cc]{$v_2$}}
+\put(-15.75,138.5){\makebox(0,0)[cc]{$v_1$}}
+\put(17.5,121.5){\makebox(0,0)[cc]{Figure 22}}
+\end{picture}
+\end{center}
+
+Unless otherwise stated, a graph in this monograph has no loops, multiple edges, or directed edges.
+
+\begin{description}
+
+\item[Problem 104:] Show that the sum of the entries in the $i$-th row (or $i$-th column) of $A(G)$ is the degree of vertex $v_i$.
+
+\item[Problem 105:] Show that the matrix $A^2$ need not be binary.
+
+\item[Problem 106:] Show that the entry in the $i$-th row and $j$-th column of $A^2$ gives the number of $v_i-v_j$ walks of length $2$. In particular, show that the $i$-th diagonal entry of $A^2$ is the degree of $v_i$.
+
+\item[Problem 107:] What is the corresponding interpretation of the $i,j$ entry of $A^k$? In particular, what is the meaning of the $i$-th diagonal entry of $A^3$?
+
+\item[Problem 108:] If $k$ is the smallest value for which the matrix $I+A+A^2+A^3+\cdots+A^k$ has no zero entries, show that $k$ is the diameter.
+
+\item[Problem 109:] Formulate a similar statement as the previous problem, for the radius of a graph.
+
+\item[Problem 110:] If in Problem 108, no such $k$ exists, what can be said about the graph?
+
+\item[Problem 111:] Label the vertices of $C_n$ with the set $v_1,v_2,\cdots,v_n$, so that $v_i$ is adjacent to $v_{i+1}$ for $i=1,2,\cdots,n-1$, and $v_1$ is adjacent to $v_n$. Now find the adjacency matrix of $C_n$ with this labeling. Find $A^2$ by squaring $A$, and also by using Problem 106.
+
+\end{description}
+
+
+\newpage
+
+
+\section*{Chapter II}
+\addcontentsline{toc}{section}{\numberline{}Chapter II}
+\markboth{Chapter II}{Chapter II}
+
+\textbf{2.1}: If a spanning tree of a connected graph $G$ is a path, it is called a \emph{spanning path}. A graph having such a spanning path shall be called \emph{path-spannable}. It is easy to see that $C_n$ is path-spannable. On the other hand, $K_{1,n}$ (star graph) with $n$ larger than two is not path-spannable. (Why?).
+
+Other examples of path-spannable graphs are $W_n$ and $K_n$. Trees which are not paths are not path-spannable. Which $K_{m,n}$ graphs are path-spannable? If a graph is unicyclic (containing exactly one cycle), determine necessary and sufficient conditions for it to be path-spannable.
+
+Show that all outer-planar graphs are path-spannable. Can you find additional classes of graphs which are or are not path-spannable? Try to establish criteria for determining whether or not a graph is path-spannable. This last task should only be attempted after much thought about specific classes of graphs, and after drawing and examining many individual graphs.
+
+\vspace{0.5cm}
+
+\textbf{2.2}: Among all trees on $n$ vertices, show that $P_n$ has the largest diameter (it is $n-1$), and $K_{1,n-1}$ has the smallest diameter (two). (Assume $n$ is larger than three.)
+
+Observe that the maximum degree of the vertices of $P_n$ is $2$, while the maximum degree of $K_{1,n-1}$ is $n-1$. Note that $n-1$ is the largest degree that can occur in a tree on $n$ vertices. This seems to suggest that there is an inverse relationship between the maximum degree of a tree and its diameter.
+
+On the other hand, since the sum of the degrees of a tree on $n$ vertices must equal $2n-2$, increasing the maximum degree must lower the degrees of some of the rest of the vertices. Notice that all but one of the vertices of $K_{1,n-1}$ are end vertices, i.e. vertices of degree $1$. On the other hand, only two vertices of $P_n$ are that small, the rest having degree $2$.
+
+This brings us to the main question here. Can you establish a connection between the degree sequence of a tree on $n$ vertices and its diameter? Can you do the same for the radius?
+
+Before attempting the second question, you should examine the relationship between the radius and diameter of a tree. Of course, for any graph, the diameter is less than or equal to twice the radius. (See Problem 51, chapter I.) More, however, can be said for trees.
+
+\vspace{0.5cm}
+
+\textbf{2.3}: Given a connected graph $G$, what is the largest number of end vertices that a spanning tree of $G$ can have? For $K_n$ we find, not surprisingly, a spanning tree with $n-1$ end vertices. This number is clearly an upper bound for all graphs on $n$ vertices.
+
+This upper bound is realized, however, by $W_n$, which has far fewer edges than $K_n$ for large values of $n$.
+
+Try as hard as you may, but you won't be able to produce a spanning tree with only two end vertices for $C_n$, no matter how large $n$ is. An upper bound for unicyclic graphs is four (verify this), which leads one to suspect that the number of cycles in $G$ may be relevant.
+
+\vspace{0.5cm}
+
+\textbf{2.4}: If one considers the graphs $G$, $H$, and $J$ of figure 7 (chapter I), all of which are \emph{unlabeled} (i.e. the vertices are unlabeled), one can nevertheless refer unambiguously to certain vertices in them. One can refer, for example, to the point of degree $4$ in $J$, or to the point of degree $3$ in $H$. One could not single out a point of degree $1$ in $J$, because there are four such points. In fact, the four end vertices are \emph{indistinguishable}. The two end vertices in $H$ which are adjacent to the point of degree three form an indistinguishable set. How can you characterize the third end vertex of $H$?
+
+Find the two indistinguishable sets of $G$ in figure 7. Notice that the description ``the point of degree $2$'' does not single out any vertex, since three vertices have degree two. But these three vertices do not comprise an indistinguishable set since one of them is the center of $G$. Can you find a graph such that its entire vertex set is an indistinguishable set? Can you find a graph such that every vertex is uniquely characterizable? How about graphs with only one pair of indistinguishable vertices? Analyze as many graphs as you can regarding the existence of indistinguishable sets. Include $W_n$, $K_n$, $K_{1,n}$, $K_{m,n}$, $C_n$, $P_n$, $k$-regular graphs, trees, unicyclic graphs, and as many randomly drawn graphs as is possible.
+
+List all relevant criteria for distinguishing a vertex; e.g. degree, eccentricity, distance from some distinguished point, membership in a cycle, being a cutpoint, belonging to one set of a bipartite graph, etc. Often, combinations of these will distinguish a point. In figure 4, for example, vertex $x$ is the only vertex of degree $3$ which is adjacent to an end vertex (i.e. vertex $s$); note that neither property alone characterizes $x$, as there are four vertices of degree $3$, and there are two vertices adjacent to end vertices. However, $x$ is the only vertex with \emph{both} properties. In figure 5, vertices $x$ and $v$ are indistinguishable. Note that both have degree four and both are adjacent to end vertices. Is this observation sufficient to conclude that $x$ and $v$ are indistinguishable? Before you answer, consider the graph of figure 23 below. Why are vertices $x$ and $v$ distinguishable, even though they have the same degree and are both adjacent to end vertices?
+
+\begin{center}
+%TeXCAD Picture [gt-fig23.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(49.75,37)(-15,100)
+%\emline(-2.25,111.25)(12.25,136.5)
+\multiput(-2.25,111.25)(.03372093,.05872093){430}{\line(0,1){.05872093}}
+%\end
+\put(12.25,136.5){\line(0,-1){13}}
+%\emline(12.25,123.5)(-1.75,111.5)
+\multiput(12.25,123.5)(-.039325843,-.033707865){356}{\line(-1,0){.039325843}}
+%\end
+%\emline(-1.75,111.5)(-1.5,111.25)
+\multiput(-1.75,111.5)(.03125,-.03125){8}{\line(0,-1){.03125}}
+%\end
+%\emline(12.5,123.5)(23.25,111.5)
+\multiput(12.5,123.5)(.03369906,-.037617555){319}{\line(0,-1){.037617555}}
+%\end
+%\emline(23.25,111.5)(12.25,131.25)
+\multiput(23.25,111.5)(-.033639144,.060397554){327}{\line(0,1){.060397554}}
+%\end
+\put(-12,111){\line(1,0){46}}
+\put(12.5,136.5){\circle{1}}
+\put(12.5,131){\circle{1}}
+\put(12.5,123.25){\circle{1}}
+\put(23.75,111){\circle{1}}
+\put(34.25,111){\circle{1}}
+\put(-2.25,111){\circle{1}}
+\put(-11.75,111){\circle{1}}
+\put(11.25,103.75){\makebox(0,0)[cc]{Figure 23}}
+\put(-2.75,107.25){\makebox(0,0)[cc]{$x$}}
+\put(24.25,107.5){\makebox(0,0)[cc]{$v$}}
+\end{picture}
+\end{center}
+
+\vspace{0.5cm}
+
+\textbf{2.5}: An adjacency matrix of a graph $G$ has enough information in it to enable one to construct $G$. Since the diagonal consists of zeros, and since the matrix is symmetric, one need only examine the entries $A_{ij}$ for which $i$ is strictly greater than $j$. For a graph on $n$ vertices, this amounts to $\frac{(n^2-n)}{2}$ entries.
+
+Needless to say, for large $n$, this can be an enormous amount of information. Now, the degree sequence of $G$ contains only $n$ numbers. Unfortunately, two non-isomorphic graphs can have the same degree sequence. The two graphs of figure 24 have the same degree sequence: $(4,2,2,1,1,1,1)$; they are, however, non-isomorphic. (Show this!)
+
+\begin{center}
+%TeXCAD Picture [gt-fig24.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(103.25,26.25)(-10,110)
+\put(-8.5,127){\line(1,0){44.5}}
+\put(24,135.5){\line(0,-1){15.75}}
+\put(24,120){\line(0,-1){.75}}
+\put(71,135.5){\line(0,-1){16.75}}
+\put(49.25,127){\line(1,0){43.75}}
+\put(24,120){\circle{1}}
+\put(71,120){\circle{1}}
+\put(-8.25,127){\circle{1}}
+\put(2.5,127){\circle{1}}
+\put(13.25,127){\circle{1}}
+\put(24,127){\circle{1}}
+\put(36,127){\circle{1}}
+\put(49,127){\circle{1}}
+\put(59.5,127){\circle{1}}
+\put(71,127){\circle{1}}
+\put(82,127){\circle{1}}
+\put(92.75,127){\circle{1}}
+\put(71.25,135.5){\circle{1}}
+\put(24,135.5){\circle{1}}
+\put(44.25,114){\makebox(0,0)[cc]{Figure 24}}
+\end{picture}
+\end{center}
+
+Note that the points of degree four in the graphs of figure 24 have different eccentricities ($2$ and $3$). This seems to suggest the possibility that $n$ ordered pairs, i.e. the degree and eccentricity of each vertex, might determine a graph. This involves only $2n$ pieces of information. Test this conjecture. If you find that it is not true, perhaps additional hypotheses about $G$ might be needed to make the conjecture valid. For example, perhaps it is true for trees, or for connected graphs with vertex disjoint cycles. (Cycles which do not share any vertices are \emph{vertex disjoint}.) Perhaps the conjecture is true for graphs with small enough diameters.
+
+There is a good research principle in the above paragraph. If a conjecture is false, before you discard it, see if there are additional hypotheses under which it is true.
+
+Another promising idea is to see if the \emph{distance-degree sequences} of the vertices of a graph contain enough information to construct it. The $k$-th entry of the vertex $v_i$'s distance-degree sequence (DDS) is the number of vertices whose distance from $v_i$ equals $k$. The first entry is clearly the degree of $v_i$. The total number of entries in the DDS of a vertex equals the eccentricity of that vertex.
+
+Show that the total number of entries in all the DDSs of a graph $G$ on $n$ vertices cannot exceed $n \cdot d(G)$. Hint: recall that the diameter of $G$ is its maximum vertex eccentricity.
+
+If $n$ is very large and the diameter is small, then $n \cdot d(G)$ is better than $\frac{(n^2-n)}{2}$ entries from the adjacency matrix. The key question is: is a graph $G$ constructible from the DDSs of its vertices? If so, how does one go about constructing $G$? If the answer is no, will additional hypotheses make it true? Put another way, are there classes of graphs which are constructible from their DDSs? In other words are there classes of graphs such that two non-isomorphic graphs of that class cannot have the same set of DDSs?
+
+\vspace{0.5cm}
+
+\textbf{2.6}: Relabeling the vertices of a graph can change its adjacency matrix. Figure 25 shows two different matrices corresponding to two isomorphic graphs with different labeling.
+
+\begin{center}
+%TeXCAD Picture [gt-fig25.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(81.5,42)(-20,85)
+\put(-16,126.5){\line(1,0){30.75}}
+\put(30.5,126.5){\line(1,0){30.75}}
+\put(-16.25,126.5){\circle{1}}
+\put(-1.5,126.25){\circle{1}}
+\put(14.5,126.5){\circle{1}}
+\put(30.5,126.25){\circle{1}}
+\put(45.5,126.5){\circle{1}}
+\put(61,126.5){\circle{1}}
+\put(-8.75,114.5){\line(0,-1){18.25}}
+\put(38,114.5){\line(0,-1){18.25}}
+\put(-8.75,96.25){\line(1,0){1}}
+\put(38,96.25){\line(1,0){1}}
+\put(-8.5,114.5){\line(1,0){.5}}
+\put(38.25,114.5){\line(1,0){.5}}
+\put(4.25,114.5){\line(1,0){.75}}
+\put(51,114.5){\line(1,0){.75}}
+\put(5,114.5){\line(0,-1){18.25}}
+\put(51.75,114.5){\line(0,-1){18.25}}
+\put(5,96.25){\line(-1,0){1}}
+\put(51.75,96.25){\line(-1,0){1}}
+\put(-5.75,111.5){\makebox(0,0)[cc]{0}}
+\put(41,111.5){\makebox(0,0)[cc]{0}}
+\put(-5.75,104){\makebox(0,0)[cc]{1}}
+\put(41,104){\makebox(0,0)[cc]{1}}
+\put(-5.75,97){\makebox(0,0)[cc]{0}}
+\put(41,97){\makebox(0,0)[cc]{1}}
+\put(-1.75,111.5){\makebox(0,0)[cc]{1}}
+\put(45,111.5){\makebox(0,0)[cc]{1}}
+\put(-1.75,104){\makebox(0,0)[cc]{0}}
+\put(45,104){\makebox(0,0)[cc]{0}}
+\put(-1.75,97){\makebox(0,0)[cc]{1}}
+\put(45,97){\makebox(0,0)[cc]{0}}
+\put(1.75,111.5){\makebox(0,0)[cc]{0}}
+\put(48.5,111.5){\makebox(0,0)[cc]{1}}
+\put(1.75,104){\makebox(0,0)[cc]{1}}
+\put(48.5,104){\makebox(0,0)[cc]{0}}
+\put(1.75,97){\makebox(0,0)[cc]{0}}
+\put(48.5,97){\makebox(0,0)[cc]{0}}
+\put(-16.25,123.5){\makebox(0,0)[cc]{$v_1$}}
+\put(-1.75,122.75){\makebox(0,0)[cc]{$v_2$}}
+\put(14.5,123){\makebox(0,0)[cc]{$v_3$}}
+\put(30.5,123){\makebox(0,0)[cc]{$v_2$}}
+\put(45.5,122.75){\makebox(0,0)[cc]{$v_1$}}
+\put(60.75,123){\makebox(0,0)[cc]{$v_3$}}
+\put(22.75,88){\makebox(0,0)[cc]{Figure 25}}
+\end{picture}
+\end{center}
+
+What can be said about a graph whose adjacency matrices for all the different labelings of its vertices are the same? Give an example of such a graph.
+
+Can you show that if $A$ and $B$ are adjacency matrices of $G$ corresponding to two different labelings, then $B=P^{-1}AP$ where $P$ is a permutation matrix? (A permutation matrix is a matrix whose columns are the same as those of the identity, but are in different order.) Hint: $AP$ and $A$ have the same columns but they are in different order; i.e. $P$ multiplying $A$ from the right ``permutes'' its column order.
+
+In a similar way, $P^{-1}$ permutes the order of the rows of $AP$. Show that $B$ can be obtained from $A$ by the succession of these permutations.
+
+Many important properties of graphs can be deduced from their adjacency matrices under a particular labeling. If a graph on $n$ vertices has two components with $s$ and $t$ vertices, its vertices can be labeled $v_1$ through $v_n$ so that $v_1$ through $v_s$ belong to one component, and the remaining $t$ vertices ($v_{s+1}$ through $v_n$) belong to the other. The adjacency matrix will have two diagonal blocks of sizes $s \times s$ and $t\times t$ consisting entirely of zeros (denoted $0_{s \times s}$ and $0_{t \times t}$), and two rectangular binary blocks of sizes $s \times t$ and $t \times s$.
+
+Thus the property of being disconnected may be determined from the particular matrices which have the above-mentioned form. Unfortunately, there are $n!$ different labelings of some graphs, which means that for large $n$, such a search could be prohibitive. Are there ways to shorten the search, i.e. to reduce the number of adjacency matrices which must be examined?
+
+Show that the adjacency matrix of $K_n$ is $J_{n \times n} - I_{n \times n}$, where $J_{n \times n}$ consists entirely of ones and $I_{n \times n}$ is the identity matrix. (When the size of the matrices is clear, these matrices are denoted $J$ and $I$.) Is this true for any labeling of $K_n$?
+
+What clever method of detection can you devise for deciding whether a given graph is $K_{m,n}$? Hint: under some labeling, the matrix will contain two square diagonal blocks of sizes $m \times m$ and $n \times n$, and two off-diagonal blocks of sizes $m \times n$ and $n \times m$ consisting entirely of ones (i.e. the blocks are $O_{m \times m}$, $O_{n \times n}$, $J_{m \times n}$,  and $J_{n \times m}$). What about a bipartite graph on $m$ and $n$ vertices which is not complete? How will the blocks change?
+
+Find as many properties of graphs as you can which are deducible from the adjacency matrix. For example, can you find the eccentricity of a given vertex from the adjacency matrix (or its powers)? Given two vertices of $G$, can you find the distance between them from $A(G)$ and its powers (i.e. $A^2$, $A^3$, etc.)? Can the presence of cycles of various sizes be seen from the adjacency matrix? Hint: What connection is there between the $i$-th diagonal entry of $A^3$ and the number of triangles on which $v_i$ lies?
+
+\vspace{0.5cm}
+
+\textbf{2.7}: Given a connected graph $G$ which contains at least one cycle, there exists several spanning trees. These spanning trees may have different properties, such as radius, diameter, maximum vertex degree, center, etc.
+
+In figure 26, a graph $G$ together with four of its spanning trees are shown.
+
+\begin{center}
+%TeXCAD Picture [gt-fig26.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(112.5,57.5)(-15,70)
+\put(-9.75,124.5){\line(1,0){11.5}}
+\put(73.25,124.5){\line(1,0){11.5}}
+\put(54.25,98){\line(1,0){11.5}}
+\put(2,124.5){\line(1,0){11}}
+\put(85,124.5){\line(1,0){11}}
+\put(24.75,98.25){\line(1,0){11}}
+\put(13,124.5){\line(0,-1){10}}
+\put(54.5,124.5){\line(0,-1){10}}
+\put(77,98){\line(0,-1){10}}
+\put(35.75,98.25){\line(0,-1){10}}
+\put(13,114.5){\line(-1,0){11}}
+\put(54.5,114.5){\line(-1,0){11}}
+\put(96,114.5){\line(-1,0){11}}
+\put(77,88){\line(-1,0){11}}
+\put(2,114.5){\line(0,1){10}}
+\put(43.5,114.5){\line(0,1){10}}
+\put(85,114.5){\line(0,1){10}}
+\put(66,88){\line(0,1){10}}
+\put(24.75,88.25){\line(0,1){10}}
+\put(2,114.5){\line(-1,0){11.5}}
+\put(43.5,114.5){\line(-1,0){11.5}}
+\put(85,114.5){\line(-1,0){11.5}}
+\put(66,88){\line(-1,0){11.5}}
+\put(24.75,88.25){\line(-1,0){11.5}}
+\put(-9.5,114.5){\line(0,1){9.75}}
+\put(32,114.5){\line(0,1){9.75}}
+\put(13.25,88.25){\line(0,1){9.75}}
+\put(2,124.5){\circle{1}}
+\put(13,124.5){\circle{1}}
+\put(13,114.5){\circle{1}}
+\put(2,114.5){\circle{1}}
+\put(-9.5,114.75){\circle{1}}
+\put(-9.5,124.25){\circle{1}}
+\put(13.5,98){\circle{1}}
+\put(13.25,88){\circle{1}}
+\put(24.75,88){\circle{1}}
+\put(25,98){\circle{1}}
+\put(35.75,98){\circle{1}}
+\put(35.75,88.25){\circle{1}}
+\put(55,88){\circle{1}}
+\put(54.5,98){\circle{1}}
+\put(65.75,97.75){\circle{1}}
+\put(66.25,88.25){\circle{1}}
+\put(77.25,97.75){\circle{1}}
+\put(43.5,114.5){\circle{1}}
+\put(43.5,124.25){\circle{1}}
+\put(54.5,124.25){\circle{1}}
+\put(54.5,114.25){\circle{1}}
+\put(32,114.75){\circle{1}}
+\put(32,124){\circle{1}}
+\put(73.25,124.5){\circle{1}}
+\put(73.75,114.5){\circle{1}}
+\put(85.25,114.5){\circle{1}}
+\put(96,114.5){\circle{1}}
+\put(95.75,124.25){\circle{1}}
+\put(85,124.5){\circle{1}}
+\put(77,87.75){\circle{1}}
+\put(-12,127){\makebox(0,0)[cc]{$a$}}
+\put(29.5,127){\makebox(0,0)[cc]{$a$}}
+\put(70.25,127){\makebox(0,0)[cc]{$a$}}
+\put(52,99.75){\makebox(0,0)[cc]{$a$}}
+\put(11.5,100.75){\makebox(0,0)[cc]{$a$}}
+\put(2.75,127.5){\makebox(0,0)[cc]{$b$}}
+\put(44.25,127.5){\makebox(0,0)[cc]{$b$}}
+\put(85,127.5){\makebox(0,0)[cc]{$b$}}
+\put(66.75,100.25){\makebox(0,0)[cc]{$b$}}
+\put(24.75,100.75){\makebox(0,0)[cc]{$b$}}
+\put(15.25,127){\makebox(0,0)[cc]{$c$}}
+\put(56.75,127){\makebox(0,0)[cc]{$c$}}
+\put(97.5,127){\makebox(0,0)[cc]{$c$}}
+\put(79.25,99.75){\makebox(0,0)[cc]{$c$}}
+\put(37.25,100.25){\makebox(0,0)[cc]{$c$}}
+\put(-11.5,110.5){\makebox(0,0)[cc]{$d$}}
+\put(30,110.5){\makebox(0,0)[cc]{$d$}}
+\put(70.75,110.5){\makebox(0,0)[cc]{$d$}}
+\put(52.5,83.25){\makebox(0,0)[cc]{$d$}}
+\put(12,84.25){\makebox(0,0)[cc]{$d$}}
+\put(2,111.5){\makebox(0,0)[cc]{$e$}}
+\put(43.5,111.5){\makebox(0,0)[cc]{$e$}}
+\put(84.25,111.5){\makebox(0,0)[cc]{$e$}}
+\put(66,84.25){\makebox(0,0)[cc]{$e$}}
+\put(24,84.75){\makebox(0,0)[cc]{$e$}}
+\put(15.25,111){\makebox(0,0)[cc]{$f$}}
+\put(56.75,111){\makebox(0,0)[cc]{$f$}}
+\put(97.5,111){\makebox(0,0)[cc]{$f$}}
+\put(79.25,83.75){\makebox(0,0)[cc]{$f$}}
+\put(37.25,84.25){\makebox(0,0)[cc]{$f$}}
+\put(2.25,106.25){\makebox(0,0)[cc]{$G$}}
+\put(43.5,106){\makebox(0,0)[cc]{$T_1$}}
+\put(84.75,106){\makebox(0,0)[cc]{$T_2$}}
+\put(26.75,77.75){\makebox(0,0)[cc]{$T_3$}}
+\put(66,77.75){\makebox(0,0)[cc]{$T_4$}}
+\put(44,73.75){\makebox(0,0)[cc]{Figure 26}}
+\end{picture}
+\end{center}
+
+For $G$ in figure 26, $e(b)=e(e)=2$, while the eccentricities of the remaining vertices are equal to three. Then $C(G)=(b,e)$, $r(G)=2$, and $d(G)=3$. The degree sequence of $G$ is $(3,3,2,2,2,2)$. Find similar information for each spanning tree of $G$ shown in figure 26. Note that the radius and diameter of $G$ are ``preserved'' in $T_2$, i.e. $r(T_2)=r(G)$ and $d(T_2)=d(G)$. (Verify)
+
+A spanning tree which has the same radius as the original graph is called \emph{radius-preserving}, with a similar definition for \emph{diameter-preserving}. Note that $C(T_2)=(b,e)=C(G)$, so that $T_2$ is also \emph{center-preserving}. Are these three properties related in any way? Does, for example, a radius-preserving spanning tree have to be diameter preserving? Must it be center-preserving? Show in particular that a diameter-preserving spanning tree is always radius-preserving, while the converse is not true.
+
+If $G$ is a connected graph containing at least one cycle, can a spanning path be diameter preserving? With what additional hypotheses on $G$ can a spanning path be radius preserving? Note that in figure 26, $T_3$ is a spanning path of $G$ which is not radius preserving so clearly additional hypotheses are called for.
+
+\vspace{0.5cm}
+
+\textbf{2.8}: Show that every connected graph has a radius-preserving spanning tree. Create an algorithm to construct such a spanning tree from a given graph. Is there any relation between the center of a radius-preserving spanning tree of $G$ and $C(G)$? Recall that the center of any tree contains at most two (adjacent) vertices.
+
+\vspace{0.5cm}
+
+\textbf{2.9}: Find as many classes of graphs with diameter-preserving spanning trees. An example is $W_n$ which has diameter two, and is spanned by the tree $K_{1,n-1}$ which also has diameter two. If possible, develop criteria for determining whether a graph has a diameter-preserving spanning tree. What applications can you think of for the questions in 2.7, 2.8, and 2.9?
+
+\vspace{0.5cm}
+
+\textbf{2.10}: Let $T$ be a spanning tree of a graph $G$. Then if $v$ is a vertex of $G$, denote its degree in $G$ by $d_G(v)$, and its degree in $T$ by $d_T(G)$. How are these two numbers related? Given a vertex $v$ in spanning tree $T$ of $G$, its \emph{deficiency} in $T$, $\text{def}_T(v)$, shall be defined as $d_G(v)-d_T(v)$. A vertex whose deficiency is $k$ shall be termed $k$-deficient. Of particular interest are $0$-deficient vertices, i.e. vertices whose degrees are preserved in $T$. Why must an end vertex of $G$ be $0$-deficient in any spanning tree of $G$?
+
+Find a relation between the degree sequences of $G$ and $T$ and the sequence of deficiencies of the vertices of $T$.
+
+Given any vertex of $v$ of $G$, can one always find a spanning tree of $G$ in which $v$ is $0$-deficient? Given a set of vertices of $G$, when will a spanning tree exist for which all the vertices of the set are $0$-deficient? Clearly, given three mutually adjacent vertices in $G$, i.e. vertices of a triangle in $G$, no spanning tree exists in which the three vertices are $0$-deficient, since at least one edge of the triangle must be deleted in forming any spanning tree, lest it contain a cycle.
+
+\vspace{0.5cm}
+
+\textbf{2.11}: A graph that contains a spanning cycle is called \emph{hamiltonian}. Trivially, $C_n$ is hamiltonian. Show that $K_n$ and $W_n$ are hamiltonian. If a planar graph is outer planar, then it is hamiltonian (verify this). Is the converse true?
+
+Find as many hamiltonian graphs as you can. Find criteria for showing that certain graphs are not hamiltonian. A graph containing a bridge, for example, cannot be hamiltonian. Show that the only unicyclic hamiltonian graphs are cycles.
+
+Can one verify that a graph is hamiltonian from its adjacency matrix? If so, how can this be done efficiently? (In other words, must one examine all the $n^2$ entries of $A(G)$? For large values of $n$, this is a time-consuming process.)
+
+Show that a graph which contains a cutpoint is not hamiltonian.
+
+(Note that this implies the statement above, that a graph containing a bridge is not hamiltonian.) Now, suppose a graph $G$ contains exactly three cycles and no cutpoints. Such a graph is pictured in figure 27. It contains cycles with $7$, $6$, and $5$ edges. Under what condition(s) will this kind of graph be hamiltonian? Show that the graph of figure 27 is not hamiltonian.
+
+\begin{center}
+%TeXCAD Picture [gt-fig27.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(52.5,37)(0,0)
+\put(2.75,11.25){\framebox(49,25.5)[cc]{}}
+\put(27.75,36.5){\line(0,-1){25.5}}
+\put(3,36.5){\circle{1}}
+\put(3,23.75){\circle{1}}
+\put(2.75,11.25){\circle{1}}
+\put(28,24){\circle{1}}
+\put(27.75,11.25){\circle{1}}
+\put(51.75,11){\circle{1}}
+\put(52,36.5){\circle{1}}
+\put(27.75,36.5){\circle{1}}
+\put(27.75,3){\makebox(0,0)[cc]{Figure 27}}
+\end{picture}
+\end{center}
+
+\vspace{0.5cm}
+
+\textbf{2.12}: Show that the center of a graph whose blocks are all complete (i.e. each block is isomorphic to a complete graph) consists of either all the vertices of one of its blocks, or a single cutpoint. Draw examples of both possibilities. Must all of the vertices of a complete block have the same eccentricity? Hint: those points which are not cutpoints must have the same eccentricity. When must the cutpoints also have the same eccentricity?
+
+\vspace{0.5cm}
+
+\textbf{2.13}: Show that the center of any connected graph lies \emph{in} a block. Hint: prove this by contradiction. Assume that $x$ is a cutpoint of $G$ and belongs to $C(G)$. Now assume that $y$ and $z$ are also center points of $G$ belonging to different blocks of $G$ which share cutpoint $x$. By assumption, $e(x)=e(y)=e(z)=r(G)$. Now show that $e(x)$ must be strictly less than $r$.
+
+\vspace{0.5cm}
+
+\textbf{2.14}: In section 2.5 above, the distance-degree sequence (DDS) of a vertex of $G$ was defined. If all of the vertices of $G$ have the same DDS, then $G$ is called \emph{distance-degree regular}, or DDR. Examples of DDR graphs are $K_n$ and $C_n$. Construct a regular graph which is not DDR. Of course, DDR graphs are regular, so the converse is impossible, i.e. one cannot construct a DDR graph which is not regular.
+
+Find some other examples of DDR graphs. State as many conclusions as you can about DDR graphs with additional properties, e.g. DDR graphs of diameter not exceeding three, DDR graphs which are $2$-regular, etc. Are there circumstances which permit one to conclude that the complement of a DDR graph is DDR? (Clearly the complement is regular.)
+
+\vspace{0.5cm}
+
+\textbf{2.15}: A graph $G$ is \emph{eulerian} if it contains a circuit which contains all the edges of $G$. (A convenient way to picture such a graph is that it can be drawn on $n$ vertices without lifting one's pencil from the paper and without retracing any edge. Of course, the ``drawing'' must end at the initial vertex, since it is a circuit.) Note that vertices may be revisited in a circuit. Can you find a circuit in figure 28 which traverses each edge of the graph?
+
+\begin{center}
+%TeXCAD Picture [gt-fig28.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(70,33.06)(-20,100)
+\put(-17.25,110.5){\framebox(66.75,21.75)[cc]{}}
+\put(6.5,132.25){\line(0,-1){21.75}}
+%\emline(6.5,110.5)(28.5,132)
+\multiput(6.5,110.5)(.034482759,.03369906){638}{\line(1,0){.034482759}}
+%\end
+\put(28.5,132){\line(0,-1){21.5}}
+%\emline(28.5,110.5)(6.75,132)
+\multiput(28.5,110.5)(-.034090909,.03369906){638}{\line(-1,0){.034090909}}
+%\end
+\put(-17.25,132){\circle{1}}
+\put(-17.25,110.5){\circle{1}}
+\put(6.5,110.25){\circle{1}}
+\put(28.5,110.5){\circle{1}}
+\put(28.5,132.5){\circle{1}}
+\put(6.75,132){\circle{1}}
+\put(49.5,132.25){\circle{1}}
+\put(49.5,110.25){\circle{1}}
+\put(18,103.5){\makebox(0,0)[cc]{Figure 28}}
+\end{picture}
+\end{center}
+
+Show that a (connected) graph is eulerian if and only if each vertex is even, i.e. has an even degree.
+
+For which values of $m$ and $n$ is $K_{m,n}$ eulerian? Which trees are eulerian? Show that $W_n$ is not eulerian.
+
+What can be said about the adjacency matrix of an eulerian graph? Show that an eulerian graph is path-spannable (see 2.1). Is the converse true? Is there a relation between eulerian and hamiltonian graphs? Before you answer, find a hamiltonian graph which is not eulerian, and an eulerian graph which is not hamiltonian. Recall that the edges of a spanning cycle in a hamiltonian graph do not have to include all the edges of the graph, while the circuit of an eulerian graph must include all the edges. Also, bear in mind that a cycle and a circuit differ in that a circuit may visit any of its vertices more than once, while a cycle may only return to an initial vertex.
+
+List as many classes of graphs as you can which are (or are not) eulerian.
+
+\vspace{0.5cm}
+
+\textbf{2.16}: If the diameter of a graph $G$ is larger than two, then $d(G^C)$ is less than four. Prove this. Show as a result that the diameter of a self-complementary graph (see Problem 29, chapter I) cannot exceed three. Can it be one? $C_5$ is an example of a self-complementary graph of degree two.
+
+\vspace{0.5cm}
+
+\textbf{2.17}: Let $U$ and $V$ be connected graphs on $n$ and $m$ vertices respectively. Then the \emph{product} of $U$ and $V$, denoted $U \times V$, is defined as follows. $G = U \times V$ has a vertex set $g_{ij}$ where $1 \leq i \leq n$ and $1 \leq j \leq m$. ($G$ has $nm$ vertices.) Moreover, $g_{rs}$ is adjacent to $g_{pq}$ if and only if either
+\begin{enumerate}[\hspace{1cm}(1)]
+  \item $r=p$ and $v_s$ is adjacent to $v_q$ in $V$, or
+  \item $s=q$ and $u_r$ is adjacent to $u_p$ in $U$.
+\end{enumerate}
+
+If $U$ and $V$ have $e_1$ and $e_2$ edges respectively, how many edges are in $U \times V$?
+
+Figure 29 illustrates the above discussion. $U$ is $K_2$, and $V$ is $C_3$. Notice the two subgraphs in $U \times V$ which are isomorphic to $C_3(V)$ (namely the subgraphs induced by the sets $g_{11}, g_{12}, g_{13}$ and $g_{21}, g_{22}, g_{23}$). Note also, the three subgraphs induced by the set $g_{11}, g_{21}$, the set $g_{12}, g_{22}$, and the set $g_{13}, g_{23}$, are all isomorphic to $K_2(U)$. Generalize to any product.
+
+\begin{center}
+%TeXCAD Picture [gt-fig29.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(95,49)(0,0)
+\put(5.25,39){\line(0,-1){16.5}}
+%\emline(29.5,37.75)(22.5,25)
+\multiput(29.5,37.75)(-.03365385,-.06129808){208}{\line(0,-1){.06129808}}
+%\end
+\put(22.5,25){\line(1,0){12.25}}
+%\emline(34.75,25)(29.5,37.75)
+\multiput(34.75,25)(-.03365385,.08173077){156}{\line(0,1){.08173077}}
+%\end
+\put(61.75,16.75){\framebox(29.25,18.75)[cc]{}}
+\put(76.25,35.25){\line(0,-1){10.25}}
+%\emline(76.25,25)(61.75,17)
+\multiput(76.25,25)(-.06092437,-.03361345){238}{\line(-1,0){.06092437}}
+%\end
+%\emline(76.25,25)(90.75,17)
+\multiput(76.25,25)(.06092437,-.03361345){238}{\line(1,0){.06092437}}
+%\end
+\put(76.25,35.5){\line(0,1){10.25}}
+%\emline(76.25,45.75)(62,35.5)
+\multiput(76.25,45.75)(-.046875,-.033717105){304}{\line(-1,0){.046875}}
+%\end
+%\emline(76.5,45.75)(90.75,35.75)
+\multiput(76.5,45.75)(.047979798,-.033670034){297}{\line(1,0){.047979798}}
+%\end
+\put(90.75,35.5){\circle{1}}
+\put(91.25,17){\circle{1}}
+\put(76.25,24.75){\circle{1}}
+\put(61.75,17){\circle{1}}
+\put(62,35.5){\circle{1}}
+\put(76.25,45.75){\circle{1}}
+\put(29.25,37.5){\circle{1}}
+\put(34.75,24.75){\circle{1}}
+\put(22.5,24.75){\circle{1}}
+\put(5.25,38.75){\circle{1}}
+\put(5.25,22.75){\circle{1}}
+\put(5.25,9.75){\makebox(0,0)[cc]{$U$}}
+\put(29.75,9.5){\makebox(0,0)[cc]{$V$}}
+\put(76.75,9.5){\makebox(0,0)[cc]{$U \times V$}}
+\put(58,15.25){\makebox(0,0)[cc]{$g_{22}$}}
+\put(94.75,15.75){\makebox(0,0)[cc]{$g_{23}$}}
+\put(95,35.25){\makebox(0,0)[cc]{$g_{13}$}}
+\put(80,26.25){\makebox(0,0)[cc]{$g_{21}$}}
+\put(78.75,49){\makebox(0,0)[cc]{$g_{11}$}}
+\put(57.5,38.5){\makebox(0,0)[cc]{$g_{12}$}}
+\put(33,39.25){\makebox(0,0)[cc]{$v_1$}}
+\put(36,21.5){\makebox(0,0)[cc]{$v_3$}}
+\put(22,21){\makebox(0,0)[cc]{$v_2$}}
+\put(5,18.75){\makebox(0,0)[cc]{$u_2$}}
+\put(3.75,42){\makebox(0,0)[cc]{$u_1$}}
+\put(46,4){\makebox(0,0)[cc]{Figure 29}}
+\end{picture}
+\end{center}
+
+Show that if $U$ and $V$ are planar, $U \times V$ need not be planar. Under what assumptions about $U$ and $V$ must $U \times V$ be planar?
+
+If $U$ is a tree and $V$ is $K_2$, show that the cycles of $U \times V$ are even. Extend this result if $V$ is any tree.
+
+Show that if the diameter of $U$ is two and if $V$ is $K_2$, then the diameter of $U \times V$ is three. Generalize this if the diameter of $U$ is $k$.
+
+How are the adjacency matrices of $U$ and $V$ related to the adjacency matrix of $U \times V$ of figure 29? Hint: relabel the vertices of $U \times V$ as $g_1, g_2, \cdots, g_6$ for $A(U \times V)$ in a clever way. ($A(U \times V)$ is the adjacency matrix of $U \times V$.) Can your result be generalized?
+
+In figure 29, it is not true that $U^C \times V^C = (U \times V)^C$. Is this ever true? In general, what common properties of $U$ and $V$ are carried over to $U \times V$? You may assume additional hypotheses where needed.
+
+\vspace{0.5cm}
+
+\textbf{2.18}: Given a connected graph $G$, we associate with it a new graph $b(G)$ called its \emph{block graph}, as follows. The vertices of $b(G)$ represent the blocks of $G$, i.e. each block of $G$ corresponds to a unique vertex in $b(G)$. Two vertices of $b(G)$ are adjacent if and only if the blocks which they represent share a common cutpoint in $G$. If $G$ has no cutpoints, i.e. if $k(G)$ is greater than one, then $b(G)$ is the trivial graph.
+
+Figure 30 shows a graph $G$ and its block graph $b(G)$. The blocks of $G$ are numbered to exhibit the correspondence with the vertices of $b(G)$. Figure 30 also shows the \emph{cutpoint graph}, denoted $c(G)$. (Do not confuse $c(G)$ with $C(G)$, the center of $G$!) The vertices of $c(G)$ correspond to the cutpoints of $G$, as is illustrated by the labelings in $c(G)$ and $G$ in figure 30. Two vertices of $c(G)$ are adjacent if and only if the cutpoints to which they correspond share a common block in $G$.
+
+\begin{center}
+%TeXCAD Picture [gt-fig30.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(93.25,61.75)(0,0)
+\put(4.75,49.25){\line(1,0){77.25}}
+\put(24.5,37.25){\line(-1,0){22}}
+\put(2.75,37.25){\line(0,1){12}}
+\put(2.75,49.25){\line(1,0){3.25}}
+\put(46.5,49){\line(0,-1){11.75}}
+%\emline(46.5,37.25)(24.5,49)
+\multiput(46.5,37.25)(-.063037249,.033667622){349}{\line(-1,0){.063037249}}
+%\end
+\put(70.5,49){\line(0,-1){11.75}}
+%\emline(70.5,37.25)(46.5,49)
+\multiput(70.5,37.25)(-.068767908,.033667622){349}{\line(-1,0){.068767908}}
+%\end
+\put(82,49.25){\line(1,0){10.75}}
+%\emline(70.75,48.75)(91.25,37.25)
+\multiput(70.75,48.75)(.060117302,-.03372434){341}{\line(1,0){.060117302}}
+%\end
+\put(24.5,37.25){\line(0,1){24}}
+\put(70.5,49.5){\line(0,1){12}}
+\put(4.25,14.25){\line(1,0){33.75}}
+\put(38,14.25){\line(0,1){10.25}}
+\put(38,24.5){\line(-1,0){12.25}}
+\put(25.75,24.5){\line(0,-1){10.25}}
+\put(25.75,14.25){\line(5,4){12.5}}
+%\emline(38.25,14.25)(26,24.25)
+\multiput(38.25,14.25)(-.041245791,.033670034){297}{\line(-1,0){.041245791}}
+%\end
+%\emline(4.25,14.25)(11.5,24.5)
+\multiput(4.25,14.25)(.03372093,.04767442){215}{\line(0,1){.04767442}}
+%\end
+%\emline(11.5,24.5)(17.25,14.25)
+\multiput(11.5,24.5)(.03362573,-.05994152){171}{\line(0,-1){.05994152}}
+%\end
+\put(60.5,21){\line(1,0){29.25}}
+\put(74.5,20.75){\circle{1}}
+\put(89.75,20.75){\circle{1}}
+\put(60.5,21){\circle{1}}
+\put(38,14.25){\circle{1}}
+\put(38,24.5){\circle{1}}
+\put(26,24.25){\circle{1}}
+\put(25.75,14){\circle{1}}
+\put(2.75,37.25){\circle{1}}
+\put(3,48.75){\circle{1}}
+\put(24.5,37){\circle{1}}
+\put(24.5,49.25){\circle{1}}
+\put(24.5,61){\circle{1}}
+\put(46.5,37.25){\circle{1}}
+\put(11.75,24.25){\circle{1}}
+\put(17.25,14){\circle{1}}
+\put(4.5,14.25){\circle{1}}
+\put(46.75,49.25){\circle{1}}
+\put(70.25,37){\circle{1}}
+\put(70.75,61.25){\circle{1}}
+\put(92.75,49.25){\circle{1}}
+\put(91.25,37.25){\circle{1}}
+\put(70.5,49){\circle{1}}
+\put(21.25,7){\makebox(0,0)[cc]{$b(G)$}}
+\put(74.5,7.5){\makebox(0,0)[cc]{$c(G)$}}
+\put(4.5,11.5){\makebox(0,0)[cc]{$1$}}
+\put(17,11){\makebox(0,0)[cc]{$3$}}
+\put(25.75,10.75){\makebox(0,0)[cc]{$4$}}
+\put(38.25,10.75){\makebox(0,0)[cc]{$7$}}
+\put(38.25,27.75){\makebox(0,0)[cc]{$6$}}
+\put(25.75,27.75){\makebox(0,0)[cc]{$5$}}
+\put(60.25,18.25){\makebox(0,0)[cc]{$a$}}
+\put(74.25,18){\makebox(0,0)[cc]{$b$}}
+\put(89.5,17.75){\makebox(0,0)[cc]{$c$}}
+\put(83.75,42.75){\makebox(0,0)[cc]{$7$}}
+\put(81,51.5){\makebox(0,0)[cc]{$6$}}
+\put(69.5,50.5){\makebox(0,0)[cc]{$c$}}
+\put(69,58.5){\makebox(0,0)[cc]{$5$}}
+\put(64.25,42.75){\makebox(0,0)[cc]{$4$}}
+\put(46.5,53.25){\makebox(0,0)[cc]{$b$}}
+\put(47,32){\makebox(0,0)[cc]{$G$}}
+\put(38,43.5){\makebox(0,0)[cc]{$3$}}
+\put(23.75,50.75){\makebox(0,0)[cc]{$a$}}
+\put(26.25,57.75){\makebox(0,0)[cc]{$2$}}
+\put(12.75,42.75){\makebox(0,0)[cc]{$1$}}
+\put(12,27.75){\makebox(0,0)[cc]{$2$}}
+\put(49.25,1.25){\makebox(0,0)[cc]{Figure 30}}
+\end{picture}
+\end{center}
+
+Show that the blocks of $b(G)$ and $c(G)$ are always complete. This is easy to verify for the graphs shown in figure 30, but will require a little thought to show for all graphs.
+
+An interesting concept in almost all of mathematics is iteration. Graph theory is no exception. Suppose one repeats the process by which $b(G)$ was obtained; or put another way, suppose one computes $b(b(G))$. This is an \emph{iterated} block graph. Show that $b(b(G))=c(G)$. Moreover, show that $b(c(G))=c(b(G))$. Can anything be said about $c(c(G))$?
+
+Show that in general, a graph cannot be reconstructed from its block graph or its cutpoint graph. In fact, even knowing both $b(G)$ and $c(G)$ will not enable one to reconstruct $G$. Are there any graphs which are determined from these graphs? (What information about a graph might enable one to reconstruct it from $b(G)$ and/or $c(G)$?)
+
+Are the diameters of $b(G)$ and $c(G)$ related? What can be said about $G$ if there are no bridges in $b(G)$? Show that $b(K_{1,n})=K_n$, while $c(K_{1,n})=K_1$. Show that $b(P_n)=P_{n-1}$. What is $c(P_n)$? Can a tree be reconstructed from its block graph and/or its cutpoint graph?
+
+How are the centers of $b(G)$ and $c(G)$ related? Do they have any connection with $G$? (In other words, what can one learn about $G$ from the centers of $b(G)$ and $c(G)$?) What can be said about $G$ if $b(G)$ is a tree? If $b(G)$ is a tree, when will $c(G)$ be a tree? When won't it?
+
+Let $x$ and $y$ be vertices belonging to distinct blocks of $G$. Let $v_i$ and $v_j$ be the vertices of $b(G)$ to which the blocks of $x$ and $y$ correspond. Find as many relationships as possible between $x-y$ geodesics in $G$ and $v_i-v_j$ geodesics in $b(G)$. In particular, show that $d(x,y) \geq d(v_i,v_j)-1$.
+
+Repeat the analysis of the above paragraph if the blocks of $G$ are complete. Under this assumption, what connection exists between the center of $G$ and the centers of $b(G)$ and $c(G)$? Hint: see 2.12. Find a simple relationship, in this case between $d(G)$, $d(b(G))$, and $d(c(G))$. In what way (or ways) can the behavior of a graph whose blocks are complete be called tree-like?
+
+\vspace{0.5cm}
+
+\textbf{2.19}: Show that if $A$ is the adjacency matrix of $G$, then the adjacency matrix of $G^C$ is $J-A-I$, where $J$ is a matrix consisting entirely of ones, i.e. $J_{ij}=1$. ($A$, $J$, and $I$ are, of course, $n \times n$.) Denote $J-A-I$ by $B$, and compute several powers of $B$. How can these matrices $(B^k)$ be used to find $d(u,v)$ in $G^C$ when $u$ and $v$ are adjacent in $G$? Note that when $u$ and $v$ are not adjacent in $G$, $d(u,v)$ in $G^C$ is one, i.e. $u$ and $v$ are adjacent in $G^C$.
+
+To facilitate computing powers of $B$, first show that $J^2=nJ$. Derive a general formula for $J^k$. Find expressions for $JA$ and $AJ$ using the degrees of the $n$ vertices of $G$. Denote the degree of vertex $v_i$ by $d_i$. Does $JA=AJ$, i.e. do $A$ and $J$ commute? If you answer is no, are there any circumstances under which they do?
+
+Draw as many conclusions as you can about the relation between $G$ and $G^C$ from the above matrix analysis. Assume additional hypotheses where needed. Redo Problem 59 of chapter I in light of the block form of the adjacency matrix of $K_{m,n}$ described in 2.6. Note the block form of a disconnected graph's adjacency matrix in the same section.
+
+\vspace{0.5cm}
+
+\textbf{2.20}: An important pseudograph (a graph which contains loops and multiple edges) associated with a planar graph $G$ is its \emph{dual}, denoted $G*$. Each vertex of $G*$ corresponds to a unique face of $G$. Then each edge of $G$ has a unique corresponding edge in $G*$ which connects the vertices corresponding to the two faces of $G$ between which the edge (of $G$) lies.
+
+Duality is a symmetric relationship, i.e. the dual of the dual of a planar graph of $G$ is $G$. In symbols, $(G^*)^*=G$. In particular, it had better be the case that $G^*$ is planar. Verify this. Show also that $G$ and $G^*$ have the same number of edges.
+
+Show that $G^*$ contains a loop if and only if $G$ contains a bridge. How many edges does $G^*$ have if $G$ is a tree on $n$ vertices? How many vertices does it have? If $G$ is any planar graph on $n$ vertices and having $e$ edges, how many vertices does $G^*$ have? (Assume $G$ is connected.)
+
+Show that $G^*$ has multiple edges if and only if there exists two faces of $G$ having more than one common edge. What conditions on $G$ will prevent this from happening?
+
+Figure 31 shows a graph and its dual. The vertices of the second graph are labeled so that the correspondence with the faces of the first graph is easily seen. Label the faces of the second graph and the vertices of the first graph, to exhibit their correspondence.
+
+Show that $W_n$ is isomorphic to its dual. Can you find other graphs having this property?
+
+\begin{center}
+%TeXCAD Picture [gt-fig31.pic]. Options:
+%\grade{\on}
+%\emlines{\off}
+%\epic{\off}
+%\beziermacro{\on}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{8.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{4.0000}
+\unitlength 1mm % = 2.85pt
+\linethickness{0.4pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi % GNUPLOT compatibility
+\begin{picture}(114.25,47.25)(0,0)
+\put(14.25,17.5){\framebox(22.5,25.5)[cc]{}}
+\put(37,17.5){\line(1,0){18.25}}
+\put(55.25,17.5){\line(1,0){3}}
+\bezier{313}(90.25,31)(80.75,34.13)(79.25,30.75)
+\bezier{269}(79.25,30.5)(80.38,28.88)(90,30.75)
+\put(90,30.75){\line(1,0){14.75}}
+\bezier{681}(79.25,30.5)(82.5,24.5)(104.75,30.5)
+\bezier{744}(104.75,30.75)(81.5,38.38)(79.25,30.5)
+\bezier{1103}(114.25,31)(94.38,47.25)(79,30.5)
+\bezier{1009}(79,30.25)(98.5,17)(114,30.75)
+\put(105,30.5){\circle{1}}
+\put(90,30.75){\circle{1}}
+\put(79,30.25){\circle{1}}
+%\emline(14.25,17.5)(36.75,43)
+\multiput(14.25,17.5)(.0337331334,.0382308846){667}{\line(0,1){.0382308846}}
+%\end
+\put(36.75,43){\circle{1}}
+\put(36.75,17.5){\circle{1}}
+\put(58,17.5){\circle{1}}
+\put(14.25,17.25){\circle{1}}
+\put(14.5,42.75){\circle{1}}
+\put(78.5,26.75){\makebox(0,0)[cc]{$v_1$}}
+\put(91.75,28.75){\makebox(0,0)[cc]{$v_2$}}
+\put(107.75,29.25){\makebox(0,0)[cc]{$v_3$}}
+\put(21.25,33){\makebox(0,0)[cc]{$F_2$}}
+\put(4.5,28.25){\makebox(0,0)[cc]{$F_1$}}
+\put(29,21.75){\makebox(0,0)[cc]{$F_3$}}
+\put(26.5,9.25){\makebox(0,0)[cc]{$G$}}
+\put(99,9.5){\makebox(0,0)[cc]{$G*$}}
+\put(64.75,3.5){\makebox(0,0)[cc]{Figure 31}}
+\end{picture}
+\end{center}
+
+Describe $(P_n)^*$. Describe, also, $(C_n)^*$. What is the effect on their duals of the topological difference between $P_n$ and $C_n$ (i.e. the fact that the edges of $C_n$ form a closed polygonal arc, while the edges of $P_n$ do not)?
+
+What can be said about a set of edges in $G^*$ which correspond to the edges of a cycle in $G$? Consider a cycle which forms the boundary of a face in $G$, and then consider the more difficult case of a cycle which is the boundary of a region consisting of several faces.
+
+A \emph{cotree} of $G$ is a subgraph obtained by deleting the edges of a spanning tree. Recall that deleting edges leaves the vertices intact, so the vertex set of a cotree is the same as the vertex set of $G$. Show that a cotree of a graph with $n$ vertices and $e$ edges has $e-n+1$ edges. (It is assumed here that $G$ is a connected graph. Its cotree, of course, need not be connected.) Show that a spanning subgraph of $G^*$ whose edges correspond with the edges of a spanning tree of $G$ is a cotree of $G*$.
+
+\vspace{0.5cm}
+
+\textbf{2.21}: The \emph{sum} of two cycles which share one or more edges in $G$ is the cycle whose vertices belong to the first or second cycle but not to both, and whose edge set is defined similarly. The sum of three cycles of $G$ is obtained by adding the first two cycles (assuming the addition is possible), and then adding the third to the sum of the first two (again assuming this is possible). A set of cycles in $G$ is \emph{linearly independent} if no cycle in the set can be expressed as the sum of any of the other cycles in the set. If a linearly independent set of cycles has the property that every cycle in $G$ can be expressed as a sum of cycles in the set, then the set is called a \emph{cycle basis} for $G$.
+
+A graph of $G$ can have several cycle bases, but the number of cycles in any of them is unique and is called the \emph{cyclomatic number} of $G$, or $\text{cn}(G)$. Show that $\text{cn}(C_n)=1$. Show that $\text{cn}(T)=0$, where $T$ is any tree. What is $\text{cn}(W_n)$?
+
+Show that $\text{cn}(G)=e-n+1$, where $n$ is the number of vertices of $G$ and $e$ is the number of edges. (Hint: this is the number of edges in a cotree of $G$. Now find a connection between $\text{cn}(G)$ and a cotree of $G$.) This formula is valid only for connected graphs.
+
+Note that the actual number of cycles in $G$ can be much larger than $cn(G)$. (Give some examples.) What can be said about graphs for which the number of cycles equals the cyclomatic number?
+
+In the formula $cn(G)=e-n+1$, it was assumed that $G$ is connected, since otherwise it would not have a spanning tree, and the hint suggesting a method of proof employing the cotree wouldn't be valid. If $G$ has $k$ components, where $k$ is greater than one, the formula is in fact incorrect. Can you modify the formula to obtain a correct result?
+
+Given a graph $G$ on $n$ vertices and $e$ edges, find a formula for $\text{cn}(G^*)$. Assume that $G$ is connected.
+
+A spanning tree of $G$ has a cotree in $G$ and a corresponding cotree in $G^*$ with the same number of edges as the spanning tree. (The cotree in $G$ generally does not have the same number of edges as the spanning tree.) Prove or disprove the conjecture that the number of components in one of these cotrees is equal to the cyclomatic number of the other cotree plus one.
+
+\vspace{0.5cm}
+
+\textbf{2.22}: Show that if $T_m$ and $T_n$ are trees with $m$ and $n$ vertices respectively, then the cyclomatic number of $T_m \times T_n$ is $(m-1)(n-1)$. Show that this is the number of cycles of $T_m \times T_n$ with four edges, which leads to the conclusion that $T_m \times T_n$ has a cycle basis consisting entirely of $4$-cycles, i.e. cycles with four edges.
+
+\vspace{0.5cm}
+
+\textbf{2.23}: If the cyclomatic number of a connected planar graph is $q$, can you find an upper bound for the number of cycles in $G$? Before you attempt an answer, study various graphs with cycles which share many edges. The cyclomatic number of the graph of figure 6 in chapter I is three -- yet it has six different (though not linearly independent) cycles. Repeat the problem for if $G$ is not necessarily planar.
+
+\vspace{0.5cm}
+
+\textbf{2.24}: How can the cyclomatic number of a graph be obtained from its adjacency matrix? Try to accomplish this with the least number of operations on the entries of the adjacency matrix and its powers. See if you can do this without using the formula for $\text{cn}(G)$ (where $G$ is connected), $\text{cn}(G)=e-n+1$. You may assume in this problem, however, that $G$ is connected. Do not assume planarity.
+
+\vspace{0.5cm}
+
+\textbf{2.25}: Is there any connection between the cyclomatic number of $G$ and the cyclomatic number of $G^C$? Perhaps your answer to the problem of 2.24 may help you answer this question.
+
+Given a graph on $n$ vertices, what is the maximum possible cyclomatic number?
+
+
+\newpage
+
+\section*{Bibliography}
+\addcontentsline{toc}{section}{\numberline{}Bibliography}
+\markboth{Bibliography}{Bibliography}
+
+
+Recommended books:
+
+\begin{enumerate}[1.]
+  \item Harary, F., \emph{Graph Theory}, Addison-Wesley, Reading Mass., 1969.
+  \item Bollobas, B., \emph{Graph Theory - An Introductory Course}, Springer-Verlag, N. Y. 1979.
+  \item Behzad, M., Chartrand, G., and Lesniak-Foster, L., \emph{Graphs And Digraphs}, Wadsworth, Belmont, Calif. 1979.
+  \item Ore, O., \emph{Graphs And Their Uses}, New Mathematical Library, MAA.
+  \item Fulkerson, D. R., \emph{Studies In Graph Theory I and II}, MAA Studies in Mathematics, MAA, 1975.
+  \item Temperley, H. N. V., \emph{Graph Theory And Its Applications}, Wiley and Sons, N.Y., 1981.
+\end{enumerate}
+
+\noindent Recommended journal articles in the American Mathematical Monthly:
+
+\begin{enumerate}[1.]
+  \item Harary, F. and Robinson, R., \emph{The Diameter Of A Graph And Its Compliment}, AMM, March 1985.
+  \item Lipschutz, S., \emph{Note On Graphs And Matrix Inequalities}, AMM, April 1985.
+  \item Stone, A. H., \emph{Trees And Power-Sums}, AMM, May 1985.
+  \item McKee, T. A., \emph{The Logic Of Graph-Theoretic Duality}, AMM, Aug.-Sept. 1985.
+\end{enumerate}
+
+
+\end{document}
+

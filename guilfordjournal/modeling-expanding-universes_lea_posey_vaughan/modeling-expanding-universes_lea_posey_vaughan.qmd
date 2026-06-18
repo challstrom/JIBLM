@@ -1,0 +1,36 @@
+---
+title: "Guilford Course Notes"
+---
+
+```{r}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+library(gt)
+
+note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Abstract")
+
+note_data <- c("Modeling Expanding Universes in Euclidean Spaces", "Lea, Suzanne M.; Posey, E. E.; Vaughan, Jerry E.", "uncategorized", "22", "University of North Carolina at Greensboro", "The purpose of this monograph is to introduce, at the undergraduate level, Euclidean n-space, and briefly its infinite-dimensional version, using topics in physics as motivation and background. The physics we use is especially concerned with 4-dimensional models of spacetime, and we discuss several 3-dimensional manifolds, including 3-spheres, 3-tori, and 3-hyperboloids. We hope the reader will gain enhanced intuition into the Euclidean and analytical geometry of such figures. The material in this monograph can be used to supplement courses which cover calculus in dimensions 2 and 3.")
+
+
+tibble(note_entries, note_data) |>
+  gt() |>
+  cols_align(align = "left") |>
+  tab_style(
+    style= cell_text(v_align = "top"),
+    locations = cells_body()
+  ) |>
+  tab_options( table.width = "80%", column_labels.hidden = TRUE)  
+
+
+```
+- [Download File](./modeling-expanding-universes_lea_posey_vaughan.pdf)
+
+This course guide was originally published by the Guilford College Journal of Undergraduate Mathematics as a volume in the Monographs on Undergraduate Mathematics series.
+
+This course guide may be reproduced and distributed if the following conditions are met:
+
+- State that it is the property of the Math Department of Guilford College, and is protected under copyright by Guilford.
+- Take no profit from its distribution. (You may recover copying costs if you are using these for a class.) 
+

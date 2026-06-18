@@ -1,0 +1,927 @@
+\documentclass{article}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+
+% special characters
+
+\newcommand{\textarrow}[1]{\stackrel{#1}{\longrightarrow} }
+
+
+% Journal headers
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\let\titlepageAuthor\author
+\renewcommand{\author}[1]{\newcommand{\headerAuthor}{#1}\titlepageAuthor{#1}} 
+\let\titlepageTitle\title
+\renewcommand{\title}[1]{\newcommand{\headerTitle}{#1}\titlepageTitle{#1}} 
+
+\lhead{\headerTitle: \leftmark} \chead{} \rhead{\thepage} 
+\lfoot{\copyright Guilford College Journal of Undergraduate Mathematics} \cfoot{} \rfoot{ - at www.jiblm.org}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{Introduction to Topology}
+\author{Robert Messer}
+\date{\vspace{3cm}
+\emph{Journal of Undergraduate Mathematics}
+  \\ Department of Mathematics
+  \\ Guilford College
+  \\ Greensboro, North Carolina 27410 
+  }
+\maketitle
+\thispagestyle{empty}
+
+
+
+\newpage
+
+\setcounter{tocdepth}{3} 
+\tableofcontents
+\thispagestyle{empty}
+
+
+\newpage
+
+\section*{Preface}
+\addcontentsline{toc}{section}{\numberline{}Preface}
+\markboth{Preface}{Preface}
+
+\pagenumbering{roman}
+
+In the early days of topology in the United States, R. L. Moore developed a method of teaching that has become known by his name. The philosophy is that the students -- when presented with basic definitions, examples, and statements of theorems -- should be able to deduce results about the examples, prove the theorems, and occasionally formulate definitions, theorems, and relevant examples. Therefore, in addition to learning the subject matter contained in a course, the students also obtain intimate knowledge of the nature of mathematics. The introductory course in topology is especially well-suited for this method of instruction, since there is an abundance of examples and results that are interesting yet are provable by fairly straightforward techniques.
+
+This series of notes, supplemented by material presented in class, is intended to contain all the facts needed to attack these theorems and questions. Students should avoid consulting other sources such as books, journals, other notes, or other students (although occasional joint efforts may be appropriate). Of course not everyone will be able or have time to solve every problem. Some students may wish to devote a lot of time to some hard theorem that really interests them. They may therefore have to be content with merely understanding someone else's proof of some other theorems.
+
+As alternatives to the traditional homework and exams, student progress and evaluations may be based on enthusiasm, results obtained, classroom presentations, and notebooks containing at least one proof of each result.
+
+There seems to be more than enough material in these notes for a one-semester course for students with some familiarity with set theory. The instructor should find it easy to omit topics or to provide supplementary lectures and additional material for certain topics, such as the Cantor set, Tychonoff's theorem, fixed-point theorems, Urysohn's lemma, and the Tietze extension theorem. Sections 9 and 10 make a nice problem set for a final exam if there is not enough time to cover them in class.
+
+Arunas Liulevicius and D. Russell McMillan have had major influences on the organization and content of these notes. Their contributions are cheerfully acknowledged. The manuscript was prepared using Donald Knuth's \TeX\ typesetting system as implemented on the computer facilities at Vanderbilt University.
+
+\begin{flushright}
+Robert Messer
+\end{flushright}
+
+\newpage
+
+
+\section{The category of Topological Spaces \\ and Continuous Functions}
+\markboth{1. Topological Spaces and Continuous Functions}{1. Topological Spaces and Continuous Functions}
+
+\pagenumbering{arabic}
+
+\begin{description}
+
+  \item[Definitions:] A \emph{topology} on a set $X$ is a collection of subsets of $X$, called \emph{open} sets, satisfying: 
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item the intersection of any finite collection of open sets is open, and 
+      \item the union of an arbitrary collection of open sets is open.
+    \end{enumerate}
+
+  \item[] A \emph{topological space} $(X,\tau)$ is a set $X$ with a topology $\tau$ on $X$.
+
+  \item[1. Question:] What is the minimum number of open sets possible in a topology?
+
+  \item[2. Question:] How many distinct topologies does a three-element set have?
+
+  \item[3. Question:] Suppose we regard two topologies on a set as equivalent if there is a permutation of the set that induces a bijection from the open sets in one topology to those in the other. How many inequivalent topologies does a three-element set have?
+
+  \item[4. Examples:] For any set $X$, the \emph{discrete} topology consists of the collection of all subsets of $X$. The \emph{indiscrete} topology consists of only the subsets $\phi$ and $X$. The \emph{finite complement} topology consists of $\phi$ and all subsets of $X$ that have finite complements.
+
+  \item[] Recall that a metric space $(X,d)$ is a set $X$ together with a metric $d$; that is, a function $d: X \times X \rightarrow R$ satisfying
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item $d(x,y) \geq 0$ for all $X,Y \in X$, and $d(x,y) = 0$ if and only if $X=Y$,
+      \item $d(x,y) = d(y,x)$ for all $x,y \in X$, and
+      \item $d(x,z) \leq d(x,y) + d(y,z)$ for all $x,y,z \in X$.
+    \end{enumerate}
+
+  \item[] Also recall that a subset $O$ of a metric space $X$ is open with respect to the metric $d$ if and only if for each $X \in O$, there is $\epsilon > 0$ such that
+    \begin{equation*}
+      B_{\epsilon}(x) = \{ Y \in X \ \vert \ d(x,y) < \epsilon \}
+    \end{equation*}
+    the $\epsilon$-ball about $X$, is contained in $O$.
+
+  \item[5. Theorem:] Let $(X,d)$ be a metric space. The collection of subsets of $X$ that are open with respect to $d$ forms a topology on $X$.
+
+  \item[6. Problem:] Does the discrete or the indiscrete topology on a set ever arise from a metric on the set? Investigate this situation.
+
+  \item[Definition:] Suppose $\mathcal{G}$ is a collection of subsets of a set $X$. Let $G^{*}$ denote the collection of all subsets of $X$ formed by taking the unions of arbitrary collections of members of $G$. Then $G$ is a \emph{basis} for the topology $\tau$ on $X$ (and $\tau$ is the topology \emph{generated} by the basis $G$) if and only if $G^{*} = \tau$.
+
+  \item[7. Theorem:] Let $G$ be a collection of subsets of a set $X$. Then $G$ is a basis for a topology on $X$ if and only if
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item $\bigcup G = X$, and
+      \item if $U,V \in U \bigcap V$, then there is $W \in G$ such that
+        \begin{equation*}
+        X \in W \subseteq U \bigcap V
+        \end{equation*}
+    \end{enumerate}
+
+  \item[8. Question:] What is the minimum cardinality of a basis for $\Re^{n}$ (with the Euclidean metric topology)?
+
+  \item[9. Examples:] On $\Re$, let $G$ be the collection of all half-open intervals of the form $[a,b)$. Then $G$ is a basis for the \emph{topology of right-half-open intervals}.
+
+  \item[Definition:] Suppose $\tau_{1}$ and $\tau_{2}$ are topologies on a set $X$. Then $\tau_{1}$ is \emph{finer} than $\tau_{2}$ (and $\tau_{2}$ is \emph{coarser} than $\tau_{1}$) if and only if $\tau_{2} \subseteq \tau_{1}$.
+
+  \item[10. Question:] What fineness relations exist among the discrete, indiscrete, finite complement, Euclidean, right-half-open interval, and closed right ray topologies on $\Re$?
+
+  \item[Definition:] Suppose $G$ is a collection of subsets of $X$. Let $G_{f}$ denote the collection of all subsets of $X$ formed by taking the intersections of finite collections of members of $G$. Then $G$ is a \emph{subbasis} for the topology $\tau$ on $X$ (and $\tau$ is the topology \emph{generated} by the subbasis $G$) if and only if $G_{f}$ is a basis for $\tau$; that is, $(G_{f})^{*} = \tau$.
+
+  \item[11. Theorem:] Any collection of subsets of a set forms a subbasis for a topology on the set.
+
+  \item[Definitions:] Suppose $(X,S)$ and $(Y,T)$ are topological spaces. A function $f : X \rightarrow Y$ is \emph{continuous} (with respect to these topologies) if and only if $f^{-1}(O) \in S$ for every $O \in T$; in words, the inverse image of any open set is open. A \emph{map} is a continuous function. A function $f : X \rightarrow Y$ is a \emph{homeomorphism} if and only if $f$ if a continuous bijection and $f^{-1}$ is continuous. Also, $X$ and $Y$ are \emph{homeomorphic} if and only if there is a homeomorphism between them.
+
+  \item[12. Theorem:] Any constant function between topological spaces is continuous.
+
+  \item[13. Theorem:] Any continuous bijection between open intervals is a homeomorphism.
+
+  \item[14. Problem:] Does a map $f : X \rightarrow Y$ remain continuous if the topology on $X$ or on $Y$ is changed to a finer one? A coarser one? Suppose $f : X \rightarrow Y$ is a function. If $Y$ is a topological space, characterize the topologies on $X$ that make $f$ continuous. If $X$ is topological space, characterize the topologies on $Y$ that make $f$ continuous. Do such topologies always exist?
+
+  \item[15. Discussion:] A property of topological spaces is called \emph{topological property} if it is preserved under homeomorphisms; that is, if two spaces are homeomorphic, then one has the property if and only if the other has it. For example, the cardinality of a space is a topological property (in fact, it is a set theoretical property). Also, having a metric that the topology comes from (metrizability) is a topological property. But being bounded with respect to a metric that gives the topology, is not a topological property.
+    
+    One of the goals of the subject of topology is to find properties that distinguish between spaces that are not homeomorphic, and characterize spaces that are homeomorphic. Watch for topological properties to distinguish the following spaces:
+    \begin{itemize}
+      \item $\{ 0 \}$, $Z$, $[0,1]$, $[0,1)$, $(0,1)$,
+      \item the $1$-sphere (circle): $S^{1} = \{ (x,y) \epsilon \Re^{2} \ \vert \ x^{2} + y^{2} = 1 \}$,
+      \item the torus: $S^{1} \times S^{1}$,
+      \item $[0,1] \times [0,1]$, and
+      \item the $2$-sphere: $S^{2} = \{ (x,y,z) \in \Re^{3} \ \vert \ x^{2} + y^{2} + z^{2} = 1 \}$.
+    \end{itemize}
+
+  \item[16. Question:] Is $f : [0,2 \pi ) \rightarrow S^{1}$, defined by $f(t) = (\cos t,\sin t)$, a homeomorphism?
+
+  \item[Definition:] Suppose $(X,S)$ and $(Y,\tau)$ are topological spaces. A function $f : X \rightarrow Y$ is \emph{continuous at a point} $a \in X$ (with respect to these topologies) if and only if for every open set $V$ containing $f(a)$, there is an open set $U$ containing $A$ such that $f(U) \subseteq V$.
+
+  \item[17. Theorem:] A function $f : X \rightarrow Y$ between topological spaces is continuous if and only if it is continuous at each point $a \in X$.
+
+  \item[18. Theorem:] A function $f : X \rightarrow Y$ between metric spaces is continuous at a point $a \in X$ with respect to the metric topologies, if and only if
+    \begin{equation*}
+    \forall \epsilon > 0 \exists \delta > 0 \text{ s.t. } \forall x \in X \ d(x,a) < \delta \Rightarrow d(f(x),f(a)) < \epsilon
+    \end{equation*}
+
+  \item[19. Corollary:] A function $f : X \rightarrow Y$ between metric spaces is continuous with respect to the metric topologies if and only if
+    \begin{equation*}
+    \forall a \in X \forall \epsilon > 0 \exists \delta > 0 \text{ s.t. } \forall x \in X \ d(x,a) < \delta \Rightarrow d(f(x),f(a)) < \epsilon
+    \end{equation*}
+
+  \item[20. Theorem:] Suppose $X$ and $Y$ are topological spaces. Suppose $G$ is a basis for the topology on $Y$. Then a function $f : X \rightarrow Y$ is continuous if and only if $f^{-1} (O)$ is open for every $O \in G$.
+
+  \item[21. Problem:] Investigate the corresponding result when $G$ is a subbasis.
+
+  \item[Definitions:] A \emph{category} consists of a collection of \emph{objects} and a collection of \emph{arrows} that satisfy the following conditions. Each arrow $f$ has a \emph{domain} $X$ and a \emph{range} $Y$ that are objects. This is abbreviated $f : X \rightarrow Y$ or
+    \begin{equation*}
+    X \textarrow{f} Y
+    \end{equation*}
+    (although arrows need not be functions). Whenever the range of one arrow $f : X \rightarrow Y$ equals the domain of another arrow $g : Y \rightarrow Z$, there is an arrow $g \circ f : X \rightarrow Z$, called the \emph{compositions} of $f$ and $g$. For each object $X$, there is an \emph{identity} arrow $\text{id}_{X} : X \rightarrow X$ satisfying:
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item $f \circ \text{id}_{X} = f$ for any arrow $f : X \rightarrow Y$, and
+      \item $\text{id}_{X} \circ f = f$ for any arrow $f : Y \rightarrow X$.
+    \end{enumerate}
+    And finally, whenever $e : W \rightarrow X$, $f : X \rightarrow Y$, and $g : Y \rightarrow Z$, then $g \circ (f \circ e) = (g \circ f) \circ e$.
+
+  \item[22. Theorem:] For each object $X$ in a category, there is a unique arrow satisfying the two properties of $\text{id}_{X}$.
+
+  \item[23. Example:] Suppose $(X,\leq)$ is an ordered set. That is, for all $x,y,z \in X$:
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item $x \leq x$,
+      \item $x \leq y$ and $y \leq x$ imply $x = y$, and
+      \item $x \leq y$ and $y \leq z$ imply $x \leq z$.
+    \end{enumerate}
+    Let the objects be the elements of $X$; let the arrows be the set of ordered pairs $(x,y)$ such that $x \leq y$ (where $x$ is the domain, and $y$ is the range of such an arrow). This forms a category.
+
+  \item[24. Theorem:] The collections of topological spaces and continuous functions form a category (where domain, range, composition, and identity have the standard meanings).
+
+  \item[Definition:] An \emph{equivalence} in a category is an arrow $f : X \rightarrow Y$ between two objects such that there is an arrow $g : Y \rightarrow X$ with $g \circ f = \text{id}_{X}$ and $f \circ g = \text{id}_{Y}$. An object $X$ is \emph{equivalent} to another object $Y$ in a category if and only if there is an equivalence $f : X \rightarrow Y$.
+
+  \item[25. Theorem:] The notion of equivalence in a category defines an equivalence relation among the objects in the category.
+
+  \item[26. Question:] What are the equivalences in the category of sets an functions? In the category of groups and homomorphisms? In the category of topological spaces and maps?
+
+  \item[27. Question:] Homeo, homeo, wherefore art thou homeo?
+
+\end{description}
+
+
+
+\section{Auxiliary Definitions}
+\markboth{2. Auxiliary Definitions}{2. Auxiliary Definitions}
+
+\begin{description}
+
+  \item[Definitions:] Suppose $A$ is a subset of a topological space $X$. Then $A$ is a \emph{neighborhood} of a point $x \in X$ if and only if there is an open set $O$ with $x \in O \subseteq A$. (Note: some people require neighborhoods to be open.) The subset $A$ is \emph{closed} if and only if its complement $X - A$ is open. A \emph{limit point} (also called a \emph{cluster point} or an \emph{accumulation point}) of $A$ is a point $x \in X$ such that each neighborhood of $X$ contains a point of $A$ other than $X$. The \emph{closure} of $A$ is the intersection of all closed subsets of $X$ containing $A$. This is denoted $\text{cl}A$ or $\bar{A}$. The \emph{interior} of $A$ is the union of all open subsets of $X$ contained in $A$. This is denoted $\text{int}A$ or $A^{\circ}$. The \emph{boundary} (also called the \emph{frontier}) of $A$ is $(\text{cl}A - (\text{int}A)$. This is denoted $\text{bd}A$ or $\text{fr}A$.
+
+  \item[28. Problem:] Find the set of limit points, the closure, the interior, and the boundary, of each of the following subsets of $\Re$:
+    \begin{equation*}
+    Z, \left\{ \frac{1}{n} \ \vert \ n \in N \right\},\ Q,\ [0,1)
+    \end{equation*}
+    Which are open? Which are closed? Find the closure and interior of [0,1] in the six topologies that we have considered on $\Re$.
+
+  \item[29. Question:] Which subsets of $\Re$ are both open and closed?
+
+  \item[30. Theorem:] The intersection of an arbitrary collection of closed sets is closed. The union of a finite collection of closed sets is closed.
+
+  \item[31. Theorem:] Suppose $A$ and $B$ are subsets of a topological space $X$ with $A \subseteq B$.
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item $\text{int}A \subseteq A \subseteq \text{cl}A$.
+      \item $\text{int}A \subseteq \text{int}B$.
+      \item $\text{cl}A \subseteq \text{cl}B$.
+    \end{enumerate}
+
+  \item[32. Theorem:] Suppose $A$ is a subset of a topological space $X$.
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item $\text{int}A$ is open.
+      \item $\text{int}(\text{int}A) = \text{int}A$.
+      \item The interior of $A$ is the set of all points of $X$ for which $A$ is a neighborhood.
+      \item A point $X$ is in $\text{int}A$ if and only if there is a neighborhood of $X$ contained in $A$.
+      \item $A$ is open if and only if $A = \text{int}A$.
+    \end{enumerate}
+
+  \item[33. Theorem:] Suppose $A$ is a subset of a topological space $X$.
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item $\text{cl}A$ is closed.
+      \item $\text{cl}(\text{cl}A) = \text{cl}A$
+      \item The closure of $A$ is the union of $A$ and the set of its limit points.
+      \item a point $X$ is in $\text{cl}A$ if and only if every neighborhood of $X$ intersects $A$.
+      \item $A$ is closed if and only if $A$ contains all its limit points.
+      \item $A$ is closed if and only if $A = \text{cl}A$.
+    \end{enumerate}
+
+  \item[34. Theorem:] Suppose $A$ is a subset of a topological space $X$.
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item $\text{bd}A$ is closed.
+      \item A point $X$ is in the boundary of $A$ if and only if every neighborhood of $X$ intersects $A$ and $X - A$.
+    \end{enumerate}
+
+  \item[35. Theorem:] Suppose $A$ is a subset of a topological space $X$. Then $X$ is the disjoint union of $\text{int}A$, $\text{bd}A$, and $\text{int}(X - A)$. (The set $\text{int}(X - A)$ is called the \emph{exterior} of $A$.)
+
+  \item[36. Problem:] Give proofs or counterexamples for the following:
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item $\text{int} (\bigcup_{\gamma \in \Gamma} A_\gamma) = \bigcup_{\gamma \in \Gamma} \text{int} A_\gamma$
+      \item $\text{int} (\bigcap_{\gamma \in \Gamma} A_\gamma) = \bigcap_{\gamma \in \Gamma} \text{int} A_\gamma$
+      \item $\text{cl} (\bigcup_{\gamma \in \Gamma} A_\gamma) = \bigcup_{\gamma \in \Gamma} \text{cl} A_\gamma$
+      \item $\text{cl} (\bigcap_{\gamma \in \Gamma} A_\gamma) = \bigcap_{\gamma \in \Gamma} \text{cl} A_\gamma$
+    \end{enumerate}
+    Which containments hold? What if $\Gamma$ is a finite index set?
+
+  \item[37. Theorem:] A function $f : X \rightarrow Y$ is continuous if and only if $f^{-1}(F)$ is closed for every closed subset $F$ of $Y$.
+
+  \item[Definition:] A \emph{neighborhood basis} at a point $X$ of a space is a collection of neighborhoods of $X$ such that any neighborhood of $X$ contains a member of the collection.
+
+  \item[Definitions:] A space is \emph{first countable} if and only if every point has a countable neighborhood basis. A space is \emph{second countable} if and only if there is a countable basis for the topology.
+
+  \item[38. Problem:] Investigate the properties of first and second countability for metric spaces.
+
+\end{description}
+
+
+
+\section{Induced Structures}
+\markboth{3. Induced Structures}{3. Induced Structures}
+
+\begin{description}
+
+  \item[Definition:] Suppose $X$ is a topological space, and for each $\lambda \in \Lambda$ there is a function $f_{\lambda} : X \rightarrow X_{\lambda}$ from $X$ to a space $X_{\lambda}$. The topology on $X$ is \emph{induced} by the family of functions $\{ f_{\lambda} : X \rightarrow X_{\lambda} \ \vert \ \lambda \in \Lambda \}$ if and only if the following property holds:
+    \begin{quote}
+    A function $g : Y \rightarrow X$ is continuous if and only if for each $\lambda \in \Lambda$, the composition $f_{\lambda} \circ g : Y \rightarrow X_{\lambda}$ is continuous.
+    \end{quote}
+
+  \item[39. Theorem:] If the topology on $X$ is induced by the family of functions.
+    \begin{equation*}
+    \{ f_{\lambda} : X \rightarrow X_{\lambda} \ \vert \ \lambda \in \Lambda \}
+    \end{equation*}
+    then each of the functions $f_{\lambda}$ is continuous.
+
+  \item[40. Theorem:] There is at most one topology on $X$ induced by the family of functions $\{ f_{\lambda} : X \rightarrow X_{\lambda} \ \vert \ \lambda \in \Lambda \}$.
+
+  \item[41. Theorem:] Any family of functions $\{ f_{\lambda} : X \rightarrow X_{\lambda} \ \vert \ \lambda \in \Lambda \}$ induces a topology on $X$. If $\mathcal{B}_{\lambda}$ is a basis for the topology on $X_{\lambda}$, then
+    \begin{eqnarray*}
+    \{ f_{\lambda1}^{-1}(O_{\lambda 1}) \bigcap \cdots \bigcap f_{\lambda n}^{-1}(O_{\lambda n}) \ \vert \ n \in N, \lambda_{i} \\
+    \text{ are distinct elements of } \Lambda, O_{\lambda i} \in \mathcal{B}_{\lambda i} \}
+    \end{eqnarray*}
+    is a basis for the induced topology on $X$.
+
+  \item[42. Question:] Suppose $X$ is any set, and \emph{P} is a one point space. What is the topology induced by the unique function $f : X \rightarrow P$?
+
+  \item[Definition:] Suppose $A$ is a subset of a space $X$. The \emph{subspace} topology on $A$ is the topology induced by the inclusion $i : A \rightarrow X$. Unless specified to the contrary, we will assume that subsets of a topological space have the subspace topology.
+
+  \item[43. Theorem:] Suppose $A$ is a subset of space $X$. A subset $O$ of $A$ is open in the subspace topology on $A$ if and only if $O = U \bigcap A$ is an open subset of $X$. A subset $F$ of $A$ is closed if and only if $F = E \bigcap A$ where $E$ is a closed subset of $X$. If $B \subseteq A$, then the closure of $B$ in the subspace topology on $A$ is equal to the intersection of $A$ with the closure of $B$ in the topology on $X$. (This denoted $\text{cl}_{A} B = A \bigcap \text{cl}_{X} {B}$.)
+
+  \item[44. Question:] If $A$ and $B$ are subsets of a space $X$ and $B \subseteq A$, what relation holds between $\text{int}_{A} B$ and $A \bigcap \text{int}_{X} B$?
+
+  \item[45. Theorem:] Suppose $f : X \rightarrow Y$ is a map between spaces, and $A$ is a subspace of $X$. Then the restriction $f \ \vert \ A : A \rightarrow Y$ (defined by $(f \ \vert \ A)(A) = f(a)$ for $a \in A$) is continuous.
+
+  \item[46. Theorem:] Suppose $f : X \rightarrow Y$ is a function between topological spaces. Suppose
+    \begin{equation*}
+    X = \bigcup_{\alpha \in A} O_{\alpha}
+    \end{equation*}
+    is a union of open subsets $O_{\alpha}$. Then $f$ is continuous if and only if each of the restrictions $f \ \vert \ O_{\alpha} : O_{\alpha} \rightarrow Y$ is continuous.
+
+  \item[47. Problem:] Investigate the situation when $X$ is a union of closed subsets.
+
+  \item[48. Theorem:] Suppose $A$ is a subset of a metric space $X$. The topology on $A$ that arises from the restriction of the metric to $A \vert A$ is the subspace topology.
+
+  \item[Definition:] A \emph{Cartesian} product of a family $\{ X_{\alpha} \ \vert \ \alpha \in A \}$ of sets is a set $P$ together with a family of functions $\{ \pi_{\alpha} : P \rightarrow X_{\alpha} \ \vert \ \alpha \in A \}$ that satisfies the following property:
+    
+    Given a set $Y$ and a family $\{ g_{\alpha} : Y \rightarrow X_{\alpha} \ \vert \ \alpha \in A \}$, there is a unique function $g : Y \rightarrow P$ such that $\pi_{\alpha} \circ g = g_{\alpha}$ for all $\alpha \in A$.
+    \begin{eqnarray*}
+             Y & \textarrow{g} & P \\
+    g_{\alpha} & \searrow      & \downarrow \pi_{\alpha} \\
+               &               & X_{\alpha}
+    \end{eqnarray*}
+    The function $\pi_{\alpha} : P \rightarrow X_{\alpha}$ is the \emph{projection} onto the \emph{factor} $X_{\alpha}$.
+    
+    The following theorem justifies the notation
+    \begin{equation*}
+    \prod_{\alpha \in A} X_{\alpha}
+    \end{equation*}
+    (or $X_{1} \times X_{2} \times \cdots \times X_{n}$ for a finite family $\{ X_{i} \ \vert \ i = 1, \cdots , n \}$) for the set involved in any Cartesian product of $\{ X_{\alpha} \ \vert \ \alpha \in A \}$, and $\pi_{\alpha}(x) = x_{\alpha}$ for the image of a point under the projection function.
+
+  \item[49. Theorem:] If $P$ with $\{ \pi_{\alpha} : P \rightarrow X_{\alpha} \ \vert \ \alpha \in A \}$ and $P'$ with $\{ \pi'_{\alpha}$ : $P' \rightarrow X_{\alpha} \ \vert \ \alpha \in A \}$ are Cartesian products of the family $\{ X_{\alpha} \ \vert \ \alpha \in A \}$, then there is a unique bijection $\theta : P \rightarrow P'$ such that $\pi_{\alpha}' \circ \theta = \pi_{\alpha}$ for all $\alpha \in A$.
+    \begin{eqnarray*}
+               P & \textarrow{\theta}  & P' \\
+    \pi_{\alpha} & \searrow \ \swarrow & \pi'_{\alpha} \\
+                 & X_{\alpha}          & 
+    \end{eqnarray*}
+
+  \item[50. Problem:] Show that any family of sets $\{ X_{\alpha} \ \vert \ \alpha \in A \}$ has a Cartesian product. What if $A = O$? What if one of the $X_{\alpha}$ is $O$?
+
+  \item[Definition:] Suppose $\{ X_{\alpha} \ \vert \ \alpha \in A \}$ is a collection of topological spaces. The \emph{product} topology on
+    \begin{equation*}
+      \prod_{\alpha \in A} X_{\alpha}
+    \end{equation*}
+    is the topology induced by the family
+    \begin{equation*}
+      \{ \pi_{\alpha} : \prod_{\alpha \in A} X_{\alpha} \rightarrow X_{\alpha} \ \vert \ \alpha \in A \}
+    \end{equation*}
+    of projections. Unless specified to the contrary, we will assume that Cartesian products of topological spaces have the product topology.
+
+  \item[51. Theorem:] If $P$ and $P'$ are products of the family $\{ X_{\alpha} \ \vert \ \alpha \in A \}$ of topological spaces, then the bijection $\theta : P \rightarrow P'$ such that $\pi'_{\alpha} \circ \theta = \pi_{\alpha}$ is a homeomorphism.
+
+  \item[52. Theorem:] The diagonal function $\triangle : X \rightarrow X \times X$ on a space $X$ (defined by $\triangle(x) = (x,x)$) is continuous.
+
+  \item[53. Theorem:] Let $X$ and $Y$ be spaces and let $y_{0} \in Y$. The $X$-slice function at $y_{0}$
+    \begin{equation*}
+    g : X \rightarrow X \times Y
+    \end{equation*}
+    (defined by $g(x) = (x,y_{0})$) is continuous. Furthermore if the range of $g$ is replaced by $X \times \{ y_{0} \}$ (with the subspace topology), then $g : X \rightarrow X \times \{ y_{0} \}$ is a homeomorphism.
+
+  \item[54. Problem:] Generalize this theorem to arbitrary products.
+
+  \item[55. Problem:] Think of a function $f : [0,1] \rightarrow [0,1]$ as an element of
+    \begin{equation*}
+    \prod_{x \in [0,1]} [0,1]
+    \end{equation*}
+    Describe a neighborhood basis of $f$. Explicitly describe a basis for the product topology on the Cartesian product of an arbitrary collection of spaces.
+
+  \item[56. Theorem:] The standard Euclidean topology on $\Re^{n}$ is the product topology induced from $n$ factors of $\Re^{n}$ with the Euclidean topology.
+
+  \item[57. Theorem:] Suppose $d_{1}$ is a metric on $X_{1}$, and $d_{2}$ is a metric on $X_{2}$. Then
+    \begin{equation*}
+    d( (x_{1},x_{2}),(x'_{1},x'_{2}) ) = \text{max} \{ d_{1}(x_{1},x'_{1}), d_{2}(x_{2},x'_{2}) \}
+    \end{equation*}
+    defines a metric on $X_{1} \times X_{2}$, and the resulting metric topology is the product topology.
+
+  \item[58. Problem:] Investigate generalizations of this theorem to the Hilbert cube
+    \begin{equation*}
+    Q = \prod_{i = 1}^{\infty} [0,1]
+    \end{equation*}
+    and to arbitrary products.
+
+  \item[59. Theorem:] A metric $d : X \times X \rightarrow \Re$ on $X$ is continous.
+
+  \item[Definition:] A \emph{topological vector space} is a vector space $V$ with a topology for which $+ : V \times V \rightarrow V$ and $\cdot : \Re \times V \rightarrow V$ are continuous.
+
+  \item[60. Theorem:] Let $||$ $||$ be a norm on a vector space $V$. Consider the metric topology on $V$ defined by the metric $d(x,y) = || x - y ||$. Then $|| \ || : \ V \rightarrow \Re$ is continuous and $V$ is a topological vector space.
+
+  \item[Definition:] Consider the following subsets of $\Re$. Let $F_{0} = [0,1]$. Remove the open middle third of this interval, to produce $F_{1} = \left[ 0,\frac{1}{3} \right] \bigcup \left[ \frac{2}{3},1 \right]$. Remove the open middle thirds of these two intervals to produce
+    \begin{equation*}
+    F_{2} = \left[ 0,\frac{1}{9} \right] \bigcup \left[ \frac{2}{9},\frac{1}{3} \right] \bigcup \left[ \frac{2}{3}, \frac{7}{9} \right] \bigcup \left[ \frac{8}{9},1 \right]
+    \end{equation*}
+    Repeat this process inductively to produce $F_{n}$ consisting of $2^{n}$ closed intervals each of length $3^{-n}$. The \emph{Cantor set} is
+    \begin{equation*}
+    \bigcap_{n = 0}^{\infty} F_{n}
+    \end{equation*}
+
+  \item[61. Theorem:] Consider $2 = \{ 0,1 \}$ with the discrete topology. The product
+    \begin{equation*}
+    \prod_{i = 0}^{\infty} 2
+    \end{equation*}
+    is homeomorphic to the Cantor set.
+
+  \item[Definition:] A space $X$ is \emph{homogeneous} if and only if for every two points $x,y \in X$, there is a homeomorphism $h : X \rightarrow X$ such that $H(x) = y$.
+
+  \item[62. Theorem:] The Cantor set is homogeneous.
+
+  \item[63. Stein's Theorem:] Suppose $\{ X_{\alpha} \ \vert \ \alpha \in A \}$ is a collection of spaces with the topology on each $X_{\alpha}$ induced by a family
+    \begin{equation*}
+      \{ f_{\alpha \beta} : X_{\alpha} \rightarrow X_{\alpha \beta} \ \vert \ \beta \in B_{\alpha} \}
+    \end{equation*}
+    of functions. Suppose $\{ f_{\alpha} : X \rightarrow X_{\alpha} \ \vert \ \alpha \in A \}$ is a family of functions defined on a set $X$. Then the topology induced on $X$ by
+    \begin{equation*}
+      \{ f_{\alpha} : X \rightarrow X_{\alpha} \ \vert \ \alpha \in A \}
+    \end{equation*}
+    is equal to the topology induced on $X$ by $\{ f_{\alpha \beta} \circ f_{\alpha} \ \vert \ \alpha \in A,\ \beta \in B_{\alpha} \}$. (To paraphrase Gertrude Stein: The induced topology from induced topologies is an induced topology.)
+
+  \item[64. Corollary:] A subspace of a subspace is a subspace.
+
+  \item[65. Corollary:] A product of products is a product (set theoretically as well as topologically).
+
+  \item[66. Corollary:] A product of subspaces is a subspace of a product (set theoretically as well as topologically).
+
+\end{description}
+
+
+
+\section{Hausdorff Spaces}
+\markboth{4. Hausdorff Spaces}{4. Hausdorff Spaces}
+
+\begin{description}
+
+  \item[Warning:] Two of the theorems in this section are false as stated.
+
+  \item[Definition:] A topological space $X$ is a \emph{Hausdorff} space (or satisfies \emph{separation axiom} $T_{2}$) if and only if for every two distinct points $a,b \in X$, there are disjoint open sets $U$ and $V$ such that $a \in U$ and $b \in V$.
+
+  \item[67. Theorem:] A metic space is Hausdorff.
+
+  \item[Definition:] A \emph{sequence} in a set $X$ is a function $f : N \rightarrow X$. A sequence $f : N \rightarrow X$ in a topological space $X$ \emph{converges} to a point $x_{0} \in X$ if and only if for every neighborhood $O$ of $x_{0}$, there is $N \in \mathcal{N}$ such that $n > N$ implies $f(n) \in O$.
+
+  \item[68. Theorem:] Suppose $X$ is a topological space. The following are equivalent:
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item $X$ is Hausdorff,
+      \item the diagonal $\triangle = \{ (x,x) \in X \times X \ \vert \ x \in X \}$ is a closed subset of $X \times X$, and
+      \item any sequence in $X$ converges to at most one point.
+    \end{enumerate}
+
+  \item[69. Theorem:] A subset of a Hausdorff space is Hausdorff.
+
+  \item[70. Theorem:] A product of spaces is Hausdorff if and only if each factor is Hausdorff.
+
+  \item[71. Theorem:] Suppose $f : X \rightarrow Y$ and $g : X \rightarrow Y$ are maps from a space $X$ to a Hausdorff space $Y$. Then $E = \{ x \in X \ \vert \ f(x) = g(x) \}$ is a closed subset of $X$.
+
+  \item[72. Corollary:] If $X$ is Hausdorff and $f : X \rightarrow X$ is continous, then the fixed-point set $\{ x \in X \ \vert \ f(x) = x \}$ of $f$ is a closed subset of $X$.
+
+  \item[73. Theorem:] The Hausdorff condition is a topological property.
+
+  \item[74. Problem:] In the lattice of the six topologies we have considered on $\Re$, which are Hausdorff? Investigate the Hausdorff property with respect to the fineness relation among topologies on an arbitrary set.
+
+\end{description}
+
+
+
+\section{Compact Spaces}
+\markboth{5. Compact Spaces}{5. Compact Spaces}
+
+\begin{description}
+
+  \item[Definitions:] A collection $\mathcal{U} = \{ U_{\alpha} \ \vert \ \alpha \in A \}$  of subsets of a set $X$ is a \emph{cover} of $X$ if and only if $X = \bigcup \mathcal{U}$. A \emph{subcover} of a cover $\mathcal{U}$ is a subset of $\mathcal{U}$ that is a cover. An \emph{open} cover of a topological space is a cover consisting of open sets. A space is \emph{compact} if and only if every open cover has a finite subcover.
+
+  \item[75. Theorem:] A subset $K$ of a topological space $X$ is compact if and only if for every collection $\mathcal{U} = \{ U_{\alpha} \ \vert \ \alpha \in A \}$ of open subsets of $X$ with $K \subseteq \bigcup \mathcal{U}$, there is a finite subset $B$ of $A$ such that
+    \begin{equation*}
+    K \subseteq \bigcup_{\alpha \in B} U_{\alpha}
+    \end{equation*}
+
+  \item[76. Question:] Which of the following are compact?
+    \begin{itemize}
+      \item An arbitrary finite space,
+      \item $Z$, 
+      \item $\left\{ \frac{1}{n} \ \vert \ n \in N \right\}$, 
+      \item $\text{cl} \left\{ \frac{1}{n} \ \vert \ n \in N \right\}$.
+    \end{itemize}
+
+  \item[77. Problem:] In the lattice of the six topologies we have considered on $\Re$, which are compact? Investigate compactness with respect to the fineness relation among topologies on an arbitrary set.
+
+  \item[78. Question:] Is there a compact Hausdorff topology on $\Re$ that is coarser than the Euclidean topology?
+
+  \item[79. Problem:] Investigate whether the union or intersection of compact subspaces is compact.
+
+  \item[Definitions:] A \emph{linear order} on a set $X$ is a relation $\leq$ satisfying the following properties for all $x,y,z \in X$:
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item $x \leq y$ or $y \leq x$,
+      \item $x \leq y$ and $y \leq x$ imply $x = y$, and
+      \item $x \leq y$ and $y \leq z$ imply $x \leq z$.
+    \end{enumerate}
+    The \emph{order topology} on a linearly ordered set $X$ is generated by the basis
+    \begin{equation*}
+      \{ (a,b) \ \vert \ a,b \in X \} \bigcup \{ (a,\infty) \ \vert \ \alpha \in X \} \bigcup \{ (-\infty,b) \ \vert \ b \in X \}
+    \end{equation*}
+    where $(a,b)$ denotes the open interval $\{ x \in X \ \vert \ a < x < b \}$, $(a,\infty)$ denotes $\{ x \in X \ \vert \ a < x \}$, and $(-\infty,b)$ denotes $\{ x \in X \ \vert \ x < b \}$. (Note: $x < y$ means $x \leq y$ and $x \neq y$.)
+
+  \item[80. Theorem:] A linearly ordered set $X$ with the order topology is compact if and only if every nonempty subset of $X$ has a least upper bound and a greatest lower bound.
+
+  \item[81. Heine-Borel Theorem:] Any closed interval $[a,b]$ is a compact subset of $\Re$.
+
+  \item[82. Question:] Is the unit square $[0,1] \times [0,1]$ compact with the lexicographic order topology? Lexicographic order is defined by
+    \begin{equation*}
+    (a,b) \leq (c,d) \text{ if and only if } 
+    \begin{cases}
+      a < c \text{ or} \\
+      a = c \text{ and } b \leq d
+    \end{cases}
+    \end{equation*}
+
+  \item[83. Theorem:] A closed subspace of a compact space is compact.
+
+  \item[84. Theorem:] A compact subspace of a Hausdorff space is closed.
+
+  \item[85. Theorem:] If $f : X \rightarrow Y$ is continuous and $X$ is compact, then $f(x)$ is a compact subspace of $Y$.
+
+  \item[86. Corollary:] Compactness is a topolocial property.
+
+  \item[87. Corollary:] A continuous bijection from a compact space to a Hausdorff space is a homeomorphism.
+
+  \item[88. Problem:] Give a precise formulation and a proof of the old cliché, ``Compact topologies are minimal among Hausdorff topologies.''
+
+  \item[89. Hot Dog Lemma:] Suppose $C$ is a compact subspace of a space $X$, $y$ is an element of a space $Y$, and $C \times \{ y \}$ is contained in an open set $W$ of $X \times Y$. Then there are open sets $U$ in $X$ and $V$ in $Y$ such that $C \times \{ y \} \subseteq U \times V \subseteq W$.
+
+  \item[90. Corollary:] Suppose $C$ is a compact subspace of a space $X$, and $y$ is an element of a space $Y$. For any open cover $O$ of $X \times Y$, there are open sets $U$ in $X$ and $V$ in $Y$ such that $C \times \{ y \} \subseteq U \times V$ and $U \times V$ is contained in the union of a finite number of elements in $O$.
+
+  \item[91. Tychonoff for Two:] The product of two nonempty spaces is compact if and only if each factor is compact.
+
+  \item[92. Theorem:] Suppose $X$ is a topological space and $Y$ is a compact Hausdorff space. A function $f : X \rightarrow Y$ is continuous if and only if its graph $\{ (x,y) \in X \times Y \ \vert \ f(x) = y \}$ is a closed subset of $X \times Y$.
+
+  \item[93. Question:] How does this theorem fail if $Y$ is not compact?
+
+  \item[94. Theorem:] A compact subset of a metric space is closed and bounded.
+
+  \item[95. Theorem:] A subset of $\Re^{n}$ is compact if and only if it is both closed and bounded.
+
+  \item[96. Question:] Does this generalize to arbitrary metric spaces? To normed vector spaces?
+
+  \item[Definition:] A \emph{filter} on a set $X$ is a collection $\mathcal{F}$ of nonempty subsets of $X$ satisfying:
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item the intersection of any finite collection of sets in $\mathcal{F}$ is also in $\mathcal{F}$, and
+      \item if $F \in \mathcal{F}$ and $F \subseteq G$, then $G \in \mathcal{F}$.
+    \end{enumerate}
+
+  \item[Note:] For any filter $\mathcal{F}$ on a set $X$, we have $X \in \mathcal{F}$; so $\mathcal{F} \neq O$. Also, since $O$ is not an element of any filter, there are no filters on $O$. If the empty set were outlawed, only outlaws would have the empty set.
+
+  \item[Examples:] The collection of all neighborhoods of a point $x$ in a space is the \emph{neighborhood filter} at $x$.
+    
+    The \emph{Frechet filter} or \emph{filter of neighborhoods of infinity} on $N$ is
+    \begin{equation*}
+      \{F \subseteq N \ \vert \ \{n,n + 1, \cdots \} \subseteq F \text{ for some } n \in N \}
+    \end{equation*}
+    In a space $X$, the collection of all deleted neighborhoods of a nonisolated point $x$ is a filter on $X - \{ x \}$. (A point $x$ of a space is \emph{isolated} if and only if $\{ x \}$ is an open set. It is \emph{nonisolated} (a limit point of the space) otherwise. A \emph{deleted neighborhood} of a point $x$ is a set of the form $N - \{ x \}$ where $N$ is a neighborhood of $x$.)
+    
+    If $A$ is a nonempty subset of a set $X$, then $\{ B \subseteq X \ \vert \ A \subseteq B \}$ is a filter.
+    
+    Let $\Pi$ be the collection of all finite partitions of $[0,1] \subseteq \Re$. Then
+    \begin{equation*}
+      \mathcal{F}_{1} = \{ F \subseteq \Pi \ \vert \ \exists \epsilon > 0 \text{ s.t. mesh}(P) < \epsilon \Rightarrow P \in F \}
+    \end{equation*}
+    and
+    \begin{equation*}
+      \mathcal{F}_{2} = \{ F \subseteq \Pi \ \vert \ \exists P \in \Pi \text{ s.t. } Q \in \Pi \text{ is finer than } P \Rightarrow Q \in F \}
+    \end{equation*}
+    are filters on $\Pi$.
+
+  \item[Definition:] Suppose $\mathcal{B}$ is a collection of subsets of a set $X$. Let
+    \begin{equation*}
+      \mathcal{B}^{\#} = \{ F \subseteq X \ \vert \ E \subseteq F \text{ for some } E \subseteq \mathcal{B} \}
+    \end{equation*}
+    Then $\mathcal{B}$ is a \emph{base} for a filter $\mathcal{F}$ on $X$ (and $\mathcal{F}$ is the filter \emph{generated} by the filter base $\mathcal{B}$) if and only if $\mathcal{B}^{\#} = \mathcal{F}$.
+
+  \item[97. Theorem:] Let $\mathcal{B}$ be a collection of subsets of a set $X$. Then $\mathcal{B}$ is a filter base if and only if $\mathcal{B}$ is a nonmempty collection of nonempty subsets, such that for every $A,B \in \mathcal{B}$, there is $C \in \mathcal{B}$ with $C \subseteq A \bigcap \mathcal{B}$.
+
+  \item[Example:] Let $T_{n} = \{ k \in N \ \vert \ k \geq n \}$. Then $\mathcal{B} = \{ T_{n} \ \vert \ n \subseteq N \}$ is a base for the Frechet filter on $N$.
+
+  \item[Definitions:] For two filters $\mathcal{F}$ and $\mathcal{G}$ on a set, $\mathcal{F}$ is \emph{finer} than $\mathcal{G}$ (and $\mathcal{G}$ is \emph{coarser} than $\mathcal{F}$, or $\mathcal{F}$ \emph{refines} $\mathcal{G}$) if and only if $\mathcal{G} \subseteq \mathcal{F}$. An \emph{ultrafilter} is a filter such that there is no strictly finer filter.
+
+  \item[98. Thoerem:] For any filter $\mathcal{F}$ on a set $X$, there is an ultrafilter finer than $\mathcal{F}$.
+
+  \item[99. Theorem:] A filter $\mathcal{F}$ on $X$ is an ultrafilter if and only if for every subset $A$ of $X$, $\mathcal{F}$ contains $A$ or $X - A$.
+
+  \item[Examples:] A filter generated by a base that contains a one-point set is an ultrafilter. This is a \emph{trivial} ultrafilter. An ultrafilter finer than the Frechet filter on $N$ is a nontrivial ultrafilter on $N$.
+
+  \item[100. Theorem:] For an ultrafilter $\mathcal{U}$, $\bigcap \mathcal{U}$ contains at most one point. Also, $\bigcap \mathcal{U}$ is nonempty if and only if $\mathcal{U}$ is trivial.
+
+  \item[Definition:] If $\mathcal{F} \subseteq P(X)$ and $f : X \rightarrow Y$, let $f(\mathcal{F}) = \{ f(\mathcal{F}) \ \vert \ F \in \mathcal{F} \}$.
+
+  \item[101. Theorem:] If $\mathcal{B}$ is a filter base on $X$ and $f : X \rightarrow Y$, then $f(\mathcal{B})$ is a filter base on $Y$. If $\mathcal{B}$ is an ultrafilter base on $X$, then $f(\mathcal{B})$ is an ultrafilter base on $Y$.
+
+  \item[Note:] If $\mathcal{F}$ is a filter, $f(\mathcal{F})$ need not be a filter. This phenomenon occurs if and only if $f$ is not a surjection.
+
+  \item[Definition:] Let $\mathcal{F}$ be the Frechet filter on $N$. Let $f : N \rightarrow X$ be a sequence. Then $f(\mathcal{F})^{\#}$ is the \emph{elementary filter} associated with the sequence.
+
+  \item[Definition:] A filter $\mathcal{F}$ on a space $X$ $converges$ to $x \in X$ if and only if $\mathcal{F}$ is finer than the neighborhood filter at $x$; that is, if and only if every neighborhood of $x$ is in $\mathcal{F}$.
+
+  \item[Note:] If $\mathcal{F}$ converges to $x$, then any finer filter converges to $x$.
+
+  \item[102. Theorem:] A sequence converges to a point in a space if and only if if its elementary filter converges to the point.
+
+  \item[103. Theorem:] A space $X$ is Hausdorff if and only if every filter converges to at most one point.
+
+  \item[104. Theorem:] A filter $\mathcal{F}$ on a product
+    \begin{equation*}
+    \prod_{\alpha \in A} X_{\alpha}
+    \end{equation*}
+    converges to $x = (x_{\alpha})$ if and only if each filter $\pi_{\alpha} (\mathcal{F})^{\#}$ converges to $x_{\alpha}$ in the space $X_{\alpha}$.
+
+  \item[105. Theorem:] A space $X$ is compact if and only if every ultrafilter on $X$ converges.
+
+  \item[106. Tychonoff's Theorem:] The product
+    \begin{equation*}
+    \prod_{\alpha \in A} X_{\alpha}
+    \end{equation*}
+    of nonempty spaces $X_{\alpha}$ is compact if and only if each $X_{\alpha}$ is compact.
+
+\end{description}
+
+
+
+\section{Connected Spaces}
+\markboth{6. Connected Spaces}{6. Connected Spaces}
+
+\begin{description}
+
+  \item[Definition:] Consider $2 = \{ 0,1 \}$ with the discrete topology. A topological space $X$ is \emph{connected} if and only if every map $f : X \rightarrow 2$ is constant.
+
+  \item[Definition:] A \emph{partition} of a topological space $X$ is a pair of nonempty open subsets $A$ and $B$ of $X$ such that $A \bigcap B = O$ and $A \bigcup B = X$. This is denoted $X = A \ \vert \ B$.
+
+  \item[107. Theorem:] Let $X$ be a topological space. The following are equivalent:
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item $X$ is connected,
+      \item $X$ has no partition, and
+      \item the only subsets of $X$ that are both open and closed are $O$ and $X$.
+    \end{enumerate}
+
+  \item[108. Theorem:] If $f : X \rightarrow Y$ is continuous and $X$ is connected, then $f(X)$ is a connected subspace of $Y$.
+
+  \item[109. Corollary:] Connectedness is a topological property.
+
+  \item[110. Problem:] In the lattice of the six topologies we have considered on $\Re$, which are connected? Investigate connectedness with respect to the fineness relation among topologies on an arbitrary set.
+
+  \item[111. Theorem:] Suppose a collection $\{ S_{\alpha} \ \vert \ \alpha \in A \}$ of connected subspaces of a space $X$ has the property that $S_{\alpha} \bigcap S_{\beta} \neq O$ for each $\alpha, \beta \in A$. Then
+    \begin{equation*}
+    \bigcup_{\alpha \in A} S_{\alpha}
+    \end{equation*}
+    is connected.
+
+  \item[112. Theorem:] If $A$ is a connected supspace of a space $X$ and
+    \begin{equation*}
+    A \subseteq B \subseteq \text{cl}A
+    \end{equation*}
+    then $B$ is connected. In particular, the closure of a connected subspace is connected.
+
+  \item[113. Lemma:] A subset $S$ of $\Re$ is an interval (a set of one of the forms $(a,b)$, $[a,b)$, $(a,b]$, $[a,b]$, $(a,\infty)$, $[a,\infty)$, $(-\infty,b)$, $(-\infty,b]$, or $(-\infty,\infty)$) if and only if for all $x, y \in S$ and $z \in \Re$ with $x < z < y$, we have $z \in S$.
+
+  \item[114. Theorem:] A connected subset of $\Re$ is an interval.
+
+  \item[115. Theorem:] An interval is a connected subset of $\Re$.
+
+  \item[116. Intermediate Value Theorem:] Suppose $f : [0,1] \rightarrow \Re$ is continuous. Then $f$ assumes its maximum value, its minimum value, and all intermediate values.
+
+  \item[117. Problem:] Investigate what hypotheses are necessary for the different conclusions of the previous theorem. Formulate and prove the relevant theorems for a real-valued function $f : X \rightarrow \Re$ defined on an arbitrary space $X$.
+
+  \item[118. Theorem:] Every map $f : [0,1] \rightarrow [0,1]$ has at least one fixed point; that is, a point $x \in [0,1]$ such that $f(x) = x$.
+
+  \item[119. Theorem:] Every odd-degree polynomial with real coefficients has at least one real root.
+
+  \item[120. Theorem:] For every map $f : S^{1} \rightarrow \Re$, there is at least one pair of antipodal points with the same image; that is, points $x = (x_{1},x_{2})$ and $-x = (-x_{1},-x_{2})$ of $S^{1}$ with $f(x) = f(-x)$.
+
+  \item[121. Theorem:] If $f : \Re \rightarrow \Re$ is continuous, then the graph of $f$ is a connected subset of $\Re^{2}$.
+
+  \item[122. Problem:] Investigate the converse of this theorem.
+
+  \item[123. Theorem:] The product
+    \begin{equation*}
+    \prod_{\alpha \in A} X_{\alpha}
+    \end{equation*}
+    of nonempty spaces is connected if and only if each factor is connected.
+
+  \item[124. Problem:] Show that the collection of sets of the form
+    \begin{equation*}
+    \prod_{\alpha \in A} U_{\alpha}
+    \end{equation*}
+    where $U_{\alpha}$ is open in $X_{\alpha}$ is a basis for a topology (called the \emph{box topology}) on
+    \begin{equation*}
+    \prod_{\alpha \in A} X_{\alpha}
+    \end{equation*}
+
+  \item[125. Problem:] Show that
+    \begin{equation*}
+    \prod_{i = 1}^{\infty} \Re
+    \end{equation*}
+    with the box topology is not connected. What is the largest connected set containing $0$?
+
+  \item[Definition:] A \emph{component} of a topological space is a maximal connected subspace; that is, a connected subspace that is not properly contained in any larger connected subspace.
+
+  \item[126. Theorem:] Consider the relation on a space $X$ defined by $x \sim y$ if and only if there is a connected subset of $X$ containing $x$ and $y$. This is an equivalence relation, and the equivalence classes are precisely the components of $X$.
+
+  \item[127. Theorem:] A nonempty connected subset that is both open and closed is a component.
+
+  \item[128. Theorem:] Each component of a space is closed.
+
+  \item[129. Problem:] Show that components are not necessarily open.
+
+  \item[Definition:] A space is \emph{totally disconnected} if and only if the only components are singleton sets.
+
+  \item[130. Theorem:] A discrete space is totally disconnected.
+
+  \item[131. Problem:] Show that $Q$ and the Cantor set are totally disconnected but not discrete.
+
+  \item[132. Problem:] Show that the intersection of connected subsets is not necessarily connected. Show that the intersection of a nested sequence
+    \begin{equation*}
+    C_{0} \supseteq C_{1} \supseteq C_{2} \supseteq \cdots
+    \end{equation*}
+    of connected sets is not necessarily connected.
+
+  \item[133. Theorem:] Suppose $X$ is a Hausdorff space, and the collection $\{ C_{\alpha} \ \vert \ \alpha \in A \}$ of compact connected subsets is linearly ordered by set containment. Then
+    \begin{equation*}
+    \bigcap_{\alpha \in A} C_{\alpha}
+    \end{equation*}
+    is connected.
+
+  \item[Definitions:] A \emph{path} is a space $X$ is a map $\gamma : [0,1] \rightarrow X$. The path $\gamma$ \emph{joins} $\gamma(0)$ and $\gamma(1)$. A space $X$ is \emph{path connected} (or \emph{pathwise connected}) if and only if every two points of $X$ can be joined by a path.
+
+  \item[134. Theorem:] If $f : X \rightarrow Y$ is continuous and $X$ is path connected, then $f(X)$ is a path connected subspace of $Y$.
+
+  \item[135. Corollary:] Path connectedness is a topological property.
+
+  \item[136. Theorem:] A path connected space is connected.
+
+  \item[137. Problem:] Show that the topologist's sine curve
+    \begin{equation*}
+    \left\{ (x,y) \in \Re^{2} \ \vert \ y = \sin \frac{1}{x} \right\} \bigcup \{ (0,0) \}
+    \end{equation*}
+    is connected but not path connected. Show that the closure of a path connected subset need not be path connected.
+
+  \item[138. Theorem:] A connected open subset of $\Re^{n}$ is path connected.
+
+  \item[139. Theorem:] Suppose $X$ is a countable subset of $\Re^{n}$ for some $n \geq 2$. Then $\Re^{n} - X$ is path connected.
+
+  \item[140. Theorem:] A product of nonempty spaces is path connected if and only if each factor is path connected.
+
+  \item[Definition:] A (\emph{covariant}) \emph{functor} $T$ from a category $\mathcal{C}$ to a category $\mathcal{D}$ consists of an object function that assigns to each object $X$ of $\mathcal{C}$ an object $T(X)$ of $\mathcal{D}$ and an arrow function that assigns to each arrow $f : X \rightarrow Y$ of $\mathcal{C}$ an arrow $T(f) : T(X) \rightarrow T(Y)$ of $\mathcal{D}$ so that $T(\text{id}_{X}) = \text{id}_{T(X)}$ and $T(f \circ g) = T(f) \circ T(g)$.
+
+  \item[141. Problem:] For a space $X$ let $\text{Comp}(X)$ denote the set of components of $X$. Show how to make $\text{Comp}$ into a functor from the category of topological spaces and continuous functions to the category of sets and functions.
+
+  \item[142. Theorem:] Suppose $T$ is a functor from a category $\mathcal{C}$ to a category $\mathcal{D}$. If $X$ and $Y$ are equivalent in $\mathcal{C}$, then $T(X)$ and $T(Y)$ are equivalent in $\mathcal{D}$.
+
+  \item[Definition:] A point $x$ of a space $X$ is a \emph{cut point} of order $c$ if and only if the cardinality of $\text{Comp}(X - \{ x \})$ is $c$.
+
+  \item[143. Problem:] Write the capital letters of the English alphabet using straight line segments and arcs of circles. Classify the resulting 26 topological spaces. Classify the spaces mentioned in problem 15.
+
+\end{description}
+
+
+
+\section{Local Properties}
+\markboth{7. Local Properties}{7. Local Properties}
+
+\begin{description}
+
+  \item[Definitions:] Suppose $\mathcal{P}$ is a topological property. A space $X$ is \emph{locally} $\mathcal{P}$ at a point $x \in X$ if and only if for each neighborhood $U$ of $x$ there is a neighborhood $V$ of $x$ that has property $\mathcal{P}$ and is contained in $U$. A space $X$ is locally $\mathcal{P}$ if and only if it is locally $\mathcal{P}$ at each of its points.
+
+  \item[144. Theorem:] A compact Hausdorff space is locally compact.
+
+  \item[145. Theorem:] A product of nonempty spaces is locally compact if and only if each factor is locally compact and all but a finite number are compact.
+
+  \item[146. Problem:] Show that $Q$ is not locally compact. Find a normed vector space that is not locally compact.
+
+  \item[147. Theorem:] A space $X$ is locally connected if and only if the components of each open subset of $X$ are open.
+
+  \item[148. Problem:] Show that the topologist's sine curve is not locally connected.
+
+  \item[149. Theorem:] A product of nonempty spaces is locally connected if and only if each factor is locally connected and all but a finite number are connected.
+
+  \item[150. Problem:] Find an example of a path connected space that is not locally path connected.
+
+\end{description}
+
+
+
+\section{Normal Spaces}
+\markboth{8. Normal Spaces}{8. Normal Spaces}
+
+\begin{description}
+
+  \item[Definition:] A space $X$ is \emph{regular} if and only if for every closed subset $B \subseteq X$ and point $a \in X - B$, there are disjoint open sets $U$ and $V$ such that $a \in U$ and $B \subseteq V$.
+
+  \item[Definition:] A space $X$ is \emph{normal} if and only if for every pair of disjoint closed subsets $A,B \subseteq X$, there are disjoint open sets $U$ and $V$ such that $A \subseteq U$ and $B \subseteq V$.
+
+  \item[151. Theorem:] A compact Hausdorff space is regular.
+
+  \item[152. Theorem:] A compact Hausdorff space is normal.
+
+  \item[153. Theorem:] A metric space is normal.
+
+  \item[154. Lemma:] A space is normal if and only if for any closed subset $F$ contained in an open subset $U$, there is an open subset $V$ with
+    \begin{equation*}
+    F \subseteq V \subseteq \text{ cl } V \subseteq U
+    \end{equation*}
+
+  \item[155. Urysohn's Lemma:] Suppose $A$ and $B$ are disjoint closed subsets of a normal space $X$. There is a map $f : X \rightarrow [0,1]$ with $f(A) = \{ 0 \}$ and $f(B) = \{ 1 \}$.
+
+  \item[Definition:] A sequence of functions $s_{n} : X \rightarrow \Re, \ n = 1,2,\cdots$ \emph{converges uniformly} to a function $f : X \rightarrow \Re$ if and only if
+    \begin{equation*}
+    \forall \epsilon > 0 \exists N \in N \text{s.t.} \forall x \in X \ n > N \Rightarrow \ \vert s_{n}(x) - f(x) \vert \ < \epsilon
+    \end{equation*}
+
+  \item[156. Lemma:] If a sequence of continuous functions $s_{n} : X \rightarrow R$ converges uniformly to $f : X \rightarrow R$, then $f$ is also continuous.
+
+  \item[157. Lemma:] Suppose a map $g : F \rightarrow [-a,a]$ is defined on a closed subset $F$ of a normal space $X$. Then there is $\hat{g} : X \rightarrow \left[ -\frac{a}{3},\frac{a}{3} \right]$ such that $\vert g(x) - \hat{g}(x) \vert \ \leq \frac{2a}{3}$ for all $x \in F$.
+
+  \item[158. Tietze Extension Theorem:] Suppose a map $f : F \rightarrow [-1,1]$ is defined on a closed subset $F$ of a normal space $X$. There is a continuous extension $\hat{f} : X \rightarrow [-1,1]$ of $f$; that is, $\hat{f} \ \vert \ F = f$.
+
+\end{description}
+
+
+
+\section{Metric Spaces}
+\markboth{9. Metric Spaces}{9. Metric Spaces}
+
+\begin{description}
+
+  \item[Definition:] A space $X$ has the \emph{Bolzano-Weierstrass property} if and only if every finite subset of $X$ has a limit point.
+
+  \item[Definition:] A space $X$ is \emph{sequentially compact} if and only if every sequence $(x_{n})$ in $X$ has a convergent subsequence $(x_{ni}) (n_{i} < n_{i + 1})$.
+
+  \item[159. Theorem:] A sequentially compact space has the Bolzano-Weierstrass property.
+
+  \item[160. Theorem:] A first countable Hausdorff space which has the Bolzano-Weierstrass property is sequentially compact.
+
+  \item[161. Theorem:] A compact space has the Bolzano-Weierstrass property.
+
+  \item[Definition:] A \emph{Lebesgue number} for an open cover $\{ U_{\alpha}\ \vert \ \alpha \in A \}$ of a metric space $X$ is a positive real number $\epsilon$ such that for any $x \in X$, $B_{\epsilon}(x) \subseteq U_{\alpha}$ for some $\alpha \in $A.
+
+  \item[Definition:] For $\epsilon > 0$, an $\epsilon$-\emph{net} for a metric space $X$ is a finite subset $F$ of $X$ such that
+    \begin{equation*}
+    X = \bigcup_{x \in F} B_{\epsilon}(x)
+    \end{equation*}
+
+  \item[Definition:] A metric space is \emph{totally bounded} if and only if for every $\epsilon > 0$, there is an $\epsilon$-net for the space.
+
+  \item[162. Lemma:] In a sequentially compact metric space, every open cover has a Lebesgue number.
+
+  \item[163. Lemma:] A sequentially compact metric space is totally bounded.
+
+  \item[164. Theorem:] The following are equivalent for a metric space $X$:
+    \begin{enumerate}[\hspace{1cm}(i)]
+      \item $X$ has the Bolzano-Weierstrass property,
+      \item $X$ is sequentially compact, and
+      \item $X$ is compact.
+    \end{enumerate}
+
+\end{description}
+
+
+
+\section{Coinduced Structures}
+\markboth{10. Coinduced Structures}{10. Coinduced Structures}
+
+\begin{description}
+
+  \item[Definition:] Suppose $X$ is a topological space, and for each $\lambda \in \Lambda$ there is a function $f_{\lambda} : X_{\lambda} \rightarrow X$ from a space $X_{\lambda}$ to $X$. The topology on $X$ is \emph{coinduced} by the family of functions $\{ f_{\lambda} : X_{\lambda} \rightarrow X \ \vert \ \lambda \in \Lambda\}$, if and only if the following property holds:
+    \begin{quote}
+    A function $g : X \rightarrow Y$ is continuous if and only if for each $\lambda \in \Lambda$, the composition $g \circ f_{\lambda} : X_{\lambda} \rightarrow Y$ is continuous.
+    \end{quote}
+
+  \item[165. Theorem:] Suppose $\{ f_{\lambda} : X_{\lambda} \rightarrow X \ \vert \ \lambda \in \Lambda \}$ is a family of functions from spaces $X_{\lambda}$ to a set $X$. There is a unique topology on $X$ coinduced by the family of functions. With this topology on $X$, each of the functions $f_{\lambda}$ is continuous.
+
+  \item[Definition:] Suppose $p : Y \rightarrow X$ is a surjection from a space $Y$ onto a set $X$. The \emph{quotient} topology on $X$ is the topology coinduced by the \emph{quotient map} $p$.
+
+  \item[166. Problem:] Suppos $\sim$ is an equivalence relation on a space $X$. Let $X / \sim$ be the set of equivalence classes, and let $p : X \rightarrow X / \sim$ be the surjection that assigns to each $x \in X$, its equivalence class $p(x) \in X / \sim$. Give a simple criterion for a subset of $X / \sim$ to be open in the quotient topology coinduced by $p$.
+
+  \item[Remark:] Any function $f : X \rightarrow Y$ yields an equivalence relation on $X$ defined by $a \sim b$ if and only if $f(a) = f(b)$.
+
+  \item[167. Problem:] Consider the equivalence relation on $[0,1]$ defined by
+    \begin{equation*}
+    a \sim b \text{ if and only if }
+    \begin{cases}
+      a = b \text{ or} \\
+      \{ a,b \} = \{ 0,1 \}
+    \end{cases}
+    \end{equation*}
+    Then $[0,1] / \sim$ with the quotient topology is homeomorphic to $S^{1}$.
+
+  \item[168. Problem:] Consider the equivalence relation on $[0,1] \times [0,1]$ defined by
+    \begin{equation*}
+    (a,b) \sim (c,d) \text{ if and only if }
+    \begin{cases}
+      a = c \text{ and } b = d, \text{ or } \\
+      a = c \text{ and } \{b,d\} = \{0,1\}, \text{ or } \\
+      \{a,c\} = \{0,1\} \text{ and } b = d, \text{ or } \\
+      \{a,c\} = \{b,d\} = \{0,1\}
+    \end{cases}
+    \end{equation*}
+    Then $[0,1] \times [0,1] / \sim$ with the quotient topology is homeomorphic to the torus $S^{1} \times S^{1}$.
+
+  \item[Remark:] The product of quotient spaces is not, in general, the quotient space of the product.
+
+  \item[169. Question:] What is nonorientable and lives in the sea?
+
+\end{description}
+
+\end{document}

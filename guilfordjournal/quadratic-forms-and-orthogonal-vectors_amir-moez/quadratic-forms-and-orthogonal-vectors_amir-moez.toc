@@ -1,0 +1,15 @@
+\contentsline {section}{\hbox to\@tempdima {\hfil }Introduction}{1}
+\contentsline {section}{\numberline {1}Theorem}{1}
+\contentsline {section}{\numberline {2}Positive Definite Matrices}{2}
+\contentsline {section}{\numberline {3}Proper Values}{2}
+\contentsline {section}{\numberline {4}Proper Vectors}{3}
+\contentsline {section}{\numberline {5}Components of a Vector}{4}
+\contentsline {section}{\numberline {6}Quadratic Forms}{5}
+\contentsline {section}{\numberline {7}Theorem (Fischer)}{5}
+\contentsline {section}{\numberline {8}Theorem}{6}
+\contentsline {section}{\numberline {9}Lemma}{7}
+\contentsline {section}{\numberline {10}Theorem}{7}
+\contentsline {section}{\numberline {11}Theorem}{8}
+\contentsline {section}{\numberline {12}A Proof Of Theorem 1}{9}
+\contentsline {section}{\numberline {13}Suggestions}{12}
+\contentsline {section}{\numberline {14}Bibliography}{12}
