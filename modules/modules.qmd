@@ -25,9 +25,8 @@ modules <- read_csv("modules.csv") |>
 
 
 modules <- modules |>
-  mutate( Title = str_glue("<a href= .\\M0{vol}I.pdf >{Title}</a>" ))
+  mutate( Title = str_glue("<a href=\"M0{vol}I.pdf\">{Title}</a>" ))
 
-  
 #  separate_wider_regex(Issue, patterns = c("No. ", v = "[0-9]+", " [(]", date = "[A-Za-z]+ [0-9]+", " [)]"))
 
 ```
@@ -48,5 +47,4 @@ modules |>
   rename( Issue = Volume ) |>
   datatable(rownames = FALSE, style = 'bootstrap', class = "table-condensed table-striped", escape = FALSE)
 ```
-
 
