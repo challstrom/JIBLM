@@ -9,9 +9,9 @@ library(tidyverse)
 library(DT)
 ```
 
-These refereed course notes fulfill the guidelines listed under [Information for Authors of Course Notes](author_coursenotes.qmd).
+The refereed course notes listed below fulfill the guidelines listed under [Information for Authors of Course Notes](author_coursenotes.qmd).
 
-Keeping JIBLM free is a top priority. If you use JIBLM materials, we want to know! Please consider letting us know which notes you use, your institution, your name, and anything else you wish to share.  We also welcome reviews of notes.  
+If you use JIBLM materials, please consider emailing the Submissions Editor with a constructive review of your experience; which notes did you use and how did they work for your students?  Helpful reviews will be posted with the issue they reviewed. 
 
 This table is sortable. Click on a column heading to sort by that column. Click on a title to access these notes.
 

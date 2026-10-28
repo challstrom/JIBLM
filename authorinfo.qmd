@@ -4,17 +4,36 @@ title: "Information for Authors of Course Notes"
 
 Course Notes are freely downloadable, professionally refereed, classroom-tested notes which constitute a full course or sequence of full courses. Course Notes are intended
 
-1.  for instructors to use as notes for their course
-2.  for instructors to modify to suit the needs of their students
-3.  for students to use to study a topic independently.
+-  for instructors to use as notes for their course
+-  for instructors to modify to suit the needs of their students
+-  for students to use to study a topic independently.
 
 Instructors are encouraged to contact authors for guidance in the use of Course Notes.
 
+
+## Submissions
+
+To submit Course Notes for consideration, please send via email the following items to the Submissions Editor [David Clark](mailto:clarkd@newpaltz.edu):
+
+- a cover letter
+- a completed submission form (see below)
+- the .tex and .pdf files for your course notes
+- any auxiliary files needed by the .tex file (e.g. image files)
+
+### Submission Instructions
+To create the submission form as well as the .tex/.pdf files for your course notes, please:
+
+-   download the Submission Form: <a href="./author_files/submission_cn.tex" download="submission_cn.tex"> submission_cn.tex </a>
+-   download the LaTeX template: <a href="./author_files/template_cn.tex" download="template_cn.tex">template_cn.tex</a>
+-   download the JIBLM Formatting Package: <a href="./author_files/jiblm_cn.tex" download="jiblm_cn.tex">jiblm_cn.tex</a>
+-   place **jiblm_cn.tex** and **template_cn.tex** in the same directory
+-   compile **template_cn.tex** and read the output, and
+-   place your notes into a copy of the file **template_cn.tex**.
+
+Do not modify **jiblm_cn.tex**. If you encounter any difficulties, please contact Associate Editor [Chris Hallstrom](mailto:hallstro@up.edu) for assistance.
+
+
 ## Publication Requirements
-
-### Abstract
-
-Course Notes should include an abstract with sufficient detail to assist users who are viewing multiple sets of Course Notes in determining which set best meets their needs.
 
 ### Classroom Testing
 
@@ -49,28 +68,9 @@ Course Notes should adhere to an IBL pedagogy that utilizes presentations or stu
 
 As copyrights are retained by the author, we do not provide the source for download. However, based on our anecdotal experience, authors contacted have been very willing to share their expertise, experience and source with instructors wishing to use the author's notes. Because authors often revise and improve notes, contacting the author directly may well result in a more current, improved version.
 
-### Submissions
 
-Course Notes should be sent via email to the Course Notes Editor David Clark along with a completed Submissions Form using the LaTeX templates provided. The form **template.tex** serves as:
 
--   a guide to typesetting your course notes, and
--   a template to be modified to produce your print ready submission.
 
-### To get started
-
--   download the Submission Form: <a href="./author_files/submission_cn.tex" download="submission_cn.tex"> submission_cn.tex </a>
-
--   download the LaTeX template: <a href="./author_files/template_cn.tex" download="template_cn.tex">template_cn.tex </a>,
-
--   download the JIBLM Formatting Package: <a href="./author_files/jiblm_cn.tex" download="jiblm_cn.tex">jiblm_cn.tex</a>,
-
--   place **jiblm_cn.tex** and **template_cn.tex** in the same directory,
-
--   compile **template_cn.tex** and read the output, and
-
--   place your notes into a copy of the file **template.tex**.
-
-Do not modify **jiblm_cn.tex**. If you encounter any difficulties, please contact an editor for assistance.
 
 ## Additional Information
 
