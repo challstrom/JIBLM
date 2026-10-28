@@ -11,7 +11,7 @@ library(gt)
 
 note_entries <- c("Title", "Author", "Subject", "Pages", "University", "Contact", "Abstract")
 
-note_data <- c("Analytic Functions", "Mac Nerney, J. S.", "analysis", "80", "", "", "")
+note_data <- c("Analytic Functions", "Mac Nerney, J. S.", "complex analysis", "80", "", "", "")
 
 
 tibble(note_entries, note_data) |>

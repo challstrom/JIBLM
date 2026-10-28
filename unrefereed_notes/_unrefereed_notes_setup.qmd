@@ -2,7 +2,7 @@
 title: "Unrefereed Course Materials Setup"
 ---
 
-Running this populates the subdirectories with the `.qmd` files based on the template below. Run it once if changes are needed to the format or styling of the individual file pages.
+Rendering this .qmd file populates the subdirectories with the `.qmd` files based on the template below. Run it once if changes are needed to the overall format or styling of the individual file pages.  Changes to individual .qmd files can be made, but those will be overwritten if this is rendered subsequently.
 
 ```{r}
 #| include: false
