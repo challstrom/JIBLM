@@ -70,7 +70,7 @@ Course Notes should be sent via email to the Course Notes Editor David Clark alo
 
 -   place your notes into a copy of the file **template.tex**.
 
-Do not modify **jiblm_cn.tex**. If you encounter any difficulties, please contact the Technical Editor Ted Mahavier for assistance.
+Do not modify **jiblm_cn.tex**. If you encounter any difficulties, please contact an editor for assistance.
 
 ## Additional Information
 
