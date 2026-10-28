@@ -35,7 +35,9 @@ materials <- materials |>
 ```{r}
 #| echo: false
 
-options(DT.options = list(order = list(4, 'desc')))
+# pageLength sets the default number of rows to display 
+options(DT.options = list(pageLength = 100, order = list(4, 'desc')))
+
 
 #materials |>
 #  datatable(rownames = FALSE, style = 'bootstrap', class = "table-condensed table-striped", escape = FALSE)
