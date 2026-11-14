@@ -4,7 +4,7 @@ toc: false
 ---
 
 ::: {.maintitle}
-# Journal of Inquiry-Based Learning in Mathematics
+# [Journal of Inquiry-Based Learning in Mathematics]{.smallcaps}
 
 :::
 
