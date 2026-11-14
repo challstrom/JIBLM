@@ -25,6 +25,7 @@ format:
     theme: cosmo
     css: styles.scss
     toc: true
+    toc-depth: 3
     toc-expand: true
     backgroundcolor: "#FBF5DD"
     page-layout: full
