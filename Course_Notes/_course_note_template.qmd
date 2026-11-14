@@ -4,7 +4,7 @@ format: html
 toc: false
 ---
 
-## Rendering this file will generate the .qmd files for each course notes page. Note that this will overwrite the .qmd files!
+## Rendering this file will generate the .qmd files for each course notes page. Note that this will overwrite the existing .qmd files!
 
 ```{r}
 #| include: false
@@ -73,7 +73,7 @@ qmd_block <- ""
 
 for (i in 1:nrow(metadata)) {
 
-  block1 <- str_glue("---
+block1 <- str_glue("---
 title: \"Course Notes\"
 subtitle: \"{metadata$title[[i]]}, {metadata$issue[[i]]}\"
 ---
