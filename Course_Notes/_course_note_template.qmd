@@ -4,7 +4,8 @@ format: html
 toc: false
 ---
 
-## Rendering this file will generate the .qmd files for each course notes page. Note that this will overwrite the existing .qmd files!
+## Rendering this file will generate the .qmd files for each course notes page. Note that this will overwrite the existing .qmd files!  In particular, I have edited the .qmd files for volumes 1, 2, 4, 5, 6, 7, 9, 10, 15, 25 to reflect that there is only one version available to download -- otherwise, those pages would say "download instructor version" even though there only exists one version.  To do:  modify the code below so that if only one version exists, the appropriate text appears on the .qmd file
+
 
 ```{r}
 #| include: false
