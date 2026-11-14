@@ -29,11 +29,11 @@ unref_materials <- read_csv("unrefereed_notes_list.csv") |>
 ```{r}
 #| echo: false
 
-options(DT.options = list(order = list( list(0, 'asc'), list(1, 'asc'))))
+options(DT.options = list(pageLength = 100, order = list( list(0, 'asc'), list(1, 'asc'))))
 
 #materials |>
 #  datatable(rownames = FALSE, style = 'bootstrap', class = "table-condensed table-striped", escape = FALSE)
 
 unref_materials |>
-  datatable(rownames = FALSE, style = 'bootstrap', class = "table-condensed table-striped", escape = FALSE)
+  datatable(rownames = FALSE, style = 'bootstrap', class = "table-condensed table-striped", escape = FALSE, options = list(dom = 'ti'))
 ```
