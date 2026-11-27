@@ -1,5 +1,6 @@
 ---
 title: "Other Materials"
+toc: false
 ---
 
 ## Modules
